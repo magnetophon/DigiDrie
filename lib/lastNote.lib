@@ -1,0 +1,51 @@
+declare author "Bart Brouns";
+declare license "AGPLv3";
+declare name "DigiDrie";
+declare options "[midi:on]";
+import("stdfaust.lib");
+///////////////////////////////////////////////////////////////////////////////
+//                                  lastNote                                 //
+///////////////////////////////////////////////////////////////////////////////
+
+// uniqueify makse sure that when multiple new notes are started simultaneously, each get's a unique index
+// TODO: make the uniqueify function only affect the new notes
+nrNotesPlaying = 0: seq(i, nrNotes, noteIsOn(i),_:+);
+noteIsOn(i) = velocity(i)>0;
+
+lastNote =
+  // 0;
+  par(i, nrNotes, i, index(i))
+// , ((par(i, nrNotes, index(i)),uniqueIfy):ro.interleave(nrNotes,2):par(i, nrNotes, +))
+  :find_max_index(nrNotes)
+  :ba.sAndH(nrNotesPlaying>0);
+// with {
+// an index to indicate the order of the note
+// it adds one for every additional note played
+// it resets to 0 when there are no notes playing
+// assume multiple notes can start at once
+orderIndex = ((_+nrNewNotes) * (nrNotesPlaying>1))~_;
+nrNewNotes = ((nrNotesPlaying-nrNotesPlaying')):max(0);
+
+// the order index of note i
+// TODO: when multiple notes start at the same time, give each a unique index
+index(i) = orderIndex:(select2(noteStart(i),_,_)
+                       :select2(noteEnd(i)+(1:ba.impulsify),_,-1))~_;
+
+// we use this instead of:
+// hslider("frequency[midi:keyon 62]",0,0,nrNotes,1)
+// because keyon can come multiple times, and we only want the first
+noteStart(i) = noteIsOn(i):ba.impulsify;
+noteEnd(i) = (noteIsOn(i)'-noteIsOn(i)):max(0):ba.impulsify;
+//or do we?
+// noteStart(i) = (hslider("keyon[midi:keyon %i]",0,0,nrNotes,1)>0) :ba.impulsify;
+// ERROR : path '/lastNote/keyon' is already used
+// noteEnd(i) = ((hslider("keyon[midi:keyon %i]",0,0,nrNotes,1)>0)'-(hslider("keyon[midi:keyon %i]",0,0,nrNotes,1)>0)):max(0):ba.impulsify;
+// at the very least, the first implementation of noteStart(i) doesn't add another 127 sliders
+
+// from Julius Smith's acor.dsp:
+index_comparator(n,x,m,y) = select2((x>y),m,n), select2((x>y),y,x); // compare integer-labeled signals
+// take N number-value pairs and give the number with the maximum value
+find_max_index(N) = seq(i,N-2, (index_comparator,si.bus(2*(N-i-2)))) : index_comparator :(_,!);
+
+uniqueIfy =
+  (0:seq(i, nrNotes, myBus(i),(_-(noteIsOn(i-1)*(nrNewNotes>1))<:(_,_)) ):(si.bus(nrNotes),!));

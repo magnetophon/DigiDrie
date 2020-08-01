@@ -1,0 +1,61 @@
+<!DOCTYPE patchbay>
+<patchbay name="DigiDrie" version="0.6.2">
+ <output-sockets>
+  <socket type="jack-audio" client="DigiDrie" name="DigiDrie" exclusive="off">
+   <plug>out_0</plug>
+   <plug>out_1</plug>
+  </socket>
+  <socket type="jack-audio" client="Simple Scope \(4 channel\)" name="Simple Scope (4 channel)" exclusive="off">
+   <plug>out1</plug>
+   <plug>out2</plug>
+   <plug>out3</plug>
+   <plug>out4</plug>
+  </socket>
+  <socket type="jack-audio" client="spectrum_analyzer_x1" name="spectrum_analyzer_x1" exclusive="off">
+   <plug>out0</plug>
+  </socket>
+  <socket type="jack-midi" client="a2j" name="a2j" exclusive="off">
+   <plug>Midi Through \[14\] \(capture\): Midi Through Port-0</plug>
+  </socket>
+  <socket type="jack-midi" client="DigiDrie" name="DigiDrie" exclusive="off">
+   <plug>midi_out_1</plug>
+  </socket>
+  <socket type="jack-midi" client="B\.SEQuencer" name="B.SEQuencer" exclusive="off">
+   <plug>output</plug>
+  </socket>
+ </output-sockets>
+ <input-sockets>
+  <socket type="jack-audio" client="system" name="system" exclusive="off">
+   <plug>playback_1</plug>
+   <plug>playback_2</plug>
+   <plug>playback_3</plug>
+   <plug>playback_4</plug>
+  </socket>
+  <socket type="jack-audio" client="Simple Scope \(4 channel\)" name="Simple Scope (4 channel)" exclusive="off">
+   <plug>in1</plug>
+   <plug>in2</plug>
+   <plug>in3</plug>
+   <plug>in4</plug>
+  </socket>
+  <socket type="jack-audio" client="spectrum_analyzer_x1" name="spectrum_analyzer_x1" exclusive="off">
+   <plug>in0</plug>
+  </socket>
+  <socket type="jack-midi" client="a2j" name="a2j" exclusive="off">
+   <plug>Midi Through \[14\] \(playback\): Midi Through Port-0</plug>
+  </socket>
+  <socket type="jack-midi" client="DigiDrie" name="DigiDrie" exclusive="off">
+   <plug>midi_in_1</plug>
+  </socket>
+  <socket type="jack-midi" client="B\.SEQuencer" name="B.SEQuencer" exclusive="off">
+   <plug>input</plug>
+  </socket>
+ </input-sockets>
+ <slots/>
+ <cables>
+  <cable input="Simple Scope (4 channel)" type="jack-audio" output="DigiDrie"/>
+  <cable input="system" type="jack-audio" output="DigiDrie"/>
+  <cable input="spectrum_analyzer_x1" type="jack-audio" output="Simple Scope (4 channel)"/>
+  <cable input="DigiDrie" type="jack-midi" output="B.SEQuencer"/>
+ </cables>
+</patchbay>
+

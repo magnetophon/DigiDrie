@@ -1,0 +1,150 @@
+declare author "Bart Brouns";
+declare license "AGPLv3";
+declare name "DigiDrie";
+declare options "[midi:on]";
+import("stdfaust.lib");
+///////////////////////////////////////////////////////////////////////////////
+//                                    GUI                                    //
+///////////////////////////////////////////////////////////////////////////////
+
+//groups///////////////////////////////////////////////////////////////////////
+
+tabs(x) = tgroup("CZsynth", x);
+
+globalGroup(x)        = tabs(hgroup("[000]global", x));
+filterGroup(x)        = tabs(hgroup("[001]filter", x));
+
+A(x)                  = tabs(hgroup("[100]A", x));
+B(x)                  = tabs(hgroup("[101]B", x));
+C(x)                  = tabs(hgroup("[102]C", x));
+D(x)                  = tabs(hgroup("[103]D", x));
+
+sineGroup(x)          = tabs(hgroup("[210]sine", x));
+CZsawGroup(x)         = tabs(hgroup("[211]CZ saw", x));
+CZsquareGroup(x)      = tabs(hgroup("[212]CZ square", x));
+CZpulseGroup(x)       = tabs(hgroup("[213]CZ pulse", x));
+CZsinePulseGroup(x)   = tabs(hgroup("[214]CZ sinePulse", x));
+CZhalfSineGroup(x)    = tabs(hgroup("[215]CZ halfSine", x));
+CZresSawGroup(x)      = tabs(hgroup("[216]CZ resSaw", x));
+CZresTriangleGroup(x) = tabs(hgroup("[217]CZ resTriangle", x));
+CZresTrapGroup(x)     = tabs(hgroup("[218]CZ resTrap", x));
+sawGroup(x)           = tabs(hgroup("[219]saw", x));
+
+envelopeGroup(i,x)    = tabs(vgroup("[300]envelopes", hgroup("envelope %i", x)));
+lfoGroup(i,x)         = tabs(vgroup("[301]LFOs", hgroup("lfo %i", x)));
+macroGroup(i,x)       = tabs(vgroup("[302]macros", hgroup("macro %i", x)));
+
+midiGroup(x)          = tabs(hgroup("[999]midi", x));
+
+mainGroup(x)          = stereoGroup(vgroup("[0]main", x));
+offsetGroup(x)        = stereoGroup(vgroup("[1]L-R offset", x));
+stereoGroup(x)        = tgroup("stereo", x);
+
+filterTabsGroup(x) = tgroup("mix/tweak",x);
+filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
+filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
+
+moogGroup(x)     = filterMixerGroup(preFilterGroup(vgroup("[0]moog", x)));
+ms20Group(x)     = filterMixerGroup(preFilterGroup(vgroup("[1]ms20", x)));
+oberheimGroup(x) = filterMixerGroup(preFilterGroup(vgroup("[2]oberheim", x)));
+normFreqGroup(x) = filterTweakGroup(preFilterGroup(vgroup("[3]freq", x)));
+QGroup(x)        = filterTweakGroup(preFilterGroup(vgroup("[4] Q ", x)));
+
+oscTabsGroup(x) = tgroup("CZ/PM",x);
+oscCZgroup(x) = oscTabsGroup(hgroup("CZ",x));
+oscPMgroup(x) = oscTabsGroup(hgroup("PM",x));
+
+levelGroup(x) = oscGroup(oscCZgroup(vgroup("[0]level", x)));
+indexGroup(x) = oscGroup(oscCZgroup(vgroup("[1]index", x)));
+octGroup(x)   = oscGroup(oscCZgroup(vgroup("[2]octave", x)));
+phaseGroup(x) = oscGroup(oscCZgroup(vgroup("[3]phase", x)));
+
+fbAgroup(x) = oscGroup(oscPMgroup(vgroup("[0]PM A", x)));
+fbBgroup(x) = oscGroup(oscPMgroup(vgroup("[1]PM B", x)));
+fbCgroup(x) = oscGroup(oscPMgroup(vgroup("[2]PM C", x)));
+fbDgroup(x) = oscGroup(oscPMgroup(vgroup("[3]PM D", x)));
+
+oscGroup(x)       = hgroup("oscillator",x);
+preFilterGroup(x) = hgroup("preFilter",x);
+vectorGroup(x)    = hgroup("vector",x);
+
+modSourceGroup(x)    = hgroup("[0]modulation sources", x);
+envLFOmasterGroup(x) = masterGroup(hgroup("[1]envelopes & LFOs",x));
+amountGroup(x)       = masterGroup(hgroup("[2]amount", x));
+
+masterGroup(x) = hgroup("masters",x);
+
+ac_bdGroup(x) = vectorGroup(vgroup("ac/bd",x));
+ab_cdGroup(x) = vectorGroup(vgroup("ab/cd",x));
+
+//sliders//////////////////////////////////////////////////////////////////////
+masterPhase = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
+portamento  = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
+freefloat   = globalGroup(checkbox("free float osc"));
+
+ac_bd_slider = hslider("ac/bd[style:knob]", 0, 0, 1, stepsize);
+ab_cd_slider = hslider("ab/cd[style:knob]", 0, 0, 1, stepsize);
+ab(i,gate,gain) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
+cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
+
+oscillatorLevel = hslider("[0]Level[style:knob]", 0, -1, 1, stepsize);
+oscillatorPhase = hslider("[1]phase[style:knob]", 0, -64, 64, stepsize);
+oscillatorIndex = hslider("[2]index[style:knob]", 0, 0, 1, stepsize);// an osc has either index or res never both so same [number] is OK
+oscillatorRes   = hslider("[2]res[style:knob]", 0, 0, 64, stepsize);// an osc has either index or res never both so same [number] is OK
+oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
+
+type = vslider("type[style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
+
+fbAs = hslider("PM A[style:knob]", 0, 0, 1, stepsize);
+fbBs = hslider("PM B[style:knob]", 0, 0, 1, stepsize);
+fbCs = hslider("PM C[style:knob]", 0, 0, 1, stepsize);
+fbDs = hslider("PM D[style:knob]", 0, 0, 1, stepsize);
+
+envLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[0]envelopes" , hslider("env %i[style:knob]", 0, -1, 1, stepsize))));
+lfoLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[1]LFOs"      , hslider("LFO  %i[style:knob]", 0, -1, 1, stepsize))));
+macroLevel(subGroup,i) = subGroup(modSourceGroup(vgroup("[2]macros"    , hslider("macro %i[style:knob]", 0, -1, 1, stepsize))));
+
+attack(i)  = envelopeGroup(i,hslider("[0]attack", defaultAttack, 0, maxAttack, stepsize));
+decay(i)   = envelopeGroup(i,hslider("[1]decay", defaultRelease, 0, maxDecay, stepsize));
+sustain(i) = envelopeGroup(i,hslider("[2]sustain", defaultSustain, 0, 1, stepsize));
+release(i) = envelopeGroup(i,hslider("[3]release", defaultRelease, 0, maxRelease, stepsize));
+velSens(i) = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
+
+lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq", 1, 0, 99, stepsize));
+
+macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
+macroEnvelopeLevel(i) = hslider("env %i[style:knob]", 0, 0, 1, stepsize);
+macroLFOlevel(i) = hslider("lfo %i[style:knob]", 0, 0, 1, stepsize);
+
+macroUp     = hslider("[1]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);
+macroDown   = hslider("[2]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);
+curveSlider = hslider("[3]curve[style:knob]", 0, -10, 10, stepsize);
+
+mapping(x) = pow(x,curveIndex);
+curveIndex = select2(curveSlider>0
+                    , 1/(abs(curveSlider)+1)
+                    , curveSlider+1
+);
+
+lfo_amount = hslider("lfo amount", 0, 0, 1, stepsize):new_smooth(0.999);
+velocity(i) = VEL(i:max(-1):int) with {
+  VEL =
+    case {
+      (-1) => 0;
+      (i) => midiGroup(midiTabs(tabNr(i),vslider("vel %i [midi:key %i ]", 0, 0, 127, 1)));
+    };
+  midiTabs(tabNr,x) = tgroup("velocity",hgroup("v %tabNr", x));
+  tabNr(i) = (i/nrTabs):floor;
+  nrTabs = int((nrNotes+1)/32)+1;
+};
+
+
+// pre-filter /////////////////////////////////////////////////////////////////
+LPfreq = hslider("LPfreq[scale:log]", 24000, 20, 24000, 1);
+
+filterBPlevel = hslider("filterBPlevel[style:knob]", 1, 0, 1, stepsize);
+moogLevel     = hslider("level[style:knob]", 0, 0, 1, stepsize);
+ms20level     = hslider("level[style:knob]", 0, 0, 1, stepsize);
+oberheimLevel = hslider("level[style:knob]", 0, 0, 1, stepsize);
+normFreq      = hslider("normFreq[style:knob]", 0, 0, 1, stepsize);
+Q             = hslider(" Q [style:knob]", 0, 0, 10, stepsize);

@@ -1,0 +1,876 @@
+declare author "Bart Brouns";
+declare license "AGPLv3";
+declare name "DigiDrie";
+declare options "[midi:on]";
+import("stdfaust.lib");
+import("GUI.lib");
+
+
+///////////////////////////////////////////////////////////////////////////////
+//                               implementation                              //
+///////////////////////////////////////////////////////////////////////////////
+
+modMixer(group,subGroup,i,param,gate,gain) =
+  ((((envMix(M)*modMaster(M)) , (envMix(S)*modMaster(S)))) :op(i))
++ ((((lfoMix(M)*modMaster(M)) , (lfoMix(S)*modMaster(S)))) :op(i))
++ ((macros(M), macros(S)) : op(i))
+with {
+  envMix(MSgroup) = par(j, nrEnvelopes,
+                        (group(MSgroup(envLevel(subGroup,j))):new_smooth(0.999))
+                        , envelope(j,gate,gain))
+                    :mixer(nrEnvelopes,1,1);
+  modMaster(MSgroup) = group(MSgroup(subGroup(envLFOmasterGroup(param)))):new_smooth(0.999);
+  lfoMix(MSgroup) = par(j, nrLFOs,
+                        (group(MSgroup(lfoLevel(subGroup,j))):new_smooth(0.999))
+                        , lfo(j,gate,gain))
+                    :mixer(nrLFOs,1,1);
+  amount(MSgroup) = group(MSgroup(subGroup(amountGroup(param)))):new_smooth(0.999);
+  macros(MSgroup) =
+    (
+      amount(MSgroup)
+    , par(m, nrMacros, macro(m,gate,gain):mapParam(m),parameter(m))
+    )
+    :fallbackMixer(nrMacros,1,1)
+  with {
+    parameter(i) = group(MSgroup(subGroup(modSourceGroup(vgroup("[2]macros"    , hgroup("%i", param))))));
+    mapParam(i) = _;//group(MSgroup(subGroup(modSourceGroup(vgroup("[3]curve"    , hgroup("%i", mapping)))))); // too CPU intensive
+  };
+  M = mainGroup;
+  S = offsetGroup;
+  op(0) = +;
+op(1) = -;
+};
+
+macro(m,gate,gain) =
+  (
+    par(i, nrEnvelopes, envelope(i,gate,gain))
+   ,par(i, nrLFOs, lfo(i,gate,gain))
+  ):
+  macroGroup(m,macroMod:mapping);
+
+macroMod =
+  (
+    (macroSlider:si.lag_ud(macroUp,macroDown))
+  , par(i, nrEnvelopes, macroEnvelopeLevel(i),_)
+  , par(i, nrLFOs, macroLFOlevel(i),_/2+0.5)
+  )
+  : fallbackMixer(nrEnvelopes+nrLFOs,1,1): hbargraph("mix", 0, 1);
+
+octaver(fund,oscillator,params,oct) =
+  (
+    ((f0,params):oscillator)
+  , ((f1,params):oscillator)
+// ):it.interpolate_linear(oct:ma.decimal)
+  ):it.interpolate_linear(oct:abs%1)
+with {
+  f0 = fund:octaveSwitcher(oct:floor+((oct<0) & (oct!=(oct:floor))));
+  f1 = fund:octaveSwitcher(oct:floor+(oct>0));
+  octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
+};
+
+octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oscillator,params,oct) =
+  (
+    ((f0:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
+  , ((f1:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
+// ):it.interpolate_linear(oct:ma.decimal)
+  ):it.interpolate_linear(oct:abs%1)
+with {
+  f0 = fund:octaveSwitcher(oct:floor+((oct<0) & (oct!=(oct:floor))));
+  f1 = fund:octaveSwitcher(oct:floor+(oct>0));
+  octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
+};
+
+octaverFilter_No_Osc(fund,phase,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct,FB) =
+  (
+    (f0:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q))
+  , (f1:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q))
+  , (oct:abs%1)
+  )
+with {
+  f0 = (fund+phaseM(oct0):ma.frac):octaveSwitcher(oct0)+FB;
+  f1 = (fund+phaseM(oct1):ma.frac):octaveSwitcher(oct1)+FB;
+  oct0 = oct:floor+((oct<0) & (oct!=(oct:floor)));
+  oct1 = oct:floor+(oct>0);
+  octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
+  phaseM(oct) = phase*octMult(oct);
+  octMult(oct)=
+    octaveMultiplier(minOct)/(1/pow(2,oct*-1));
+};
+
+
+octaveMultiplier =
+  int<:
+  (
+    (_ <0) / pow(2,abs),
+    (_==0),
+    (_ >0) * pow(2,_)
+  ):>_;
+
+minOctMult = minOct:octaveMultiplier;
+
+
+CZsynth =
+  masterGateGain(lastNote) :
+  (si.bus(3)<:si.bus(6)) :
+  par(i, 2, CZsynthMono(i));
+
+CZsynthSingleOsc =
+  masterGateGain(lastNote) :
+  (si.bus(3)<:si.bus(6)) :
+  par(i, 2, CZsynthMonoSingleOsc(i));
+
+CZsynthVectorOsc =
+  masterGateGain(lastNote) :
+  (si.bus(3)<:si.bus(6)) :
+  par(i, 2, CZsynthMonoVectorOsc(i));
+
+// masterGateGain(lastNote) =
+// (lastNote<:(master,gate,gain));
+
+masterGateGain(lastNote) =
+  (lastNote<:(_,gate,gain))
+  <:(masterReset,!,_,_);
+
+CZsynthMono(i,fund,gate,gain) =
+  (oscillators(i,fund,gate,gain) : filters(i))
+* envelope(-1,gate,gain);
+
+CZsynthMonoSingleOsc(i,fund,gate,gain) =
+  (oscillator(i,fund,gate,gain) : filters(i))
+* envelope(-1,gate,gain);
+
+CZsynthMonoVectorOsc(i,fund,gate,gain) =
+  (vectorOsc(i,fund,gate,gain,ab(i,gate,gain),cd(i,gate,gain)) : filters(i))
+* envelope(-1,gate,gain);
+
+
+oscillators(i,fund,gate,gain) =
+  (
+    (preFilterOct(i,fund,gate,gain)  <: ro.interleave(3,9))
+   ,CZparams(i,gate,gain)
+  )
+  : (ro.crossNM(3*9,9),si.bus(9))
+  : ro.interleave(9,5) //9* osc by 9 params per osc
+  :
+  (
+    (!,sinPPF)
+  , ((_,CZsawPPF):enableIfVolume)
+  , ((_,CZsquarePPF):enableIfVolume)
+  , ((_,CZpulsePPF):enableIfVolume)
+  , ((_,CZsinePulsePPF):enableIfVolume)
+  , ((_,CZhalfSinePPF):enableIfVolume)
+  , ((_,CZresSawPF):enableIfVolume)
+  , ((_,CZresTrianglePF):enableIfVolume)
+  , ((_,CZresTrapPF):enableIfVolume)
+  )
+  :fallbackMixer(8,1,1)
+;
+
+oscillator(i,fund,gate,gain) =
+  (
+    preFilterOct(i,fund,gate,gain)
+   ,modMixer(globalGroup,indexGroup,i,oscillatorIndex,gate,gain)
+  )
+  : oscillatorSelector;
+
+vectorOsc(i,fund,gate,gain,ab,cd) =
+  (
+    (
+      oscParams(A,i,fund,gate,gain)
+    , oscParams(B,i,fund,gate,gain)
+    , oscParams(C,i,fund,gate,gain)
+    , oscParams(D,i,fund,gate,gain)
+    )
+    :
+    (
+      A(oscillatorSelector)
+    , B(oscillatorSelector)
+    , C(oscillatorSelector)
+    , D(oscillatorSelector)
+    )
+  )~(si.bus(4)<:si.bus(4*4))
+    : vectorMixer(ab,cd);
+
+
+vectorMixer(ab,cd) =
+  si.bus(4):
+  (
+    (si.interpolate(ab:max(0):min(1)))
+  , (si.interpolate(ab:max(0):min(1)))
+  )
+  : (si.interpolate(cd:max(0):min(1)));
+
+// TODO: optional latch for osc type change when vol is not 0
+// TODO: if attack==0 and release still going: optional auto-attack-increase
+
+oscillatorSelector =
+  si.bus(4)<:
+  (
+    sinPPF
+  , CZsawPPF
+  , CZsquarePPF
+  , CZpulsePPF
+  , CZsinePulsePPF
+  , CZhalfSinePPF
+  , CZresSawPF
+  , CZresTrianglePF
+  , CZresTrapPF
+  ) : enableOneOfN(9,type);
+
+enableOneOfN(maxN,N) =
+  par(i, maxN, control(i==N)*(i==N)):>_;
+// par(i, maxN, _ *(i==N)):>_;
+
+// crossfade between multiple inputs (just the gain)
+xfadeSelector(sel,nr) =
+  ((sel<=nr)*((sel-nr)+1):max(0)) + ((sel>nr)*((nr-sel)+1):max(0));
+
+busSelect(i,j) = par(k, inNr, _*xfadeSelector(i,j));
+select = par(j,N+1,busSelect(i,j) ):>si.bus(inNr);
+
+CZparams(i,gate,gain) =
+  (
+    0,0 // for routing
+    , oscParamsI(CZsawGroup,i,gate,gain)
+    , oscParamsI(CZsquareGroup,i,gate,gain)
+    , oscParamsI(CZpulseGroup,i,gate,gain)
+    , oscParamsI(CZsinePulseGroup,i,gate,gain)
+    , oscParamsI(CZhalfSineGroup,i,gate,gain)
+    , oscParamsR(CZresSawGroup,i,gate,gain)
+    , oscParamsR(CZresTriangleGroup,i,gate,gain)
+    , oscParamsR(CZresTrapGroup,i,gate,gain)
+  )
+  : ro.interleave(2,9);
+
+CZparams_oct(i,gate,gain) =
+  (
+    0,0,modMixer(globalGroup,octGroup,i,oct,gate,gain) // for routing
+    , oscParamsI_oct(CZsawGroup,i,gate,gain)
+    , oscParamsI_oct(CZsquareGroup,i,gate,gain)
+    , oscParamsI_oct(CZpulseGroup,i,gate,gain)
+    , oscParamsI_oct(CZsinePulseGroup,i,gate,gain)
+    , oscParamsI_oct(CZhalfSineGroup,i,gate,gain)
+    , oscParamsR_oct(CZresSawGroup,i,gate,gain)
+    , oscParamsR_oct(CZresTriangleGroup,i,gate,gain)
+    , oscParamsR_oct(CZresTrapGroup,i,gate,gain)
+  )
+  : ro.interleave(3,9);
+
+oldCZparams(i) =
+  (
+    0,0 // for routing
+    , CZsawGroup(indexParam(i))
+    , CZsquareGroup(indexParam(i))
+    , CZpulseGroup(indexParam(i))
+    , CZsinePulseGroup(indexParam(i))
+    , CZhalfSineGroup(indexParam(i))
+    , CZresSawGroup(resParam(i))
+    , CZresTriangleGroup(resParam(i))
+    , CZresTrapGroup(resParam(i))
+  )
+  : ro.interleave(2,9);
+
+preFilterParamsLocal(i,gate,gain) =
+  (
+    oscPreFilterParams(sineGroup,i,gate,gain)
+  , oscPreFilterParams(CZsawGroup,i,gate,gain)
+  , oscPreFilterParams(CZsquareGroup,i,gate,gain)
+  , oscPreFilterParams(CZpulseGroup,i,gate,gain)
+  , oscPreFilterParams(CZsinePulseGroup,i,gate,gain)
+  , oscPreFilterParams(CZhalfSineGroup,i,gate,gain)
+  , oscPreFilterParams(CZresSawGroup,i,gate,gain)
+  , oscPreFilterParams(CZresTriangleGroup,i,gate,gain)
+  , oscPreFilterParams(CZresTrapGroup,i,gate,gain)
+  )
+  : ro.interleave(5,9);
+
+preFilterOct(i,fund,gate,gain) =
+  (
+    (fund,oscPreFilterParams(filterGroup,i,gate,gain),oct)
+    : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
+  );
+
+preFilterOctG(group,i,fund,gate,gain,FB) =
+  (
+    (fund,phase,oscPreFilterParams(filterGroup,i,gate,gain),octave,FB)
+    : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
+  ) with {
+  octave = modMixer(group,octGroup,i,oct,gate,gain);
+  phase = modMixer(group,phaseGroup,i,oscillatorPhase,gate,gain);
+  };
+// -4 = 1
+// -3 = .5
+// -2 = .25
+// -1 = .125
+
+oscPreFilterParams(group,i,gate,gain) =
+  modMixer(group,moogGroup,i,moogLevel,gate,gain)
+, modMixer(group,ms20Group,i,ms20level,gate,gain)
+, modMixer(group,oberheimGroup,i,oberheimLevel,gate,gain)
+, (modMixer(group,normFreqGroup,i,normFreq,gate,gain):max(0):min(1))
+, (modMixer(group,QGroup,i,Q,gate,gain):max(stepsize):min(10));
+
+oscParamsI_oct(group,i,gate,gain) =
+  modMixer(group,levelGroup,i,oscillatorLevel,gate,gain)
+, modMixer(group,indexGroup,i,oscillatorIndex,gate,gain)
+, modMixer(globalGroup,octGroup,i,oct,gate,gain);
+
+oscParamsR_oct(group,i,gate,gain) =
+  modMixer(group,levelGroup,i,oscillatorLevel,gate,gain)
+, modMixer(group,indexGroup,i,oscillatorRes,gate,gain)
+, modMixer(group,octGroup,i,oct,gate,gain);
+
+oscParamsI(group,i,gate,gain) =
+  modMixer(group,levelGroup,i,oscillatorLevel,gate,gain)
+, modMixer(group,indexGroup,i,oscillatorIndex,gate,gain);
+
+oscParamsR(group,i,gate,gain) =
+  modMixer(group,levelGroup,i,oscillatorLevel,gate,gain)
+, modMixer(group,indexGroup,i,oscillatorRes,gate,gain);
+
+oscParams(group,i,fund,gate,gain,fbA,fbB,fbC,fbD) =
+  preFilterOctG(group,i,fund,gate,gain,FB)
+, CZparam
+with {
+  CZparam = modMixer(group,indexGroup,i,oscillatorIndex,gate,gain)*resMult;
+  resMult = select2(group(type)>5,1,64); // workaround:
+  FB =
+    fbA*modM(fbAgroup,fbAs)+
+fbB*modM(fbBgroup,fbBs)+
+fbC*modM(fbCgroup,fbCs)+
+fbD*modM(fbDgroup,fbDs);
+  modM(subGroup,s) = modMixer(group,subGroup,i,s,gate,gain);
+  // there are 2 types of osc:
+  // the ones with an index parameter and the ones with a res parameter
+  // index is 0..1
+  // res is 0..64
+};
+
+
+indexParam(i) = offset(oscillatorLevel,i)
+              , (offset(oscillatorIndex,i));
+
+resParam(i) = offset(oscillatorLevel,i)
+            , (offset(oscillatorRes,i));
+
+filters(i) = _;
+
+envelope(i,gate,gain) =  adsreg(attack(i),decay(i),sustain(i),release(i),gate,GAIN)
+with {
+  // GATE = gate*(lastNote==lastNote');
+  GAIN = si.interpolate(velSens(i),1,gain);
+};
+
+lfo(i,gate,gain) =  os.osc(lfo_freq(i));
+// master = lf_sawpos_reset(freq,reset) ;
+master(lastNote) = lf_sawpos_phase_reset(freq(lastNote)*minOctMult,masterPhase,reset(lastNote)) ;
+masterReset(lastNote,gate,gain) = lf_sawpos_phase_reset(freq(lastNote)*minOctMult,masterPhase,resetX(lastNote,gate,gain)) ;
+// reset(lastNote) = gate(lastNote):ba.impulsify;
+reset(lastNote) =
+  envelope(-1,gate(lastNote),gain(lastNote))>0.001:ba.impulsify;
+
+resetX(lastNote,gate,gain) =
+  isSilent' &
+(gate:ba.impulsify)
+& ( freefloat != 1 )
+with {
+  isSilent = envelope(-1,gate,gain)<0.1;
+};
+
+offset(param,i) = mainGroup(param)+(offsetGroup(param) * select2(i,1,-1)) :new_smooth(0.999);
+
+preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q) =
+  _<:
+  (
+    _
+  , moogLevel , svf.lp(freq,Q)
+  , ms20level , korg35LPF(freq,Q)
+  , oberheimLevel , oberheimLPFf(freq,Q)
+  )
+  :fallbackMixer(3,1,1)
+with {
+  freq = normFreq*127:ba.pianokey2hz
+         :max(0)
+         :min(ma.SR/2-10); // oberheim has artifacts with high freqs, they go away when compiling with -quad, but also when I limit the range.
+};
+
+
+// oneSumMixer(nrInChan,nrOutChan,nrSends) =
+// par(i, nrInChan, si.bus(nrSends),si.bus(nrOutChan)) : mixer(nrInChan,nrOutChan,nrSends) : par(i, nrSends, si.bus(nrOutChan));
+
+
+// lfo = 0.5*(1+os.osc(0.5));
+// vel(x) = chooseFromFixed(nrNotes,velocity,x);
+vel(x) = x:chooseFromFixed(nrNotes,velocity);
+//par(i, nrNotes, velocity(i)*(i==x)):>_ ;
+
+enableIfVolume =
+  si.bus(2) <:
+  ((_,!)
+  ,(ro.cross(2) :(_,_!=0):control)) ;
+// enableIfVolume = si.bus(2);
+///////////////////////////////////////////////////////////////////////////////
+//                                still to PR:                               //
+///////////////////////////////////////////////////////////////////////////////
+
+adsre(attT60,decT60,susLvl,relT60,gate) = envelope with {
+  ugate = gate>0;
+  samps = ugate : +~(*(ugate)); // ramp time in samples
+  attSamps = int(attT60 * ma.SR);
+  // the first sample of each note is alwaus the attack phase, also when attSamps==0
+  attPhase = (samps<attSamps) |  (ugate:ba.impulsify);
+  // attPhase = (samps<attSamps) | ((attSamps==0) & (ugate:ba.impulsify));
+  target = select2(ugate, 0.0,
+                   select2(attPhase, (susLvl)*float(ugate), ugate));
+  t60 = select2(ugate, relT60, select2(attPhase, decT60, attT60));
+  pole = ba.tau2pole(t60/6.91);
+  envelope = target : si.smooth(pole);
+};
+
+adsreg(attT60,decT60,susLvl,relT60,gate,gain) = envelope with {
+  ugate = gate>0;
+  samps = ugate : +~(*(ugate)); // ramp time in samples
+  attSamps = int(attT60 * ma.SR);
+  // the first sample of each note is alwaus the attack phase, also when attSamps==0
+  attPhase = (samps<attSamps) |  (ugate:ba.impulsify);
+  // attPhase = (samps<attSamps) | ((attSamps==0) & (ugate:ba.impulsify));
+  target = select2(ugate, 0.0,
+                   select2(attPhase, (susLvl)*float(ugate), ugate)) * gain;
+  t60 = select2(ugate, relT60, select2(attPhase, decT60, attT60));
+  pole = ba.tau2pole(t60/6.91);
+  envelope = target : si.smooth(pole);
+};
+myBus(0) = 0:!;
+myBus(i) = si.bus(i);
+
+sumN(n) = si.bus(n):>_;
+minN(n) = opWithNInputs(min,n);
+maxN(n) = opWithNInputs(max,n);
+meanN(n) = sumN(n)/n;
+RMSn(n) = par(i, n, pow(2)) : meanN(n) : sqrt;
+
+opWithNInputs =
+  case {
+    (op,0) => 0:!;
+      (op,1) => _;
+    (op,2) => op;
+    (op,N) => (opWithNInputs(op,N-1),_) : op;
+  };
+
+chooseFromFixed(maxN,expression,N) = par(i, maxN, expression(i)*(i==N)):>_;
+
+
+// https://github.com/grame-cncm/faustlibraries/pull/44#issuecomment-651245377
+new_smooth(s) = si.smooth(s * ((1-1') < 1) );
+enabled_smooth(e,s) = si.smooth(s * e );
+
+
+declare oberheim author "Eric Tarr";
+declare oberheim license "MIT-style STK-4.3 license";
+oberheimF(freq,Q) = _<:(s1,s2,ybsf,ybpf,yhpf,ylpf) : !,!,_,_,_,_
+letrec{
+  's1 = _-s2:_-(s1*FBs1):_*alpha0:_*g<:_,(_+s1:ef.cubicnl(0.0,0)):>_;
+  's2 = _-s2:_-(s1*FBs1):_*alpha0:_*g:_+s1:ef.cubicnl(0.0,0):_*g*2:_+s2;
+  // Compute the BSF, BPF, HPF, LPF outputs
+  'ybsf = _-s2:_-(s1*FBs1):_*alpha0<:(_*g:_+s1:ef.cubicnl(0.0,0):_*g:_+s2),_:>_;
+  'ybpf = _-s2:_-(s1*FBs1):_*alpha0:_*g:_+s1:ef.cubicnl(0.0,0);
+  'yhpf = _-s2:_-(s1*FBs1):_*alpha0;
+  'ylpf = _-s2:_-(s1*FBs1):_*alpha0:_*g :_+s1:ef.cubicnl(0.0,0):_*g:_+s2;
+}
+with{
+  // freq = 2*(10^(3*normFreq+1));
+  wd = 2*ma.PI*freq;
+  T = 1/ma.SR;
+  wa = (2/T)*tan(wd*T/2);
+  g = wa*T/2;
+  G = g/(1.0 + g);
+  R = 1/(2*Q);
+  FBs1 = (2*R+g);
+  alpha0 = 1/(1 + 2*R*g + g*g);
+};
+
+oberheimLPFf(normFreq,Q) = oberheimF(normFreq,Q):!,!,!,_;
+
+declare korg35LPF author "Eric Tarr";
+declare korg35LPF license "MIT-style STK-4.3 license";
+korg35LPF(freq,Q) = _ <: (s1,s2,s3,y) : !,!,!,_
+letrec{
+  's1 = _-s1:_*(alpha*2):_+s1;
+  's2 = _-s1:_*alpha:_+s1:_+(s3*B3):_+(s2*B2):_*alpha0:_-s3:_*alpha:_+s3:_*K:_-s2:_*(alpha*2):_+s2;
+  's3 = _-s1:_*alpha:_+s1:_+(s3*B3):_+(s2*B2):_*alpha0:_-s3:_*(alpha*2):_+s3;
+  'y = _-s1:_*alpha:_+s1:_+(s3*B3):_+(s2*B2) :_*alpha0:_-s3:_*alpha:_+s3;
+}
+with{
+  // freq = 2*(10^(3*normFreq+1));
+  K = 2.0*(Q - 0.707)/(10.0 - 0.707);
+  wd = 2*ma.PI*freq;
+  T = 1/ma.SR;
+  wa = (2/T)*tan(wd*T/2);
+  g = wa*T/2;
+  G = g/(1.0 + g);
+  alpha = G;
+  B3 = (K - K*G)/(1 + g);
+  B2 = -1/(1 + g);
+  alpha0 = 1/(1 - K*G + K*G*G);
+};
+///////////////////////////////////////////////////////////////////////////////
+//                               mixers from PR                              //
+///////////////////////////////////////////////////////////////////////////////
+
+//  (si.bus(nrSends),_) : monoMixerChannel(nrSends) : si.bus(nrSends);
+monoMixerChannel(nrSends) =
+  (
+    si.bus(nrSends)
+  , (_<:si.bus(nrSends))
+  )
+  :ro.interleave(nrSends,2)
+  :par(i,nrSends,_*_);
+
+oneSumMonoMixerChannel(nrSends) =
+  (
+    (si.bus(nrSends)
+     <: (
+      // par(i, nrSends, min(nrSends*ma.MIN))
+      // ,(sumN(nrSends) : min(nrSends*nrSends*ma.MIN) <: si.bus(nrSends) )
+      si.bus(nrSends)
+     ,(sumN(nrSends) <: si.bus(nrSends) )
+     )
+     :  ro.interleave(nrSends,2) : par(i, nrSends, _/_)
+    )
+  , (_<:si.bus(nrSends))
+  )
+  :ro.interleave(nrSends,2)
+  :par(i,nrSends,_*_);
+
+//(si.bus(nrSends),si.bus(nrOutChan)) : multiMixerChannel(nrOutChan,nrSends) : par(i, nrSends, si.bus(nrOutChan));
+multiMixerChannel(nrOutChan,nrSends) =
+  si.bus(nrOutChan+nrSends)
+  <:par(i,nrOutChan,sel(nrOutChan,nrSends,i))
+  :par(i,nrOutChan,monoMixerChannel(nrSends))
+  :ro.interleave(nrSends,nrOutChan)
+with {
+  sel(nrOutChan,nrSends,i) = (par(i,nrSends,_),par(i,nrOutChan,!),(ba.selector(i+nrSends,nrOutChan+nrSends)));
+};
+
+mixer(nrInChan,nrOutChan,nrSends) =
+  par(i,nrInChan,multiMixerChannel(nrOutChan,nrSends)):ro.interleave(nrSends*nrOutChan,nrInChan):mix
+with {
+  mix=par(i,nrOutChan*nrSends,(si.bus(nrInChan):>_));
+};
+
+// par(i, nrInChan, sendsBus,outBus)
+// : mixer(nrInChan,nrOutChan,nrSends)
+// : par(i, nrSends, outBus);
+fallbackMixer(nrInChan,nrOutChan,nrSends,fallBack) =
+  (
+    (ro.interleave(nrOutChan+nrSends,nrInChan)
+     : (FallbackGains
+       , ro.interleave(nrInChan, nrOutChan)
+     ))
+  , fallBack
+  )
+  :
+  (si.bus((nrInChan+1)*nrSends), ro.interleave(nrOutChan,nrInChan+1) )
+  :
+  // (par(i, nrInChan+1, ro.interleave(nrOutChan+nrSends,1)))
+  // ro.interleave(nrOutChan+nrSends,nrInChan+1)
+  ro.interleave(nrInChan+1,nrOutChan+nrSends)
+  : mixer(nrInChan+1,nrOutChan,nrSends)
+with {
+  mix=par(i,nrOutChan*nrSends,(si.bus(nrInChan):>_));
+  inBus = si.bus(nrInChan);
+  outBus = si.bus(nrOutChan);
+  sendsBus = si.bus(nrSends);
+  FallbackGains =
+    (
+      par(i,nrSends,
+          (inBus
+           <: (
+            par(i, nrInChan,
+                (_<:(_<0,(abs:max(nrInChan*ma.MIN*8)<:(_,_)))) : select2(_,_,_*-1)
+            )
+          , ((par(i, nrInChan, abs):sumN(nrInChan)) <: (max(nrInChan*nrInChan*ma.MIN*8)<:inBus)
+            , _
+          )
+           )
+           :((ro.interleave(nrInChan,2):par(i, nrInChan, /))
+            , (0<:(inBus))
+            , (min(1)<:(inBus,_))
+           )
+           : ((ro.interleave(nrInChan,3)
+               : par(i, nrInChan, ro.cross(3) : it.interpolate_linear)
+           ),_*-1+1)
+          )
+      )
+    )
+  ;
+};
+
+
+oneSumMixer(nrInChan,nrOutChan,nrSends) =
+  // ro.interleave(nrInChan,nrOutChan+nrSends)
+  // par(i, nrInChan, sendsBus,outBus)
+  ro.interleave(nrOutChan+nrSends,nrInChan)
+  :
+  (oneSumGains
+  , par(i, nrInChan, outBus)
+  )
+  :
+  // par(i, nrSends, ro.interleave(nrOutChan,nrInChan))
+  ro.interleave(nrInChan,nrOutChan+nrSends)
+
+  : mixer(nrInChan,nrOutChan,nrSends)
+// : par(i,nrInChan,multiMixerChannel(nrOutChan,nrSends))
+// : ro.interleave(nrSends*nrOutChan,nrInChan)
+// : mix
+with {
+  mix=par(i,nrOutChan*nrSends,(si.bus(nrInChan):>_));
+  inBus = si.bus(nrInChan);
+  outBus = si.bus(nrOutChan);
+  sendsBus = si.bus(nrSends);
+  oneSumGains =
+
+    (
+      par(i,nrSends,
+          (inBus
+           <: (
+            par(i, nrInChan,
+                (_<:(_<0,(abs:max(nrInChan*ma.MIN*8)<:(_,_)))) : select2(_,_,_*-1)
+            )
+          , (par(i, nrInChan, abs):sumN(nrInChan):max(nrInChan*nrInChan*ma.MIN*8)<:inBus)
+           )
+          )
+          :ro.interleave(nrInChan,2):par(i, nrInChan, /)
+      ))
+  ;
+};
+// };
+//////////////////////////////////////////////////////////////////////////////
+//                            from @idle on slack                            //
+//////////////////////////////////////////////////////////////////////////////
+
+
+svf = environment {
+        svf(T,F,Q,G) = tick ~ (_,_) : !,!,_,_,_ : si.dot(3, mix)
+        with {
+        tick(ic1eq, ic2eq, v0) =
+          2*v1 - ic1eq,
+          2*v2 - ic2eq,
+          v0, v1, v2
+        with {
+        v1 = ic1eq + g *(v0-ic2eq) : /(1 + g*(g+k));
+        v2 = ic2eq + g * v1;
+        };
+        A = pow(10.0, G / 40.0);
+        g = tan(F * ma.PI / ma.SR) : case {
+              (7) => /(sqrt(A));
+              (8) => *(sqrt(A));
+              (t) => _;
+} (T);
+        k = case {
+              (6) => 1/(Q*A);
+              (t) => 1/Q;
+} (T);
+        mix = case {
+                (0) => 0, 0, 1;
+                (1) => 0, 1, 0;
+                (2) => 1, -k, -1;
+                (3) => 1, -k, 0;
+                (4) => 1, -k, -2;
+                (5) => 1, -2*k, 0;
+                (6) => 1, k*(A*A-1), 0;
+                (7) => 1, k*(A-1), A*A-1;
+                (8) => A*A, k*(1-A)*A, 1-A*A;
+} (T);
+        };
+        lp(f,q)		= svf(0, f,q,0);
+        bp(f,q)		= svf(1, f,q,0);
+        hp(f,q)		= svf(2, f,q,0);
+        notch(f,q)	= svf(3, f,q,0);
+        peak(f,q)	= svf(4, f,q,0);
+        ap(f,q)		= svf(5, f,q,0);
+        bell(f,q,g)	= svf(6, f,q,g);
+        ls(f,q,g)	= svf(7, f,q,g);
+        hs(f,q,g)	= svf(8, f,q,g);
+};
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//           https://github.com/grame-cncm/faustlibraries/pull/47           //
+//////////////////////////////////////////////////////////////////////////////
+
+CZ =
+  environment {
+    saw(fund, index) = sawChooseP(fund, index, 0);
+    sawP(fund, index) = sawChooseP(fund, index, 1);
+    sawChooseP(fund, index, p) =
+      (((fnd(fund,allign,p)*((.5-tmp)/tmp)),(-1*fnd(fund,allign,p)+1)*((.5-tmp)/(1-tmp))):min+fnd(fund,allign,p))*2*ma.PI:cos
+    with {
+      // tmp = (.5-(index*.5)):max(0.01):min(0.5);
+      tmp = (.5-(indexAA(index,fund)*.5)):max(0.01):min(0.5);
+      allign = si.interpolate(indexAA(index,fund), 0.75, 0.5);
+    };
+    square(fund, index) = squareChooseP(fund, index, 0);
+    squareP(fund, index) = squareChooseP(fund, index, 1);
+    squareChooseP(fund, index, p) = (fnd(fund,allign,p)>=0.5), (ma.decimal((fnd(fund,allign,p)*2)+1)<:_-min(_,(-1*_+1)*((INDEX)/(1-INDEX)))) :+ *ma.PI:cos
+    with {
+      INDEX = indexAA(index,fund):max(ma.MIN):min(1-ma.MIN);
+      allign = si.interpolate(INDEX, -0.25, 0);
+    };
+
+    pulse(fund, index) = pulseChooseP(fund, index, 0);
+    pulseP(fund, index) = pulseChooseP(fund, index, 1);
+    pulseChooseP(fund, index, p) = ((fnd(fund,allign,p)-min(fnd(fund,allign,p),((-1*fnd(fund,allign,p)+1)*(INDEX/(1-INDEX)))))*2*ma.PI):cos
+    with {
+      INDEX = indexAA(index,fund):min(0.99):max(0);
+      allign = si.interpolate(indexAA(index,fund), -0.25, 0.0);
+    };
+
+    sinePulse(fund, index) = sinePulseChooseP(fund, index, 0);
+    sinePulseP(fund, index) = sinePulseChooseP(fund, index, 1);
+    sinePulseChooseP(fund, index, p) = (min(fnd(fund,allign,p)*((0.5-INDEX)/INDEX),(-1*fnd(fund,allign,p)+1)*((.5-INDEX)/(1-INDEX)))+fnd(fund,allign,p))*4*ma.PI:cos
+    with {
+      INDEX = ((indexAA(index,fund):max(0):min(1)*-0.49)+0.5);
+      allign = si.interpolate(indexAA(index,fund), -0.125, -0.25);
+    };
+
+    halfSine(fund, index) = halfSineChooseP(fund, index, 0);
+    halfSineP(fund, index) = halfSineChooseP(fund, index, 1);
+    halfSineChooseP(fund, index, p) = (select2(fnd(fund,allign,p)<.5, .5*(fnd(fund,allign,p)-.5)/INDEX+.5, fnd(fund,allign,p)):min(1))*2*ma.PI:cos
+    with {
+      INDEX = (.5-(indexAA(index,fund)*0.5)):min(.5):max(.01);
+      allign = si.interpolate(indexAA(index,fund):min(0.975), -0.25, -0.5);
+    };
+    fnd =
+      case {
+        (fund,allign,0) => fund;
+        (fund,allign,1) => (fund+allign) : ma.frac; // allign phase with fund
+      };
+    resSaw(fund,res) = (((-1*(1-fund))*((cos((ma.decimal((max(1,resAA(res,fund))*fund)+1))*2*ma.PI)*-.5)+.5))*2)+1;
+    resTriangle(fund,res) = select2(fund<.5, 2-(fund*2), fund*2)*tmp*2-1
+    with {
+      tmp = ((fund*(resAA(res,fund):max(1)))+1:ma.decimal)*2*ma.PI:cos*.5+.5;
+    };
+    resTrap(fund, res) = (((1-fund)*2):min(1)*sin(ma.decimal(fund*(resAA(res,fund):max(1)))*2*ma.PI));
+    index2freq(index)        = ((index-index')*ma.SR) : ba.sAndH(abs(index-index')<0.5);
+    indexAA(index,fund) =  // Anti Alias => lower the index for higher freqs
+      index*(1-
+        (( (index2freq(fund)-(ma.SR/256))
+          / (ma.SR/8))
+         :max(0):min(1)
+        ));
+    resAA(res,fund) = res*index2freq(fund):max(0):min(ma.SR/4)/index2freq(fund);
+  };
+
+CZsaw(fund, index) = CZ.sawChooseP(fund, index, 0);
+CZsawP(fund, index) = CZ.sawChooseP(fund, index, 1);
+CZsquare(fund, index) = CZ.squareChooseP(fund, index, 0);
+CZsquareP(fund, index) = CZ.squareChooseP(fund, index, 1);
+CZpulse(fund, index) = CZ.pulseChooseP(fund, index, 0);
+CZpulseP(fund, index) = CZ.pulseChooseP(fund, index, 1);
+CZsinePulse(fund, index) = CZ.sinePulseChooseP(fund, index, 0);
+CZsinePulseP(fund, index) = CZ.sinePulseChooseP(fund, index, 1);
+CZhalfSine(fund, index) = CZ.halfSineChooseP(fund, index, 0);
+CZhalfSineP(fund, index) = CZ.halfSineChooseP(fund, index, 1);
+CZresSaw(fund,res) = CZ.resSaw(fund,res);
+CZresTriangle(fund,res) = CZ.resTriangle(fund,res);
+CZresTrap(fund, res) = CZ.resTrap(fund, res);
+
+CZsawPO(fund, index,oct) = octaver(fund,CZsawP,index,oct);
+CZsquarePO(fund, index,oct) = octaver(fund,CZsquareP,index,oct);
+CZpulsePO(fund, index,oct) = octaver(fund,CZpulseP,index,oct);
+CZsinePulsePO(fund, index,oct) = octaver(fund,CZsinePulseP,index,oct);
+CZhalfSinePO(fund, index,oct) = octaver(fund,CZhalfSineP,index,oct);
+CZresSawO(fund,res,oct) = octaver(fund,CZresSaw,res,oct);
+CZresTriangleO(fund,res,oct) = octaver(fund,CZresTriangle,res,oct);
+CZresTrapO(fund, res,oct) = octaver(fund,CZresTrap,res,oct);
+
+
+sinPOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,sine,index,oct);
+sine(fund,index) = (fund*2*ma.PI:sin);
+// sine(fund,index) = (fund*2*ma.PI:sin),(index:!);
+CZsawPOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsawP,index,oct);
+CZsquarePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsquareP,index,oct);
+CZpulsePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZpulseP,index,oct);
+CZsinePulsePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsinePulseP,index,oct);
+CZhalfSinePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZhalfSineP,index,oct);
+CZresSawOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresSaw,res,oct);
+CZresTriangleOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresTriangle,res,oct);
+CZresTrapOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresTrap,res,oct);
+
+
+sinPPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,sine);
+CZsawPPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZsawP);
+CZsquarePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZsquareP);
+CZpulsePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZpulseP);
+CZsinePulsePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZsinePulseP);
+CZhalfSinePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZhalfSineP);
+CZresSawPF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresSaw);
+CZresTrianglePF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresTriangle);
+CZresTrapPF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresTrap);
+
+oscPPF(f0,f1,index,oct,oscil) = (((f0,index):oscil),((f1,index):oscil)):si.interpolate(oct);
+///////////////////////////////////////////////////////////////////////////////
+//                                oscs fom PR                                 //
+///////////////////////////////////////////////////////////////////////////////
+
+lf_sawpos_reset(freq,reset) = ma.frac * (reset == 0) ~ +(freq/ma.SR);
+
+lf_sawpos_phase_reset(freq,phase,reset) = lf_sawpos_reset(freq,reset) +phase :ma.frac;
+// lf_sawpos_phase_reset(freq,phase,reset) = (+(phase-phase') : ma.frac * (reset == 0)) ~ +(freq/ma.SR);
+
+///////////////////////////////////////////////////////////////////////////////
+//                                 from vince                                //
+///////////////////////////////////////////////////////////////////////////////
+
+//MIDICLOCK to BEAT (AMOUNT OF SAMPLES IN 1 BEAT) to BPM
+//////////////////////////////////
+midiclock2beat = vgroup("MIDI Clock (MC)",((clocker, play)) : attach  : midi2count : s2bpm)
+with{
+
+  clocker   = globalGroup(checkbox("[3]Clock Signal[midi:clock]")) ;  // create a square signal (1/0), changing state at each received clock
+  play      = globalGroup(checkbox("[2]Start/Stop Signal[midi:start] [midi:stop]")) ; // just to show start stop signal
+
+  midi2count = _ <: _ != _@1 : countup(88200,_) : result1 <: _==0,_@1 : SH : result2 : _* 24;
+
+  result1 = _ ; // : vbargraph("samplecount midi", 0, 88200);
+  result2 = _ ; //: vbargraph("sampleholder midi", 0, 88200);
+
+
+};
+
+
+//////////////////////////////////////////////////////////////////////////////
+//                                 constants                                 //
+//////////////////////////////////////////////////////////////////////////////
+
+nrEnvelopes = 4;
+nrLFOs      = nrEnvelopes;
+nrMacros    = nrEnvelopes;
+
+minOct = -8;
+maxOct = 4;
+
+// fast
+// stepsize = 0.1;
+// medium
+stepsize = 0.01;
+// smooth
+// stepsize = 0.001;
+
+nrNotes = notes(diagram);
+notes(0) = 127; // nr of midi notes
+notes(1) = 4; // for block diagram
+// nrNotes = 42; // for looking at bargraphs
+
+maxAttack = 10;
+maxDecay = maxAttack;
+maxRelease = maxAttack;
+defaultAttack = 0;
+defaultRelease = 0.1;
+defaultSustain = 0.8;
+
