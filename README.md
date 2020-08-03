@@ -2,9 +2,11 @@
 
 A monster monophonic synth, written in faust.
 
+## features
+
 - 4 oscillators in double crossfade configuration, so iow Vector Synthesis.
 - each osc is a [CZ style](https://forum.pdpatchrepo.info/topic/5992/casio-cz-oscillators) osc, where you can choose between 9 waveforms
-- each osc is phase-locked to a single master
+- each osc is phase-locked to a single master oscillator.
 - but the phase can be changed and modulated, also by other oscillators.
 - each osc can crossfade between octaves
 - the phase signal feeding the CZ oscs can be passed trough a set of lowpass-filters.
@@ -18,3 +20,16 @@ A monster monophonic synth, written in faust.
 
 Quick [audio demo](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3).
 
+
+## macros
+
+The masters->amount knobs are the main settings.
+They are what you hear when all the macros and all the "masters->envelopes & LFO's" are at 0.
+When "tab macros-> macro 1" is at 1 and all the other macros are at 0, you hear the settings of "modulation sources->macro 1".
+When "tab macros-> macro 1" is at 0.5 and the others are at 0, the settings are halfway between "masters->amount" and "modulation sources->macro 1".
+When the sum amount of all "tab macros-> macro 1..4" is one ore higher, you hear an interpolation of the macros, and none of the "masters->amount".
+
+## modulation
+
+The "masters->envelopes % LFO's" knobs are the amount of modulation on top of the macros.
+So if you want a parameter to move around, independently of the macros, turn up some of the "modulation sources->envelope x" or "modulation sources->LFO x" knobs, and the "masters->envelopes & LFO's" knob.
