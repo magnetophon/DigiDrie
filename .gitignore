@@ -1,2 +1,6 @@
-/DigiDrie.dsp.cpp
+/*.cpp
+*-svg
 /DigiDrie
+/DigiDiagram
+/DigiFaustMidi
+*.html

@@ -1,7 +1,6 @@
 declare author "Bart Brouns";
 declare license "AGPLv3";
 declare name "DigiDrie";
-declare options "[midi:on]";
 import("stdfaust.lib");
 ///////////////////////////////////////////////////////////////////////////////
 //                                  lastNote                                 //
