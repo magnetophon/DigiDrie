@@ -78,9 +78,10 @@ ac_bdGroup(x) = vectorGroup(vgroup("ac/bd",x));
 ab_cdGroup(x) = vectorGroup(vgroup("ab/cd",x));
 
 //sliders//////////////////////////////////////////////////////////////////////
-masterPhase = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
-portamento  = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
-freefloat   = globalGroup(checkbox("free float osc"));
+masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
+portamento       = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
+freefloat        = globalGroup(checkbox("free float osc"));
+portamentoSwitch = globalGroup(vslider("porta off/auto/on[style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
 
 ac_bd_slider = hslider("ac/bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab/cd[style:knob]", 0, 0, 1, stepsize);

@@ -408,7 +408,13 @@ enableIfVolume =
   si.bus(2) <:
   ((_,!)
   ,(ro.cross(2) :(_,_!=0):control)) ;
-// enableIfVolume = si.bus(2);
+
+portamentoSwitcher =
+  _<:select3(portamentoSwitch
+            , _
+            , enabled_smooth(gate(lastNote)' & gate(lastNote) , ba.tau2pole(portamento))
+            , si.smooth(ba.tau2pole(portamento)));
+
 ///////////////////////////////////////////////////////////////////////////////
 //                                still to PR:                               //
 ///////////////////////////////////////////////////////////////////////////////
@@ -873,4 +879,3 @@ maxRelease = maxAttack;
 defaultAttack = 0;
 defaultRelease = 0.1;
 defaultSustain = 0.8;
-
