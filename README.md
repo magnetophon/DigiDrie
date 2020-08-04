@@ -33,3 +33,36 @@ When the sum amount of all "tab macros-> macro 1..4" is one ore higher, you hear
 
 The "masters->envelopes % LFO's" knobs are the amount of modulation on top of the macros.
 So if you want a parameter to move around, independently of the macros, turn up some of the "modulation sources->envelope x" or "modulation sources->LFO x" knobs, and the "masters->envelopes & LFO's" knob.
+
+## building
+
+To get a jack standalone app:
+
+``` shell
+faust2jack -t 0 -time -midi DigiDrie.dsp && ./DigiDrie
+
+```
+
+For an lv2 plugin:
+
+``` shell
+faust2lv2 -t 0 -time -nvoices 1 -gui DigiFaustMidi.dsp
+ln -s DigiFaustMidi.lv2  ~/.lv2/
+```
+
+It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.
+The compiler is not hanging!  ;)
+
+To look at a block diagram:
+
+``` shell
+faust -lang ocpp -t 0 -time -svg -f 1 DigiDiagram.dsp -o -drf  /dev/null && xdg-open DigiDiagram-svg/process.svg
+```
+
+The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.
+It increases the size of the diagram a lot, and doesn't help to clarify the actual synth.
+
+
+## issues
+
+Bug reports, feature requests and other [issues](https://github.com/magnetophon/DigiDrie/issues) welcome!
