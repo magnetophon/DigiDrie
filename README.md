@@ -46,7 +46,8 @@ faust2jack -t 0 -time -midi DigiDrie.dsp && ./DigiDrie
 For an lv2 plugin:
 
 ``` shell
-faust2lv2 -t 0 -time DigiDrie.dsp && ./DigiDrie
+faust2lv2 -t 0 -time -nvoices 1 -gui DigiFaustMidi.dsp
+ln -s DigiFaustMidi.lv2  ~/.lv2/
 ```
 
 It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.
