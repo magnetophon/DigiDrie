@@ -8,14 +8,15 @@ A monster monophonic synth, written in faust.
 - each osc is a [CZ style](https://forum.pdpatchrepo.info/topic/5992/casio-cz-oscillators) osc, where you can choose between 9 waveforms
 - each osc is phase-locked to a single master oscillator.
 - but the phase can be changed and modulated, also by other oscillators.
-- each osc can crossfade between octaves
+- each osc can smoothly crossfade between octaves
 - the phase signal feeding the CZ oscs can be passed trough a set of lowpass-filters.
   This sounds similar yet very different from filtering the output of an oscillator. For example: when you filter the phase input of a sine-wave, it creates harmonics and you can kind of hear the character of the filter. 
   - there are a couple of lowpass-types (moog/oberheim/ms20) that can be dynamically mixed, but the sum of the mix is always 1
 - the synth is fully stereo: each parameter has a main slider and a left-right difference slider
-- each parameter (and it's l-r-diff brother) can be modulated by 4 envelopes, 4 lfo's, and 4 macros.
+- each parameter (and it's l-r-diff brother) can be modulated by 8 macros.
+- each macro can be modulated by 4 envelopes and 4 lfo's
 - the number of envelopes, lfos and macros can be easily changed at compile time
-- you can think of the macros as modulatable presets
+- you can think of the macros as modulateable presets
 
 
 Quick [audio demo](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3).
@@ -23,16 +24,12 @@ Quick [audio demo](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3).
 
 ## macros
 
-The masters->amount knobs are the main settings.
-They are what you hear when all the macros and all the "masters->envelopes & LFO's" are at 0.
+The "modulation sources->macro 0" knobs are the main settings.
+They are what you hear when all other macros  are at 0, as they are by default.
 When "tab macros-> macro 1" is at 1 and all the other macros are at 0, you hear the settings of "modulation sources->macro 1".
-When "tab macros-> macro 1" is at 0.5 and the others are at 0, the settings are halfway between "masters->amount" and "modulation sources->macro 1".
-When the sum amount of all "tab macros-> macro 1..4" is one ore higher, you hear an interpolation of the macros, and none of the "masters->amount".
-
-## modulation
-
-The "masters->envelopes % LFO's" knobs are the amount of modulation on top of the macros.
-So if you want a parameter to move around, independently of the macros, turn up some of the "modulation sources->envelope x" or "modulation sources->LFO x" knobs, and the "masters->envelopes & LFO's" knob.
+When "tab macros-> macro 1" is at 0.5 and the others are at 0, the settings are halfway between "modulation sources->macro 0" and "modulation sources->macro 1".
+When the sum amount of all "tab macros-> macro 1..4" is one ore higher, you hear an interpolation of macros 1..4.
+In this case, "modulation sources->macro 0" has no effect.
 
 ## building
 
