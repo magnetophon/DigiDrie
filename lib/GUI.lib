@@ -121,7 +121,9 @@ macroUp     = hslider("[1]up time[style:knob]", defaultRelease, 0, maxAttack, st
 macroDown   = hslider("[2]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);
 curveSlider = hslider("[3]curve[style:knob]", 0, -10, 10, stepsize);
 
-mapping(x) = pow(x,curveIndex);
+mapping(x) =
+  x;
+//pow(x,curveIndex);
 curveIndex = select2(curveSlider>0
                     , 1/(abs(curveSlider)+1)
                     , curveSlider+1
