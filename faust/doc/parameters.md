@@ -1,5 +1,5 @@
 # Parameters
-There are many parameters (~ 1000) in DigiDrie parameters. However, most of them has same meaning with different destination.
+There are many parameters (~ 1000) in DigiDrie. However, most of them has same meaning with different destination.
 
 The aim of this document is list those parameter groups and its meaning, and provides name mapping between Faust and C++.
 
@@ -10,7 +10,18 @@ Active parameter is user input.
 
 Passive parameter do not accept user input, and is used for indicaters. A passive parameter can be used to send a DSP value to GUI.
 
-Parameter is active when using following primitives.
+To check parameter type of UI primitive, run following command.
+
+```bash
+# Requires clone of Faust repository.
+cd faust/examples/misc/
+faust -xml UITester.dsp
+less UITester.dsp.xml
+```
+
+In `UITester.dsp.xml`, there are `activewidgets` tag and `passivewidgets` tag.
+
+Following UI primitives are active parameter.
 
 - button
 - checkbox
@@ -18,7 +29,7 @@ Parameter is active when using following primitives.
 - vslider
 - nentry
 
-Parameter is passive when using following primitives.
+Following UI primitives are passive parameter.
 
 - vbargraph
 - hbargraph
