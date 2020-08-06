@@ -2,5 +2,5 @@
 
 set -e
 
-faustbench tan_halfpi_approx.dsp > approx
-faustbench tan_halfpi.dsp > source
+faustbench tan_halfpi_approx.dsp > result_approx
+faustbench tan_halfpi.dsp > result_source

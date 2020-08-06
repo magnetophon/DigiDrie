@@ -2,5 +2,5 @@
 
 set -e
 
-faustbench svf_approx.dsp > approx
-faustbench svf.dsp > source
+faustbench svf_approx.dsp > result_approx
+faustbench svf.dsp > result_source

@@ -2,5 +2,5 @@
 
 set -e
 
-faustbench oberheim_approx.dsp > approx
-faustbench oberheim.dsp > source
+faustbench oberheim_approx.dsp > result_approx
+faustbench oberheim.dsp > result_source

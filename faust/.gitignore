@@ -7,7 +7,3 @@
 
 faust.*
 benchmark/**/*.lv2
-benchmark/**/source
-benchmark/**/approx
-benchmark/**/simplified
-benchmark/**/result.md

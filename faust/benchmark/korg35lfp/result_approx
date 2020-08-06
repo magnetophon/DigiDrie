@@ -1,0 +1,72 @@
+Selected compiler is g++ with CXXFLAGS = -Ofast -march=native
+DSP bench of ./faust.nyH/korg35lpf_approx/korg35lpf_approx compiled in C++ running with FAUSTFLOAT = float
+Running with 'compute' called with 512 samples
+duration 0.015792
+-scal : 1064.7 (DSP CPU % : 0.0731052), DSP size : 64
+duration 0.008962
+-scal -exp10 : 1065.28 (DSP CPU % : 0.0728921), DSP size : 64
+duration 0.009061
+-vec -lv 0 -vs 4 : 1059.92 (DSP CPU % : 0.0708367), DSP size : 88
+duration 0.008558
+-vec -lv 0 -vs 8 : 1125.88 (DSP CPU % : 0.0662633), DSP size : 88
+duration 0.007858
+-vec -lv 0 -vs 16 : 1188.52 (DSP CPU % : 0.065411), DSP size : 88
+duration 0.008912
+-vec -lv 0 -vs 32 : 1164.38 (DSP CPU % : 0.063685), DSP size : 88
+duration 0.008669
+-vec -lv 0 -vs 64 : 1129.96 (DSP CPU % : 0.0689563), DSP size : 88
+duration 0.00854
+-vec -lv 0 -vs 128 : 1148.6 (DSP CPU % : 0.0668991), DSP size : 88
+duration 0.008477
+-vec -lv 0 -vs 256 : 1149.45 (DSP CPU % : 0.0660753), DSP size : 88
+duration 0.008561
+-vec -lv 0 -vs 512 : 1139.54 (DSP CPU % : 0.0666783), DSP size : 88
+duration 0.008943
+-vec -fun -lv 0 -vs 4 : 1057.19 (DSP CPU % : 0.069989), DSP size : 88
+duration 0.008425
+-vec -fun -lv 0 -vs 8 : 1126.53 (DSP CPU % : 0.0641382), DSP size : 88
+duration 0.007947
+-vec -fun -lv 0 -vs 16 : 1189.97 (DSP CPU % : 0.0600597), DSP size : 88
+duration 0.008383
+-vec -fun -lv 0 -vs 32 : 1162.65 (DSP CPU % : 0.0662543), DSP size : 88
+duration 0.008381
+-vec -fun -lv 0 -vs 64 : 1131.6 (DSP CPU % : 0.0653658), DSP size : 88
+duration 0.008094
+-vec -fun -lv 0 -vs 128 : 1150.81 (DSP CPU % : 0.0649113), DSP size : 88
+duration 0.008599
+-vec -fun -lv 0 -vs 256 : 1140.21 (DSP CPU % : 0.0699421), DSP size : 88
+duration 0.008795
+-vec -fun -lv 0 -vs 512 : 1144.39 (DSP CPU % : 0.0653132), DSP size : 88
+duration 0.009291
+-vec -lv 0 -g -vs 4 : 1052.34 (DSP CPU % : 0.0688039), DSP size : 88
+duration 0.008937
+-vec -lv 0 -g -vs 8 : 1099.53 (DSP CPU % : 0.065927), DSP size : 88
+duration 0.00882
+-vec -lv 0 -g -vs 16 : 1116.53 (DSP CPU % : 0.0663042), DSP size : 88
+duration 0.008461
+-vec -lv 0 -g -vs 32 : 1146.58 (DSP CPU % : 0.0633215), DSP size : 88
+duration 0.008405
+-vec -lv 0 -g -vs 64 : 1167.87 (DSP CPU % : 0.06336), DSP size : 88
+duration 0.008309
+-vec -lv 0 -g -vs 128 : 1163.69 (DSP CPU % : 0.0641855), DSP size : 88
+duration 0.008712
+-vec -lv 0 -g -vs 256 : 1162.82 (DSP CPU % : 0.0652083), DSP size : 88
+duration 0.008368
+-vec -lv 0 -g -vs 512 : 1154.21 (DSP CPU % : 0.0658929), DSP size : 88
+duration 0.009847
+-vec -lv 1 -vs 4 : 1052.34 (DSP CPU % : 0.069254), DSP size : 88
+duration 0.008764
+-vec -lv 1 -vs 8 : 1095.67 (DSP CPU % : 0.0663547), DSP size : 88
+duration 0.008886
+-vec -lv 1 -vs 16 : 1114.46 (DSP CPU % : 0.0659245), DSP size : 88
+duration 0.008549
+-vec -lv 1 -vs 32 : 1146.07 (DSP CPU % : 0.0639782), DSP size : 88
+duration 0.008383
+-vec -lv 1 -vs 64 : 1168.22 (DSP CPU % : 0.0632275), DSP size : 88
+duration 0.008397
+-vec -lv 1 -vs 128 : 1155.41 (DSP CPU % : 0.0643457), DSP size : 88
+duration 0.008355
+-vec -lv 1 -vs 256 : 1161.78 (DSP CPU % : 0.0658122), DSP size : 88
+duration 0.009157
+-vec -lv 1 -vs 512 : 1148.6 (DSP CPU % : 0.0670003), DSP size : 88
+Best value is : 1189.97 with -vec -fun -lv 0 -vs 16

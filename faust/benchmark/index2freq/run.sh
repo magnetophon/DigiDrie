@@ -2,5 +2,5 @@
 
 set -e
 
-faustbench i2f.dsp > source
-faustbench i2fsimp.dsp > simplified
+faustbench i2f.dsp > result_source
+faustbench i2fsimp.dsp > result_simplified
