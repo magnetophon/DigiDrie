@@ -1,0 +1,180 @@
+{
+  "Ab_cd": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Ac_bd": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Attack": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Decay": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Downtime": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Env0": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Env1": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Env2": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Env3": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Freefloatosc": {
+    "value_type": "IntValue",
+    "hints": [
+      "kParameterIsInteger"
+    ]
+  },
+  "Freq": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Gain": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Gate": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Index": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Level": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Lfo0": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Lfo1": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Lfo2": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Lfo3": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Lfofreq": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Macro": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Masterphase": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Mix": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Normfreq": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Octave": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Phase": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Pma": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Pmb": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Pmc": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Pmd": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Portamento": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Portaoff_auto_on": {
+    "value_type": "IntValue",
+    "hints": [
+      "kParameterIsInteger"
+    ]
+  },
+  "Q": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Release": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Sustain": {
+    "value_type": "LinearValue",
+    "hints": []
+  },
+  "Type": {
+    "value_type": "IntValue",
+    "hints": [
+      "kParameterIsInteger"
+    ]
+  },
+  "Uptime": {
+    "value_type": "LogValue",
+    "hints": [
+      "kParameterIsLogarithmic"
+    ]
+  },
+  "Velsens": {
+    "value_type": "LinearValue",
+    "hints": []
+  }
+}
