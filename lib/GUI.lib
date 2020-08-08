@@ -105,13 +105,13 @@ envLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[0]envelopes" , hslider
 lfoLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[1]LFOs"      , hslider("LFO  %i[style:knob]", 0, -1, 1, stepsize))));
 macroLevel(subGroup,i) = subGroup(modSourceGroup(vgroup("[2]macros"    , hslider("macro %i[style:knob]", 0, -1, 1, stepsize))));
 
-attack(i)  = envelopeGroup(i,hslider("[0]attack", defaultAttack, 0, maxAttack, stepsize));
-decay(i)   = envelopeGroup(i,hslider("[1]decay", defaultRelease, 0, maxDecay, stepsize));
-sustain(i) = envelopeGroup(i,hslider("[2]sustain", defaultSustain, 0, 1, stepsize));
-release(i) = envelopeGroup(i,hslider("[3]release", defaultRelease, 0, maxRelease, stepsize));
-velSens(i) = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
+attack(i)   = envelopeGroup(i,hslider("[0]attack[scale:log]", defaultAttack, 0, maxAttack, stepsize));
+decay(i)    = envelopeGroup(i,hslider("[1]decay[scale:log]", defaultRelease, 0, maxDecay, stepsize));
+sustain(i)  = envelopeGroup(i,hslider("[2]sustain", defaultSustain, 0, 1, stepsize));
+release(i)  = envelopeGroup(i,hslider("[3]release[scale:log]", defaultRelease, 0, maxRelease, stepsize));
+velSens(i)  = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
 
-lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq", 1, 0, 99, stepsize));
+lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
 
 macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
 macroEnvelopeLevel(i) = hslider("env %i[style:knob]", 0, 0, 1, stepsize);
