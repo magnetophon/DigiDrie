@@ -30,6 +30,7 @@ Generates `parameter.hpp` from `parameter.hpp.template`. Using Jinja for templat
 
 TODO:
 - Add scales.
+- Change variable name to start with small letter.
 - Check if `static` in `Scales` are used or not.
   - `static` is added to change scaling from UI. However, current implementation changes scaling on all instances at once, which is undesirable.
   - If it's possible to hide certain parameters hidden from user, then remove `static`.

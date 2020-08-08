@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 from typing import List, Set, Dict, Tuple, Optional
 
@@ -10,8 +11,11 @@ def format_name(name: str):
 def format_address(item: Dict):
     return "".join([format_name(st) for st in item["address"].split("/")])
 
-def format_scale(name: str):
-    return name.lower()
+def get_scale(item: Dict):
+    label = item["label"]
+    if not label.isdigit():
+        return format_name(label)
+    return format_name(Path(item["address"]).parts[-2])
 
 def walk_ui(elem: Dict, items: List[str]):
     if "address" in elem:
@@ -29,7 +33,7 @@ if __name__ == "__main__":
 
     scales = []
     for key, value in group_info.items():
-        value["label"] = format_scale(key)
+        value["label"] = key
         scales.append(value)
 
     items = []
@@ -50,7 +54,7 @@ if __name__ == "__main__":
             item["init"] = 0
 
         cpp_label = format_name(item["label"])
-        scale_name = format_scale(cpp_label)
+        scale_name = get_scale(item)
         item["scale"] = scale_name
 
         if cpp_label in group_info:

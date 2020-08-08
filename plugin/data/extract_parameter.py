@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from typing import List, Set, Dict, Tuple, Optional
 
 def format_name(name: str):
@@ -6,7 +7,7 @@ def format_name(name: str):
     nm = nm.replace("&", "_")
     return nm.capitalize()
 
-def get_label(item: Dict):
+def get_address(item: Dict):
     address = "".join([format_name(st) for st in item["address"].split("/")])
     return address + format_name(item["label"])
 
@@ -28,7 +29,7 @@ def write_labels(items: List[Dict]):
             print("Error: Following item do not contain key \"address\".")
             print(item)
             continue
-        labels.append(get_label(item))
+        labels.append(get_address(item))
 
     with open("labels", "w", encoding="utf-8") as fi:
         fi.write("\n".join(labels))
@@ -74,23 +75,53 @@ def check_if_identical(info, item):
         )
         exit()
 
+def get_scale(item: Dict):
+    """
+    Reterns: (scale, hints)
+    """
+    hints = []
+    if "meta" not in item:
+        return ("Linear", hints)
+
+    scale = [x for x in item["meta"] if "scale" in x]
+    if len(scale) == 0:
+        return ("Linear", hints)
+    if len(scale) > 1:
+        print(f"Warning: 2 scale metadatas {scale} in {item['address']}.")
+    scale = scale[0]["scale"]
+
+    if scale == "int":
+        hints.append("kParameterIsInteger")
+    elif scale == "log":
+        hints.append("kParameterIsLogarithmic")
+
+    return (scale, hints)
+
+def get_label(item: Dict):
+    label = item["label"]
+    if not label.isdigit():
+        return format_name(label)
+    return format_name(Path(item["address"]).parts[-2])
+
 def set_scale(items: List[Dict]):
     info_dict = {}
     for item in items:
-        label = format_name(item["label"])
+        label = get_label(item)
         if label in info_dict:
             check_if_identical(info_dict[label], item)
             continue
 
+        scale, hints = get_scale(item)
+
         info_dict[label] = {
-            "type": "Linear",
-            "hints": [],
+            "type": scale.capitalize(),
+            "hints": hints,
             "init": item["init"] if "init" in item else 0,
             "min": item["min"] if "min" in item else 0,
-            "max": item["max"] if "max" in item else 0,
+            "max": item["max"] if "max" in item else 1,
         }
 
-    with open("parameter_group_info_generated.json", "w", encoding="utf-8") as fi:
+    with open("parameter_group_info.json", "w", encoding="utf-8") as fi:
         json.dump(info_dict, fi, indent=2)
 
 with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
