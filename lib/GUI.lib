@@ -113,7 +113,7 @@ velSens(i)  = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
 envMeter(i) = envelopeGroup(i,hbargraph("[5]envelope %i", 0, 1));
 
 lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
-lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", 0, 1));
+lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", -1, 1));
 
 macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
 macroEnvelopeLevel(i) = hgroup("env", hslider("%i[style:knob]", 0, 0, 1, stepsize));
