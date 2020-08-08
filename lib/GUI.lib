@@ -74,8 +74,8 @@ amountGroup(x)       = masterGroup(hgroup("[2]amount", x));
 
 masterGroup(x) = hgroup("masters",x);
 
-ac_bdGroup(x) = vectorGroup(hgroup("ac/bd",x));
-ab_cdGroup(x) = vectorGroup(hgroup("ab/cd",x));
+ac_bdGroup(x) = vectorGroup(hgroup("ac-bd",x));
+ab_cdGroup(x) = vectorGroup(hgroup("ab-cd",x));
 
 //sliders//////////////////////////////////////////////////////////////////////
 masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
@@ -83,8 +83,8 @@ portamento       = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsiz
 freefloat        = globalGroup(checkbox("free float osc[scale:int]"));
 portamentoSwitch = globalGroup(vslider("porta off/auto/on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
 
-ac_bd_slider = hslider("ac/bd[style:knob]", 0, 0, 1, stepsize);
-ab_cd_slider = hslider("ab/cd[style:knob]", 0, 0, 1, stepsize);
+ac_bd_slider = hslider("ac-bd[style:knob]", 0, 0, 1, stepsize);
+ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
 ab(i,gate,gain) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
 cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
 
