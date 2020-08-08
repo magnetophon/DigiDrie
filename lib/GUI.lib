@@ -32,7 +32,7 @@ sawGroup(x)           = tabs(hgroup("[219]saw", x));
 
 envelopeGroup(i,x)    = tabs(vgroup("[300]envelopes", hgroup("envelope %i", x)));
 lfoGroup(i,x)         = tabs(vgroup("[301]LFOs", hgroup("lfo %i", x)));
-macroGroup(i,x)       = tabs(vgroup("[302]macros", hgroup("%i", x)));
+macroGroup(i,x)       = tabs(vgroup("[302]modulation", hgroup("%i", x)));
 
 midiGroup(x)          = tabs(hgroup("[999]midi", x));
 
