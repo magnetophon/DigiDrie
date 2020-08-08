@@ -860,7 +860,7 @@ with{
 
 nrEnvelopes = 4;
 nrLFOs      = nrEnvelopes;
-nrMacros    = 8;
+nrMacros    = nrEnvelopes * 2;
 
 minOct = -8;
 maxOct = 4;
@@ -877,9 +877,9 @@ notes(0) = 127; // nr of midi notes
 notes(1) = 4; // for block diagram
 // nrNotes = 42; // for looking at bargraphs
 
-maxAttack = 10;
+maxAttack = 20;
 maxDecay = maxAttack;
 maxRelease = maxAttack;
-defaultAttack = 0;
+defaultAttack = stepsize;
 defaultRelease = 0.1;
-defaultSustain = 0.8;
+defaultSustain = 0.75;
