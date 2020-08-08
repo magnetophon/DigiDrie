@@ -10,7 +10,7 @@ import("GUI.lib");
 //                               implementation                              //
 ///////////////////////////////////////////////////////////////////////////////
 
-modMixer(group,subGroup,i,param,gate,gain) =
+modMixer(group,subGroup,i,param,gate,gain,fbA,fbB,fbC,fbD) =
   // ((((envMix(M)*modMaster(M)) , (envMix(S)*modMaster(S)))) :op(i))
   // + ((((lfoMix(M)*modMaster(M)) , (lfoMix(S)*modMaster(S)))) :op(i))
   // +
@@ -31,7 +31,7 @@ with {
       // amount(MSgroup)
       // ,
       (parameter(0))
-    , par(m, nrMacros-1, macro(m+1,gate,gain):mapParam(m+1),parameter(m+1))
+    , par(m, nrMacros-1, macro(m+1,gate,gain,fbA,fbB,fbC,fbD):mapParam(m+1),parameter(m+1))
     )
     :fallbackMixer(nrMacros-1,1,1)
   with {
@@ -47,10 +47,11 @@ with {
 op(1) = -;
 };
 
-macro(m,gate,gain) =
+macro(m,gate,gain,fbA,fbB,fbC,fbD) =
   (
     par(i, nrEnvelopes, envelope(i,gate,gain))
    ,par(i, nrLFOs, lfo(i,gate,gain))
+   ,(fbA,fbB,fbC,fbD)
   ):
   macroGroup(m,macroMod:mapping);
 
@@ -59,8 +60,11 @@ macroMod =
     (macroSlider:si.lag_ud(macroUp,macroDown))
   , par(i, nrEnvelopes, macroEnvelopeLevel(i),_)
   , par(i, nrLFOs, macroLFOlevel(i),_/2+0.5)
+  , par(i, 4, macroFBlevel(i),_)
   )
-  : fallbackMixer(nrEnvelopes+nrLFOs,1,1): hbargraph("mix", 0, 1);
+  : fallbackMixer(nrEnvelopes+nrLFOs+4,1,1)
+// : hbargraph("mix", 0, 1)
+;
 
 octaver(fund,oscillator,params,oct) =
   (
@@ -197,8 +201,11 @@ vectorOsc(i,fund,gate,gain,ab,cd) =
   )~(si.bus(4)<:si.bus(4*4))
     : vectorMixer(ab,cd);
 
-
 vectorMixer(ab,cd) =
+  _/4,!,!,!;
+// si.bus(4):>_/4;
+
+OLDvectorMixer(ab,cd) =
   si.bus(4):
   (
     (si.interpolate(ab:max(0):min(1)))
@@ -296,25 +303,25 @@ preFilterOct(i,fund,gate,gain) =
     : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
   );
 
-preFilterOctG(group,i,fund,gate,gain,FB) =
+preFilterOctG(group,i,fund,gate,gain,FB,fbA,fbB,fbC,fbD) =
   (
-    (fund,phase,oscPreFilterParams(filterGroup,i,gate,gain),octave,FB)
+    (fund,phase,oscPreFilterParams(filterGroup,i,gate,gain,fbA,fbB,fbC,fbD),octave,FB)
     : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
   ) with {
-  octave = modMixer(group,octGroup,i,oct,gate,gain);
-  phase = modMixer(group,phaseGroup,i,oscillatorPhase,gate,gain);
+  octave = modMixer(group,octGroup,i,oct,gate,gain,fbA,fbB,fbC,fbD);
+  phase = modMixer(group,phaseGroup,i,oscillatorPhase,gate,gain,fbA,fbB,fbC,fbD);
   };
 // -4 = 1
 // -3 = .5
 // -2 = .25
 // -1 = .125
 
-oscPreFilterParams(group,i,gate,gain) =
-  modMixer(group,moogGroup,i,moogLevel,gate,gain)
-, modMixer(group,ms20Group,i,ms20level,gate,gain)
-, modMixer(group,oberheimGroup,i,oberheimLevel,gate,gain)
-, (modMixer(group,normFreqGroup,i,normFreq,gate,gain):max(0):min(1))
-, (modMixer(group,QGroup,i,Q,gate,gain):max(stepsize):min(10));
+oscPreFilterParams(group,i,gate,gain,fbA,fbB,fbC,fbD) =
+  modMixer(group,moogGroup,i,moogLevel,gate,gain,fbA,fbB,fbC,fbD)
+, modMixer(group,ms20Group,i,ms20level,gate,gain,fbA,fbB,fbC,fbD)
+, modMixer(group,oberheimGroup,i,oberheimLevel,gate,gain,fbA,fbB,fbC,fbD)
+, (modMixer(group,normFreqGroup,i,normFreq,gate,gain,fbA,fbB,fbC,fbD):max(0):min(1))
+, (modMixer(group,QGroup,i,Q,gate,gain,fbA,fbB,fbC,fbD):max(stepsize):min(10));
 
 oscParamsI_oct(group,i,gate,gain) =
   modMixer(group,levelGroup,i,oscillatorLevel,gate,gain)
@@ -335,17 +342,17 @@ oscParamsR(group,i,gate,gain) =
 , modMixer(group,indexGroup,i,oscillatorRes,gate,gain);
 
 oscParams(group,i,fund,gate,gain,fbA,fbB,fbC,fbD) =
-  preFilterOctG(group,i,fund,gate,gain,FB)
+  preFilterOctG(group,i,fund,gate,gain,FB,fbA,fbB,fbC,fbD)
 , CZparam
 with {
-  CZparam = modMixer(group,indexGroup,i,oscillatorIndex,gate,gain)*resMult;
+  CZparam = modMixer(group,indexGroup,i,oscillatorIndex,gate,gain,fbA,fbB,fbC,fbD)*resMult;
   resMult = select2(group(type)>5,1,64); // workaround:
-  FB =
-    fbA*modM(fbAgroup,fbAs)+
-fbB*modM(fbBgroup,fbBs)+
-fbC*modM(fbCgroup,fbCs)+
-fbD*modM(fbDgroup,fbDs);
-  modM(subGroup,s) = modMixer(group,subGroup,i,s,gate,gain);
+  FB = 0;
+  // fbA*modM(fbAgroup,fbAs)+
+  // fbB*modM(fbBgroup,fbBs)+
+  // fbC*modM(fbCgroup,fbCs)+
+  // fbD*modM(fbDgroup,fbDs);
+  modM(subGroup,s) = modMixer(group,subGroup,i,s,gate,gain,fbA,fbB,fbC,fbD);
   // there are 2 types of osc:
   // the ones with an index parameter and the ones with a res parameter
   // index is 0..1
@@ -412,9 +419,9 @@ vel(x) = x:chooseFromFixed(nrNotes,velocity);
 
 enableIfVolume =
   si.bus(2)
-<:
-((_,!)
-,(ro.cross(2) :(_,_!=0):control))
+  <:
+  ((_,!)
+  ,(ro.cross(2) :(_,_!=0):control))
 ;
 
 portamentoSwitcher =

@@ -85,6 +85,8 @@ portamentoSwitch = globalGroup(vslider("porta off/auto/on[scale:int][style:menu{
 
 ac_bd_slider = hslider("ac-bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
+// ab(i,gate,gain,fbA,fbB,fbC,fbD) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain,fbA,fbB,fbC,fbD);
+// cd(i,gate,gain,fbA,fbB,fbC,fbD) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain,fbA,fbB,fbC,fbD);
 ab(i,gate,gain) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
 cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
 
@@ -118,6 +120,7 @@ lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", 0, 1));
 macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
 macroEnvelopeLevel(i) = hgroup("env", hslider("%i[style:knob]", 0, 0, 1, stepsize));
 macroLFOlevel(i) = hgroup("lfo", hslider("%i[style:knob]", 0, 0, 1, stepsize));
+macroFBlevel(i) = hgroup("FB", hslider("%i[style:knob]", 0, 0, 1, stepsize));
 
 macroUp     = hslider("[1]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);
 macroDown   = hslider("[2]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);
