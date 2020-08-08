@@ -80,8 +80,8 @@ ab_cdGroup(x) = vectorGroup(hgroup("ab/cd",x));
 //sliders//////////////////////////////////////////////////////////////////////
 masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
 portamento       = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
-freefloat        = globalGroup(checkbox("free float osc"));
-portamentoSwitch = globalGroup(vslider("porta off/auto/on[style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
+freefloat        = globalGroup(checkbox("free float osc[scale:int]"));
+portamentoSwitch = globalGroup(vslider("porta off/auto/on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
 
 ac_bd_slider = hslider("ac/bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab/cd[style:knob]", 0, 0, 1, stepsize);
@@ -94,7 +94,7 @@ oscillatorIndex = hslider("[2]index[style:knob]", 0, 0, 1, stepsize);// an osc h
 oscillatorRes   = hslider("[2]res[style:knob]", 0, 0, 64, stepsize);// an osc has either index or res never both so same [number] is OK
 oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
 
-type = vslider("type[style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
+type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
 
 fbAs = hslider("PM A[scale:log][style:knob]", 0, 0, 1, stepsize);
 fbBs = hslider("PM B[scale:log][style:knob]", 0, 0, 1, stepsize);
