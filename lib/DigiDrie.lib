@@ -359,13 +359,13 @@ resParam(i) = offset(oscillatorLevel,i)
 
 filters(i) = _;
 
-envelope(i,gate,gain) =  adsreg(attack(i),decay(i),sustain(i),release(i),gate,GAIN)
+envelope(i,gate,gain) =  adsreg(attack(i),decay(i),sustain(i),release(i),gate,GAIN):envMeter(i)
 with {
   // GATE = gate*(lastNote==lastNote');
   GAIN = si.interpolate(velSens(i),1,gain);
 };
 
-lfo(i,gate,gain) =  os.osc(lfo_freq(i));
+lfo(i,gate,gain) =  os.osc(lfo_freq(i)):lfoMeter(i);
 // master = lf_sawpos_reset(freq,reset) ;
 master(lastNote) = lf_sawpos_phase_reset(freq(lastNote)*minOctMult,masterPhase,reset(lastNote)) ;
 masterReset(lastNote,gate,gain) = lf_sawpos_phase_reset(freq(lastNote)*minOctMult,masterPhase,resetX(lastNote,gate,gain)) ;

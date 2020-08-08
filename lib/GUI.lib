@@ -110,8 +110,10 @@ decay(i)    = envelopeGroup(i,hslider("[1]decay[scale:log]", defaultRelease, 0, 
 sustain(i)  = envelopeGroup(i,hslider("[2]sustain", defaultSustain, 0, 1, stepsize));
 release(i)  = envelopeGroup(i,hslider("[3]release[scale:log]", defaultRelease, 0, maxRelease, stepsize));
 velSens(i)  = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
+envMeter(i) = envelopeGroup(i,hbargraph("[5]envelope %i", 0, 1));
 
 lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
+lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", 0, 1));
 
 macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
 macroEnvelopeLevel(i) = hslider("env %i[style:knob]", 0, 0, 1, stepsize);
