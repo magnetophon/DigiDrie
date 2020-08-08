@@ -224,8 +224,8 @@ oscillatorSelector =
   ) : enableOneOfN(9,type);
 
 enableOneOfN(maxN,N) =
-  par(i, maxN, control(i==N)*(i==N)):>_;
-// par(i, maxN, _ *(i==N)):>_;
+  // par(i, maxN, control(i==N)*(i==N)):>_;
+  par(i, maxN, _ *(i==N)):>_;
 
 // crossfade between multiple inputs (just the gain)
 xfadeSelector(sel,nr) =
@@ -412,9 +412,9 @@ vel(x) = x:chooseFromFixed(nrNotes,velocity);
 
 enableIfVolume =
   si.bus(2)
-<:
-((_,!)
-,(ro.cross(2) :(_,_!=0):control))
+// <:
+// ((_,!)
+// ,(ro.cross(2) :(_,_!=0):control))
 ;
 
 portamentoSwitcher =
