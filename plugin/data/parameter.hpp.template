@@ -34,6 +34,10 @@ enum ID {
 struct Scales {
   static SomeDSP::IntScale<double> boolScale;
   static SomeDSP::LinearScale<double> defaultScale;
+
+  {% for scale in scales %}
+    {#- #}static SomeDSP::{{ scale.type }}Scale<double> {{ scale.label }};
+  {% endfor %}
 };
 
 struct GlobalParameter : public ParameterInterface {

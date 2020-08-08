@@ -21,6 +21,7 @@ TODO:
 - Extract init, min, max.
 - Extract option menu infomation.
   - `elem["meta"]["style"]` in `DigiFaustMidi.dsp.json`.
+  - Add documentation around local scale metadata.
 - Generate scale information.
 - Make sure there's no parameter which has same label and different meaning.
 

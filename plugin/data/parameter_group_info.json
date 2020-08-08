@@ -1,180 +1,268 @@
 {
-  "Ab_cd": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Ac_bd": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Attack": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Decay": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Downtime": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Env0": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Env1": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Env2": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Env3": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
   "Freefloatosc": {
-    "value_type": "IntValue",
-    "hints": [
-      "kParameterIsInteger"
-    ]
-  },
-  "Freq": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Gain": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Gate": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Index": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Level": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Lfo0": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Lfo1": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Lfo2": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Lfo3": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Lfofreq": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Macro": {
-    "value_type": "LinearValue",
-    "hints": []
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 0
   },
   "Masterphase": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Mix": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Normfreq": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Octave": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Phase": {
-    "value_type": "LinearValue",
-    "hints": []
-  },
-  "Pma": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Pmb": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Pmc": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Pmd": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
-  },
-  "Portamento": {
-    "value_type": "LinearValue",
-    "hints": []
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": -1,
+    "max": 1
   },
   "Portaoff_auto_on": {
-    "value_type": "IntValue",
-    "hints": [
-      "kParameterIsInteger"
-    ]
+    "type": "Linear",
+    "hints": [],
+    "init": 1,
+    "min": 0,
+    "max": 2
+  },
+  "Portamento": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Ab_cd": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Ac_bd": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Level": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Normfreq": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
   },
   "Q": {
-    "value_type": "LinearValue",
-    "hints": []
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 10
   },
-  "Release": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
+  "Index": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
   },
-  "Sustain": {
-    "value_type": "LinearValue",
-    "hints": []
+  "Octave": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": -8,
+    "max": 4
+  },
+  "Phase": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": -64,
+    "max": 64
+  },
+  "Pma": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Pmb": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Pmc": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Pmd": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
   },
   "Type": {
-    "value_type": "IntValue",
-    "hints": [
-      "kParameterIsInteger"
-    ]
+    "type": "Linear",
+    "hints": [],
+    "init": 2,
+    "min": 0,
+    "max": 8
   },
-  "Uptime": {
-    "value_type": "LogValue",
-    "hints": [
-      "kParameterIsLogarithmic"
-    ]
+  "Attack": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 10
+  },
+  "Decay": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.1,
+    "min": 0,
+    "max": 10
+  },
+  "Sustain": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.8,
+    "min": 0,
+    "max": 1
+  },
+  "Release": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.1,
+    "min": 0,
+    "max": 10
   },
   "Velsens": {
-    "value_type": "LinearValue",
-    "hints": []
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Lfofreq": {
+    "type": "Linear",
+    "hints": [],
+    "init": 1,
+    "min": 0,
+    "max": 99
+  },
+  "Macro": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Uptime": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.1,
+    "min": 0,
+    "max": 10
+  },
+  "Downtime": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.1,
+    "min": 0,
+    "max": 10
+  },
+  "Env0": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Env1": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Env2": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Env3": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Lfo0": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Lfo1": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Lfo2": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Lfo3": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Mix": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 1
+  },
+  "Freq": {
+    "type": "Linear",
+    "hints": [],
+    "init": 440,
+    "min": 0,
+    "max": 24000
+  },
+  "Gain": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0.5,
+    "min": 0,
+    "max": 1
+  },
+  "Gate": {
+    "type": "Linear",
+    "hints": [],
+    "init": 0,
+    "min": 0,
+    "max": 0
   }
 }
