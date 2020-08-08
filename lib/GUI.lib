@@ -32,7 +32,7 @@ sawGroup(x)           = tabs(hgroup("[219]saw", x));
 
 envelopeGroup(i,x)    = tabs(vgroup("[300]envelopes", hgroup("envelope %i", x)));
 lfoGroup(i,x)         = tabs(vgroup("[301]LFOs", hgroup("lfo %i", x)));
-macroGroup(i,x)       = tabs(vgroup("[302]macros", hgroup("macro %i", x)));
+macroGroup(i,x)       = tabs(vgroup("[302]macros", hgroup("%i", x)));
 
 midiGroup(x)          = tabs(hgroup("[999]midi", x));
 
@@ -44,25 +44,25 @@ filterTabsGroup(x) = tgroup("mix/tweak",x);
 filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
 filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
 
-moogGroup(x)     = filterMixerGroup(preFilterGroup(vgroup("[0]moog", x)));
-ms20Group(x)     = filterMixerGroup(preFilterGroup(vgroup("[1]ms20", x)));
-oberheimGroup(x) = filterMixerGroup(preFilterGroup(vgroup("[2]oberheim", x)));
-normFreqGroup(x) = filterTweakGroup(preFilterGroup(vgroup("[3]freq", x)));
-QGroup(x)        = filterTweakGroup(preFilterGroup(vgroup("[4] Q ", x)));
+moogGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]moog", x)));
+ms20Group(x)     = filterMixerGroup(preFilterGroup(hgroup("[1]ms20", x)));
+oberheimGroup(x) = filterMixerGroup(preFilterGroup(hgroup("[2]oberheim", x)));
+normFreqGroup(x) = filterTweakGroup(preFilterGroup(hgroup("[3]freq", x)));
+QGroup(x)        = filterTweakGroup(preFilterGroup(hgroup("[4] Q ", x)));
 
 oscTabsGroup(x) = tgroup("CZ/PM",x);
 oscCZgroup(x) = oscTabsGroup(hgroup("CZ",x));
 oscPMgroup(x) = oscTabsGroup(hgroup("PM",x));
 
-levelGroup(x) = oscGroup(oscCZgroup(vgroup("[0]level", x)));
-indexGroup(x) = oscGroup(oscCZgroup(vgroup("[1]index", x)));
-octGroup(x)   = oscGroup(oscCZgroup(vgroup("[2]octave", x)));
-phaseGroup(x) = oscGroup(oscCZgroup(vgroup("[3]phase", x)));
+levelGroup(x) = oscGroup(oscCZgroup(hgroup("[0]level", x)));
+indexGroup(x) = oscGroup(oscCZgroup(hgroup("[1]index", x)));
+octGroup(x)   = oscGroup(oscCZgroup(hgroup("[2]octave", x)));
+phaseGroup(x) = oscGroup(oscCZgroup(hgroup("[3]phase", x)));
 
-fbAgroup(x) = oscGroup(oscPMgroup(vgroup("[0]PM A", x)));
-fbBgroup(x) = oscGroup(oscPMgroup(vgroup("[1]PM B", x)));
-fbCgroup(x) = oscGroup(oscPMgroup(vgroup("[2]PM C", x)));
-fbDgroup(x) = oscGroup(oscPMgroup(vgroup("[3]PM D", x)));
+fbAgroup(x) = oscGroup(oscPMgroup(hgroup("[0]PM A", x)));
+fbBgroup(x) = oscGroup(oscPMgroup(hgroup("[1]PM B", x)));
+fbCgroup(x) = oscGroup(oscPMgroup(hgroup("[2]PM C", x)));
+fbDgroup(x) = oscGroup(oscPMgroup(hgroup("[3]PM D", x)));
 
 oscGroup(x)       = hgroup("oscillator",x);
 preFilterGroup(x) = hgroup("preFilter",x);
@@ -74,8 +74,8 @@ amountGroup(x)       = masterGroup(hgroup("[2]amount", x));
 
 masterGroup(x) = hgroup("masters",x);
 
-ac_bdGroup(x) = vectorGroup(vgroup("ac/bd",x));
-ab_cdGroup(x) = vectorGroup(vgroup("ab/cd",x));
+ac_bdGroup(x) = vectorGroup(hgroup("ac/bd",x));
+ab_cdGroup(x) = vectorGroup(hgroup("ab/cd",x));
 
 //sliders//////////////////////////////////////////////////////////////////////
 masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
@@ -116,8 +116,8 @@ lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
 lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", 0, 1));
 
 macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
-macroEnvelopeLevel(i) = hslider("env %i[style:knob]", 0, 0, 1, stepsize);
-macroLFOlevel(i) = hslider("lfo %i[style:knob]", 0, 0, 1, stepsize);
+macroEnvelopeLevel(i) = hgroup("env", hslider("%i[style:knob]", 0, 0, 1, stepsize));
+macroLFOlevel(i) = hgroup("lfo", hslider("%i[style:knob]", 0, 0, 1, stepsize));
 
 macroUp     = hslider("[1]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);
 macroDown   = hslider("[2]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);

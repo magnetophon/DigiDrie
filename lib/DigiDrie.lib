@@ -35,10 +35,12 @@ with {
     )
     :fallbackMixer(nrMacros-1,1,1)
   with {
-    parameter(i) = group(MSgroup(subGroup(modSourceGroup(hgroup("[2]macros"    , vsplit(floor(i/nrEnvelopes),hgroup("%i", param)))))));
-    vsplit(i,x) = vgroup("%i", x);
+    // parameter(i) = group(MSgroup(subGroup(modSourceGroup(vsplit(floor(i/nrEnvelopes),hgroup("macro %i", param))))));
+    parameter(i) = group(MSgroup(subGroup( vsplit(floor(i/nrEnvelopes),hgroup("macro %i", param)))));
+    vsplit(i,x) = namedVsplit(i*nrEnvelopes,(i+1)*nrEnvelopes-1,x);
+    namedVsplit(from,to,x) = vgroup("macro %from - %to", x);
     mapParam(i) = _;//group(MSgroup(subGroup(modSourceGroup(vgroup("[3]curve"    , hgroup("%i", mapping)))))); // too CPU intensive
-};
+  };
   M = mainGroup;
   S = offsetGroup;
   op(0) = +;
