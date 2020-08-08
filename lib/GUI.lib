@@ -96,10 +96,10 @@ oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
 
 type = vslider("type[style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
 
-fbAs = hslider("PM A[style:knob]", 0, 0, 1, stepsize);
-fbBs = hslider("PM B[style:knob]", 0, 0, 1, stepsize);
-fbCs = hslider("PM C[style:knob]", 0, 0, 1, stepsize);
-fbDs = hslider("PM D[style:knob]", 0, 0, 1, stepsize);
+fbAs = hslider("PM A[scale:log][style:knob]", 0, 0, 1, stepsize);
+fbBs = hslider("PM B[scale:log][style:knob]", 0, 0, 1, stepsize);
+fbCs = hslider("PM C[scale:log][style:knob]", 0, 0, 1, stepsize);
+fbDs = hslider("PM D[scale:log][style:knob]", 0, 0, 1, stepsize);
 
 envLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[0]envelopes" , hslider("env %i[style:knob]", 0, -1, 1, stepsize))));
 lfoLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[1]LFOs"      , hslider("LFO  %i[style:knob]", 0, -1, 1, stepsize))));
