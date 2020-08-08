@@ -389,9 +389,9 @@ preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q) =
   _<:
   (
     _
-  , moogLevel , svf.lp(freq,Q)
-  , ms20level , korg35LPF(freq,Q)
-  , oberheimLevel , oberheimLPFf(freq,Q)
+  , (moogLevel , svf.lp(freq,Q):enableIfVolume)
+  , (ms20level , korg35LPF(freq,Q):enableIfVolume)
+  , (oberheimLevel , oberheimLPFf(freq,Q):enableIfVolume)
   )
   :fallbackMixer(3,1,1)
 with {
@@ -411,9 +411,11 @@ vel(x) = x:chooseFromFixed(nrNotes,velocity);
 //par(i, nrNotes, velocity(i)*(i==x)):>_ ;
 
 enableIfVolume =
-  si.bus(2) <:
-  ((_,!)
-  ,(ro.cross(2) :(_,_!=0):control)) ;
+  si.bus(2)
+<:
+((_,!)
+,(ro.cross(2) :(_,_!=0):control))
+;
 
 portamentoSwitcher =
   _<:select3(portamentoSwitch
