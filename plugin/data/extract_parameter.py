@@ -5,7 +5,7 @@ from typing import List, Set, Dict, Tuple, Optional
 def format_name(name: str):
     nm = name.replace(" ", "").replace("_", "").replace("-", "_").replace("/", "_")
     nm = nm.replace("&", "_")
-    return nm.capitalize()
+    return nm
 
 def get_address(item: Dict):
     address = "".join([format_name(st) for st in item["address"].split("/")])
@@ -80,6 +80,11 @@ def get_scale(item: Dict):
     Reterns: (scale, hints)
     """
     hints = []
+
+    prim_type = item["type"]
+    if "bargraph" not in prim_type:
+        hints.append("kParameterIsAutomable")
+
     if "meta" not in item:
         return ("Linear", hints)
 

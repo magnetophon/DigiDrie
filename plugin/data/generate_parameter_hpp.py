@@ -6,10 +6,11 @@ from typing import List, Set, Dict, Tuple, Optional
 def format_name(name: str):
     nm = name.replace(" ", "").replace("_", "").replace("-", "_").replace("/", "_")
     nm = nm.replace("&", "_")
-    return nm.capitalize()
+    return nm
 
 def format_address(item: Dict):
-    return "".join([format_name(st) for st in item["address"].split("/")])
+    address = "".join([format_name(st) for st in item["address"].split("/")])
+    return address[0].lower() + address[1:]
 
 def get_scale(item: Dict):
     label = item["label"]
@@ -58,13 +59,13 @@ if __name__ == "__main__":
         item["scale"] = scale_name
 
         if cpp_label in group_info:
-            item["value_type"] = group_info[cpp_label]["type"] + "Value"
-            item["hints"] = group_info[cpp_label]["hints"]
+            item["value_type"] = group_info[scale_name]["type"] + "Value"
+            item["hints"] = group_info[scale_name]["hints"]
         else:
             item["value_type"] = "LinearValue"
             item["hints"] = []
 
-        label = format_address(item) + cpp_label
+        label = format_address(item)
         item["label"] = label
 
         labels.append(label)

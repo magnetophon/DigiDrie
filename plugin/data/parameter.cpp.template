@@ -5,6 +5,9 @@
 
 using namespace SomeDSP;
 
+IntScale<double> Scales::boolScale(1);
+LinearScale<double> Scales::defaultScale(0.0, 1.0);
+
 {% for scl in scales %}
   {%- if scl.type == "Linear" %}
     {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }});

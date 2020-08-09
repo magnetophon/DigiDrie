@@ -51,7 +51,7 @@ struct GlobalParameter : public ParameterInterface {
     using LinearValue = FloatValue<SomeDSP::LinearScale<double>>;
     using LogValue = FloatValue<SomeDSP::LogScale<double>>;
     // using SPolyValue = FloatValue<SomeDSP::SPolyScale<double>>;
-    using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
+    // using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
 
     value[ID::bypass] = std::make_unique<IntValue>(
       0, Scales::boolScale, "bypass", kParameterIsAutomable | kParameterIsBoolean);
@@ -63,7 +63,7 @@ struct GlobalParameter : public ParameterInterface {
       Scales::{{ par.scale }}.invmap({{ par.init }}),
       Scales::{{ par.scale }},
       "{{ par.label }}",
-      kParameterIsAutomable{% for hint in par.hints %} | {{hint}}{% endfor %});
+      0{% for hint in par.hints %} | {{hint}}{% endfor %});
     {% endfor %}
   }
 
