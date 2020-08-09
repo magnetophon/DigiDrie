@@ -96,10 +96,10 @@ oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
 
 type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
 
-fbAs = hslider("PM A[scale:log][style:knob]", 0, 0, 1, stepsize);
-fbBs = hslider("PM B[scale:log][style:knob]", 0, 0, 1, stepsize);
-fbCs = hslider("PM C[scale:log][style:knob]", 0, 0, 1, stepsize);
-fbDs = hslider("PM D[scale:log][style:knob]", 0, 0, 1, stepsize);
+fbAs = hslider("PM A[scale:log][style:knob]", 0, -20 , 20 , stepsize);
+fbBs = hslider("PM B[scale:log][style:knob]", 0, -20 , 20 , stepsize);
+fbCs = hslider("PM C[scale:log][style:knob]", 0, -20 , 20 , stepsize);
+fbDs = hslider("PM D[scale:log][style:knob]", 0, -20 , 20 , stepsize);
 
 envLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[0]envelopes" , hslider("env %i[style:knob]", 0, -1, 1, stepsize))));
 lfoLevel(subGroup,i)   = subGroup(modSourceGroup(vgroup("[1]LFOs"      , hslider("LFO  %i[style:knob]", 0, -1, 1, stepsize))));
@@ -148,8 +148,8 @@ velocity(i) = VEL(i:max(-1):int) with {
 LPfreq = hslider("LPfreq[scale:log]", 24000, 20, 24000, 1);
 
 filterBPlevel = hslider("filterBPlevel[style:knob]", 1, 0, 1, stepsize);
-moogLevel     = hslider("level[style:knob]", 0, 0, 1, stepsize);
-ms20level     = hslider("level[style:knob]", 0, 0, 1, stepsize);
-oberheimLevel = hslider("level[style:knob]", 0, 0, 1, stepsize);
+moogLevel     = hslider("level[style:knob]", 0, -1, 1, stepsize);
+ms20level     = hslider("level[style:knob]", 0, -1, 1, stepsize);
+oberheimLevel = hslider("level[style:knob]", 0, -1, 1, stepsize);
 normFreq      = hslider("normFreq[style:knob]", 0, 0, 1, stepsize);
 Q             = hslider(" Q [style:knob]", 0, 0, 10, stepsize);
