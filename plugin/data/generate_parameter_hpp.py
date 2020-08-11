@@ -18,7 +18,7 @@ def get_scale(item: Dict):
         return format_name(label)
     return format_name(Path(item["address"]).parts[-2])
 
-def walk_ui(elem: Dict, items: List[str]):
+def walk_ui(elem: Dict, items: List):
     if "address" in elem:
         items.append(elem)
 

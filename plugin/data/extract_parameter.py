@@ -11,7 +11,7 @@ def get_address(item: Dict):
     address = "".join([format_name(st) for st in item["address"].split("/")])
     return address + format_name(item["label"])
 
-def walk_ui(elem: Dict, items: List[str]):
+def walk_ui(elem: Dict, items: List):
     if "address" in elem:
         items.append(elem)
 
