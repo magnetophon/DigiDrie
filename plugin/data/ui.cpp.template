@@ -1,0 +1,99 @@
+// TODO: Generate this.
+
+#include <iostream>
+#include <memory>
+#include <sstream>
+#include <tuple>
+#include <unordered_map>
+#include <vector>
+
+#include "../common/uibase.hpp"
+#include "parameter.hpp"
+
+START_NAMESPACE_DISTRHO
+
+constexpr float uiTextSize = 14.0f;
+constexpr float midTextSize = 16.0f;
+constexpr float infoTextSize = 18.0f;
+constexpr float pluginNameTextSize = 22.0f;
+constexpr float margin = 5.0f;
+constexpr float uiMargin = 20.0f;
+constexpr float labelHeight = 20.0f;
+constexpr float labelY = 30.0f;
+constexpr float knobWidth = 50.0f;
+constexpr float knobHeight = 40.0f;
+constexpr float knobX = 60.0f; // With margin.
+constexpr float knobY = knobHeight + labelY;
+constexpr float scrollBarHeight = 10.0f;
+constexpr float checkboxWidth = 60.0f;
+constexpr float innerWidth = 800;
+constexpr float innerHeight = 600;
+constexpr uint32_t defaultWidth = uint32_t(2 * uiMargin + innerWidth);
+constexpr uint32_t defaultHeight = uint32_t(2 * uiMargin + innerHeight);
+
+enum tabIndex {
+  {% for idx in range(nrMacro) -%}
+    macro{{ idx + 1 }},
+  {% endfor -%}
+  fallback,
+  tabInfo,
+};
+
+class DigiDrieUI : public PluginUIBase {
+protected:
+  void onNanoDisplay() override
+  {
+    beginPath();
+    rect(0, 0, getWidth(), getHeight());
+    fillColor(palette.background());
+    fill();
+  }
+
+  DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DigiDrieUI)
+
+public:
+  DigiDrieUI() : PluginUIBase(defaultWidth, defaultHeight)
+  {
+    param = std::make_unique<GlobalParameter>();
+
+    setGeometryConstraints(defaultWidth, defaultHeight, true, true);
+
+    if (palette.fontPath().size() > 0)
+      fontId = createFontFromFile("main", palette.fontPath().c_str());
+
+    if (fontId < 0) {
+      fontId = createFontFromMemory(
+        "main", (unsigned char *)(FontData::TinosBoldItalicData),
+        FontData::TinosBoldItalicDataSize, false);
+    }
+
+    using ID = ParameterID::ID;
+
+    const auto top0 = 20.0f;
+    const auto left0 = 20.0f;
+
+    // TabView test.
+    const auto tabTop0 = top0;
+    const auto tabLeft0 = left0;
+    const auto tabWidth = innerWidth;
+    const auto tabHeight = innerHeight;
+    std::vector<std::string> tabs = {
+      {% for idx in range(nrMacro) -%}
+        "Macro{{ idx + 1 }}",
+      {% endfor -%}
+      "Fallback",
+      "Information",
+    };
+    auto tabviewMacro
+      = addTabView(tabLeft0, tabTop0, tabWidth, tabHeight, uiTextSize, labelY, tabs);
+
+    const auto tabInsideTop0 = tabTop0 + labelY + uiMargin;
+    const auto tabInsideLeft0 = tabLeft0 + uiMargin;
+
+    tabviewMacro->refreshTab();
+  }
+};
+
+UI *createUI() { return new DigiDrieUI(); }
+
+END_NAMESPACE_DISTRHO
