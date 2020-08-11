@@ -14,7 +14,8 @@ modMixer(group,subGroup,i,param,gate,gain) =
   // ((((envMix(M)*modMaster(M)) , (envMix(S)*modMaster(S)))) :op(i))
   // + ((((lfoMix(M)*modMaster(M)) , (lfoMix(S)*modMaster(S)))) :op(i))
   // +
-  ((macros(M), macros(S)) : op(i))
+  // ((macros(M), macros(S)) : op(i))
+  ((vector(M), vector(S)) : op(i))
 with {
   envMix(MSgroup) = par(j, nrEnvelopes,
                         (group(MSgroup(envLevel(subGroup,j))):new_smooth(0.999))
@@ -26,12 +27,25 @@ with {
                         , lfo(j,gate,gain))
                     :mixer(nrLFOs,1,1);
   amount(MSgroup) = group(MSgroup(subGroup(amountGroup(param)))):new_smooth(0.999);
+  vector(MSgroup) =
+    (
+      par(m, 4, parameter(m+1))
+    )
+    :vectorMixer(macro(1,gate,gain),macro(2,gate,gain))
+  with {
+    // parameter(i) = group(MSgroup(subGroup(modSourceGroup(vsplit(floor(i/nrEnvelopes),hgroup("macro %i", param))))));
+    // parameter(i) = group(MSgroup(subGroup(vsplit(floor((i+1)/2),floor((i+1)/2), vgroup("macro %i", param)))));
+    parameter(i) = group(MSgroup(subGroup( vsplit(floor((i+1)/2),hgroup("macro %i", param)))));
+    vsplit(i,x) = namedVsplit((i)*2-1,(i+1)*2-2,x);
+    namedVsplit(from,to,x) = vgroup("macro %from - %to", x);
+    mapParam(i) = _;//group(MSgroup(subGroup(modSourceGroup(vgroup("[3]curve"    , hgroup("%i", mapping)))))); // too CPU intensive
+  };
   macros(MSgroup) =
     (
       // amount(MSgroup)
       // ,
       (parameter(0))
-    , par(m, nrMacros-1, macro(m+1,gate,gain):mapParam(m+1),parameter(m+1))
+    , par(m, nrMacros-1, macro(m+1,gate,gain),parameter(m+1))
     )
     :fallbackMixer(nrMacros-1,1,1)
   with {
@@ -864,7 +878,7 @@ with{
 
 nrEnvelopes = 4;
 nrLFOs      = nrEnvelopes;
-nrMacros    = nrEnvelopes * 2;
+nrMacros    = 2;
 
 minOct = -8;
 maxOct = 4;

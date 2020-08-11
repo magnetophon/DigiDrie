@@ -88,6 +88,10 @@ ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
 ab(i,gate,gain) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
 cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
 
+ac_bd = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
+cb_cd = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
+
+
 oscillatorLevel = hslider("[0]Level[style:knob]", 0, -1, 1, stepsize);
 oscillatorPhase = hslider("[1]phase[style:knob]", 0, -64, 64, stepsize);
 oscillatorIndex = hslider("[2]index[style:knob]", 0, 0, 1, stepsize);// an osc has either index or res never both so same [number] is OK
@@ -129,7 +133,7 @@ mapping(x) =
 curveIndex = select2(curveSlider>0
                     , 1/(abs(curveSlider)+1)
                     , curveSlider+1
-);
+                    );
 
 lfo_amount = hslider("lfo amount", 0, 0, 1, stepsize):new_smooth(0.999);
 velocity(i) = VEL(i:max(-1):int) with {
