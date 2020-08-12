@@ -24,16 +24,17 @@ constexpr float knobWidth = 50.0f;
 constexpr float knobHeight = 40.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
-constexpr float scrollBarHeight = 10.0f;
-constexpr float checkboxWidth = 60.0f;
+
+constexpr float sectionHeight = labelY + knobY;
 constexpr float innerWidth = 800;
 constexpr float innerHeight = 600;
+
 constexpr uint32_t defaultWidth = uint32_t(2 * uiMargin + innerWidth);
 constexpr uint32_t defaultHeight = uint32_t(2 * uiMargin + innerHeight);
 
 enum tabIndex {
   {% for idx in range(nrMacro) -%}
-    macro{{ idx + 1 }},
+    macro_{{ idx + 1 }},
   {% endfor -%}
   fallback,
   tabInfo,
@@ -89,6 +90,21 @@ public:
 
     const auto tabInsideTop0 = tabTop0 + labelY + uiMargin;
     const auto tabInsideLeft0 = tabLeft0 + uiMargin;
+
+    {% for macro, sections in osc_items.items() -%}
+    {% for sctn, controls in sections.items() -%}
+    const auto {{ macro }}_{{ sctn }}_top0 = tabInsideTop0 + {{ loop.index0 }} * sectionHeight;
+    const auto {{ macro }}_{{ sctn }}_top1 = {{ macro }}_{{ sctn }}_top0 + labelY;
+    tabviewMacro->addWidget({{ macro }},
+      addGroupLabel(tabInsideLeft0, {{ macro }}_{{ sctn }}_top0, 8.0f * knobX,
+        labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
+    {% for ctrl, addr in controls.items() -%}
+    tabviewMacro->addWidget({{ macro }},
+      addKnob(tabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top1, knobWidth, margin, uiTextSize,
+        "{{ ctrl }}", ID::{{ addr["main"] }}));
+    {% endfor %}
+    {% endfor %}
+    {% endfor -%}
 
     tabviewMacro->refreshTab();
   }

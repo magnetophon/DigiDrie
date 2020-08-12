@@ -6,10 +6,12 @@ from typing import List, Set, Dict, Tuple, Optional
 def format_name(name: str):
     nm = name.replace(" ", "").replace("_", "").replace("-", "_").replace("/", "_")
     nm = nm.replace("&", "_")
-    return nm
+    return nm.lower()
 
 def format_address(item: Dict):
-    address = "".join([format_name(st) for st in item["address"].split("/")])
+    # Last [2:] at addr expression remove "/CZsynth" at the start of address.
+    addr = item["address"].split("/")[2:]
+    address = "".join([format_name(st).capitalize() for st in addr])
     return address[0].lower() + address[1:]
 
 def get_scale(item: Dict):

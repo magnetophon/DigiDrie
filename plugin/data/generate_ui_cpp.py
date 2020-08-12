@@ -3,9 +3,16 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 from typing import List, Set, Dict, Tuple, Optional
 
-# Debug
-import pprint
-pp = pprint.PrettyPrinter(indent=2)
+def format_name(name: str):
+    nm = name.replace(" ", "").replace("_", "").replace("-", "_").replace("/", "_")
+    nm = nm.replace("&", "_")
+    return nm.lower()
+
+def format_address(item: Dict):
+    # Last [2:] at addr expression remove "/CZsynth" at the start of address.
+    addr = item["address"].split("/")[2:]
+    address = "".join([format_name(st).capitalize() for st in addr])
+    return address[0].lower() + address[1:]
 
 def walk_ui(elem: Dict, items: List):
     if "address" in elem:
@@ -28,7 +35,6 @@ def get_nrmacro(ui_items):
         exit()
     return len(mod["items"])
 
-
 def arrange_items(items: List, idents: List):
     arranged = {}
     for idt in idents:
@@ -41,9 +47,9 @@ def arrange_items(items: List, idents: List):
                 continue
 
             if "main" in parts:
-                arranged[idt]["main"] = itm["address"]
+                arranged[idt]["main"] = format_address(itm)
             elif "L-R_offset" in parts:
-                arranged[idt]["L-R_offset"] = itm["address"]
+                arranged[idt]["L-R_offset"] = format_address(itm)
             else:
                 print("Error: arrange_filter() failed.")
                 print(itm)
@@ -88,7 +94,6 @@ def get_osc_items(ui_items, nrMacro):
     # debug
     with open("test.json", "w", encoding="utf-8") as fi:
         json.dump(osc_items, fi, indent=2)
-    exit()
 
     return osc_items
 
@@ -101,12 +106,15 @@ with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
 ui_items = data["ui"][0]["items"]
 nrMacro = get_nrmacro(ui_items)
 
-osc_page_items = get_osc_items(ui_items, nrMacro)
-# pp.pprint(osc_page_items)
+osc_items = get_osc_items(ui_items, nrMacro)
+fallback_items = osc_items.pop("macro_0")
 
 jinja_env = Environment(loader=FileSystemLoader("."))
-
 template = jinja_env.get_template("ui.cpp.template")
-text = template.render(nrMacro=nrMacro,)
+text = template.render(
+    nrMacro=nrMacro,
+    osc_items=osc_items,
+    fallback_items=fallback_items,
+)
 with open("ui.cpp", "w", encoding="utf-8") as fi:
     fi.write(text)
