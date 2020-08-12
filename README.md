@@ -19,7 +19,7 @@ A monster monophonic synth, written in faust.
 - you can think of the macros as modulateable presets
 
 
-Quick [audio demo](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3).
+Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3) [demo's](https://raw.githubusercontent.com/magnetophon/DigiDrie/master/various/digiDrie_III.mp3).
 
 
 ## macros
