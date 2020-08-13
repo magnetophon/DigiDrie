@@ -44,7 +44,7 @@ filterTabsGroup(x) = tgroup("mix/tweak",x);
 filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
 filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
 
-moogGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]moog", x)));
+svfGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]SVF", x)));
 ms20Group(x)     = filterMixerGroup(preFilterGroup(hgroup("[1]ms20", x)));
 oberheimGroup(x) = filterMixerGroup(preFilterGroup(hgroup("[2]oberheim", x)));
 normFreqGroup(x) = filterTweakGroup(preFilterGroup(hgroup("[3]freq", x)));
@@ -153,7 +153,7 @@ velocity(i) = VEL(i:max(-1):int) with {
 LPfreq = hslider("LPfreq[scale:log]", 24000, 20, 24000, 1);
 
 filterBPlevel = hslider("filterBPlevel[style:knob]", 1, 0, 1, stepsize);
-moogLevel     = hslider("level[style:knob]", 0, -1, 1, stepsize);
+svfLevel      = hslider("level[style:knob]", 0, -1, 1, stepsize);
 ms20level     = hslider("level[style:knob]", 0, -1, 1, stepsize);
 oberheimLevel = hslider("level[style:knob]", 0, -1, 1, stepsize);
 normFreq      = hslider("normFreq[style:knob]", 0, 0, 1, stepsize);

@@ -89,10 +89,10 @@ with {
   octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
 };
 
-octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oscillator,params,oct) =
+octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,oscillator,params,oct) =
   (
-    ((f0:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
-  , ((f1:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
+    ((f0:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
+  , ((f1:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q),params):oscillator)
 // ):it.interpolate_linear(oct:ma.decimal)
   ):it.interpolate_linear(oct:abs%1)
 with {
@@ -101,10 +101,10 @@ with {
   octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
 };
 
-octaverFilter_No_Osc(fund,phase,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct,FB) =
+octaverFilter_No_Osc(fund,phase,svfLevel,ms20level,oberheimLevel,normFreq,Q,oct,FB) =
   (
-    (f0:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q))
-  , (f1:preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q))
+    (f0:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q))
+  , (f1:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q))
   , (oct:abs%1)
   )
 with {
@@ -319,13 +319,13 @@ preFilterParamsLocal(i,gate,gain) =
 preFilterOct(i,fund,gate,gain) =
   (
     (fund,oscPreFilterParams(filterGroup,i,gate,gain),oct)
-    : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
+    : octaverFilter_No_Osc //(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,oct)
   );
 
 preFilterOctG(group,i,fund,gate,gain,FB) =
   (
     (fund,phase,oscPreFilterParams(filterGroup,i,gate,gain),octave,FB)
-    : octaverFilter_No_Osc //(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,oct)
+    : octaverFilter_No_Osc //(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,oct)
   ) with {
   octave = modMixer(group,octGroup,i,oct,gate,gain);
   phase = modMixer(group,phaseGroup,i,oscillatorPhase,gate,gain);
@@ -336,7 +336,7 @@ preFilterOctG(group,i,fund,gate,gain,FB) =
 // -1 = .125
 
 oscPreFilterParams(group,i,gate,gain) =
-  modMixer(group,moogGroup,i,moogLevel,gate,gain)
+  modMixer(group,svfGroup,i,svfLevel,gate,gain)
 , modMixer(group,ms20Group,i,ms20level,gate,gain)
 , modMixer(group,oberheimGroup,i,oberheimLevel,gate,gain)
 , (modMixer(group,normFreqGroup,i,normFreq,gate,gain):max(0):min(1))
@@ -411,11 +411,11 @@ with {
 
 offset(param,i) = mainGroup(param)+(offsetGroup(param) * select2(i,1,-1)) :new_smooth(0.999);
 
-preFilter(moogLevel,ms20level,oberheimLevel,normFreq,Q) =
+preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q) =
   _<:
   (
     _
-  , (moogLevel , svf.lp(freq,Q):enableIfVolume)
+  , (svfLevel , svf.lp(freq,Q):enableIfVolume)
   , (ms20level , korg35LPF(freq,Q):enableIfVolume)
   , (oberheimLevel , oberheimLPFf(freq,Q):enableIfVolume)
   )
@@ -844,17 +844,17 @@ CZresTriangleO(fund,res,oct) = octaver(fund,CZresTriangle,res,oct);
 CZresTrapO(fund, res,oct) = octaver(fund,CZresTrap,res,oct);
 
 
-sinPOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,sine,index,oct);
+sinPOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,sine,index,oct);
 sine(fund,index) = (fund*2*ma.PI:sin);
 // sine(fund,index) = (fund*2*ma.PI:sin),(index:!);
-CZsawPOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsawP,index,oct);
-CZsquarePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsquareP,index,oct);
-CZpulsePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZpulseP,index,oct);
-CZsinePulsePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZsinePulseP,index,oct);
-CZhalfSinePOF(moogLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZhalfSineP,index,oct);
-CZresSawOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresSaw,res,oct);
-CZresTriangleOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresTriangle,res,oct);
-CZresTrapOF(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,moogLevel,ms20level,oberheimLevel,normFreq,Q,CZresTrap,res,oct);
+CZsawPOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZsawP,index,oct);
+CZsquarePOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZsquareP,index,oct);
+CZpulsePOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZpulseP,index,oct);
+CZsinePulsePOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZsinePulseP,index,oct);
+CZhalfSinePOF(svfLevel,ms20level,oberheimLevel,normFreq,Q,fund,index,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZhalfSineP,index,oct);
+CZresSawOF(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZresSaw,res,oct);
+CZresTriangleOF(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZresTriangle,res,oct);
+CZresTrapOF(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,res,oct) = octaverFilter(fund,svfLevel,ms20level,oberheimLevel,normFreq,Q,CZresTrap,res,oct);
 
 
 sinPPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,sine);
