@@ -3,6 +3,9 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 from typing import List, Set, Dict, Tuple, Optional
 
+import pprint # debug
+pp = pprint.PrettyPrinter(indent=2)
+
 def format_name(name: str):
     nm = name.replace(" ", "").replace("_", "").replace("-", "_").replace("/", "_")
     nm = nm.replace("&", "_")
@@ -22,18 +25,15 @@ def walk_ui(elem: Dict, items: List):
         for item in elem["items"]:
             walk_ui(item, items)
 
-def get_item_from_list(items, label):
+def get_item_by_label(items, label):
     for it in ui_items:
         if "label" in it and label == it["label"]:
             return it
     return None
 
 def get_nrmacro(ui_items):
-    mod = get_item_from_list(ui_items, "modulation")
-    if mod is None:
-        print("Error: modulation group does not found.")
-        exit()
-    return len(mod["items"])
+    # TODO: Implement this.
+    return 8
 
 def arrange_items(items: List, idents: List):
     arranged = {}
@@ -76,7 +76,7 @@ def get_osc_items(ui_items, nrMacro):
     idents_filt = ["moog", "ms20", "oberheim", "normFreq", "Q"]
     idents_osc = ["index", "octave", "phase", "PM_A", "PM_B", "PM_C", "PM_D"]
 
-    osc_items = [get_item_from_list(ui_items, lbl) for lbl in labels]
+    osc_items = [get_item_by_label(ui_items, lbl) for lbl in labels]
     for it in osc_items:
         if it is None:
             print("Error: get_osc_items() failed.")
@@ -89,12 +89,12 @@ def get_osc_items(ui_items, nrMacro):
     osc_type = get_osc_type(items)
 
     osc_items = {}
-    for idx in range(nrMacro + 1):
+    for idx in range(nrMacro):
         macro_items = {}
         for lbl in labels:
             macro_items[lbl] = []
 
-        macro = f"macro_{idx}" # Assuming macro index isn't padded like "01", " 1".
+        macro = f"macro_{idx + 1}" # Assuming macro index isn't padded like "01", " 1".
         for itm in items:
             parts = Path(itm["address"]).parts
             if macro in parts:
@@ -106,11 +106,60 @@ def get_osc_items(ui_items, nrMacro):
         macro_items["D"] = arrange_items(macro_items["D"], idents_osc)
         osc_items[macro] = macro_items
 
-    # debug
-    with open("test.json", "w", encoding="utf-8") as fi:
-        json.dump(osc_items, fi, indent=2)
-
     return osc_items, osc_type
+
+def get_envelope_items(ui_items):
+    items = get_item_by_label(ui_items, "envelopes")["items"]
+
+    env_items = {}
+    for itm in items:
+        env_elem = {}
+        for elem in itm["items"]:
+            if elem["type"] == "hbargraph": # TODO: Implement bargraph.
+                continue
+            env_elem[format_name(elem["label"])] = format_address(elem)
+        env_items[format_name(itm["label"])] = env_elem
+    return env_items
+
+def get_lfo_items(ui_items):
+    items = get_item_by_label(ui_items, "LFOs")["items"]
+
+    lfo_items = {}
+    for itm in items:
+        lfo_elem = {}
+        for elem in itm["items"]:
+            if elem["type"] == "hbargraph": # TODO: Implement bargraph.
+                continue
+            lfo_elem[format_name(elem["label"])] = format_address(elem)
+        lfo_items[format_name(itm["label"])] = lfo_elem
+    return lfo_items
+
+def arrange_env_lfo_items(mod_group, env_lfo_group):
+    for item in env_lfo_group["items"]:
+        label = "".join(Path(item["address"]).parts[-2:])
+        mod_group[label] = format_address(item)
+
+def get_modulation_items(ui_items):
+    group_labels = ["env", "lfo"]
+
+    groups = get_item_by_label(ui_items, "modulation")["items"]
+
+    mod_axes = {}
+    mod_items = {}
+    for grp in groups:
+        grp_label = grp["label"]
+        grp_items = {}
+        for item in grp["items"]:
+            if item["label"] == "macro":
+                mod_axes[grp_label] = format_address(item)
+            elif item["label"] in group_labels:
+                arrange_env_lfo_items(grp_items, item)
+            elif item["type"] == "hbargraph":
+                continue # TODO: Implement bargraph.
+            else:
+                grp_items[item["label"]] = format_address(item)
+        mod_items[grp_label] = grp_items
+    return mod_axes, mod_items
 
 with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
     data = json.load(fi)
@@ -122,15 +171,36 @@ ui_items = data["ui"][0]["items"]
 nrMacro = get_nrmacro(ui_items)
 
 osc_items, osc_type = get_osc_items(ui_items, nrMacro)
-fallback_items = osc_items.pop("macro_0")
+envelope_items = get_envelope_items(ui_items)
+lfo_items = get_lfo_items(ui_items)
+modulation_axes, modulation_items = get_modulation_items(ui_items)
+
+# global_group = get_item_by_label(ui_items, "global")
+# modulation_group = get_item_by_label(ui_items, "modulation")
+
+# debug
+formatted = {
+    "nrMacro": nrMacro,
+    "osc_items": osc_items,
+    "osc_type": osc_type,
+    "envelope_items": envelope_items,
+    "lfo_items": lfo_items,
+    "modulation_items": modulation_items,
+    "modulation_axes": modulation_axes,
+}
+with open("test.json", "w", encoding="utf-8") as fi:
+    json.dump(formatted, fi, indent=2)
 
 jinja_env = Environment(loader=FileSystemLoader("."))
 template = jinja_env.get_template("ui.cpp.template")
 text = template.render(
     nrMacro=nrMacro,
-    osc_type=osc_type,
     osc_items=osc_items,
-    fallback_items=fallback_items,
+    osc_type=osc_type,
+    envelope_items=envelope_items,
+    lfo_items=lfo_items,
+    modulation_items=modulation_items,
+    modulation_axes=modulation_axes,
 )
 with open("ui.cpp", "w", encoding="utf-8") as fi:
     fi.write(text)
