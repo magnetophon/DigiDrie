@@ -98,7 +98,8 @@ oscillatorIndex = hslider("[2]index[style:knob]", 0, 0, 1, stepsize);// an osc h
 oscillatorRes   = hslider("[2]res[style:knob]", 0, 0, 64, stepsize);// an osc has either index or res never both so same [number] is OK
 oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
 
-type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
+// type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8;'Sine-Noise':9}]", 2, 0, 9, 1);
+type = vslider("type[scale:int][style:menu{'Sine-Noise':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
 
 fbAs = hslider("PM A[scale:log][style:knob]", 0, -20 , 20 , stepsize);
 fbBs = hslider("PM B[scale:log][style:knob]", 0, -20 , 20 , stepsize);

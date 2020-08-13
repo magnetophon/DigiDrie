@@ -235,7 +235,8 @@ threeDmixer(x,y,z) =
 oscillatorSelector =
   si.bus(4)<:
   (
-    sinPPF
+    // sinPPF
+    sineNoisePPF
   , CZsawPPF
   , CZsquarePPF
   , CZpulsePPF
@@ -244,7 +245,9 @@ oscillatorSelector =
   , CZresSawPF
   , CZresTrianglePF
   , CZresTrapPF
-  ) : enableOneOfN(9,type);
+    // , sineNoisePPF
+  ) : enableOneOfN(9,type:min(8));
+
 
 enableOneOfN(maxN,N) =
   par(i, maxN, control(i==N)*(i==N)):>_;
@@ -817,6 +820,20 @@ CZresSaw(fund,res) = CZ.resSaw(fund,res);
 CZresTriangle(fund,res) = CZ.resTriangle(fund,res);
 CZresTrap(fund, res) = CZ.resTrap(fund, res);
 
+OLDsineNoise(fund,index) = sine(fund,index);
+sineNoise(fund,index) =
+  it.interpolate_linear(index*2:max(1)-1,
+                        (fund*2*ma.PI:sin*(it.interpolate_linear(index*2:min(1),1,lfnoiseF(fund))))
+                        ,lfnoiseF(fund)
+                       )
+with {
+  index2freq(i)        = ((i-i')*ma.SR) : ba.sAndH(abs(i-i')<0.5):int :max(20):min(ma.SR*.5);
+  NF = index2freq(fund) :int :max(20):min(ma.SR*.25);
+  lfnoise0F(fund) = no.noise : ba.latch((fund:ma.decimal)<0.5);
+  lfnoiseNF(N,fund) = lfnoise0F(fund) : fi.lowpass(N,index2freq(fund) ); // Nth-order Butterworth lowpass
+  lfnoiseF(fund) = lfnoise0F(fund) : seq(i,5,fi.lowpass(1,index2freq(fund))); // non-overshooting lowpass
+};
+
 CZsawPO(fund, index,oct) = octaver(fund,CZsawP,index,oct);
 CZsquarePO(fund, index,oct) = octaver(fund,CZsquareP,index,oct);
 CZpulsePO(fund, index,oct) = octaver(fund,CZpulseP,index,oct);
@@ -849,6 +866,7 @@ CZhalfSinePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,CZhalfSineP);
 CZresSawPF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresSaw);
 CZresTrianglePF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresTriangle);
 CZresTrapPF(f0,f1,oct,res) = oscPPF(f0,f1,res,oct,CZresTrap);
+sineNoisePPF(f0,f1,oct,index) = oscPPF(f0,f1,index,oct,sineNoise);
 
 oscPPF(f0,f1,index,oct,oscil) = (((f0,index):oscil),((f1,index):oscil)):si.interpolate(oct);
 ///////////////////////////////////////////////////////////////////////////////
