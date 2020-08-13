@@ -22,12 +22,13 @@ constexpr float labelHeight = 20.0f;
 constexpr float labelY = 30.0f;
 constexpr float knobWidth = 50.0f;
 constexpr float knobHeight = 40.0f;
+constexpr float spreadKnobWidth = 20.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
 
-constexpr float sectionHeight = labelY + knobY;
-constexpr float innerWidth = 800;
-constexpr float innerHeight = 600;
+constexpr float sectionHeight = labelY + spreadKnobWidth + knobY;
+constexpr float innerWidth = 1200;
+constexpr float innerHeight = 700;
 
 constexpr uint32_t defaultWidth = uint32_t(2 * uiMargin + innerWidth);
 constexpr uint32_t defaultHeight = uint32_t(2 * uiMargin + innerHeight);
@@ -37,7 +38,6 @@ enum tabIndex {
     macro_{{ idx + 1 }},
   {% endfor -%}
   fallback,
-  tabInfo,
 };
 
 class DigiDrieUI : public PluginUIBase {
@@ -76,14 +76,13 @@ public:
     // TabView test.
     const auto tabTop0 = top0;
     const auto tabLeft0 = left0;
-    const auto tabWidth = innerWidth;
+    const auto tabWidth = 8 * knobX + 2 * uiMargin;
     const auto tabHeight = innerHeight;
     std::vector<std::string> tabs = {
       {% for idx in range(nrMacro) -%}
         "Macro{{ idx + 1 }}",
       {% endfor -%}
       "Fallback",
-      "Information",
     };
     auto tabviewMacro
       = addTabView(tabLeft0, tabTop0, tabWidth, tabHeight, uiTextSize, labelY, tabs);
@@ -95,18 +94,32 @@ public:
     {% for sctn, controls in sections.items() -%}
     const auto {{ macro }}_{{ sctn }}_top0 = tabInsideTop0 + {{ loop.index0 }} * sectionHeight;
     const auto {{ macro }}_{{ sctn }}_top1 = {{ macro }}_{{ sctn }}_top0 + labelY;
+    const auto {{ macro }}_{{ sctn }}_top2 = {{ macro }}_{{ sctn }}_top1 + spreadKnobWidth;
     tabviewMacro->addWidget({{ macro }},
       addGroupLabel(tabInsideLeft0, {{ macro }}_{{ sctn }}_top0, 8.0f * knobX,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
     tabviewMacro->addWidget({{ macro }},
-      addKnob(tabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top1, knobWidth, margin, uiTextSize,
+      addKnob(tabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top1, spreadKnobWidth + 10, margin, uiTextSize,
+        "", ID::{{ addr["L-R_offset"] }}));
+    {%- if ctrl == "octave" -%}
+    tabviewMacro->addWidget({{ macro }},
+      addNumberKnob(tabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top2, knobWidth, margin, uiTextSize,
+        "{{ ctrl }}", ID::{{ addr["main"] }}, Scales::octave));
+    {%- else -%}
+    tabviewMacro->addWidget({{ macro }},
+      addKnob(tabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top2, knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr["main"] }}));
+    {%- endif %}
     {% endfor %}
     {% endfor %}
     {% endfor -%}
 
+    {# TODO: fallback tab #}
+
     tabviewMacro->refreshTab();
+
+    {# TODO: osc_type #}
   }
 };
 

@@ -57,6 +57,19 @@ def arrange_items(items: List, idents: List):
 
     return arranged
 
+def get_osc_type(items: List):
+    types = []
+    for itm in items:
+        if itm["label"] == "type":
+            types.append(itm)
+
+    osc_types = {}
+    for tp in types:
+        key = Path(tp["address"]).parts[-2]
+        osc_types[key] = tp
+
+    return osc_types
+
 def get_osc_items(ui_items, nrMacro):
     labels = ["filter", "A", "B", "C", "D"]
 
@@ -72,6 +85,8 @@ def get_osc_items(ui_items, nrMacro):
     items = []
     for elem in osc_items:
         walk_ui(elem, items)
+
+    osc_type = get_osc_type(items)
 
     osc_items = {}
     for idx in range(nrMacro + 1):
@@ -95,7 +110,7 @@ def get_osc_items(ui_items, nrMacro):
     with open("test.json", "w", encoding="utf-8") as fi:
         json.dump(osc_items, fi, indent=2)
 
-    return osc_items
+    return osc_items, osc_type
 
 with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
     data = json.load(fi)
@@ -106,13 +121,14 @@ with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
 ui_items = data["ui"][0]["items"]
 nrMacro = get_nrmacro(ui_items)
 
-osc_items = get_osc_items(ui_items, nrMacro)
+osc_items, osc_type = get_osc_items(ui_items, nrMacro)
 fallback_items = osc_items.pop("macro_0")
 
 jinja_env = Environment(loader=FileSystemLoader("."))
 template = jinja_env.get_template("ui.cpp.template")
 text = template.render(
     nrMacro=nrMacro,
+    osc_type=osc_type,
     osc_items=osc_items,
     fallback_items=fallback_items,
 )
