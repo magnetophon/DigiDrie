@@ -35,6 +35,16 @@ def get_nrmacro(ui_items):
     # TODO: Implement this.
     return 8
 
+def arrange_main_lr_offset(dest, label, parts, item):
+    if "main" in parts:
+        dest[label]["main"] = format_address(item)
+    elif "L-R_offset" in parts:
+        dest[label]["L-R_offset"] = format_address(item)
+    else:
+        print("Error: arrange_main_lr_offset() failed.")
+        print(item)
+        exit()
+
 def arrange_items(items: List, idents: List):
     arranged = {}
     for idt in idents:
@@ -45,16 +55,7 @@ def arrange_items(items: List, idents: List):
         for idt in idents:
             if idt not in parts:
                 continue
-
-            if "main" in parts:
-                arranged[idt]["main"] = format_address(itm)
-            elif "L-R_offset" in parts:
-                arranged[idt]["L-R_offset"] = format_address(itm)
-            else:
-                print("Error: arrange_filter() failed.")
-                print(itm)
-                exit()
-
+            arrange_main_lr_offset(arranged, idt, parts, itm)
     return arranged
 
 def get_osc_type(items: List):
@@ -161,6 +162,37 @@ def get_modulation_items(ui_items):
         mod_items[grp_label] = grp_items
     return mod_axes, mod_items
 
+def get_global_items(ui_items, nrMacro):
+
+    items = get_item_by_label(ui_items, "global")["items"]
+
+    idents_crossfade = ["ab-cd", "ac-bd"]
+    cf_items = []
+    for itm in items:
+        if itm["label"] == "stereo":
+            walk_ui(items.pop(items.index(itm)), cf_items)
+            break
+    crossfade_items = {}
+    for idx in range(nrMacro):
+        macro_items = {}
+        for lbl in idents_crossfade:
+            macro_items[lbl] = {}
+
+        macro = f"macro_{idx + 1}" # Assuming macro index isn't padded like "01", " 1".
+        for itm in cf_items:
+            parts = Path(itm["address"]).parts
+            if macro in parts:
+                arrange_main_lr_offset(macro_items, itm["label"], parts, itm)
+        crossfade_items[macro] = macro_items
+
+    # crossfade_items = arrange_items(crossfade_items, crossfade_idents)
+
+    global_items = {}
+    for itm in items:
+        global_items[format_name(itm["label"])] = format_address(itm)
+
+    return global_items, crossfade_items
+
 with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
     data = json.load(fi)
 # items = []
@@ -174,15 +206,15 @@ osc_items, osc_type = get_osc_items(ui_items, nrMacro)
 envelope_items = get_envelope_items(ui_items)
 lfo_items = get_lfo_items(ui_items)
 modulation_axes, modulation_items = get_modulation_items(ui_items)
-
-# global_group = get_item_by_label(ui_items, "global")
-# modulation_group = get_item_by_label(ui_items, "modulation")
+global_items, crossfade_items = get_global_items(ui_items, nrMacro)
 
 # debug
 formatted = {
     "nrMacro": nrMacro,
     "osc_items": osc_items,
     "osc_type": osc_type,
+    "crossfade_items": crossfade_items,
+    "global_items": global_items,
     "envelope_items": envelope_items,
     "lfo_items": lfo_items,
     "modulation_items": modulation_items,
@@ -197,6 +229,7 @@ text = template.render(
     nrMacro=nrMacro,
     osc_items=osc_items,
     osc_type=osc_type,
+    crossfade_items=crossfade_items,
     envelope_items=envelope_items,
     lfo_items=lfo_items,
     modulation_items=modulation_items,
