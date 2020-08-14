@@ -47,25 +47,25 @@ filterTabsGroup(x) = tgroup("mix/tweak",x);
 filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
 filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
 
-svfGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]SVF", x)));
-ms20Group(x)     = filterMixerGroup(preFilterGroup(hgroup("[1]ms20", x)));
-oberheimGroup(x) = filterMixerGroup(preFilterGroup(hgroup("[2]oberheim", x)));
-normFreqGroup(x) = filterTweakGroup(preFilterGroup(hgroup("[3]freq", x)));
-QGroup(x)        = filterTweakGroup(preFilterGroup(hgroup("[4] Q ", x)));
+svfGroup(x)      = filterMixerGroup(hgroup("[0]SVF", x));
+ms20Group(x)     = filterMixerGroup(hgroup("[1]ms20", x));
+oberheimGroup(x) = filterMixerGroup(hgroup("[2]oberheim", x));
+normFreqGroup(x) = filterTweakGroup(hgroup("[3]freq", x));
+QGroup(x)        = filterTweakGroup(hgroup("[4] Q ", x));
 
 oscTabsGroup(x) = tgroup("CZ/PM",x);
 oscCZgroup(x) = oscTabsGroup(hgroup("CZ",x));
 oscPMgroup(x) = oscTabsGroup(hgroup("PM",x));
 
-levelGroup(x) = oscGroup(oscCZgroup(hgroup("[0]level", x)));
-indexGroup(x) = oscGroup(oscCZgroup(hgroup("[1]index", x)));
-octGroup(x)   = oscGroup(oscCZgroup(hgroup("[2]octave", x)));
-phaseGroup(x) = oscGroup(oscCZgroup(hgroup("[3]phase", x)));
+levelGroup(x) = oscCZgroup(hgroup("[0]level", x));
+indexGroup(x) = oscCZgroup(hgroup("[1]index", x));
+octGroup(x)   = oscCZgroup(hgroup("[2]octave", x));
+phaseGroup(x) = oscCZgroup(hgroup("[3]phase", x));
 
-fbAgroup(x) = oscGroup(oscPMgroup(hgroup("[0]PM A", x)));
-fbBgroup(x) = oscGroup(oscPMgroup(hgroup("[1]PM B", x)));
-fbCgroup(x) = oscGroup(oscPMgroup(hgroup("[2]PM C", x)));
-fbDgroup(x) = oscGroup(oscPMgroup(hgroup("[3]PM D", x)));
+fbAgroup(x) = oscPMgroup(hgroup("[0]PM A", x));
+fbBgroup(x) = oscPMgroup(hgroup("[1]PM B", x));
+fbCgroup(x) = oscPMgroup(hgroup("[2]PM C", x));
+fbDgroup(x) = oscPMgroup(hgroup("[3]PM D", x));
 
 oscGroup(x)       = hgroup("oscillator",x);
 preFilterGroup(x) = hgroup("preFilter",x);
