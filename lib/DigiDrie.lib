@@ -797,9 +797,10 @@ CZ =
         (fund,allign,1) => (fund+allign) : ma.frac; // allign phase with fund
       };
     resSaw(fund,res) = (((-1*(1-fund))*((cos((ma.decimal((max(1,resAA(res,fund))*fund)+1))*2*ma.PI)*-.5)+.5))*2)+1;
-    resTriangle(fund,res) = select2(fund<.5, 2-(fund*2), fund*2)*tmp*2-1
+    resTriangle(fund,res) = select2(FUND<.5, 2-(FUND*2), FUND*2)*tmp*2-1
     with {
-      tmp = ((fund*(resAA(res,fund):max(1)))+1:ma.decimal)*2*ma.PI:cos*.5+.5;
+      tmp = ((FUND*(resAA(res,FUND):max(1)))+1:ma.decimal)*2*ma.PI:cos*.5+.5;
+      FUND = fund:ma.decimal;
     };
     resTrap(fund, res) = (((1-fund)*2):min(1)*sin(ma.decimal(fund*(resAA(res,fund):max(1)))*2*ma.PI));
     index2freq(index)        = ((index-index')*ma.SR) : ba.sAndH(abs(index-index')<0.5);
