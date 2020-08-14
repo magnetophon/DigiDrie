@@ -13,10 +13,9 @@ A monster monophonic synth, written in faust.
   This sounds similar yet very different from filtering the output of an oscillator. For example: when you filter the phase input of a sine-wave, it creates harmonics and you can kind of hear the character of the filter. 
   - there are a couple of lowpass-types (moog/oberheim/ms20) that can be dynamically mixed, but the sum of the mix is always 1
 - the synth is fully stereo: each parameter has a main slider and a left-right difference slider
-- each parameter (and it's l-r-diff brother) can be modulated by 8 macros.
+- each parameter (and it's l-r-diff brother) can be morphed between 8 settings, called macros, in a 3D cross-fade configuration.
 - each macro can be modulated by 4 envelopes and 4 lfo's
-- the number of envelopes, lfos and macros can be easily changed at compile time
-- you can think of the macros as modulateable presets
+- the number of envelopes, lfos can be easily changed at compile time
 
 
 Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3) [demo's](https://raw.githubusercontent.com/magnetophon/DigiDrie/master/various/digiDrie_III.mp3).
@@ -24,12 +23,16 @@ Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp
 
 ## macros
 
-The "modulation sources->macro 0" knobs are the main settings.
-They are what you hear when all other macros  are at 0, as they are by default.
-When "tab macros-> macro 1" is at 1 and all the other macros are at 0, you hear the settings of "modulation sources->macro 1".
-When "tab macros-> macro 1" is at 0.5 and the others are at 0, the settings are halfway between "modulation sources->macro 0" and "modulation sources->macro 1".
-When the sum amount of all "tab macros-> macro 1..4" is one ore higher, you hear an interpolation of macros 1..4.
-In this case, "modulation sources->macro 0" has no effect.
+You can think of the macros as modulate-able presets, arranged in a cube.   
+Each of the "modulation->1/2/3" settings cross-fades between two sides of the cube, in either the x,y or z dimension.  
+
+So:  
+"modulation->1" cross-fades from preset 1,3,5 and 7 to 2,4,6,8.  
+"modulation->2" cross-fades from preset 1,2,5,6 to 3,4,7,8.  
+"modulation->3" cross-fades from preset 1,2,3,4 to 5,6,7,8.  
+
+By default, "modulation->1/2/3" are all 0, so you hear preset 1.  
+When you turn up "modulation->1", the settings morph to preset 2.
 
 ## building
 
@@ -40,14 +43,7 @@ faust2jack -t 0 -time -midi DigiDrie.dsp && ./DigiDrie
 
 ```
 
-For an lv2 plugin:
-
-``` shell
-faust2lv2 -t 0 -time -nvoices 1 -gui DigiFaustMidi.dsp
-ln -s DigiFaustMidi.lv2  ~/.lv2/
-```
-
-It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.
+It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.  
 The compiler is not hanging!  ;)
 
 To look at a block diagram:
@@ -56,7 +52,7 @@ To look at a block diagram:
 faust -lang ocpp -t 0 -time -svg -f 1 DigiDiagram.dsp -o -drf  /dev/null && xdg-open DigiDiagram-svg/process.svg
 ```
 
-The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.
+The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.  
 It increases the size of the diagram a lot, and doesn't help to clarify the actual synth.
 
 
