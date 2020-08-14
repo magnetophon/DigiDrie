@@ -23,15 +23,15 @@ Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp
 
 ## macros
 
-You can think of the macros as modulate-able presets, arranged in a cube.
-Each of the "modulation->1/2/3" settings cross-fades between two sides of the cube, in either the x,y or z dimension.
+You can think of the macros as modulate-able presets, arranged in a cube.   
+Each of the "modulation->1/2/3" settings cross-fades between two sides of the cube, in either the x,y or z dimension.  
 
-So:
-"modulation->1" cross-fades from preset 1,3,5 and 7 to 2,4,6,8.
-"modulation->2" cross-fades from preset 1,2,5,6 to 3,4,7,8.
-"modulation->3" cross-fades from preset 1,2,3,4 to 5,6,7,8.
+So:  
+"modulation->1" cross-fades from preset 1,3,5 and 7 to 2,4,6,8.  
+"modulation->2" cross-fades from preset 1,2,5,6 to 3,4,7,8.  
+"modulation->3" cross-fades from preset 1,2,3,4 to 5,6,7,8.  
 
-By default, "modulation->1/2/3" are all 0, so you hear preset 1.
+By default, "modulation->1/2/3" are all 0, so you hear preset 1.  
 When you turn up "modulation->1", the settings morph to preset 2.
 
 ## building
@@ -43,7 +43,7 @@ faust2jack -t 0 -time -midi DigiDrie.dsp && ./DigiDrie
 
 ```
 
-It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.
+It's quite a long compile for a single faust program, +/- 7 minutes on my hardware.  
 The compiler is not hanging!  ;)
 
 To look at a block diagram:
@@ -52,7 +52,7 @@ To look at a block diagram:
 faust -lang ocpp -t 0 -time -svg -f 1 DigiDiagram.dsp -o -drf  /dev/null && xdg-open DigiDiagram-svg/process.svg
 ```
 
-The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.
+The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.  
 It increases the size of the diagram a lot, and doesn't help to clarify the actual synth.
 
 
