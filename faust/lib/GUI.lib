@@ -44,7 +44,7 @@ filterTabsGroup(x) = tgroup("mix/tweak",x);
 filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
 filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
 
-moogGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]moog", x)));
+svfGroup(x)     = filterMixerGroup(preFilterGroup(hgroup("[0]SVF", x)));
 ms20Group(x)     = filterMixerGroup(preFilterGroup(hgroup("[1]ms20", x)));
 oberheimGroup(x) = filterMixerGroup(preFilterGroup(hgroup("[2]oberheim", x)));
 normFreqGroup(x) = filterTweakGroup(preFilterGroup(hgroup("[3]freq", x)));
@@ -81,7 +81,7 @@ ab_cdGroup(x) = vectorGroup(hgroup("ab-cd",x));
 masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
 portamento       = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
 freefloat        = globalGroup(checkbox("free float osc[scale:int]"));
-portamentoSwitch = globalGroup(vslider("porta off/auto/on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
+portamentoSwitch = globalGroup(vslider("porta off-auto-on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
 
 ac_bd_slider = hslider("ac-bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
@@ -98,7 +98,8 @@ oscillatorIndex = hslider("[2]index[style:knob]", 0, 0, 1, stepsize);// an osc h
 oscillatorRes   = hslider("[2]res[style:knob]", 0, 0, 64, stepsize);// an osc has either index or res never both so same [number] is OK
 oct             = hslider("[3]octave[style:knob]", 0, minOct, maxOct, stepsize);
 
-type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
+// type = vslider("type[scale:int][style:menu{'Sine':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8;'Sine-Noise':9}]", 2, 0, 9, 1);
+type = vslider("type[scale:int][style:menu{'Sine-Noise':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1);
 
 fbAs = hslider("PM A[scale:log][style:knob]", 0, -20 , 20 , stepsize);
 fbBs = hslider("PM B[scale:log][style:knob]", 0, -20 , 20 , stepsize);
@@ -152,7 +153,7 @@ velocity(i) = VEL(i:max(-1):int) with {
 LPfreq = hslider("LPfreq[scale:log]", 24000, 20, 24000, 1);
 
 filterBPlevel = hslider("filterBPlevel[style:knob]", 1, 0, 1, stepsize);
-moogLevel     = hslider("level[style:knob]", 0, -1, 1, stepsize);
+svfLevel      = hslider("level[style:knob]", 0, -1, 1, stepsize);
 ms20level     = hslider("level[style:knob]", 0, -1, 1, stepsize);
 oberheimLevel = hslider("level[style:knob]", 0, -1, 1, stepsize);
 normFreq      = hslider("normFreq[style:knob]", 0, 0, 1, stepsize);
