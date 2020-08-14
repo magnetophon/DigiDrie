@@ -31,6 +31,22 @@ def get_item_by_label(items, label):
             return it
     return None
 
+def get_menu(item):
+    if "meta" not in item:
+        return None
+
+    style = None
+    for meta in item["meta"]:
+        if "style" in meta:
+            style = meta["style"]
+            break
+    if style is None:
+        return None
+
+    if "menu" not in style:
+        return None
+    return json.loads(style[4:].replace("'", '"').replace(";", ","))
+
 def get_nrmacro(ui_items):
     # TODO: Implement this.
     return 8
@@ -67,14 +83,17 @@ def get_osc_type(items: List):
     osc_types = {}
     for tp in types:
         key = Path(tp["address"]).parts[-2]
-        osc_types[key] = tp
+        osc_types[key] = {
+            "address": format_address(tp),
+            "menu": get_menu(tp),
+        }
 
     return osc_types
 
 def get_osc_items(ui_items, nrMacro):
     labels = ["filter", "A", "B", "C", "D"]
 
-    idents_filt = ["moog", "ms20", "oberheim", "normFreq", "Q"]
+    idents_filt = ["SVF", "ms20", "oberheim", "normFreq", "Q"]
     idents_osc = ["index", "octave", "phase", "PM_A", "PM_B", "PM_C", "PM_D"]
 
     osc_items = [get_item_by_label(ui_items, lbl) for lbl in labels]
@@ -188,10 +207,22 @@ def get_global_items(ui_items, nrMacro):
     # crossfade_items = arrange_items(crossfade_items, crossfade_idents)
 
     global_items = {}
+    global_menus = {}
+    global_checkboxes = {}
     for itm in items:
-        global_items[format_name(itm["label"])] = format_address(itm)
+        if itm["type"] == "checkbox":
+            global_checkboxes[format_name(itm["label"])] = format_address(itm)
+            continue
+        menu = get_menu(itm)
+        if menu is None:
+            global_items[format_name(itm["label"])] = format_address(itm)
+        else:
+            global_menus[format_name(itm["label"])] = {
+                "address": format_address(itm),
+                "menu": menu,
+            }
 
-    return global_items, crossfade_items
+    return global_items, global_menus, global_checkboxes, crossfade_items
 
 with open("DigiFaustMidi.dsp.json", "r", encoding="utf-8") as fi:
     data = json.load(fi)
@@ -206,7 +237,8 @@ osc_items, osc_type = get_osc_items(ui_items, nrMacro)
 envelope_items = get_envelope_items(ui_items)
 lfo_items = get_lfo_items(ui_items)
 modulation_axes, modulation_items = get_modulation_items(ui_items)
-global_items, crossfade_items = get_global_items(ui_items, nrMacro)
+global_items, global_menus, global_checkboxes, crossfade_items = get_global_items(
+    ui_items, nrMacro)
 
 # debug
 formatted = {
@@ -215,6 +247,8 @@ formatted = {
     "osc_type": osc_type,
     "crossfade_items": crossfade_items,
     "global_items": global_items,
+    "global_menus": global_menus,
+    "global_checkboxes": global_checkboxes,
     "envelope_items": envelope_items,
     "lfo_items": lfo_items,
     "modulation_items": modulation_items,
@@ -230,6 +264,9 @@ text = template.render(
     osc_items=osc_items,
     osc_type=osc_type,
     crossfade_items=crossfade_items,
+    global_items=global_items,
+    global_menus=global_menus,
+    global_checkboxes=global_checkboxes,
     envelope_items=envelope_items,
     lfo_items=lfo_items,
     modulation_items=modulation_items,

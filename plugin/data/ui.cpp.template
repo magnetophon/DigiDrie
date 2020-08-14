@@ -26,8 +26,9 @@ constexpr float spreadKnobWidth = 20.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
 
-constexpr float sectionHeight = labelY + spreadKnobWidth + knobY;
-constexpr float innerWidth = 1200;
+constexpr float sectionHeight = labelY + knobY;
+constexpr float knobPairWidth = knobX + spreadKnobWidth;
+constexpr float innerWidth = 1400;
 constexpr float innerHeight = 700;
 
 constexpr uint32_t defaultWidth = uint32_t(2 * uiMargin + innerWidth);
@@ -79,10 +80,9 @@ public:
     const auto top0 = 20.0f;
     const auto left0 = 20.0f;
 
-    // TabView test.
     const auto tabTop0 = top0;
     const auto tabLeft0 = left0;
-    const auto macrotabInnerWidth = 8 * knobX;
+    const auto macrotabInnerWidth = 8 * knobPairWidth;
     const auto macrotabWidth = macrotabInnerWidth + 2 * uiMargin;
     const auto macrotabHeight = innerHeight;
     std::vector<std::string> macroTabs = {
@@ -97,35 +97,61 @@ public:
     const auto macrotabInsideTop0 = tabTop0 + labelY + uiMargin;
     const auto macrotabInsideLeft0 = tabLeft0 + uiMargin;
 
+    {# Macro tabs. -#}
     {% for macro, sections in osc_items.items() -%}
     {% for sctn, controls in sections.items() -%}
     const auto {{ macro }}_{{ sctn }}_top0 = macrotabInsideTop0 + {{ loop.index0 }} * sectionHeight;
     const auto {{ macro }}_{{ sctn }}_top1 = {{ macro }}_{{ sctn }}_top0 + labelY;
-    const auto {{ macro }}_{{ sctn }}_top2 = {{ macro }}_{{ sctn }}_top1 + spreadKnobWidth;
     tabviewMacro->addWidget({{ macro }},
       addGroupLabel(macrotabInsideLeft0, {{ macro }}_{{ sctn }}_top0, macrotabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::{{ addr["L-R_offset"] }}));
     {% if ctrl == "octave" -%}
     tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addNumberKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top2,
+      addNumberKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, {{ macro }}_{{ sctn }}_top1,
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr["main"] }}, Scales::octave));
     {%- else -%}
     tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobX, {{ macro }}_{{ sctn }}_top2,
+      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, {{ macro }}_{{ sctn }}_top1,
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr["main"] }}));
     {%- endif %}
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
+      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, {{ macro }}_{{ sctn }}_top1,
+        spreadKnobWidth + 10, margin, uiTextSize,
+        "", ID::{{ addr["L-R_offset"] }}));
     {% endfor %}
     {% endfor %}
     {% endfor -%}
 
+    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight + labelY;
+    {% for macro, controls in crossfade_items.items() -%}
+    {% for ctrl, addr in controls.items() -%}
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
+      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, abcd_crossfade_top0,
+        knobWidth, margin, uiTextSize,
+        "{{ ctrl }}", ID::{{ addr["main"] }}));
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
+      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
+        spreadKnobWidth + 10, margin, uiTextSize,
+        "", ID::{{ addr["L-R_offset"] }}));
+    {% endfor %}
+    {% endfor -%}
+
     tabviewMacro->refreshTab();
+
+    {% for label, ctrl in osc_type.items() -%}
+    std::vector<std::string> osc_type_{{ label }}_options = {
+      {% for menu in ctrl["menu"].keys() -%}
+      "{{ menu }}",
+      {% endfor %}
+    };
+    addOptionMenu(
+      macrotabInsideLeft0, macrotabInsideTop0 + {{ loop.index }} * sectionHeight,
+      2 * knobX, labelHeight, uiTextSize,
+      ID::{{ ctrl["address"] }}, osc_type_{{ label }}_options);
+    {% endfor -%}
 
     {# TODO: osc_type #}
 
@@ -146,17 +172,47 @@ public:
     const auto globaltabInsideTop0 = tabTop0 + labelY + uiMargin;
     const auto globaltabInsideLeft0 = tabLeft1 + uiMargin;
 
+    {# Global tab. -#}
+    const auto global_top0 = globaltabInsideTop0;
+    const auto global_top1 = global_top0 + labelY;
+    const auto global_top2 = global_top1 + knobY;
+    const auto global_left1 = globaltabInsideLeft0 + 2 * knobX;
+    {% for ctrl, addr in global_items.items() -%}
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * 2 * knobX, global_top1,
+        knobWidth, margin, uiTextSize,
+        "{{ ctrl }}", ID::{{ addr }}));
+    {% endfor %}
+    {% for label, ctrl in global_menus.items() -%}
+    std::vector<std::string> {{ label }}_options = {
+      {% for menu in ctrl["menu"].keys() -%}
+      "{{ menu }}",
+      {% endfor %}
+    };
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addOptionMenu(
+        globaltabInsideLeft0, global_top2 + {{ loop.index0 }} * labelY,
+        knobX, labelHeight, uiTextSize,
+        ID::{{ ctrl["address"] }}, {{ label }}_options));
+    {% endfor %}
+    {% for label, addr in global_checkboxes.items() -%}
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addCheckbox(
+        global_left1, global_top2 + {{ loop.index0 }} * labelY,
+        2 * knobX, labelHeight, uiTextSize,
+        "{{ label }}", ID::{{ addr }}));
+    {% endfor %}
+
     {# Envelope tab. -#}
     {% for sctn, controls in envelope_items.items() -%}
     const auto {{ sctn }}_top0 = globaltabInsideTop0 + {{ loop.index0 }} * sectionHeight;
     const auto {{ sctn }}_top1 = {{ sctn }}_top0 + labelY;
-    const auto {{ sctn }}_top2 = {{ sctn }}_top1 + spreadKnobWidth;
     tabviewGlobal->addWidget(globaltabIndex::envelopes,
       addGroupLabel(globaltabInsideLeft0, {{ sctn }}_top0, globaltabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::envelopes,
-      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, {{ sctn }}_top2,
+      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, {{ sctn }}_top1,
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr }}));
     {% endfor %}
@@ -166,13 +222,12 @@ public:
     {% for sctn, controls in lfo_items.items() -%}
     const auto {{ sctn }}_top0 = globaltabInsideTop0 + {{ loop.index0 }} * sectionHeight;
     const auto {{ sctn }}_top1 = {{ sctn }}_top0 + labelY;
-    const auto {{ sctn }}_top2 = {{ sctn }}_top1 + spreadKnobWidth;
     tabviewGlobal->addWidget(globaltabIndex::LFOs,
       addGroupLabel(globaltabInsideLeft0, {{ sctn }}_top0, globaltabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::LFOs,
-      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, {{ sctn }}_top2,
+      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, {{ sctn }}_top1,
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr }}));
     {% endfor %}
@@ -190,13 +245,12 @@ public:
     {% for sctn, controls in modulation_items.items() -%}
     const auto mod{{ sctn }}_top0 = modulationTop1 + {{ loop.index0 }} * sectionHeight;
     const auto mod{{ sctn }}_top1 = mod{{ sctn }}_top0 + labelY;
-    const auto mod{{ sctn }}_top2 = mod{{ sctn }}_top1 + spreadKnobWidth;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod{{ sctn }}_top0, globaltabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, mod{{ sctn }}_top2,
+      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, mod{{ sctn }}_top1,
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr }}));
     {% endfor %}
