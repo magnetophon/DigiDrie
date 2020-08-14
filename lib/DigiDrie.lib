@@ -77,6 +77,8 @@ macroMod =
   )
   : fallbackMixer(nrEnvelopes+nrLFOs,1,1): hbargraph("mix", 0, 1);
 
+random(gate) = no.noise:ba.SandH(gate:ba.impulsify);
+
 octaver(fund,oscillator,params,oct) =
   (
     ((f0,params):oscillator)
@@ -129,6 +131,10 @@ octaveMultiplier =
 
 minOctMult = minOct:octaveMultiplier;
 
+
+bend(pitchWheel,negRange,posRange) = ba.semi2ratio(pitchWheel*range) with {
+  range = select2(pitchWheel>0,negRange*-1,posRange);
+};
 
 CZsynth =
   masterGateGain(lastNote) :

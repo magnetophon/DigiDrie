@@ -19,6 +19,7 @@ B(x)                  = tabs(hgroup("[101]B", x));
 C(x)                  = tabs(hgroup("[102]C", x));
 D(x)                  = tabs(hgroup("[103]D", x));
 
+
 sineGroup(x)          = tabs(hgroup("[210]sine", x));
 CZsawGroup(x)         = tabs(hgroup("[211]CZ saw", x));
 CZsquareGroup(x)      = tabs(hgroup("[212]CZ square", x));
@@ -35,6 +36,8 @@ lfoGroup(i,x)         = tabs(vgroup("[301]LFOs", hgroup("lfo %i", x)));
 macroGroup(i,x)       = tabs(vgroup("[302]modulation", hgroup("%i", x)));
 
 midiGroup(x)          = tabs(hgroup("[999]midi", x));
+
+switchesGroup(x) = globalGroup(vgroup("[0]", x));
 
 mainGroup(x)          = stereoGroup(vgroup("[0]main", x));
 offsetGroup(x)        = stereoGroup(vgroup("[1]L-R offset", x));
@@ -78,10 +81,14 @@ ac_bdGroup(x) = vectorGroup(hgroup("ac-bd",x));
 ab_cdGroup(x) = vectorGroup(hgroup("ab-cd",x));
 
 //sliders//////////////////////////////////////////////////////////////////////
-masterPhase      = globalGroup(vslider("masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
-portamento       = globalGroup(vslider("portamento[scale:log]", 0, 0, 1, stepsize));
-freefloat        = globalGroup(checkbox("free float osc[scale:int]"));
-portamentoSwitch = globalGroup(vslider("porta off-auto-on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
+
+freefloat        = switchesGroup(checkbox("[0]free float osc[scale:int]"));
+posRange         = switchesGroup(nentry("[1]positive bend range[scale:int]", 12, 0, 127, 1));
+negRange         = switchesGroup(nentry("[2]negative bend range[scale:int]", -12, -127, 0, 1));
+portamentoSwitch = switchesGroup(nentry("[3]porta off-auto-on[scale:int][style:menu{'off':0;'auto':1;'on':2}]", 1, 0, 2, 1));
+portamento       = globalGroup(vslider("[1]portamento[scale:log]", 0, 0, 1, stepsize));
+masterPhase      = globalGroup(vslider("[1]masterPhase", 0, -1, 1, stepsize) :new_smooth(0.999));
+
 
 ac_bd_slider = hslider("ac-bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
@@ -90,6 +97,8 @@ cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
 
 ac_bd = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
 cb_cd = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
+
+
 
 
 oscillatorLevel = hslider("[0]Level[style:knob]", 0, -1, 1, stepsize);
@@ -147,6 +156,11 @@ velocity(i) = VEL(i:max(-1):int) with {
   tabNr(i) = (i/nrTabs):floor;
   nrTabs = int((nrNotes+1)/32)+1;
 };
+
+// afterTouch(note) = midiGroup(hslider("Channel Aftertouch [midi:chanpress %note]", 0, 0, 127, 1) )/127;
+afterTouch = midiGroup(hslider("Channel Aftertouch [midi:chanpress 12][scale:int]", 0, 0, 127, 1) )/127;
+modWheel = midiGroup(vslider("Mod Wheel [midi:ctrl 1][scale:int]", 0, 0, 127, 1) )/127;
+pitchWheel = midiGroup(vslider("Pitchwheel Value IN  [midi:pitchwheel][scale:int]", 0, -8192, 8191, 1))/8192;
 
 
 // pre-filter /////////////////////////////////////////////////////////////////
