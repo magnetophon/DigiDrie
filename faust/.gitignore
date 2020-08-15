@@ -7,3 +7,13 @@
 
 faust.*
 benchmark/**/*.lv2
+
+# Files related to C++ code generation.
+DigiDrie.cpp
+DigiDrie.hpp
+DigiDrie.dsp.json
+DigiDrie.dsp.xml
+DigiFaustMidi.cpp
+DigiFaustMidi.hpp
+DigiFaustMidi.dsp.json
+DigiFaustMidi.dsp.xml
