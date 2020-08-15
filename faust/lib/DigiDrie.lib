@@ -132,10 +132,10 @@ with {
   octaveSwitcher(oct) = _*(octaveMultiplier(oct)/minOctMult)%1;
 };
 
-octaverFilter_No_Osc(fund,phase,svfLevel,ms20level,oberheimLevel,normFreq,Q,oct,FB) =
+octaverFilter_No_Osc(fund,phase,svfLpLevel,svfHpLevel,ms20level,oberheimLevel,normFreq,Q,oct,FB) =
   (
-    (f0:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q))
-  , (f1:preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q))
+    (f0:preFilter(svfLpLevel,svfHpLevel,ms20level,oberheimLevel,normFreq,Q))
+  , (f1:preFilter(svfLpLevel,svfHpLevel,ms20level,oberheimLevel,normFreq,Q))
   , (oct:abs%1)
   )
 with {
@@ -372,7 +372,8 @@ preFilterOctG(group,i,fund,gate,gain,note,FB) =
 // -1 = .125
 
 oscPreFilterParams(group,i,gate,gain,note) =
-  modMixer(group,svfGroup,i,svfLevel,gate,gain,note)
+  modMixer(group,svfLpGroup,i,svfLpLevel,gate,gain,note)
+, modMixer(group,svfHpGroup,i,svfHpLevel,gate,gain,note)
 , modMixer(group,ms20Group,i,ms20level,gate,gain,note)
 , modMixer(group,oberheimGroup,i,oberheimLevel,gate,gain,note)
 , (modMixer(group,normFreqGroup,i,normFreq,gate,gain,note):max(0):min(1))
@@ -447,15 +448,16 @@ with {
 
 offset(param,i) = mainGroup(param)+(offsetGroup(param) * select2(i,1,-1)) :new_smooth(0.999);
 
-preFilter(svfLevel,ms20level,oberheimLevel,normFreq,Q) =
+preFilter(svfLpLevel,svfHpLevel,ms20level,oberheimLevel,normFreq,Q) =
   _<:
   (
     _
-  , (svfLevel , svf.lp(freq,Q):enableIfVolume)
+  , (svfLpLevel , svf.lp(freq,Q):enableIfVolume)
+  , (svfHpLevel , svf.hp(freq,Q):enableIfVolume)
   , (ms20level , korg35LPF(freq,Q):enableIfVolume)
   , (oberheimLevel , oberheimLPFf(freq,Q):enableIfVolume)
   )
-  :fallbackMixer(3,1,1)
+  :fallbackMixer(4,1,1)
 with {
   freq = normFreq*127:ba.pianokey2hz
          :max(0)

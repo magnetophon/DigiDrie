@@ -47,11 +47,12 @@ filterTabsGroup(x) = tgroup("mix/tweak",x);
 filterMixerGroup(x) = filterTabsGroup(hgroup("mix",x));
 filterTweakGroup(x) = filterTabsGroup(hgroup("tweak",x));
 
-svfGroup(x)      = filterMixerGroup(hgroup("[0]SVF", x));
-ms20Group(x)     = filterMixerGroup(hgroup("[1]ms20", x));
-oberheimGroup(x) = filterMixerGroup(hgroup("[2]oberheim", x));
-normFreqGroup(x) = filterTweakGroup(hgroup("[3]freq", x));
-QGroup(x)        = filterTweakGroup(hgroup("[4] Q ", x));
+svfLpGroup(x)    = filterMixerGroup(hgroup("[0]SVF LP", x));
+svfHpGroup(x)    = filterMixerGroup(hgroup("[1]SVF HP", x));
+ms20Group(x)     = filterMixerGroup(hgroup("[2]ms20", x));
+oberheimGroup(x) = filterMixerGroup(hgroup("[3]oberheim", x));
+normFreqGroup(x) = filterTweakGroup(hgroup("[0]freq", x));
+QGroup(x)        = filterTweakGroup(hgroup("[1] Q ", x));
 
 oscTabsGroup(x) = tgroup("CZ/PM",x);
 oscCZgroup(x) = oscTabsGroup(hgroup("CZ",x));
@@ -175,7 +176,8 @@ pitchWheel = midiGroup(vslider("Pitchwheel Value IN  [midi:pitchwheel][scale:int
 LPfreq = hslider("LPfreq[scale:log]", 24000, 20, 24000, 1);
 
 filterBPlevel = hslider("filterBPlevel[style:knob]", 1, 0, 1, stepsize);
-svfLevel      = hslider("level[style:knob]", 0, -1, 1, stepsize);
+svfLpLevel    = hslider("level[style:knob]", 0, -1, 1, stepsize);
+svfHpLevel    = hslider("level[style:knob]", 0, -1, 1, stepsize);
 ms20level     = hslider("level[style:knob]", 0, -1, 1, stepsize);
 oberheimLevel = hslider("level[style:knob]", 0, -1, 1, stepsize);
 normFreq      = hslider("normFreq[style:knob]", 0, 0, 1, stepsize);
