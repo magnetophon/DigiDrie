@@ -36,6 +36,11 @@ When you turn up "modulation->1", the settings morph to preset 2.
 
 ## building
 
+``` shell
+git clone https://github.com/magnetophon/DigiDrie/
+cd DigiDrie/faust/
+```
+
 To get a jack standalone app:
 
 ``` shell
