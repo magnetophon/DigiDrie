@@ -452,11 +452,11 @@ preFilter(svfLpLevel,svfHpLevel,ms20level,oberheimLevel,normFreq,Q) =
   _<:
   (
     _
-  , (svfLpLevel , svf.lp(freq,Q):enableIfVolume)
-  , (svfHpLevel , svf.hp(freq,Q):enableIfVolume)
+  , (svfLpLevel , (svfF(freq,Q):(_,!)):enableIfVolume)
+  , (svfHpLevel , (svfF(freq,Q):(!,_)):enableIfVolume)
   , (ms20level , korg35LPF(freq,Q):enableIfVolume)
   , (oberheimLevel , oberheimLPFf(freq,Q):enableIfVolume)
-  )
+    )
   :fallbackMixer(4,1,1)
 with {
   freq = normFreq*127:ba.pianokey2hz
@@ -726,6 +726,22 @@ with {
 //                            from @idle on slack                            //
 //////////////////////////////////////////////////////////////////////////////
 
+svfF(F,Q) = tick ~ (_,_) : !,!,_,_,_ : mix
+with {
+  tick(ic1eq, ic2eq, v0) =
+    2*v1 - ic1eq,
+    2*v2 - ic2eq,
+    v0, v1, v2
+  with {
+  v1 = ic1eq + g *(v0-ic2eq) : /(1 + g*(g+k));
+  v2 = ic2eq + g * v1;
+};
+  g = tan(F * ma.PI / ma.SR);
+  k = 1/Q;
+  mix(s0, s1, s2) =
+    s2,               // lp
+    s0 - k * s1 - s2; // hp
+};
 
 svf = environment {
         svf(T,F,Q,G) = tick ~ (_,_) : !,!,_,_,_ : si.dot(3, mix)
