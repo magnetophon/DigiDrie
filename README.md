@@ -18,7 +18,7 @@ A monster monophonic synth, written in faust.
 - the number of envelopes, lfos can be easily changed at compile time
 
 
-Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3) [demo's](https://raw.githubusercontent.com/magnetophon/DigiDrie/master/various/digiDrie_III.mp3).
+Here are two short [audio](https://magnetophon.nl/sounds/magnetophon/digiDrie.mp3) [demo's](https://raw.githubusercontent.com/magnetophon/DigiDrie/master/faust/various/digiDrie_III.mp3).
 
 
 ## macros
