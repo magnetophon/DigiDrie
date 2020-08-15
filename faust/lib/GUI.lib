@@ -92,8 +92,8 @@ masterPhase      = globalGroup(vslider("[1]masterPhase", 0, -1, 1, stepsize) :ne
 
 ac_bd_slider = hslider("ac-bd[style:knob]", 0, 0, 1, stepsize);
 ab_cd_slider = hslider("ab-cd[style:knob]", 0, 0, 1, stepsize);
-ab(i,gate,gain) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
-cd(i,gate,gain) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
+ab(i,gate,gain,note) = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain,note);
+cd(i,gate,gain,note) = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain,note);
 
 ac_bd = modMixer(globalGroup,ac_bdGroup,i,ac_bd_slider,gate,gain);
 cb_cd = modMixer(globalGroup,ab_cdGroup,i,ab_cd_slider,gate,gain);
@@ -129,13 +129,21 @@ envMeter(i) = envelopeGroup(i,hbargraph("[5]envelope %i", 0, 1));
 lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
 lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", -1, 1));
 
-macroSlider = hslider("[0]macro", 0, 0, 1, stepsize);
-macroEnvelopeLevel(i) = hgroup("env", hslider("%i[style:knob]", 0, 0, 1, stepsize));
-macroLFOlevel(i) = hgroup("lfo", hslider("%i[style:knob]", 0, 0, 1, stepsize));
+macroSlider           = hslider("[00]macro[style:knob]", 0, 0, 1, stepsize);
+macroUp               = hslider("[01]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);
+macroDown             = hslider("[02]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);
+curveSlider           = hslider("[03]curve[style:knob]", 0, -10, 10, stepsize);
+macroEnvelopeLevel(i) =  hgroup("[04]env", hslider("%i[style:knob]", 0, -1, 1, stepsize));
+macroLFOlevel(i)      =  hgroup("[05]lfo", hslider("%i[style:knob]", 0, -1, 1, stepsize));
 
-macroUp     = hslider("[1]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);
-macroDown   = hslider("[2]down time[style:knob]", defaultRelease, 0, maxRelease, stepsize);
-curveSlider = hslider("[3]curve[style:knob]", 0, -10, 10, stepsize);
+afterTouchLevel       = hslider("[06]after-touch[style:knob]", 0, -1, 1, stepsize);
+noteLevel             = hslider("[07]note[style:knob]", 0, -1, 1, stepsize);
+velocityLevel         = hslider("[08]velocity[style:knob]", 0, -1, 1, stepsize);
+modWheelLevel         = hslider("[09]mod-wheel[style:knob]", 0, -1, 1, stepsize);
+pitchWheelLevel       = hslider("[10]pitch-wheel[style:knob]", 0, -1, 1, stepsize);
+randomLevel           = hslider("[11]random[style:knob]", 0, -1, 1, stepsize);
+
+
 
 mapping(x) =
   x;
@@ -158,8 +166,8 @@ velocity(i) = VEL(i:max(-1):int) with {
 };
 
 // afterTouch(note) = midiGroup(hslider("Channel Aftertouch [midi:chanpress %note]", 0, 0, 127, 1) )/127;
-afterTouch = midiGroup(hslider("Channel Aftertouch [midi:chanpress 12][scale:int]", 0, 0, 127, 1) )/127;
-modWheel = midiGroup(vslider("Mod Wheel [midi:ctrl 1][scale:int]", 0, 0, 127, 1) )/127;
+afterTouch = midiGroup(vslider("Channel Aftertouch [midi:chanpress 12][scale:int]", 0, 0, 127, 1) )/127;
+modWheel   = midiGroup(vslider("Mod Wheel [midi:ctrl 1][scale:int]", 0, 0, 127, 1) )/127;
 pitchWheel = midiGroup(vslider("Pitchwheel Value IN  [midi:pitchwheel][scale:int]", 0, -8192, 8191, 1))/8192;
 
 
