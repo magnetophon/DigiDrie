@@ -68,10 +68,15 @@ It increases the size of the diagram a lot, and doesn't help to clarify the actu
 This is work in progress. Plugin won't work properly for now.
 
 ```bash
-git clone https://github.com/magnetophon/DigiDrie/
+git clone --recursive https://github.com/magnetophon/DigiDrie/
+
+# Run following command if you forget to add `--recursive`,
+# or update from already cloned repo:
+cd DigiDrie
+git submodule update --init --recursive
 
 # Generate json.
-cd DigiDrie/faust/
+cd faust/
 faust -t 0 -time -json DigiFaustMidi.dsp
 cp DigiFaustMidi.dsp.json ../plugin/data/
 
