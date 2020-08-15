@@ -1,0 +1,11 @@
+--- ../lib/DPF/distrho/DistrhoPlugin.hpp	2020-03-05 17:42:18.787907000 +0900
++++ DistrhoPlugin.hpp	2020-07-31 09:32:56.757854802 +0900
+@@ -567,7 +567,7 @@
+           Should always be >= 0 and < @a ticksPerBeat.@n
+           The first tick is tick '0'.
+         */
+-        int32_t tick;
++        double tick;
+ 
+        /**
+           Number of ticks that have elapsed between frame 0 and the first beat of the current measure.

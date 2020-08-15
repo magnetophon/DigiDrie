@@ -1,0 +1,11 @@
+--- ../lib/DPF/distrho/src/DistrhoPluginVST.cpp	2020-03-05 17:42:18.897907000 +0900
++++ DistrhoPluginVST.cpp	2020-07-31 09:35:37.119538294 +0900
+@@ -990,7 +990,7 @@
+ 
+                 fTimePosition.bbt.bar         = static_cast<int32_t>(ppqPos) / ppqPerBar + 1;
+                 fTimePosition.bbt.beat        = static_cast<int32_t>(barBeats - rest + 0.5) + 1;
+-                fTimePosition.bbt.tick        = static_cast<int32_t>(rest * fTimePosition.bbt.ticksPerBeat + 0.5);
++                fTimePosition.bbt.tick        = rest * fTimePosition.bbt.ticksPerBeat;
+                 fTimePosition.bbt.beatsPerBar = vstTimeInfo->timeSigNumerator;
+                 fTimePosition.bbt.beatType    = vstTimeInfo->timeSigDenominator;
+ 

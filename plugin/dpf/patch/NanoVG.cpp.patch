@@ -1,0 +1,12 @@
+--- ../lib/DPF/dgl/src/NanoVG.cpp	2020-07-31 09:47:15.667189767 +0900
++++ NanoVG.cpp	2020-03-05 18:14:27.275788000 +0900
+@@ -981,7 +981,8 @@
+     for (std::vector<NanoWidget*>::iterator it = nData->subWidgets.begin(); it != nData->subWidgets.end(); ++it)
+     {
+         NanoWidget* const widget(*it);
+-        widget->onNanoDisplay();
++        if (widget->isVisible())
++            widget->onNanoDisplay();
+     }
+ 
+     NanoVG::endFrame();

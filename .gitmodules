@@ -1,0 +1,6 @@
+[submodule "plugin/dpf/lib/vcl"]
+	path = plugin/dpf/lib/vcl
+	url = https://github.com/vectorclass/version2
+[submodule "plugin/dpf/lib/DPF"]
+	path = plugin/dpf/lib/DPF
+	url = https://github.com/DISTRHO/DPF
