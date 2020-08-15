@@ -1,0 +1,10 @@
+data/test.json
+data/DigiFaustMidi.dsp.json
+data/parameter_group_info.json
+data/label_group.json
+data/parameter.cpp
+data/parameter.hpp
+data/ui.cpp
+
+dpf/bin
+dpf/build

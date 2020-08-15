@@ -1,0 +1,20 @@
+--- ../lib/DPF/distrho/src/DistrhoPluginLV2.cpp	2020-07-31 09:34:20.358689547 +0900
++++ DistrhoPluginLV2.cpp	2020-07-31 09:34:53.033625168 +0900
+@@ -428,7 +428,7 @@
+                     {
+                         const double rest = std::fmod(fLastPositionData.barBeat, 1.0f);
+                         fTimePosition.bbt.beat = std::round(fLastPositionData.barBeat-rest+1.0);
+-                        fTimePosition.bbt.tick = rest*fTimePosition.bbt.ticksPerBeat+0.5;
++                        fTimePosition.bbt.tick = rest*fTimePosition.bbt.ticksPerBeat;
+                     }
+                 }
+ 
+@@ -614,7 +614,7 @@
+ 
+                         const double rest = std::fmod(fLastPositionData.barBeat, 1.0f);
+                         fTimePosition.bbt.beat = std::round(fLastPositionData.barBeat-rest+1.0);
+-                        fTimePosition.bbt.tick = rest*fTimePosition.bbt.ticksPerBeat+0.5;
++                        fTimePosition.bbt.tick = rest*fTimePosition.bbt.ticksPerBeat;
+ 
+                         if (fLastPositionData.bar >= 0)
+                         {
