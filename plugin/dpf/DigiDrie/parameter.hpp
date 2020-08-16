@@ -62,576 +62,567 @@ enum ID {
   globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd,
   globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd,
   globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd,
-  filterStereoMainMixTweakMixSvfMacro1_4Macro1Level,
-  filterStereoMainMixTweakMixSvfMacro1_4Macro2Level,
-  filterStereoMainMixTweakMixSvfMacro1_4Macro3Level,
-  filterStereoMainMixTweakMixSvfMacro1_4Macro4Level,
-  filterStereoMainMixTweakMixSvfMacro5_8Macro5Level,
-  filterStereoMainMixTweakMixSvfMacro5_8Macro6Level,
-  filterStereoMainMixTweakMixSvfMacro5_8Macro7Level,
-  filterStereoMainMixTweakMixSvfMacro5_8Macro8Level,
-  filterStereoMainMixTweakMixMs20Macro1_4Macro1Level,
-  filterStereoMainMixTweakMixMs20Macro1_4Macro2Level,
-  filterStereoMainMixTweakMixMs20Macro1_4Macro3Level,
-  filterStereoMainMixTweakMixMs20Macro1_4Macro4Level,
-  filterStereoMainMixTweakMixMs20Macro5_8Macro5Level,
-  filterStereoMainMixTweakMixMs20Macro5_8Macro6Level,
-  filterStereoMainMixTweakMixMs20Macro5_8Macro7Level,
-  filterStereoMainMixTweakMixMs20Macro5_8Macro8Level,
-  filterStereoMainMixTweakMixOberheimMacro1_4Macro1Level,
-  filterStereoMainMixTweakMixOberheimMacro1_4Macro2Level,
-  filterStereoMainMixTweakMixOberheimMacro1_4Macro3Level,
-  filterStereoMainMixTweakMixOberheimMacro1_4Macro4Level,
-  filterStereoMainMixTweakMixOberheimMacro5_8Macro5Level,
-  filterStereoMainMixTweakMixOberheimMacro5_8Macro6Level,
-  filterStereoMainMixTweakMixOberheimMacro5_8Macro7Level,
-  filterStereoMainMixTweakMixOberheimMacro5_8Macro8Level,
-  filterStereoMainMixTweakTweakFreqMacro1_4Macro1Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro1_4Macro2Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro1_4Macro3Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro1_4Macro4Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro5_8Macro5Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro5_8Macro6Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro5_8Macro7Normfreq,
-  filterStereoMainMixTweakTweakFreqMacro5_8Macro8Normfreq,
-  filterStereoMainMixTweakTweakQMacro1_4Macro1Q,
-  filterStereoMainMixTweakTweakQMacro1_4Macro2Q,
-  filterStereoMainMixTweakTweakQMacro1_4Macro3Q,
-  filterStereoMainMixTweakTweakQMacro1_4Macro4Q,
-  filterStereoMainMixTweakTweakQMacro5_8Macro5Q,
-  filterStereoMainMixTweakTweakQMacro5_8Macro6Q,
-  filterStereoMainMixTweakTweakQMacro5_8Macro7Q,
-  filterStereoMainMixTweakTweakQMacro5_8Macro8Q,
-  filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro1Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro2Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro3Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro4Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro5Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro6Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro7Level,
-  filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro8Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro1Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro2Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro3Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro4Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro5Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro6Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro7Level,
-  filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro8Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro1Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro2Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro3Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro4Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro5Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro6Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro7Level,
-  filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro8Level,
-  filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro1Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro2Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro3Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro4Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro5Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro6Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro7Normfreq,
-  filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro8Normfreq,
-  filterStereoL_roffsetMixTweakTweakQMacro1_4Macro1Q,
-  filterStereoL_roffsetMixTweakTweakQMacro1_4Macro2Q,
-  filterStereoL_roffsetMixTweakTweakQMacro1_4Macro3Q,
-  filterStereoL_roffsetMixTweakTweakQMacro1_4Macro4Q,
-  filterStereoL_roffsetMixTweakTweakQMacro5_8Macro5Q,
-  filterStereoL_roffsetMixTweakTweakQMacro5_8Macro6Q,
-  filterStereoL_roffsetMixTweakTweakQMacro5_8Macro7Q,
-  filterStereoL_roffsetMixTweakTweakQMacro5_8Macro8Q,
-  aStereoMainCzPmCzIndexMacro1_4Macro1Index,
-  aStereoMainCzPmCzIndexMacro1_4Macro2Index,
-  aStereoMainCzPmCzIndexMacro1_4Macro3Index,
-  aStereoMainCzPmCzIndexMacro1_4Macro4Index,
-  aStereoMainCzPmCzIndexMacro5_8Macro5Index,
-  aStereoMainCzPmCzIndexMacro5_8Macro6Index,
-  aStereoMainCzPmCzIndexMacro5_8Macro7Index,
-  aStereoMainCzPmCzIndexMacro5_8Macro8Index,
-  aStereoMainCzPmCzOctaveMacro1_4Macro1Octave,
-  aStereoMainCzPmCzOctaveMacro1_4Macro2Octave,
-  aStereoMainCzPmCzOctaveMacro1_4Macro3Octave,
-  aStereoMainCzPmCzOctaveMacro1_4Macro4Octave,
-  aStereoMainCzPmCzOctaveMacro5_8Macro5Octave,
-  aStereoMainCzPmCzOctaveMacro5_8Macro6Octave,
-  aStereoMainCzPmCzOctaveMacro5_8Macro7Octave,
-  aStereoMainCzPmCzOctaveMacro5_8Macro8Octave,
-  aStereoMainCzPmCzPhaseMacro1_4Macro1Phase,
-  aStereoMainCzPmCzPhaseMacro1_4Macro2Phase,
-  aStereoMainCzPmCzPhaseMacro1_4Macro3Phase,
-  aStereoMainCzPmCzPhaseMacro1_4Macro4Phase,
-  aStereoMainCzPmCzPhaseMacro5_8Macro5Phase,
-  aStereoMainCzPmCzPhaseMacro5_8Macro6Phase,
-  aStereoMainCzPmCzPhaseMacro5_8Macro7Phase,
-  aStereoMainCzPmCzPhaseMacro5_8Macro8Phase,
-  aStereoMainCzPmPmPmaMacro1_4Macro1Pma,
-  aStereoMainCzPmPmPmaMacro1_4Macro2Pma,
-  aStereoMainCzPmPmPmaMacro1_4Macro3Pma,
-  aStereoMainCzPmPmPmaMacro1_4Macro4Pma,
-  aStereoMainCzPmPmPmaMacro5_8Macro5Pma,
-  aStereoMainCzPmPmPmaMacro5_8Macro6Pma,
-  aStereoMainCzPmPmPmaMacro5_8Macro7Pma,
-  aStereoMainCzPmPmPmaMacro5_8Macro8Pma,
-  aStereoMainCzPmPmPmbMacro1_4Macro1Pmb,
-  aStereoMainCzPmPmPmbMacro1_4Macro2Pmb,
-  aStereoMainCzPmPmPmbMacro1_4Macro3Pmb,
-  aStereoMainCzPmPmPmbMacro1_4Macro4Pmb,
-  aStereoMainCzPmPmPmbMacro5_8Macro5Pmb,
-  aStereoMainCzPmPmPmbMacro5_8Macro6Pmb,
-  aStereoMainCzPmPmPmbMacro5_8Macro7Pmb,
-  aStereoMainCzPmPmPmbMacro5_8Macro8Pmb,
-  aStereoMainCzPmPmPmcMacro1_4Macro1Pmc,
-  aStereoMainCzPmPmPmcMacro1_4Macro2Pmc,
-  aStereoMainCzPmPmPmcMacro1_4Macro3Pmc,
-  aStereoMainCzPmPmPmcMacro1_4Macro4Pmc,
-  aStereoMainCzPmPmPmcMacro5_8Macro5Pmc,
-  aStereoMainCzPmPmPmcMacro5_8Macro6Pmc,
-  aStereoMainCzPmPmPmcMacro5_8Macro7Pmc,
-  aStereoMainCzPmPmPmcMacro5_8Macro8Pmc,
-  aStereoMainCzPmPmPmdMacro1_4Macro1Pmd,
-  aStereoMainCzPmPmPmdMacro1_4Macro2Pmd,
-  aStereoMainCzPmPmPmdMacro1_4Macro3Pmd,
-  aStereoMainCzPmPmPmdMacro1_4Macro4Pmd,
-  aStereoMainCzPmPmPmdMacro5_8Macro5Pmd,
-  aStereoMainCzPmPmPmdMacro5_8Macro6Pmd,
-  aStereoMainCzPmPmPmdMacro5_8Macro7Pmd,
-  aStereoMainCzPmPmPmdMacro5_8Macro8Pmd,
-  aStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index,
-  aStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index,
-  aStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index,
-  aStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index,
-  aStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index,
-  aStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index,
-  aStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index,
-  aStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index,
-  aStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave,
-  aStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave,
-  aStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase,
-  aStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase,
-  aStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma,
-  aStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma,
-  aStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma,
-  aStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma,
-  aStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma,
-  aStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma,
-  aStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma,
-  aStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma,
-  aStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb,
-  aStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb,
-  aStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc,
-  aStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc,
-  aStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd,
-  aStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd,
+  filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level,
+  filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level,
+  filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level,
+  filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level,
+  filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level,
+  filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level,
+  filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level,
+  filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level,
+  filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level,
+  filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level,
+  filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level,
+  filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level,
+  filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level,
+  filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level,
+  filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level,
+  filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level,
+  filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level,
+  filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level,
+  filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level,
+  filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level,
+  filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level,
+  filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level,
+  filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level,
+  filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level,
+  filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq,
+  filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq,
+  filterStereoMainMix_tweakTweakQMacro1_4Macro1Q,
+  filterStereoMainMix_tweakTweakQMacro1_4Macro2Q,
+  filterStereoMainMix_tweakTweakQMacro1_4Macro3Q,
+  filterStereoMainMix_tweakTweakQMacro1_4Macro4Q,
+  filterStereoMainMix_tweakTweakQMacro5_8Macro5Q,
+  filterStereoMainMix_tweakTweakQMacro5_8Macro6Q,
+  filterStereoMainMix_tweakTweakQMacro5_8Macro7Q,
+  filterStereoMainMix_tweakTweakQMacro5_8Macro8Q,
+  filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level,
+  filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level,
+  filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level,
+  filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq,
+  filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq,
+  filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q,
+  filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q,
+  aStereoMainCz_pmCzIndexMacro1_4Macro1Index,
+  aStereoMainCz_pmCzIndexMacro1_4Macro2Index,
+  aStereoMainCz_pmCzIndexMacro1_4Macro3Index,
+  aStereoMainCz_pmCzIndexMacro1_4Macro4Index,
+  aStereoMainCz_pmCzIndexMacro5_8Macro5Index,
+  aStereoMainCz_pmCzIndexMacro5_8Macro6Index,
+  aStereoMainCz_pmCzIndexMacro5_8Macro7Index,
+  aStereoMainCz_pmCzIndexMacro5_8Macro8Index,
+  aStereoMainCz_pmCzOctaveMacro1_4Macro1Octave,
+  aStereoMainCz_pmCzOctaveMacro1_4Macro2Octave,
+  aStereoMainCz_pmCzOctaveMacro1_4Macro3Octave,
+  aStereoMainCz_pmCzOctaveMacro1_4Macro4Octave,
+  aStereoMainCz_pmCzOctaveMacro5_8Macro5Octave,
+  aStereoMainCz_pmCzOctaveMacro5_8Macro6Octave,
+  aStereoMainCz_pmCzOctaveMacro5_8Macro7Octave,
+  aStereoMainCz_pmCzOctaveMacro5_8Macro8Octave,
+  aStereoMainCz_pmCzPhaseMacro1_4Macro1Phase,
+  aStereoMainCz_pmCzPhaseMacro1_4Macro2Phase,
+  aStereoMainCz_pmCzPhaseMacro1_4Macro3Phase,
+  aStereoMainCz_pmCzPhaseMacro1_4Macro4Phase,
+  aStereoMainCz_pmCzPhaseMacro5_8Macro5Phase,
+  aStereoMainCz_pmCzPhaseMacro5_8Macro6Phase,
+  aStereoMainCz_pmCzPhaseMacro5_8Macro7Phase,
+  aStereoMainCz_pmCzPhaseMacro5_8Macro8Phase,
+  aStereoMainCz_pmPmPmaMacro1_4Macro1Pma,
+  aStereoMainCz_pmPmPmaMacro1_4Macro2Pma,
+  aStereoMainCz_pmPmPmaMacro1_4Macro3Pma,
+  aStereoMainCz_pmPmPmaMacro1_4Macro4Pma,
+  aStereoMainCz_pmPmPmaMacro5_8Macro5Pma,
+  aStereoMainCz_pmPmPmaMacro5_8Macro6Pma,
+  aStereoMainCz_pmPmPmaMacro5_8Macro7Pma,
+  aStereoMainCz_pmPmPmaMacro5_8Macro8Pma,
+  aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb,
+  aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb,
+  aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb,
+  aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb,
+  aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb,
+  aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb,
+  aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb,
+  aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb,
+  aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc,
+  aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc,
+  aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc,
+  aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc,
+  aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc,
+  aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc,
+  aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc,
+  aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc,
+  aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd,
+  aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd,
+  aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd,
+  aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd,
+  aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd,
+  aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd,
+  aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd,
+  aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd,
+  aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index,
+  aStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index,
+  aStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index,
+  aStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index,
+  aStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index,
+  aStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index,
+  aStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index,
+  aStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index,
+  aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave,
+  aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave,
+  aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase,
+  aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase,
+  aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma,
+  aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma,
+  aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb,
+  aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb,
+  aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc,
+  aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc,
+  aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd,
+  aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd,
   aType,
-  bStereoMainCzPmCzIndexMacro1_4Macro1Index,
-  bStereoMainCzPmCzIndexMacro1_4Macro2Index,
-  bStereoMainCzPmCzIndexMacro1_4Macro3Index,
-  bStereoMainCzPmCzIndexMacro1_4Macro4Index,
-  bStereoMainCzPmCzIndexMacro5_8Macro5Index,
-  bStereoMainCzPmCzIndexMacro5_8Macro6Index,
-  bStereoMainCzPmCzIndexMacro5_8Macro7Index,
-  bStereoMainCzPmCzIndexMacro5_8Macro8Index,
-  bStereoMainCzPmCzOctaveMacro1_4Macro1Octave,
-  bStereoMainCzPmCzOctaveMacro1_4Macro2Octave,
-  bStereoMainCzPmCzOctaveMacro1_4Macro3Octave,
-  bStereoMainCzPmCzOctaveMacro1_4Macro4Octave,
-  bStereoMainCzPmCzOctaveMacro5_8Macro5Octave,
-  bStereoMainCzPmCzOctaveMacro5_8Macro6Octave,
-  bStereoMainCzPmCzOctaveMacro5_8Macro7Octave,
-  bStereoMainCzPmCzOctaveMacro5_8Macro8Octave,
-  bStereoMainCzPmCzPhaseMacro1_4Macro1Phase,
-  bStereoMainCzPmCzPhaseMacro1_4Macro2Phase,
-  bStereoMainCzPmCzPhaseMacro1_4Macro3Phase,
-  bStereoMainCzPmCzPhaseMacro1_4Macro4Phase,
-  bStereoMainCzPmCzPhaseMacro5_8Macro5Phase,
-  bStereoMainCzPmCzPhaseMacro5_8Macro6Phase,
-  bStereoMainCzPmCzPhaseMacro5_8Macro7Phase,
-  bStereoMainCzPmCzPhaseMacro5_8Macro8Phase,
-  bStereoMainCzPmPmPmaMacro1_4Macro1Pma,
-  bStereoMainCzPmPmPmaMacro1_4Macro2Pma,
-  bStereoMainCzPmPmPmaMacro1_4Macro3Pma,
-  bStereoMainCzPmPmPmaMacro1_4Macro4Pma,
-  bStereoMainCzPmPmPmaMacro5_8Macro5Pma,
-  bStereoMainCzPmPmPmaMacro5_8Macro6Pma,
-  bStereoMainCzPmPmPmaMacro5_8Macro7Pma,
-  bStereoMainCzPmPmPmaMacro5_8Macro8Pma,
-  bStereoMainCzPmPmPmbMacro1_4Macro1Pmb,
-  bStereoMainCzPmPmPmbMacro1_4Macro2Pmb,
-  bStereoMainCzPmPmPmbMacro1_4Macro3Pmb,
-  bStereoMainCzPmPmPmbMacro1_4Macro4Pmb,
-  bStereoMainCzPmPmPmbMacro5_8Macro5Pmb,
-  bStereoMainCzPmPmPmbMacro5_8Macro6Pmb,
-  bStereoMainCzPmPmPmbMacro5_8Macro7Pmb,
-  bStereoMainCzPmPmPmbMacro5_8Macro8Pmb,
-  bStereoMainCzPmPmPmcMacro1_4Macro1Pmc,
-  bStereoMainCzPmPmPmcMacro1_4Macro2Pmc,
-  bStereoMainCzPmPmPmcMacro1_4Macro3Pmc,
-  bStereoMainCzPmPmPmcMacro1_4Macro4Pmc,
-  bStereoMainCzPmPmPmcMacro5_8Macro5Pmc,
-  bStereoMainCzPmPmPmcMacro5_8Macro6Pmc,
-  bStereoMainCzPmPmPmcMacro5_8Macro7Pmc,
-  bStereoMainCzPmPmPmcMacro5_8Macro8Pmc,
-  bStereoMainCzPmPmPmdMacro1_4Macro1Pmd,
-  bStereoMainCzPmPmPmdMacro1_4Macro2Pmd,
-  bStereoMainCzPmPmPmdMacro1_4Macro3Pmd,
-  bStereoMainCzPmPmPmdMacro1_4Macro4Pmd,
-  bStereoMainCzPmPmPmdMacro5_8Macro5Pmd,
-  bStereoMainCzPmPmPmdMacro5_8Macro6Pmd,
-  bStereoMainCzPmPmPmdMacro5_8Macro7Pmd,
-  bStereoMainCzPmPmPmdMacro5_8Macro8Pmd,
-  bStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index,
-  bStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index,
-  bStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index,
-  bStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index,
-  bStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index,
-  bStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index,
-  bStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index,
-  bStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index,
-  bStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave,
-  bStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave,
-  bStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase,
-  bStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase,
-  bStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma,
-  bStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma,
-  bStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma,
-  bStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma,
-  bStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma,
-  bStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma,
-  bStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma,
-  bStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma,
-  bStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb,
-  bStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb,
-  bStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc,
-  bStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc,
-  bStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd,
-  bStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd,
+  bStereoMainCz_pmCzIndexMacro1_4Macro1Index,
+  bStereoMainCz_pmCzIndexMacro1_4Macro2Index,
+  bStereoMainCz_pmCzIndexMacro1_4Macro3Index,
+  bStereoMainCz_pmCzIndexMacro1_4Macro4Index,
+  bStereoMainCz_pmCzIndexMacro5_8Macro5Index,
+  bStereoMainCz_pmCzIndexMacro5_8Macro6Index,
+  bStereoMainCz_pmCzIndexMacro5_8Macro7Index,
+  bStereoMainCz_pmCzIndexMacro5_8Macro8Index,
+  bStereoMainCz_pmCzOctaveMacro1_4Macro1Octave,
+  bStereoMainCz_pmCzOctaveMacro1_4Macro2Octave,
+  bStereoMainCz_pmCzOctaveMacro1_4Macro3Octave,
+  bStereoMainCz_pmCzOctaveMacro1_4Macro4Octave,
+  bStereoMainCz_pmCzOctaveMacro5_8Macro5Octave,
+  bStereoMainCz_pmCzOctaveMacro5_8Macro6Octave,
+  bStereoMainCz_pmCzOctaveMacro5_8Macro7Octave,
+  bStereoMainCz_pmCzOctaveMacro5_8Macro8Octave,
+  bStereoMainCz_pmCzPhaseMacro1_4Macro1Phase,
+  bStereoMainCz_pmCzPhaseMacro1_4Macro2Phase,
+  bStereoMainCz_pmCzPhaseMacro1_4Macro3Phase,
+  bStereoMainCz_pmCzPhaseMacro1_4Macro4Phase,
+  bStereoMainCz_pmCzPhaseMacro5_8Macro5Phase,
+  bStereoMainCz_pmCzPhaseMacro5_8Macro6Phase,
+  bStereoMainCz_pmCzPhaseMacro5_8Macro7Phase,
+  bStereoMainCz_pmCzPhaseMacro5_8Macro8Phase,
+  bStereoMainCz_pmPmPmaMacro1_4Macro1Pma,
+  bStereoMainCz_pmPmPmaMacro1_4Macro2Pma,
+  bStereoMainCz_pmPmPmaMacro1_4Macro3Pma,
+  bStereoMainCz_pmPmPmaMacro1_4Macro4Pma,
+  bStereoMainCz_pmPmPmaMacro5_8Macro5Pma,
+  bStereoMainCz_pmPmPmaMacro5_8Macro6Pma,
+  bStereoMainCz_pmPmPmaMacro5_8Macro7Pma,
+  bStereoMainCz_pmPmPmaMacro5_8Macro8Pma,
+  bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb,
+  bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb,
+  bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb,
+  bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb,
+  bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb,
+  bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb,
+  bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb,
+  bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb,
+  bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc,
+  bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc,
+  bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc,
+  bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc,
+  bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc,
+  bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc,
+  bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc,
+  bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc,
+  bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd,
+  bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd,
+  bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd,
+  bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd,
+  bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd,
+  bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd,
+  bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd,
+  bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd,
+  bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index,
+  bStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index,
+  bStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index,
+  bStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index,
+  bStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index,
+  bStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index,
+  bStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index,
+  bStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index,
+  bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave,
+  bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave,
+  bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase,
+  bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase,
+  bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma,
+  bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma,
+  bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb,
+  bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb,
+  bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc,
+  bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc,
+  bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd,
+  bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd,
   bType,
-  cStereoMainCzPmCzIndexMacro1_4Macro1Index,
-  cStereoMainCzPmCzIndexMacro1_4Macro2Index,
-  cStereoMainCzPmCzIndexMacro1_4Macro3Index,
-  cStereoMainCzPmCzIndexMacro1_4Macro4Index,
-  cStereoMainCzPmCzIndexMacro5_8Macro5Index,
-  cStereoMainCzPmCzIndexMacro5_8Macro6Index,
-  cStereoMainCzPmCzIndexMacro5_8Macro7Index,
-  cStereoMainCzPmCzIndexMacro5_8Macro8Index,
-  cStereoMainCzPmCzOctaveMacro1_4Macro1Octave,
-  cStereoMainCzPmCzOctaveMacro1_4Macro2Octave,
-  cStereoMainCzPmCzOctaveMacro1_4Macro3Octave,
-  cStereoMainCzPmCzOctaveMacro1_4Macro4Octave,
-  cStereoMainCzPmCzOctaveMacro5_8Macro5Octave,
-  cStereoMainCzPmCzOctaveMacro5_8Macro6Octave,
-  cStereoMainCzPmCzOctaveMacro5_8Macro7Octave,
-  cStereoMainCzPmCzOctaveMacro5_8Macro8Octave,
-  cStereoMainCzPmCzPhaseMacro1_4Macro1Phase,
-  cStereoMainCzPmCzPhaseMacro1_4Macro2Phase,
-  cStereoMainCzPmCzPhaseMacro1_4Macro3Phase,
-  cStereoMainCzPmCzPhaseMacro1_4Macro4Phase,
-  cStereoMainCzPmCzPhaseMacro5_8Macro5Phase,
-  cStereoMainCzPmCzPhaseMacro5_8Macro6Phase,
-  cStereoMainCzPmCzPhaseMacro5_8Macro7Phase,
-  cStereoMainCzPmCzPhaseMacro5_8Macro8Phase,
-  cStereoMainCzPmPmPmaMacro1_4Macro1Pma,
-  cStereoMainCzPmPmPmaMacro1_4Macro2Pma,
-  cStereoMainCzPmPmPmaMacro1_4Macro3Pma,
-  cStereoMainCzPmPmPmaMacro1_4Macro4Pma,
-  cStereoMainCzPmPmPmaMacro5_8Macro5Pma,
-  cStereoMainCzPmPmPmaMacro5_8Macro6Pma,
-  cStereoMainCzPmPmPmaMacro5_8Macro7Pma,
-  cStereoMainCzPmPmPmaMacro5_8Macro8Pma,
-  cStereoMainCzPmPmPmbMacro1_4Macro1Pmb,
-  cStereoMainCzPmPmPmbMacro1_4Macro2Pmb,
-  cStereoMainCzPmPmPmbMacro1_4Macro3Pmb,
-  cStereoMainCzPmPmPmbMacro1_4Macro4Pmb,
-  cStereoMainCzPmPmPmbMacro5_8Macro5Pmb,
-  cStereoMainCzPmPmPmbMacro5_8Macro6Pmb,
-  cStereoMainCzPmPmPmbMacro5_8Macro7Pmb,
-  cStereoMainCzPmPmPmbMacro5_8Macro8Pmb,
-  cStereoMainCzPmPmPmcMacro1_4Macro1Pmc,
-  cStereoMainCzPmPmPmcMacro1_4Macro2Pmc,
-  cStereoMainCzPmPmPmcMacro1_4Macro3Pmc,
-  cStereoMainCzPmPmPmcMacro1_4Macro4Pmc,
-  cStereoMainCzPmPmPmcMacro5_8Macro5Pmc,
-  cStereoMainCzPmPmPmcMacro5_8Macro6Pmc,
-  cStereoMainCzPmPmPmcMacro5_8Macro7Pmc,
-  cStereoMainCzPmPmPmcMacro5_8Macro8Pmc,
-  cStereoMainCzPmPmPmdMacro1_4Macro1Pmd,
-  cStereoMainCzPmPmPmdMacro1_4Macro2Pmd,
-  cStereoMainCzPmPmPmdMacro1_4Macro3Pmd,
-  cStereoMainCzPmPmPmdMacro1_4Macro4Pmd,
-  cStereoMainCzPmPmPmdMacro5_8Macro5Pmd,
-  cStereoMainCzPmPmPmdMacro5_8Macro6Pmd,
-  cStereoMainCzPmPmPmdMacro5_8Macro7Pmd,
-  cStereoMainCzPmPmPmdMacro5_8Macro8Pmd,
-  cStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index,
-  cStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index,
-  cStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index,
-  cStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index,
-  cStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index,
-  cStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index,
-  cStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index,
-  cStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index,
-  cStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave,
-  cStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave,
-  cStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase,
-  cStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase,
-  cStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma,
-  cStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma,
-  cStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma,
-  cStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma,
-  cStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma,
-  cStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma,
-  cStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma,
-  cStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma,
-  cStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb,
-  cStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb,
-  cStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc,
-  cStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc,
-  cStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd,
-  cStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd,
+  cStereoMainCz_pmCzIndexMacro1_4Macro1Index,
+  cStereoMainCz_pmCzIndexMacro1_4Macro2Index,
+  cStereoMainCz_pmCzIndexMacro1_4Macro3Index,
+  cStereoMainCz_pmCzIndexMacro1_4Macro4Index,
+  cStereoMainCz_pmCzIndexMacro5_8Macro5Index,
+  cStereoMainCz_pmCzIndexMacro5_8Macro6Index,
+  cStereoMainCz_pmCzIndexMacro5_8Macro7Index,
+  cStereoMainCz_pmCzIndexMacro5_8Macro8Index,
+  cStereoMainCz_pmCzOctaveMacro1_4Macro1Octave,
+  cStereoMainCz_pmCzOctaveMacro1_4Macro2Octave,
+  cStereoMainCz_pmCzOctaveMacro1_4Macro3Octave,
+  cStereoMainCz_pmCzOctaveMacro1_4Macro4Octave,
+  cStereoMainCz_pmCzOctaveMacro5_8Macro5Octave,
+  cStereoMainCz_pmCzOctaveMacro5_8Macro6Octave,
+  cStereoMainCz_pmCzOctaveMacro5_8Macro7Octave,
+  cStereoMainCz_pmCzOctaveMacro5_8Macro8Octave,
+  cStereoMainCz_pmCzPhaseMacro1_4Macro1Phase,
+  cStereoMainCz_pmCzPhaseMacro1_4Macro2Phase,
+  cStereoMainCz_pmCzPhaseMacro1_4Macro3Phase,
+  cStereoMainCz_pmCzPhaseMacro1_4Macro4Phase,
+  cStereoMainCz_pmCzPhaseMacro5_8Macro5Phase,
+  cStereoMainCz_pmCzPhaseMacro5_8Macro6Phase,
+  cStereoMainCz_pmCzPhaseMacro5_8Macro7Phase,
+  cStereoMainCz_pmCzPhaseMacro5_8Macro8Phase,
+  cStereoMainCz_pmPmPmaMacro1_4Macro1Pma,
+  cStereoMainCz_pmPmPmaMacro1_4Macro2Pma,
+  cStereoMainCz_pmPmPmaMacro1_4Macro3Pma,
+  cStereoMainCz_pmPmPmaMacro1_4Macro4Pma,
+  cStereoMainCz_pmPmPmaMacro5_8Macro5Pma,
+  cStereoMainCz_pmPmPmaMacro5_8Macro6Pma,
+  cStereoMainCz_pmPmPmaMacro5_8Macro7Pma,
+  cStereoMainCz_pmPmPmaMacro5_8Macro8Pma,
+  cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb,
+  cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb,
+  cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb,
+  cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb,
+  cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb,
+  cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb,
+  cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb,
+  cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb,
+  cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc,
+  cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc,
+  cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc,
+  cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc,
+  cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc,
+  cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc,
+  cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc,
+  cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc,
+  cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd,
+  cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd,
+  cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd,
+  cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd,
+  cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd,
+  cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd,
+  cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd,
+  cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd,
+  cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index,
+  cStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index,
+  cStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index,
+  cStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index,
+  cStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index,
+  cStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index,
+  cStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index,
+  cStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index,
+  cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave,
+  cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave,
+  cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase,
+  cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase,
+  cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma,
+  cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma,
+  cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb,
+  cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb,
+  cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc,
+  cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc,
+  cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd,
+  cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd,
   cType,
-  dStereoMainCzPmCzIndexMacro1_4Macro1Index,
-  dStereoMainCzPmCzIndexMacro1_4Macro2Index,
-  dStereoMainCzPmCzIndexMacro1_4Macro3Index,
-  dStereoMainCzPmCzIndexMacro1_4Macro4Index,
-  dStereoMainCzPmCzIndexMacro5_8Macro5Index,
-  dStereoMainCzPmCzIndexMacro5_8Macro6Index,
-  dStereoMainCzPmCzIndexMacro5_8Macro7Index,
-  dStereoMainCzPmCzIndexMacro5_8Macro8Index,
-  dStereoMainCzPmCzOctaveMacro1_4Macro1Octave,
-  dStereoMainCzPmCzOctaveMacro1_4Macro2Octave,
-  dStereoMainCzPmCzOctaveMacro1_4Macro3Octave,
-  dStereoMainCzPmCzOctaveMacro1_4Macro4Octave,
-  dStereoMainCzPmCzOctaveMacro5_8Macro5Octave,
-  dStereoMainCzPmCzOctaveMacro5_8Macro6Octave,
-  dStereoMainCzPmCzOctaveMacro5_8Macro7Octave,
-  dStereoMainCzPmCzOctaveMacro5_8Macro8Octave,
-  dStereoMainCzPmCzPhaseMacro1_4Macro1Phase,
-  dStereoMainCzPmCzPhaseMacro1_4Macro2Phase,
-  dStereoMainCzPmCzPhaseMacro1_4Macro3Phase,
-  dStereoMainCzPmCzPhaseMacro1_4Macro4Phase,
-  dStereoMainCzPmCzPhaseMacro5_8Macro5Phase,
-  dStereoMainCzPmCzPhaseMacro5_8Macro6Phase,
-  dStereoMainCzPmCzPhaseMacro5_8Macro7Phase,
-  dStereoMainCzPmCzPhaseMacro5_8Macro8Phase,
-  dStereoMainCzPmPmPmaMacro1_4Macro1Pma,
-  dStereoMainCzPmPmPmaMacro1_4Macro2Pma,
-  dStereoMainCzPmPmPmaMacro1_4Macro3Pma,
-  dStereoMainCzPmPmPmaMacro1_4Macro4Pma,
-  dStereoMainCzPmPmPmaMacro5_8Macro5Pma,
-  dStereoMainCzPmPmPmaMacro5_8Macro6Pma,
-  dStereoMainCzPmPmPmaMacro5_8Macro7Pma,
-  dStereoMainCzPmPmPmaMacro5_8Macro8Pma,
-  dStereoMainCzPmPmPmbMacro1_4Macro1Pmb,
-  dStereoMainCzPmPmPmbMacro1_4Macro2Pmb,
-  dStereoMainCzPmPmPmbMacro1_4Macro3Pmb,
-  dStereoMainCzPmPmPmbMacro1_4Macro4Pmb,
-  dStereoMainCzPmPmPmbMacro5_8Macro5Pmb,
-  dStereoMainCzPmPmPmbMacro5_8Macro6Pmb,
-  dStereoMainCzPmPmPmbMacro5_8Macro7Pmb,
-  dStereoMainCzPmPmPmbMacro5_8Macro8Pmb,
-  dStereoMainCzPmPmPmcMacro1_4Macro1Pmc,
-  dStereoMainCzPmPmPmcMacro1_4Macro2Pmc,
-  dStereoMainCzPmPmPmcMacro1_4Macro3Pmc,
-  dStereoMainCzPmPmPmcMacro1_4Macro4Pmc,
-  dStereoMainCzPmPmPmcMacro5_8Macro5Pmc,
-  dStereoMainCzPmPmPmcMacro5_8Macro6Pmc,
-  dStereoMainCzPmPmPmcMacro5_8Macro7Pmc,
-  dStereoMainCzPmPmPmcMacro5_8Macro8Pmc,
-  dStereoMainCzPmPmPmdMacro1_4Macro1Pmd,
-  dStereoMainCzPmPmPmdMacro1_4Macro2Pmd,
-  dStereoMainCzPmPmPmdMacro1_4Macro3Pmd,
-  dStereoMainCzPmPmPmdMacro1_4Macro4Pmd,
-  dStereoMainCzPmPmPmdMacro5_8Macro5Pmd,
-  dStereoMainCzPmPmPmdMacro5_8Macro6Pmd,
-  dStereoMainCzPmPmPmdMacro5_8Macro7Pmd,
-  dStereoMainCzPmPmPmdMacro5_8Macro8Pmd,
-  dStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index,
-  dStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index,
-  dStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index,
-  dStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index,
-  dStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index,
-  dStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index,
-  dStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index,
-  dStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index,
-  dStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave,
-  dStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave,
-  dStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase,
-  dStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase,
-  dStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma,
-  dStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma,
-  dStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma,
-  dStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma,
-  dStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma,
-  dStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma,
-  dStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma,
-  dStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma,
-  dStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb,
-  dStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb,
-  dStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc,
-  dStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc,
-  dStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd,
-  dStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd,
+  dStereoMainCz_pmCzIndexMacro1_4Macro1Index,
+  dStereoMainCz_pmCzIndexMacro1_4Macro2Index,
+  dStereoMainCz_pmCzIndexMacro1_4Macro3Index,
+  dStereoMainCz_pmCzIndexMacro1_4Macro4Index,
+  dStereoMainCz_pmCzIndexMacro5_8Macro5Index,
+  dStereoMainCz_pmCzIndexMacro5_8Macro6Index,
+  dStereoMainCz_pmCzIndexMacro5_8Macro7Index,
+  dStereoMainCz_pmCzIndexMacro5_8Macro8Index,
+  dStereoMainCz_pmCzOctaveMacro1_4Macro1Octave,
+  dStereoMainCz_pmCzOctaveMacro1_4Macro2Octave,
+  dStereoMainCz_pmCzOctaveMacro1_4Macro3Octave,
+  dStereoMainCz_pmCzOctaveMacro1_4Macro4Octave,
+  dStereoMainCz_pmCzOctaveMacro5_8Macro5Octave,
+  dStereoMainCz_pmCzOctaveMacro5_8Macro6Octave,
+  dStereoMainCz_pmCzOctaveMacro5_8Macro7Octave,
+  dStereoMainCz_pmCzOctaveMacro5_8Macro8Octave,
+  dStereoMainCz_pmCzPhaseMacro1_4Macro1Phase,
+  dStereoMainCz_pmCzPhaseMacro1_4Macro2Phase,
+  dStereoMainCz_pmCzPhaseMacro1_4Macro3Phase,
+  dStereoMainCz_pmCzPhaseMacro1_4Macro4Phase,
+  dStereoMainCz_pmCzPhaseMacro5_8Macro5Phase,
+  dStereoMainCz_pmCzPhaseMacro5_8Macro6Phase,
+  dStereoMainCz_pmCzPhaseMacro5_8Macro7Phase,
+  dStereoMainCz_pmCzPhaseMacro5_8Macro8Phase,
+  dStereoMainCz_pmPmPmaMacro1_4Macro1Pma,
+  dStereoMainCz_pmPmPmaMacro1_4Macro2Pma,
+  dStereoMainCz_pmPmPmaMacro1_4Macro3Pma,
+  dStereoMainCz_pmPmPmaMacro1_4Macro4Pma,
+  dStereoMainCz_pmPmPmaMacro5_8Macro5Pma,
+  dStereoMainCz_pmPmPmaMacro5_8Macro6Pma,
+  dStereoMainCz_pmPmPmaMacro5_8Macro7Pma,
+  dStereoMainCz_pmPmPmaMacro5_8Macro8Pma,
+  dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb,
+  dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb,
+  dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb,
+  dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb,
+  dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb,
+  dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb,
+  dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb,
+  dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb,
+  dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc,
+  dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc,
+  dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc,
+  dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc,
+  dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc,
+  dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc,
+  dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc,
+  dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc,
+  dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd,
+  dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd,
+  dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd,
+  dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd,
+  dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd,
+  dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd,
+  dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd,
+  dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd,
+  dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index,
+  dStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index,
+  dStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index,
+  dStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index,
+  dStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index,
+  dStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index,
+  dStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index,
+  dStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index,
+  dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave,
+  dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave,
+  dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase,
+  dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase,
+  dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma,
+  dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma,
+  dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb,
+  dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb,
+  dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc,
+  dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc,
+  dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd,
+  dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd,
   dType,
   envelopesEnvelope_1Attack,
   envelopesEnvelope_1Decay,
   envelopesEnvelope_1Sustain,
   envelopesEnvelope_1Release,
   envelopesEnvelope_1Velsens,
-  envelopesEnvelope_1Envelope_1,
   envelopesEnvelope0Attack,
   envelopesEnvelope0Decay,
   envelopesEnvelope0Sustain,
   envelopesEnvelope0Release,
   envelopesEnvelope0Velsens,
-  envelopesEnvelope0Envelope0,
   envelopesEnvelope1Attack,
   envelopesEnvelope1Decay,
   envelopesEnvelope1Sustain,
   envelopesEnvelope1Release,
   envelopesEnvelope1Velsens,
-  envelopesEnvelope1Envelope1,
   envelopesEnvelope2Attack,
   envelopesEnvelope2Decay,
   envelopesEnvelope2Sustain,
   envelopesEnvelope2Release,
   envelopesEnvelope2Velsens,
-  envelopesEnvelope2Envelope2,
   envelopesEnvelope3Attack,
   envelopesEnvelope3Decay,
   envelopesEnvelope3Sustain,
   envelopesEnvelope3Release,
   envelopesEnvelope3Velsens,
-  envelopesEnvelope3Envelope3,
   lfosLfo0Lfofreq,
-  lfosLfo0Lfo0,
   lfosLfo1Lfofreq,
-  lfosLfo1Lfo1,
   lfosLfo2Lfofreq,
-  lfosLfo2Lfo2,
   lfosLfo3Lfofreq,
-  lfosLfo3Lfo3,
   modulation1Macro,
   modulation1Uptime,
   modulation1Downtime,
@@ -649,7 +640,6 @@ enum ID {
   modulation1Mod_wheel,
   modulation1Pitch_wheel,
   modulation1Random,
-  modulation1Mix,
   modulation2Macro,
   modulation2Uptime,
   modulation2Downtime,
@@ -667,7 +657,6 @@ enum ID {
   modulation2Mod_wheel,
   modulation2Pitch_wheel,
   modulation2Random,
-  modulation2Mix,
   modulation3Macro,
   modulation3Uptime,
   modulation3Downtime,
@@ -685,13 +674,6 @@ enum ID {
   modulation3Mod_wheel,
   modulation3Pitch_wheel,
   modulation3Random,
-  modulation3Mix,
-  midiChannelaftertouch,
-  midiModwheel,
-  midiPitchwheelvaluein,
-  midiFreq,
-  midiGain,
-  midiGate,
   
   ID_ENUM_LENGTH,
 };
@@ -725,16 +707,7 @@ struct Scales {
   static SomeDSP::LinearScale<double> sustain;
   static SomeDSP::LogScale<double> release;
   static SomeDSP::LinearScale<double> velsens;
-  static SomeDSP::LinearScale<double> envelope_1;
-  static SomeDSP::LinearScale<double> envelope0;
-  static SomeDSP::LinearScale<double> envelope1;
-  static SomeDSP::LinearScale<double> envelope2;
-  static SomeDSP::LinearScale<double> envelope3;
   static SomeDSP::LogScale<double> lfofreq;
-  static SomeDSP::LinearScale<double> lfo0;
-  static SomeDSP::LinearScale<double> lfo1;
-  static SomeDSP::LinearScale<double> lfo2;
-  static SomeDSP::LinearScale<double> lfo3;
   static SomeDSP::LinearScale<double> macro;
   static SomeDSP::LinearScale<double> uptime;
   static SomeDSP::LinearScale<double> downtime;
@@ -746,13 +719,6 @@ struct Scales {
   static SomeDSP::LinearScale<double> mod_wheel;
   static SomeDSP::LinearScale<double> pitch_wheel;
   static SomeDSP::LinearScale<double> random;
-  static SomeDSP::LinearScale<double> mix;
-  static SomeDSP::IntScale<double> channelaftertouch;
-  static SomeDSP::IntScale<double> modwheel;
-  static SomeDSP::IntScale<double> pitchwheelvaluein;
-  static SomeDSP::LogScale<double> freq;
-  static SomeDSP::LinearScale<double> gain;
-  static SomeDSP::LinearScale<double> gate;
   
 };
 
@@ -775,3344 +741,3254 @@ struct GlobalParameter : public ParameterInterface {
       0.5, Scales::defaultScale, "pitchBend", kParameterIsAutomable);
 
     value[ID::global0x00Freefloatosc] = std::make_unique<IntValue>(
-      Scales::freefloatosc.invmap(0),
+      Scales::freefloatosc.invmap(0.0f),
       Scales::freefloatosc,
       "global0x00Freefloatosc",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Positivebendrange] = std::make_unique<IntValue>(
-      Scales::positivebendrange.invmap(12),
+      Scales::positivebendrange.invmap(12.0f),
       Scales::positivebendrange,
       "global0x00Positivebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Negativebendrange] = std::make_unique<IntValue>(
-      Scales::negativebendrange.invmap(-12),
+      Scales::negativebendrange.invmap(-12.0f),
       Scales::negativebendrange,
       "global0x00Negativebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Portaoff_auto_on] = std::make_unique<IntValue>(
-      Scales::portaoff_auto_on.invmap(1),
+      Scales::portaoff_auto_on.invmap(1.0f),
       Scales::portaoff_auto_on,
       "global0x00Portaoff_auto_on",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::globalMasterphase] = std::make_unique<LinearValue>(
-      Scales::masterphase.invmap(0),
+      Scales::masterphase.invmap(0.0f),
       Scales::masterphase,
       "globalMasterphase",
       0 | kParameterIsAutomable);
     value[ID::globalPortamento] = std::make_unique<LogValue>(
-      Scales::portamento.invmap(0),
+      Scales::portamento.invmap(0.0f),
       Scales::portamento,
       "globalPortamento",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd] = std::make_unique<LinearValue>(
-      Scales::ab_cd.invmap(0),
+      Scales::ab_cd.invmap(0.0f),
       Scales::ab_cd,
       "globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd",
       0 | kParameterIsAutomable);
     value[ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd] = std::make_unique<LinearValue>(
-      Scales::ac_bd.invmap(0),
+      Scales::ac_bd.invmap(0.0f),
       Scales::ac_bd,
       "globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro1_4Macro1Level",
+      "filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro1_4Macro2Level",
+      "filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro1_4Macro3Level",
+      "filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro1_4Macro4Level",
+      "filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro5_8Macro5Level",
+      "filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro5_8Macro6Level",
+      "filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro5_8Macro7Level",
+      "filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixSvfMacro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixSvfMacro5_8Macro8Level",
+      "filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro1_4Macro1Level",
+      "filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro1_4Macro2Level",
+      "filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro1_4Macro3Level",
+      "filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro1_4Macro4Level",
+      "filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro5_8Macro5Level",
+      "filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro5_8Macro6Level",
+      "filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro5_8Macro7Level",
+      "filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixMs20Macro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixMs20Macro5_8Macro8Level",
+      "filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro1_4Macro1Level",
+      "filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro1_4Macro2Level",
+      "filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro1_4Macro3Level",
+      "filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro1_4Macro4Level",
+      "filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro5_8Macro5Level",
+      "filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro5_8Macro6Level",
+      "filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro5_8Macro7Level",
+      "filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakMixOberheimMacro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoMainMixTweakMixOberheimMacro5_8Macro8Level",
+      "filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro1_4Macro1Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro1_4Macro1Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro1_4Macro2Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro1_4Macro2Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro1_4Macro3Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro1_4Macro3Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro1_4Macro4Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro1_4Macro4Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro5_8Macro5Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro5_8Macro5Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro5_8Macro6Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro5_8Macro6Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro5_8Macro7Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro5_8Macro7Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakFreqMacro5_8Macro8Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoMainMixTweakTweakFreqMacro5_8Macro8Normfreq",
+      "filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro1_4Macro1Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro1_4Macro1Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro1_4Macro1Q",
+      "filterStereoMainMix_tweakTweakQMacro1_4Macro1Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro1_4Macro2Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro1_4Macro2Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro1_4Macro2Q",
+      "filterStereoMainMix_tweakTweakQMacro1_4Macro2Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro1_4Macro3Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro1_4Macro3Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro1_4Macro3Q",
+      "filterStereoMainMix_tweakTweakQMacro1_4Macro3Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro1_4Macro4Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro1_4Macro4Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro1_4Macro4Q",
+      "filterStereoMainMix_tweakTweakQMacro1_4Macro4Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro5_8Macro5Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro5_8Macro5Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro5_8Macro5Q",
+      "filterStereoMainMix_tweakTweakQMacro5_8Macro5Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro5_8Macro6Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro5_8Macro6Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro5_8Macro6Q",
+      "filterStereoMainMix_tweakTweakQMacro5_8Macro6Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro5_8Macro7Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro5_8Macro7Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro5_8Macro7Q",
+      "filterStereoMainMix_tweakTweakQMacro5_8Macro7Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoMainMixTweakTweakQMacro5_8Macro8Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoMainMix_tweakTweakQMacro5_8Macro8Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoMainMixTweakTweakQMacro5_8Macro8Q",
+      "filterStereoMainMix_tweakTweakQMacro5_8Macro8Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro1Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro2Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro3Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro1_4Macro4Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro5Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro6Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro7Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixSvfMacro5_8Macro8Level",
+      "filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro1Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro2Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro3Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro1_4Macro4Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro5Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro6Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro7Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixMs20Macro5_8Macro8Level",
+      "filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro1Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro1Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro2Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro2Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro3Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro3Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro4Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro1_4Macro4Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro5Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro5Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro6Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro6Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro7Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro7Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro8Level] = std::make_unique<LinearValue>(
-      Scales::level.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level] = std::make_unique<LinearValue>(
+      Scales::level.invmap(0.0f),
       Scales::level,
-      "filterStereoL_roffsetMixTweakMixOberheimMacro5_8Macro8Level",
+      "filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro1Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro1Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro2Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro2Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro3Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro3Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro4Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro1_4Macro4Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro5Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro5Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro6Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro6Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro7Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro7Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro8Normfreq] = std::make_unique<LinearValue>(
-      Scales::normfreq.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq] = std::make_unique<LinearValue>(
+      Scales::normfreq.invmap(0.0f),
       Scales::normfreq,
-      "filterStereoL_roffsetMixTweakTweakFreqMacro5_8Macro8Normfreq",
+      "filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro1_4Macro1Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro1_4Macro1Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro1_4Macro2Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro1_4Macro2Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro1_4Macro3Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro1_4Macro3Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro1_4Macro4Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro1_4Macro4Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro5_8Macro5Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro5_8Macro5Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro5_8Macro6Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro5_8Macro6Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro5_8Macro7Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro5_8Macro7Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q",
       0 | kParameterIsAutomable);
-    value[ID::filterStereoL_roffsetMixTweakTweakQMacro5_8Macro8Q] = std::make_unique<LinearValue>(
-      Scales::q.invmap(0),
+    value[ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q] = std::make_unique<LinearValue>(
+      Scales::q.invmap(0.0f),
       Scales::q,
-      "filterStereoL_roffsetMixTweakTweakQMacro5_8Macro8Q",
+      "filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro1_4Macro1Index",
+      "aStereoMainCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro1_4Macro2Index",
+      "aStereoMainCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro1_4Macro3Index",
+      "aStereoMainCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro1_4Macro4Index",
+      "aStereoMainCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro5_8Macro5Index",
+      "aStereoMainCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro5_8Macro6Index",
+      "aStereoMainCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro5_8Macro7Index",
+      "aStereoMainCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoMainCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoMainCzPmCzIndexMacro5_8Macro8Index",
+      "aStereoMainCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro1_4Macro1Octave",
+      "aStereoMainCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro1_4Macro2Octave",
+      "aStereoMainCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro1_4Macro3Octave",
+      "aStereoMainCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro1_4Macro4Octave",
+      "aStereoMainCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro5_8Macro5Octave",
+      "aStereoMainCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro5_8Macro6Octave",
+      "aStereoMainCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro5_8Macro7Octave",
+      "aStereoMainCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoMainCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoMainCzPmCzOctaveMacro5_8Macro8Octave",
+      "aStereoMainCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro1_4Macro1Phase",
+      "aStereoMainCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro1_4Macro2Phase",
+      "aStereoMainCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro1_4Macro3Phase",
+      "aStereoMainCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro1_4Macro4Phase",
+      "aStereoMainCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro5_8Macro5Phase",
+      "aStereoMainCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro5_8Macro6Phase",
+      "aStereoMainCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro5_8Macro7Phase",
+      "aStereoMainCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoMainCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoMainCzPmCzPhaseMacro5_8Macro8Phase",
+      "aStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro1_4Macro1Pma",
+      "aStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro1_4Macro2Pma",
+      "aStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro1_4Macro3Pma",
+      "aStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro1_4Macro4Pma",
+      "aStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro5_8Macro5Pma",
+      "aStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro5_8Macro6Pma",
+      "aStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro5_8Macro7Pma",
+      "aStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoMainCzPmPmPmaMacro5_8Macro8Pma",
+      "aStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro1_4Macro1Pmb",
+      "aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro1_4Macro2Pmb",
+      "aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro1_4Macro3Pmb",
+      "aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro1_4Macro4Pmb",
+      "aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro5_8Macro5Pmb",
+      "aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro5_8Macro6Pmb",
+      "aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro5_8Macro7Pmb",
+      "aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoMainCzPmPmPmbMacro5_8Macro8Pmb",
+      "aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro1_4Macro1Pmc",
+      "aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro1_4Macro2Pmc",
+      "aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro1_4Macro3Pmc",
+      "aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro1_4Macro4Pmc",
+      "aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro5_8Macro5Pmc",
+      "aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro5_8Macro6Pmc",
+      "aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro5_8Macro7Pmc",
+      "aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoMainCzPmPmPmcMacro5_8Macro8Pmc",
+      "aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro1_4Macro1Pmd",
+      "aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro1_4Macro2Pmd",
+      "aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro1_4Macro3Pmd",
+      "aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro1_4Macro4Pmd",
+      "aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro5_8Macro5Pmd",
+      "aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro5_8Macro6Pmd",
+      "aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro5_8Macro7Pmd",
+      "aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoMainCzPmPmPmdMacro5_8Macro8Pmd",
+      "aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "aStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index",
+      "aStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "aStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave",
+      "aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "aStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase",
+      "aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "aStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma",
+      "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "aStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb",
+      "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "aStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc",
+      "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "aStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd",
+      "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::aType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2),
+      Scales::type.invmap(2.0f),
       Scales::type,
       "aType",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::bStereoMainCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro1_4Macro1Index",
+      "bStereoMainCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro1_4Macro2Index",
+      "bStereoMainCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro1_4Macro3Index",
+      "bStereoMainCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro1_4Macro4Index",
+      "bStereoMainCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro5_8Macro5Index",
+      "bStereoMainCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro5_8Macro6Index",
+      "bStereoMainCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro5_8Macro7Index",
+      "bStereoMainCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoMainCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoMainCzPmCzIndexMacro5_8Macro8Index",
+      "bStereoMainCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro1_4Macro1Octave",
+      "bStereoMainCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro1_4Macro2Octave",
+      "bStereoMainCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro1_4Macro3Octave",
+      "bStereoMainCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro1_4Macro4Octave",
+      "bStereoMainCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro5_8Macro5Octave",
+      "bStereoMainCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro5_8Macro6Octave",
+      "bStereoMainCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro5_8Macro7Octave",
+      "bStereoMainCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoMainCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoMainCzPmCzOctaveMacro5_8Macro8Octave",
+      "bStereoMainCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro1_4Macro1Phase",
+      "bStereoMainCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro1_4Macro2Phase",
+      "bStereoMainCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro1_4Macro3Phase",
+      "bStereoMainCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro1_4Macro4Phase",
+      "bStereoMainCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro5_8Macro5Phase",
+      "bStereoMainCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro5_8Macro6Phase",
+      "bStereoMainCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro5_8Macro7Phase",
+      "bStereoMainCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoMainCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoMainCzPmCzPhaseMacro5_8Macro8Phase",
+      "bStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro1_4Macro1Pma",
+      "bStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro1_4Macro2Pma",
+      "bStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro1_4Macro3Pma",
+      "bStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro1_4Macro4Pma",
+      "bStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro5_8Macro5Pma",
+      "bStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro5_8Macro6Pma",
+      "bStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro5_8Macro7Pma",
+      "bStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoMainCzPmPmPmaMacro5_8Macro8Pma",
+      "bStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro1_4Macro1Pmb",
+      "bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro1_4Macro2Pmb",
+      "bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro1_4Macro3Pmb",
+      "bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro1_4Macro4Pmb",
+      "bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro5_8Macro5Pmb",
+      "bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro5_8Macro6Pmb",
+      "bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro5_8Macro7Pmb",
+      "bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoMainCzPmPmPmbMacro5_8Macro8Pmb",
+      "bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro1_4Macro1Pmc",
+      "bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro1_4Macro2Pmc",
+      "bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro1_4Macro3Pmc",
+      "bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro1_4Macro4Pmc",
+      "bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro5_8Macro5Pmc",
+      "bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro5_8Macro6Pmc",
+      "bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro5_8Macro7Pmc",
+      "bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoMainCzPmPmPmcMacro5_8Macro8Pmc",
+      "bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro1_4Macro1Pmd",
+      "bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro1_4Macro2Pmd",
+      "bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro1_4Macro3Pmd",
+      "bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro1_4Macro4Pmd",
+      "bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro5_8Macro5Pmd",
+      "bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro5_8Macro6Pmd",
+      "bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro5_8Macro7Pmd",
+      "bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoMainCzPmPmPmdMacro5_8Macro8Pmd",
+      "bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "bStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index",
+      "bStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "bStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave",
+      "bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "bStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase",
+      "bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "bStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma",
+      "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "bStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb",
+      "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "bStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc",
+      "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "bStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd",
+      "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::bType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2),
+      Scales::type.invmap(2.0f),
       Scales::type,
       "bType",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::cStereoMainCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro1_4Macro1Index",
+      "cStereoMainCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro1_4Macro2Index",
+      "cStereoMainCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro1_4Macro3Index",
+      "cStereoMainCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro1_4Macro4Index",
+      "cStereoMainCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro5_8Macro5Index",
+      "cStereoMainCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro5_8Macro6Index",
+      "cStereoMainCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro5_8Macro7Index",
+      "cStereoMainCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoMainCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoMainCzPmCzIndexMacro5_8Macro8Index",
+      "cStereoMainCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro1_4Macro1Octave",
+      "cStereoMainCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro1_4Macro2Octave",
+      "cStereoMainCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro1_4Macro3Octave",
+      "cStereoMainCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro1_4Macro4Octave",
+      "cStereoMainCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro5_8Macro5Octave",
+      "cStereoMainCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro5_8Macro6Octave",
+      "cStereoMainCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro5_8Macro7Octave",
+      "cStereoMainCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoMainCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoMainCzPmCzOctaveMacro5_8Macro8Octave",
+      "cStereoMainCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro1_4Macro1Phase",
+      "cStereoMainCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro1_4Macro2Phase",
+      "cStereoMainCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro1_4Macro3Phase",
+      "cStereoMainCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro1_4Macro4Phase",
+      "cStereoMainCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro5_8Macro5Phase",
+      "cStereoMainCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro5_8Macro6Phase",
+      "cStereoMainCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro5_8Macro7Phase",
+      "cStereoMainCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoMainCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoMainCzPmCzPhaseMacro5_8Macro8Phase",
+      "cStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro1_4Macro1Pma",
+      "cStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro1_4Macro2Pma",
+      "cStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro1_4Macro3Pma",
+      "cStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro1_4Macro4Pma",
+      "cStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro5_8Macro5Pma",
+      "cStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro5_8Macro6Pma",
+      "cStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro5_8Macro7Pma",
+      "cStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoMainCzPmPmPmaMacro5_8Macro8Pma",
+      "cStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro1_4Macro1Pmb",
+      "cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro1_4Macro2Pmb",
+      "cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro1_4Macro3Pmb",
+      "cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro1_4Macro4Pmb",
+      "cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro5_8Macro5Pmb",
+      "cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro5_8Macro6Pmb",
+      "cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro5_8Macro7Pmb",
+      "cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoMainCzPmPmPmbMacro5_8Macro8Pmb",
+      "cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro1_4Macro1Pmc",
+      "cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro1_4Macro2Pmc",
+      "cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro1_4Macro3Pmc",
+      "cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro1_4Macro4Pmc",
+      "cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro5_8Macro5Pmc",
+      "cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro5_8Macro6Pmc",
+      "cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro5_8Macro7Pmc",
+      "cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoMainCzPmPmPmcMacro5_8Macro8Pmc",
+      "cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro1_4Macro1Pmd",
+      "cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro1_4Macro2Pmd",
+      "cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro1_4Macro3Pmd",
+      "cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro1_4Macro4Pmd",
+      "cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro5_8Macro5Pmd",
+      "cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro5_8Macro6Pmd",
+      "cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro5_8Macro7Pmd",
+      "cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoMainCzPmPmPmdMacro5_8Macro8Pmd",
+      "cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "cStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index",
+      "cStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "cStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave",
+      "cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "cStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase",
+      "cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "cStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma",
+      "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "cStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb",
+      "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "cStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc",
+      "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "cStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd",
+      "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::cType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2),
+      Scales::type.invmap(2.0f),
       Scales::type,
       "cType",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::dStereoMainCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro1_4Macro1Index",
+      "dStereoMainCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro1_4Macro2Index",
+      "dStereoMainCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro1_4Macro3Index",
+      "dStereoMainCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro1_4Macro4Index",
+      "dStereoMainCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro5_8Macro5Index",
+      "dStereoMainCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro5_8Macro6Index",
+      "dStereoMainCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro5_8Macro7Index",
+      "dStereoMainCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoMainCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoMainCzPmCzIndexMacro5_8Macro8Index",
+      "dStereoMainCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro1_4Macro1Octave",
+      "dStereoMainCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro1_4Macro2Octave",
+      "dStereoMainCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro1_4Macro3Octave",
+      "dStereoMainCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro1_4Macro4Octave",
+      "dStereoMainCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro5_8Macro5Octave",
+      "dStereoMainCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro5_8Macro6Octave",
+      "dStereoMainCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro5_8Macro7Octave",
+      "dStereoMainCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoMainCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoMainCzPmCzOctaveMacro5_8Macro8Octave",
+      "dStereoMainCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro1_4Macro1Phase",
+      "dStereoMainCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro1_4Macro2Phase",
+      "dStereoMainCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro1_4Macro3Phase",
+      "dStereoMainCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro1_4Macro4Phase",
+      "dStereoMainCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro5_8Macro5Phase",
+      "dStereoMainCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro5_8Macro6Phase",
+      "dStereoMainCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro5_8Macro7Phase",
+      "dStereoMainCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoMainCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoMainCzPmCzPhaseMacro5_8Macro8Phase",
+      "dStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro1_4Macro1Pma",
+      "dStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro1_4Macro2Pma",
+      "dStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro1_4Macro3Pma",
+      "dStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro1_4Macro4Pma",
+      "dStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro5_8Macro5Pma",
+      "dStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro5_8Macro6Pma",
+      "dStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro5_8Macro7Pma",
+      "dStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoMainCzPmPmPmaMacro5_8Macro8Pma",
+      "dStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro1_4Macro1Pmb",
+      "dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro1_4Macro2Pmb",
+      "dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro1_4Macro3Pmb",
+      "dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro1_4Macro4Pmb",
+      "dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro5_8Macro5Pmb",
+      "dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro5_8Macro6Pmb",
+      "dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro5_8Macro7Pmb",
+      "dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoMainCzPmPmPmbMacro5_8Macro8Pmb",
+      "dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro1_4Macro1Pmc",
+      "dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro1_4Macro2Pmc",
+      "dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro1_4Macro3Pmc",
+      "dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro1_4Macro4Pmc",
+      "dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro5_8Macro5Pmc",
+      "dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro5_8Macro6Pmc",
+      "dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro5_8Macro7Pmc",
+      "dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoMainCzPmPmPmcMacro5_8Macro8Pmc",
+      "dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro1_4Macro1Pmd",
+      "dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro1_4Macro2Pmd",
+      "dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro1_4Macro3Pmd",
+      "dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro1_4Macro4Pmd",
+      "dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro5_8Macro5Pmd",
+      "dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro5_8Macro6Pmd",
+      "dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro5_8Macro7Pmd",
+      "dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoMainCzPmPmPmdMacro5_8Macro8Pmd",
+      "dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro1_4Macro1Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro1_4Macro2Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro1_4Macro3Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro1_4Macro4Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro5_8Macro5Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro5_8Macro6Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro5_8Macro7Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
-      Scales::index.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index] = std::make_unique<LinearValue>(
+      Scales::index.invmap(0.0f),
       Scales::index,
-      "dStereoL_roffsetCzPmCzIndexMacro5_8Macro8Index",
+      "dStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro1_4Macro1Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro1_4Macro2Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro1_4Macro3Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro1_4Macro4Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro5_8Macro5Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro5_8Macro6Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro5_8Macro7Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
-      Scales::octave.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave] = std::make_unique<LinearValue>(
+      Scales::octave.invmap(0.0f),
       Scales::octave,
-      "dStereoL_roffsetCzPmCzOctaveMacro5_8Macro8Octave",
+      "dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro1_4Macro1Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro1_4Macro2Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro1_4Macro3Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro1_4Macro4Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro5_8Macro5Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro5_8Macro6Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro5_8Macro7Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
-      Scales::phase.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase] = std::make_unique<LinearValue>(
+      Scales::phase.invmap(0.0f),
       Scales::phase,
-      "dStereoL_roffsetCzPmCzPhaseMacro5_8Macro8Phase",
+      "dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro1_4Macro1Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro1_4Macro2Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro1_4Macro3Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro1_4Macro4Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro5_8Macro5Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro5_8Macro6Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro5_8Macro7Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
-      Scales::pma.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      Scales::pma.invmap(0.0f),
       Scales::pma,
-      "dStereoL_roffsetCzPmPmPmaMacro5_8Macro8Pma",
+      "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro1_4Macro1Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro1_4Macro2Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro1_4Macro3Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro1_4Macro4Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro5_8Macro5Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro5_8Macro6Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro5_8Macro7Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
-      Scales::pmb.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      Scales::pmb.invmap(0.0f),
       Scales::pmb,
-      "dStereoL_roffsetCzPmPmPmbMacro5_8Macro8Pmb",
+      "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro1_4Macro1Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro1_4Macro2Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro1_4Macro3Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro1_4Macro4Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro5_8Macro5Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro5_8Macro6Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro5_8Macro7Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
-      Scales::pmc.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      Scales::pmc.invmap(0.0f),
       Scales::pmc,
-      "dStereoL_roffsetCzPmPmPmcMacro5_8Macro8Pmc",
+      "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro1_4Macro1Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro1_4Macro2Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro1_4Macro3Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro1_4Macro4Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro5_8Macro5Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro5_8Macro6Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro5_8Macro7Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
-      Scales::pmd.invmap(0),
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      Scales::pmd.invmap(0.0f),
       Scales::pmd,
-      "dStereoL_roffsetCzPmPmPmdMacro5_8Macro8Pmd",
+      "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::dType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2),
+      Scales::type.invmap(2.0f),
       Scales::type,
       "dType",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::envelopesEnvelope_1Attack] = std::make_unique<LogValue>(
-      Scales::attack.invmap(0.01),
+      Scales::attack.invmap(0.01f),
       Scales::attack,
       "envelopesEnvelope_1Attack",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope_1Decay] = std::make_unique<LogValue>(
-      Scales::decay.invmap(0.1),
+      Scales::decay.invmap(0.10000000000000001f),
       Scales::decay,
       "envelopesEnvelope_1Decay",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope_1Sustain] = std::make_unique<LinearValue>(
-      Scales::sustain.invmap(0.75),
+      Scales::sustain.invmap(0.75f),
       Scales::sustain,
       "envelopesEnvelope_1Sustain",
       0 | kParameterIsAutomable);
     value[ID::envelopesEnvelope_1Release] = std::make_unique<LogValue>(
-      Scales::release.invmap(0.1),
+      Scales::release.invmap(0.10000000000000001f),
       Scales::release,
       "envelopesEnvelope_1Release",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope_1Velsens] = std::make_unique<LinearValue>(
-      Scales::velsens.invmap(0),
+      Scales::velsens.invmap(0.0f),
       Scales::velsens,
       "envelopesEnvelope_1Velsens",
       0 | kParameterIsAutomable);
-    value[ID::envelopesEnvelope_1Envelope_1] = std::make_unique<LinearValue>(
-      Scales::envelope_1.invmap(0),
-      Scales::envelope_1,
-      "envelopesEnvelope_1Envelope_1",
-      0);
     value[ID::envelopesEnvelope0Attack] = std::make_unique<LogValue>(
-      Scales::attack.invmap(0.01),
+      Scales::attack.invmap(0.01f),
       Scales::attack,
       "envelopesEnvelope0Attack",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope0Decay] = std::make_unique<LogValue>(
-      Scales::decay.invmap(0.1),
+      Scales::decay.invmap(0.10000000000000001f),
       Scales::decay,
       "envelopesEnvelope0Decay",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope0Sustain] = std::make_unique<LinearValue>(
-      Scales::sustain.invmap(0.75),
+      Scales::sustain.invmap(0.75f),
       Scales::sustain,
       "envelopesEnvelope0Sustain",
       0 | kParameterIsAutomable);
     value[ID::envelopesEnvelope0Release] = std::make_unique<LogValue>(
-      Scales::release.invmap(0.1),
+      Scales::release.invmap(0.10000000000000001f),
       Scales::release,
       "envelopesEnvelope0Release",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope0Velsens] = std::make_unique<LinearValue>(
-      Scales::velsens.invmap(0),
+      Scales::velsens.invmap(0.0f),
       Scales::velsens,
       "envelopesEnvelope0Velsens",
       0 | kParameterIsAutomable);
-    value[ID::envelopesEnvelope0Envelope0] = std::make_unique<LinearValue>(
-      Scales::envelope0.invmap(0),
-      Scales::envelope0,
-      "envelopesEnvelope0Envelope0",
-      0);
     value[ID::envelopesEnvelope1Attack] = std::make_unique<LogValue>(
-      Scales::attack.invmap(0.01),
+      Scales::attack.invmap(0.01f),
       Scales::attack,
       "envelopesEnvelope1Attack",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope1Decay] = std::make_unique<LogValue>(
-      Scales::decay.invmap(0.1),
+      Scales::decay.invmap(0.10000000000000001f),
       Scales::decay,
       "envelopesEnvelope1Decay",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope1Sustain] = std::make_unique<LinearValue>(
-      Scales::sustain.invmap(0.75),
+      Scales::sustain.invmap(0.75f),
       Scales::sustain,
       "envelopesEnvelope1Sustain",
       0 | kParameterIsAutomable);
     value[ID::envelopesEnvelope1Release] = std::make_unique<LogValue>(
-      Scales::release.invmap(0.1),
+      Scales::release.invmap(0.10000000000000001f),
       Scales::release,
       "envelopesEnvelope1Release",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope1Velsens] = std::make_unique<LinearValue>(
-      Scales::velsens.invmap(0),
+      Scales::velsens.invmap(0.0f),
       Scales::velsens,
       "envelopesEnvelope1Velsens",
       0 | kParameterIsAutomable);
-    value[ID::envelopesEnvelope1Envelope1] = std::make_unique<LinearValue>(
-      Scales::envelope1.invmap(0),
-      Scales::envelope1,
-      "envelopesEnvelope1Envelope1",
-      0);
     value[ID::envelopesEnvelope2Attack] = std::make_unique<LogValue>(
-      Scales::attack.invmap(0.01),
+      Scales::attack.invmap(0.01f),
       Scales::attack,
       "envelopesEnvelope2Attack",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope2Decay] = std::make_unique<LogValue>(
-      Scales::decay.invmap(0.1),
+      Scales::decay.invmap(0.10000000000000001f),
       Scales::decay,
       "envelopesEnvelope2Decay",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope2Sustain] = std::make_unique<LinearValue>(
-      Scales::sustain.invmap(0.75),
+      Scales::sustain.invmap(0.75f),
       Scales::sustain,
       "envelopesEnvelope2Sustain",
       0 | kParameterIsAutomable);
     value[ID::envelopesEnvelope2Release] = std::make_unique<LogValue>(
-      Scales::release.invmap(0.1),
+      Scales::release.invmap(0.10000000000000001f),
       Scales::release,
       "envelopesEnvelope2Release",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope2Velsens] = std::make_unique<LinearValue>(
-      Scales::velsens.invmap(0),
+      Scales::velsens.invmap(0.0f),
       Scales::velsens,
       "envelopesEnvelope2Velsens",
       0 | kParameterIsAutomable);
-    value[ID::envelopesEnvelope2Envelope2] = std::make_unique<LinearValue>(
-      Scales::envelope2.invmap(0),
-      Scales::envelope2,
-      "envelopesEnvelope2Envelope2",
-      0);
     value[ID::envelopesEnvelope3Attack] = std::make_unique<LogValue>(
-      Scales::attack.invmap(0.01),
+      Scales::attack.invmap(0.01f),
       Scales::attack,
       "envelopesEnvelope3Attack",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope3Decay] = std::make_unique<LogValue>(
-      Scales::decay.invmap(0.1),
+      Scales::decay.invmap(0.10000000000000001f),
       Scales::decay,
       "envelopesEnvelope3Decay",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope3Sustain] = std::make_unique<LinearValue>(
-      Scales::sustain.invmap(0.75),
+      Scales::sustain.invmap(0.75f),
       Scales::sustain,
       "envelopesEnvelope3Sustain",
       0 | kParameterIsAutomable);
     value[ID::envelopesEnvelope3Release] = std::make_unique<LogValue>(
-      Scales::release.invmap(0.1),
+      Scales::release.invmap(0.10000000000000001f),
       Scales::release,
       "envelopesEnvelope3Release",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::envelopesEnvelope3Velsens] = std::make_unique<LinearValue>(
-      Scales::velsens.invmap(0),
+      Scales::velsens.invmap(0.0f),
       Scales::velsens,
       "envelopesEnvelope3Velsens",
       0 | kParameterIsAutomable);
-    value[ID::envelopesEnvelope3Envelope3] = std::make_unique<LinearValue>(
-      Scales::envelope3.invmap(0),
-      Scales::envelope3,
-      "envelopesEnvelope3Envelope3",
-      0);
     value[ID::lfosLfo0Lfofreq] = std::make_unique<LogValue>(
-      Scales::lfofreq.invmap(1),
+      Scales::lfofreq.invmap(1.0f),
       Scales::lfofreq,
       "lfosLfo0Lfofreq",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::lfosLfo0Lfo0] = std::make_unique<LinearValue>(
-      Scales::lfo0.invmap(0),
-      Scales::lfo0,
-      "lfosLfo0Lfo0",
-      0);
     value[ID::lfosLfo1Lfofreq] = std::make_unique<LogValue>(
-      Scales::lfofreq.invmap(1),
+      Scales::lfofreq.invmap(1.0f),
       Scales::lfofreq,
       "lfosLfo1Lfofreq",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::lfosLfo1Lfo1] = std::make_unique<LinearValue>(
-      Scales::lfo1.invmap(0),
-      Scales::lfo1,
-      "lfosLfo1Lfo1",
-      0);
     value[ID::lfosLfo2Lfofreq] = std::make_unique<LogValue>(
-      Scales::lfofreq.invmap(1),
+      Scales::lfofreq.invmap(1.0f),
       Scales::lfofreq,
       "lfosLfo2Lfofreq",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::lfosLfo2Lfo2] = std::make_unique<LinearValue>(
-      Scales::lfo2.invmap(0),
-      Scales::lfo2,
-      "lfosLfo2Lfo2",
-      0);
     value[ID::lfosLfo3Lfofreq] = std::make_unique<LogValue>(
-      Scales::lfofreq.invmap(1),
+      Scales::lfofreq.invmap(1.0f),
       Scales::lfofreq,
       "lfosLfo3Lfofreq",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::lfosLfo3Lfo3] = std::make_unique<LinearValue>(
-      Scales::lfo3.invmap(0),
-      Scales::lfo3,
-      "lfosLfo3Lfo3",
-      0);
     value[ID::modulation1Macro] = std::make_unique<LinearValue>(
-      Scales::macro.invmap(0),
+      Scales::macro.invmap(0.0f),
       Scales::macro,
       "modulation1Macro",
       0 | kParameterIsAutomable);
     value[ID::modulation1Uptime] = std::make_unique<LinearValue>(
-      Scales::uptime.invmap(0.1),
+      Scales::uptime.invmap(0.10000000000000001f),
       Scales::uptime,
       "modulation1Uptime",
       0 | kParameterIsAutomable);
     value[ID::modulation1Downtime] = std::make_unique<LinearValue>(
-      Scales::downtime.invmap(0.1),
+      Scales::downtime.invmap(0.10000000000000001f),
       Scales::downtime,
       "modulation1Downtime",
       0 | kParameterIsAutomable);
     value[ID::modulation1Env0] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation1Env0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Env1] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation1Env1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Env2] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation1Env2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Env3] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation1Env3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Lfo0] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation1Lfo0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Lfo1] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation1Lfo1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Lfo2] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation1Lfo2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1Lfo3] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation1Lfo3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation1After_touch] = std::make_unique<LinearValue>(
-      Scales::after_touch.invmap(0),
+      Scales::after_touch.invmap(0.0f),
       Scales::after_touch,
       "modulation1After_touch",
       0 | kParameterIsAutomable);
     value[ID::modulation1Note] = std::make_unique<LinearValue>(
-      Scales::note.invmap(0),
+      Scales::note.invmap(0.0f),
       Scales::note,
       "modulation1Note",
       0 | kParameterIsAutomable);
     value[ID::modulation1Velocity] = std::make_unique<LinearValue>(
-      Scales::velocity.invmap(0),
+      Scales::velocity.invmap(0.0f),
       Scales::velocity,
       "modulation1Velocity",
       0 | kParameterIsAutomable);
     value[ID::modulation1Mod_wheel] = std::make_unique<LinearValue>(
-      Scales::mod_wheel.invmap(0),
+      Scales::mod_wheel.invmap(0.0f),
       Scales::mod_wheel,
       "modulation1Mod_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation1Pitch_wheel] = std::make_unique<LinearValue>(
-      Scales::pitch_wheel.invmap(0),
+      Scales::pitch_wheel.invmap(0.0f),
       Scales::pitch_wheel,
       "modulation1Pitch_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation1Random] = std::make_unique<LinearValue>(
-      Scales::random.invmap(0),
+      Scales::random.invmap(0.0f),
       Scales::random,
       "modulation1Random",
       0 | kParameterIsAutomable);
-    value[ID::modulation1Mix] = std::make_unique<LinearValue>(
-      Scales::mix.invmap(0),
-      Scales::mix,
-      "modulation1Mix",
-      0);
     value[ID::modulation2Macro] = std::make_unique<LinearValue>(
-      Scales::macro.invmap(0),
+      Scales::macro.invmap(0.0f),
       Scales::macro,
       "modulation2Macro",
       0 | kParameterIsAutomable);
     value[ID::modulation2Uptime] = std::make_unique<LinearValue>(
-      Scales::uptime.invmap(0.1),
+      Scales::uptime.invmap(0.10000000000000001f),
       Scales::uptime,
       "modulation2Uptime",
       0 | kParameterIsAutomable);
     value[ID::modulation2Downtime] = std::make_unique<LinearValue>(
-      Scales::downtime.invmap(0.1),
+      Scales::downtime.invmap(0.10000000000000001f),
       Scales::downtime,
       "modulation2Downtime",
       0 | kParameterIsAutomable);
     value[ID::modulation2Env0] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation2Env0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Env1] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation2Env1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Env2] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation2Env2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Env3] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation2Env3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Lfo0] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation2Lfo0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Lfo1] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation2Lfo1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Lfo2] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation2Lfo2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2Lfo3] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation2Lfo3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation2After_touch] = std::make_unique<LinearValue>(
-      Scales::after_touch.invmap(0),
+      Scales::after_touch.invmap(0.0f),
       Scales::after_touch,
       "modulation2After_touch",
       0 | kParameterIsAutomable);
     value[ID::modulation2Note] = std::make_unique<LinearValue>(
-      Scales::note.invmap(0),
+      Scales::note.invmap(0.0f),
       Scales::note,
       "modulation2Note",
       0 | kParameterIsAutomable);
     value[ID::modulation2Velocity] = std::make_unique<LinearValue>(
-      Scales::velocity.invmap(0),
+      Scales::velocity.invmap(0.0f),
       Scales::velocity,
       "modulation2Velocity",
       0 | kParameterIsAutomable);
     value[ID::modulation2Mod_wheel] = std::make_unique<LinearValue>(
-      Scales::mod_wheel.invmap(0),
+      Scales::mod_wheel.invmap(0.0f),
       Scales::mod_wheel,
       "modulation2Mod_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation2Pitch_wheel] = std::make_unique<LinearValue>(
-      Scales::pitch_wheel.invmap(0),
+      Scales::pitch_wheel.invmap(0.0f),
       Scales::pitch_wheel,
       "modulation2Pitch_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation2Random] = std::make_unique<LinearValue>(
-      Scales::random.invmap(0),
+      Scales::random.invmap(0.0f),
       Scales::random,
       "modulation2Random",
       0 | kParameterIsAutomable);
-    value[ID::modulation2Mix] = std::make_unique<LinearValue>(
-      Scales::mix.invmap(0),
-      Scales::mix,
-      "modulation2Mix",
-      0);
     value[ID::modulation3Macro] = std::make_unique<LinearValue>(
-      Scales::macro.invmap(0),
+      Scales::macro.invmap(0.0f),
       Scales::macro,
       "modulation3Macro",
       0 | kParameterIsAutomable);
     value[ID::modulation3Uptime] = std::make_unique<LinearValue>(
-      Scales::uptime.invmap(0.1),
+      Scales::uptime.invmap(0.10000000000000001f),
       Scales::uptime,
       "modulation3Uptime",
       0 | kParameterIsAutomable);
     value[ID::modulation3Downtime] = std::make_unique<LinearValue>(
-      Scales::downtime.invmap(0.1),
+      Scales::downtime.invmap(0.10000000000000001f),
       Scales::downtime,
       "modulation3Downtime",
       0 | kParameterIsAutomable);
     value[ID::modulation3Env0] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation3Env0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Env1] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation3Env1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Env2] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation3Env2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Env3] = std::make_unique<LinearValue>(
-      Scales::env.invmap(0),
+      Scales::env.invmap(0.0f),
       Scales::env,
       "modulation3Env3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Lfo0] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation3Lfo0",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Lfo1] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation3Lfo1",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Lfo2] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation3Lfo2",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3Lfo3] = std::make_unique<LinearValue>(
-      Scales::lfo.invmap(0),
+      Scales::lfo.invmap(0.0f),
       Scales::lfo,
       "modulation3Lfo3",
-      0);
+      0 | kParameterIsAutomable);
     value[ID::modulation3After_touch] = std::make_unique<LinearValue>(
-      Scales::after_touch.invmap(0),
+      Scales::after_touch.invmap(0.0f),
       Scales::after_touch,
       "modulation3After_touch",
       0 | kParameterIsAutomable);
     value[ID::modulation3Note] = std::make_unique<LinearValue>(
-      Scales::note.invmap(0),
+      Scales::note.invmap(0.0f),
       Scales::note,
       "modulation3Note",
       0 | kParameterIsAutomable);
     value[ID::modulation3Velocity] = std::make_unique<LinearValue>(
-      Scales::velocity.invmap(0),
+      Scales::velocity.invmap(0.0f),
       Scales::velocity,
       "modulation3Velocity",
       0 | kParameterIsAutomable);
     value[ID::modulation3Mod_wheel] = std::make_unique<LinearValue>(
-      Scales::mod_wheel.invmap(0),
+      Scales::mod_wheel.invmap(0.0f),
       Scales::mod_wheel,
       "modulation3Mod_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation3Pitch_wheel] = std::make_unique<LinearValue>(
-      Scales::pitch_wheel.invmap(0),
+      Scales::pitch_wheel.invmap(0.0f),
       Scales::pitch_wheel,
       "modulation3Pitch_wheel",
       0 | kParameterIsAutomable);
     value[ID::modulation3Random] = std::make_unique<LinearValue>(
-      Scales::random.invmap(0),
+      Scales::random.invmap(0.0f),
       Scales::random,
       "modulation3Random",
-      0 | kParameterIsAutomable);
-    value[ID::modulation3Mix] = std::make_unique<LinearValue>(
-      Scales::mix.invmap(0),
-      Scales::mix,
-      "modulation3Mix",
-      0);
-    value[ID::midiChannelaftertouch] = std::make_unique<IntValue>(
-      Scales::channelaftertouch.invmap(0),
-      Scales::channelaftertouch,
-      "midiChannelaftertouch",
-      0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::midiModwheel] = std::make_unique<IntValue>(
-      Scales::modwheel.invmap(0),
-      Scales::modwheel,
-      "midiModwheel",
-      0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::midiPitchwheelvaluein] = std::make_unique<IntValue>(
-      Scales::pitchwheelvaluein.invmap(0),
-      Scales::pitchwheelvaluein,
-      "midiPitchwheelvaluein",
-      0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::midiFreq] = std::make_unique<LogValue>(
-      Scales::freq.invmap(440),
-      Scales::freq,
-      "midiFreq",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::midiGain] = std::make_unique<LinearValue>(
-      Scales::gain.invmap(0.5),
-      Scales::gain,
-      "midiGain",
-      0 | kParameterIsAutomable);
-    value[ID::midiGate] = std::make_unique<LinearValue>(
-      Scales::gate.invmap(0),
-      Scales::gate,
-      "midiGate",
       0 | kParameterIsAutomable);
     
   }

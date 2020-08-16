@@ -75,12 +75,13 @@ git clone --recursive https://github.com/magnetophon/DigiDrie/
 cd DigiDrie
 git submodule update --init --recursive
 
-# Generate json.
+# Generate xml.
 cd faust/
-faust -t 0 -time -json DigiFaustMidi.dsp
-cp DigiFaustMidi.dsp.json ../plugin/data/
+faust -t 0 -time -xml DigiFaustMidi.dsp > DigiFaustMidi.hpp
+cp DigiFaustMidi.hpp     ../plugin/data/
+cp DigiFaustMidi.dsp.xml ../plugin/data/
 
-# Generate C++ code from json.
+# Generate C++ code from xml.
 cd ../plugin/data
 ./copy.sh
 

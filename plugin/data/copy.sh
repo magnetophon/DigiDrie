@@ -2,10 +2,9 @@
 
 set -e
 
-python3 extract_parameter.py
-python3 generate_parameter_hpp.py
-python3 generate_ui_cpp.py
+python3 rewrite_dsp.py
 
-cp parameter.hpp ../dpf/DigiDrie
-cp parameter.cpp ../dpf/DigiDrie
-cp ui.cpp ../dpf/DigiDrie
+cp generated/parameter.hpp ../dpf/DigiDrie
+cp generated/parameter.cpp ../dpf/DigiDrie
+cp generated/ui.cpp        ../dpf/DigiDrie
+cp generated/dspcore.cpp   ../dpf/DigiDrie/dsp

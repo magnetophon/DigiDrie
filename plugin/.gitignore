@@ -1,10 +1,8 @@
-data/test.json
+data/DigiFaustMidi.dsp.xml
 data/DigiFaustMidi.dsp.json
-data/parameter_group_info.json
-data/label_group.json
-data/parameter.cpp
-data/parameter.hpp
-data/ui.cpp
+data/DigiFaustMidi.cpp
+data/DigiFaustMidi.hpp
+data/generated
 
 dpf/bin
 dpf/build

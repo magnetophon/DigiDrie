@@ -36,7 +36,7 @@ constexpr uint32_t defaultHeight = uint32_t(2 * uiMargin + innerHeight);
 
 enum macrotabIndex {
   {% for idx in range(nrMacro) -%}
-    macro_{{ idx + 1 }},
+    macro{{ idx + 1 }},
   {% endfor -%}
 };
 
@@ -102,7 +102,7 @@ public:
     {% for sctn, controls in sections.items() -%}
     const auto {{ macro }}_{{ sctn }}_top0 = macrotabInsideTop0 + {{ loop.index0 }} * sectionHeight;
     const auto {{ macro }}_{{ sctn }}_top1 = {{ macro }}_{{ sctn }}_top0 + labelY;
-    tabviewMacro->addWidget({{ macro }},
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
       addGroupLabel(macrotabInsideLeft0, {{ macro }}_{{ sctn }}_top0, macrotabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
@@ -120,7 +120,7 @@ public:
     tabviewMacro->addWidget(macrotabIndex::{{ macro }},
       addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, {{ macro }}_{{ sctn }}_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::{{ addr["L-R_offset"] }}));
+        "", ID::{{ addr["l_roffset"] }}));
     {% endfor %}
     {% endfor %}
     {% endfor -%}
@@ -135,7 +135,7 @@ public:
     tabviewMacro->addWidget(macrotabIndex::{{ macro }},
       addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::{{ addr["L-R_offset"] }}));
+        "", ID::{{ addr["l_roffset"] }}));
     {% endfor %}
     {% endfor -%}
 
@@ -152,8 +152,6 @@ public:
       2 * knobX, labelHeight, uiTextSize,
       ID::{{ ctrl["address"] }}, osc_type_{{ label }}_options);
     {% endfor -%}
-
-    {# TODO: osc_type #}
 
     const auto tabLeft1 = tabLeft0 + macrotabWidth + uiMargin;
     const auto globaltabInnerWidth = 10 * knobX;

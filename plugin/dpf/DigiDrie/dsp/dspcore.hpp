@@ -10,6 +10,7 @@ TODO:
 #include "../../common/dsp/smoother.hpp"
 #include "../../lib/vcl/vectorclass.h"
 #include "../parameter.hpp"
+#include "faustdsp.hpp"
 
 #include <array>
 #include <cmath>
@@ -17,8 +18,6 @@ TODO:
 #include <random>
 
 using namespace SomeDSP;
-
-enum class NoteState { active, release, rest };
 
 class DSPInterface {
 public:
@@ -106,6 +105,7 @@ public:
                                                                                          \
   private:                                                                               \
     float sampleRate = 44100.0f;                                                         \
+    mydsp synth;                                                                         \
   };
 
 DSPCORE_CLASS(AVX512)

@@ -24,8 +24,8 @@ enum ID {
   bypass,
   pitchBend,
 
-  {% for label in labels -%}
-  {{+ label }},
+  {% for prm in parameters -%}
+  {{ prm.ident }},
   {% endfor %}
   ID_ENUM_LENGTH,
 };
@@ -58,12 +58,12 @@ struct GlobalParameter : public ParameterInterface {
     value[ID::pitchBend] = std::make_unique<LinearValue>(
       0.5, Scales::defaultScale, "pitchBend", kParameterIsAutomable);
 
-    {% for par in parameters -%}
-    value[ID::{{ par.label }}] = std::make_unique<{{ par.value_type }}>(
-      Scales::{{ par.scale }}.invmap({{ par.init }}),
-      Scales::{{ par.scale }},
-      "{{ par.label }}",
-      0{% for hint in par.hints %} | {{hint}}{% endfor %});
+    {% for prm in parameters -%}
+    value[ID::{{ prm.ident }}] = std::make_unique<{{ prm.value_type }}>(
+      Scales::{{ prm.scale }}.invmap({{ prm.init }}),
+      Scales::{{ prm.scale }},
+      "{{ prm.ident }}",
+      0{% for hint in prm.hints %} | {{hint}}{% endfor %});
     {% endfor %}
   }
 
