@@ -206,10 +206,15 @@ def get_global_items(ui_items, nrMacro):
 
     # crossfade_items = arrange_items(crossfade_items, crossfade_idents)
 
+    temp_items = []
+    for itm in items:
+        pp.pprint(itm)
+        walk_ui(itm, temp_items)
+
     global_items = {}
     global_menus = {}
     global_checkboxes = {}
-    for itm in items:
+    for itm in temp_items:
         if itm["type"] == "checkbox":
             global_checkboxes[format_name(itm["label"])] = format_address(itm)
             continue
