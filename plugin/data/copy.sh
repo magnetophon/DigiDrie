@@ -8,3 +8,4 @@ cp generated/parameter.hpp ../dpf/DigiDrie
 cp generated/parameter.cpp ../dpf/DigiDrie
 cp generated/ui.cpp        ../dpf/DigiDrie
 cp generated/dspcore.cpp   ../dpf/DigiDrie/dsp
+cp generated/faustdsp.hpp   ../dpf/DigiDrie/dsp
