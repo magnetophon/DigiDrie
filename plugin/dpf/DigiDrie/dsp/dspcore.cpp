@@ -24,18 +24,30 @@
   #error Unsupported instruction set
 #endif
 
-DSPCORE_NAME::DSPCORE_NAME() {}
+inline float
+notePitchToFrequency(float notePitch, float equalTemperament = 12.0f, float a4Hz = 440.0f)
+{
+  return a4Hz * std::pow(2.0f, (notePitch - 69.0f) / equalTemperament);
+}
+
+DSPCORE_NAME::DSPCORE_NAME() {
+  noteStack.reserve(1024);
+}
 
 void DSPCORE_NAME::setup(double sampleRate)
 {
   this->sampleRate = sampleRate;
 
+  noteStack.resize(0);
   synth.init(sampleRate);
 
   startup();
 }
 
-void DSPCORE_NAME::reset() { startup(); }
+void DSPCORE_NAME::reset() {
+  noteStack.resize(0);
+  startup();
+}
 
 void DSPCORE_NAME::startup() {}
 
@@ -694,21 +706,52 @@ void DSPCORE_NAME::setParameters(float tempo) {
   synth.fHslider18 = pv[ID::modulation3Pitch_wheel]->getFloat();
   synth.fHslider19 = pv[ID::modulation3Random]->getFloat();
   
+
+  // MIDI parameters.
+  // - `fHslider193`: note frequency in Hz.
+  // - `fButton0`: note gain (velocity).
+  // - `fHslider4`: note gate.
+  if (!noteStack.empty()) {
+    synth.fHslider193 = noteStack.back().frequency;
+    synth.fHslider4 = noteStack.back().velocity;
+    synth.fButton0 = 1.0f;
+  } else {
+    synth.fHslider193 = 0;
+    synth.fHslider4 = 0;
+    synth.fButton0 = 0;
+  }
+
+  synth.control(&synth.ictrl[0], &synth.rctrl[0]);
 }
 
 void DSPCORE_NAME::process(const uint32_t length, float *out0, float *out1)
 {
+  std::array<float, 2> frame{};
   for (uint32_t i = 0; i < length; ++i) {
     processMidiNote(i);
 
-    out0[i] = 0;
-    out1[i] = 0;
+    synth.compute(nullptr, &frame[0], &synth.ictrl[0], &synth.rctrl[0]);
+
+    out0[i] = frame[0];
+    out1[i] = frame[1];
   }
 }
 
 void DSPCORE_NAME::noteOn(
-  int32_t /* id */, int16_t /* pitch */, float /* tuning */, float /* velocity */)
+  int32_t noteId, int16_t pitch, float tuning, float velocity)
 {
+  NoteInfo info;
+  info.id = noteId;
+  info.frequency = notePitchToFrequency(pitch + tuning);
+  info.velocity = velocityMap.map(velocity);
+  noteStack.push_back(info);
 }
 
-void DSPCORE_NAME::noteOff(int32_t /* noteId */) {}
+void DSPCORE_NAME::noteOff(int32_t noteId)
+{
+  auto it = std::find_if(noteStack.begin(), noteStack.end(), [&](const NoteInfo &info) {
+    return info.id == noteId;
+  });
+  if (it == noteStack.end()) return;
+  noteStack.erase(it);
+}

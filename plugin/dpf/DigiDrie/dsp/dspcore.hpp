@@ -19,6 +19,12 @@ TODO:
 
 using namespace SomeDSP;
 
+struct NoteInfo {
+  int32_t id;
+  float frequency;
+  float velocity;
+};
+
 class DSPInterface {
 public:
   virtual ~DSPInterface(){};
@@ -105,6 +111,10 @@ public:
                                                                                          \
   private:                                                                               \
     float sampleRate = 44100.0f;                                                         \
+                                                                                         \
+    DecibelScale<float> velocityMap{-30, 0, true};                                       \
+    std::vector<NoteInfo> noteStack; /* Top of this stack is current note. */            \
+                                                                                         \
     mydsp synth;                                                                         \
   };
 

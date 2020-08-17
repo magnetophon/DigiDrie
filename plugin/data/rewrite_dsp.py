@@ -45,17 +45,23 @@ def format_faust_cpp(filename: str):
 
     # Note that some string contains tab character.
     re_buildUserInterface = re.compile(
-        r"\n^	virtual void buildUserInterface\(UI\* ui_interface\) {.*?^	}\n",
+        r"\n^	virtual void buildUserInterface\(UI\* ui_interface\) {.*?^	}",
         flags=re.MULTILINE | re.DOTALL,
     )
     re_metadata = re.compile(
-        r"\n^	void metadata\(Meta\* m\) {.*?^	}\n",
+        r"\n^	void metadata\(Meta\* m\) {.*?^	}",
         flags=re.MULTILINE | re.DOTALL,
     )
     re_public_dsp = re.compile(" : public dsp")
+    re_public_dsp = re.compile(" : public one_sample_dsp")
     re_virtual = re.compile(r"virtual ")
     re_private = re.compile(r"private:")
     re_pragma_once = re.compile(r"(#ifndef  __mydsp_H__)")
+    re_include_array = re.compile(r"(#include <algorithm>)")
+    re_control_array = re.compile(
+        r"^(class mydsp {)",
+        flags=re.MULTILINE | re.DOTALL,
+    )
 
     text = re_buildUserInterface.sub("", text)
     text = re_metadata.sub("", text)
@@ -63,6 +69,14 @@ def format_faust_cpp(filename: str):
     text = re_virtual.sub("", text)
     text = re_private.sub("public:", text)
     text = re_pragma_once.sub(r"#pragma once\n\n\1", text)
+    text = re_include_array.sub(r"\1\n#include <array>", text)
+    text = re_control_array.sub(
+        """\
+\\1
+ public:
+	std::array<int, FAUST_INT_CONTROLS> ictrl{};
+	std::array<FAUSTFLOAT, FAUST_REAL_CONTROLS> rctrl{};
+""", text)
 
     with open("generated/faustdsp.hpp", "w", encoding="utf-8") as fi:
         fi.write(text)
@@ -141,18 +155,31 @@ def load_faust_xml(xmlfile):
 
     return active, midi, passive, layout
 
-def generate_dspcore_cpp(active, passive):
+def generate_dspcore_cpp(active, passive, midi_widgets):
     param_data = []
-    for widget in active.iter("widget"):
+    for elem in active.iter("widget"):
         data = {
-            "ident": widget.find("cppident").text,
-            "varname": widget.find("varname").text,
+            "ident": elem.find("cppident").text,
+            "varname": elem.find("varname").text,
         }
         param_data.append(data)
 
+    midi = {}
+    for elem in midi_widgets.iter("widget"):
+        addr = eval(elem.find("address").text)
+        if "freq" in addr:
+            midi["freq"] = {"varname": elem.find("varname").text}
+        if "gain" in addr:
+            midi["gain"] = {"varname": elem.find("varname").text}
+        if "gate" in addr:
+            midi["gate"] = {"varname": elem.find("varname").text}
+
     jinja_env = Environment(loader=FileSystemLoader("."))
     template = jinja_env.get_template("template/dspcore.cpp.template")
-    text = template.render(param_data=param_data)
+    text = template.render(
+        param_data=param_data,
+        midi=midi,
+    )
     with open("generated/dspcore.cpp", "w", encoding="utf-8") as fi:
         fi.write(text)
 
@@ -464,6 +491,6 @@ if __name__ == "__main__":
     format_faust_cpp("DigiFaustMidi.hpp")
     active, midi, passive, layout = load_faust_xml("DigiFaustMidi.dsp.xml")
 
-    generate_ui_cpp(active, passive)
-    generate_dspcore_cpp(active, passive)
+    generate_dspcore_cpp(active, passive, midi)
     generate_parameter_hpp(active, passive)
+    generate_ui_cpp(active, passive)

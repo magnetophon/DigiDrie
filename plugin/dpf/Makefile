@@ -88,7 +88,7 @@ installJACK:
 installHome:
 	mkdir -p ~/.lv2
 	cp -r bin/*.lv2 ~/.lv2
-	python3 install.py
+	# python3 install.py # TODO: Add style.json installation.
 
 .PHONY: installHomeVST2
 installHomeVST2:

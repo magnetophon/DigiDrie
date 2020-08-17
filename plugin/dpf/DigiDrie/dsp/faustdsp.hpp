@@ -3,7 +3,7 @@ author: "Bart Brouns"
 license: "AGPLv3"
 name: "DigiFaustMidi"
 Code generated with Faust 2.28.0 (https://faust.grame.fr)
-Compilation options: -lang cpp -scal -ftz 0
+Compilation options: -lang cpp -os -scal -ftz 0
 ------------------------------------------------------------ */
 
 #pragma once
@@ -16,6 +16,7 @@ Compilation options: -lang cpp -scal -ftz 0
 #endif 
 
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <math.h>
 
@@ -91,7 +92,16 @@ static float mydsp_faustpower2_f(float value) {
 #define exp10 __exp10
 #endif
 
+#define FAUST_INPUTS 0
+#define FAUST_OUTPUTS  2
+#define FAUST_INT_CONTROLS 81
+#define FAUST_REAL_CONTROLS 850
+
 class mydsp {
+ public:
+	std::array<int, FAUST_INT_CONTROLS> ictrl{};
+	std::array<FAUSTFLOAT, FAUST_REAL_CONTROLS> rctrl{};
+
 	
  public:
 	
@@ -2357,6 +2367,7 @@ class mydsp {
 	
  public:
 	
+
 	int getNumInputs() {
 		return 0;
 	}
@@ -5316,6508 +5327,3993 @@ class mydsp {
 	int getSampleRate() {
 		return fSampleRate;
 	}
-		
-	void compute(int count, FAUSTFLOAT** inputs, FAUSTFLOAT** outputs) {
-		FAUSTFLOAT* output0 = outputs[0];
-		FAUSTFLOAT* output1 = outputs[1];
-		float fSlow0 = float(fButton0);
-		int iSlow1 = (fSlow0 > 0.0f);
-		float fSlow2 = float(fHslider0);
-		float fSlow3 = float(fHslider1);
-		int iSlow4 = int((fConst0 * fSlow3));
-		float fSlow5 = float(fHslider2);
-		float fSlow6 = float(fHslider4);
-		float fSlow7 = (fSlow6 + -1.0f);
-		float fSlow8 = ((float(fHslider3) * fSlow7) + 1.0f);
-		float fSlow9 = float(iSlow1);
-		float fSlow10 = (float(fHslider5) * fSlow9);
-		float fSlow11 = float(fVslider0);
-		float fSlow12 = std::min<float>(8.0f, fSlow11);
-		float fSlow13 = float((0.0f == fSlow12));
-		int iSlow14 = (fSlow13 != 0.0f);
-		float fSlow15 = float(fHslider6);
-		float fSlow16 = std::fabs(fSlow15);
-		float fSlow17 = float(fHslider7);
-		float fSlow18 = std::fabs(fSlow17);
-		float fSlow19 = float(fHslider8);
-		float fSlow20 = std::fabs(fSlow19);
-		float fSlow21 = float(fHslider9);
-		float fSlow22 = std::fabs(fSlow21);
-		float fSlow23 = float(fHslider10);
-		float fSlow24 = std::fabs(fSlow23);
-		float fSlow25 = float(fHslider11);
-		float fSlow26 = std::fabs(fSlow25);
-		float fSlow27 = float(fHslider12);
-		float fSlow28 = std::fabs(fSlow27);
-		float fSlow29 = float(fHslider13);
-		float fSlow30 = std::fabs(fSlow29);
-		float fSlow31 = float(fHslider14);
-		float fSlow32 = std::fabs(fSlow31);
-		float fSlow33 = float(fHslider15);
-		float fSlow34 = std::fabs(fSlow33);
-		float fSlow35 = float(fHslider16);
-		float fSlow36 = std::fabs(fSlow35);
-		float fSlow37 = float(fHslider17);
-		float fSlow38 = std::fabs(fSlow37);
-		float fSlow39 = float(fHslider18);
-		float fSlow40 = std::fabs(fSlow39);
-		float fSlow41 = float(fHslider19);
-		float fSlow42 = std::fabs(fSlow41);
-		float fSlow43 = (((((((fSlow16 + (fSlow18 + (fSlow20 + (fSlow22 + (fSlow24 + (fSlow26 + (fSlow28 + fSlow30))))))) + fSlow32) + fSlow34) + fSlow36) + fSlow38) + fSlow40) + fSlow42);
-		float fSlow44 = std::min<float>(1.0f, fSlow43);
-		float fSlow45 = (fSlow44 / std::max<float>(1.84317514e-35f, fSlow43));
-		float fSlow46 = std::max<float>(1.31655367e-36f, fSlow16);
-		float fSlow47 = ((fSlow16 < 0.0f) ? (0.0f - fSlow46) : fSlow46);
-		int iSlow48 = (fSlow15 < 0.0f);
-		float fSlow49 = float(fHslider20);
-		float fSlow50 = float(fHslider21);
-		int iSlow51 = int((fConst0 * fSlow50));
-		float fSlow52 = float(fHslider22);
-		float fSlow53 = ((float(fHslider23) * fSlow7) + 1.0f);
-		float fSlow54 = (float(fHslider24) * fSlow9);
-		float fSlow55 = std::max<float>(1.31655367e-36f, fSlow18);
-		float fSlow56 = ((fSlow18 < 0.0f) ? (0.0f - fSlow55) : fSlow55);
-		int iSlow57 = (fSlow17 < 0.0f);
-		float fSlow58 = float(fHslider25);
-		float fSlow59 = float(fHslider26);
-		int iSlow60 = int((fConst0 * fSlow59));
-		float fSlow61 = float(fHslider27);
-		float fSlow62 = ((float(fHslider28) * fSlow7) + 1.0f);
-		float fSlow63 = (float(fHslider29) * fSlow9);
-		float fSlow64 = std::max<float>(1.31655367e-36f, fSlow20);
-		float fSlow65 = ((fSlow20 < 0.0f) ? (0.0f - fSlow64) : fSlow64);
-		int iSlow66 = (fSlow19 < 0.0f);
-		float fSlow67 = float(fHslider30);
-		float fSlow68 = float(fHslider31);
-		int iSlow69 = int((fConst0 * fSlow68));
-		float fSlow70 = float(fHslider32);
-		float fSlow71 = ((float(fHslider33) * fSlow7) + 1.0f);
-		float fSlow72 = (float(fHslider34) * fSlow9);
-		float fSlow73 = std::max<float>(1.31655367e-36f, fSlow22);
-		float fSlow74 = ((fSlow22 < 0.0f) ? (0.0f - fSlow73) : fSlow73);
-		int iSlow75 = (fSlow21 < 0.0f);
-		float fSlow76 = float(fHslider35);
-		float fSlow77 = float(fHslider36);
-		int iSlow78 = int((fConst0 * fSlow77));
-		float fSlow79 = float(fHslider37);
-		float fSlow80 = ((float(fHslider38) * fSlow7) + 1.0f);
-		float fSlow81 = (float(fHslider39) * fSlow9);
-		float fSlow82 = std::max<float>(1.31655367e-36f, fSlow24);
-		float fSlow83 = ((fSlow24 < 0.0f) ? (0.0f - fSlow82) : fSlow82);
-		int iSlow84 = (fSlow23 < 0.0f);
-		float fSlow85 = (fConst1 * float(fHslider40));
-		float fSlow86 = std::max<float>(1.31655367e-36f, fSlow26);
-		float fSlow87 = ((fSlow26 < 0.0f) ? (0.0f - fSlow86) : fSlow86);
-		int iSlow88 = (fSlow25 < 0.0f);
-		float fSlow89 = (fConst1 * float(fHslider41));
-		float fSlow90 = std::max<float>(1.31655367e-36f, fSlow30);
-		float fSlow91 = ((fSlow30 < 0.0f) ? (0.0f - fSlow90) : fSlow90);
-		int iSlow92 = (fSlow29 < 0.0f);
-		float fSlow93 = (fConst1 * float(fHslider42));
-		float fSlow94 = std::max<float>(1.31655367e-36f, fSlow28);
-		float fSlow95 = ((fSlow28 < 0.0f) ? (0.0f - fSlow94) : fSlow94);
-		int iSlow96 = (fSlow27 < 0.0f);
-		float fSlow97 = (fConst1 * float(fHslider43));
-		float fSlow98 = std::max<float>(1.31655367e-36f, fSlow32);
-		float fSlow99 = (0.00787401572f * float(fVslider1));
-		float fSlow100 = (1.0f - fSlow99);
-		float fSlow101 = (((fSlow32 < 0.0f) ? (0.0f - fSlow98) : fSlow98) * ((fSlow31 < 0.0f) ? fSlow100 : fSlow99));
-		float fSlow102 = std::max<float>(1.31655367e-36f, fSlow34);
-		float fSlow103 = (((fSlow34 < 0.0f) ? (0.0f - fSlow102) : fSlow102) * float(((fSlow33 < 0.0f) ? 1 : 0)));
-		float fSlow104 = std::max<float>(1.31655367e-36f, fSlow36);
-		float fSlow105 = (1.0f - fSlow6);
-		float fSlow106 = (((fSlow36 < 0.0f) ? (0.0f - fSlow104) : fSlow104) * ((fSlow35 < 0.0f) ? fSlow105 : fSlow6));
-		float fSlow107 = std::max<float>(1.31655367e-36f, fSlow38);
-		float fSlow108 = (0.00787401572f * float(fVslider2));
-		float fSlow109 = (1.0f - fSlow108);
-		float fSlow110 = (((fSlow38 < 0.0f) ? (0.0f - fSlow107) : fSlow107) * ((fSlow37 < 0.0f) ? fSlow109 : fSlow108));
-		float fSlow111 = std::max<float>(1.31655367e-36f, fSlow40);
-		float fSlow112 = float(fVslider3);
-		float fSlow113 = (0.000122070312f * fSlow112);
-		float fSlow114 = (1.0f - fSlow113);
-		float fSlow115 = (((fSlow40 < 0.0f) ? (0.0f - fSlow111) : fSlow111) * ((fSlow39 < 0.0f) ? fSlow114 : fSlow113));
-		float fSlow116 = std::max<float>(1.31655367e-36f, fSlow42);
-		float fSlow117 = ((fSlow42 < 0.0f) ? (0.0f - fSlow116) : fSlow116);
-		int iSlow118 = (fSlow41 < 0.0f);
-		float fSlow119 = (1.0f - fSlow44);
-		float fSlow120 = float(fHslider44);
-		float fSlow121 = float(fHslider45);
-		int iSlow122 = (std::fabs(fSlow121) < 1.1920929e-07f);
-		float fSlow123 = (iSlow122 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow122 ? 1.0f : fSlow121)))));
-		float fSlow124 = float(fHslider46);
-		int iSlow125 = (std::fabs(fSlow124) < 1.1920929e-07f);
-		float fSlow126 = (iSlow125 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow125 ? 1.0f : fSlow124)))));
-		float fSlow127 = float(fHslider47);
-		float fSlow128 = float(fHslider48);
-		float fSlow129 = std::fabs(fSlow128);
-		float fSlow130 = float(fHslider49);
-		float fSlow131 = std::fabs(fSlow130);
-		float fSlow132 = float(fHslider50);
-		float fSlow133 = std::fabs(fSlow132);
-		float fSlow134 = float(fHslider51);
-		float fSlow135 = std::fabs(fSlow134);
-		float fSlow136 = float(fHslider52);
-		float fSlow137 = std::fabs(fSlow136);
-		float fSlow138 = float(fHslider53);
-		float fSlow139 = std::fabs(fSlow138);
-		float fSlow140 = float(fHslider54);
-		float fSlow141 = std::fabs(fSlow140);
-		float fSlow142 = float(fHslider55);
-		float fSlow143 = std::fabs(fSlow142);
-		float fSlow144 = float(fHslider56);
-		float fSlow145 = std::fabs(fSlow144);
-		float fSlow146 = float(fHslider57);
-		float fSlow147 = std::fabs(fSlow146);
-		float fSlow148 = float(fHslider58);
-		float fSlow149 = std::fabs(fSlow148);
-		float fSlow150 = float(fHslider59);
-		float fSlow151 = std::fabs(fSlow150);
-		float fSlow152 = float(fHslider60);
-		float fSlow153 = std::fabs(fSlow152);
-		float fSlow154 = float(fHslider61);
-		float fSlow155 = std::fabs(fSlow154);
-		float fSlow156 = (((((((fSlow129 + (fSlow131 + (fSlow133 + (fSlow135 + (fSlow137 + (fSlow139 + (fSlow141 + fSlow143))))))) + fSlow145) + fSlow147) + fSlow149) + fSlow151) + fSlow153) + fSlow155);
-		float fSlow157 = std::min<float>(1.0f, fSlow156);
-		float fSlow158 = (fSlow157 / std::max<float>(1.84317514e-35f, fSlow156));
-		float fSlow159 = std::max<float>(1.31655367e-36f, fSlow129);
-		float fSlow160 = ((fSlow129 < 0.0f) ? (0.0f - fSlow159) : fSlow159);
-		int iSlow161 = (fSlow128 < 0.0f);
-		float fSlow162 = std::max<float>(1.31655367e-36f, fSlow131);
-		float fSlow163 = ((fSlow131 < 0.0f) ? (0.0f - fSlow162) : fSlow162);
-		int iSlow164 = (fSlow130 < 0.0f);
-		float fSlow165 = std::max<float>(1.31655367e-36f, fSlow133);
-		float fSlow166 = ((fSlow133 < 0.0f) ? (0.0f - fSlow165) : fSlow165);
-		int iSlow167 = (fSlow132 < 0.0f);
-		float fSlow168 = std::max<float>(1.31655367e-36f, fSlow135);
-		float fSlow169 = ((fSlow135 < 0.0f) ? (0.0f - fSlow168) : fSlow168);
-		int iSlow170 = (fSlow134 < 0.0f);
-		float fSlow171 = std::max<float>(1.31655367e-36f, fSlow137);
-		float fSlow172 = ((fSlow137 < 0.0f) ? (0.0f - fSlow171) : fSlow171);
-		int iSlow173 = (fSlow136 < 0.0f);
-		float fSlow174 = std::max<float>(1.31655367e-36f, fSlow139);
-		float fSlow175 = ((fSlow139 < 0.0f) ? (0.0f - fSlow174) : fSlow174);
-		int iSlow176 = (fSlow138 < 0.0f);
-		float fSlow177 = std::max<float>(1.31655367e-36f, fSlow143);
-		float fSlow178 = ((fSlow143 < 0.0f) ? (0.0f - fSlow177) : fSlow177);
-		int iSlow179 = (fSlow142 < 0.0f);
-		float fSlow180 = std::max<float>(1.31655367e-36f, fSlow141);
-		float fSlow181 = ((fSlow141 < 0.0f) ? (0.0f - fSlow180) : fSlow180);
-		int iSlow182 = (fSlow140 < 0.0f);
-		float fSlow183 = std::max<float>(1.31655367e-36f, fSlow145);
-		float fSlow184 = (((fSlow145 < 0.0f) ? (0.0f - fSlow183) : fSlow183) * ((fSlow144 < 0.0f) ? fSlow100 : fSlow99));
-		float fSlow185 = std::max<float>(1.31655367e-36f, fSlow147);
-		float fSlow186 = (((fSlow147 < 0.0f) ? (0.0f - fSlow185) : fSlow185) * float(((fSlow146 < 0.0f) ? 1 : 0)));
-		float fSlow187 = std::max<float>(1.31655367e-36f, fSlow149);
-		float fSlow188 = (((fSlow149 < 0.0f) ? (0.0f - fSlow187) : fSlow187) * ((fSlow148 < 0.0f) ? fSlow105 : fSlow6));
-		float fSlow189 = std::max<float>(1.31655367e-36f, fSlow151);
-		float fSlow190 = (((fSlow151 < 0.0f) ? (0.0f - fSlow189) : fSlow189) * ((fSlow150 < 0.0f) ? fSlow109 : fSlow108));
-		float fSlow191 = std::max<float>(1.31655367e-36f, fSlow153);
-		float fSlow192 = (((fSlow153 < 0.0f) ? (0.0f - fSlow191) : fSlow191) * ((fSlow152 < 0.0f) ? fSlow114 : fSlow113));
-		float fSlow193 = std::max<float>(1.31655367e-36f, fSlow155);
-		float fSlow194 = ((fSlow155 < 0.0f) ? (0.0f - fSlow193) : fSlow193);
-		int iSlow195 = (fSlow154 < 0.0f);
-		float fSlow196 = (1.0f - fSlow157);
-		float fSlow197 = float(fHslider62);
-		float fSlow198 = float(fHslider63);
-		int iSlow199 = (std::fabs(fSlow198) < 1.1920929e-07f);
-		float fSlow200 = (iSlow199 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow199 ? 1.0f : fSlow198)))));
-		float fSlow201 = float(fHslider64);
-		int iSlow202 = (std::fabs(fSlow201) < 1.1920929e-07f);
-		float fSlow203 = (iSlow202 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow202 ? 1.0f : fSlow201)))));
-		float fSlow204 = float(fHslider65);
-		float fSlow205 = float(fHslider66);
-		float fSlow206 = std::fabs(fSlow205);
-		float fSlow207 = float(fHslider67);
-		float fSlow208 = std::fabs(fSlow207);
-		float fSlow209 = float(fHslider68);
-		float fSlow210 = std::fabs(fSlow209);
-		float fSlow211 = float(fHslider69);
-		float fSlow212 = std::fabs(fSlow211);
-		float fSlow213 = float(fHslider70);
-		float fSlow214 = std::fabs(fSlow213);
-		float fSlow215 = float(fHslider71);
-		float fSlow216 = std::fabs(fSlow215);
-		float fSlow217 = float(fHslider72);
-		float fSlow218 = std::fabs(fSlow217);
-		float fSlow219 = float(fHslider73);
-		float fSlow220 = std::fabs(fSlow219);
-		float fSlow221 = float(fHslider74);
-		float fSlow222 = std::fabs(fSlow221);
-		float fSlow223 = float(fHslider75);
-		float fSlow224 = std::fabs(fSlow223);
-		float fSlow225 = float(fHslider76);
-		float fSlow226 = std::fabs(fSlow225);
-		float fSlow227 = float(fHslider77);
-		float fSlow228 = std::fabs(fSlow227);
-		float fSlow229 = float(fHslider78);
-		float fSlow230 = std::fabs(fSlow229);
-		float fSlow231 = float(fHslider79);
-		float fSlow232 = std::fabs(fSlow231);
-		float fSlow233 = (((((((fSlow206 + (fSlow208 + (fSlow210 + (fSlow212 + (fSlow214 + (fSlow216 + (fSlow218 + fSlow220))))))) + fSlow222) + fSlow224) + fSlow226) + fSlow228) + fSlow230) + fSlow232);
-		float fSlow234 = std::min<float>(1.0f, fSlow233);
-		float fSlow235 = (fSlow234 / std::max<float>(1.84317514e-35f, fSlow233));
-		float fSlow236 = std::max<float>(1.31655367e-36f, fSlow206);
-		float fSlow237 = ((fSlow206 < 0.0f) ? (0.0f - fSlow236) : fSlow236);
-		int iSlow238 = (fSlow205 < 0.0f);
-		float fSlow239 = std::max<float>(1.31655367e-36f, fSlow208);
-		float fSlow240 = ((fSlow208 < 0.0f) ? (0.0f - fSlow239) : fSlow239);
-		int iSlow241 = (fSlow207 < 0.0f);
-		float fSlow242 = std::max<float>(1.31655367e-36f, fSlow210);
-		float fSlow243 = ((fSlow210 < 0.0f) ? (0.0f - fSlow242) : fSlow242);
-		int iSlow244 = (fSlow209 < 0.0f);
-		float fSlow245 = std::max<float>(1.31655367e-36f, fSlow212);
-		float fSlow246 = ((fSlow212 < 0.0f) ? (0.0f - fSlow245) : fSlow245);
-		int iSlow247 = (fSlow211 < 0.0f);
-		float fSlow248 = std::max<float>(1.31655367e-36f, fSlow214);
-		float fSlow249 = ((fSlow214 < 0.0f) ? (0.0f - fSlow248) : fSlow248);
-		int iSlow250 = (fSlow213 < 0.0f);
-		float fSlow251 = std::max<float>(1.31655367e-36f, fSlow216);
-		float fSlow252 = ((fSlow216 < 0.0f) ? (0.0f - fSlow251) : fSlow251);
-		int iSlow253 = (fSlow215 < 0.0f);
-		float fSlow254 = std::max<float>(1.31655367e-36f, fSlow220);
-		float fSlow255 = ((fSlow220 < 0.0f) ? (0.0f - fSlow254) : fSlow254);
-		int iSlow256 = (fSlow219 < 0.0f);
-		float fSlow257 = std::max<float>(1.31655367e-36f, fSlow218);
-		float fSlow258 = ((fSlow218 < 0.0f) ? (0.0f - fSlow257) : fSlow257);
-		int iSlow259 = (fSlow217 < 0.0f);
-		float fSlow260 = std::max<float>(1.31655367e-36f, fSlow222);
-		float fSlow261 = (((fSlow222 < 0.0f) ? (0.0f - fSlow260) : fSlow260) * ((fSlow221 < 0.0f) ? fSlow100 : fSlow99));
-		float fSlow262 = std::max<float>(1.31655367e-36f, fSlow224);
-		float fSlow263 = (((fSlow224 < 0.0f) ? (0.0f - fSlow262) : fSlow262) * float(((fSlow223 < 0.0f) ? 1 : 0)));
-		float fSlow264 = std::max<float>(1.31655367e-36f, fSlow226);
-		float fSlow265 = (((fSlow226 < 0.0f) ? (0.0f - fSlow264) : fSlow264) * ((fSlow225 < 0.0f) ? fSlow105 : fSlow6));
-		float fSlow266 = std::max<float>(1.31655367e-36f, fSlow228);
-		float fSlow267 = (((fSlow228 < 0.0f) ? (0.0f - fSlow266) : fSlow266) * ((fSlow227 < 0.0f) ? fSlow109 : fSlow108));
-		float fSlow268 = std::max<float>(1.31655367e-36f, fSlow230);
-		float fSlow269 = (((fSlow230 < 0.0f) ? (0.0f - fSlow268) : fSlow268) * ((fSlow229 < 0.0f) ? fSlow114 : fSlow113));
-		float fSlow270 = std::max<float>(1.31655367e-36f, fSlow232);
-		float fSlow271 = ((fSlow232 < 0.0f) ? (0.0f - fSlow270) : fSlow270);
-		int iSlow272 = (fSlow231 < 0.0f);
-		float fSlow273 = (1.0f - fSlow234);
-		float fSlow274 = float(fHslider80);
-		float fSlow275 = float(fHslider81);
-		int iSlow276 = (std::fabs(fSlow275) < 1.1920929e-07f);
-		float fSlow277 = (iSlow276 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow276 ? 1.0f : fSlow275)))));
-		float fSlow278 = float(fHslider82);
-		int iSlow279 = (std::fabs(fSlow278) < 1.1920929e-07f);
-		float fSlow280 = (iSlow279 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow279 ? 1.0f : fSlow278)))));
-		float fSlow281 = float(fHslider83);
-		float fSlow282 = float(fHslider84);
-		float fSlow283 = float(fVslider4);
-		float fSlow284 = std::min<float>(8.0f, fSlow283);
-		float fSlow285 = float((8.0f == fSlow284));
-		int iSlow286 = (fSlow285 != 0.0f);
-		float fSlow287 = float((7.0f == fSlow284));
-		int iSlow288 = (fSlow287 != 0.0f);
-		float fSlow289 = float((6.0f == fSlow284));
-		int iSlow290 = (fSlow289 != 0.0f);
-		float fSlow291 = float((5.0f == fSlow284));
-		int iSlow292 = (fSlow291 != 0.0f);
-		float fSlow293 = float((4.0f == fSlow284));
-		int iSlow294 = (fSlow293 != 0.0f);
-		float fSlow295 = float((3.0f == fSlow284));
-		int iSlow296 = (fSlow295 != 0.0f);
-		float fSlow297 = float((2.0f == fSlow284));
-		int iSlow298 = (fSlow297 != 0.0f);
-		float fSlow299 = float((1.0f == fSlow284));
-		int iSlow300 = (fSlow299 != 0.0f);
-		float fSlow301 = float((0.0f == fSlow284));
-		int iSlow302 = (fSlow301 != 0.0f);
-		float fSlow303 = float(fVslider5);
-		float fSlow304 = std::min<float>(8.0f, fSlow303);
-		float fSlow305 = float((8.0f == fSlow304));
-		int iSlow306 = (fSlow305 != 0.0f);
-		float fSlow307 = float((7.0f == fSlow304));
-		int iSlow308 = (fSlow307 != 0.0f);
-		float fSlow309 = float((6.0f == fSlow304));
-		int iSlow310 = (fSlow309 != 0.0f);
-		float fSlow311 = float((5.0f == fSlow304));
-		int iSlow312 = (fSlow311 != 0.0f);
-		float fSlow313 = float((4.0f == fSlow304));
-		int iSlow314 = (fSlow313 != 0.0f);
-		float fSlow315 = float((3.0f == fSlow304));
-		int iSlow316 = (fSlow315 != 0.0f);
-		float fSlow317 = float((2.0f == fSlow304));
-		int iSlow318 = (fSlow317 != 0.0f);
-		float fSlow319 = float((1.0f == fSlow304));
-		int iSlow320 = (fSlow319 != 0.0f);
-		float fSlow321 = float((0.0f == fSlow304));
-		int iSlow322 = (fSlow321 != 0.0f);
-		float fSlow323 = float(fVslider6);
-		float fSlow324 = std::min<float>(8.0f, fSlow323);
-		float fSlow325 = float((8.0f == fSlow324));
-		int iSlow326 = (fSlow325 != 0.0f);
-		float fSlow327 = float((7.0f == fSlow324));
-		int iSlow328 = (fSlow327 != 0.0f);
-		float fSlow329 = float((6.0f == fSlow324));
-		int iSlow330 = (fSlow329 != 0.0f);
-		float fSlow331 = float((5.0f == fSlow324));
-		int iSlow332 = (fSlow331 != 0.0f);
-		float fSlow333 = float((4.0f == fSlow324));
-		int iSlow334 = (fSlow333 != 0.0f);
-		float fSlow335 = float((3.0f == fSlow324));
-		int iSlow336 = (fSlow335 != 0.0f);
-		float fSlow337 = float((2.0f == fSlow324));
-		int iSlow338 = (fSlow337 != 0.0f);
-		float fSlow339 = float((1.0f == fSlow324));
-		int iSlow340 = (fSlow339 != 0.0f);
-		float fSlow341 = float((0.0f == fSlow324));
-		int iSlow342 = (fSlow341 != 0.0f);
-		float fSlow343 = float((8.0f == fSlow12));
-		int iSlow344 = (fSlow343 != 0.0f);
-		float fSlow345 = float((7.0f == fSlow12));
-		int iSlow346 = (fSlow345 != 0.0f);
-		float fSlow347 = float((6.0f == fSlow12));
-		int iSlow348 = (fSlow347 != 0.0f);
-		float fSlow349 = float((5.0f == fSlow12));
-		int iSlow350 = (fSlow349 != 0.0f);
-		float fSlow351 = float((4.0f == fSlow12));
-		int iSlow352 = (fSlow351 != 0.0f);
-		float fSlow353 = float((3.0f == fSlow12));
-		int iSlow354 = (fSlow353 != 0.0f);
-		float fSlow355 = float((2.0f == fSlow12));
-		int iSlow356 = (fSlow355 != 0.0f);
-		float fSlow357 = float((1.0f == fSlow12));
-		int iSlow358 = (fSlow357 != 0.0f);
-		float fTemp47 = fTempPerm0;
-		float fSlow359 = float(fHslider85);
-		float fSlow360 = float(fHslider86);
-		float fSlow361 = float(fHslider87);
-		float fSlow362 = float(fHslider88);
-		float fTemp48 = fTempPerm1;
-		float fSlow363 = float(fHslider89);
-		float fSlow364 = float(fHslider90);
-		float fSlow365 = float(fHslider91);
-		float fSlow366 = float(fHslider92);
-		float fTemp49 = fTempPerm2;
-		float fSlow367 = float(fHslider93);
-		float fSlow368 = float(fHslider94);
-		float fSlow369 = float(fHslider95);
-		float fSlow370 = float(fHslider96);
-		float fTemp50 = fTempPerm3;
-		float fTemp51 = fTempPerm4;
-		float fTemp52 = fTempPerm5;
-		float fSlow371 = float(fHslider97);
-		float fSlow372 = float(fHslider98);
-		float fSlow373 = float(fHslider99);
-		float fSlow374 = float(fHslider100);
-		float fTemp53 = fTempPerm6;
-		float fSlow375 = float(fHslider101);
-		float fSlow376 = float(fHslider102);
-		float fSlow377 = float(fHslider103);
-		float fSlow378 = float(fHslider104);
-		float fTemp54 = fTempPerm7;
-		float fSlow379 = float(fHslider105);
-		float fSlow380 = float(fHslider106);
-		float fSlow381 = float(fHslider107);
-		float fSlow382 = float(fHslider108);
-		float fTemp55 = fTempPerm8;
-		float fSlow383 = float(fHslider109);
-		float fSlow384 = float(fHslider110);
-		float fSlow385 = float(fHslider111);
-		float fSlow386 = float(fHslider112);
-		float fTemp56 = fTempPerm9;
-		float fTemp57 = fTempPerm10;
-		float fTemp58 = fTempPerm11;
-		float fSlow387 = float(fHslider113);
-		float fSlow388 = float(fHslider114);
-		float fSlow389 = float(fHslider115);
-		float fSlow390 = float(fHslider116);
-		float fTemp59 = fTempPerm12;
-		float fSlow391 = float(fHslider117);
-		float fSlow392 = float(fHslider118);
-		float fSlow393 = float(fHslider119);
-		float fSlow394 = float(fHslider120);
-		float fTemp60 = fTempPerm13;
-		float fSlow395 = float(fHslider121);
-		float fSlow396 = float(fHslider122);
-		float fSlow397 = float(fHslider123);
-		float fSlow398 = float(fHslider124);
-		float fTemp61 = fTempPerm14;
-		float fSlow399 = float(fHslider125);
-		float fSlow400 = float(fHslider126);
-		float fSlow401 = float(fHslider127);
-		float fSlow402 = float(fHslider128);
-		float fTemp62 = fTempPerm15;
-		float fTemp63 = fTempPerm16;
-		float fTemp64 = fTempPerm17;
-		float fTemp65 = fTempPerm18;
-		float fTemp66 = fTempPerm19;
-		float fTemp67 = fTempPerm20;
-		float fTemp68 = fTempPerm21;
-		int iTemp69 = iTempPerm22;
-		float fSlow403 = float(fHslider129);
-		float fSlow404 = float(fHslider130);
-		float fSlow405 = float(fHslider131);
-		float fSlow406 = float(fHslider132);
-		float fTemp71 = fTempPerm23;
-		int iTemp72 = iTempPerm24;
-		float fTemp73 = fTempPerm25;
-		int iTemp74 = iTempPerm26;
-		float fTemp75 = fTempPerm27;
-		int iTemp76 = iTempPerm28;
-		int iTemp77 = iTempPerm29;
-		int iTemp78 = iTempPerm30;
-		float fTemp70 = fTempPerm31;
-		float fSlow407 = float(fHslider133);
-		float fSlow408 = float(fHslider134);
-		float fSlow409 = float(fHslider135);
-		float fSlow410 = float(fHslider136);
-		float fTemp79 = fTempPerm32;
-		float fSlow411 = float(fHslider137);
-		float fSlow412 = float(fHslider138);
-		float fSlow413 = float(fHslider139);
-		float fSlow414 = float(fHslider140);
-		float fTemp80 = fTempPerm33;
-		float fSlow415 = float(fHslider141);
-		float fSlow416 = float(fHslider142);
-		float fSlow417 = float(fHslider143);
-		float fSlow418 = float(fHslider144);
-		float fTemp81 = fTempPerm34;
-		float fTemp82 = fTempPerm35;
-		float fSlow419 = float(fHslider145);
-		float fSlow420 = float(fHslider146);
-		float fSlow421 = float(fHslider147);
-		float fSlow422 = float(fHslider148);
-		float fTemp83 = fTempPerm36;
-		float fSlow423 = float(fHslider149);
-		float fSlow424 = float(fHslider150);
-		float fSlow425 = float(fHslider151);
-		float fSlow426 = float(fHslider152);
-		float fTemp84 = fTempPerm37;
-		float fSlow427 = float(fHslider153);
-		float fSlow428 = float(fHslider154);
-		float fSlow429 = float(fHslider155);
-		float fSlow430 = float(fHslider156);
-		float fTemp85 = fTempPerm38;
-		float fSlow431 = float(fHslider157);
-		float fSlow432 = float(fHslider158);
-		float fSlow433 = float(fHslider159);
-		float fSlow434 = float(fHslider160);
-		float fTemp86 = fTempPerm39;
-		float fTemp87 = fTempPerm40;
-		float fSlow435 = float(fHslider161);
-		float fSlow436 = float(fHslider162);
-		float fSlow437 = float(fHslider163);
-		float fSlow438 = float(fHslider164);
-		float fTemp88 = fTempPerm41;
-		float fSlow439 = float(fHslider165);
-		float fSlow440 = float(fHslider166);
-		float fSlow441 = float(fHslider167);
-		float fSlow442 = float(fHslider168);
-		float fTemp89 = fTempPerm42;
-		float fSlow443 = float(fHslider169);
-		float fSlow444 = float(fHslider170);
-		float fSlow445 = float(fHslider171);
-		float fSlow446 = float(fHslider172);
-		float fTemp90 = fTempPerm43;
-		float fSlow447 = float(fHslider173);
-		float fSlow448 = float(fHslider174);
-		float fSlow449 = float(fHslider175);
-		float fSlow450 = float(fHslider176);
-		float fTemp91 = fTempPerm44;
-		float fTemp92 = fTempPerm45;
-		float fSlow451 = float(fHslider177);
-		float fSlow452 = float(fHslider178);
-		float fSlow453 = float(fHslider179);
-		float fSlow454 = float(fHslider180);
-		float fTemp93 = fTempPerm46;
-		float fSlow455 = float(fHslider181);
-		float fSlow456 = float(fHslider182);
-		float fSlow457 = float(fHslider183);
-		float fSlow458 = float(fHslider184);
-		float fTemp94 = fTempPerm47;
-		float fSlow459 = float(fHslider185);
-		float fSlow460 = float(fHslider186);
-		float fSlow461 = float(fHslider187);
-		float fSlow462 = float(fHslider188);
-		float fTemp95 = fTempPerm48;
-		float fSlow463 = float(fHslider189);
-		float fSlow464 = float(fHslider190);
-		float fSlow465 = float(fHslider191);
-		float fSlow466 = float(fHslider192);
-		float fTemp96 = fTempPerm49;
-		float fTemp97 = fTempPerm50;
-		int iSlow467 = int(float(fEntry0));
-		int iSlow468 = (iSlow467 == 0);
-		int iSlow469 = (iSlow467 == 1);
-		float fSlow470 = float(fVslider7);
-		int iSlow471 = (std::fabs(fSlow470) < 1.1920929e-07f);
-		float fSlow472 = (iSlow471 ? 0.0f : std::exp((0.0f - (fConst1 / (iSlow471 ? 1.0f : fSlow470)))));
-		float fSlow473 = (4.0f * float(fHslider193));
-		float fSlow474 = (fSlow473 * (1.0f - fSlow472));
-		float fTemp98 = fTempPerm51;
-		float fSlow475 = std::pow(2.0f, ((1.01725263e-05f * fSlow112) * ((fSlow113 > 0.0f) ? float(fEntry2) : (0.0f - float(fEntry1)))));
-		float fTemp99 = fTempPerm52;
-		int iSlow476 = (float(fCheckbox0) != 1.0f);
-		float fSlow477 = float(fVslider8);
-		float fTemp100 = fTempPerm53;
-		float fTemp101 = fTempPerm54;
-		float fSlow478 = float(fHslider194);
-		float fSlow479 = float(fHslider195);
-		float fSlow480 = float(fHslider196);
-		float fSlow481 = float(fHslider197);
-		float fTemp102 = fTempPerm55;
-		float fSlow482 = float(fHslider198);
-		float fSlow483 = float(fHslider199);
-		float fSlow484 = float(fHslider200);
-		float fSlow485 = float(fHslider201);
-		float fTemp103 = fTempPerm56;
-		float fSlow486 = float(fHslider202);
-		float fSlow487 = float(fHslider203);
-		float fSlow488 = float(fHslider204);
-		float fSlow489 = float(fHslider205);
-		float fTemp104 = fTempPerm57;
-		float fSlow490 = float(fHslider206);
-		float fSlow491 = float(fHslider207);
-		float fSlow492 = float(fHslider208);
-		float fSlow493 = float(fHslider209);
-		float fTemp105 = fTempPerm58;
-		float fTemp106 = fTempPerm59;
-		float fSlow494 = float(fHslider210);
-		float fSlow495 = float(fHslider211);
-		float fSlow496 = float(fHslider212);
-		float fSlow497 = float(fHslider213);
-		float fTemp107 = fTempPerm60;
-		float fSlow498 = float(fHslider214);
-		float fSlow499 = float(fHslider215);
-		float fSlow500 = float(fHslider216);
-		float fSlow501 = float(fHslider217);
-		float fTemp108 = fTempPerm61;
-		float fSlow502 = float(fHslider218);
-		float fSlow503 = float(fHslider219);
-		float fSlow504 = float(fHslider220);
-		float fSlow505 = float(fHslider221);
-		float fTemp109 = fTempPerm62;
-		float fSlow506 = float(fHslider222);
-		float fSlow507 = float(fHslider223);
-		float fSlow508 = float(fHslider224);
-		float fSlow509 = float(fHslider225);
-		float fTemp110 = fTempPerm63;
-		float fTemp111 = fTempPerm64;
-		float fTemp112 = fTempPerm65;
-		float fTemp113 = fTempPerm66;
-		float fTemp114 = fTempPerm67;
-		float fTemp115 = fTempPerm68;
-		int iTemp116 = iTempPerm69;
-		float fSlow510 = float(fHslider226);
-		float fSlow511 = float(fHslider227);
-		float fSlow512 = float(fHslider228);
-		float fSlow513 = float(fHslider229);
-		float fTemp117 = fTempPerm70;
-		float fSlow514 = float(fHslider230);
-		float fSlow515 = float(fHslider231);
-		float fSlow516 = float(fHslider232);
-		float fSlow517 = float(fHslider233);
-		float fTemp118 = fTempPerm71;
-		float fSlow518 = float(fHslider234);
-		float fSlow519 = float(fHslider235);
-		float fSlow520 = float(fHslider236);
-		float fSlow521 = float(fHslider237);
-		float fTemp119 = fTempPerm72;
-		float fSlow522 = float(fHslider238);
-		float fSlow523 = float(fHslider239);
-		float fSlow524 = float(fHslider240);
-		float fSlow525 = float(fHslider241);
-		float fTemp120 = fTempPerm73;
-		float fTemp121 = fTempPerm74;
-		float fTemp122 = fTempPerm75;
-		float fTemp123 = fTempPerm76;
-		float fSlow526 = float(fHslider242);
-		float fSlow527 = float(fHslider243);
-		float fSlow528 = float(fHslider244);
-		float fSlow529 = float(fHslider245);
-		float fTemp124 = fTempPerm77;
-		float fSlow530 = float(fHslider246);
-		float fSlow531 = float(fHslider247);
-		float fSlow532 = float(fHslider248);
-		float fSlow533 = float(fHslider249);
-		float fTemp125 = fTempPerm78;
-		float fSlow534 = float(fHslider250);
-		float fSlow535 = float(fHslider251);
-		float fSlow536 = float(fHslider252);
-		float fSlow537 = float(fHslider253);
-		float fTemp126 = fTempPerm79;
-		float fSlow538 = float(fHslider254);
-		float fSlow539 = float(fHslider255);
-		float fSlow540 = float(fHslider256);
-		float fSlow541 = float(fHslider257);
-		float fTemp127 = fTempPerm80;
-		float fTemp128 = fTempPerm81;
-		float fTemp129 = fTempPerm82;
-		float fTemp130 = fTempPerm83;
-		float fTemp131 = fTempPerm84;
-		float fTemp132 = fTempPerm85;
-		float fTemp133 = fTempPerm86;
-		float fTemp134 = fTempPerm87;
-		float fTemp135 = fTempPerm88;
-		float fTemp136 = fTempPerm89;
-		float fTemp137 = fTempPerm90;
-		float fTemp138 = fTempPerm91;
-		float fTemp139 = fTempPerm92;
-		float fTemp140 = fTempPerm93;
-		float fTemp141 = fTempPerm94;
-		float fTemp142 = fTempPerm95;
-		float fTemp143 = fTempPerm96;
-		float fTemp144 = fTempPerm97;
-		float fTemp145 = fTempPerm98;
-		float fTemp146 = fTempPerm99;
-		float fTemp147 = fTempPerm100;
-		float fTemp148 = fTempPerm101;
-		float fTemp149 = fTempPerm102;
-		float fTemp150 = fTempPerm103;
-		float fTemp151 = fTempPerm104;
-		float fTemp152 = fTempPerm105;
-		float fTemp153 = fTempPerm106;
-		float fSlow542 = float(((fSlow11 > 5.0f) ? 64 : 1));
-		float fSlow543 = float(fHslider258);
-		float fSlow544 = float(fHslider259);
-		float fSlow545 = float(fHslider260);
-		float fSlow546 = float(fHslider261);
-		float fTemp154 = fTempPerm107;
-		float fSlow547 = float(fHslider262);
-		float fSlow548 = float(fHslider263);
-		float fSlow549 = float(fHslider264);
-		float fSlow550 = float(fHslider265);
-		float fTemp155 = fTempPerm108;
-		float fSlow551 = float(fHslider266);
-		float fSlow552 = float(fHslider267);
-		float fSlow553 = float(fHslider268);
-		float fSlow554 = float(fHslider269);
-		float fTemp156 = fTempPerm109;
-		float fSlow555 = float(fHslider270);
-		float fSlow556 = float(fHslider271);
-		float fSlow557 = float(fHslider272);
-		float fSlow558 = float(fHslider273);
-		float fTemp157 = fTempPerm110;
-		float fTemp158 = fTempPerm111;
-		float fTemp159 = fTempPerm112;
-		float fTemp160 = fTempPerm113;
-		float fTemp161 = fTempPerm114;
-		float fTemp162 = fTempPerm115;
-		float fTemp163 = fTempPerm116;
-		float fTemp164 = fTempPerm117;
-		float fTemp165 = fTempPerm118;
-		float fTemp166 = fTempPerm119;
-		int iTemp167 = iTempPerm120;
-		int iTemp168 = iTempPerm121;
-		float fTemp169 = fTempPerm122;
-		float fTemp170 = fTempPerm123;
-		float fTemp171 = fTempPerm124;
-		float fTemp172 = fTempPerm125;
-		float fTemp173 = fTempPerm126;
-		float fTemp174 = fTempPerm127;
-		float fTemp175 = fTempPerm128;
-		int iTemp176 = iTempPerm129;
-		float fTemp177 = fTempPerm130;
-		float fTemp178 = fTempPerm131;
-		float fTemp179 = fTempPerm132;
-		float fTemp180 = fTempPerm133;
-		float fTemp181 = fTempPerm134;
-		float fTemp182 = fTempPerm135;
-		float fTemp183 = fTempPerm136;
-		float fTemp184 = fTempPerm137;
-		float fTemp185 = fTempPerm138;
-		float fTemp186 = fTempPerm139;
-		float fTemp187 = fTempPerm140;
-		float fTemp188 = fTempPerm141;
-		float fTemp189 = fTempPerm142;
-		float fTemp190 = fTempPerm143;
-		float fTemp191 = fTempPerm144;
-		float fTemp192 = fTempPerm145;
-		float fTemp193 = fTempPerm146;
-		float fTemp194 = fTempPerm147;
-		float fTemp195 = fTempPerm148;
-		float fTemp196 = fTempPerm149;
-		int iTemp197 = iTempPerm150;
-		int iTemp198 = iTempPerm151;
-		float fTemp199 = fTempPerm152;
-		float fTemp200 = fTempPerm153;
-		float fTemp201 = fTempPerm154;
-		float fTemp202 = fTempPerm155;
-		float fTemp203 = fTempPerm156;
-		float fTemp204 = fTempPerm157;
-		float fTemp205 = fTempPerm158;
-		float fTemp206 = fTempPerm159;
-		float fTemp207 = fTempPerm160;
-		float fTemp208 = fTempPerm161;
-		float fTemp209 = fTempPerm162;
-		float fTemp210 = fTempPerm163;
-		float fTemp211 = fTempPerm164;
-		float fTemp212 = fTempPerm165;
-		float fTemp213 = fTempPerm166;
-		float fTemp214 = fTempPerm167;
-		float fTemp215 = fTempPerm168;
-		float fTemp216 = fTempPerm169;
-		float fTemp217 = fTempPerm170;
-		float fTemp218 = fTempPerm171;
-		float fTemp219 = fTempPerm172;
-		float fTemp220 = fTempPerm173;
-		float fTemp221 = fTempPerm174;
-		float fTemp222 = fTempPerm175;
-		float fTemp223 = fTempPerm176;
-		float fTemp224 = fTempPerm177;
-		float fTemp225 = fTempPerm178;
-		float fTemp226 = fTempPerm179;
-		float fTemp227 = fTempPerm180;
-		float fTemp228 = fTempPerm181;
-		float fTemp229 = fTempPerm182;
-		float fTemp230 = fTempPerm183;
-		float fTemp231 = fTempPerm184;
-		float fTemp232 = fTempPerm185;
-		float fTemp233 = fTempPerm186;
-		float fTemp234 = fTempPerm187;
-		float fTemp235 = fTempPerm188;
-		float fTemp236 = fTempPerm189;
-		float fTemp237 = fTempPerm190;
-		float fTemp238 = fTempPerm191;
-		float fTemp239 = fTempPerm192;
-		float fTemp240 = fTempPerm193;
-		float fTemp241 = fTempPerm194;
-		float fTemp242 = fTempPerm195;
-		float fTemp243 = fTempPerm196;
-		float fTemp244 = fTempPerm197;
-		float fTemp245 = fTempPerm198;
-		float fTemp246 = fTempPerm199;
-		float fTemp247 = fTempPerm200;
-		float fTemp248 = fTempPerm201;
-		float fTemp249 = fTempPerm202;
-		float fTemp250 = fTempPerm203;
-		float fTemp251 = fTempPerm204;
-		float fTemp252 = fTempPerm205;
-		float fTemp253 = fTempPerm206;
-		float fTemp254 = fTempPerm207;
-		float fTemp255 = fTempPerm208;
-		float fTemp256 = fTempPerm209;
-		float fTemp257 = fTempPerm210;
-		float fTemp258 = fTempPerm211;
-		float fTemp259 = fTempPerm212;
-		float fTemp260 = fTempPerm213;
-		float fTemp261 = fTempPerm214;
-		float fTemp262 = fTempPerm215;
-		float fTemp263 = fTempPerm216;
-		float fTemp264 = fTempPerm217;
-		float fTemp265 = fTempPerm218;
-		float fTemp266 = fTempPerm219;
-		float fTemp267 = fTempPerm220;
-		float fSlow559 = float(fHslider274);
-		float fSlow560 = float(fHslider275);
-		float fSlow561 = float(fHslider276);
-		float fSlow562 = float(fHslider277);
-		float fTemp268 = fTempPerm221;
-		float fSlow563 = float(fHslider278);
-		float fSlow564 = float(fHslider279);
-		float fSlow565 = float(fHslider280);
-		float fSlow566 = float(fHslider281);
-		float fTemp269 = fTempPerm222;
-		float fSlow567 = float(fHslider282);
-		float fSlow568 = float(fHslider283);
-		float fSlow569 = float(fHslider284);
-		float fSlow570 = float(fHslider285);
-		float fTemp270 = fTempPerm223;
-		float fSlow571 = float(fHslider286);
-		float fSlow572 = float(fHslider287);
-		float fSlow573 = float(fHslider288);
-		float fSlow574 = float(fHslider289);
-		float fTemp271 = fTempPerm224;
-		float fTemp272 = fTempPerm225;
-		float fSlow575 = float(fHslider290);
-		float fSlow576 = float(fHslider291);
-		float fSlow577 = float(fHslider292);
-		float fSlow578 = float(fHslider293);
-		float fTemp273 = fTempPerm226;
-		float fSlow579 = float(fHslider294);
-		float fSlow580 = float(fHslider295);
-		float fSlow581 = float(fHslider296);
-		float fSlow582 = float(fHslider297);
-		float fTemp274 = fTempPerm227;
-		float fSlow583 = float(fHslider298);
-		float fSlow584 = float(fHslider299);
-		float fSlow585 = float(fHslider300);
-		float fSlow586 = float(fHslider301);
-		float fTemp275 = fTempPerm228;
-		float fSlow587 = float(fHslider302);
-		float fSlow588 = float(fHslider303);
-		float fSlow589 = float(fHslider304);
-		float fSlow590 = float(fHslider305);
-		float fTemp276 = fTempPerm229;
-		float fTemp277 = fTempPerm230;
-		float fSlow591 = float(fHslider306);
-		float fSlow592 = float(fHslider307);
-		float fSlow593 = float(fHslider308);
-		float fSlow594 = float(fHslider309);
-		float fTemp278 = fTempPerm231;
-		float fSlow595 = float(fHslider310);
-		float fSlow596 = float(fHslider311);
-		float fSlow597 = float(fHslider312);
-		float fSlow598 = float(fHslider313);
-		float fTemp279 = fTempPerm232;
-		float fSlow599 = float(fHslider314);
-		float fSlow600 = float(fHslider315);
-		float fSlow601 = float(fHslider316);
-		float fSlow602 = float(fHslider317);
-		float fTemp280 = fTempPerm233;
-		float fSlow603 = float(fHslider318);
-		float fSlow604 = float(fHslider319);
-		float fSlow605 = float(fHslider320);
-		float fSlow606 = float(fHslider321);
-		float fTemp281 = fTempPerm234;
-		float fTemp282 = fTempPerm235;
-		float fSlow607 = float(fHslider322);
-		float fSlow608 = float(fHslider323);
-		float fSlow609 = float(fHslider324);
-		float fSlow610 = float(fHslider325);
-		float fTemp283 = fTempPerm236;
-		float fSlow611 = float(fHslider326);
-		float fSlow612 = float(fHslider327);
-		float fSlow613 = float(fHslider328);
-		float fSlow614 = float(fHslider329);
-		float fTemp284 = fTempPerm237;
-		float fSlow615 = float(fHslider330);
-		float fSlow616 = float(fHslider331);
-		float fSlow617 = float(fHslider332);
-		float fSlow618 = float(fHslider333);
-		float fTemp285 = fTempPerm238;
-		float fSlow619 = float(fHslider334);
-		float fSlow620 = float(fHslider335);
-		float fSlow621 = float(fHslider336);
-		float fSlow622 = float(fHslider337);
-		float fTemp286 = fTempPerm239;
-		float fTemp287 = fTempPerm240;
-		float fSlow623 = float(fHslider338);
-		float fSlow624 = float(fHslider339);
-		float fSlow625 = float(fHslider340);
-		float fSlow626 = float(fHslider341);
-		float fTemp288 = fTempPerm241;
-		float fSlow627 = float(fHslider342);
-		float fSlow628 = float(fHslider343);
-		float fSlow629 = float(fHslider344);
-		float fSlow630 = float(fHslider345);
-		float fTemp289 = fTempPerm242;
-		float fSlow631 = float(fHslider346);
-		float fSlow632 = float(fHslider347);
-		float fSlow633 = float(fHslider348);
-		float fSlow634 = float(fHslider349);
-		float fTemp290 = fTempPerm243;
-		float fSlow635 = float(fHslider350);
-		float fSlow636 = float(fHslider351);
-		float fSlow637 = float(fHslider352);
-		float fSlow638 = float(fHslider353);
-		float fTemp291 = fTempPerm244;
-		float fTemp292 = fTempPerm245;
-		float fTemp293 = fTempPerm246;
-		float fTemp294 = fTempPerm247;
-		float fTemp295 = fTempPerm248;
-		int iTemp296 = iTempPerm249;
-		float fSlow639 = float(fHslider354);
-		float fSlow640 = float(fHslider355);
-		float fSlow641 = float(fHslider356);
-		float fSlow642 = float(fHslider357);
-		float fTemp297 = fTempPerm250;
-		float fSlow643 = float(fHslider358);
-		float fSlow644 = float(fHslider359);
-		float fSlow645 = float(fHslider360);
-		float fSlow646 = float(fHslider361);
-		float fTemp298 = fTempPerm251;
-		float fSlow647 = float(fHslider362);
-		float fSlow648 = float(fHslider363);
-		float fSlow649 = float(fHslider364);
-		float fSlow650 = float(fHslider365);
-		float fTemp299 = fTempPerm252;
-		float fSlow651 = float(fHslider366);
-		float fSlow652 = float(fHslider367);
-		float fSlow653 = float(fHslider368);
-		float fSlow654 = float(fHslider369);
-		float fTemp300 = fTempPerm253;
-		float fTemp301 = fTempPerm254;
-		float fTemp302 = fTempPerm255;
-		float fTemp303 = fTempPerm256;
-		float fTemp304 = fTempPerm257;
-		float fTemp305 = fTempPerm258;
-		float fTemp306 = fTempPerm259;
-		float fTemp307 = fTempPerm260;
-		float fTemp308 = fTempPerm261;
-		float fTemp309 = fTempPerm262;
-		float fTemp310 = fTempPerm263;
-		float fTemp311 = fTempPerm264;
-		float fTemp312 = fTempPerm265;
-		float fTemp313 = fTempPerm266;
-		float fTemp314 = fTempPerm267;
-		float fTemp315 = fTempPerm268;
-		float fSlow655 = float(((fSlow323 > 5.0f) ? 64 : 1));
-		float fSlow656 = float(fHslider370);
-		float fSlow657 = float(fHslider371);
-		float fSlow658 = float(fHslider372);
-		float fSlow659 = float(fHslider373);
-		float fTemp316 = fTempPerm269;
-		float fSlow660 = float(fHslider374);
-		float fSlow661 = float(fHslider375);
-		float fSlow662 = float(fHslider376);
-		float fSlow663 = float(fHslider377);
-		float fTemp317 = fTempPerm270;
-		float fSlow664 = float(fHslider378);
-		float fSlow665 = float(fHslider379);
-		float fSlow666 = float(fHslider380);
-		float fSlow667 = float(fHslider381);
-		float fTemp318 = fTempPerm271;
-		float fSlow668 = float(fHslider382);
-		float fSlow669 = float(fHslider383);
-		float fSlow670 = float(fHslider384);
-		float fSlow671 = float(fHslider385);
-		float fTemp319 = fTempPerm272;
-		float fTemp320 = fTempPerm273;
-		float fTemp321 = fTempPerm274;
-		float fTemp322 = fTempPerm275;
-		float fTemp323 = fTempPerm276;
-		float fTemp324 = fTempPerm277;
-		float fTemp325 = fTempPerm278;
-		float fTemp326 = fTempPerm279;
-		float fTemp327 = fTempPerm280;
-		float fTemp328 = fTempPerm281;
-		int iTemp329 = iTempPerm282;
-		int iTemp330 = iTempPerm283;
-		float fTemp331 = fTempPerm284;
-		float fTemp332 = fTempPerm285;
-		float fTemp333 = fTempPerm286;
-		float fTemp334 = fTempPerm287;
-		float fTemp335 = fTempPerm288;
-		float fTemp336 = fTempPerm289;
-		float fTemp337 = fTempPerm290;
-		int iTemp338 = iTempPerm291;
-		float fTemp339 = fTempPerm292;
-		float fTemp340 = fTempPerm293;
-		float fTemp341 = fTempPerm294;
-		float fTemp342 = fTempPerm295;
-		float fTemp343 = fTempPerm296;
-		float fTemp344 = fTempPerm297;
-		float fTemp345 = fTempPerm298;
-		float fTemp346 = fTempPerm299;
-		float fTemp347 = fTempPerm300;
-		float fTemp348 = fTempPerm301;
-		float fTemp349 = fTempPerm302;
-		float fTemp350 = fTempPerm303;
-		float fTemp351 = fTempPerm304;
-		float fTemp352 = fTempPerm305;
-		float fTemp353 = fTempPerm306;
-		float fTemp354 = fTempPerm307;
-		float fTemp355 = fTempPerm308;
-		float fTemp356 = fTempPerm309;
-		float fTemp357 = fTempPerm310;
-		int iTemp358 = iTempPerm311;
-		int iTemp359 = iTempPerm312;
-		float fTemp360 = fTempPerm313;
-		float fTemp361 = fTempPerm314;
-		float fTemp362 = fTempPerm315;
-		float fTemp363 = fTempPerm316;
-		float fTemp364 = fTempPerm317;
-		float fTemp365 = fTempPerm318;
-		float fTemp366 = fTempPerm319;
-		float fTemp367 = fTempPerm320;
-		float fTemp368 = fTempPerm321;
-		float fTemp369 = fTempPerm322;
-		float fTemp370 = fTempPerm323;
-		float fTemp371 = fTempPerm324;
-		float fTemp372 = fTempPerm325;
-		float fTemp373 = fTempPerm326;
-		float fTemp374 = fTempPerm327;
-		float fTemp375 = fTempPerm328;
-		float fTemp376 = fTempPerm329;
-		float fTemp377 = fTempPerm330;
-		float fTemp378 = fTempPerm331;
-		float fTemp379 = fTempPerm332;
-		float fTemp380 = fTempPerm333;
-		float fTemp381 = fTempPerm334;
-		float fTemp382 = fTempPerm335;
-		float fTemp383 = fTempPerm336;
-		float fTemp384 = fTempPerm337;
-		float fTemp385 = fTempPerm338;
-		float fTemp386 = fTempPerm339;
-		float fTemp387 = fTempPerm340;
-		float fTemp388 = fTempPerm341;
-		float fTemp389 = fTempPerm342;
-		float fTemp390 = fTempPerm343;
-		float fTemp391 = fTempPerm344;
-		float fTemp392 = fTempPerm345;
-		float fTemp393 = fTempPerm346;
-		float fTemp394 = fTempPerm347;
-		float fTemp395 = fTempPerm348;
-		float fTemp396 = fTempPerm349;
-		float fTemp397 = fTempPerm350;
-		float fTemp398 = fTempPerm351;
-		float fTemp399 = fTempPerm352;
-		float fTemp400 = fTempPerm353;
-		float fTemp401 = fTempPerm354;
-		float fTemp402 = fTempPerm355;
-		float fTemp403 = fTempPerm356;
-		float fTemp404 = fTempPerm357;
-		float fTemp405 = fTempPerm358;
-		float fTemp406 = fTempPerm359;
-		float fTemp407 = fTempPerm360;
-		float fTemp408 = fTempPerm361;
-		float fTemp409 = fTempPerm362;
-		float fTemp410 = fTempPerm363;
-		float fTemp411 = fTempPerm364;
-		float fTemp412 = fTempPerm365;
-		float fTemp413 = fTempPerm366;
-		float fTemp414 = fTempPerm367;
-		float fTemp415 = fTempPerm368;
-		float fTemp416 = fTempPerm369;
-		float fTemp417 = fTempPerm370;
-		float fTemp418 = fTempPerm371;
-		float fTemp419 = fTempPerm372;
-		float fTemp420 = fTempPerm373;
-		float fTemp421 = fTempPerm374;
-		float fTemp422 = fTempPerm375;
-		float fTemp423 = fTempPerm376;
-		float fTemp424 = fTempPerm377;
-		float fTemp425 = fTempPerm378;
-		float fTemp426 = fTempPerm379;
-		float fTemp427 = fTempPerm380;
-		float fTemp428 = fTempPerm381;
-		float fSlow672 = float(fHslider386);
-		float fSlow673 = float(fHslider387);
-		float fSlow674 = float(fHslider388);
-		float fSlow675 = float(fHslider389);
-		float fTemp429 = fTempPerm382;
-		float fSlow676 = float(fHslider390);
-		float fSlow677 = float(fHslider391);
-		float fSlow678 = float(fHslider392);
-		float fSlow679 = float(fHslider393);
-		float fTemp430 = fTempPerm383;
-		float fSlow680 = float(fHslider394);
-		float fSlow681 = float(fHslider395);
-		float fSlow682 = float(fHslider396);
-		float fSlow683 = float(fHslider397);
-		float fTemp431 = fTempPerm384;
-		float fSlow684 = float(fHslider398);
-		float fSlow685 = float(fHslider399);
-		float fSlow686 = float(fHslider400);
-		float fSlow687 = float(fHslider401);
-		float fTemp432 = fTempPerm385;
-		float fTemp433 = fTempPerm386;
-		float fSlow688 = float(fHslider402);
-		float fSlow689 = float(fHslider403);
-		float fSlow690 = float(fHslider404);
-		float fSlow691 = float(fHslider405);
-		float fTemp434 = fTempPerm387;
-		float fSlow692 = float(fHslider406);
-		float fSlow693 = float(fHslider407);
-		float fSlow694 = float(fHslider408);
-		float fSlow695 = float(fHslider409);
-		float fTemp435 = fTempPerm388;
-		float fSlow696 = float(fHslider410);
-		float fSlow697 = float(fHslider411);
-		float fSlow698 = float(fHslider412);
-		float fSlow699 = float(fHslider413);
-		float fTemp436 = fTempPerm389;
-		float fSlow700 = float(fHslider414);
-		float fSlow701 = float(fHslider415);
-		float fSlow702 = float(fHslider416);
-		float fSlow703 = float(fHslider417);
-		float fTemp437 = fTempPerm390;
-		float fTemp438 = fTempPerm391;
-		float fSlow704 = float(fHslider418);
-		float fSlow705 = float(fHslider419);
-		float fSlow706 = float(fHslider420);
-		float fSlow707 = float(fHslider421);
-		float fTemp439 = fTempPerm392;
-		float fSlow708 = float(fHslider422);
-		float fSlow709 = float(fHslider423);
-		float fSlow710 = float(fHslider424);
-		float fSlow711 = float(fHslider425);
-		float fTemp440 = fTempPerm393;
-		float fSlow712 = float(fHslider426);
-		float fSlow713 = float(fHslider427);
-		float fSlow714 = float(fHslider428);
-		float fSlow715 = float(fHslider429);
-		float fTemp441 = fTempPerm394;
-		float fSlow716 = float(fHslider430);
-		float fSlow717 = float(fHslider431);
-		float fSlow718 = float(fHslider432);
-		float fSlow719 = float(fHslider433);
-		float fTemp442 = fTempPerm395;
-		float fTemp443 = fTempPerm396;
-		float fSlow720 = float(fHslider434);
-		float fSlow721 = float(fHslider435);
-		float fSlow722 = float(fHslider436);
-		float fSlow723 = float(fHslider437);
-		float fTemp444 = fTempPerm397;
-		float fSlow724 = float(fHslider438);
-		float fSlow725 = float(fHslider439);
-		float fSlow726 = float(fHslider440);
-		float fSlow727 = float(fHslider441);
-		float fTemp445 = fTempPerm398;
-		float fSlow728 = float(fHslider442);
-		float fSlow729 = float(fHslider443);
-		float fSlow730 = float(fHslider444);
-		float fSlow731 = float(fHslider445);
-		float fTemp446 = fTempPerm399;
-		float fSlow732 = float(fHslider446);
-		float fSlow733 = float(fHslider447);
-		float fSlow734 = float(fHslider448);
-		float fSlow735 = float(fHslider449);
-		float fTemp447 = fTempPerm400;
-		float fTemp448 = fTempPerm401;
-		float fSlow736 = float(fHslider450);
-		float fSlow737 = float(fHslider451);
-		float fSlow738 = float(fHslider452);
-		float fSlow739 = float(fHslider453);
-		float fTemp449 = fTempPerm402;
-		float fSlow740 = float(fHslider454);
-		float fSlow741 = float(fHslider455);
-		float fSlow742 = float(fHslider456);
-		float fSlow743 = float(fHslider457);
-		float fTemp450 = fTempPerm403;
-		float fSlow744 = float(fHslider458);
-		float fSlow745 = float(fHslider459);
-		float fSlow746 = float(fHslider460);
-		float fSlow747 = float(fHslider461);
-		float fTemp451 = fTempPerm404;
-		float fSlow748 = float(fHslider462);
-		float fSlow749 = float(fHslider463);
-		float fSlow750 = float(fHslider464);
-		float fSlow751 = float(fHslider465);
-		float fTemp452 = fTempPerm405;
-		float fTemp453 = fTempPerm406;
-		float fTemp454 = fTempPerm407;
-		float fTemp455 = fTempPerm408;
-		float fTemp456 = fTempPerm409;
-		int iTemp457 = iTempPerm410;
-		float fSlow752 = float(fHslider466);
-		float fSlow753 = float(fHslider467);
-		float fSlow754 = float(fHslider468);
-		float fSlow755 = float(fHslider469);
-		float fTemp458 = fTempPerm411;
-		float fSlow756 = float(fHslider470);
-		float fSlow757 = float(fHslider471);
-		float fSlow758 = float(fHslider472);
-		float fSlow759 = float(fHslider473);
-		float fTemp459 = fTempPerm412;
-		float fSlow760 = float(fHslider474);
-		float fSlow761 = float(fHslider475);
-		float fSlow762 = float(fHslider476);
-		float fSlow763 = float(fHslider477);
-		float fTemp460 = fTempPerm413;
-		float fSlow764 = float(fHslider478);
-		float fSlow765 = float(fHslider479);
-		float fSlow766 = float(fHslider480);
-		float fSlow767 = float(fHslider481);
-		float fTemp461 = fTempPerm414;
-		float fTemp462 = fTempPerm415;
-		float fTemp463 = fTempPerm416;
-		float fTemp464 = fTempPerm417;
-		float fTemp465 = fTempPerm418;
-		float fTemp466 = fTempPerm419;
-		float fTemp467 = fTempPerm420;
-		float fTemp468 = fTempPerm421;
-		float fTemp469 = fTempPerm422;
-		float fTemp470 = fTempPerm423;
-		float fTemp471 = fTempPerm424;
-		float fTemp472 = fTempPerm425;
-		float fTemp473 = fTempPerm426;
-		float fTemp474 = fTempPerm427;
-		float fTemp475 = fTempPerm428;
-		float fTemp476 = fTempPerm429;
-		float fSlow768 = float(((fSlow303 > 5.0f) ? 64 : 1));
-		float fSlow769 = float(fHslider482);
-		float fSlow770 = float(fHslider483);
-		float fSlow771 = float(fHslider484);
-		float fSlow772 = float(fHslider485);
-		float fTemp477 = fTempPerm430;
-		float fSlow773 = float(fHslider486);
-		float fSlow774 = float(fHslider487);
-		float fSlow775 = float(fHslider488);
-		float fSlow776 = float(fHslider489);
-		float fTemp478 = fTempPerm431;
-		float fSlow777 = float(fHslider490);
-		float fSlow778 = float(fHslider491);
-		float fSlow779 = float(fHslider492);
-		float fSlow780 = float(fHslider493);
-		float fTemp479 = fTempPerm432;
-		float fSlow781 = float(fHslider494);
-		float fSlow782 = float(fHslider495);
-		float fSlow783 = float(fHslider496);
-		float fSlow784 = float(fHslider497);
-		float fTemp480 = fTempPerm433;
-		float fTemp481 = fTempPerm434;
-		float fTemp482 = fTempPerm435;
-		float fTemp483 = fTempPerm436;
-		float fTemp484 = fTempPerm437;
-		float fTemp485 = fTempPerm438;
-		float fTemp486 = fTempPerm439;
-		float fTemp487 = fTempPerm440;
-		float fTemp488 = fTempPerm441;
-		float fTemp489 = fTempPerm442;
-		int iTemp490 = iTempPerm443;
-		int iTemp491 = iTempPerm444;
-		float fTemp492 = fTempPerm445;
-		float fTemp493 = fTempPerm446;
-		float fTemp494 = fTempPerm447;
-		float fTemp495 = fTempPerm448;
-		float fTemp496 = fTempPerm449;
-		float fTemp497 = fTempPerm450;
-		float fTemp498 = fTempPerm451;
-		int iTemp499 = iTempPerm452;
-		float fTemp500 = fTempPerm453;
-		float fTemp501 = fTempPerm454;
-		float fTemp502 = fTempPerm455;
-		float fTemp503 = fTempPerm456;
-		float fTemp504 = fTempPerm457;
-		float fTemp505 = fTempPerm458;
-		float fTemp506 = fTempPerm459;
-		float fTemp507 = fTempPerm460;
-		float fTemp508 = fTempPerm461;
-		float fTemp509 = fTempPerm462;
-		float fTemp510 = fTempPerm463;
-		float fTemp511 = fTempPerm464;
-		float fTemp512 = fTempPerm465;
-		float fTemp513 = fTempPerm466;
-		float fTemp514 = fTempPerm467;
-		float fTemp515 = fTempPerm468;
-		float fTemp516 = fTempPerm469;
-		float fTemp517 = fTempPerm470;
-		float fTemp518 = fTempPerm471;
-		int iTemp519 = iTempPerm472;
-		int iTemp520 = iTempPerm473;
-		float fTemp521 = fTempPerm474;
-		float fTemp522 = fTempPerm475;
-		float fTemp523 = fTempPerm476;
-		float fTemp524 = fTempPerm477;
-		float fTemp525 = fTempPerm478;
-		float fTemp526 = fTempPerm479;
-		float fTemp527 = fTempPerm480;
-		float fTemp528 = fTempPerm481;
-		float fTemp529 = fTempPerm482;
-		float fTemp530 = fTempPerm483;
-		float fTemp531 = fTempPerm484;
-		float fTemp532 = fTempPerm485;
-		float fTemp533 = fTempPerm486;
-		float fTemp534 = fTempPerm487;
-		float fTemp535 = fTempPerm488;
-		float fTemp536 = fTempPerm489;
-		float fTemp537 = fTempPerm490;
-		float fTemp538 = fTempPerm491;
-		float fTemp539 = fTempPerm492;
-		float fTemp540 = fTempPerm493;
-		float fTemp541 = fTempPerm494;
-		float fTemp542 = fTempPerm495;
-		float fTemp543 = fTempPerm496;
-		float fTemp544 = fTempPerm497;
-		float fTemp545 = fTempPerm498;
-		float fTemp546 = fTempPerm499;
-		float fTemp547 = fTempPerm500;
-		float fTemp548 = fTempPerm501;
-		float fTemp549 = fTempPerm502;
-		float fTemp550 = fTempPerm503;
-		float fTemp551 = fTempPerm504;
-		float fTemp552 = fTempPerm505;
-		float fTemp553 = fTempPerm506;
-		float fTemp554 = fTempPerm507;
-		float fTemp555 = fTempPerm508;
-		float fTemp556 = fTempPerm509;
-		float fTemp557 = fTempPerm510;
-		float fTemp558 = fTempPerm511;
-		float fTemp559 = fTempPerm512;
-		float fTemp560 = fTempPerm513;
-		float fTemp561 = fTempPerm514;
-		float fTemp562 = fTempPerm515;
-		float fTemp563 = fTempPerm516;
-		float fTemp564 = fTempPerm517;
-		float fTemp565 = fTempPerm518;
-		float fTemp566 = fTempPerm519;
-		float fTemp567 = fTempPerm520;
-		float fTemp568 = fTempPerm521;
-		float fTemp569 = fTempPerm522;
-		float fTemp570 = fTempPerm523;
-		float fTemp571 = fTempPerm524;
-		float fTemp572 = fTempPerm525;
-		float fTemp573 = fTempPerm526;
-		float fTemp574 = fTempPerm527;
-		float fTemp575 = fTempPerm528;
-		float fTemp576 = fTempPerm529;
-		float fTemp577 = fTempPerm530;
-		float fTemp578 = fTempPerm531;
-		float fTemp579 = fTempPerm532;
-		float fTemp580 = fTempPerm533;
-		float fTemp581 = fTempPerm534;
-		float fTemp582 = fTempPerm535;
-		float fTemp583 = fTempPerm536;
-		float fTemp584 = fTempPerm537;
-		float fTemp585 = fTempPerm538;
-		float fTemp586 = fTempPerm539;
-		float fTemp587 = fTempPerm540;
-		float fTemp588 = fTempPerm541;
-		float fTemp589 = fTempPerm542;
-		float fSlow785 = float(fHslider498);
-		float fSlow786 = float(fHslider499);
-		float fSlow787 = float(fHslider500);
-		float fSlow788 = float(fHslider501);
-		float fTemp590 = fTempPerm543;
-		float fSlow789 = float(fHslider502);
-		float fSlow790 = float(fHslider503);
-		float fSlow791 = float(fHslider504);
-		float fSlow792 = float(fHslider505);
-		float fTemp591 = fTempPerm544;
-		float fSlow793 = float(fHslider506);
-		float fSlow794 = float(fHslider507);
-		float fSlow795 = float(fHslider508);
-		float fSlow796 = float(fHslider509);
-		float fTemp592 = fTempPerm545;
-		float fSlow797 = float(fHslider510);
-		float fSlow798 = float(fHslider511);
-		float fSlow799 = float(fHslider512);
-		float fSlow800 = float(fHslider513);
-		float fTemp593 = fTempPerm546;
-		float fTemp594 = fTempPerm547;
-		float fSlow801 = float(fHslider514);
-		float fSlow802 = float(fHslider515);
-		float fSlow803 = float(fHslider516);
-		float fSlow804 = float(fHslider517);
-		float fTemp595 = fTempPerm548;
-		float fSlow805 = float(fHslider518);
-		float fSlow806 = float(fHslider519);
-		float fSlow807 = float(fHslider520);
-		float fSlow808 = float(fHslider521);
-		float fTemp596 = fTempPerm549;
-		float fSlow809 = float(fHslider522);
-		float fSlow810 = float(fHslider523);
-		float fSlow811 = float(fHslider524);
-		float fSlow812 = float(fHslider525);
-		float fTemp597 = fTempPerm550;
-		float fSlow813 = float(fHslider526);
-		float fSlow814 = float(fHslider527);
-		float fSlow815 = float(fHslider528);
-		float fSlow816 = float(fHslider529);
-		float fTemp598 = fTempPerm551;
-		float fTemp599 = fTempPerm552;
-		float fSlow817 = float(fHslider530);
-		float fSlow818 = float(fHslider531);
-		float fSlow819 = float(fHslider532);
-		float fSlow820 = float(fHslider533);
-		float fTemp600 = fTempPerm553;
-		float fSlow821 = float(fHslider534);
-		float fSlow822 = float(fHslider535);
-		float fSlow823 = float(fHslider536);
-		float fSlow824 = float(fHslider537);
-		float fTemp601 = fTempPerm554;
-		float fSlow825 = float(fHslider538);
-		float fSlow826 = float(fHslider539);
-		float fSlow827 = float(fHslider540);
-		float fSlow828 = float(fHslider541);
-		float fTemp602 = fTempPerm555;
-		float fSlow829 = float(fHslider542);
-		float fSlow830 = float(fHslider543);
-		float fSlow831 = float(fHslider544);
-		float fSlow832 = float(fHslider545);
-		float fTemp603 = fTempPerm556;
-		float fTemp604 = fTempPerm557;
-		float fSlow833 = float(fHslider546);
-		float fSlow834 = float(fHslider547);
-		float fSlow835 = float(fHslider548);
-		float fSlow836 = float(fHslider549);
-		float fTemp605 = fTempPerm558;
-		float fSlow837 = float(fHslider550);
-		float fSlow838 = float(fHslider551);
-		float fSlow839 = float(fHslider552);
-		float fSlow840 = float(fHslider553);
-		float fTemp606 = fTempPerm559;
-		float fSlow841 = float(fHslider554);
-		float fSlow842 = float(fHslider555);
-		float fSlow843 = float(fHslider556);
-		float fSlow844 = float(fHslider557);
-		float fTemp607 = fTempPerm560;
-		float fSlow845 = float(fHslider558);
-		float fSlow846 = float(fHslider559);
-		float fSlow847 = float(fHslider560);
-		float fSlow848 = float(fHslider561);
-		float fTemp608 = fTempPerm561;
-		float fTemp609 = fTempPerm562;
-		float fSlow849 = float(fHslider562);
-		float fSlow850 = float(fHslider563);
-		float fSlow851 = float(fHslider564);
-		float fSlow852 = float(fHslider565);
-		float fTemp610 = fTempPerm563;
-		float fSlow853 = float(fHslider566);
-		float fSlow854 = float(fHslider567);
-		float fSlow855 = float(fHslider568);
-		float fSlow856 = float(fHslider569);
-		float fTemp611 = fTempPerm564;
-		float fSlow857 = float(fHslider570);
-		float fSlow858 = float(fHslider571);
-		float fSlow859 = float(fHslider572);
-		float fSlow860 = float(fHslider573);
-		float fTemp612 = fTempPerm565;
-		float fSlow861 = float(fHslider574);
-		float fSlow862 = float(fHslider575);
-		float fSlow863 = float(fHslider576);
-		float fSlow864 = float(fHslider577);
-		float fTemp613 = fTempPerm566;
-		float fTemp614 = fTempPerm567;
-		float fTemp615 = fTempPerm568;
-		float fTemp616 = fTempPerm569;
-		float fTemp617 = fTempPerm570;
-		int iTemp618 = iTempPerm571;
-		float fSlow865 = float(fHslider578);
-		float fSlow866 = float(fHslider579);
-		float fSlow867 = float(fHslider580);
-		float fSlow868 = float(fHslider581);
-		float fTemp619 = fTempPerm572;
-		float fSlow869 = float(fHslider582);
-		float fSlow870 = float(fHslider583);
-		float fSlow871 = float(fHslider584);
-		float fSlow872 = float(fHslider585);
-		float fTemp620 = fTempPerm573;
-		float fSlow873 = float(fHslider586);
-		float fSlow874 = float(fHslider587);
-		float fSlow875 = float(fHslider588);
-		float fSlow876 = float(fHslider589);
-		float fTemp621 = fTempPerm574;
-		float fSlow877 = float(fHslider590);
-		float fSlow878 = float(fHslider591);
-		float fSlow879 = float(fHslider592);
-		float fSlow880 = float(fHslider593);
-		float fTemp622 = fTempPerm575;
-		float fTemp623 = fTempPerm576;
-		float fTemp624 = fTempPerm577;
-		float fTemp625 = fTempPerm578;
-		float fTemp626 = fTempPerm579;
-		float fTemp627 = fTempPerm580;
-		float fTemp628 = fTempPerm581;
-		float fTemp629 = fTempPerm582;
-		float fTemp630 = fTempPerm583;
-		float fTemp631 = fTempPerm584;
-		float fTemp632 = fTempPerm585;
-		float fTemp633 = fTempPerm586;
-		float fTemp634 = fTempPerm587;
-		float fTemp635 = fTempPerm588;
-		float fTemp636 = fTempPerm589;
-		float fTemp637 = fTempPerm590;
-		float fSlow881 = float(((fSlow283 > 5.0f) ? 64 : 1));
-		float fSlow882 = float(fHslider594);
-		float fSlow883 = float(fHslider595);
-		float fSlow884 = float(fHslider596);
-		float fSlow885 = float(fHslider597);
-		float fTemp638 = fTempPerm591;
-		float fSlow886 = float(fHslider598);
-		float fSlow887 = float(fHslider599);
-		float fSlow888 = float(fHslider600);
-		float fSlow889 = float(fHslider601);
-		float fTemp639 = fTempPerm592;
-		float fSlow890 = float(fHslider602);
-		float fSlow891 = float(fHslider603);
-		float fSlow892 = float(fHslider604);
-		float fSlow893 = float(fHslider605);
-		float fTemp640 = fTempPerm593;
-		float fSlow894 = float(fHslider606);
-		float fSlow895 = float(fHslider607);
-		float fSlow896 = float(fHslider608);
-		float fSlow897 = float(fHslider609);
-		float fTemp641 = fTempPerm594;
-		float fTemp642 = fTempPerm595;
-		float fTemp643 = fTempPerm596;
-		float fTemp644 = fTempPerm597;
-		float fTemp645 = fTempPerm598;
-		float fTemp646 = fTempPerm599;
-		float fTemp647 = fTempPerm600;
-		float fTemp648 = fTempPerm601;
-		float fTemp649 = fTempPerm602;
-		float fTemp650 = fTempPerm603;
-		int iTemp651 = iTempPerm604;
-		int iTemp652 = iTempPerm605;
-		float fTemp653 = fTempPerm606;
-		float fTemp654 = fTempPerm607;
-		float fTemp655 = fTempPerm608;
-		float fTemp656 = fTempPerm609;
-		float fTemp657 = fTempPerm610;
-		float fTemp658 = fTempPerm611;
-		float fTemp659 = fTempPerm612;
-		int iTemp660 = iTempPerm613;
-		float fTemp661 = fTempPerm614;
-		float fTemp662 = fTempPerm615;
-		float fTemp663 = fTempPerm616;
-		float fTemp664 = fTempPerm617;
-		float fTemp665 = fTempPerm618;
-		float fTemp666 = fTempPerm619;
-		float fTemp667 = fTempPerm620;
-		float fTemp668 = fTempPerm621;
-		float fTemp669 = fTempPerm622;
-		float fTemp670 = fTempPerm623;
-		float fTemp671 = fTempPerm624;
-		float fTemp672 = fTempPerm625;
-		float fTemp673 = fTempPerm626;
-		float fTemp674 = fTempPerm627;
-		float fTemp675 = fTempPerm628;
-		float fTemp676 = fTempPerm629;
-		float fTemp677 = fTempPerm630;
-		float fTemp678 = fTempPerm631;
-		float fTemp679 = fTempPerm632;
-		int iTemp680 = iTempPerm633;
-		int iTemp681 = iTempPerm634;
-		float fTemp682 = fTempPerm635;
-		float fTemp683 = fTempPerm636;
-		float fTemp684 = fTempPerm637;
-		float fTemp685 = fTempPerm638;
-		float fTemp686 = fTempPerm639;
-		float fTemp687 = fTempPerm640;
-		float fTemp688 = fTempPerm641;
-		float fTemp689 = fTempPerm642;
-		float fTemp690 = fTempPerm643;
-		float fTemp691 = fTempPerm644;
-		float fTemp692 = fTempPerm645;
-		float fTemp693 = fTempPerm646;
-		float fTemp694 = fTempPerm647;
-		float fTemp695 = fTempPerm648;
-		float fTemp696 = fTempPerm649;
-		float fTemp697 = fTempPerm650;
-		float fTemp698 = fTempPerm651;
-		float fTemp699 = fTempPerm652;
-		float fTemp700 = fTempPerm653;
-		float fTemp701 = fTempPerm654;
-		float fTemp702 = fTempPerm655;
-		float fTemp703 = fTempPerm656;
-		float fTemp704 = fTempPerm657;
-		float fTemp705 = fTempPerm658;
-		float fTemp706 = fTempPerm659;
-		float fTemp707 = fTempPerm660;
-		float fTemp708 = fTempPerm661;
-		float fTemp709 = fTempPerm662;
-		float fTemp710 = fTempPerm663;
-		float fTemp711 = fTempPerm664;
-		float fTemp712 = fTempPerm665;
-		float fTemp713 = fTempPerm666;
-		float fTemp714 = fTempPerm667;
-		float fTemp715 = fTempPerm668;
-		float fTemp716 = fTempPerm669;
-		float fTemp717 = fTempPerm670;
-		float fTemp718 = fTempPerm671;
-		float fTemp719 = fTempPerm672;
-		float fTemp720 = fTempPerm673;
-		float fTemp721 = fTempPerm674;
-		float fTemp722 = fTempPerm675;
-		float fTemp723 = fTempPerm676;
-		float fTemp724 = fTempPerm677;
-		float fTemp725 = fTempPerm678;
-		float fTemp726 = fTempPerm679;
-		float fTemp727 = fTempPerm680;
-		float fTemp728 = fTempPerm681;
-		float fTemp729 = fTempPerm682;
-		float fTemp730 = fTempPerm683;
-		float fTemp731 = fTempPerm684;
-		float fTemp732 = fTempPerm685;
-		float fTemp733 = fTempPerm686;
-		float fTemp734 = fTempPerm687;
-		float fTemp735 = fTempPerm688;
-		float fTemp736 = fTempPerm689;
-		float fTemp737 = fTempPerm690;
-		float fTemp738 = fTempPerm691;
-		float fTemp739 = fTempPerm692;
-		float fTemp740 = fTempPerm693;
-		float fTemp741 = fTempPerm694;
-		float fTemp742 = fTempPerm695;
-		float fTemp743 = fTempPerm696;
-		float fTemp744 = fTempPerm697;
-		float fTemp745 = fTempPerm698;
-		float fTemp746 = fTempPerm699;
-		float fTemp747 = fTempPerm700;
-		float fTemp748 = fTempPerm701;
-		float fTemp749 = fTempPerm702;
-		float fTemp750 = fTempPerm703;
-		float fSlow898 = float(fHslider610);
-		float fSlow899 = float(fHslider611);
-		float fSlow900 = float(fHslider612);
-		float fSlow901 = float(fHslider613);
-		float fSlow902 = float(fHslider614);
-		float fSlow903 = float(fHslider615);
-		float fSlow904 = float(fHslider616);
-		float fSlow905 = float(fHslider617);
-		float fSlow906 = float(fHslider618);
-		float fSlow907 = float(fHslider619);
-		float fSlow908 = float(fHslider620);
-		float fSlow909 = float(fHslider621);
-		float fSlow910 = float(fHslider622);
-		float fSlow911 = float(fHslider623);
-		float fSlow912 = float(fHslider624);
-		float fSlow913 = float(fHslider625);
-		float fSlow914 = float(fHslider626);
-		float fSlow915 = float(fHslider627);
-		float fSlow916 = float(fHslider628);
-		float fSlow917 = float(fHslider629);
-		float fSlow918 = float(fHslider630);
-		float fSlow919 = float(fHslider631);
-		float fSlow920 = float(fHslider632);
-		float fSlow921 = float(fHslider633);
-		float fSlow922 = float(fHslider634);
-		float fSlow923 = float(fHslider635);
-		float fSlow924 = float(fHslider636);
-		float fSlow925 = float(fHslider637);
-		float fSlow926 = float(fHslider638);
-		float fSlow927 = float(fHslider639);
-		float fSlow928 = float(fHslider640);
-		float fSlow929 = float(fHslider641);
-		float fTemp762 = fTempPerm704;
-		float fTemp763 = fTempPerm705;
-		float fTemp764 = fTempPerm706;
-		float fTemp765 = fTempPerm707;
-		float fTemp766 = fTempPerm708;
-		float fTemp767 = fTempPerm709;
-		float fTemp768 = fTempPerm710;
-		float fTemp769 = fTempPerm711;
-		float fTemp770 = fTempPerm712;
-		float fTemp771 = fTempPerm713;
-		float fTemp772 = fTempPerm714;
-		float fTemp773 = fTempPerm715;
-		float fTemp774 = fTempPerm716;
-		float fTemp775 = fTempPerm717;
-		float fTemp776 = fTempPerm718;
-		float fTemp777 = fTempPerm719;
-		int iTemp778 = iTempPerm720;
-		float fTemp779 = fTempPerm721;
-		float fTemp780 = fTempPerm722;
-		float fTemp781 = fTempPerm723;
-		float fTemp782 = fTempPerm724;
-		float fTemp783 = fTempPerm725;
-		float fTemp784 = fTempPerm726;
-		float fTemp785 = fTempPerm727;
-		float fTemp786 = fTempPerm728;
-		float fTemp787 = fTempPerm729;
-		float fTemp788 = fTempPerm730;
-		float fTemp789 = fTempPerm731;
-		float fTemp790 = fTempPerm732;
-		float fTemp791 = fTempPerm733;
-		float fTemp792 = fTempPerm734;
-		float fTemp793 = fTempPerm735;
-		float fTemp794 = fTempPerm736;
-		float fTemp795 = fTempPerm737;
-		float fTemp796 = fTempPerm738;
-		float fTemp797 = fTempPerm739;
-		float fTemp798 = fTempPerm740;
-		float fTemp799 = fTempPerm741;
-		float fTemp800 = fTempPerm742;
-		float fTemp801 = fTempPerm743;
-		float fTemp802 = fTempPerm744;
-		float fTemp803 = fTempPerm745;
-		float fTemp804 = fTempPerm746;
-		float fTemp805 = fTempPerm747;
-		float fTemp806 = fTempPerm748;
-		float fTemp807 = fTempPerm749;
-		float fTemp808 = fTempPerm750;
-		float fTemp809 = fTempPerm751;
-		float fTemp810 = fTempPerm752;
-		float fTemp811 = fTempPerm753;
-		float fTemp812 = fTempPerm754;
-		float fTemp813 = fTempPerm755;
-		float fTemp814 = fTempPerm756;
-		float fTemp815 = fTempPerm757;
-		float fTemp816 = fTempPerm758;
-		int iTemp817 = iTempPerm759;
-		int iTemp818 = iTempPerm760;
-		float fTemp819 = fTempPerm761;
-		float fTemp820 = fTempPerm762;
-		float fTemp821 = fTempPerm763;
-		float fTemp822 = fTempPerm764;
-		float fTemp823 = fTempPerm765;
-		float fTemp824 = fTempPerm766;
-		float fTemp825 = fTempPerm767;
-		int iTemp826 = iTempPerm768;
-		float fTemp827 = fTempPerm769;
-		float fTemp828 = fTempPerm770;
-		float fTemp829 = fTempPerm771;
-		float fTemp830 = fTempPerm772;
-		float fTemp831 = fTempPerm773;
-		float fTemp832 = fTempPerm774;
-		float fTemp833 = fTempPerm775;
-		float fTemp834 = fTempPerm776;
-		float fTemp835 = fTempPerm777;
-		float fTemp836 = fTempPerm778;
-		float fTemp837 = fTempPerm779;
-		float fTemp838 = fTempPerm780;
-		float fTemp839 = fTempPerm781;
-		float fTemp840 = fTempPerm782;
-		float fTemp841 = fTempPerm783;
-		float fTemp842 = fTempPerm784;
-		float fTemp843 = fTempPerm785;
-		float fTemp844 = fTempPerm786;
-		float fTemp845 = fTempPerm787;
-		float fTemp846 = fTempPerm788;
-		int iTemp847 = iTempPerm789;
-		int iTemp848 = iTempPerm790;
-		float fTemp849 = fTempPerm791;
-		float fTemp850 = fTempPerm792;
-		float fTemp851 = fTempPerm793;
-		float fTemp852 = fTempPerm794;
-		float fTemp853 = fTempPerm795;
-		float fTemp854 = fTempPerm796;
-		float fTemp855 = fTempPerm797;
-		float fTemp856 = fTempPerm798;
-		float fTemp857 = fTempPerm799;
-		float fTemp858 = fTempPerm800;
-		float fTemp859 = fTempPerm801;
-		float fTemp860 = fTempPerm802;
-		float fTemp861 = fTempPerm803;
-		float fTemp862 = fTempPerm804;
-		float fTemp863 = fTempPerm805;
-		float fTemp864 = fTempPerm806;
-		float fTemp865 = fTempPerm807;
-		float fTemp866 = fTempPerm808;
-		float fTemp867 = fTempPerm809;
-		float fTemp868 = fTempPerm810;
-		float fTemp869 = fTempPerm811;
-		float fTemp870 = fTempPerm812;
-		float fTemp871 = fTempPerm813;
-		float fTemp872 = fTempPerm814;
-		float fTemp873 = fTempPerm815;
-		float fTemp874 = fTempPerm816;
-		float fTemp875 = fTempPerm817;
-		float fTemp876 = fTempPerm818;
-		float fTemp877 = fTempPerm819;
-		float fTemp878 = fTempPerm820;
-		float fTemp879 = fTempPerm821;
-		float fTemp880 = fTempPerm822;
-		float fTemp881 = fTempPerm823;
-		float fTemp882 = fTempPerm824;
-		float fTemp883 = fTempPerm825;
-		float fTemp884 = fTempPerm826;
-		float fTemp885 = fTempPerm827;
-		float fTemp886 = fTempPerm828;
-		float fTemp887 = fTempPerm829;
-		float fTemp888 = fTempPerm830;
-		float fTemp889 = fTempPerm831;
-		float fTemp890 = fTempPerm832;
-		float fTemp891 = fTempPerm833;
-		float fTemp892 = fTempPerm834;
-		float fTemp893 = fTempPerm835;
-		float fTemp894 = fTempPerm836;
-		float fTemp895 = fTempPerm837;
-		float fTemp896 = fTempPerm838;
-		float fTemp897 = fTempPerm839;
-		float fTemp898 = fTempPerm840;
-		float fTemp899 = fTempPerm841;
-		float fTemp900 = fTempPerm842;
-		float fTemp901 = fTempPerm843;
-		float fTemp902 = fTempPerm844;
-		float fTemp903 = fTempPerm845;
-		float fTemp904 = fTempPerm846;
-		float fTemp905 = fTempPerm847;
-		float fTemp906 = fTempPerm848;
-		float fTemp907 = fTempPerm849;
-		float fTemp908 = fTempPerm850;
-		float fTemp909 = fTempPerm851;
-		float fTemp910 = fTempPerm852;
-		float fTemp911 = fTempPerm853;
-		float fTemp912 = fTempPerm854;
-		float fTemp913 = fTempPerm855;
-		float fTemp914 = fTempPerm856;
-		float fTemp915 = fTempPerm857;
-		float fTemp916 = fTempPerm858;
-		float fTemp917 = fTempPerm859;
-		float fTemp918 = fTempPerm860;
-		float fTemp919 = fTempPerm861;
-		float fTemp920 = fTempPerm862;
-		float fTemp921 = fTempPerm863;
-		float fTemp922 = fTempPerm864;
-		float fTemp923 = fTempPerm865;
-		float fTemp924 = fTempPerm866;
-		float fTemp925 = fTempPerm867;
-		int iTemp926 = iTempPerm868;
-		float fTemp927 = fTempPerm869;
-		float fTemp928 = fTempPerm870;
-		float fTemp929 = fTempPerm871;
-		float fTemp930 = fTempPerm872;
-		float fTemp931 = fTempPerm873;
-		float fTemp932 = fTempPerm874;
-		float fTemp933 = fTempPerm875;
-		float fTemp934 = fTempPerm876;
-		float fTemp935 = fTempPerm877;
-		float fTemp936 = fTempPerm878;
-		float fTemp937 = fTempPerm879;
-		float fTemp938 = fTempPerm880;
-		float fTemp939 = fTempPerm881;
-		float fTemp940 = fTempPerm882;
-		float fTemp941 = fTempPerm883;
-		float fTemp942 = fTempPerm884;
-		float fTemp943 = fTempPerm885;
-		float fTemp944 = fTempPerm886;
-		float fTemp945 = fTempPerm887;
-		float fTemp946 = fTempPerm888;
-		float fTemp947 = fTempPerm889;
-		float fTemp948 = fTempPerm890;
-		float fTemp949 = fTempPerm891;
-		float fTemp950 = fTempPerm892;
-		int iTemp951 = iTempPerm893;
-		int iTemp952 = iTempPerm894;
-		float fTemp953 = fTempPerm895;
-		float fTemp954 = fTempPerm896;
-		float fTemp955 = fTempPerm897;
-		float fTemp956 = fTempPerm898;
-		float fTemp957 = fTempPerm899;
-		float fTemp958 = fTempPerm900;
-		float fTemp959 = fTempPerm901;
-		int iTemp960 = iTempPerm902;
-		float fTemp961 = fTempPerm903;
-		float fTemp962 = fTempPerm904;
-		float fTemp963 = fTempPerm905;
-		float fTemp964 = fTempPerm906;
-		float fTemp965 = fTempPerm907;
-		float fTemp966 = fTempPerm908;
-		float fTemp967 = fTempPerm909;
-		float fTemp968 = fTempPerm910;
-		float fTemp969 = fTempPerm911;
-		float fTemp970 = fTempPerm912;
-		float fTemp971 = fTempPerm913;
-		float fTemp972 = fTempPerm914;
-		float fTemp973 = fTempPerm915;
-		float fTemp974 = fTempPerm916;
-		float fTemp975 = fTempPerm917;
-		float fTemp976 = fTempPerm918;
-		float fTemp977 = fTempPerm919;
-		float fTemp978 = fTempPerm920;
-		float fTemp979 = fTempPerm921;
-		int iTemp980 = iTempPerm922;
-		int iTemp981 = iTempPerm923;
-		float fTemp982 = fTempPerm924;
-		float fTemp983 = fTempPerm925;
-		float fTemp984 = fTempPerm926;
-		float fTemp985 = fTempPerm927;
-		float fTemp986 = fTempPerm928;
-		float fTemp987 = fTempPerm929;
-		float fTemp988 = fTempPerm930;
-		float fTemp989 = fTempPerm931;
-		float fTemp990 = fTempPerm932;
-		float fTemp991 = fTempPerm933;
-		float fTemp992 = fTempPerm934;
-		float fTemp993 = fTempPerm935;
-		float fTemp994 = fTempPerm936;
-		float fTemp995 = fTempPerm937;
-		float fTemp996 = fTempPerm938;
-		float fTemp997 = fTempPerm939;
-		float fTemp998 = fTempPerm940;
-		float fTemp999 = fTempPerm941;
-		float fTemp1000 = fTempPerm942;
-		float fTemp1001 = fTempPerm943;
-		float fTemp1002 = fTempPerm944;
-		float fTemp1003 = fTempPerm945;
-		float fTemp1004 = fTempPerm946;
-		float fTemp1005 = fTempPerm947;
-		float fTemp1006 = fTempPerm948;
-		float fTemp1007 = fTempPerm949;
-		float fTemp1008 = fTempPerm950;
-		float fTemp1009 = fTempPerm951;
-		float fTemp1010 = fTempPerm952;
-		float fTemp1011 = fTempPerm953;
-		float fTemp1012 = fTempPerm954;
-		float fTemp1013 = fTempPerm955;
-		float fTemp1014 = fTempPerm956;
-		float fTemp1015 = fTempPerm957;
-		float fTemp1016 = fTempPerm958;
-		float fTemp1017 = fTempPerm959;
-		float fTemp1018 = fTempPerm960;
-		float fTemp1019 = fTempPerm961;
-		float fTemp1020 = fTempPerm962;
-		float fTemp1021 = fTempPerm963;
-		float fTemp1022 = fTempPerm964;
-		float fTemp1023 = fTempPerm965;
-		float fTemp1024 = fTempPerm966;
-		float fTemp1025 = fTempPerm967;
-		float fTemp1026 = fTempPerm968;
-		float fTemp1027 = fTempPerm969;
-		float fTemp1028 = fTempPerm970;
-		float fTemp1029 = fTempPerm971;
-		float fTemp1030 = fTempPerm972;
-		float fTemp1031 = fTempPerm973;
-		float fTemp1032 = fTempPerm974;
-		float fTemp1033 = fTempPerm975;
-		float fTemp1034 = fTempPerm976;
-		float fTemp1035 = fTempPerm977;
-		float fTemp1036 = fTempPerm978;
-		float fTemp1037 = fTempPerm979;
-		float fTemp1038 = fTempPerm980;
-		float fTemp1039 = fTempPerm981;
-		float fTemp1040 = fTempPerm982;
-		float fTemp1041 = fTempPerm983;
-		float fTemp1042 = fTempPerm984;
-		float fTemp1043 = fTempPerm985;
-		float fTemp1044 = fTempPerm986;
-		float fTemp1045 = fTempPerm987;
-		float fTemp1046 = fTempPerm988;
-		float fTemp1047 = fTempPerm989;
-		float fTemp1048 = fTempPerm990;
-		float fTemp1049 = fTempPerm991;
-		float fTemp1050 = fTempPerm992;
-		float fTemp1051 = fTempPerm993;
-		float fTemp1052 = fTempPerm994;
-		float fTemp1053 = fTempPerm995;
-		float fTemp1054 = fTempPerm996;
-		float fTemp1055 = fTempPerm997;
-		float fTemp1056 = fTempPerm998;
-		float fTemp1057 = fTempPerm999;
-		float fTemp1058 = fTempPerm1000;
-		int iTemp1059 = iTempPerm1001;
-		float fTemp1060 = fTempPerm1002;
-		float fTemp1061 = fTempPerm1003;
-		float fTemp1062 = fTempPerm1004;
-		float fTemp1063 = fTempPerm1005;
-		float fTemp1064 = fTempPerm1006;
-		float fTemp1065 = fTempPerm1007;
-		float fTemp1066 = fTempPerm1008;
-		float fTemp1067 = fTempPerm1009;
-		float fTemp1068 = fTempPerm1010;
-		float fTemp1069 = fTempPerm1011;
-		float fTemp1070 = fTempPerm1012;
-		float fTemp1071 = fTempPerm1013;
-		float fTemp1072 = fTempPerm1014;
-		float fTemp1073 = fTempPerm1015;
-		float fTemp1074 = fTempPerm1016;
-		float fTemp1075 = fTempPerm1017;
-		float fTemp1076 = fTempPerm1018;
-		float fTemp1077 = fTempPerm1019;
-		float fTemp1078 = fTempPerm1020;
-		float fTemp1079 = fTempPerm1021;
-		float fTemp1080 = fTempPerm1022;
-		float fTemp1081 = fTempPerm1023;
-		float fTemp1082 = fTempPerm1024;
-		float fTemp1083 = fTempPerm1025;
-		int iTemp1084 = iTempPerm1026;
-		int iTemp1085 = iTempPerm1027;
-		float fTemp1086 = fTempPerm1028;
-		float fTemp1087 = fTempPerm1029;
-		float fTemp1088 = fTempPerm1030;
-		float fTemp1089 = fTempPerm1031;
-		float fTemp1090 = fTempPerm1032;
-		float fTemp1091 = fTempPerm1033;
-		float fTemp1092 = fTempPerm1034;
-		int iTemp1093 = iTempPerm1035;
-		float fTemp1094 = fTempPerm1036;
-		float fTemp1095 = fTempPerm1037;
-		float fTemp1096 = fTempPerm1038;
-		float fTemp1097 = fTempPerm1039;
-		float fTemp1098 = fTempPerm1040;
-		float fTemp1099 = fTempPerm1041;
-		float fTemp1100 = fTempPerm1042;
-		float fTemp1101 = fTempPerm1043;
-		float fTemp1102 = fTempPerm1044;
-		float fTemp1103 = fTempPerm1045;
-		float fTemp1104 = fTempPerm1046;
-		float fTemp1105 = fTempPerm1047;
-		float fTemp1106 = fTempPerm1048;
-		float fTemp1107 = fTempPerm1049;
-		float fTemp1108 = fTempPerm1050;
-		float fTemp1109 = fTempPerm1051;
-		float fTemp1110 = fTempPerm1052;
-		float fTemp1111 = fTempPerm1053;
-		float fTemp1112 = fTempPerm1054;
-		int iTemp1113 = iTempPerm1055;
-		int iTemp1114 = iTempPerm1056;
-		float fTemp1115 = fTempPerm1057;
-		float fTemp1116 = fTempPerm1058;
-		float fTemp1117 = fTempPerm1059;
-		float fTemp1118 = fTempPerm1060;
-		float fTemp1119 = fTempPerm1061;
-		float fTemp1120 = fTempPerm1062;
-		float fTemp1121 = fTempPerm1063;
-		float fTemp1122 = fTempPerm1064;
-		float fTemp1123 = fTempPerm1065;
-		float fTemp1124 = fTempPerm1066;
-		float fTemp1125 = fTempPerm1067;
-		float fTemp1126 = fTempPerm1068;
-		float fTemp1127 = fTempPerm1069;
-		float fTemp1128 = fTempPerm1070;
-		float fTemp1129 = fTempPerm1071;
-		float fTemp1130 = fTempPerm1072;
-		float fTemp1131 = fTempPerm1073;
-		float fTemp1132 = fTempPerm1074;
-		float fTemp1133 = fTempPerm1075;
-		float fTemp1134 = fTempPerm1076;
-		float fTemp1135 = fTempPerm1077;
-		float fTemp1136 = fTempPerm1078;
-		float fTemp1137 = fTempPerm1079;
-		float fTemp1138 = fTempPerm1080;
-		float fTemp1139 = fTempPerm1081;
-		float fTemp1140 = fTempPerm1082;
-		float fTemp1141 = fTempPerm1083;
-		float fTemp1142 = fTempPerm1084;
-		float fTemp1143 = fTempPerm1085;
-		float fTemp1144 = fTempPerm1086;
-		float fTemp1145 = fTempPerm1087;
-		float fTemp1146 = fTempPerm1088;
-		float fTemp1147 = fTempPerm1089;
-		float fTemp1148 = fTempPerm1090;
-		float fTemp1149 = fTempPerm1091;
-		float fTemp1150 = fTempPerm1092;
-		float fTemp1151 = fTempPerm1093;
-		float fTemp1152 = fTempPerm1094;
-		float fTemp1153 = fTempPerm1095;
-		float fTemp1154 = fTempPerm1096;
-		float fTemp1155 = fTempPerm1097;
-		float fTemp1156 = fTempPerm1098;
-		float fTemp1157 = fTempPerm1099;
-		float fTemp1158 = fTempPerm1100;
-		float fTemp1159 = fTempPerm1101;
-		float fTemp1160 = fTempPerm1102;
-		float fTemp1161 = fTempPerm1103;
-		float fTemp1162 = fTempPerm1104;
-		float fTemp1163 = fTempPerm1105;
-		float fTemp1164 = fTempPerm1106;
-		float fTemp1165 = fTempPerm1107;
-		float fTemp1166 = fTempPerm1108;
-		float fTemp1167 = fTempPerm1109;
-		float fTemp1168 = fTempPerm1110;
-		float fTemp1169 = fTempPerm1111;
-		float fTemp1170 = fTempPerm1112;
-		float fTemp1171 = fTempPerm1113;
-		float fTemp1172 = fTempPerm1114;
-		float fTemp1173 = fTempPerm1115;
-		float fTemp1174 = fTempPerm1116;
-		float fTemp1175 = fTempPerm1117;
-		float fTemp1176 = fTempPerm1118;
-		float fTemp1177 = fTempPerm1119;
-		float fTemp1178 = fTempPerm1120;
-		float fTemp1179 = fTempPerm1121;
-		float fTemp1180 = fTempPerm1122;
-		float fTemp1181 = fTempPerm1123;
-		float fTemp1182 = fTempPerm1124;
-		float fTemp1183 = fTempPerm1125;
-		float fTemp1184 = fTempPerm1126;
-		float fTemp1185 = fTempPerm1127;
-		float fTemp1186 = fTempPerm1128;
-		float fTemp1187 = fTempPerm1129;
-		float fTemp1188 = fTempPerm1130;
-		float fTemp1189 = fTempPerm1131;
-		float fTemp1190 = fTempPerm1132;
-		float fTemp1191 = fTempPerm1133;
-		int iTemp1192 = iTempPerm1134;
-		float fTemp1193 = fTempPerm1135;
-		float fTemp1194 = fTempPerm1136;
-		float fTemp1195 = fTempPerm1137;
-		float fTemp1196 = fTempPerm1138;
-		float fTemp1197 = fTempPerm1139;
-		float fTemp1198 = fTempPerm1140;
-		float fTemp1199 = fTempPerm1141;
-		float fTemp1200 = fTempPerm1142;
-		float fTemp1201 = fTempPerm1143;
-		float fTemp1202 = fTempPerm1144;
-		float fTemp1203 = fTempPerm1145;
-		float fTemp1204 = fTempPerm1146;
-		float fTemp1205 = fTempPerm1147;
-		float fTemp1206 = fTempPerm1148;
-		float fTemp1207 = fTempPerm1149;
-		float fTemp1208 = fTempPerm1150;
-		float fTemp1209 = fTempPerm1151;
-		float fTemp1210 = fTempPerm1152;
-		float fTemp1211 = fTempPerm1153;
-		float fTemp1212 = fTempPerm1154;
-		float fTemp1213 = fTempPerm1155;
-		float fTemp1214 = fTempPerm1156;
-		float fTemp1215 = fTempPerm1157;
-		float fTemp1216 = fTempPerm1158;
-		int iTemp1217 = iTempPerm1159;
-		int iTemp1218 = iTempPerm1160;
-		float fTemp1219 = fTempPerm1161;
-		float fTemp1220 = fTempPerm1162;
-		float fTemp1221 = fTempPerm1163;
-		float fTemp1222 = fTempPerm1164;
-		float fTemp1223 = fTempPerm1165;
-		float fTemp1224 = fTempPerm1166;
-		float fTemp1225 = fTempPerm1167;
-		int iTemp1226 = iTempPerm1168;
-		float fTemp1227 = fTempPerm1169;
-		float fTemp1228 = fTempPerm1170;
-		float fTemp1229 = fTempPerm1171;
-		float fTemp1230 = fTempPerm1172;
-		float fTemp1231 = fTempPerm1173;
-		float fTemp1232 = fTempPerm1174;
-		float fTemp1233 = fTempPerm1175;
-		float fTemp1234 = fTempPerm1176;
-		float fTemp1235 = fTempPerm1177;
-		float fTemp1236 = fTempPerm1178;
-		float fTemp1237 = fTempPerm1179;
-		float fTemp1238 = fTempPerm1180;
-		float fTemp1239 = fTempPerm1181;
-		float fTemp1240 = fTempPerm1182;
-		float fTemp1241 = fTempPerm1183;
-		float fTemp1242 = fTempPerm1184;
-		float fTemp1243 = fTempPerm1185;
-		float fTemp1244 = fTempPerm1186;
-		float fTemp1245 = fTempPerm1187;
-		int iTemp1246 = iTempPerm1188;
-		int iTemp1247 = iTempPerm1189;
-		float fTemp1248 = fTempPerm1190;
-		float fTemp1249 = fTempPerm1191;
-		float fTemp1250 = fTempPerm1192;
-		float fTemp1251 = fTempPerm1193;
-		float fTemp1252 = fTempPerm1194;
-		float fTemp1253 = fTempPerm1195;
-		float fTemp1254 = fTempPerm1196;
-		float fTemp1255 = fTempPerm1197;
-		float fTemp1256 = fTempPerm1198;
-		float fTemp1257 = fTempPerm1199;
-		float fTemp1258 = fTempPerm1200;
-		float fTemp1259 = fTempPerm1201;
-		float fTemp1260 = fTempPerm1202;
-		float fTemp1261 = fTempPerm1203;
-		float fTemp1262 = fTempPerm1204;
-		float fTemp1263 = fTempPerm1205;
-		float fTemp1264 = fTempPerm1206;
-		float fTemp1265 = fTempPerm1207;
-		float fTemp1266 = fTempPerm1208;
-		float fTemp1267 = fTempPerm1209;
-		float fTemp1268 = fTempPerm1210;
-		float fTemp1269 = fTempPerm1211;
-		float fTemp1270 = fTempPerm1212;
-		float fTemp1271 = fTempPerm1213;
-		float fTemp1272 = fTempPerm1214;
-		float fTemp1273 = fTempPerm1215;
-		float fTemp1274 = fTempPerm1216;
-		float fTemp1275 = fTempPerm1217;
-		float fTemp1276 = fTempPerm1218;
-		float fTemp1277 = fTempPerm1219;
-		float fTemp1278 = fTempPerm1220;
-		float fTemp1279 = fTempPerm1221;
-		float fTemp1280 = fTempPerm1222;
-		float fTemp1281 = fTempPerm1223;
-		float fTemp1282 = fTempPerm1224;
-		float fTemp1283 = fTempPerm1225;
-		float fTemp1284 = fTempPerm1226;
-		float fTemp1285 = fTempPerm1227;
-		float fTemp1286 = fTempPerm1228;
-		float fTemp1287 = fTempPerm1229;
-		float fTemp1288 = fTempPerm1230;
-		float fTemp1289 = fTempPerm1231;
-		float fTemp1290 = fTempPerm1232;
-		float fTemp1291 = fTempPerm1233;
-		float fTemp1292 = fTempPerm1234;
-		float fTemp1293 = fTempPerm1235;
-		float fTemp1294 = fTempPerm1236;
-		float fTemp1295 = fTempPerm1237;
-		float fTemp1296 = fTempPerm1238;
-		float fTemp1297 = fTempPerm1239;
-		float fTemp1298 = fTempPerm1240;
-		float fTemp1299 = fTempPerm1241;
-		float fTemp1300 = fTempPerm1242;
-		float fTemp1301 = fTempPerm1243;
-		float fTemp1302 = fTempPerm1244;
-		float fTemp1303 = fTempPerm1245;
-		float fTemp1304 = fTempPerm1246;
-		float fTemp1305 = fTempPerm1247;
-		float fTemp1306 = fTempPerm1248;
-		float fTemp1307 = fTempPerm1249;
-		float fTemp1308 = fTempPerm1250;
-		float fTemp1309 = fTempPerm1251;
-		float fTemp1310 = fTempPerm1252;
-		float fTemp1311 = fTempPerm1253;
-		float fTemp1312 = fTempPerm1254;
-		float fTemp1313 = fTempPerm1255;
-		float fTemp1314 = fTempPerm1256;
-		float fTemp1315 = fTempPerm1257;
-		float fTemp1316 = fTempPerm1258;
-		for (int i = 0; (i < count); i = (i + 1)) {
-			float fRec25 = 0.0f;
-			float fRec33 = 0.0f;
-			float fRec34 = 0.0f;
-			float fRec46 = 0.0f;
-			float fRec50 = 0.0f;
-			float fRec51 = 0.0f;
-			float fRec65 = 0.0f;
-			float fRec69 = 0.0f;
-			float fRec70 = 0.0f;
-			float fRec82 = 0.0f;
-			float fRec86 = 0.0f;
-			float fRec87 = 0.0f;
-			float fRec101 = 0.0f;
-			float fRec105 = 0.0f;
-			float fRec106 = 0.0f;
-			float fRec118 = 0.0f;
-			float fRec122 = 0.0f;
-			float fRec123 = 0.0f;
-			float fRec137 = 0.0f;
-			float fRec141 = 0.0f;
-			float fRec142 = 0.0f;
-			float fRec154 = 0.0f;
-			float fRec158 = 0.0f;
-			float fRec159 = 0.0f;
-			float fRec177 = 0.0f;
-			float fRec181 = 0.0f;
-			float fRec182 = 0.0f;
-			float fRec194 = 0.0f;
-			float fRec198 = 0.0f;
-			float fRec199 = 0.0f;
-			float fRec213 = 0.0f;
-			float fRec217 = 0.0f;
-			float fRec218 = 0.0f;
-			float fRec230 = 0.0f;
-			float fRec234 = 0.0f;
-			float fRec235 = 0.0f;
-			float fRec249 = 0.0f;
-			float fRec253 = 0.0f;
-			float fRec254 = 0.0f;
-			float fRec266 = 0.0f;
-			float fRec270 = 0.0f;
-			float fRec271 = 0.0f;
-			float fRec285 = 0.0f;
-			float fRec289 = 0.0f;
-			float fRec290 = 0.0f;
-			float fRec302 = 0.0f;
-			float fRec306 = 0.0f;
-			float fRec307 = 0.0f;
-			iVec0[0] = 1;
-			fVec1[0] = fSlow0;
-			iVec2[0] = iSlow1;
-			iRec1[0] = (iSlow1 * (iRec1[1] + 1));
-			int iTemp0 = (iSlow1 - iVec2[1]);
-			int iTemp1 = (iTemp0 * (iTemp0 > 0));
-			int iTemp2 = ((iRec1[0] < iSlow4) | iTemp1);
-			float fTemp3 = (0.144717798f * (iSlow1 ? (iTemp2 ? fSlow3 : fSlow5) : fSlow2));
-			int iTemp4 = (std::fabs(fTemp3) < 1.1920929e-07f);
-			float fTemp5 = (iTemp4 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp4 ? 1.0f : fTemp3)))));
-			fRec0[0] = ((fRec0[1] * fTemp5) + (fSlow8 * ((iSlow1 ? (iTemp2 ? fSlow9 : fSlow10) : 0.0f) * (1.0f - fTemp5))));
-			fHbargraph0 = FAUSTFLOAT(fRec0[0]);
-			int iTemp6 = ((iRec1[0] < iSlow51) | iTemp1);
-			float fTemp7 = (0.144717798f * (iSlow1 ? (iTemp6 ? fSlow50 : fSlow52) : fSlow49));
-			int iTemp8 = (std::fabs(fTemp7) < 1.1920929e-07f);
-			float fTemp9 = (iTemp8 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp8 ? 1.0f : fTemp7)))));
-			fRec6[0] = ((fRec6[1] * fTemp9) + (fSlow53 * ((iSlow1 ? (iTemp6 ? fSlow9 : fSlow54) : 0.0f) * (1.0f - fTemp9))));
-			fHbargraph1 = FAUSTFLOAT(fRec6[0]);
-			float fTemp10 = (1.0f - fHbargraph1);
-			int iTemp11 = ((iRec1[0] < iSlow60) | iTemp1);
-			float fTemp12 = (0.144717798f * (iSlow1 ? (iTemp11 ? fSlow59 : fSlow61) : fSlow58));
-			int iTemp13 = (std::fabs(fTemp12) < 1.1920929e-07f);
-			float fTemp14 = (iTemp13 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp13 ? 1.0f : fTemp12)))));
-			fRec7[0] = ((fRec7[1] * fTemp14) + (fSlow62 * ((iSlow1 ? (iTemp11 ? fSlow9 : fSlow63) : 0.0f) * (1.0f - fTemp14))));
-			fHbargraph2 = FAUSTFLOAT(fRec7[0]);
-			float fTemp15 = (1.0f - fHbargraph2);
-			int iTemp16 = ((iRec1[0] < iSlow69) | iTemp1);
-			float fTemp17 = (0.144717798f * (iSlow1 ? (iTemp16 ? fSlow68 : fSlow70) : fSlow67));
-			int iTemp18 = (std::fabs(fTemp17) < 1.1920929e-07f);
-			float fTemp19 = (iTemp18 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp18 ? 1.0f : fTemp17)))));
-			fRec8[0] = ((fRec8[1] * fTemp19) + (fSlow71 * ((iSlow1 ? (iTemp16 ? fSlow9 : fSlow72) : 0.0f) * (1.0f - fTemp19))));
-			fHbargraph3 = FAUSTFLOAT(fRec8[0]);
-			float fTemp20 = (1.0f - fHbargraph3);
-			int iTemp21 = ((iRec1[0] < iSlow78) | iTemp1);
-			float fTemp22 = (0.144717798f * (iSlow1 ? (iTemp21 ? fSlow77 : fSlow79) : fSlow76));
-			int iTemp23 = (std::fabs(fTemp22) < 1.1920929e-07f);
-			float fTemp24 = (iTemp23 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp23 ? 1.0f : fTemp22)))));
-			fRec9[0] = ((fRec9[1] * fTemp24) + (fSlow80 * ((iSlow1 ? (iTemp21 ? fSlow9 : fSlow81) : 0.0f) * (1.0f - fTemp24))));
-			fHbargraph4 = FAUSTFLOAT(fRec9[0]);
-			float fTemp25 = (1.0f - fHbargraph4);
-			fRec11[0] = (fSlow85 + (fRec11[1] - std::floor((fSlow85 + fRec11[1]))));
-			fHbargraph5 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec11[0]))]);
-			float fTemp26 = (0.5f * (fHbargraph5 + 1.0f));
-			float fTemp27 = (1.0f - fTemp26);
-			fRec12[0] = (fSlow89 + (fRec12[1] - std::floor((fSlow89 + fRec12[1]))));
-			fHbargraph6 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec12[0]))]);
-			float fTemp28 = (0.5f * (fHbargraph6 + 1.0f));
-			float fTemp29 = (1.0f - fTemp28);
-			fRec13[0] = (fSlow93 + (fRec13[1] - std::floor((fSlow93 + fRec13[1]))));
-			fHbargraph7 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec13[0]))]);
-			float fTemp30 = (0.5f * (fHbargraph7 + 1.0f));
-			float fTemp31 = (1.0f - fTemp30);
-			fRec14[0] = (fSlow97 + (fRec14[1] - std::floor((fSlow97 + fRec14[1]))));
-			fHbargraph8 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec14[0]))]);
-			float fTemp32 = (0.5f * (fHbargraph8 + 1.0f));
-			float fTemp33 = (1.0f - fTemp32);
-			float fTemp34 = (fSlow0 - fVec1[1]);
-			float fTemp35 = (fTemp34 * float((fTemp34 > 0.0f)));
-			iRec16[0] = ((1103515245 * iRec16[1]) + 12345);
-			float fTemp36 = float(iRec16[0]);
-			fRec15[0] = (int(fTemp35) ? (4.65661287e-10f * fTemp36) : fRec15[1]);
-			float fTemp37 = (1.0f - fRec15[0]);
-			float fTemp38 = ((fRec17[1] > fSlow120) ? fSlow126 : fSlow123);
-			fRec18[0] = ((fRec18[1] * fTemp38) + (fSlow120 * (1.0f - fTemp38)));
-			fRec17[0] = fRec18[0];
-			fHbargraph9 = FAUSTFLOAT(((fSlow45 * ((((((((((((((fSlow47 * (iSlow48 ? fTemp10 : fHbargraph1)) + (fSlow56 * (iSlow57 ? fTemp15 : fHbargraph2))) + (fSlow65 * (iSlow66 ? fTemp20 : fHbargraph3))) + (fSlow74 * (iSlow75 ? fTemp25 : fHbargraph4))) + (fSlow83 * (iSlow84 ? fTemp27 : fTemp26))) + (fSlow87 * (iSlow88 ? fTemp29 : fTemp28))) + (fSlow91 * (iSlow92 ? fTemp31 : fTemp30))) + (fSlow95 * (iSlow96 ? fTemp33 : fTemp32))) + fSlow101) + fSlow103) + fSlow106) + fSlow110) + fSlow115) + (fSlow117 * (iSlow118 ? fTemp37 : fRec15[0])))) + (fSlow119 * fRec17[0])));
-			float fTemp39 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph9));
-			float fTemp40 = (1.0f - fTemp39);
-			float fTemp41 = ((fRec19[1] > fSlow197) ? fSlow203 : fSlow200);
-			fRec20[0] = ((fRec20[1] * fTemp41) + (fSlow197 * (1.0f - fTemp41)));
-			fRec19[0] = fRec20[0];
-			fHbargraph10 = FAUSTFLOAT(((fSlow158 * ((((((((((((((fSlow160 * (iSlow161 ? fTemp10 : fHbargraph1)) + (fSlow163 * (iSlow164 ? fTemp15 : fHbargraph2))) + (fSlow166 * (iSlow167 ? fTemp20 : fHbargraph3))) + (fSlow169 * (iSlow170 ? fTemp25 : fHbargraph4))) + (fSlow172 * (iSlow173 ? fTemp27 : fTemp26))) + (fSlow175 * (iSlow176 ? fTemp29 : fTemp28))) + (fSlow178 * (iSlow179 ? fTemp31 : fTemp30))) + (fSlow181 * (iSlow182 ? fTemp33 : fTemp32))) + fSlow184) + fSlow186) + fSlow188) + fSlow190) + fSlow192) + (fSlow194 * (iSlow195 ? fTemp37 : fRec15[0])))) + (fSlow196 * fRec19[0])));
-			float fTemp42 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph10));
-			float fTemp43 = (1.0f - fTemp42);
-			float fTemp44 = ((fRec21[1] > fSlow274) ? fSlow280 : fSlow277);
-			fRec22[0] = ((fRec22[1] * fTemp44) + (fSlow274 * (1.0f - fTemp44)));
-			fRec21[0] = fRec22[0];
-			fHbargraph11 = FAUSTFLOAT(((fSlow235 * ((((((((((((((fSlow237 * (iSlow238 ? fTemp10 : fHbargraph1)) + (fSlow240 * (iSlow241 ? fTemp15 : fHbargraph2))) + (fSlow243 * (iSlow244 ? fTemp20 : fHbargraph3))) + (fSlow246 * (iSlow247 ? fTemp25 : fHbargraph4))) + (fSlow249 * (iSlow250 ? fTemp27 : fTemp26))) + (fSlow252 * (iSlow253 ? fTemp29 : fTemp28))) + (fSlow255 * (iSlow256 ? fTemp31 : fTemp30))) + (fSlow258 * (iSlow259 ? fTemp33 : fTemp32))) + fSlow261) + fSlow263) + fSlow265) + fSlow267) + fSlow269) + (fSlow271 * (iSlow272 ? fTemp37 : fRec15[0])))) + (fSlow273 * fRec21[0])));
-			float fTemp45 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph11));
-			float fTemp46 = (1.0f - fTemp45);
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp47 = ((((fSlow127 * fTemp43) + (fSlow204 * fTemp42)) * fTemp46) + (fTemp45 * ((fSlow281 * fTemp43) + (fSlow282 * fTemp42))));
-				fTemp48 = ((fTemp46 * ((fSlow359 * fTemp43) + (fSlow360 * fTemp42))) + (fTemp45 * ((fSlow361 * fTemp43) + (fSlow362 * fTemp42))));
-				fTemp49 = ((fTemp46 * ((fSlow363 * fTemp43) + (fSlow364 * fTemp42))) + (fTemp45 * ((fSlow365 * fTemp43) + (fSlow366 * fTemp42))));
-				fTemp50 = ((fTemp46 * ((fSlow367 * fTemp43) + (fSlow368 * fTemp42))) + (fTemp45 * ((fSlow369 * fTemp43) + (fSlow370 * fTemp42))));
-				fTemp51 = ((fTemp40 * (fTemp47 + fTemp48)) + (fTemp39 * (fTemp49 + fTemp50)));
-				fTemp52 = std::fabs(fTemp51);
-				fTemp53 = ((fTemp46 * ((fSlow371 * fTemp43) + (fSlow372 * fTemp42))) + (fTemp45 * ((fSlow373 * fTemp43) + (fSlow374 * fTemp42))));
-				fTemp54 = ((fTemp46 * ((fSlow375 * fTemp43) + (fSlow376 * fTemp42))) + (fTemp45 * ((fSlow377 * fTemp43) + (fSlow378 * fTemp42))));
-				fTemp55 = ((fTemp46 * ((fSlow379 * fTemp43) + (fSlow380 * fTemp42))) + (fTemp45 * ((fSlow381 * fTemp43) + (fSlow382 * fTemp42))));
-				fTemp56 = ((fTemp46 * ((fSlow383 * fTemp43) + (fSlow384 * fTemp42))) + (fTemp45 * ((fSlow385 * fTemp43) + (fSlow386 * fTemp42))));
-				fTemp57 = ((fTemp40 * (fTemp53 + fTemp54)) + (fTemp39 * (fTemp55 + fTemp56)));
-				fTemp58 = std::fabs(fTemp57);
-				fTemp59 = ((fTemp46 * ((fSlow387 * fTemp43) + (fSlow388 * fTemp42))) + (fTemp45 * ((fSlow389 * fTemp43) + (fSlow390 * fTemp42))));
-				fTemp60 = ((fTemp46 * ((fSlow391 * fTemp43) + (fSlow392 * fTemp42))) + (fTemp45 * ((fSlow393 * fTemp43) + (fSlow394 * fTemp42))));
-				fTemp61 = ((fTemp46 * ((fSlow395 * fTemp43) + (fSlow396 * fTemp42))) + (fTemp45 * ((fSlow397 * fTemp43) + (fSlow398 * fTemp42))));
-				fTemp62 = ((fTemp46 * ((fSlow399 * fTemp43) + (fSlow400 * fTemp42))) + (fTemp45 * ((fSlow401 * fTemp43) + (fSlow402 * fTemp42))));
-				fTemp63 = ((fTemp40 * (fTemp59 + fTemp60)) + (fTemp39 * (fTemp61 + fTemp62)));
-				fTemp64 = std::fabs(fTemp63);
-				fTemp65 = ((fTemp52 + fTemp58) + fTemp64);
-				fTemp66 = std::min<float>(1.0f, fTemp65);
-				fTemp67 = std::max<float>(2.82118644e-37f, fTemp52);
-				fTemp68 = ((fTemp51 < 0.0f) ? (0.0f - fTemp67) : fTemp67);
-				iTemp69 = (float((fTemp51 != 0.0f)) != 0.0f);
-				fTemp71 = ((fTemp40 * (fTemp59 - fTemp60)) + (fTemp39 * (fTemp61 - fTemp62)));
-				iTemp72 = (float((fTemp71 != 0.0f)) != 0.0f);
-				fTemp73 = ((fTemp40 * (fTemp53 - fTemp54)) + (fTemp39 * (fTemp55 - fTemp56)));
-				iTemp74 = (float((fTemp73 != 0.0f)) != 0.0f);
-				fTemp75 = ((fTemp40 * (fTemp47 - fTemp48)) + (fTemp39 * (fTemp49 - fTemp50)));
-				iTemp76 = (float((fTemp75 != 0.0f)) != 0.0f);
-				iTemp77 = (float((fTemp63 != 0.0f)) != 0.0f);
-				iTemp78 = (float((fTemp57 != 0.0f)) != 0.0f);
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow14 & iTemp78) | ((iSlow14 & iTemp77) | ((iSlow358 & iTemp69) | ((iSlow358 & iTemp78) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp69) | ((iSlow356 & iTemp78) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp69) | ((iSlow354 & iTemp78) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp69) | ((iSlow352 & iTemp78) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp69) | ((iSlow350 & iTemp78) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp69) | ((iSlow348 & iTemp78) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp69) | ((iSlow346 & iTemp78) | ((iSlow346 & iTemp77) | ((iSlow344 & iTemp69) | ((iSlow344 & iTemp78) | ((iSlow344 & iTemp77) | ((iSlow342 & iTemp69) | ((iSlow342 & iTemp78) | ((iSlow342 & iTemp77) | ((iSlow340 & iTemp69) | ((iSlow340 & iTemp78) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp69) | ((iSlow338 & iTemp78) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp69) | ((iSlow336 & iTemp78) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp69) | ((iSlow334 & iTemp78) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp69) | ((iSlow332 & iTemp78) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp69) | ((iSlow330 & iTemp78) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp69) | ((iSlow328 & iTemp78) | ((iSlow328 & iTemp77) | ((iSlow326 & iTemp69) | ((iSlow326 & iTemp78) | ((iSlow326 & iTemp77) | ((iSlow322 & iTemp69) | ((iSlow322 & iTemp78) | ((iSlow322 & iTemp77) | ((iSlow320 & iTemp69) | ((iSlow320 & iTemp78) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp69) | ((iSlow318 & iTemp78) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp69) | ((iSlow316 & iTemp78) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp69) | ((iSlow314 & iTemp78) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp69) | ((iSlow312 & iTemp78) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp69) | ((iSlow310 & iTemp78) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp69) | ((iSlow308 & iTemp78) | ((iSlow308 & iTemp77) | ((iSlow306 & iTemp69) | ((iSlow306 & iTemp78) | ((iSlow306 & iTemp77) | ((iSlow302 & iTemp69) | ((iSlow302 & iTemp78) | ((iSlow302 & iTemp77) | ((iSlow300 & iTemp69) | ((iSlow300 & iTemp78) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp69) | ((iSlow298 & iTemp78) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp69) | ((iSlow296 & iTemp78) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp69) | ((iSlow294 & iTemp78) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp69) | ((iSlow292 & iTemp78) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp69) | ((iSlow290 & iTemp78) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp69) | ((iSlow288 & iTemp78) | ((iSlow288 & iTemp77) | ((iSlow286 & iTemp69) | ((iSlow286 & iTemp78) | ((iSlow286 & iTemp77) | ((iSlow14 & iTemp76) | ((iSlow14 & iTemp74) | ((iSlow14 & iTemp72) | ((iSlow358 & iTemp76) | ((iSlow358 & iTemp74) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp76) | ((iSlow356 & iTemp74) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp76) | ((iSlow354 & iTemp74) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp76) | ((iSlow352 & iTemp74) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp76) | ((iSlow350 & iTemp74) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp76) | ((iSlow348 & iTemp74) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp76) | ((iSlow346 & iTemp74) | ((iSlow346 & iTemp72) | ((iSlow344 & iTemp76) | ((iSlow344 & iTemp74) | ((iSlow344 & iTemp72) | ((iSlow342 & iTemp76) | ((iSlow342 & iTemp74) | ((iSlow342 & iTemp72) | ((iSlow340 & iTemp76) | ((iSlow340 & iTemp74) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp76) | ((iSlow338 & iTemp74) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp76) | ((iSlow336 & iTemp74) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp76) | ((iSlow334 & iTemp74) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp76) | ((iSlow332 & iTemp74) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp76) | ((iSlow330 & iTemp74) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp76) | ((iSlow328 & iTemp74) | ((iSlow328 & iTemp72) | ((iSlow326 & iTemp76) | ((iSlow326 & iTemp74) | ((iSlow326 & iTemp72) | ((iSlow322 & iTemp76) | ((iSlow322 & iTemp74) | ((iSlow322 & iTemp72) | ((iSlow320 & iTemp76) | ((iSlow320 & iTemp74) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp76) | ((iSlow318 & iTemp74) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp76) | ((iSlow316 & iTemp74) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp76) | ((iSlow314 & iTemp74) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp76) | ((iSlow312 & iTemp74) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp76) | ((iSlow310 & iTemp74) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp76) | ((iSlow308 & iTemp74) | ((iSlow308 & iTemp72) | ((iSlow306 & iTemp76) | ((iSlow306 & iTemp74) | ((iSlow306 & iTemp72) | ((iSlow302 & iTemp76) | ((iSlow302 & iTemp74) | ((iSlow302 & iTemp72) | ((iSlow300 & iTemp76) | ((iSlow300 & iTemp74) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp76) | ((iSlow298 & iTemp74) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp76) | ((iSlow296 & iTemp74) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp76) | ((iSlow294 & iTemp74) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp76) | ((iSlow292 & iTemp74) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp76) | ((iSlow290 & iTemp74) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp76) | ((iSlow288 & iTemp74) | ((iSlow288 & iTemp72) | ((iSlow286 & iTemp76) | ((iSlow286 & iTemp74) | (iSlow286 & iTemp72)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp70 = ((fTemp46 * ((fSlow403 * fTemp43) + (fSlow404 * fTemp42))) + (fTemp45 * ((fSlow405 * fTemp43) + (fSlow406 * fTemp42))));
-				fTemp79 = ((fTemp46 * ((fSlow407 * fTemp43) + (fSlow408 * fTemp42))) + (fTemp45 * ((fSlow409 * fTemp43) + (fSlow410 * fTemp42))));
-				fTemp80 = ((fTemp46 * ((fSlow411 * fTemp43) + (fSlow412 * fTemp42))) + (fTemp45 * ((fSlow413 * fTemp43) + (fSlow414 * fTemp42))));
-				fTemp81 = ((fTemp46 * ((fSlow415 * fTemp43) + (fSlow416 * fTemp42))) + (fTemp45 * ((fSlow417 * fTemp43) + (fSlow418 * fTemp42))));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow14 & iTemp78) | ((iSlow14 & iTemp77) | ((iSlow358 & iTemp69) | ((iSlow358 & iTemp78) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp69) | ((iSlow356 & iTemp78) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp69) | ((iSlow354 & iTemp78) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp69) | ((iSlow352 & iTemp78) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp69) | ((iSlow350 & iTemp78) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp69) | ((iSlow348 & iTemp78) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp69) | ((iSlow346 & iTemp78) | ((iSlow346 & iTemp77) | ((iSlow344 & iTemp69) | ((iSlow344 & iTemp78) | ((iSlow344 & iTemp77) | ((iSlow342 & iTemp69) | ((iSlow342 & iTemp78) | ((iSlow342 & iTemp77) | ((iSlow340 & iTemp69) | ((iSlow340 & iTemp78) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp69) | ((iSlow338 & iTemp78) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp69) | ((iSlow336 & iTemp78) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp69) | ((iSlow334 & iTemp78) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp69) | ((iSlow332 & iTemp78) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp69) | ((iSlow330 & iTemp78) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp69) | ((iSlow328 & iTemp78) | ((iSlow328 & iTemp77) | ((iSlow326 & iTemp69) | ((iSlow326 & iTemp78) | ((iSlow326 & iTemp77) | ((iSlow322 & iTemp69) | ((iSlow322 & iTemp78) | ((iSlow322 & iTemp77) | ((iSlow320 & iTemp69) | ((iSlow320 & iTemp78) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp69) | ((iSlow318 & iTemp78) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp69) | ((iSlow316 & iTemp78) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp69) | ((iSlow314 & iTemp78) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp69) | ((iSlow312 & iTemp78) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp69) | ((iSlow310 & iTemp78) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp69) | ((iSlow308 & iTemp78) | ((iSlow308 & iTemp77) | ((iSlow306 & iTemp69) | ((iSlow306 & iTemp78) | ((iSlow306 & iTemp77) | ((iSlow302 & iTemp69) | ((iSlow302 & iTemp78) | ((iSlow302 & iTemp77) | ((iSlow300 & iTemp69) | ((iSlow300 & iTemp78) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp69) | ((iSlow298 & iTemp78) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp69) | ((iSlow296 & iTemp78) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp69) | ((iSlow294 & iTemp78) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp69) | ((iSlow292 & iTemp78) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp69) | ((iSlow290 & iTemp78) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp69) | ((iSlow288 & iTemp78) | ((iSlow288 & iTemp77) | ((iSlow286 & iTemp69) | ((iSlow286 & iTemp78) | (iSlow286 & iTemp77)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp82 = std::tan((fConst2 * std::min<float>(fConst4, std::max<float>(0.0f, (440.0f * std::pow(2.0f, (0.0833333358f * ((127.0f * std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp70 + fTemp79)) + (fTemp39 * (fTemp80 + fTemp81)))))) + -49.0f))))))));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp83 = ((fTemp46 * ((fSlow419 * fTemp43) + (fSlow420 * fTemp42))) + (fTemp45 * ((fSlow421 * fTemp43) + (fSlow422 * fTemp42))));
-				fTemp84 = ((fTemp46 * ((fSlow423 * fTemp43) + (fSlow424 * fTemp42))) + (fTemp45 * ((fSlow425 * fTemp43) + (fSlow426 * fTemp42))));
-				fTemp85 = ((fTemp46 * ((fSlow427 * fTemp43) + (fSlow428 * fTemp42))) + (fTemp45 * ((fSlow429 * fTemp43) + (fSlow430 * fTemp42))));
-				fTemp86 = ((fTemp46 * ((fSlow431 * fTemp43) + (fSlow432 * fTemp42))) + (fTemp45 * ((fSlow433 * fTemp43) + (fSlow434 * fTemp42))));
-				fTemp87 = (fRec5[1] * ((fTemp40 * (fTemp83 + fTemp84)) + (fTemp39 * (fTemp85 + fTemp86))));
-				fTemp88 = ((fTemp46 * ((fSlow435 * fTemp43) + (fSlow436 * fTemp42))) + (fTemp45 * ((fSlow437 * fTemp43) + (fSlow438 * fTemp42))));
-				fTemp89 = ((fTemp46 * ((fSlow439 * fTemp43) + (fSlow440 * fTemp42))) + (fTemp45 * ((fSlow441 * fTemp43) + (fSlow442 * fTemp42))));
-				fTemp90 = ((fTemp46 * ((fSlow443 * fTemp43) + (fSlow444 * fTemp42))) + (fTemp45 * ((fSlow445 * fTemp43) + (fSlow446 * fTemp42))));
-				fTemp91 = ((fTemp46 * ((fSlow447 * fTemp43) + (fSlow448 * fTemp42))) + (fTemp45 * ((fSlow449 * fTemp43) + (fSlow450 * fTemp42))));
-				fTemp92 = (fRec4[1] * ((fTemp40 * (fTemp88 + fTemp89)) + (fTemp39 * (fTemp90 + fTemp91))));
-				fTemp93 = ((fTemp46 * ((fSlow451 * fTemp43) + (fSlow452 * fTemp42))) + (fTemp45 * ((fSlow453 * fTemp43) + (fSlow454 * fTemp42))));
-				fTemp94 = ((fTemp46 * ((fSlow455 * fTemp43) + (fSlow456 * fTemp42))) + (fTemp45 * ((fSlow457 * fTemp43) + (fSlow458 * fTemp42))));
-				fTemp95 = ((fTemp46 * ((fSlow459 * fTemp43) + (fSlow460 * fTemp42))) + (fTemp45 * ((fSlow461 * fTemp43) + (fSlow462 * fTemp42))));
-				fTemp96 = ((fTemp46 * ((fSlow463 * fTemp43) + (fSlow464 * fTemp42))) + (fTemp45 * ((fSlow465 * fTemp43) + (fSlow466 * fTemp42))));
-				fTemp97 = (fRec3[1] * ((fTemp40 * (fTemp93 + fTemp94)) + (fTemp39 * (fTemp95 + fTemp96))));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fRec27[0] = ((fRec27[1] * fSlow472) + fSlow474);
-				fTemp98 = (float((int(fVec1[1]) & int(fSlow0))) * fSlow472);
-				fRec28[0] = ((fTemp98 * fRec28[1]) + (fSlow473 * (1.0f - fTemp98)));
-				fTemp99 = (fRec26[1] + (fConst5 * ((iSlow468 ? fSlow473 : (iSlow469 ? fRec28[0] : fRec27[0])) * fSlow475)));
-				iVec3[0] = (fHbargraph0 < 0.100000001f);
-				fRec26[0] = ((fTemp99 - std::floor(fTemp99)) * float((float((int(float((iVec3[1] & int(fTemp35)))) & iSlow476)) == 0.0f)));
-				fTemp100 = float(((1 - iVec0[1]) < 1));
-				fRec29[0] = ((fSlow477 * (1.0f - (0.999000013f * fTemp100))) + (0.999000013f * (fTemp100 * fRec29[1])));
-				fTemp101 = (fRec26[0] + fRec29[0]);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp102 = ((fTemp46 * ((fSlow478 * fTemp43) + (fSlow479 * fTemp42))) + (fTemp45 * ((fSlow480 * fTemp43) + (fSlow481 * fTemp42))));
-				fTemp103 = ((fTemp46 * ((fSlow482 * fTemp43) + (fSlow483 * fTemp42))) + (fTemp45 * ((fSlow484 * fTemp43) + (fSlow485 * fTemp42))));
-				fTemp104 = ((fTemp46 * ((fSlow486 * fTemp43) + (fSlow487 * fTemp42))) + (fTemp45 * ((fSlow488 * fTemp43) + (fSlow489 * fTemp42))));
-				fTemp105 = ((fTemp46 * ((fSlow490 * fTemp43) + (fSlow491 * fTemp42))) + (fTemp45 * ((fSlow492 * fTemp43) + (fSlow493 * fTemp42))));
-				fTemp106 = ((fTemp40 * (fTemp102 + fTemp103)) + (fTemp39 * (fTemp104 + fTemp105)));
-				fTemp107 = ((fTemp46 * ((fSlow494 * fTemp43) + (fSlow495 * fTemp42))) + (fTemp45 * ((fSlow496 * fTemp43) + (fSlow497 * fTemp42))));
-				fTemp108 = ((fTemp46 * ((fSlow498 * fTemp43) + (fSlow499 * fTemp42))) + (fTemp45 * ((fSlow500 * fTemp43) + (fSlow501 * fTemp42))));
-				fTemp109 = ((fTemp46 * ((fSlow502 * fTemp43) + (fSlow503 * fTemp42))) + (fTemp45 * ((fSlow504 * fTemp43) + (fSlow505 * fTemp42))));
-				fTemp110 = ((fTemp46 * ((fSlow506 * fTemp43) + (fSlow507 * fTemp42))) + (fTemp45 * ((fSlow508 * fTemp43) + (fSlow509 * fTemp42))));
-				fTemp111 = ((fTemp40 * (fTemp107 + fTemp108)) + (fTemp39 * (fTemp109 + fTemp110)));
-				fTemp112 = std::floor(fTemp111);
-				fTemp113 = (fTemp112 + float(((fTemp111 < 0.0f) & (fTemp111 != fTemp112))));
-				fTemp114 = (fTemp101 + (0.00390625f * (fTemp106 * std::pow(2.0f, (0.0f - fTemp113)))));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp115 = std::floor(fTemp101);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				iTemp116 = int(fTemp113);
-				fTemp117 = ((fTemp46 * ((fSlow510 * fTemp43) + (fSlow511 * fTemp42))) + (fTemp45 * ((fSlow512 * fTemp43) + (fSlow513 * fTemp42))));
-				fTemp118 = ((fTemp46 * ((fSlow514 * fTemp43) + (fSlow515 * fTemp42))) + (fTemp45 * ((fSlow516 * fTemp43) + (fSlow517 * fTemp42))));
-				fTemp119 = ((fTemp46 * ((fSlow518 * fTemp43) + (fSlow519 * fTemp42))) + (fTemp45 * ((fSlow520 * fTemp43) + (fSlow521 * fTemp42))));
-				fTemp120 = ((fTemp46 * ((fSlow522 * fTemp43) + (fSlow523 * fTemp42))) + (fTemp45 * ((fSlow524 * fTemp43) + (fSlow525 * fTemp42))));
-				fTemp121 = (fRec2[1] * ((fTemp40 * (fTemp117 + fTemp118)) + (fTemp39 * (fTemp119 + fTemp120))));
-				fTemp122 = (fTemp87 + (fTemp92 + (fTemp97 + (std::fmod((256.0f * ((fTemp114 - (fTemp115 + std::floor((fTemp114 - fTemp115)))) * (((float((iTemp116 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp116)))))) + float((iTemp116 == 0))) + float(((iTemp116 > 0) * int(std::pow(2.0f, float(iTemp116)))))))), 1.0f) + fTemp121))));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow358 & iTemp69) | ((iSlow356 & iTemp69) | ((iSlow354 & iTemp69) | ((iSlow352 & iTemp69) | ((iSlow350 & iTemp69) | ((iSlow348 & iTemp69) | ((iSlow346 & iTemp69) | (iSlow344 & iTemp69))))))))) {
-				fTemp123 = (fRec23[1] + (fTemp82 * (fTemp122 - fRec24[1])));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow14 & iTemp78) | ((iSlow14 & iTemp77) | ((iSlow358 & iTemp69) | ((iSlow358 & iTemp78) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp69) | ((iSlow356 & iTemp78) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp69) | ((iSlow354 & iTemp78) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp69) | ((iSlow352 & iTemp78) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp69) | ((iSlow350 & iTemp78) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp69) | ((iSlow348 & iTemp78) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp69) | ((iSlow346 & iTemp78) | ((iSlow346 & iTemp77) | ((iSlow344 & iTemp69) | ((iSlow344 & iTemp78) | ((iSlow344 & iTemp77) | ((iSlow342 & iTemp69) | ((iSlow342 & iTemp78) | ((iSlow342 & iTemp77) | ((iSlow340 & iTemp69) | ((iSlow340 & iTemp78) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp69) | ((iSlow338 & iTemp78) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp69) | ((iSlow336 & iTemp78) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp69) | ((iSlow334 & iTemp78) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp69) | ((iSlow332 & iTemp78) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp69) | ((iSlow330 & iTemp78) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp69) | ((iSlow328 & iTemp78) | ((iSlow328 & iTemp77) | ((iSlow326 & iTemp69) | ((iSlow326 & iTemp78) | ((iSlow326 & iTemp77) | ((iSlow322 & iTemp69) | ((iSlow322 & iTemp78) | ((iSlow322 & iTemp77) | ((iSlow320 & iTemp69) | ((iSlow320 & iTemp78) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp69) | ((iSlow318 & iTemp78) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp69) | ((iSlow316 & iTemp78) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp69) | ((iSlow314 & iTemp78) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp69) | ((iSlow312 & iTemp78) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp69) | ((iSlow310 & iTemp78) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp69) | ((iSlow308 & iTemp78) | ((iSlow308 & iTemp77) | ((iSlow306 & iTemp69) | ((iSlow306 & iTemp78) | ((iSlow306 & iTemp77) | ((iSlow302 & iTemp69) | ((iSlow302 & iTemp78) | ((iSlow302 & iTemp77) | ((iSlow300 & iTemp69) | ((iSlow300 & iTemp78) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp69) | ((iSlow298 & iTemp78) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp69) | ((iSlow296 & iTemp78) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp69) | ((iSlow294 & iTemp78) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp69) | ((iSlow292 & iTemp78) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp69) | ((iSlow290 & iTemp78) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp69) | ((iSlow288 & iTemp78) | ((iSlow288 & iTemp77) | ((iSlow286 & iTemp69) | ((iSlow286 & iTemp78) | ((iSlow286 & iTemp77) | ((iSlow14 & iTemp76) | ((iSlow14 & iTemp74) | ((iSlow14 & iTemp72) | ((iSlow358 & iTemp76) | ((iSlow358 & iTemp74) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp76) | ((iSlow356 & iTemp74) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp76) | ((iSlow354 & iTemp74) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp76) | ((iSlow352 & iTemp74) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp76) | ((iSlow350 & iTemp74) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp76) | ((iSlow348 & iTemp74) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp76) | ((iSlow346 & iTemp74) | ((iSlow346 & iTemp72) | ((iSlow344 & iTemp76) | ((iSlow344 & iTemp74) | ((iSlow344 & iTemp72) | ((iSlow342 & iTemp76) | ((iSlow342 & iTemp74) | ((iSlow342 & iTemp72) | ((iSlow340 & iTemp76) | ((iSlow340 & iTemp74) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp76) | ((iSlow338 & iTemp74) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp76) | ((iSlow336 & iTemp74) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp76) | ((iSlow334 & iTemp74) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp76) | ((iSlow332 & iTemp74) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp76) | ((iSlow330 & iTemp74) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp76) | ((iSlow328 & iTemp74) | ((iSlow328 & iTemp72) | ((iSlow326 & iTemp76) | ((iSlow326 & iTemp74) | ((iSlow326 & iTemp72) | ((iSlow322 & iTemp76) | ((iSlow322 & iTemp74) | ((iSlow322 & iTemp72) | ((iSlow320 & iTemp76) | ((iSlow320 & iTemp74) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp76) | ((iSlow318 & iTemp74) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp76) | ((iSlow316 & iTemp74) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp76) | ((iSlow314 & iTemp74) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp76) | ((iSlow312 & iTemp74) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp76) | ((iSlow310 & iTemp74) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp76) | ((iSlow308 & iTemp74) | ((iSlow308 & iTemp72) | ((iSlow306 & iTemp76) | ((iSlow306 & iTemp74) | ((iSlow306 & iTemp72) | ((iSlow302 & iTemp76) | ((iSlow302 & iTemp74) | ((iSlow302 & iTemp72) | ((iSlow300 & iTemp76) | ((iSlow300 & iTemp74) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp76) | ((iSlow298 & iTemp74) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp76) | ((iSlow296 & iTemp74) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp76) | ((iSlow294 & iTemp74) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp76) | ((iSlow292 & iTemp74) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp76) | ((iSlow290 & iTemp74) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp76) | ((iSlow288 & iTemp74) | ((iSlow288 & iTemp72) | ((iSlow286 & iTemp76) | ((iSlow286 & iTemp74) | (iSlow286 & iTemp72)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp124 = ((fTemp46 * ((fSlow526 * fTemp43) + (fSlow527 * fTemp42))) + (fTemp45 * ((fSlow528 * fTemp43) + (fSlow529 * fTemp42))));
-				fTemp125 = ((fTemp46 * ((fSlow530 * fTemp43) + (fSlow531 * fTemp42))) + (fTemp45 * ((fSlow532 * fTemp43) + (fSlow533 * fTemp42))));
-				fTemp126 = ((fTemp46 * ((fSlow534 * fTemp43) + (fSlow535 * fTemp42))) + (fTemp45 * ((fSlow536 * fTemp43) + (fSlow537 * fTemp42))));
-				fTemp127 = ((fTemp46 * ((fSlow538 * fTemp43) + (fSlow539 * fTemp42))) + (fTemp45 * ((fSlow540 * fTemp43) + (fSlow541 * fTemp42))));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow14 & iTemp78) | ((iSlow14 & iTemp77) | ((iSlow358 & iTemp69) | ((iSlow358 & iTemp78) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp69) | ((iSlow356 & iTemp78) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp69) | ((iSlow354 & iTemp78) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp69) | ((iSlow352 & iTemp78) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp69) | ((iSlow350 & iTemp78) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp69) | ((iSlow348 & iTemp78) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp69) | ((iSlow346 & iTemp78) | ((iSlow346 & iTemp77) | ((iSlow344 & iTemp69) | ((iSlow344 & iTemp78) | ((iSlow344 & iTemp77) | ((iSlow342 & iTemp69) | ((iSlow342 & iTemp78) | ((iSlow342 & iTemp77) | ((iSlow340 & iTemp69) | ((iSlow340 & iTemp78) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp69) | ((iSlow338 & iTemp78) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp69) | ((iSlow336 & iTemp78) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp69) | ((iSlow334 & iTemp78) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp69) | ((iSlow332 & iTemp78) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp69) | ((iSlow330 & iTemp78) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp69) | ((iSlow328 & iTemp78) | ((iSlow328 & iTemp77) | ((iSlow326 & iTemp69) | ((iSlow326 & iTemp78) | ((iSlow326 & iTemp77) | ((iSlow322 & iTemp69) | ((iSlow322 & iTemp78) | ((iSlow322 & iTemp77) | ((iSlow320 & iTemp69) | ((iSlow320 & iTemp78) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp69) | ((iSlow318 & iTemp78) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp69) | ((iSlow316 & iTemp78) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp69) | ((iSlow314 & iTemp78) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp69) | ((iSlow312 & iTemp78) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp69) | ((iSlow310 & iTemp78) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp69) | ((iSlow308 & iTemp78) | ((iSlow308 & iTemp77) | ((iSlow306 & iTemp69) | ((iSlow306 & iTemp78) | ((iSlow306 & iTemp77) | ((iSlow302 & iTemp69) | ((iSlow302 & iTemp78) | ((iSlow302 & iTemp77) | ((iSlow300 & iTemp69) | ((iSlow300 & iTemp78) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp69) | ((iSlow298 & iTemp78) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp69) | ((iSlow296 & iTemp78) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp69) | ((iSlow294 & iTemp78) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp69) | ((iSlow292 & iTemp78) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp69) | ((iSlow290 & iTemp78) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp69) | ((iSlow288 & iTemp78) | ((iSlow288 & iTemp77) | ((iSlow286 & iTemp69) | ((iSlow286 & iTemp78) | (iSlow286 & iTemp77)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp128 = std::min<float>(10.0f, std::max<float>(0.00999999978f, ((fTemp40 * (fTemp124 + fTemp125)) + (fTemp39 * (fTemp126 + fTemp127)))));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow14 & iTemp77) | ((iSlow358 & iTemp69) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp69) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp69) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp69) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp69) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp69) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp69) | ((iSlow346 & iTemp77) | ((iSlow344 & iTemp69) | ((iSlow344 & iTemp77) | ((iSlow342 & iTemp69) | ((iSlow342 & iTemp77) | ((iSlow340 & iTemp69) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp69) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp69) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp69) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp69) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp69) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp69) | ((iSlow328 & iTemp77) | ((iSlow326 & iTemp69) | ((iSlow326 & iTemp77) | ((iSlow322 & iTemp69) | ((iSlow322 & iTemp77) | ((iSlow320 & iTemp69) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp69) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp69) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp69) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp69) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp69) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp69) | ((iSlow308 & iTemp77) | ((iSlow306 & iTemp69) | ((iSlow306 & iTemp77) | ((iSlow302 & iTemp69) | ((iSlow302 & iTemp77) | ((iSlow300 & iTemp69) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp69) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp69) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp69) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp69) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp69) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp69) | ((iSlow288 & iTemp77) | ((iSlow286 & iTemp69) | (iSlow286 & iTemp77)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp129 = (fTemp82 + (1.0f / fTemp128));
-				fTemp130 = ((fTemp82 * fTemp129) + 1.0f);
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow358 & iTemp69) | ((iSlow356 & iTemp69) | ((iSlow354 & iTemp69) | ((iSlow352 & iTemp69) | ((iSlow350 & iTemp69) | ((iSlow348 & iTemp69) | ((iSlow346 & iTemp69) | (iSlow344 & iTemp69))))))))) {
-				fTemp131 = (fTemp123 / fTemp130);
-				fRec23[0] = ((2.0f * fTemp131) - fRec23[1]);
-				fTemp132 = (fRec24[1] + ((fTemp82 * fTemp123) / fTemp130));
-				fRec24[0] = ((2.0f * fTemp132) - fRec24[1]);
-				fRec25 = fTemp132;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp133 = std::max<float>(2.82118644e-37f, fTemp58);
-				fTemp134 = ((fTemp57 < 0.0f) ? (0.0f - fTemp133) : fTemp133);
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fTemp135 = (fTemp82 * (fTemp122 - fRec32[1]));
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | ((iSlow344 & iTemp78) | ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | ((iSlow326 & iTemp78) | ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | ((iSlow306 & iTemp78) | ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78)))))))))))))))))))))))))))))))))))) {
-				fTemp136 = (fTemp128 + -0.707000017f);
-				fTemp137 = (fTemp82 + 1.0f);
-				fTemp138 = (1.0f - (fTemp82 / fTemp137));
-				fTemp139 = (0.0f - (1.0f / fTemp137));
-				fTemp140 = (1.0f - (0.215215757f * (((fTemp82 * fTemp136) * fTemp138) / fTemp137)));
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fTemp141 = ((fTemp82 * ((((fRec32[1] + ((fTemp135 + (0.215215757f * ((fRec30[1] * fTemp136) * fTemp138))) / fTemp137)) + (fRec31[1] * fTemp139)) / fTemp140) - fRec30[1])) / fTemp137);
-				fRec30[0] = (fRec30[1] + (2.0f * fTemp141));
-				fTemp142 = (fRec30[1] + fTemp141);
-				fRec31[0] = (fRec31[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp142)) - fRec31[1])) / fTemp137)));
-				fRec32[0] = (fRec32[1] + (2.0f * (fTemp135 / fTemp137)));
-				fRec33 = fTemp142;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp143 = std::max<float>(2.82118644e-37f, fTemp64);
-				fTemp144 = ((fTemp63 < 0.0f) ? (0.0f - fTemp143) : fTemp143);
-			}
-			if ((iSlow14 & iTemp77) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp77) | (iSlow344 & iTemp77))))))))) {
-				fTemp145 = (fTemp122 - (fRec35[1] + (fTemp129 * fRec36[1])));
-				fTemp146 = ((fTemp82 * fTemp145) / fTemp130);
-				fTemp147 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec36[1] + fTemp146)));
-				fTemp148 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp147)));
-				fTemp149 = ((fTemp82 * fTemp147) * fTemp148);
-				fRec34 = (fRec35[1] + fTemp149);
-				fRec35[0] = (fRec35[1] + (2.0f * fTemp149));
-				fTemp150 = (fTemp147 * fTemp148);
-				fRec36[0] = (fTemp146 + fTemp150);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp151 = std::max<float>(8.46355933e-37f, fTemp65);
-				fTemp152 = (1.0f - fTemp66);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp153 = (((fTemp66 * (((fTemp68 * fRec25) + (fTemp134 * fRec33)) + (fTemp144 * fRec34))) / fTemp151) + (fTemp122 * fTemp152));
-				fVec4[0] = fTemp153;
-				fTemp154 = ((fTemp46 * ((fSlow543 * fTemp43) + (fSlow544 * fTemp42))) + (fTemp45 * ((fSlow545 * fTemp43) + (fSlow546 * fTemp42))));
-				fTemp155 = ((fTemp46 * ((fSlow547 * fTemp43) + (fSlow548 * fTemp42))) + (fTemp45 * ((fSlow549 * fTemp43) + (fSlow550 * fTemp42))));
-				fTemp156 = ((fTemp46 * ((fSlow551 * fTemp43) + (fSlow552 * fTemp42))) + (fTemp45 * ((fSlow553 * fTemp43) + (fSlow554 * fTemp42))));
-				fTemp157 = ((fTemp46 * ((fSlow555 * fTemp43) + (fSlow556 * fTemp42))) + (fTemp45 * ((fSlow557 * fTemp43) + (fSlow558 * fTemp42))));
-				fTemp158 = ((fTemp40 * (fTemp154 + fTemp155)) + (fTemp39 * (fTemp156 + fTemp157)));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350))))) {
-				fTemp159 = (fSlow542 * fTemp158);
-			}
-			if (iSlow14) {
-				fTemp160 = (2.0f * fTemp159);
-				fTemp161 = std::min<float>(1.0f, fTemp160);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fTemp162 = (fTemp153 - fVec4[1]);
-				fRec38[0] = ((std::fabs(fTemp162) < 0.5f) ? (fConst0 * fTemp162) : fRec38[1]);
-			}
-			if (iSlow14) {
-				fTemp163 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec38[0])))))));
-				fTemp164 = (1.0f - fTemp163);
-			}
-			if (iSlow14 | iSlow346) {
-				fTemp165 = std::floor(fTemp153);
-				fTemp166 = (fTemp153 - fTemp165);
-				fVec5[0] = fTemp166;
-				iTemp167 = (fTemp166 < 0.5f);
-				iVec6[0] = iTemp167;
-			}
-			if (iSlow14) {
-				iTemp168 = ((iVec6[1] <= 0) & (iTemp167 > 0));
-				fRec43[0] = ((fRec43[1] * float((1 - iTemp168))) + (4.65661287e-10f * (fTemp36 * float(iTemp168))));
-				fTemp169 = (fTemp163 + 1.0f);
-				fRec42[0] = (0.0f - (((fTemp164 * fRec42[1]) - (fRec43[0] + fRec43[1])) / fTemp169));
-				fRec41[0] = (0.0f - (((fTemp164 * fRec41[1]) - (fRec42[0] + fRec42[1])) / fTemp169));
-				fRec40[0] = (0.0f - (((fTemp164 * fRec40[1]) - (fRec41[0] + fRec41[1])) / fTemp169));
-				fRec39[0] = (0.0f - (((fTemp164 * fRec39[1]) - (fRec40[0] + fRec40[1])) / fTemp169));
-				fRec37[0] = (0.0f - (((fRec37[1] * fTemp164) - (fRec39[0] + fRec39[1])) / fTemp169));
-				fTemp170 = (std::sin((6.28318548f * fTemp153)) * ((fTemp161 * (fRec37[0] + -1.0f)) + 1.0f));
-				fTemp171 = (std::max<float>(1.0f, fTemp160) + -1.0f);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp172 = std::fmod(std::fabs(fTemp111), 1.0f);
-				fTemp173 = (1.0f - fTemp172);
-				fTemp174 = (fTemp112 + float((fTemp111 > 0.0f)));
-				fTemp175 = (fTemp101 + (0.00390625f * (fTemp106 * std::pow(2.0f, (0.0f - fTemp174)))));
-				iTemp176 = int(fTemp174);
-				fTemp177 = ((((fTemp121 + fTemp97) + fTemp92) + fTemp87) + std::fmod((256.0f * ((fTemp175 - (fTemp115 + std::floor((fTemp175 - fTemp115)))) * (((float((iTemp176 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp176)))))) + float((iTemp176 == 0))) + float(((iTemp176 > 0) * int(std::pow(2.0f, float(iTemp176)))))))), 1.0f));
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow358 & iTemp69) | ((iSlow356 & iTemp69) | ((iSlow354 & iTemp69) | ((iSlow352 & iTemp69) | ((iSlow350 & iTemp69) | ((iSlow348 & iTemp69) | ((iSlow346 & iTemp69) | (iSlow344 & iTemp69))))))))) {
-				fTemp178 = (fRec44[1] + (fTemp82 * (fTemp177 - fRec45[1])));
-				fTemp179 = (fTemp178 / fTemp130);
-				fRec44[0] = ((2.0f * fTemp179) - fRec44[1]);
-				fTemp180 = (fRec45[1] + ((fTemp82 * fTemp178) / fTemp130));
-				fRec45[0] = ((2.0f * fTemp180) - fRec45[1]);
-				fRec46 = fTemp180;
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fTemp181 = (fTemp82 * (fTemp177 - fRec49[1]));
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | ((iSlow344 & iTemp78) | ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | ((iSlow326 & iTemp78) | ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | ((iSlow306 & iTemp78) | ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78)))))))))))))))))))))))))))))))))))) {
-				fTemp182 = (fTemp136 * fTemp138);
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fTemp183 = ((fTemp82 * ((((fRec49[1] + ((fTemp181 + (0.215215757f * (fTemp182 * fRec47[1]))) / fTemp137)) + (fTemp139 * fRec48[1])) / fTemp140) - fRec47[1])) / fTemp137);
-				fRec47[0] = (fRec47[1] + (2.0f * fTemp183));
-				fTemp184 = (fRec47[1] + fTemp183);
-				fRec48[0] = (fRec48[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp184)) - fRec48[1])) / fTemp137)));
-				fRec49[0] = (fRec49[1] + (2.0f * (fTemp181 / fTemp137)));
-				fRec50 = fTemp184;
-			}
-			if ((iSlow14 & iTemp77) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp77) | (iSlow344 & iTemp77))))))))) {
-				fTemp185 = (fTemp177 - (fRec52[1] + (fTemp129 * fRec53[1])));
-				fTemp186 = ((fTemp82 * fTemp185) / fTemp130);
-				fTemp187 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec53[1] + fTemp186)));
-				fTemp188 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp187)));
-				fTemp189 = ((fTemp82 * fTemp187) * fTemp188);
-				fRec51 = (fRec52[1] + fTemp189);
-				fRec52[0] = (fRec52[1] + (2.0f * fTemp189));
-				fTemp190 = (fTemp187 * fTemp188);
-				fRec53[0] = (fTemp186 + fTemp190);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp191 = (((fTemp66 * (((fTemp68 * fRec46) + (fTemp134 * fRec50)) + (fTemp144 * fRec51))) / fTemp151) + (fTemp152 * fTemp177));
-				fVec7[0] = fTemp191;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fTemp192 = (fTemp191 - fVec7[1]);
-				fRec55[0] = ((std::fabs(fTemp192) < 0.5f) ? (fConst0 * fTemp192) : fRec55[1]);
-			}
-			if (iSlow14) {
-				fTemp193 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec55[0])))))));
-				fTemp194 = (1.0f - fTemp193);
-			}
-			if (iSlow14 | iSlow346) {
-				fTemp195 = std::floor(fTemp191);
-				fTemp196 = (fTemp191 - fTemp195);
-				fVec8[0] = fTemp196;
-				iTemp197 = (fTemp196 < 0.5f);
-				iVec9[0] = iTemp197;
-			}
-			if (iSlow14) {
-				iTemp198 = ((iVec9[1] <= 0) & (iTemp197 > 0));
-				fRec60[0] = ((fRec60[1] * float((1 - iTemp198))) + (4.65661287e-10f * (fTemp36 * float(iTemp198))));
-				fTemp199 = (fTemp193 + 1.0f);
-				fRec59[0] = (0.0f - (((fTemp194 * fRec59[1]) - (fRec60[0] + fRec60[1])) / fTemp199));
-				fRec58[0] = (0.0f - (((fTemp194 * fRec58[1]) - (fRec59[0] + fRec59[1])) / fTemp199));
-				fRec57[0] = (0.0f - (((fTemp194 * fRec57[1]) - (fRec58[0] + fRec58[1])) / fTemp199));
-				fRec56[0] = (0.0f - (((fTemp194 * fRec56[1]) - (fRec57[0] + fRec57[1])) / fTemp199));
-				fRec54[0] = (0.0f - (((fRec54[1] * fTemp194) - (fRec56[0] + fRec56[1])) / fTemp199));
-				fTemp200 = (std::sin((6.28318548f * fTemp191)) * ((fTemp161 * (fRec54[0] + -1.0f)) + 1.0f));
-				fTemp201 = (((fTemp170 + (fTemp171 * (fRec37[0] - fTemp170))) * fTemp173) + (fTemp172 * (fTemp200 + (fTemp171 * (fRec54[0] - fTemp200)))));
-			}
-			if (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350)))) {
-				fTemp202 = (fTemp159 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec38[0] - fConst7))))));
-			}
-			if (iSlow358 | (iSlow354 | (iSlow352 | iSlow350))) {
-				fTemp203 = (1.0f - fTemp202);
-			}
-			if (iSlow358) {
-				fTemp204 = ((0.75f * fTemp203) + (fTemp153 + (0.5f * fTemp202)));
-				fTemp205 = std::floor(fTemp204);
-			}
-			if (iSlow358 | iSlow350) {
-				fTemp206 = (0.5f * fTemp203);
-			}
-			if (iSlow358) {
-				fTemp207 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp206));
-				fTemp208 = (0.5f - fTemp207);
-			}
-			if (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350)))) {
-				fTemp209 = (fTemp159 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec55[0] - fConst7))))));
-			}
-			if (iSlow358 | (iSlow354 | (iSlow352 | iSlow350))) {
-				fTemp210 = (1.0f - fTemp209);
-			}
-			if (iSlow358) {
-				fTemp211 = ((0.75f * fTemp210) + (fTemp191 + (0.5f * fTemp209)));
-				fTemp212 = std::floor(fTemp211);
-			}
-			if (iSlow358 | iSlow350) {
-				fTemp213 = (0.5f * fTemp210);
-			}
-			if (iSlow358) {
-				fTemp214 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp213));
-				fTemp215 = (0.5f - fTemp214);
-				fTemp216 = ((fTemp173 * std::cos((6.28318548f * ((fTemp204 + std::min<float>((((fTemp204 - fTemp205) * fTemp208) / fTemp207), ((fTemp208 * (fTemp205 + (1.0f - fTemp204))) / (1.0f - fTemp207)))) - fTemp205)))) + (fTemp172 * std::cos((6.28318548f * ((fTemp211 + std::min<float>((((fTemp211 - fTemp212) * fTemp215) / fTemp214), ((fTemp215 * (fTemp212 + (1.0f - fTemp211))) / (1.0f - fTemp214)))) - fTemp212)))));
-			}
-			if (iSlow356) {
-				fTemp217 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp202));
-				fTemp218 = (1.0f - fTemp217);
-				fTemp219 = (0.25f * fTemp218);
-				fTemp220 = (fTemp153 - (fTemp219 + std::floor((fTemp153 - fTemp219))));
-				fTemp221 = (2.0f * fTemp220);
-				fTemp222 = std::floor((fTemp221 + 1.0f));
-				fTemp223 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp209));
-				fTemp224 = (1.0f - fTemp223);
-				fTemp225 = (0.25f * fTemp224);
-				fTemp226 = (fTemp191 - (fTemp225 + std::floor((fTemp191 - fTemp225))));
-				fTemp227 = (2.0f * fTemp226);
-				fTemp228 = std::floor((fTemp227 + 1.0f));
-				fTemp229 = ((fTemp173 * std::cos((3.14159274f * ((float((fTemp220 >= 0.5f)) + fTemp221) + (1.0f - (fTemp222 + std::min<float>((fTemp221 + (1.0f - fTemp222)), ((fTemp217 * (fTemp222 - fTemp221)) / fTemp218)))))))) + (fTemp172 * std::cos((3.14159274f * ((float((fTemp226 >= 0.5f)) + fTemp227) + (1.0f - (fTemp228 + std::min<float>((fTemp227 + (1.0f - fTemp228)), ((fTemp223 * (fTemp228 - fTemp227)) / fTemp224)))))))));
-			}
-			if (iSlow354) {
-				fTemp230 = (0.25f * fTemp203);
-				fTemp231 = (fTemp230 + std::floor((fTemp153 - fTemp230)));
-			}
-			if (iSlow354 | (iSlow352 | (iSlow348 | iSlow344))) {
-				fTemp232 = (1.0f - fTemp153);
-			}
-			if (iSlow354) {
-				fTemp233 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp202));
-				fTemp234 = (0.25f * fTemp210);
-				fTemp235 = (fTemp234 + std::floor((fTemp191 - fTemp234)));
-			}
-			if (iSlow354 | (iSlow352 | (iSlow348 | iSlow344))) {
-				fTemp236 = (1.0f - fTemp191);
-			}
-			if (iSlow354) {
-				fTemp237 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp209));
-				fTemp238 = ((fTemp173 * std::cos((6.28318548f * (fTemp153 - (fTemp231 + std::min<float>((fTemp153 - fTemp231), (((fTemp231 + fTemp232) * fTemp233) / (1.0f - fTemp233)))))))) + (fTemp172 * std::cos((6.28318548f * (fTemp191 - (fTemp235 + std::min<float>((fTemp191 - fTemp235), (((fTemp235 + fTemp236) * fTemp237) / (1.0f - fTemp237)))))))));
-			}
-			if (iSlow352) {
-				fTemp239 = ((0.125f * fTemp203) + (0.25f * fTemp202));
-				fTemp240 = (fTemp239 + std::floor((fTemp153 - fTemp239)));
-				fTemp241 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp202));
-				fTemp242 = (0.49000001f * fTemp241);
-				fTemp243 = ((0.125f * fTemp210) + (0.25f * fTemp209));
-				fTemp244 = (fTemp243 + std::floor((fTemp191 - fTemp243)));
-				fTemp245 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp209));
-				fTemp246 = (0.49000001f * fTemp245);
-				fTemp247 = ((fTemp173 * std::cos((12.566371f * ((fTemp153 + std::min<float>((0.49000001f * (((fTemp153 - fTemp240) * fTemp241) / (0.5f - fTemp242))), (0.49000001f * ((fTemp241 * (fTemp240 + fTemp232)) / (fTemp242 + 0.5f))))) - fTemp240)))) + (fTemp172 * std::cos((12.566371f * ((fTemp191 + std::min<float>((0.49000001f * (((fTemp191 - fTemp244) * fTemp245) / (0.5f - fTemp246))), (0.49000001f * ((fTemp245 * (fTemp244 + fTemp236)) / (fTemp246 + 0.5f))))) - fTemp244)))));
-			}
-			if (iSlow350) {
-				fTemp248 = std::min<float>(0.975000024f, fTemp202);
-				fTemp249 = (0.25f * (1.0f - fTemp248));
-				fTemp250 = (fTemp249 + (0.5f * fTemp248));
-				fTemp251 = std::floor((fTemp153 - fTemp250));
-				fTemp252 = (fTemp153 - (fTemp250 + fTemp251));
-				fTemp253 = std::min<float>(0.975000024f, fTemp209);
-				fTemp254 = (0.25f * (1.0f - fTemp253));
-				fTemp255 = (fTemp254 + (0.5f * fTemp253));
-				fTemp256 = std::floor((fTemp191 - fTemp255));
-				fTemp257 = (fTemp191 - (fTemp255 + fTemp256));
-				fTemp258 = ((fTemp173 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp252 < 0.5f) ? fTemp252 : (0.5f * (((fTemp153 - ((fTemp249 + fTemp251) + (0.5f * (fTemp248 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp206))) + 1.0f))))))) + (fTemp172 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp257 < 0.5f) ? fTemp257 : (0.5f * (((fTemp191 - ((fTemp254 + fTemp256) + (0.5f * (fTemp253 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp213))) + 1.0f))))))));
-			}
-			if (iSlow348 | iSlow344) {
-				fTemp259 = (fTemp153 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec38[0] * fSlow542) * fTemp158))) / fRec38[0])));
-				fTemp260 = (fTemp191 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec55[0] * fSlow542) * fTemp158))) / fRec55[0])));
-			}
-			if (iSlow348) {
-				fTemp261 = ((fTemp173 * (((0.0f - fTemp232) * (1.0f - std::cos((6.28318548f * (fTemp259 + (1.0f - std::floor((fTemp259 + 1.0f)))))))) + 1.0f)) + (fTemp172 * (((0.0f - fTemp236) * (1.0f - std::cos((6.28318548f * (fTemp260 + (1.0f - std::floor((fTemp260 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow346) {
-				fTemp262 = (fTemp153 - (fTemp165 + fVec5[1]));
-				fRec61[0] = ((std::fabs(fTemp262) < 0.5f) ? (fConst0 * fTemp262) : fRec61[1]);
-				fTemp263 = (fTemp166 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec61[0] * fSlow542) * fTemp158))) / fRec61[0])));
-				fTemp264 = (fTemp191 - (fTemp195 + fVec8[1]));
-				fRec62[0] = ((std::fabs(fTemp264) < 0.5f) ? (fConst0 * fTemp264) : fRec62[1]);
-				fTemp265 = (fTemp196 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec62[0] * fSlow542) * fTemp158))) / fRec62[0])));
-				fTemp266 = ((fTemp173 * (((iTemp167 ? (2.0f * fTemp166) : (2.0f * (1.0f - fTemp166))) * (std::cos((6.28318548f * (fTemp263 + (1.0f - std::floor((fTemp263 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp172 * (((iTemp197 ? (2.0f * fTemp196) : (2.0f * (1.0f - fTemp196))) * (std::cos((6.28318548f * (fTemp265 + (1.0f - std::floor((fTemp265 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow344) {
-				fTemp267 = (((fTemp173 * std::min<float>(1.0f, (2.0f * fTemp232))) * std::sin((6.28318548f * (fTemp259 - std::floor(fTemp259))))) + ((fTemp172 * std::min<float>(1.0f, (2.0f * fTemp236))) * std::sin((6.28318548f * (fTemp260 - std::floor(fTemp260))))));
-			}
-			fRec2[0] = (((((((((fSlow13 * fTemp201) + (fSlow357 * fTemp216)) + (fSlow355 * fTemp229)) + (fSlow353 * fTemp238)) + (fSlow351 * fTemp247)) + (fSlow349 * fTemp258)) + (fSlow347 * fTemp261)) + (fSlow345 * fTemp266)) + (fSlow343 * fTemp267));
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp268 = ((fTemp46 * ((fSlow559 * fTemp43) + (fSlow560 * fTemp42))) + (fTemp45 * ((fSlow561 * fTemp43) + (fSlow562 * fTemp42))));
-				fTemp269 = ((fTemp46 * ((fSlow563 * fTemp43) + (fSlow564 * fTemp42))) + (fTemp45 * ((fSlow565 * fTemp43) + (fSlow566 * fTemp42))));
-				fTemp270 = ((fTemp46 * ((fSlow567 * fTemp43) + (fSlow568 * fTemp42))) + (fTemp45 * ((fSlow569 * fTemp43) + (fSlow570 * fTemp42))));
-				fTemp271 = ((fTemp46 * ((fSlow571 * fTemp43) + (fSlow572 * fTemp42))) + (fTemp45 * ((fSlow573 * fTemp43) + (fSlow574 * fTemp42))));
-				fTemp272 = (fRec5[1] * ((fTemp40 * (fTemp268 + fTemp269)) + (fTemp39 * (fTemp270 + fTemp271))));
-				fTemp273 = ((fTemp46 * ((fSlow575 * fTemp43) + (fSlow576 * fTemp42))) + (fTemp45 * ((fSlow577 * fTemp43) + (fSlow578 * fTemp42))));
-				fTemp274 = ((fTemp46 * ((fSlow579 * fTemp43) + (fSlow580 * fTemp42))) + (fTemp45 * ((fSlow581 * fTemp43) + (fSlow582 * fTemp42))));
-				fTemp275 = ((fTemp46 * ((fSlow583 * fTemp43) + (fSlow584 * fTemp42))) + (fTemp45 * ((fSlow585 * fTemp43) + (fSlow586 * fTemp42))));
-				fTemp276 = ((fTemp46 * ((fSlow587 * fTemp43) + (fSlow588 * fTemp42))) + (fTemp45 * ((fSlow589 * fTemp43) + (fSlow590 * fTemp42))));
-				fTemp277 = (fRec4[1] * ((fTemp40 * (fTemp273 + fTemp274)) + (fTemp39 * (fTemp275 + fTemp276))));
-				fTemp278 = ((fTemp46 * ((fSlow591 * fTemp43) + (fSlow592 * fTemp42))) + (fTemp45 * ((fSlow593 * fTemp43) + (fSlow594 * fTemp42))));
-				fTemp279 = ((fTemp46 * ((fSlow595 * fTemp43) + (fSlow596 * fTemp42))) + (fTemp45 * ((fSlow597 * fTemp43) + (fSlow598 * fTemp42))));
-				fTemp280 = ((fTemp46 * ((fSlow599 * fTemp43) + (fSlow600 * fTemp42))) + (fTemp45 * ((fSlow601 * fTemp43) + (fSlow602 * fTemp42))));
-				fTemp281 = ((fTemp46 * ((fSlow603 * fTemp43) + (fSlow604 * fTemp42))) + (fTemp45 * ((fSlow605 * fTemp43) + (fSlow606 * fTemp42))));
-				fTemp282 = (fRec3[1] * ((fTemp40 * (fTemp278 + fTemp279)) + (fTemp39 * (fTemp280 + fTemp281))));
-				fTemp283 = ((fTemp46 * ((fSlow607 * fTemp43) + (fSlow608 * fTemp42))) + (fTemp45 * ((fSlow609 * fTemp43) + (fSlow610 * fTemp42))));
-				fTemp284 = ((fTemp46 * ((fSlow611 * fTemp43) + (fSlow612 * fTemp42))) + (fTemp45 * ((fSlow613 * fTemp43) + (fSlow614 * fTemp42))));
-				fTemp285 = ((fTemp46 * ((fSlow615 * fTemp43) + (fSlow616 * fTemp42))) + (fTemp45 * ((fSlow617 * fTemp43) + (fSlow618 * fTemp42))));
-				fTemp286 = ((fTemp46 * ((fSlow619 * fTemp43) + (fSlow620 * fTemp42))) + (fTemp45 * ((fSlow621 * fTemp43) + (fSlow622 * fTemp42))));
-				fTemp287 = ((fTemp40 * (fTemp283 + fTemp284)) + (fTemp39 * (fTemp285 + fTemp286)));
-				fTemp288 = ((fTemp46 * ((fSlow623 * fTemp43) + (fSlow624 * fTemp42))) + (fTemp45 * ((fSlow625 * fTemp43) + (fSlow626 * fTemp42))));
-				fTemp289 = ((fTemp46 * ((fSlow627 * fTemp43) + (fSlow628 * fTemp42))) + (fTemp45 * ((fSlow629 * fTemp43) + (fSlow630 * fTemp42))));
-				fTemp290 = ((fTemp46 * ((fSlow631 * fTemp43) + (fSlow632 * fTemp42))) + (fTemp45 * ((fSlow633 * fTemp43) + (fSlow634 * fTemp42))));
-				fTemp291 = ((fTemp46 * ((fSlow635 * fTemp43) + (fSlow636 * fTemp42))) + (fTemp45 * ((fSlow637 * fTemp43) + (fSlow638 * fTemp42))));
-				fTemp292 = ((fTemp40 * (fTemp288 + fTemp289)) + (fTemp39 * (fTemp290 + fTemp291)));
-				fTemp293 = std::floor(fTemp292);
-				fTemp294 = (fTemp293 + float(((fTemp292 < 0.0f) & (fTemp292 != fTemp293))));
-				fTemp295 = (fTemp101 + (0.00390625f * (fTemp287 * std::pow(2.0f, (0.0f - fTemp294)))));
-				iTemp296 = int(fTemp294);
-				fTemp297 = ((fTemp46 * ((fSlow639 * fTemp43) + (fSlow640 * fTemp42))) + (fTemp45 * ((fSlow641 * fTemp43) + (fSlow642 * fTemp42))));
-				fTemp298 = ((fTemp46 * ((fSlow643 * fTemp43) + (fSlow644 * fTemp42))) + (fTemp45 * ((fSlow645 * fTemp43) + (fSlow646 * fTemp42))));
-				fTemp299 = ((fTemp46 * ((fSlow647 * fTemp43) + (fSlow648 * fTemp42))) + (fTemp45 * ((fSlow649 * fTemp43) + (fSlow650 * fTemp42))));
-				fTemp300 = ((fTemp46 * ((fSlow651 * fTemp43) + (fSlow652 * fTemp42))) + (fTemp45 * ((fSlow653 * fTemp43) + (fSlow654 * fTemp42))));
-				fTemp301 = (fRec2[1] * ((fTemp40 * (fTemp297 + fTemp298)) + (fTemp39 * (fTemp299 + fTemp300))));
-				fTemp302 = (fTemp272 + (fTemp277 + (fTemp282 + (std::fmod((256.0f * ((fTemp295 - (fTemp115 + std::floor((fTemp295 - fTemp115)))) * (((float((iTemp296 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp296)))))) + float((iTemp296 == 0))) + float(((iTemp296 > 0) * int(std::pow(2.0f, float(iTemp296)))))))), 1.0f) + fTemp301))));
-			}
-			if ((iSlow342 & iTemp69) | ((iSlow340 & iTemp69) | ((iSlow338 & iTemp69) | ((iSlow336 & iTemp69) | ((iSlow334 & iTemp69) | ((iSlow332 & iTemp69) | ((iSlow330 & iTemp69) | ((iSlow328 & iTemp69) | (iSlow326 & iTemp69))))))))) {
-				fTemp303 = (fRec63[1] + (fTemp82 * (fTemp302 - fRec64[1])));
-				fTemp304 = (fTemp303 / fTemp130);
-				fRec63[0] = ((2.0f * fTemp304) - fRec63[1]);
-				fTemp305 = (fRec64[1] + ((fTemp82 * fTemp303) / fTemp130));
-				fRec64[0] = ((2.0f * fTemp305) - fRec64[1]);
-				fRec65 = fTemp305;
-			}
-			if ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | (iSlow326 & iTemp78))))))))) {
-				fTemp306 = (fTemp82 * (fTemp302 - fRec68[1]));
-				fTemp307 = ((fTemp82 * ((((fRec68[1] + ((fTemp306 + (0.215215757f * (fTemp182 * fRec66[1]))) / fTemp137)) + (fTemp139 * fRec67[1])) / fTemp140) - fRec66[1])) / fTemp137);
-				fRec66[0] = (fRec66[1] + (2.0f * fTemp307));
-				fTemp308 = (fRec66[1] + fTemp307);
-				fRec67[0] = (fRec67[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp308)) - fRec67[1])) / fTemp137)));
-				fRec68[0] = (fRec68[1] + (2.0f * (fTemp306 / fTemp137)));
-				fRec69 = fTemp308;
-			}
-			if ((iSlow342 & iTemp77) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp77) | (iSlow326 & iTemp77))))))))) {
-				fTemp309 = (fTemp302 - (fRec71[1] + (fTemp129 * fRec72[1])));
-				fTemp310 = ((fTemp82 * fTemp309) / fTemp130);
-				fTemp311 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec72[1] + fTemp310)));
-				fTemp312 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp311)));
-				fTemp313 = ((fTemp82 * fTemp311) * fTemp312);
-				fRec70 = (fRec71[1] + fTemp313);
-				fRec71[0] = (fRec71[1] + (2.0f * fTemp313));
-				fTemp314 = (fTemp311 * fTemp312);
-				fRec72[0] = (fTemp310 + fTemp314);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp315 = (((fTemp66 * (((fTemp68 * fRec65) + (fTemp134 * fRec69)) + (fTemp144 * fRec70))) / fTemp151) + (fTemp152 * fTemp302));
-				fVec10[0] = fTemp315;
-				fTemp316 = ((fTemp46 * ((fSlow656 * fTemp43) + (fSlow657 * fTemp42))) + (fTemp45 * ((fSlow658 * fTemp43) + (fSlow659 * fTemp42))));
-				fTemp317 = ((fTemp46 * ((fSlow660 * fTemp43) + (fSlow661 * fTemp42))) + (fTemp45 * ((fSlow662 * fTemp43) + (fSlow663 * fTemp42))));
-				fTemp318 = ((fTemp46 * ((fSlow664 * fTemp43) + (fSlow665 * fTemp42))) + (fTemp45 * ((fSlow666 * fTemp43) + (fSlow667 * fTemp42))));
-				fTemp319 = ((fTemp46 * ((fSlow668 * fTemp43) + (fSlow669 * fTemp42))) + (fTemp45 * ((fSlow670 * fTemp43) + (fSlow671 * fTemp42))));
-				fTemp320 = ((fTemp40 * (fTemp316 + fTemp317)) + (fTemp39 * (fTemp318 + fTemp319)));
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332))))) {
-				fTemp321 = (fSlow655 * fTemp320);
-			}
-			if (iSlow342) {
-				fTemp322 = (2.0f * fTemp321);
-				fTemp323 = std::min<float>(1.0f, fTemp322);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fTemp324 = (fTemp315 - fVec10[1]);
-				fRec74[0] = ((std::fabs(fTemp324) < 0.5f) ? (fConst0 * fTemp324) : fRec74[1]);
-			}
-			if (iSlow342) {
-				fTemp325 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec74[0])))))));
-				fTemp326 = (1.0f - fTemp325);
-			}
-			if (iSlow342 | iSlow328) {
-				fTemp327 = std::floor(fTemp315);
-				fTemp328 = (fTemp315 - fTemp327);
-				fVec11[0] = fTemp328;
-				iTemp329 = (fTemp328 < 0.5f);
-				iVec12[0] = iTemp329;
-			}
-			if (iSlow342) {
-				iTemp330 = ((iVec12[1] <= 0) & (iTemp329 > 0));
-				fRec79[0] = ((fRec79[1] * float((1 - iTemp330))) + (4.65661287e-10f * (fTemp36 * float(iTemp330))));
-				fTemp331 = (fTemp325 + 1.0f);
-				fRec78[0] = (0.0f - (((fTemp326 * fRec78[1]) - (fRec79[0] + fRec79[1])) / fTemp331));
-				fRec77[0] = (0.0f - (((fTemp326 * fRec77[1]) - (fRec78[0] + fRec78[1])) / fTemp331));
-				fRec76[0] = (0.0f - (((fTemp326 * fRec76[1]) - (fRec77[0] + fRec77[1])) / fTemp331));
-				fRec75[0] = (0.0f - (((fTemp326 * fRec75[1]) - (fRec76[0] + fRec76[1])) / fTemp331));
-				fRec73[0] = (0.0f - (((fRec73[1] * fTemp326) - (fRec75[0] + fRec75[1])) / fTemp331));
-				fTemp332 = (std::sin((6.28318548f * fTemp315)) * ((fTemp323 * (fRec73[0] + -1.0f)) + 1.0f));
-				fTemp333 = (std::max<float>(1.0f, fTemp322) + -1.0f);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp334 = std::fmod(std::fabs(fTemp292), 1.0f);
-				fTemp335 = (1.0f - fTemp334);
-				fTemp336 = (fTemp293 + float((fTemp292 > 0.0f)));
-				fTemp337 = (fTemp101 + (0.00390625f * (fTemp287 * std::pow(2.0f, (0.0f - fTemp336)))));
-				iTemp338 = int(fTemp336);
-				fTemp339 = ((((fTemp301 + fTemp282) + fTemp277) + fTemp272) + std::fmod((256.0f * ((fTemp337 - (fTemp115 + std::floor((fTemp337 - fTemp115)))) * (((float((iTemp338 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp338)))))) + float((iTemp338 == 0))) + float(((iTemp338 > 0) * int(std::pow(2.0f, float(iTemp338)))))))), 1.0f));
-			}
-			if ((iSlow342 & iTemp69) | ((iSlow340 & iTemp69) | ((iSlow338 & iTemp69) | ((iSlow336 & iTemp69) | ((iSlow334 & iTemp69) | ((iSlow332 & iTemp69) | ((iSlow330 & iTemp69) | ((iSlow328 & iTemp69) | (iSlow326 & iTemp69))))))))) {
-				fTemp340 = (fRec80[1] + (fTemp82 * (fTemp339 - fRec81[1])));
-				fTemp341 = (fTemp340 / fTemp130);
-				fRec80[0] = ((2.0f * fTemp341) - fRec80[1]);
-				fTemp342 = (fRec81[1] + ((fTemp82 * fTemp340) / fTemp130));
-				fRec81[0] = ((2.0f * fTemp342) - fRec81[1]);
-				fRec82 = fTemp342;
-			}
-			if ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | (iSlow326 & iTemp78))))))))) {
-				fTemp343 = (fTemp82 * (fTemp339 - fRec85[1]));
-				fTemp344 = ((fTemp82 * ((((fRec85[1] + ((fTemp343 + (0.215215757f * (fTemp182 * fRec83[1]))) / fTemp137)) + (fTemp139 * fRec84[1])) / fTemp140) - fRec83[1])) / fTemp137);
-				fRec83[0] = (fRec83[1] + (2.0f * fTemp344));
-				fTemp345 = (fRec83[1] + fTemp344);
-				fRec84[0] = (fRec84[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp345)) - fRec84[1])) / fTemp137)));
-				fRec85[0] = (fRec85[1] + (2.0f * (fTemp343 / fTemp137)));
-				fRec86 = fTemp345;
-			}
-			if ((iSlow342 & iTemp77) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp77) | (iSlow326 & iTemp77))))))))) {
-				fTemp346 = (fTemp339 - (fRec88[1] + (fTemp129 * fRec89[1])));
-				fTemp347 = ((fTemp82 * fTemp346) / fTemp130);
-				fTemp348 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec89[1] + fTemp347)));
-				fTemp349 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp348)));
-				fTemp350 = ((fTemp82 * fTemp348) * fTemp349);
-				fRec87 = (fRec88[1] + fTemp350);
-				fRec88[0] = (fRec88[1] + (2.0f * fTemp350));
-				fTemp351 = (fTemp348 * fTemp349);
-				fRec89[0] = (fTemp347 + fTemp351);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp352 = (((fTemp66 * (((fTemp68 * fRec82) + (fTemp134 * fRec86)) + (fTemp144 * fRec87))) / fTemp151) + (fTemp152 * fTemp339));
-				fVec13[0] = fTemp352;
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fTemp353 = (fTemp352 - fVec13[1]);
-				fRec91[0] = ((std::fabs(fTemp353) < 0.5f) ? (fConst0 * fTemp353) : fRec91[1]);
-			}
-			if (iSlow342) {
-				fTemp354 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec91[0])))))));
-				fTemp355 = (1.0f - fTemp354);
-			}
-			if (iSlow342 | iSlow328) {
-				fTemp356 = std::floor(fTemp352);
-				fTemp357 = (fTemp352 - fTemp356);
-				fVec14[0] = fTemp357;
-				iTemp358 = (fTemp357 < 0.5f);
-				iVec15[0] = iTemp358;
-			}
-			if (iSlow342) {
-				iTemp359 = ((iVec15[1] <= 0) & (iTemp358 > 0));
-				fRec96[0] = ((fRec96[1] * float((1 - iTemp359))) + (4.65661287e-10f * (fTemp36 * float(iTemp359))));
-				fTemp360 = (fTemp354 + 1.0f);
-				fRec95[0] = (0.0f - (((fTemp355 * fRec95[1]) - (fRec96[0] + fRec96[1])) / fTemp360));
-				fRec94[0] = (0.0f - (((fTemp355 * fRec94[1]) - (fRec95[0] + fRec95[1])) / fTemp360));
-				fRec93[0] = (0.0f - (((fTemp355 * fRec93[1]) - (fRec94[0] + fRec94[1])) / fTemp360));
-				fRec92[0] = (0.0f - (((fTemp355 * fRec92[1]) - (fRec93[0] + fRec93[1])) / fTemp360));
-				fRec90[0] = (0.0f - (((fRec90[1] * fTemp355) - (fRec92[0] + fRec92[1])) / fTemp360));
-				fTemp361 = (std::sin((6.28318548f * fTemp352)) * ((fTemp323 * (fRec90[0] + -1.0f)) + 1.0f));
-				fTemp362 = (((fTemp332 + (fTemp333 * (fRec73[0] - fTemp332))) * fTemp335) + (fTemp334 * (fTemp361 + (fTemp333 * (fRec90[0] - fTemp361)))));
-			}
-			if (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332)))) {
-				fTemp363 = (fTemp321 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec74[0] - fConst7))))));
-			}
-			if (iSlow340 | (iSlow336 | (iSlow334 | iSlow332))) {
-				fTemp364 = (1.0f - fTemp363);
-			}
-			if (iSlow340) {
-				fTemp365 = ((0.75f * fTemp364) + (fTemp315 + (0.5f * fTemp363)));
-				fTemp366 = std::floor(fTemp365);
-			}
-			if (iSlow340 | iSlow332) {
-				fTemp367 = (0.5f * fTemp364);
-			}
-			if (iSlow340) {
-				fTemp368 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp367));
-				fTemp369 = (0.5f - fTemp368);
-			}
-			if (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332)))) {
-				fTemp370 = (fTemp321 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec91[0] - fConst7))))));
-			}
-			if (iSlow340 | (iSlow336 | (iSlow334 | iSlow332))) {
-				fTemp371 = (1.0f - fTemp370);
-			}
-			if (iSlow340) {
-				fTemp372 = ((0.75f * fTemp371) + (fTemp352 + (0.5f * fTemp370)));
-				fTemp373 = std::floor(fTemp372);
-			}
-			if (iSlow340 | iSlow332) {
-				fTemp374 = (0.5f * fTemp371);
-			}
-			if (iSlow340) {
-				fTemp375 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp374));
-				fTemp376 = (0.5f - fTemp375);
-				fTemp377 = ((fTemp335 * std::cos((6.28318548f * ((fTemp365 + std::min<float>((((fTemp365 - fTemp366) * fTemp369) / fTemp368), ((fTemp369 * (fTemp366 + (1.0f - fTemp365))) / (1.0f - fTemp368)))) - fTemp366)))) + (fTemp334 * std::cos((6.28318548f * ((fTemp372 + std::min<float>((((fTemp372 - fTemp373) * fTemp376) / fTemp375), ((fTemp376 * (fTemp373 + (1.0f - fTemp372))) / (1.0f - fTemp375)))) - fTemp373)))));
-			}
-			if (iSlow338) {
-				fTemp378 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp363));
-				fTemp379 = (1.0f - fTemp378);
-				fTemp380 = (0.25f * fTemp379);
-				fTemp381 = (fTemp315 - (fTemp380 + std::floor((fTemp315 - fTemp380))));
-				fTemp382 = (2.0f * fTemp381);
-				fTemp383 = std::floor((fTemp382 + 1.0f));
-				fTemp384 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp370));
-				fTemp385 = (1.0f - fTemp384);
-				fTemp386 = (0.25f * fTemp385);
-				fTemp387 = (fTemp352 - (fTemp386 + std::floor((fTemp352 - fTemp386))));
-				fTemp388 = (2.0f * fTemp387);
-				fTemp389 = std::floor((fTemp388 + 1.0f));
-				fTemp390 = ((fTemp335 * std::cos((3.14159274f * ((float((fTemp381 >= 0.5f)) + fTemp382) + (1.0f - (fTemp383 + std::min<float>((fTemp382 + (1.0f - fTemp383)), ((fTemp378 * (fTemp383 - fTemp382)) / fTemp379)))))))) + (fTemp334 * std::cos((3.14159274f * ((float((fTemp387 >= 0.5f)) + fTemp388) + (1.0f - (fTemp389 + std::min<float>((fTemp388 + (1.0f - fTemp389)), ((fTemp384 * (fTemp389 - fTemp388)) / fTemp385)))))))));
-			}
-			if (iSlow336) {
-				fTemp391 = (0.25f * fTemp364);
-				fTemp392 = (fTemp391 + std::floor((fTemp315 - fTemp391)));
-			}
-			if (iSlow336 | (iSlow334 | (iSlow330 | iSlow326))) {
-				fTemp393 = (1.0f - fTemp315);
-			}
-			if (iSlow336) {
-				fTemp394 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp363));
-				fTemp395 = (0.25f * fTemp371);
-				fTemp396 = (fTemp395 + std::floor((fTemp352 - fTemp395)));
-			}
-			if (iSlow336 | (iSlow334 | (iSlow330 | iSlow326))) {
-				fTemp397 = (1.0f - fTemp352);
-			}
-			if (iSlow336) {
-				fTemp398 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp370));
-				fTemp399 = ((fTemp335 * std::cos((6.28318548f * (fTemp315 - (fTemp392 + std::min<float>((fTemp315 - fTemp392), (((fTemp392 + fTemp393) * fTemp394) / (1.0f - fTemp394)))))))) + (fTemp334 * std::cos((6.28318548f * (fTemp352 - (fTemp396 + std::min<float>((fTemp352 - fTemp396), (((fTemp396 + fTemp397) * fTemp398) / (1.0f - fTemp398)))))))));
-			}
-			if (iSlow334) {
-				fTemp400 = ((0.125f * fTemp364) + (0.25f * fTemp363));
-				fTemp401 = (fTemp400 + std::floor((fTemp315 - fTemp400)));
-				fTemp402 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp363));
-				fTemp403 = (0.49000001f * fTemp402);
-				fTemp404 = ((0.125f * fTemp371) + (0.25f * fTemp370));
-				fTemp405 = (fTemp404 + std::floor((fTemp352 - fTemp404)));
-				fTemp406 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp370));
-				fTemp407 = (0.49000001f * fTemp406);
-				fTemp408 = ((fTemp335 * std::cos((12.566371f * ((fTemp315 + std::min<float>((0.49000001f * (((fTemp315 - fTemp401) * fTemp402) / (0.5f - fTemp403))), (0.49000001f * ((fTemp402 * (fTemp401 + fTemp393)) / (fTemp403 + 0.5f))))) - fTemp401)))) + (fTemp334 * std::cos((12.566371f * ((fTemp352 + std::min<float>((0.49000001f * (((fTemp352 - fTemp405) * fTemp406) / (0.5f - fTemp407))), (0.49000001f * ((fTemp406 * (fTemp405 + fTemp397)) / (fTemp407 + 0.5f))))) - fTemp405)))));
-			}
-			if (iSlow332) {
-				fTemp409 = std::min<float>(0.975000024f, fTemp363);
-				fTemp410 = (0.25f * (1.0f - fTemp409));
-				fTemp411 = (fTemp410 + (0.5f * fTemp409));
-				fTemp412 = std::floor((fTemp315 - fTemp411));
-				fTemp413 = (fTemp315 - (fTemp411 + fTemp412));
-				fTemp414 = std::min<float>(0.975000024f, fTemp370);
-				fTemp415 = (0.25f * (1.0f - fTemp414));
-				fTemp416 = (fTemp415 + (0.5f * fTemp414));
-				fTemp417 = std::floor((fTemp352 - fTemp416));
-				fTemp418 = (fTemp352 - (fTemp416 + fTemp417));
-				fTemp419 = ((fTemp335 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp413 < 0.5f) ? fTemp413 : (0.5f * (((fTemp315 - ((fTemp410 + fTemp412) + (0.5f * (fTemp409 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp367))) + 1.0f))))))) + (fTemp334 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp418 < 0.5f) ? fTemp418 : (0.5f * (((fTemp352 - ((fTemp415 + fTemp417) + (0.5f * (fTemp414 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp374))) + 1.0f))))))));
-			}
-			if (iSlow330 | iSlow326) {
-				fTemp420 = (fTemp315 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec74[0] * fSlow655) * fTemp320))) / fRec74[0])));
-				fTemp421 = (fTemp352 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec91[0] * fSlow655) * fTemp320))) / fRec91[0])));
-			}
-			if (iSlow330) {
-				fTemp422 = ((fTemp335 * (((0.0f - fTemp393) * (1.0f - std::cos((6.28318548f * (fTemp420 + (1.0f - std::floor((fTemp420 + 1.0f)))))))) + 1.0f)) + (fTemp334 * (((0.0f - fTemp397) * (1.0f - std::cos((6.28318548f * (fTemp421 + (1.0f - std::floor((fTemp421 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow328) {
-				fTemp423 = (fTemp315 - (fTemp327 + fVec11[1]));
-				fRec97[0] = ((std::fabs(fTemp423) < 0.5f) ? (fConst0 * fTemp423) : fRec97[1]);
-				fTemp424 = (fTemp328 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec97[0] * fSlow655) * fTemp320))) / fRec97[0])));
-				fTemp425 = (fTemp352 - (fTemp356 + fVec14[1]));
-				fRec98[0] = ((std::fabs(fTemp425) < 0.5f) ? (fConst0 * fTemp425) : fRec98[1]);
-				fTemp426 = (fTemp357 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec98[0] * fSlow655) * fTemp320))) / fRec98[0])));
-				fTemp427 = ((fTemp335 * (((iTemp329 ? (2.0f * fTemp328) : (2.0f * (1.0f - fTemp328))) * (std::cos((6.28318548f * (fTemp424 + (1.0f - std::floor((fTemp424 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp334 * (((iTemp358 ? (2.0f * fTemp357) : (2.0f * (1.0f - fTemp357))) * (std::cos((6.28318548f * (fTemp426 + (1.0f - std::floor((fTemp426 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow326) {
-				fTemp428 = (((fTemp335 * std::min<float>(1.0f, (2.0f * fTemp393))) * std::sin((6.28318548f * (fTemp420 - std::floor(fTemp420))))) + ((fTemp334 * std::min<float>(1.0f, (2.0f * fTemp397))) * std::sin((6.28318548f * (fTemp421 - std::floor(fTemp421))))));
-			}
-			fRec3[0] = (((((((((fSlow341 * fTemp362) + (fSlow339 * fTemp377)) + (fSlow337 * fTemp390)) + (fSlow335 * fTemp399)) + (fSlow333 * fTemp408)) + (fSlow331 * fTemp419)) + (fSlow329 * fTemp422)) + (fSlow327 * fTemp427)) + (fSlow325 * fTemp428));
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp429 = ((fTemp46 * ((fSlow672 * fTemp43) + (fSlow673 * fTemp42))) + (fTemp45 * ((fSlow674 * fTemp43) + (fSlow675 * fTemp42))));
-				fTemp430 = ((fTemp46 * ((fSlow676 * fTemp43) + (fSlow677 * fTemp42))) + (fTemp45 * ((fSlow678 * fTemp43) + (fSlow679 * fTemp42))));
-				fTemp431 = ((fTemp46 * ((fSlow680 * fTemp43) + (fSlow681 * fTemp42))) + (fTemp45 * ((fSlow682 * fTemp43) + (fSlow683 * fTemp42))));
-				fTemp432 = ((fTemp46 * ((fSlow684 * fTemp43) + (fSlow685 * fTemp42))) + (fTemp45 * ((fSlow686 * fTemp43) + (fSlow687 * fTemp42))));
-				fTemp433 = (fRec5[1] * ((fTemp40 * (fTemp429 + fTemp430)) + (fTemp39 * (fTemp431 + fTemp432))));
-				fTemp434 = ((fTemp46 * ((fSlow688 * fTemp43) + (fSlow689 * fTemp42))) + (fTemp45 * ((fSlow690 * fTemp43) + (fSlow691 * fTemp42))));
-				fTemp435 = ((fTemp46 * ((fSlow692 * fTemp43) + (fSlow693 * fTemp42))) + (fTemp45 * ((fSlow694 * fTemp43) + (fSlow695 * fTemp42))));
-				fTemp436 = ((fTemp46 * ((fSlow696 * fTemp43) + (fSlow697 * fTemp42))) + (fTemp45 * ((fSlow698 * fTemp43) + (fSlow699 * fTemp42))));
-				fTemp437 = ((fTemp46 * ((fSlow700 * fTemp43) + (fSlow701 * fTemp42))) + (fTemp45 * ((fSlow702 * fTemp43) + (fSlow703 * fTemp42))));
-				fTemp438 = (fRec4[1] * ((fTemp40 * (fTemp434 + fTemp435)) + (fTemp39 * (fTemp436 + fTemp437))));
-				fTemp439 = ((fTemp46 * ((fSlow704 * fTemp43) + (fSlow705 * fTemp42))) + (fTemp45 * ((fSlow706 * fTemp43) + (fSlow707 * fTemp42))));
-				fTemp440 = ((fTemp46 * ((fSlow708 * fTemp43) + (fSlow709 * fTemp42))) + (fTemp45 * ((fSlow710 * fTemp43) + (fSlow711 * fTemp42))));
-				fTemp441 = ((fTemp46 * ((fSlow712 * fTemp43) + (fSlow713 * fTemp42))) + (fTemp45 * ((fSlow714 * fTemp43) + (fSlow715 * fTemp42))));
-				fTemp442 = ((fTemp46 * ((fSlow716 * fTemp43) + (fSlow717 * fTemp42))) + (fTemp45 * ((fSlow718 * fTemp43) + (fSlow719 * fTemp42))));
-				fTemp443 = (fRec3[1] * ((fTemp40 * (fTemp439 + fTemp440)) + (fTemp39 * (fTemp441 + fTemp442))));
-				fTemp444 = ((fTemp46 * ((fSlow720 * fTemp43) + (fSlow721 * fTemp42))) + (fTemp45 * ((fSlow722 * fTemp43) + (fSlow723 * fTemp42))));
-				fTemp445 = ((fTemp46 * ((fSlow724 * fTemp43) + (fSlow725 * fTemp42))) + (fTemp45 * ((fSlow726 * fTemp43) + (fSlow727 * fTemp42))));
-				fTemp446 = ((fTemp46 * ((fSlow728 * fTemp43) + (fSlow729 * fTemp42))) + (fTemp45 * ((fSlow730 * fTemp43) + (fSlow731 * fTemp42))));
-				fTemp447 = ((fTemp46 * ((fSlow732 * fTemp43) + (fSlow733 * fTemp42))) + (fTemp45 * ((fSlow734 * fTemp43) + (fSlow735 * fTemp42))));
-				fTemp448 = ((fTemp40 * (fTemp444 + fTemp445)) + (fTemp39 * (fTemp446 + fTemp447)));
-				fTemp449 = ((fTemp46 * ((fSlow736 * fTemp43) + (fSlow737 * fTemp42))) + (fTemp45 * ((fSlow738 * fTemp43) + (fSlow739 * fTemp42))));
-				fTemp450 = ((fTemp46 * ((fSlow740 * fTemp43) + (fSlow741 * fTemp42))) + (fTemp45 * ((fSlow742 * fTemp43) + (fSlow743 * fTemp42))));
-				fTemp451 = ((fTemp46 * ((fSlow744 * fTemp43) + (fSlow745 * fTemp42))) + (fTemp45 * ((fSlow746 * fTemp43) + (fSlow747 * fTemp42))));
-				fTemp452 = ((fTemp46 * ((fSlow748 * fTemp43) + (fSlow749 * fTemp42))) + (fTemp45 * ((fSlow750 * fTemp43) + (fSlow751 * fTemp42))));
-				fTemp453 = ((fTemp40 * (fTemp449 + fTemp450)) + (fTemp39 * (fTemp451 + fTemp452)));
-				fTemp454 = std::floor(fTemp453);
-				fTemp455 = (fTemp454 + float(((fTemp453 < 0.0f) & (fTemp453 != fTemp454))));
-				fTemp456 = (fTemp101 + (0.00390625f * (fTemp448 * std::pow(2.0f, (0.0f - fTemp455)))));
-				iTemp457 = int(fTemp455);
-				fTemp458 = ((fTemp46 * ((fSlow752 * fTemp43) + (fSlow753 * fTemp42))) + (fTemp45 * ((fSlow754 * fTemp43) + (fSlow755 * fTemp42))));
-				fTemp459 = ((fTemp46 * ((fSlow756 * fTemp43) + (fSlow757 * fTemp42))) + (fTemp45 * ((fSlow758 * fTemp43) + (fSlow759 * fTemp42))));
-				fTemp460 = ((fTemp46 * ((fSlow760 * fTemp43) + (fSlow761 * fTemp42))) + (fTemp45 * ((fSlow762 * fTemp43) + (fSlow763 * fTemp42))));
-				fTemp461 = ((fTemp46 * ((fSlow764 * fTemp43) + (fSlow765 * fTemp42))) + (fTemp45 * ((fSlow766 * fTemp43) + (fSlow767 * fTemp42))));
-				fTemp462 = (fRec2[1] * ((fTemp40 * (fTemp458 + fTemp459)) + (fTemp39 * (fTemp460 + fTemp461))));
-				fTemp463 = (fTemp433 + (fTemp438 + (fTemp443 + (std::fmod((256.0f * ((fTemp456 - (fTemp115 + std::floor((fTemp456 - fTemp115)))) * (((float((iTemp457 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp457)))))) + float((iTemp457 == 0))) + float(((iTemp457 > 0) * int(std::pow(2.0f, float(iTemp457)))))))), 1.0f) + fTemp462))));
-			}
-			if ((iSlow322 & iTemp69) | ((iSlow320 & iTemp69) | ((iSlow318 & iTemp69) | ((iSlow316 & iTemp69) | ((iSlow314 & iTemp69) | ((iSlow312 & iTemp69) | ((iSlow310 & iTemp69) | ((iSlow308 & iTemp69) | (iSlow306 & iTemp69))))))))) {
-				fTemp464 = (fRec99[1] + (fTemp82 * (fTemp463 - fRec100[1])));
-				fTemp465 = (fTemp464 / fTemp130);
-				fRec99[0] = ((2.0f * fTemp465) - fRec99[1]);
-				fTemp466 = (fRec100[1] + ((fTemp82 * fTemp464) / fTemp130));
-				fRec100[0] = ((2.0f * fTemp466) - fRec100[1]);
-				fRec101 = fTemp466;
-			}
-			if ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | (iSlow306 & iTemp78))))))))) {
-				fTemp467 = (fTemp82 * (fTemp463 - fRec104[1]));
-				fTemp468 = ((fTemp82 * ((((fRec104[1] + ((fTemp467 + (0.215215757f * (fTemp182 * fRec102[1]))) / fTemp137)) + (fTemp139 * fRec103[1])) / fTemp140) - fRec102[1])) / fTemp137);
-				fRec102[0] = (fRec102[1] + (2.0f * fTemp468));
-				fTemp469 = (fRec102[1] + fTemp468);
-				fRec103[0] = (fRec103[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp469)) - fRec103[1])) / fTemp137)));
-				fRec104[0] = (fRec104[1] + (2.0f * (fTemp467 / fTemp137)));
-				fRec105 = fTemp469;
-			}
-			if ((iSlow322 & iTemp77) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp77) | (iSlow306 & iTemp77))))))))) {
-				fTemp470 = (fTemp463 - (fRec107[1] + (fTemp129 * fRec108[1])));
-				fTemp471 = ((fTemp82 * fTemp470) / fTemp130);
-				fTemp472 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec108[1] + fTemp471)));
-				fTemp473 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp472)));
-				fTemp474 = ((fTemp82 * fTemp472) * fTemp473);
-				fRec106 = (fRec107[1] + fTemp474);
-				fRec107[0] = (fRec107[1] + (2.0f * fTemp474));
-				fTemp475 = (fTemp472 * fTemp473);
-				fRec108[0] = (fTemp471 + fTemp475);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp476 = (((fTemp66 * (((fTemp68 * fRec101) + (fTemp134 * fRec105)) + (fTemp144 * fRec106))) / fTemp151) + (fTemp152 * fTemp463));
-				fVec16[0] = fTemp476;
-				fTemp477 = ((fTemp46 * ((fSlow769 * fTemp43) + (fSlow770 * fTemp42))) + (fTemp45 * ((fSlow771 * fTemp43) + (fSlow772 * fTemp42))));
-				fTemp478 = ((fTemp46 * ((fSlow773 * fTemp43) + (fSlow774 * fTemp42))) + (fTemp45 * ((fSlow775 * fTemp43) + (fSlow776 * fTemp42))));
-				fTemp479 = ((fTemp46 * ((fSlow777 * fTemp43) + (fSlow778 * fTemp42))) + (fTemp45 * ((fSlow779 * fTemp43) + (fSlow780 * fTemp42))));
-				fTemp480 = ((fTemp46 * ((fSlow781 * fTemp43) + (fSlow782 * fTemp42))) + (fTemp45 * ((fSlow783 * fTemp43) + (fSlow784 * fTemp42))));
-				fTemp481 = ((fTemp40 * (fTemp477 + fTemp478)) + (fTemp39 * (fTemp479 + fTemp480)));
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312))))) {
-				fTemp482 = (fSlow768 * fTemp481);
-			}
-			if (iSlow322) {
-				fTemp483 = (2.0f * fTemp482);
-				fTemp484 = std::min<float>(1.0f, fTemp483);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fTemp485 = (fTemp476 - fVec16[1]);
-				fRec110[0] = ((std::fabs(fTemp485) < 0.5f) ? (fConst0 * fTemp485) : fRec110[1]);
-			}
-			if (iSlow322) {
-				fTemp486 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec110[0])))))));
-				fTemp487 = (1.0f - fTemp486);
-			}
-			if (iSlow322 | iSlow308) {
-				fTemp488 = std::floor(fTemp476);
-				fTemp489 = (fTemp476 - fTemp488);
-				fVec17[0] = fTemp489;
-				iTemp490 = (fTemp489 < 0.5f);
-				iVec18[0] = iTemp490;
-			}
-			if (iSlow322) {
-				iTemp491 = ((iVec18[1] <= 0) & (iTemp490 > 0));
-				fRec115[0] = ((fRec115[1] * float((1 - iTemp491))) + (4.65661287e-10f * (fTemp36 * float(iTemp491))));
-				fTemp492 = (fTemp486 + 1.0f);
-				fRec114[0] = (0.0f - (((fTemp487 * fRec114[1]) - (fRec115[0] + fRec115[1])) / fTemp492));
-				fRec113[0] = (0.0f - (((fTemp487 * fRec113[1]) - (fRec114[0] + fRec114[1])) / fTemp492));
-				fRec112[0] = (0.0f - (((fTemp487 * fRec112[1]) - (fRec113[0] + fRec113[1])) / fTemp492));
-				fRec111[0] = (0.0f - (((fTemp487 * fRec111[1]) - (fRec112[0] + fRec112[1])) / fTemp492));
-				fRec109[0] = (0.0f - (((fRec109[1] * fTemp487) - (fRec111[0] + fRec111[1])) / fTemp492));
-				fTemp493 = (std::sin((6.28318548f * fTemp476)) * ((fTemp484 * (fRec109[0] + -1.0f)) + 1.0f));
-				fTemp494 = (std::max<float>(1.0f, fTemp483) + -1.0f);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp495 = std::fmod(std::fabs(fTemp453), 1.0f);
-				fTemp496 = (1.0f - fTemp495);
-				fTemp497 = (fTemp454 + float((fTemp453 > 0.0f)));
-				fTemp498 = (fTemp101 + (0.00390625f * (fTemp448 * std::pow(2.0f, (0.0f - fTemp497)))));
-				iTemp499 = int(fTemp497);
-				fTemp500 = ((((fTemp462 + fTemp443) + fTemp438) + fTemp433) + std::fmod((256.0f * ((fTemp498 - (fTemp115 + std::floor((fTemp498 - fTemp115)))) * (((float((iTemp499 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp499)))))) + float((iTemp499 == 0))) + float(((iTemp499 > 0) * int(std::pow(2.0f, float(iTemp499)))))))), 1.0f));
-			}
-			if ((iSlow322 & iTemp69) | ((iSlow320 & iTemp69) | ((iSlow318 & iTemp69) | ((iSlow316 & iTemp69) | ((iSlow314 & iTemp69) | ((iSlow312 & iTemp69) | ((iSlow310 & iTemp69) | ((iSlow308 & iTemp69) | (iSlow306 & iTemp69))))))))) {
-				fTemp501 = (fRec116[1] + (fTemp82 * (fTemp500 - fRec117[1])));
-				fTemp502 = (fTemp501 / fTemp130);
-				fRec116[0] = ((2.0f * fTemp502) - fRec116[1]);
-				fTemp503 = (fRec117[1] + ((fTemp82 * fTemp501) / fTemp130));
-				fRec117[0] = ((2.0f * fTemp503) - fRec117[1]);
-				fRec118 = fTemp503;
-			}
-			if ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | (iSlow306 & iTemp78))))))))) {
-				fTemp504 = (fTemp82 * (fTemp500 - fRec121[1]));
-				fTemp505 = ((fTemp82 * ((((fRec121[1] + ((fTemp504 + (0.215215757f * (fTemp182 * fRec119[1]))) / fTemp137)) + (fTemp139 * fRec120[1])) / fTemp140) - fRec119[1])) / fTemp137);
-				fRec119[0] = (fRec119[1] + (2.0f * fTemp505));
-				fTemp506 = (fRec119[1] + fTemp505);
-				fRec120[0] = (fRec120[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp506)) - fRec120[1])) / fTemp137)));
-				fRec121[0] = (fRec121[1] + (2.0f * (fTemp504 / fTemp137)));
-				fRec122 = fTemp506;
-			}
-			if ((iSlow322 & iTemp77) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp77) | (iSlow306 & iTemp77))))))))) {
-				fTemp507 = (fTemp500 - (fRec124[1] + (fTemp129 * fRec125[1])));
-				fTemp508 = ((fTemp82 * fTemp507) / fTemp130);
-				fTemp509 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec125[1] + fTemp508)));
-				fTemp510 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp509)));
-				fTemp511 = ((fTemp82 * fTemp509) * fTemp510);
-				fRec123 = (fRec124[1] + fTemp511);
-				fRec124[0] = (fRec124[1] + (2.0f * fTemp511));
-				fTemp512 = (fTemp509 * fTemp510);
-				fRec125[0] = (fTemp508 + fTemp512);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp513 = (((fTemp66 * (((fTemp68 * fRec118) + (fTemp134 * fRec122)) + (fTemp144 * fRec123))) / fTemp151) + (fTemp152 * fTemp500));
-				fVec19[0] = fTemp513;
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fTemp514 = (fTemp513 - fVec19[1]);
-				fRec127[0] = ((std::fabs(fTemp514) < 0.5f) ? (fConst0 * fTemp514) : fRec127[1]);
-			}
-			if (iSlow322) {
-				fTemp515 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec127[0])))))));
-				fTemp516 = (1.0f - fTemp515);
-			}
-			if (iSlow322 | iSlow308) {
-				fTemp517 = std::floor(fTemp513);
-				fTemp518 = (fTemp513 - fTemp517);
-				fVec20[0] = fTemp518;
-				iTemp519 = (fTemp518 < 0.5f);
-				iVec21[0] = iTemp519;
-			}
-			if (iSlow322) {
-				iTemp520 = ((iVec21[1] <= 0) & (iTemp519 > 0));
-				fRec132[0] = ((fRec132[1] * float((1 - iTemp520))) + (4.65661287e-10f * (fTemp36 * float(iTemp520))));
-				fTemp521 = (fTemp515 + 1.0f);
-				fRec131[0] = (0.0f - (((fTemp516 * fRec131[1]) - (fRec132[0] + fRec132[1])) / fTemp521));
-				fRec130[0] = (0.0f - (((fTemp516 * fRec130[1]) - (fRec131[0] + fRec131[1])) / fTemp521));
-				fRec129[0] = (0.0f - (((fTemp516 * fRec129[1]) - (fRec130[0] + fRec130[1])) / fTemp521));
-				fRec128[0] = (0.0f - (((fTemp516 * fRec128[1]) - (fRec129[0] + fRec129[1])) / fTemp521));
-				fRec126[0] = (0.0f - (((fRec126[1] * fTemp516) - (fRec128[0] + fRec128[1])) / fTemp521));
-				fTemp522 = (std::sin((6.28318548f * fTemp513)) * ((fTemp484 * (fRec126[0] + -1.0f)) + 1.0f));
-				fTemp523 = (((fTemp493 + (fTemp494 * (fRec109[0] - fTemp493))) * fTemp496) + (fTemp495 * (fTemp522 + (fTemp494 * (fRec126[0] - fTemp522)))));
-			}
-			if (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312)))) {
-				fTemp524 = (fTemp482 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec110[0] - fConst7))))));
-			}
-			if (iSlow320 | (iSlow316 | (iSlow314 | iSlow312))) {
-				fTemp525 = (1.0f - fTemp524);
-			}
-			if (iSlow320) {
-				fTemp526 = ((0.75f * fTemp525) + (fTemp476 + (0.5f * fTemp524)));
-				fTemp527 = std::floor(fTemp526);
-			}
-			if (iSlow320 | iSlow312) {
-				fTemp528 = (0.5f * fTemp525);
-			}
-			if (iSlow320) {
-				fTemp529 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp528));
-				fTemp530 = (0.5f - fTemp529);
-			}
-			if (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312)))) {
-				fTemp531 = (fTemp482 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec127[0] - fConst7))))));
-			}
-			if (iSlow320 | (iSlow316 | (iSlow314 | iSlow312))) {
-				fTemp532 = (1.0f - fTemp531);
-			}
-			if (iSlow320) {
-				fTemp533 = ((0.75f * fTemp532) + (fTemp513 + (0.5f * fTemp531)));
-				fTemp534 = std::floor(fTemp533);
-			}
-			if (iSlow320 | iSlow312) {
-				fTemp535 = (0.5f * fTemp532);
-			}
-			if (iSlow320) {
-				fTemp536 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp535));
-				fTemp537 = (0.5f - fTemp536);
-				fTemp538 = ((fTemp496 * std::cos((6.28318548f * ((fTemp526 + std::min<float>((((fTemp526 - fTemp527) * fTemp530) / fTemp529), ((fTemp530 * (fTemp527 + (1.0f - fTemp526))) / (1.0f - fTemp529)))) - fTemp527)))) + (fTemp495 * std::cos((6.28318548f * ((fTemp533 + std::min<float>((((fTemp533 - fTemp534) * fTemp537) / fTemp536), ((fTemp537 * (fTemp534 + (1.0f - fTemp533))) / (1.0f - fTemp536)))) - fTemp534)))));
-			}
-			if (iSlow318) {
-				fTemp539 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp524));
-				fTemp540 = (1.0f - fTemp539);
-				fTemp541 = (0.25f * fTemp540);
-				fTemp542 = (fTemp476 - (fTemp541 + std::floor((fTemp476 - fTemp541))));
-				fTemp543 = (2.0f * fTemp542);
-				fTemp544 = std::floor((fTemp543 + 1.0f));
-				fTemp545 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp531));
-				fTemp546 = (1.0f - fTemp545);
-				fTemp547 = (0.25f * fTemp546);
-				fTemp548 = (fTemp513 - (fTemp547 + std::floor((fTemp513 - fTemp547))));
-				fTemp549 = (2.0f * fTemp548);
-				fTemp550 = std::floor((fTemp549 + 1.0f));
-				fTemp551 = ((fTemp496 * std::cos((3.14159274f * ((float((fTemp542 >= 0.5f)) + fTemp543) + (1.0f - (fTemp544 + std::min<float>((fTemp543 + (1.0f - fTemp544)), ((fTemp539 * (fTemp544 - fTemp543)) / fTemp540)))))))) + (fTemp495 * std::cos((3.14159274f * ((float((fTemp548 >= 0.5f)) + fTemp549) + (1.0f - (fTemp550 + std::min<float>((fTemp549 + (1.0f - fTemp550)), ((fTemp545 * (fTemp550 - fTemp549)) / fTemp546)))))))));
-			}
-			if (iSlow316) {
-				fTemp552 = (0.25f * fTemp525);
-				fTemp553 = (fTemp552 + std::floor((fTemp476 - fTemp552)));
-			}
-			if (iSlow316 | (iSlow314 | (iSlow310 | iSlow306))) {
-				fTemp554 = (1.0f - fTemp476);
-			}
-			if (iSlow316) {
-				fTemp555 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp524));
-				fTemp556 = (0.25f * fTemp532);
-				fTemp557 = (fTemp556 + std::floor((fTemp513 - fTemp556)));
-			}
-			if (iSlow316 | (iSlow314 | (iSlow310 | iSlow306))) {
-				fTemp558 = (1.0f - fTemp513);
-			}
-			if (iSlow316) {
-				fTemp559 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp531));
-				fTemp560 = ((fTemp496 * std::cos((6.28318548f * (fTemp476 - (fTemp553 + std::min<float>((fTemp476 - fTemp553), (((fTemp553 + fTemp554) * fTemp555) / (1.0f - fTemp555)))))))) + (fTemp495 * std::cos((6.28318548f * (fTemp513 - (fTemp557 + std::min<float>((fTemp513 - fTemp557), (((fTemp557 + fTemp558) * fTemp559) / (1.0f - fTemp559)))))))));
-			}
-			if (iSlow314) {
-				fTemp561 = ((0.125f * fTemp525) + (0.25f * fTemp524));
-				fTemp562 = (fTemp561 + std::floor((fTemp476 - fTemp561)));
-				fTemp563 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp524));
-				fTemp564 = (0.49000001f * fTemp563);
-				fTemp565 = ((0.125f * fTemp532) + (0.25f * fTemp531));
-				fTemp566 = (fTemp565 + std::floor((fTemp513 - fTemp565)));
-				fTemp567 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp531));
-				fTemp568 = (0.49000001f * fTemp567);
-				fTemp569 = ((fTemp496 * std::cos((12.566371f * ((fTemp476 + std::min<float>((0.49000001f * (((fTemp476 - fTemp562) * fTemp563) / (0.5f - fTemp564))), (0.49000001f * ((fTemp563 * (fTemp562 + fTemp554)) / (fTemp564 + 0.5f))))) - fTemp562)))) + (fTemp495 * std::cos((12.566371f * ((fTemp513 + std::min<float>((0.49000001f * (((fTemp513 - fTemp566) * fTemp567) / (0.5f - fTemp568))), (0.49000001f * ((fTemp567 * (fTemp566 + fTemp558)) / (fTemp568 + 0.5f))))) - fTemp566)))));
-			}
-			if (iSlow312) {
-				fTemp570 = std::min<float>(0.975000024f, fTemp524);
-				fTemp571 = (0.25f * (1.0f - fTemp570));
-				fTemp572 = (fTemp571 + (0.5f * fTemp570));
-				fTemp573 = std::floor((fTemp476 - fTemp572));
-				fTemp574 = (fTemp476 - (fTemp572 + fTemp573));
-				fTemp575 = std::min<float>(0.975000024f, fTemp531);
-				fTemp576 = (0.25f * (1.0f - fTemp575));
-				fTemp577 = (fTemp576 + (0.5f * fTemp575));
-				fTemp578 = std::floor((fTemp513 - fTemp577));
-				fTemp579 = (fTemp513 - (fTemp577 + fTemp578));
-				fTemp580 = ((fTemp496 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp574 < 0.5f) ? fTemp574 : (0.5f * (((fTemp476 - ((fTemp571 + fTemp573) + (0.5f * (fTemp570 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp528))) + 1.0f))))))) + (fTemp495 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp579 < 0.5f) ? fTemp579 : (0.5f * (((fTemp513 - ((fTemp576 + fTemp578) + (0.5f * (fTemp575 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp535))) + 1.0f))))))));
-			}
-			if (iSlow310 | iSlow306) {
-				fTemp581 = (fTemp476 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec110[0] * fSlow768) * fTemp481))) / fRec110[0])));
-				fTemp582 = (fTemp513 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec127[0] * fSlow768) * fTemp481))) / fRec127[0])));
-			}
-			if (iSlow310) {
-				fTemp583 = ((fTemp496 * (((0.0f - fTemp554) * (1.0f - std::cos((6.28318548f * (fTemp581 + (1.0f - std::floor((fTemp581 + 1.0f)))))))) + 1.0f)) + (fTemp495 * (((0.0f - fTemp558) * (1.0f - std::cos((6.28318548f * (fTemp582 + (1.0f - std::floor((fTemp582 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow308) {
-				fTemp584 = (fTemp476 - (fTemp488 + fVec17[1]));
-				fRec133[0] = ((std::fabs(fTemp584) < 0.5f) ? (fConst0 * fTemp584) : fRec133[1]);
-				fTemp585 = (fTemp489 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec133[0] * fSlow768) * fTemp481))) / fRec133[0])));
-				fTemp586 = (fTemp513 - (fTemp517 + fVec20[1]));
-				fRec134[0] = ((std::fabs(fTemp586) < 0.5f) ? (fConst0 * fTemp586) : fRec134[1]);
-				fTemp587 = (fTemp518 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec134[0] * fSlow768) * fTemp481))) / fRec134[0])));
-				fTemp588 = ((fTemp496 * (((iTemp490 ? (2.0f * fTemp489) : (2.0f * (1.0f - fTemp489))) * (std::cos((6.28318548f * (fTemp585 + (1.0f - std::floor((fTemp585 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp495 * (((iTemp519 ? (2.0f * fTemp518) : (2.0f * (1.0f - fTemp518))) * (std::cos((6.28318548f * (fTemp587 + (1.0f - std::floor((fTemp587 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow306) {
-				fTemp589 = (((fTemp496 * std::min<float>(1.0f, (2.0f * fTemp554))) * std::sin((6.28318548f * (fTemp581 - std::floor(fTemp581))))) + ((fTemp495 * std::min<float>(1.0f, (2.0f * fTemp558))) * std::sin((6.28318548f * (fTemp582 - std::floor(fTemp582))))));
-			}
-			fRec4[0] = (((((((((fSlow321 * fTemp523) + (fSlow319 * fTemp538)) + (fSlow317 * fTemp551)) + (fSlow315 * fTemp560)) + (fSlow313 * fTemp569)) + (fSlow311 * fTemp580)) + (fSlow309 * fTemp583)) + (fSlow307 * fTemp588)) + (fSlow305 * fTemp589));
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp590 = ((fTemp46 * ((fSlow785 * fTemp43) + (fSlow786 * fTemp42))) + (fTemp45 * ((fSlow787 * fTemp43) + (fSlow788 * fTemp42))));
-				fTemp591 = ((fTemp46 * ((fSlow789 * fTemp43) + (fSlow790 * fTemp42))) + (fTemp45 * ((fSlow791 * fTemp43) + (fSlow792 * fTemp42))));
-				fTemp592 = ((fTemp46 * ((fSlow793 * fTemp43) + (fSlow794 * fTemp42))) + (fTemp45 * ((fSlow795 * fTemp43) + (fSlow796 * fTemp42))));
-				fTemp593 = ((fTemp46 * ((fSlow797 * fTemp43) + (fSlow798 * fTemp42))) + (fTemp45 * ((fSlow799 * fTemp43) + (fSlow800 * fTemp42))));
-				fTemp594 = (fRec5[1] * ((fTemp40 * (fTemp590 + fTemp591)) + (fTemp39 * (fTemp592 + fTemp593))));
-				fTemp595 = ((fTemp46 * ((fSlow801 * fTemp43) + (fSlow802 * fTemp42))) + (fTemp45 * ((fSlow803 * fTemp43) + (fSlow804 * fTemp42))));
-				fTemp596 = ((fTemp46 * ((fSlow805 * fTemp43) + (fSlow806 * fTemp42))) + (fTemp45 * ((fSlow807 * fTemp43) + (fSlow808 * fTemp42))));
-				fTemp597 = ((fTemp46 * ((fSlow809 * fTemp43) + (fSlow810 * fTemp42))) + (fTemp45 * ((fSlow811 * fTemp43) + (fSlow812 * fTemp42))));
-				fTemp598 = ((fTemp46 * ((fSlow813 * fTemp43) + (fSlow814 * fTemp42))) + (fTemp45 * ((fSlow815 * fTemp43) + (fSlow816 * fTemp42))));
-				fTemp599 = (fRec4[1] * ((fTemp40 * (fTemp595 + fTemp596)) + (fTemp39 * (fTemp597 + fTemp598))));
-				fTemp600 = ((fTemp46 * ((fSlow817 * fTemp43) + (fSlow818 * fTemp42))) + (fTemp45 * ((fSlow819 * fTemp43) + (fSlow820 * fTemp42))));
-				fTemp601 = ((fTemp46 * ((fSlow821 * fTemp43) + (fSlow822 * fTemp42))) + (fTemp45 * ((fSlow823 * fTemp43) + (fSlow824 * fTemp42))));
-				fTemp602 = ((fTemp46 * ((fSlow825 * fTemp43) + (fSlow826 * fTemp42))) + (fTemp45 * ((fSlow827 * fTemp43) + (fSlow828 * fTemp42))));
-				fTemp603 = ((fTemp46 * ((fSlow829 * fTemp43) + (fSlow830 * fTemp42))) + (fTemp45 * ((fSlow831 * fTemp43) + (fSlow832 * fTemp42))));
-				fTemp604 = (fRec3[1] * ((fTemp40 * (fTemp600 + fTemp601)) + (fTemp39 * (fTemp602 + fTemp603))));
-				fTemp605 = ((fTemp46 * ((fSlow833 * fTemp43) + (fSlow834 * fTemp42))) + (fTemp45 * ((fSlow835 * fTemp43) + (fSlow836 * fTemp42))));
-				fTemp606 = ((fTemp46 * ((fSlow837 * fTemp43) + (fSlow838 * fTemp42))) + (fTemp45 * ((fSlow839 * fTemp43) + (fSlow840 * fTemp42))));
-				fTemp607 = ((fTemp46 * ((fSlow841 * fTemp43) + (fSlow842 * fTemp42))) + (fTemp45 * ((fSlow843 * fTemp43) + (fSlow844 * fTemp42))));
-				fTemp608 = ((fTemp46 * ((fSlow845 * fTemp43) + (fSlow846 * fTemp42))) + (fTemp45 * ((fSlow847 * fTemp43) + (fSlow848 * fTemp42))));
-				fTemp609 = ((fTemp40 * (fTemp605 + fTemp606)) + (fTemp39 * (fTemp607 + fTemp608)));
-				fTemp610 = ((fTemp46 * ((fSlow849 * fTemp43) + (fSlow850 * fTemp42))) + (fTemp45 * ((fSlow851 * fTemp43) + (fSlow852 * fTemp42))));
-				fTemp611 = ((fTemp46 * ((fSlow853 * fTemp43) + (fSlow854 * fTemp42))) + (fTemp45 * ((fSlow855 * fTemp43) + (fSlow856 * fTemp42))));
-				fTemp612 = ((fTemp46 * ((fSlow857 * fTemp43) + (fSlow858 * fTemp42))) + (fTemp45 * ((fSlow859 * fTemp43) + (fSlow860 * fTemp42))));
-				fTemp613 = ((fTemp46 * ((fSlow861 * fTemp43) + (fSlow862 * fTemp42))) + (fTemp45 * ((fSlow863 * fTemp43) + (fSlow864 * fTemp42))));
-				fTemp614 = ((fTemp40 * (fTemp610 + fTemp611)) + (fTemp39 * (fTemp612 + fTemp613)));
-				fTemp615 = std::floor(fTemp614);
-				fTemp616 = (fTemp615 + float(((fTemp614 < 0.0f) & (fTemp614 != fTemp615))));
-				fTemp617 = (fTemp101 + (0.00390625f * (fTemp609 * std::pow(2.0f, (0.0f - fTemp616)))));
-				iTemp618 = int(fTemp616);
-				fTemp619 = ((fTemp46 * ((fSlow865 * fTemp43) + (fSlow866 * fTemp42))) + (fTemp45 * ((fSlow867 * fTemp43) + (fSlow868 * fTemp42))));
-				fTemp620 = ((fTemp46 * ((fSlow869 * fTemp43) + (fSlow870 * fTemp42))) + (fTemp45 * ((fSlow871 * fTemp43) + (fSlow872 * fTemp42))));
-				fTemp621 = ((fTemp46 * ((fSlow873 * fTemp43) + (fSlow874 * fTemp42))) + (fTemp45 * ((fSlow875 * fTemp43) + (fSlow876 * fTemp42))));
-				fTemp622 = ((fTemp46 * ((fSlow877 * fTemp43) + (fSlow878 * fTemp42))) + (fTemp45 * ((fSlow879 * fTemp43) + (fSlow880 * fTemp42))));
-				fTemp623 = (fRec2[1] * ((fTemp40 * (fTemp619 + fTemp620)) + (fTemp39 * (fTemp621 + fTemp622))));
-				fTemp624 = (fTemp594 + (fTemp599 + (fTemp604 + (std::fmod((256.0f * ((fTemp617 - (fTemp115 + std::floor((fTemp617 - fTemp115)))) * (((float((iTemp618 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp618)))))) + float((iTemp618 == 0))) + float(((iTemp618 > 0) * int(std::pow(2.0f, float(iTemp618)))))))), 1.0f) + fTemp623))));
-			}
-			if ((iSlow302 & iTemp69) | ((iSlow300 & iTemp69) | ((iSlow298 & iTemp69) | ((iSlow296 & iTemp69) | ((iSlow294 & iTemp69) | ((iSlow292 & iTemp69) | ((iSlow290 & iTemp69) | ((iSlow288 & iTemp69) | (iSlow286 & iTemp69))))))))) {
-				fTemp625 = (fRec135[1] + (fTemp82 * (fTemp624 - fRec136[1])));
-				fTemp626 = (fTemp625 / fTemp130);
-				fRec135[0] = ((2.0f * fTemp626) - fRec135[1]);
-				fTemp627 = (fRec136[1] + ((fTemp82 * fTemp625) / fTemp130));
-				fRec136[0] = ((2.0f * fTemp627) - fRec136[1]);
-				fRec137 = fTemp627;
-			}
-			if ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78))))))))) {
-				fTemp628 = (fTemp82 * (fTemp624 - fRec140[1]));
-				fTemp629 = ((fTemp82 * ((((fRec140[1] + ((fTemp628 + (0.215215757f * (fTemp182 * fRec138[1]))) / fTemp137)) + (fTemp139 * fRec139[1])) / fTemp140) - fRec138[1])) / fTemp137);
-				fRec138[0] = (fRec138[1] + (2.0f * fTemp629));
-				fTemp630 = (fRec138[1] + fTemp629);
-				fRec139[0] = (fRec139[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp630)) - fRec139[1])) / fTemp137)));
-				fRec140[0] = (fRec140[1] + (2.0f * (fTemp628 / fTemp137)));
-				fRec141 = fTemp630;
-			}
-			if ((iSlow302 & iTemp77) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp77) | (iSlow286 & iTemp77))))))))) {
-				fTemp631 = (fTemp624 - (fRec143[1] + (fTemp129 * fRec144[1])));
-				fTemp632 = ((fTemp82 * fTemp631) / fTemp130);
-				fTemp633 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec144[1] + fTemp632)));
-				fTemp634 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp633)));
-				fTemp635 = ((fTemp82 * fTemp633) * fTemp634);
-				fRec142 = (fRec143[1] + fTemp635);
-				fRec143[0] = (fRec143[1] + (2.0f * fTemp635));
-				fTemp636 = (fTemp633 * fTemp634);
-				fRec144[0] = (fTemp632 + fTemp636);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp637 = (((fTemp66 * (((fTemp68 * fRec137) + (fTemp134 * fRec141)) + (fTemp144 * fRec142))) / fTemp151) + (fTemp152 * fTemp624));
-				fVec22[0] = fTemp637;
-				fTemp638 = ((fTemp46 * ((fSlow882 * fTemp43) + (fSlow883 * fTemp42))) + (fTemp45 * ((fSlow884 * fTemp43) + (fSlow885 * fTemp42))));
-				fTemp639 = ((fTemp46 * ((fSlow886 * fTemp43) + (fSlow887 * fTemp42))) + (fTemp45 * ((fSlow888 * fTemp43) + (fSlow889 * fTemp42))));
-				fTemp640 = ((fTemp46 * ((fSlow890 * fTemp43) + (fSlow891 * fTemp42))) + (fTemp45 * ((fSlow892 * fTemp43) + (fSlow893 * fTemp42))));
-				fTemp641 = ((fTemp46 * ((fSlow894 * fTemp43) + (fSlow895 * fTemp42))) + (fTemp45 * ((fSlow896 * fTemp43) + (fSlow897 * fTemp42))));
-				fTemp642 = ((fTemp40 * (fTemp638 + fTemp639)) + (fTemp39 * (fTemp640 + fTemp641)));
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292))))) {
-				fTemp643 = (fSlow881 * fTemp642);
-			}
-			if (iSlow302) {
-				fTemp644 = (2.0f * fTemp643);
-				fTemp645 = std::min<float>(1.0f, fTemp644);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fTemp646 = (fTemp637 - fVec22[1]);
-				fRec146[0] = ((std::fabs(fTemp646) < 0.5f) ? (fConst0 * fTemp646) : fRec146[1]);
-			}
-			if (iSlow302) {
-				fTemp647 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec146[0])))))));
-				fTemp648 = (1.0f - fTemp647);
-			}
-			if (iSlow302 | iSlow288) {
-				fTemp649 = std::floor(fTemp637);
-				fTemp650 = (fTemp637 - fTemp649);
-				fVec23[0] = fTemp650;
-				iTemp651 = (fTemp650 < 0.5f);
-				iVec24[0] = iTemp651;
-			}
-			if (iSlow302) {
-				iTemp652 = ((iVec24[1] <= 0) & (iTemp651 > 0));
-				fRec151[0] = ((fRec151[1] * float((1 - iTemp652))) + (4.65661287e-10f * (fTemp36 * float(iTemp652))));
-				fTemp653 = (fTemp647 + 1.0f);
-				fRec150[0] = (0.0f - (((fTemp648 * fRec150[1]) - (fRec151[0] + fRec151[1])) / fTemp653));
-				fRec149[0] = (0.0f - (((fTemp648 * fRec149[1]) - (fRec150[0] + fRec150[1])) / fTemp653));
-				fRec148[0] = (0.0f - (((fTemp648 * fRec148[1]) - (fRec149[0] + fRec149[1])) / fTemp653));
-				fRec147[0] = (0.0f - (((fTemp648 * fRec147[1]) - (fRec148[0] + fRec148[1])) / fTemp653));
-				fRec145[0] = (0.0f - (((fRec145[1] * fTemp648) - (fRec147[0] + fRec147[1])) / fTemp653));
-				fTemp654 = (std::sin((6.28318548f * fTemp637)) * ((fTemp645 * (fRec145[0] + -1.0f)) + 1.0f));
-				fTemp655 = (std::max<float>(1.0f, fTemp644) + -1.0f);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp656 = std::fmod(std::fabs(fTemp614), 1.0f);
-				fTemp657 = (1.0f - fTemp656);
-				fTemp658 = (fTemp615 + float((fTemp614 > 0.0f)));
-				fTemp659 = (fTemp101 + (0.00390625f * (fTemp609 * std::pow(2.0f, (0.0f - fTemp658)))));
-				iTemp660 = int(fTemp658);
-				fTemp661 = ((((fTemp623 + fTemp604) + fTemp599) + fTemp594) + std::fmod((256.0f * ((fTemp659 - (fTemp115 + std::floor((fTemp659 - fTemp115)))) * (((float((iTemp660 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp660)))))) + float((iTemp660 == 0))) + float(((iTemp660 > 0) * int(std::pow(2.0f, float(iTemp660)))))))), 1.0f));
-			}
-			if ((iSlow302 & iTemp69) | ((iSlow300 & iTemp69) | ((iSlow298 & iTemp69) | ((iSlow296 & iTemp69) | ((iSlow294 & iTemp69) | ((iSlow292 & iTemp69) | ((iSlow290 & iTemp69) | ((iSlow288 & iTemp69) | (iSlow286 & iTemp69))))))))) {
-				fTemp662 = (fRec152[1] + (fTemp82 * (fTemp661 - fRec153[1])));
-				fTemp663 = (fTemp662 / fTemp130);
-				fRec152[0] = ((2.0f * fTemp663) - fRec152[1]);
-				fTemp664 = (fRec153[1] + ((fTemp82 * fTemp662) / fTemp130));
-				fRec153[0] = ((2.0f * fTemp664) - fRec153[1]);
-				fRec154 = fTemp664;
-			}
-			if ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78))))))))) {
-				fTemp665 = (fTemp82 * (fTemp661 - fRec157[1]));
-				fTemp666 = ((fTemp82 * ((((fRec157[1] + ((fTemp665 + (0.215215757f * (fTemp182 * fRec155[1]))) / fTemp137)) + (fTemp139 * fRec156[1])) / fTemp140) - fRec155[1])) / fTemp137);
-				fRec155[0] = (fRec155[1] + (2.0f * fTemp666));
-				fTemp667 = (fRec155[1] + fTemp666);
-				fRec156[0] = (fRec156[1] + (2.0f * ((fTemp82 * ((0.215215757f * (fTemp136 * fTemp667)) - fRec156[1])) / fTemp137)));
-				fRec157[0] = (fRec157[1] + (2.0f * (fTemp665 / fTemp137)));
-				fRec158 = fTemp667;
-			}
-			if ((iSlow302 & iTemp77) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp77) | (iSlow286 & iTemp77))))))))) {
-				fTemp668 = (fTemp661 - (fRec160[1] + (fTemp129 * fRec161[1])));
-				fTemp669 = ((fTemp82 * fTemp668) / fTemp130);
-				fTemp670 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec161[1] + fTemp669)));
-				fTemp671 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp670)));
-				fTemp672 = ((fTemp82 * fTemp670) * fTemp671);
-				fRec159 = (fRec160[1] + fTemp672);
-				fRec160[0] = (fRec160[1] + (2.0f * fTemp672));
-				fTemp673 = (fTemp670 * fTemp671);
-				fRec161[0] = (fTemp669 + fTemp673);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp674 = (((fTemp66 * (((fTemp68 * fRec154) + (fTemp134 * fRec158)) + (fTemp144 * fRec159))) / fTemp151) + (fTemp152 * fTemp661));
-				fVec25[0] = fTemp674;
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fTemp675 = (fTemp674 - fVec25[1]);
-				fRec163[0] = ((std::fabs(fTemp675) < 0.5f) ? (fConst0 * fTemp675) : fRec163[1]);
-			}
-			if (iSlow302) {
-				fTemp676 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec163[0])))))));
-				fTemp677 = (1.0f - fTemp676);
-			}
-			if (iSlow302 | iSlow288) {
-				fTemp678 = std::floor(fTemp674);
-				fTemp679 = (fTemp674 - fTemp678);
-				fVec26[0] = fTemp679;
-				iTemp680 = (fTemp679 < 0.5f);
-				iVec27[0] = iTemp680;
-			}
-			if (iSlow302) {
-				iTemp681 = ((iVec27[1] <= 0) & (iTemp680 > 0));
-				fRec168[0] = ((fRec168[1] * float((1 - iTemp681))) + (4.65661287e-10f * (fTemp36 * float(iTemp681))));
-				fTemp682 = (fTemp676 + 1.0f);
-				fRec167[0] = (0.0f - (((fTemp677 * fRec167[1]) - (fRec168[0] + fRec168[1])) / fTemp682));
-				fRec166[0] = (0.0f - (((fTemp677 * fRec166[1]) - (fRec167[0] + fRec167[1])) / fTemp682));
-				fRec165[0] = (0.0f - (((fTemp677 * fRec165[1]) - (fRec166[0] + fRec166[1])) / fTemp682));
-				fRec164[0] = (0.0f - (((fTemp677 * fRec164[1]) - (fRec165[0] + fRec165[1])) / fTemp682));
-				fRec162[0] = (0.0f - (((fRec162[1] * fTemp677) - (fRec164[0] + fRec164[1])) / fTemp682));
-				fTemp683 = (std::sin((6.28318548f * fTemp674)) * ((fTemp645 * (fRec162[0] + -1.0f)) + 1.0f));
-				fTemp684 = (((fTemp654 + (fTemp655 * (fRec145[0] - fTemp654))) * fTemp657) + (fTemp656 * (fTemp683 + (fTemp655 * (fRec162[0] - fTemp683)))));
-			}
-			if (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292)))) {
-				fTemp685 = (fTemp643 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec146[0] - fConst7))))));
-			}
-			if (iSlow300 | (iSlow296 | (iSlow294 | iSlow292))) {
-				fTemp686 = (1.0f - fTemp685);
-			}
-			if (iSlow300) {
-				fTemp687 = ((0.75f * fTemp686) + (fTemp637 + (0.5f * fTemp685)));
-				fTemp688 = std::floor(fTemp687);
-			}
-			if (iSlow300 | iSlow292) {
-				fTemp689 = (0.5f * fTemp686);
-			}
-			if (iSlow300) {
-				fTemp690 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp689));
-				fTemp691 = (0.5f - fTemp690);
-			}
-			if (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292)))) {
-				fTemp692 = (fTemp643 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec163[0] - fConst7))))));
-			}
-			if (iSlow300 | (iSlow296 | (iSlow294 | iSlow292))) {
-				fTemp693 = (1.0f - fTemp692);
-			}
-			if (iSlow300) {
-				fTemp694 = ((0.75f * fTemp693) + (fTemp674 + (0.5f * fTemp692)));
-				fTemp695 = std::floor(fTemp694);
-			}
-			if (iSlow300 | iSlow292) {
-				fTemp696 = (0.5f * fTemp693);
-			}
-			if (iSlow300) {
-				fTemp697 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp696));
-				fTemp698 = (0.5f - fTemp697);
-				fTemp699 = ((fTemp657 * std::cos((6.28318548f * ((fTemp687 + std::min<float>((((fTemp687 - fTemp688) * fTemp691) / fTemp690), ((fTemp691 * (fTemp688 + (1.0f - fTemp687))) / (1.0f - fTemp690)))) - fTemp688)))) + (fTemp656 * std::cos((6.28318548f * ((fTemp694 + std::min<float>((((fTemp694 - fTemp695) * fTemp698) / fTemp697), ((fTemp698 * (fTemp695 + (1.0f - fTemp694))) / (1.0f - fTemp697)))) - fTemp695)))));
-			}
-			if (iSlow298) {
-				fTemp700 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp685));
-				fTemp701 = (1.0f - fTemp700);
-				fTemp702 = (0.25f * fTemp701);
-				fTemp703 = (fTemp637 - (fTemp702 + std::floor((fTemp637 - fTemp702))));
-				fTemp704 = (2.0f * fTemp703);
-				fTemp705 = std::floor((fTemp704 + 1.0f));
-				fTemp706 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp692));
-				fTemp707 = (1.0f - fTemp706);
-				fTemp708 = (0.25f * fTemp707);
-				fTemp709 = (fTemp674 - (fTemp708 + std::floor((fTemp674 - fTemp708))));
-				fTemp710 = (2.0f * fTemp709);
-				fTemp711 = std::floor((fTemp710 + 1.0f));
-				fTemp712 = ((fTemp657 * std::cos((3.14159274f * ((float((fTemp703 >= 0.5f)) + fTemp704) + (1.0f - (fTemp705 + std::min<float>((fTemp704 + (1.0f - fTemp705)), ((fTemp700 * (fTemp705 - fTemp704)) / fTemp701)))))))) + (fTemp656 * std::cos((3.14159274f * ((float((fTemp709 >= 0.5f)) + fTemp710) + (1.0f - (fTemp711 + std::min<float>((fTemp710 + (1.0f - fTemp711)), ((fTemp706 * (fTemp711 - fTemp710)) / fTemp707)))))))));
-			}
-			if (iSlow296) {
-				fTemp713 = (0.25f * fTemp686);
-				fTemp714 = (fTemp713 + std::floor((fTemp637 - fTemp713)));
-			}
-			if (iSlow296 | (iSlow294 | (iSlow290 | iSlow286))) {
-				fTemp715 = (1.0f - fTemp637);
-			}
-			if (iSlow296) {
-				fTemp716 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp685));
-				fTemp717 = (0.25f * fTemp693);
-				fTemp718 = (fTemp717 + std::floor((fTemp674 - fTemp717)));
-			}
-			if (iSlow296 | (iSlow294 | (iSlow290 | iSlow286))) {
-				fTemp719 = (1.0f - fTemp674);
-			}
-			if (iSlow296) {
-				fTemp720 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp692));
-				fTemp721 = ((fTemp657 * std::cos((6.28318548f * (fTemp637 - (fTemp714 + std::min<float>((fTemp637 - fTemp714), (((fTemp714 + fTemp715) * fTemp716) / (1.0f - fTemp716)))))))) + (fTemp656 * std::cos((6.28318548f * (fTemp674 - (fTemp718 + std::min<float>((fTemp674 - fTemp718), (((fTemp718 + fTemp719) * fTemp720) / (1.0f - fTemp720)))))))));
-			}
-			if (iSlow294) {
-				fTemp722 = ((0.125f * fTemp686) + (0.25f * fTemp685));
-				fTemp723 = (fTemp722 + std::floor((fTemp637 - fTemp722)));
-				fTemp724 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp685));
-				fTemp725 = (0.49000001f * fTemp724);
-				fTemp726 = ((0.125f * fTemp693) + (0.25f * fTemp692));
-				fTemp727 = (fTemp726 + std::floor((fTemp674 - fTemp726)));
-				fTemp728 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp692));
-				fTemp729 = (0.49000001f * fTemp728);
-				fTemp730 = ((fTemp657 * std::cos((12.566371f * ((fTemp637 + std::min<float>((0.49000001f * (((fTemp637 - fTemp723) * fTemp724) / (0.5f - fTemp725))), (0.49000001f * ((fTemp724 * (fTemp723 + fTemp715)) / (fTemp725 + 0.5f))))) - fTemp723)))) + (fTemp656 * std::cos((12.566371f * ((fTemp674 + std::min<float>((0.49000001f * (((fTemp674 - fTemp727) * fTemp728) / (0.5f - fTemp729))), (0.49000001f * ((fTemp728 * (fTemp727 + fTemp719)) / (fTemp729 + 0.5f))))) - fTemp727)))));
-			}
-			if (iSlow292) {
-				fTemp731 = std::min<float>(0.975000024f, fTemp685);
-				fTemp732 = (0.25f * (1.0f - fTemp731));
-				fTemp733 = (fTemp732 + (0.5f * fTemp731));
-				fTemp734 = std::floor((fTemp637 - fTemp733));
-				fTemp735 = (fTemp637 - (fTemp733 + fTemp734));
-				fTemp736 = std::min<float>(0.975000024f, fTemp692);
-				fTemp737 = (0.25f * (1.0f - fTemp736));
-				fTemp738 = (fTemp737 + (0.5f * fTemp736));
-				fTemp739 = std::floor((fTemp674 - fTemp738));
-				fTemp740 = (fTemp674 - (fTemp738 + fTemp739));
-				fTemp741 = ((fTemp657 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp735 < 0.5f) ? fTemp735 : (0.5f * (((fTemp637 - ((fTemp732 + fTemp734) + (0.5f * (fTemp731 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp689))) + 1.0f))))))) + (fTemp656 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp740 < 0.5f) ? fTemp740 : (0.5f * (((fTemp674 - ((fTemp737 + fTemp739) + (0.5f * (fTemp736 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp696))) + 1.0f))))))));
-			}
-			if (iSlow290 | iSlow286) {
-				fTemp742 = (fTemp637 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec146[0] * fSlow881) * fTemp642))) / fRec146[0])));
-				fTemp743 = (fTemp674 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec163[0] * fSlow881) * fTemp642))) / fRec163[0])));
-			}
-			if (iSlow290) {
-				fTemp744 = ((fTemp657 * (((0.0f - fTemp715) * (1.0f - std::cos((6.28318548f * (fTemp742 + (1.0f - std::floor((fTemp742 + 1.0f)))))))) + 1.0f)) + (fTemp656 * (((0.0f - fTemp719) * (1.0f - std::cos((6.28318548f * (fTemp743 + (1.0f - std::floor((fTemp743 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow288) {
-				fTemp745 = (fTemp637 - (fTemp649 + fVec23[1]));
-				fRec169[0] = ((std::fabs(fTemp745) < 0.5f) ? (fConst0 * fTemp745) : fRec169[1]);
-				fTemp746 = (fTemp650 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec169[0] * fSlow881) * fTemp642))) / fRec169[0])));
-				fTemp747 = (fTemp674 - (fTemp678 + fVec26[1]));
-				fRec170[0] = ((std::fabs(fTemp747) < 0.5f) ? (fConst0 * fTemp747) : fRec170[1]);
-				fTemp748 = (fTemp679 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec170[0] * fSlow881) * fTemp642))) / fRec170[0])));
-				fTemp749 = ((fTemp657 * (((iTemp651 ? (2.0f * fTemp650) : (2.0f * (1.0f - fTemp650))) * (std::cos((6.28318548f * (fTemp746 + (1.0f - std::floor((fTemp746 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp656 * (((iTemp680 ? (2.0f * fTemp679) : (2.0f * (1.0f - fTemp679))) * (std::cos((6.28318548f * (fTemp748 + (1.0f - std::floor((fTemp748 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow286) {
-				fTemp750 = (((fTemp657 * std::min<float>(1.0f, (2.0f * fTemp715))) * std::sin((6.28318548f * (fTemp742 - std::floor(fTemp742))))) + ((fTemp656 * std::min<float>(1.0f, (2.0f * fTemp719))) * std::sin((6.28318548f * (fTemp743 - std::floor(fTemp743))))));
-			}
-			fRec5[0] = (((((((((fSlow301 * fTemp684) + (fSlow299 * fTemp699)) + (fSlow297 * fTemp712)) + (fSlow295 * fTemp721)) + (fSlow293 * fTemp730)) + (fSlow291 * fTemp741)) + (fSlow289 * fTemp744)) + (fSlow287 * fTemp749)) + (fSlow285 * fTemp750));
-			float fTemp751 = ((fTemp46 * ((fSlow898 * fTemp43) + (fSlow899 * fTemp42))) + (fTemp45 * ((fSlow900 * fTemp43) + (fSlow901 * fTemp42))));
-			float fTemp752 = ((fTemp46 * ((fSlow902 * fTemp43) + (fSlow903 * fTemp42))) + (fTemp45 * ((fSlow904 * fTemp43) + (fSlow905 * fTemp42))));
-			float fTemp753 = ((fTemp46 * ((fSlow906 * fTemp43) + (fSlow907 * fTemp42))) + (fTemp45 * ((fSlow908 * fTemp43) + (fSlow909 * fTemp42))));
-			float fTemp754 = ((fTemp46 * ((fSlow910 * fTemp43) + (fSlow911 * fTemp42))) + (fTemp45 * ((fSlow912 * fTemp43) + (fSlow913 * fTemp42))));
-			float fTemp755 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp751 + fTemp752)) + (fTemp39 * (fTemp753 + fTemp754)))));
-			float fTemp756 = (1.0f - fTemp755);
-			float fTemp757 = ((fTemp46 * ((fSlow914 * fTemp43) + (fSlow915 * fTemp42))) + (fTemp45 * ((fSlow916 * fTemp43) + (fSlow917 * fTemp42))));
-			float fTemp758 = ((fTemp46 * ((fSlow918 * fTemp43) + (fSlow919 * fTemp42))) + (fTemp45 * ((fSlow920 * fTemp43) + (fSlow921 * fTemp42))));
-			float fTemp759 = ((fTemp46 * ((fSlow922 * fTemp43) + (fSlow923 * fTemp42))) + (fTemp45 * ((fSlow924 * fTemp43) + (fSlow925 * fTemp42))));
-			float fTemp760 = ((fTemp46 * ((fSlow926 * fTemp43) + (fSlow927 * fTemp42))) + (fTemp45 * ((fSlow928 * fTemp43) + (fSlow929 * fTemp42))));
-			float fTemp761 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp757 + fTemp758)) + (fTemp39 * (fTemp759 + fTemp760)))));
-			output0[i] = FAUSTFLOAT((fHbargraph0 * ((((fRec2[0] * fTemp756) + (fRec3[0] * fTemp755)) * (1.0f - fTemp761)) + (fTemp761 * ((fRec4[0] * fTemp756) + (fRec5[0] * fTemp755))))));
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp762 = std::fabs(fTemp75);
-				fTemp763 = std::fabs(fTemp73);
-				fTemp764 = std::fabs(fTemp71);
-				fTemp765 = ((fTemp762 + fTemp763) + fTemp764);
-				fTemp766 = std::min<float>(1.0f, fTemp765);
-				fTemp767 = std::max<float>(2.82118644e-37f, fTemp762);
-				fTemp768 = ((fTemp75 < 0.0f) ? (0.0f - fTemp767) : fTemp767);
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow14 & iTemp74) | ((iSlow14 & iTemp72) | ((iSlow358 & iTemp76) | ((iSlow358 & iTemp74) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp76) | ((iSlow356 & iTemp74) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp76) | ((iSlow354 & iTemp74) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp76) | ((iSlow352 & iTemp74) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp76) | ((iSlow350 & iTemp74) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp76) | ((iSlow348 & iTemp74) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp76) | ((iSlow346 & iTemp74) | ((iSlow346 & iTemp72) | ((iSlow344 & iTemp76) | ((iSlow344 & iTemp74) | ((iSlow344 & iTemp72) | ((iSlow342 & iTemp76) | ((iSlow342 & iTemp74) | ((iSlow342 & iTemp72) | ((iSlow340 & iTemp76) | ((iSlow340 & iTemp74) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp76) | ((iSlow338 & iTemp74) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp76) | ((iSlow336 & iTemp74) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp76) | ((iSlow334 & iTemp74) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp76) | ((iSlow332 & iTemp74) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp76) | ((iSlow330 & iTemp74) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp76) | ((iSlow328 & iTemp74) | ((iSlow328 & iTemp72) | ((iSlow326 & iTemp76) | ((iSlow326 & iTemp74) | ((iSlow326 & iTemp72) | ((iSlow322 & iTemp76) | ((iSlow322 & iTemp74) | ((iSlow322 & iTemp72) | ((iSlow320 & iTemp76) | ((iSlow320 & iTemp74) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp76) | ((iSlow318 & iTemp74) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp76) | ((iSlow316 & iTemp74) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp76) | ((iSlow314 & iTemp74) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp76) | ((iSlow312 & iTemp74) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp76) | ((iSlow310 & iTemp74) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp76) | ((iSlow308 & iTemp74) | ((iSlow308 & iTemp72) | ((iSlow306 & iTemp76) | ((iSlow306 & iTemp74) | ((iSlow306 & iTemp72) | ((iSlow302 & iTemp76) | ((iSlow302 & iTemp74) | ((iSlow302 & iTemp72) | ((iSlow300 & iTemp76) | ((iSlow300 & iTemp74) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp76) | ((iSlow298 & iTemp74) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp76) | ((iSlow296 & iTemp74) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp76) | ((iSlow294 & iTemp74) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp76) | ((iSlow292 & iTemp74) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp76) | ((iSlow290 & iTemp74) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp76) | ((iSlow288 & iTemp74) | ((iSlow288 & iTemp72) | ((iSlow286 & iTemp76) | ((iSlow286 & iTemp74) | (iSlow286 & iTemp72)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp769 = std::tan((fConst2 * std::min<float>(fConst4, std::max<float>(0.0f, (440.0f * std::pow(2.0f, (0.0833333358f * ((127.0f * std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp70 - fTemp79)) + (fTemp39 * (fTemp80 - fTemp81)))))) + -49.0f))))))));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp770 = (fRec174[1] * ((fTemp40 * (fTemp83 - fTemp84)) + (fTemp39 * (fTemp85 - fTemp86))));
-				fTemp771 = (fRec173[1] * ((fTemp40 * (fTemp88 - fTemp89)) + (fTemp39 * (fTemp90 - fTemp91))));
-				fTemp772 = (fRec172[1] * ((fTemp40 * (fTemp93 - fTemp94)) + (fTemp39 * (fTemp95 - fTemp96))));
-				fTemp773 = ((fTemp40 * (fTemp102 - fTemp103)) + (fTemp39 * (fTemp104 - fTemp105)));
-				fTemp774 = ((fTemp40 * (fTemp107 - fTemp108)) + (fTemp39 * (fTemp109 - fTemp110)));
-				fTemp775 = std::floor(fTemp774);
-				fTemp776 = (fTemp775 + float(((fTemp774 < 0.0f) & (fTemp774 != fTemp775))));
-				fTemp777 = (fTemp101 + (0.00390625f * (fTemp773 * std::pow(2.0f, (0.0f - fTemp776)))));
-				iTemp778 = int(fTemp776);
-				fTemp779 = (fRec171[1] * ((fTemp40 * (fTemp117 - fTemp118)) + (fTemp39 * (fTemp119 - fTemp120))));
-				fTemp780 = (fTemp770 + (fTemp771 + (fTemp772 + (std::fmod((256.0f * ((fTemp777 - (fTemp115 + std::floor((fTemp777 - fTemp115)))) * (((float((iTemp778 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp778)))))) + float((iTemp778 == 0))) + float(((iTemp778 > 0) * int(std::pow(2.0f, float(iTemp778)))))))), 1.0f) + fTemp779))));
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow358 & iTemp76) | ((iSlow356 & iTemp76) | ((iSlow354 & iTemp76) | ((iSlow352 & iTemp76) | ((iSlow350 & iTemp76) | ((iSlow348 & iTemp76) | ((iSlow346 & iTemp76) | (iSlow344 & iTemp76))))))))) {
-				fTemp781 = (fRec175[1] + (fTemp769 * (fTemp780 - fRec176[1])));
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow14 & iTemp74) | ((iSlow14 & iTemp72) | ((iSlow358 & iTemp76) | ((iSlow358 & iTemp74) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp76) | ((iSlow356 & iTemp74) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp76) | ((iSlow354 & iTemp74) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp76) | ((iSlow352 & iTemp74) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp76) | ((iSlow350 & iTemp74) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp76) | ((iSlow348 & iTemp74) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp76) | ((iSlow346 & iTemp74) | ((iSlow346 & iTemp72) | ((iSlow344 & iTemp76) | ((iSlow344 & iTemp74) | ((iSlow344 & iTemp72) | ((iSlow342 & iTemp76) | ((iSlow342 & iTemp74) | ((iSlow342 & iTemp72) | ((iSlow340 & iTemp76) | ((iSlow340 & iTemp74) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp76) | ((iSlow338 & iTemp74) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp76) | ((iSlow336 & iTemp74) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp76) | ((iSlow334 & iTemp74) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp76) | ((iSlow332 & iTemp74) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp76) | ((iSlow330 & iTemp74) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp76) | ((iSlow328 & iTemp74) | ((iSlow328 & iTemp72) | ((iSlow326 & iTemp76) | ((iSlow326 & iTemp74) | ((iSlow326 & iTemp72) | ((iSlow322 & iTemp76) | ((iSlow322 & iTemp74) | ((iSlow322 & iTemp72) | ((iSlow320 & iTemp76) | ((iSlow320 & iTemp74) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp76) | ((iSlow318 & iTemp74) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp76) | ((iSlow316 & iTemp74) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp76) | ((iSlow314 & iTemp74) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp76) | ((iSlow312 & iTemp74) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp76) | ((iSlow310 & iTemp74) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp76) | ((iSlow308 & iTemp74) | ((iSlow308 & iTemp72) | ((iSlow306 & iTemp76) | ((iSlow306 & iTemp74) | ((iSlow306 & iTemp72) | ((iSlow302 & iTemp76) | ((iSlow302 & iTemp74) | ((iSlow302 & iTemp72) | ((iSlow300 & iTemp76) | ((iSlow300 & iTemp74) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp76) | ((iSlow298 & iTemp74) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp76) | ((iSlow296 & iTemp74) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp76) | ((iSlow294 & iTemp74) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp76) | ((iSlow292 & iTemp74) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp76) | ((iSlow290 & iTemp74) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp76) | ((iSlow288 & iTemp74) | ((iSlow288 & iTemp72) | ((iSlow286 & iTemp76) | ((iSlow286 & iTemp74) | (iSlow286 & iTemp72)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp782 = std::min<float>(10.0f, std::max<float>(0.00999999978f, ((fTemp40 * (fTemp124 - fTemp125)) + (fTemp39 * (fTemp126 - fTemp127)))));
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow14 & iTemp72) | ((iSlow358 & iTemp76) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp76) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp76) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp76) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp76) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp76) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp76) | ((iSlow346 & iTemp72) | ((iSlow344 & iTemp76) | ((iSlow344 & iTemp72) | ((iSlow342 & iTemp76) | ((iSlow342 & iTemp72) | ((iSlow340 & iTemp76) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp76) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp76) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp76) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp76) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp76) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp76) | ((iSlow328 & iTemp72) | ((iSlow326 & iTemp76) | ((iSlow326 & iTemp72) | ((iSlow322 & iTemp76) | ((iSlow322 & iTemp72) | ((iSlow320 & iTemp76) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp76) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp76) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp76) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp76) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp76) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp76) | ((iSlow308 & iTemp72) | ((iSlow306 & iTemp76) | ((iSlow306 & iTemp72) | ((iSlow302 & iTemp76) | ((iSlow302 & iTemp72) | ((iSlow300 & iTemp76) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp76) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp76) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp76) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp76) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp76) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp76) | ((iSlow288 & iTemp72) | ((iSlow286 & iTemp76) | (iSlow286 & iTemp72)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
-				fTemp783 = (fTemp769 + (1.0f / fTemp782));
-				fTemp784 = ((fTemp769 * fTemp783) + 1.0f);
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow358 & iTemp76) | ((iSlow356 & iTemp76) | ((iSlow354 & iTemp76) | ((iSlow352 & iTemp76) | ((iSlow350 & iTemp76) | ((iSlow348 & iTemp76) | ((iSlow346 & iTemp76) | (iSlow344 & iTemp76))))))))) {
-				fTemp785 = (fTemp781 / fTemp784);
-				fRec175[0] = ((2.0f * fTemp785) - fRec175[1]);
-				fTemp786 = (fRec176[1] + ((fTemp769 * fTemp781) / fTemp784));
-				fRec176[0] = ((2.0f * fTemp786) - fRec176[1]);
-				fRec177 = fTemp786;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp787 = std::max<float>(2.82118644e-37f, fTemp763);
-				fTemp788 = ((fTemp73 < 0.0f) ? (0.0f - fTemp787) : fTemp787);
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fTemp789 = (fTemp769 * (fTemp780 - fRec180[1]));
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | ((iSlow344 & iTemp74) | ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | ((iSlow326 & iTemp74) | ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | ((iSlow306 & iTemp74) | ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74)))))))))))))))))))))))))))))))))))) {
-				fTemp790 = (fTemp782 + -0.707000017f);
-				fTemp791 = (fTemp769 + 1.0f);
-				fTemp792 = (1.0f - (fTemp769 / fTemp791));
-				fTemp793 = (0.0f - (1.0f / fTemp791));
-				fTemp794 = (1.0f - (0.215215757f * (((fTemp769 * fTemp790) * fTemp792) / fTemp791)));
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fTemp795 = ((fTemp769 * ((((fRec180[1] + ((fTemp789 + (0.215215757f * ((fRec178[1] * fTemp790) * fTemp792))) / fTemp791)) + (fRec179[1] * fTemp793)) / fTemp794) - fRec178[1])) / fTemp791);
-				fRec178[0] = (fRec178[1] + (2.0f * fTemp795));
-				fTemp796 = (fRec178[1] + fTemp795);
-				fRec179[0] = (fRec179[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp796)) - fRec179[1])) / fTemp791)));
-				fRec180[0] = (fRec180[1] + (2.0f * (fTemp789 / fTemp791)));
-				fRec181 = fTemp796;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp797 = std::max<float>(2.82118644e-37f, fTemp764);
-				fTemp798 = ((fTemp71 < 0.0f) ? (0.0f - fTemp797) : fTemp797);
-			}
-			if ((iSlow14 & iTemp72) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp72) | (iSlow344 & iTemp72))))))))) {
-				fTemp799 = (fTemp780 - (fRec183[1] + (fTemp783 * fRec184[1])));
-				fTemp800 = ((fTemp769 * fTemp799) / fTemp784);
-				fTemp801 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec184[1] + fTemp800)));
-				fTemp802 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp801)));
-				fTemp803 = ((fTemp769 * fTemp801) * fTemp802);
-				fRec182 = (fRec183[1] + fTemp803);
-				fRec183[0] = (fRec183[1] + (2.0f * fTemp803));
-				fTemp804 = (fTemp801 * fTemp802);
-				fRec184[0] = (fTemp800 + fTemp804);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fTemp805 = std::max<float>(8.46355933e-37f, fTemp765);
-				fTemp806 = (1.0f - fTemp766);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp807 = (((fTemp766 * (((fTemp768 * fRec177) + (fTemp788 * fRec181)) + (fTemp798 * fRec182))) / fTemp805) + (fTemp780 * fTemp806));
-				fVec28[0] = fTemp807;
-				fTemp808 = ((fTemp40 * (fTemp154 - fTemp155)) + (fTemp39 * (fTemp156 - fTemp157)));
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350))))) {
-				fTemp809 = (fSlow542 * fTemp808);
-			}
-			if (iSlow14) {
-				fTemp810 = (2.0f * fTemp809);
-				fTemp811 = std::min<float>(1.0f, fTemp810);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fTemp812 = (fTemp807 - fVec28[1]);
-				fRec186[0] = ((std::fabs(fTemp812) < 0.5f) ? (fConst0 * fTemp812) : fRec186[1]);
-			}
-			if (iSlow14) {
-				fTemp813 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec186[0])))))));
-				fTemp814 = (1.0f - fTemp813);
-			}
-			if (iSlow14 | iSlow346) {
-				fTemp815 = std::floor(fTemp807);
-				fTemp816 = (fTemp807 - fTemp815);
-				fVec29[0] = fTemp816;
-				iTemp817 = (fTemp816 < 0.5f);
-				iVec30[0] = iTemp817;
-			}
-			if (iSlow14) {
-				iTemp818 = ((iVec30[1] <= 0) & (iTemp817 > 0));
-				fRec191[0] = ((fRec191[1] * float((1 - iTemp818))) + (4.65661287e-10f * (fTemp36 * float(iTemp818))));
-				fTemp819 = (fTemp813 + 1.0f);
-				fRec190[0] = (0.0f - (((fTemp814 * fRec190[1]) - (fRec191[0] + fRec191[1])) / fTemp819));
-				fRec189[0] = (0.0f - (((fTemp814 * fRec189[1]) - (fRec190[0] + fRec190[1])) / fTemp819));
-				fRec188[0] = (0.0f - (((fTemp814 * fRec188[1]) - (fRec189[0] + fRec189[1])) / fTemp819));
-				fRec187[0] = (0.0f - (((fTemp814 * fRec187[1]) - (fRec188[0] + fRec188[1])) / fTemp819));
-				fRec185[0] = (0.0f - (((fRec185[1] * fTemp814) - (fRec187[0] + fRec187[1])) / fTemp819));
-				fTemp820 = (std::sin((6.28318548f * fTemp807)) * ((fTemp811 * (fRec185[0] + -1.0f)) + 1.0f));
-				fTemp821 = (std::max<float>(1.0f, fTemp810) + -1.0f);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp822 = std::fmod(std::fabs(fTemp774), 1.0f);
-				fTemp823 = (1.0f - fTemp822);
-				fTemp824 = (fTemp775 + float((fTemp774 > 0.0f)));
-				fTemp825 = (fTemp101 + (0.00390625f * (fTemp773 * std::pow(2.0f, (0.0f - fTemp824)))));
-				iTemp826 = int(fTemp824);
-				fTemp827 = ((((fTemp779 + fTemp772) + fTemp771) + fTemp770) + std::fmod((256.0f * ((fTemp825 - (fTemp115 + std::floor((fTemp825 - fTemp115)))) * (((float((iTemp826 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp826)))))) + float((iTemp826 == 0))) + float(((iTemp826 > 0) * int(std::pow(2.0f, float(iTemp826)))))))), 1.0f));
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow358 & iTemp76) | ((iSlow356 & iTemp76) | ((iSlow354 & iTemp76) | ((iSlow352 & iTemp76) | ((iSlow350 & iTemp76) | ((iSlow348 & iTemp76) | ((iSlow346 & iTemp76) | (iSlow344 & iTemp76))))))))) {
-				fTemp828 = (fRec192[1] + (fTemp769 * (fTemp827 - fRec193[1])));
-				fTemp829 = (fTemp828 / fTemp784);
-				fRec192[0] = ((2.0f * fTemp829) - fRec192[1]);
-				fTemp830 = (fRec193[1] + ((fTemp769 * fTemp828) / fTemp784));
-				fRec193[0] = ((2.0f * fTemp830) - fRec193[1]);
-				fRec194 = fTemp830;
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fTemp831 = (fTemp769 * (fTemp827 - fRec197[1]));
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | ((iSlow344 & iTemp74) | ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | ((iSlow326 & iTemp74) | ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | ((iSlow306 & iTemp74) | ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74)))))))))))))))))))))))))))))))))))) {
-				fTemp832 = (fTemp790 * fTemp792);
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fTemp833 = ((fTemp769 * ((((fRec197[1] + ((fTemp831 + (0.215215757f * (fTemp832 * fRec195[1]))) / fTemp791)) + (fTemp793 * fRec196[1])) / fTemp794) - fRec195[1])) / fTemp791);
-				fRec195[0] = (fRec195[1] + (2.0f * fTemp833));
-				fTemp834 = (fRec195[1] + fTemp833);
-				fRec196[0] = (fRec196[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp834)) - fRec196[1])) / fTemp791)));
-				fRec197[0] = (fRec197[1] + (2.0f * (fTemp831 / fTemp791)));
-				fRec198 = fTemp834;
-			}
-			if ((iSlow14 & iTemp72) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp72) | (iSlow344 & iTemp72))))))))) {
-				fTemp835 = (fTemp827 - (fRec200[1] + (fTemp783 * fRec201[1])));
-				fTemp836 = ((fTemp769 * fTemp835) / fTemp784);
-				fTemp837 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec201[1] + fTemp836)));
-				fTemp838 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp837)));
-				fTemp839 = ((fTemp769 * fTemp837) * fTemp838);
-				fRec199 = (fRec200[1] + fTemp839);
-				fRec200[0] = (fRec200[1] + (2.0f * fTemp839));
-				fTemp840 = (fTemp837 * fTemp838);
-				fRec201[0] = (fTemp836 + fTemp840);
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fTemp841 = (((fTemp766 * (((fTemp768 * fRec194) + (fTemp788 * fRec198)) + (fTemp798 * fRec199))) / fTemp805) + (fTemp806 * fTemp827));
-				fVec31[0] = fTemp841;
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fTemp842 = (fTemp841 - fVec31[1]);
-				fRec203[0] = ((std::fabs(fTemp842) < 0.5f) ? (fConst0 * fTemp842) : fRec203[1]);
-			}
-			if (iSlow14) {
-				fTemp843 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec203[0])))))));
-				fTemp844 = (1.0f - fTemp843);
-			}
-			if (iSlow14 | iSlow346) {
-				fTemp845 = std::floor(fTemp841);
-				fTemp846 = (fTemp841 - fTemp845);
-				fVec32[0] = fTemp846;
-				iTemp847 = (fTemp846 < 0.5f);
-				iVec33[0] = iTemp847;
-			}
-			if (iSlow14) {
-				iTemp848 = ((iVec33[1] <= 0) & (iTemp847 > 0));
-				fRec208[0] = ((fRec208[1] * float((1 - iTemp848))) + (4.65661287e-10f * (fTemp36 * float(iTemp848))));
-				fTemp849 = (fTemp843 + 1.0f);
-				fRec207[0] = (0.0f - (((fTemp844 * fRec207[1]) - (fRec208[0] + fRec208[1])) / fTemp849));
-				fRec206[0] = (0.0f - (((fTemp844 * fRec206[1]) - (fRec207[0] + fRec207[1])) / fTemp849));
-				fRec205[0] = (0.0f - (((fTemp844 * fRec205[1]) - (fRec206[0] + fRec206[1])) / fTemp849));
-				fRec204[0] = (0.0f - (((fTemp844 * fRec204[1]) - (fRec205[0] + fRec205[1])) / fTemp849));
-				fRec202[0] = (0.0f - (((fRec202[1] * fTemp844) - (fRec204[0] + fRec204[1])) / fTemp849));
-				fTemp850 = (std::sin((6.28318548f * fTemp841)) * ((fTemp811 * (fRec202[0] + -1.0f)) + 1.0f));
-				fTemp851 = (((fTemp820 + (fTemp821 * (fRec185[0] - fTemp820))) * fTemp823) + (fTemp822 * (fTemp850 + (fTemp821 * (fRec202[0] - fTemp850)))));
-			}
-			if (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350)))) {
-				fTemp852 = (fTemp809 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec186[0] - fConst7))))));
-			}
-			if (iSlow358 | (iSlow354 | (iSlow352 | iSlow350))) {
-				fTemp853 = (1.0f - fTemp852);
-			}
-			if (iSlow358) {
-				fTemp854 = ((0.75f * fTemp853) + (fTemp807 + (0.5f * fTemp852)));
-				fTemp855 = std::floor(fTemp854);
-			}
-			if (iSlow358 | iSlow350) {
-				fTemp856 = (0.5f * fTemp853);
-			}
-			if (iSlow358) {
-				fTemp857 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp856));
-				fTemp858 = (0.5f - fTemp857);
-			}
-			if (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | iSlow350)))) {
-				fTemp859 = (fTemp809 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec203[0] - fConst7))))));
-			}
-			if (iSlow358 | (iSlow354 | (iSlow352 | iSlow350))) {
-				fTemp860 = (1.0f - fTemp859);
-			}
-			if (iSlow358) {
-				fTemp861 = ((0.75f * fTemp860) + (fTemp841 + (0.5f * fTemp859)));
-				fTemp862 = std::floor(fTemp861);
-			}
-			if (iSlow358 | iSlow350) {
-				fTemp863 = (0.5f * fTemp860);
-			}
-			if (iSlow358) {
-				fTemp864 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp863));
-				fTemp865 = (0.5f - fTemp864);
-				fTemp866 = ((fTemp823 * std::cos((6.28318548f * ((fTemp854 + std::min<float>((((fTemp854 - fTemp855) * fTemp858) / fTemp857), ((fTemp858 * (fTemp855 + (1.0f - fTemp854))) / (1.0f - fTemp857)))) - fTemp855)))) + (fTemp822 * std::cos((6.28318548f * ((fTemp861 + std::min<float>((((fTemp861 - fTemp862) * fTemp865) / fTemp864), ((fTemp865 * (fTemp862 + (1.0f - fTemp861))) / (1.0f - fTemp864)))) - fTemp862)))));
-			}
-			if (iSlow356) {
-				fTemp867 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp852));
-				fTemp868 = (1.0f - fTemp867);
-				fTemp869 = (0.25f * fTemp868);
-				fTemp870 = (fTemp807 - (fTemp869 + std::floor((fTemp807 - fTemp869))));
-				fTemp871 = (2.0f * fTemp870);
-				fTemp872 = std::floor((fTemp871 + 1.0f));
-				fTemp873 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp859));
-				fTemp874 = (1.0f - fTemp873);
-				fTemp875 = (0.25f * fTemp874);
-				fTemp876 = (fTemp841 - (fTemp875 + std::floor((fTemp841 - fTemp875))));
-				fTemp877 = (2.0f * fTemp876);
-				fTemp878 = std::floor((fTemp877 + 1.0f));
-				fTemp879 = ((fTemp823 * std::cos((3.14159274f * ((float((fTemp870 >= 0.5f)) + fTemp871) + (1.0f - (fTemp872 + std::min<float>((fTemp871 + (1.0f - fTemp872)), ((fTemp867 * (fTemp872 - fTemp871)) / fTemp868)))))))) + (fTemp822 * std::cos((3.14159274f * ((float((fTemp876 >= 0.5f)) + fTemp877) + (1.0f - (fTemp878 + std::min<float>((fTemp877 + (1.0f - fTemp878)), ((fTemp873 * (fTemp878 - fTemp877)) / fTemp874)))))))));
-			}
-			if (iSlow354) {
-				fTemp880 = (0.25f * fTemp853);
-				fTemp881 = (fTemp880 + std::floor((fTemp807 - fTemp880)));
-			}
-			if (iSlow354 | (iSlow352 | (iSlow348 | iSlow344))) {
-				fTemp882 = (1.0f - fTemp807);
-			}
-			if (iSlow354) {
-				fTemp883 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp852));
-				fTemp884 = (0.25f * fTemp860);
-				fTemp885 = (fTemp884 + std::floor((fTemp841 - fTemp884)));
-			}
-			if (iSlow354 | (iSlow352 | (iSlow348 | iSlow344))) {
-				fTemp886 = (1.0f - fTemp841);
-			}
-			if (iSlow354) {
-				fTemp887 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp859));
-				fTemp888 = ((fTemp823 * std::cos((6.28318548f * (fTemp807 - (fTemp881 + std::min<float>((fTemp807 - fTemp881), (((fTemp881 + fTemp882) * fTemp883) / (1.0f - fTemp883)))))))) + (fTemp822 * std::cos((6.28318548f * (fTemp841 - (fTemp885 + std::min<float>((fTemp841 - fTemp885), (((fTemp885 + fTemp886) * fTemp887) / (1.0f - fTemp887)))))))));
-			}
-			if (iSlow352) {
-				fTemp889 = ((0.125f * fTemp853) + (0.25f * fTemp852));
-				fTemp890 = (fTemp889 + std::floor((fTemp807 - fTemp889)));
-				fTemp891 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp852));
-				fTemp892 = (0.49000001f * fTemp891);
-				fTemp893 = ((0.125f * fTemp860) + (0.25f * fTemp859));
-				fTemp894 = (fTemp893 + std::floor((fTemp841 - fTemp893)));
-				fTemp895 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp859));
-				fTemp896 = (0.49000001f * fTemp895);
-				fTemp897 = ((fTemp823 * std::cos((12.566371f * ((fTemp807 + std::min<float>((0.49000001f * (((fTemp807 - fTemp890) * fTemp891) / (0.5f - fTemp892))), (0.49000001f * ((fTemp891 * (fTemp890 + fTemp882)) / (fTemp892 + 0.5f))))) - fTemp890)))) + (fTemp822 * std::cos((12.566371f * ((fTemp841 + std::min<float>((0.49000001f * (((fTemp841 - fTemp894) * fTemp895) / (0.5f - fTemp896))), (0.49000001f * ((fTemp895 * (fTemp894 + fTemp886)) / (fTemp896 + 0.5f))))) - fTemp894)))));
-			}
-			if (iSlow350) {
-				fTemp898 = std::min<float>(0.975000024f, fTemp852);
-				fTemp899 = (0.25f * (1.0f - fTemp898));
-				fTemp900 = (fTemp899 + (0.5f * fTemp898));
-				fTemp901 = std::floor((fTemp807 - fTemp900));
-				fTemp902 = (fTemp807 - (fTemp900 + fTemp901));
-				fTemp903 = std::min<float>(0.975000024f, fTemp859);
-				fTemp904 = (0.25f * (1.0f - fTemp903));
-				fTemp905 = (fTemp904 + (0.5f * fTemp903));
-				fTemp906 = std::floor((fTemp841 - fTemp905));
-				fTemp907 = (fTemp841 - (fTemp905 + fTemp906));
-				fTemp908 = ((fTemp823 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp902 < 0.5f) ? fTemp902 : (0.5f * (((fTemp807 - ((fTemp899 + fTemp901) + (0.5f * (fTemp898 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp856))) + 1.0f))))))) + (fTemp822 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp907 < 0.5f) ? fTemp907 : (0.5f * (((fTemp841 - ((fTemp904 + fTemp906) + (0.5f * (fTemp903 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp863))) + 1.0f))))))));
-			}
-			if (iSlow348 | iSlow344) {
-				fTemp909 = (fTemp807 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec186[0] * fSlow542) * fTemp808))) / fRec186[0])));
-				fTemp910 = (fTemp841 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec203[0] * fSlow542) * fTemp808))) / fRec203[0])));
-			}
-			if (iSlow348) {
-				fTemp911 = ((fTemp823 * (((0.0f - fTemp882) * (1.0f - std::cos((6.28318548f * (fTemp909 + (1.0f - std::floor((fTemp909 + 1.0f)))))))) + 1.0f)) + (fTemp822 * (((0.0f - fTemp886) * (1.0f - std::cos((6.28318548f * (fTemp910 + (1.0f - std::floor((fTemp910 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow346) {
-				fTemp912 = (fTemp807 - (fTemp815 + fVec29[1]));
-				fRec209[0] = ((std::fabs(fTemp912) < 0.5f) ? (fConst0 * fTemp912) : fRec209[1]);
-				fTemp913 = (fTemp816 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec209[0] * fSlow542) * fTemp808))) / fRec209[0])));
-				fTemp914 = (fTemp841 - (fTemp845 + fVec32[1]));
-				fRec210[0] = ((std::fabs(fTemp914) < 0.5f) ? (fConst0 * fTemp914) : fRec210[1]);
-				fTemp915 = (fTemp846 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec210[0] * fSlow542) * fTemp808))) / fRec210[0])));
-				fTemp916 = ((fTemp823 * (((iTemp817 ? (2.0f * fTemp816) : (2.0f * (1.0f - fTemp816))) * (std::cos((6.28318548f * (fTemp913 + (1.0f - std::floor((fTemp913 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp822 * (((iTemp847 ? (2.0f * fTemp846) : (2.0f * (1.0f - fTemp846))) * (std::cos((6.28318548f * (fTemp915 + (1.0f - std::floor((fTemp915 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow344) {
-				fTemp917 = (((fTemp823 * std::min<float>(1.0f, (2.0f * fTemp882))) * std::sin((6.28318548f * (fTemp909 - std::floor(fTemp909))))) + ((fTemp822 * std::min<float>(1.0f, (2.0f * fTemp886))) * std::sin((6.28318548f * (fTemp910 - std::floor(fTemp910))))));
-			}
-			fRec171[0] = (((((((((fSlow13 * fTemp851) + (fSlow357 * fTemp866)) + (fSlow355 * fTemp879)) + (fSlow353 * fTemp888)) + (fSlow351 * fTemp897)) + (fSlow349 * fTemp908)) + (fSlow347 * fTemp911)) + (fSlow345 * fTemp916)) + (fSlow343 * fTemp917));
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp918 = (fRec174[1] * ((fTemp40 * (fTemp268 - fTemp269)) + (fTemp39 * (fTemp270 - fTemp271))));
-				fTemp919 = (fRec173[1] * ((fTemp40 * (fTemp273 - fTemp274)) + (fTemp39 * (fTemp275 - fTemp276))));
-				fTemp920 = (fRec172[1] * ((fTemp40 * (fTemp278 - fTemp279)) + (fTemp39 * (fTemp280 - fTemp281))));
-				fTemp921 = ((fTemp40 * (fTemp283 - fTemp284)) + (fTemp39 * (fTemp285 - fTemp286)));
-				fTemp922 = ((fTemp40 * (fTemp288 - fTemp289)) + (fTemp39 * (fTemp290 - fTemp291)));
-				fTemp923 = std::floor(fTemp922);
-				fTemp924 = (fTemp923 + float(((fTemp922 < 0.0f) & (fTemp922 != fTemp923))));
-				fTemp925 = (fTemp101 + (0.00390625f * (fTemp921 * std::pow(2.0f, (0.0f - fTemp924)))));
-				iTemp926 = int(fTemp924);
-				fTemp927 = (fRec171[1] * ((fTemp40 * (fTemp297 - fTemp298)) + (fTemp39 * (fTemp299 - fTemp300))));
-				fTemp928 = (fTemp918 + (fTemp919 + (fTemp920 + (std::fmod((256.0f * ((fTemp925 - (fTemp115 + std::floor((fTemp925 - fTemp115)))) * (((float((iTemp926 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp926)))))) + float((iTemp926 == 0))) + float(((iTemp926 > 0) * int(std::pow(2.0f, float(iTemp926)))))))), 1.0f) + fTemp927))));
-			}
-			if ((iSlow342 & iTemp76) | ((iSlow340 & iTemp76) | ((iSlow338 & iTemp76) | ((iSlow336 & iTemp76) | ((iSlow334 & iTemp76) | ((iSlow332 & iTemp76) | ((iSlow330 & iTemp76) | ((iSlow328 & iTemp76) | (iSlow326 & iTemp76))))))))) {
-				fTemp929 = (fRec211[1] + (fTemp769 * (fTemp928 - fRec212[1])));
-				fTemp930 = (fTemp929 / fTemp784);
-				fRec211[0] = ((2.0f * fTemp930) - fRec211[1]);
-				fTemp931 = (fRec212[1] + ((fTemp769 * fTemp929) / fTemp784));
-				fRec212[0] = ((2.0f * fTemp931) - fRec212[1]);
-				fRec213 = fTemp931;
-			}
-			if ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | (iSlow326 & iTemp74))))))))) {
-				fTemp932 = (fTemp769 * (fTemp928 - fRec216[1]));
-				fTemp933 = ((fTemp769 * ((((fRec216[1] + ((fTemp932 + (0.215215757f * (fTemp832 * fRec214[1]))) / fTemp791)) + (fTemp793 * fRec215[1])) / fTemp794) - fRec214[1])) / fTemp791);
-				fRec214[0] = (fRec214[1] + (2.0f * fTemp933));
-				fTemp934 = (fRec214[1] + fTemp933);
-				fRec215[0] = (fRec215[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp934)) - fRec215[1])) / fTemp791)));
-				fRec216[0] = (fRec216[1] + (2.0f * (fTemp932 / fTemp791)));
-				fRec217 = fTemp934;
-			}
-			if ((iSlow342 & iTemp72) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp72) | (iSlow326 & iTemp72))))))))) {
-				fTemp935 = (fTemp928 - (fRec219[1] + (fTemp783 * fRec220[1])));
-				fTemp936 = ((fTemp769 * fTemp935) / fTemp784);
-				fTemp937 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec220[1] + fTemp936)));
-				fTemp938 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp937)));
-				fTemp939 = ((fTemp769 * fTemp937) * fTemp938);
-				fRec218 = (fRec219[1] + fTemp939);
-				fRec219[0] = (fRec219[1] + (2.0f * fTemp939));
-				fTemp940 = (fTemp937 * fTemp938);
-				fRec220[0] = (fTemp936 + fTemp940);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp941 = (((fTemp766 * (((fTemp768 * fRec213) + (fTemp788 * fRec217)) + (fTemp798 * fRec218))) / fTemp805) + (fTemp806 * fTemp928));
-				fVec34[0] = fTemp941;
-				fTemp942 = ((fTemp40 * (fTemp316 - fTemp317)) + (fTemp39 * (fTemp318 - fTemp319)));
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332))))) {
-				fTemp943 = (fSlow655 * fTemp942);
-			}
-			if (iSlow342) {
-				fTemp944 = (2.0f * fTemp943);
-				fTemp945 = std::min<float>(1.0f, fTemp944);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fTemp946 = (fTemp941 - fVec34[1]);
-				fRec222[0] = ((std::fabs(fTemp946) < 0.5f) ? (fConst0 * fTemp946) : fRec222[1]);
-			}
-			if (iSlow342) {
-				fTemp947 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec222[0])))))));
-				fTemp948 = (1.0f - fTemp947);
-			}
-			if (iSlow342 | iSlow328) {
-				fTemp949 = std::floor(fTemp941);
-				fTemp950 = (fTemp941 - fTemp949);
-				fVec35[0] = fTemp950;
-				iTemp951 = (fTemp950 < 0.5f);
-				iVec36[0] = iTemp951;
-			}
-			if (iSlow342) {
-				iTemp952 = ((iVec36[1] <= 0) & (iTemp951 > 0));
-				fRec227[0] = ((fRec227[1] * float((1 - iTemp952))) + (4.65661287e-10f * (fTemp36 * float(iTemp952))));
-				fTemp953 = (fTemp947 + 1.0f);
-				fRec226[0] = (0.0f - (((fTemp948 * fRec226[1]) - (fRec227[0] + fRec227[1])) / fTemp953));
-				fRec225[0] = (0.0f - (((fTemp948 * fRec225[1]) - (fRec226[0] + fRec226[1])) / fTemp953));
-				fRec224[0] = (0.0f - (((fTemp948 * fRec224[1]) - (fRec225[0] + fRec225[1])) / fTemp953));
-				fRec223[0] = (0.0f - (((fTemp948 * fRec223[1]) - (fRec224[0] + fRec224[1])) / fTemp953));
-				fRec221[0] = (0.0f - (((fRec221[1] * fTemp948) - (fRec223[0] + fRec223[1])) / fTemp953));
-				fTemp954 = (std::sin((6.28318548f * fTemp941)) * ((fTemp945 * (fRec221[0] + -1.0f)) + 1.0f));
-				fTemp955 = (std::max<float>(1.0f, fTemp944) + -1.0f);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp956 = std::fmod(std::fabs(fTemp922), 1.0f);
-				fTemp957 = (1.0f - fTemp956);
-				fTemp958 = (fTemp923 + float((fTemp922 > 0.0f)));
-				fTemp959 = (fTemp101 + (0.00390625f * (fTemp921 * std::pow(2.0f, (0.0f - fTemp958)))));
-				iTemp960 = int(fTemp958);
-				fTemp961 = ((((fTemp927 + fTemp920) + fTemp919) + fTemp918) + std::fmod((256.0f * ((fTemp959 - (fTemp115 + std::floor((fTemp959 - fTemp115)))) * (((float((iTemp960 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp960)))))) + float((iTemp960 == 0))) + float(((iTemp960 > 0) * int(std::pow(2.0f, float(iTemp960)))))))), 1.0f));
-			}
-			if ((iSlow342 & iTemp76) | ((iSlow340 & iTemp76) | ((iSlow338 & iTemp76) | ((iSlow336 & iTemp76) | ((iSlow334 & iTemp76) | ((iSlow332 & iTemp76) | ((iSlow330 & iTemp76) | ((iSlow328 & iTemp76) | (iSlow326 & iTemp76))))))))) {
-				fTemp962 = (fRec228[1] + (fTemp769 * (fTemp961 - fRec229[1])));
-				fTemp963 = (fTemp962 / fTemp784);
-				fRec228[0] = ((2.0f * fTemp963) - fRec228[1]);
-				fTemp964 = (fRec229[1] + ((fTemp769 * fTemp962) / fTemp784));
-				fRec229[0] = ((2.0f * fTemp964) - fRec229[1]);
-				fRec230 = fTemp964;
-			}
-			if ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | (iSlow326 & iTemp74))))))))) {
-				fTemp965 = (fTemp769 * (fTemp961 - fRec233[1]));
-				fTemp966 = ((fTemp769 * ((((fRec233[1] + ((fTemp965 + (0.215215757f * (fTemp832 * fRec231[1]))) / fTemp791)) + (fTemp793 * fRec232[1])) / fTemp794) - fRec231[1])) / fTemp791);
-				fRec231[0] = (fRec231[1] + (2.0f * fTemp966));
-				fTemp967 = (fRec231[1] + fTemp966);
-				fRec232[0] = (fRec232[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp967)) - fRec232[1])) / fTemp791)));
-				fRec233[0] = (fRec233[1] + (2.0f * (fTemp965 / fTemp791)));
-				fRec234 = fTemp967;
-			}
-			if ((iSlow342 & iTemp72) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp72) | (iSlow326 & iTemp72))))))))) {
-				fTemp968 = (fTemp961 - (fRec236[1] + (fTemp783 * fRec237[1])));
-				fTemp969 = ((fTemp769 * fTemp968) / fTemp784);
-				fTemp970 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec237[1] + fTemp969)));
-				fTemp971 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp970)));
-				fTemp972 = ((fTemp769 * fTemp970) * fTemp971);
-				fRec235 = (fRec236[1] + fTemp972);
-				fRec236[0] = (fRec236[1] + (2.0f * fTemp972));
-				fTemp973 = (fTemp970 * fTemp971);
-				fRec237[0] = (fTemp969 + fTemp973);
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fTemp974 = (((fTemp766 * (((fTemp768 * fRec230) + (fTemp788 * fRec234)) + (fTemp798 * fRec235))) / fTemp805) + (fTemp806 * fTemp961));
-				fVec37[0] = fTemp974;
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fTemp975 = (fTemp974 - fVec37[1]);
-				fRec239[0] = ((std::fabs(fTemp975) < 0.5f) ? (fConst0 * fTemp975) : fRec239[1]);
-			}
-			if (iSlow342) {
-				fTemp976 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec239[0])))))));
-				fTemp977 = (1.0f - fTemp976);
-			}
-			if (iSlow342 | iSlow328) {
-				fTemp978 = std::floor(fTemp974);
-				fTemp979 = (fTemp974 - fTemp978);
-				fVec38[0] = fTemp979;
-				iTemp980 = (fTemp979 < 0.5f);
-				iVec39[0] = iTemp980;
-			}
-			if (iSlow342) {
-				iTemp981 = ((iVec39[1] <= 0) & (iTemp980 > 0));
-				fRec244[0] = ((fRec244[1] * float((1 - iTemp981))) + (4.65661287e-10f * (fTemp36 * float(iTemp981))));
-				fTemp982 = (fTemp976 + 1.0f);
-				fRec243[0] = (0.0f - (((fTemp977 * fRec243[1]) - (fRec244[0] + fRec244[1])) / fTemp982));
-				fRec242[0] = (0.0f - (((fTemp977 * fRec242[1]) - (fRec243[0] + fRec243[1])) / fTemp982));
-				fRec241[0] = (0.0f - (((fTemp977 * fRec241[1]) - (fRec242[0] + fRec242[1])) / fTemp982));
-				fRec240[0] = (0.0f - (((fTemp977 * fRec240[1]) - (fRec241[0] + fRec241[1])) / fTemp982));
-				fRec238[0] = (0.0f - (((fRec238[1] * fTemp977) - (fRec240[0] + fRec240[1])) / fTemp982));
-				fTemp983 = (std::sin((6.28318548f * fTemp974)) * ((fTemp945 * (fRec238[0] + -1.0f)) + 1.0f));
-				fTemp984 = (((fTemp954 + (fTemp955 * (fRec221[0] - fTemp954))) * fTemp957) + (fTemp956 * (fTemp983 + (fTemp955 * (fRec238[0] - fTemp983)))));
-			}
-			if (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332)))) {
-				fTemp985 = (fTemp943 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec222[0] - fConst7))))));
-			}
-			if (iSlow340 | (iSlow336 | (iSlow334 | iSlow332))) {
-				fTemp986 = (1.0f - fTemp985);
-			}
-			if (iSlow340) {
-				fTemp987 = ((0.75f * fTemp986) + (fTemp941 + (0.5f * fTemp985)));
-				fTemp988 = std::floor(fTemp987);
-			}
-			if (iSlow340 | iSlow332) {
-				fTemp989 = (0.5f * fTemp986);
-			}
-			if (iSlow340) {
-				fTemp990 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp989));
-				fTemp991 = (0.5f - fTemp990);
-			}
-			if (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | iSlow332)))) {
-				fTemp992 = (fTemp943 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec239[0] - fConst7))))));
-			}
-			if (iSlow340 | (iSlow336 | (iSlow334 | iSlow332))) {
-				fTemp993 = (1.0f - fTemp992);
-			}
-			if (iSlow340) {
-				fTemp994 = ((0.75f * fTemp993) + (fTemp974 + (0.5f * fTemp992)));
-				fTemp995 = std::floor(fTemp994);
-			}
-			if (iSlow340 | iSlow332) {
-				fTemp996 = (0.5f * fTemp993);
-			}
-			if (iSlow340) {
-				fTemp997 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp996));
-				fTemp998 = (0.5f - fTemp997);
-				fTemp999 = ((fTemp957 * std::cos((6.28318548f * ((fTemp987 + std::min<float>((((fTemp987 - fTemp988) * fTemp991) / fTemp990), ((fTemp991 * (fTemp988 + (1.0f - fTemp987))) / (1.0f - fTemp990)))) - fTemp988)))) + (fTemp956 * std::cos((6.28318548f * ((fTemp994 + std::min<float>((((fTemp994 - fTemp995) * fTemp998) / fTemp997), ((fTemp998 * (fTemp995 + (1.0f - fTemp994))) / (1.0f - fTemp997)))) - fTemp995)))));
-			}
-			if (iSlow338) {
-				fTemp1000 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp985));
-				fTemp1001 = (1.0f - fTemp1000);
-				fTemp1002 = (0.25f * fTemp1001);
-				fTemp1003 = (fTemp941 - (fTemp1002 + std::floor((fTemp941 - fTemp1002))));
-				fTemp1004 = (2.0f * fTemp1003);
-				fTemp1005 = std::floor((fTemp1004 + 1.0f));
-				fTemp1006 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp992));
-				fTemp1007 = (1.0f - fTemp1006);
-				fTemp1008 = (0.25f * fTemp1007);
-				fTemp1009 = (fTemp974 - (fTemp1008 + std::floor((fTemp974 - fTemp1008))));
-				fTemp1010 = (2.0f * fTemp1009);
-				fTemp1011 = std::floor((fTemp1010 + 1.0f));
-				fTemp1012 = ((fTemp957 * std::cos((3.14159274f * ((float((fTemp1003 >= 0.5f)) + fTemp1004) + (1.0f - (fTemp1005 + std::min<float>((fTemp1004 + (1.0f - fTemp1005)), ((fTemp1000 * (fTemp1005 - fTemp1004)) / fTemp1001)))))))) + (fTemp956 * std::cos((3.14159274f * ((float((fTemp1009 >= 0.5f)) + fTemp1010) + (1.0f - (fTemp1011 + std::min<float>((fTemp1010 + (1.0f - fTemp1011)), ((fTemp1006 * (fTemp1011 - fTemp1010)) / fTemp1007)))))))));
-			}
-			if (iSlow336) {
-				fTemp1013 = (0.25f * fTemp986);
-				fTemp1014 = (fTemp1013 + std::floor((fTemp941 - fTemp1013)));
-			}
-			if (iSlow336 | (iSlow334 | (iSlow330 | iSlow326))) {
-				fTemp1015 = (1.0f - fTemp941);
-			}
-			if (iSlow336) {
-				fTemp1016 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp985));
-				fTemp1017 = (0.25f * fTemp993);
-				fTemp1018 = (fTemp1017 + std::floor((fTemp974 - fTemp1017)));
-			}
-			if (iSlow336 | (iSlow334 | (iSlow330 | iSlow326))) {
-				fTemp1019 = (1.0f - fTemp974);
-			}
-			if (iSlow336) {
-				fTemp1020 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp992));
-				fTemp1021 = ((fTemp957 * std::cos((6.28318548f * (fTemp941 - (fTemp1014 + std::min<float>((fTemp941 - fTemp1014), (((fTemp1014 + fTemp1015) * fTemp1016) / (1.0f - fTemp1016)))))))) + (fTemp956 * std::cos((6.28318548f * (fTemp974 - (fTemp1018 + std::min<float>((fTemp974 - fTemp1018), (((fTemp1018 + fTemp1019) * fTemp1020) / (1.0f - fTemp1020)))))))));
-			}
-			if (iSlow334) {
-				fTemp1022 = ((0.125f * fTemp986) + (0.25f * fTemp985));
-				fTemp1023 = (fTemp1022 + std::floor((fTemp941 - fTemp1022)));
-				fTemp1024 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp985));
-				fTemp1025 = (0.49000001f * fTemp1024);
-				fTemp1026 = ((0.125f * fTemp993) + (0.25f * fTemp992));
-				fTemp1027 = (fTemp1026 + std::floor((fTemp974 - fTemp1026)));
-				fTemp1028 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp992));
-				fTemp1029 = (0.49000001f * fTemp1028);
-				fTemp1030 = ((fTemp957 * std::cos((12.566371f * ((fTemp941 + std::min<float>((0.49000001f * (((fTemp941 - fTemp1023) * fTemp1024) / (0.5f - fTemp1025))), (0.49000001f * ((fTemp1024 * (fTemp1023 + fTemp1015)) / (fTemp1025 + 0.5f))))) - fTemp1023)))) + (fTemp956 * std::cos((12.566371f * ((fTemp974 + std::min<float>((0.49000001f * (((fTemp974 - fTemp1027) * fTemp1028) / (0.5f - fTemp1029))), (0.49000001f * ((fTemp1028 * (fTemp1027 + fTemp1019)) / (fTemp1029 + 0.5f))))) - fTemp1027)))));
-			}
-			if (iSlow332) {
-				fTemp1031 = std::min<float>(0.975000024f, fTemp985);
-				fTemp1032 = (0.25f * (1.0f - fTemp1031));
-				fTemp1033 = (fTemp1032 + (0.5f * fTemp1031));
-				fTemp1034 = std::floor((fTemp941 - fTemp1033));
-				fTemp1035 = (fTemp941 - (fTemp1033 + fTemp1034));
-				fTemp1036 = std::min<float>(0.975000024f, fTemp992);
-				fTemp1037 = (0.25f * (1.0f - fTemp1036));
-				fTemp1038 = (fTemp1037 + (0.5f * fTemp1036));
-				fTemp1039 = std::floor((fTemp974 - fTemp1038));
-				fTemp1040 = (fTemp974 - (fTemp1038 + fTemp1039));
-				fTemp1041 = ((fTemp957 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1035 < 0.5f) ? fTemp1035 : (0.5f * (((fTemp941 - ((fTemp1032 + fTemp1034) + (0.5f * (fTemp1031 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp989))) + 1.0f))))))) + (fTemp956 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1040 < 0.5f) ? fTemp1040 : (0.5f * (((fTemp974 - ((fTemp1037 + fTemp1039) + (0.5f * (fTemp1036 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp996))) + 1.0f))))))));
-			}
-			if (iSlow330 | iSlow326) {
-				fTemp1042 = (fTemp941 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec222[0] * fSlow655) * fTemp942))) / fRec222[0])));
-				fTemp1043 = (fTemp974 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec239[0] * fSlow655) * fTemp942))) / fRec239[0])));
-			}
-			if (iSlow330) {
-				fTemp1044 = ((fTemp957 * (((0.0f - fTemp1015) * (1.0f - std::cos((6.28318548f * (fTemp1042 + (1.0f - std::floor((fTemp1042 + 1.0f)))))))) + 1.0f)) + (fTemp956 * (((0.0f - fTemp1019) * (1.0f - std::cos((6.28318548f * (fTemp1043 + (1.0f - std::floor((fTemp1043 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow328) {
-				fTemp1045 = (fTemp941 - (fTemp949 + fVec35[1]));
-				fRec245[0] = ((std::fabs(fTemp1045) < 0.5f) ? (fConst0 * fTemp1045) : fRec245[1]);
-				fTemp1046 = (fTemp950 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec245[0] * fSlow655) * fTemp942))) / fRec245[0])));
-				fTemp1047 = (fTemp974 - (fTemp978 + fVec38[1]));
-				fRec246[0] = ((std::fabs(fTemp1047) < 0.5f) ? (fConst0 * fTemp1047) : fRec246[1]);
-				fTemp1048 = (fTemp979 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec246[0] * fSlow655) * fTemp942))) / fRec246[0])));
-				fTemp1049 = ((fTemp957 * (((iTemp951 ? (2.0f * fTemp950) : (2.0f * (1.0f - fTemp950))) * (std::cos((6.28318548f * (fTemp1046 + (1.0f - std::floor((fTemp1046 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp956 * (((iTemp980 ? (2.0f * fTemp979) : (2.0f * (1.0f - fTemp979))) * (std::cos((6.28318548f * (fTemp1048 + (1.0f - std::floor((fTemp1048 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow326) {
-				fTemp1050 = (((fTemp957 * std::min<float>(1.0f, (2.0f * fTemp1015))) * std::sin((6.28318548f * (fTemp1042 - std::floor(fTemp1042))))) + ((fTemp956 * std::min<float>(1.0f, (2.0f * fTemp1019))) * std::sin((6.28318548f * (fTemp1043 - std::floor(fTemp1043))))));
-			}
-			fRec172[0] = (((((((((fSlow341 * fTemp984) + (fSlow339 * fTemp999)) + (fSlow337 * fTemp1012)) + (fSlow335 * fTemp1021)) + (fSlow333 * fTemp1030)) + (fSlow331 * fTemp1041)) + (fSlow329 * fTemp1044)) + (fSlow327 * fTemp1049)) + (fSlow325 * fTemp1050));
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp1051 = (fRec174[1] * ((fTemp40 * (fTemp429 - fTemp430)) + (fTemp39 * (fTemp431 - fTemp432))));
-				fTemp1052 = (fRec173[1] * ((fTemp40 * (fTemp434 - fTemp435)) + (fTemp39 * (fTemp436 - fTemp437))));
-				fTemp1053 = (fRec172[1] * ((fTemp40 * (fTemp439 - fTemp440)) + (fTemp39 * (fTemp441 - fTemp442))));
-				fTemp1054 = ((fTemp40 * (fTemp444 - fTemp445)) + (fTemp39 * (fTemp446 - fTemp447)));
-				fTemp1055 = ((fTemp40 * (fTemp449 - fTemp450)) + (fTemp39 * (fTemp451 - fTemp452)));
-				fTemp1056 = std::floor(fTemp1055);
-				fTemp1057 = (fTemp1056 + float(((fTemp1055 < 0.0f) & (fTemp1055 != fTemp1056))));
-				fTemp1058 = (fTemp101 + (0.00390625f * (fTemp1054 * std::pow(2.0f, (0.0f - fTemp1057)))));
-				iTemp1059 = int(fTemp1057);
-				fTemp1060 = (fRec171[1] * ((fTemp40 * (fTemp458 - fTemp459)) + (fTemp39 * (fTemp460 - fTemp461))));
-				fTemp1061 = (fTemp1051 + (fTemp1052 + (fTemp1053 + (std::fmod((256.0f * ((fTemp1058 - (fTemp115 + std::floor((fTemp1058 - fTemp115)))) * (((float((iTemp1059 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp1059)))))) + float((iTemp1059 == 0))) + float(((iTemp1059 > 0) * int(std::pow(2.0f, float(iTemp1059)))))))), 1.0f) + fTemp1060))));
-			}
-			if ((iSlow322 & iTemp76) | ((iSlow320 & iTemp76) | ((iSlow318 & iTemp76) | ((iSlow316 & iTemp76) | ((iSlow314 & iTemp76) | ((iSlow312 & iTemp76) | ((iSlow310 & iTemp76) | ((iSlow308 & iTemp76) | (iSlow306 & iTemp76))))))))) {
-				fTemp1062 = (fRec247[1] + (fTemp769 * (fTemp1061 - fRec248[1])));
-				fTemp1063 = (fTemp1062 / fTemp784);
-				fRec247[0] = ((2.0f * fTemp1063) - fRec247[1]);
-				fTemp1064 = (fRec248[1] + ((fTemp769 * fTemp1062) / fTemp784));
-				fRec248[0] = ((2.0f * fTemp1064) - fRec248[1]);
-				fRec249 = fTemp1064;
-			}
-			if ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | (iSlow306 & iTemp74))))))))) {
-				fTemp1065 = (fTemp769 * (fTemp1061 - fRec252[1]));
-				fTemp1066 = ((fTemp769 * ((((fRec252[1] + ((fTemp1065 + (0.215215757f * (fTemp832 * fRec250[1]))) / fTemp791)) + (fTemp793 * fRec251[1])) / fTemp794) - fRec250[1])) / fTemp791);
-				fRec250[0] = (fRec250[1] + (2.0f * fTemp1066));
-				fTemp1067 = (fRec250[1] + fTemp1066);
-				fRec251[0] = (fRec251[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp1067)) - fRec251[1])) / fTemp791)));
-				fRec252[0] = (fRec252[1] + (2.0f * (fTemp1065 / fTemp791)));
-				fRec253 = fTemp1067;
-			}
-			if ((iSlow322 & iTemp72) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp72) | (iSlow306 & iTemp72))))))))) {
-				fTemp1068 = (fTemp1061 - (fRec255[1] + (fTemp783 * fRec256[1])));
-				fTemp1069 = ((fTemp769 * fTemp1068) / fTemp784);
-				fTemp1070 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec256[1] + fTemp1069)));
-				fTemp1071 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp1070)));
-				fTemp1072 = ((fTemp769 * fTemp1070) * fTemp1071);
-				fRec254 = (fRec255[1] + fTemp1072);
-				fRec255[0] = (fRec255[1] + (2.0f * fTemp1072));
-				fTemp1073 = (fTemp1070 * fTemp1071);
-				fRec256[0] = (fTemp1069 + fTemp1073);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp1074 = (((fTemp766 * (((fTemp768 * fRec249) + (fTemp788 * fRec253)) + (fTemp798 * fRec254))) / fTemp805) + (fTemp806 * fTemp1061));
-				fVec40[0] = fTemp1074;
-				fTemp1075 = ((fTemp40 * (fTemp477 - fTemp478)) + (fTemp39 * (fTemp479 - fTemp480)));
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312))))) {
-				fTemp1076 = (fSlow768 * fTemp1075);
-			}
-			if (iSlow322) {
-				fTemp1077 = (2.0f * fTemp1076);
-				fTemp1078 = std::min<float>(1.0f, fTemp1077);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fTemp1079 = (fTemp1074 - fVec40[1]);
-				fRec258[0] = ((std::fabs(fTemp1079) < 0.5f) ? (fConst0 * fTemp1079) : fRec258[1]);
-			}
-			if (iSlow322) {
-				fTemp1080 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec258[0])))))));
-				fTemp1081 = (1.0f - fTemp1080);
-			}
-			if (iSlow322 | iSlow308) {
-				fTemp1082 = std::floor(fTemp1074);
-				fTemp1083 = (fTemp1074 - fTemp1082);
-				fVec41[0] = fTemp1083;
-				iTemp1084 = (fTemp1083 < 0.5f);
-				iVec42[0] = iTemp1084;
-			}
-			if (iSlow322) {
-				iTemp1085 = ((iVec42[1] <= 0) & (iTemp1084 > 0));
-				fRec263[0] = ((fRec263[1] * float((1 - iTemp1085))) + (4.65661287e-10f * (fTemp36 * float(iTemp1085))));
-				fTemp1086 = (fTemp1080 + 1.0f);
-				fRec262[0] = (0.0f - (((fTemp1081 * fRec262[1]) - (fRec263[0] + fRec263[1])) / fTemp1086));
-				fRec261[0] = (0.0f - (((fTemp1081 * fRec261[1]) - (fRec262[0] + fRec262[1])) / fTemp1086));
-				fRec260[0] = (0.0f - (((fTemp1081 * fRec260[1]) - (fRec261[0] + fRec261[1])) / fTemp1086));
-				fRec259[0] = (0.0f - (((fTemp1081 * fRec259[1]) - (fRec260[0] + fRec260[1])) / fTemp1086));
-				fRec257[0] = (0.0f - (((fRec257[1] * fTemp1081) - (fRec259[0] + fRec259[1])) / fTemp1086));
-				fTemp1087 = (std::sin((6.28318548f * fTemp1074)) * ((fTemp1078 * (fRec257[0] + -1.0f)) + 1.0f));
-				fTemp1088 = (std::max<float>(1.0f, fTemp1077) + -1.0f);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp1089 = std::fmod(std::fabs(fTemp1055), 1.0f);
-				fTemp1090 = (1.0f - fTemp1089);
-				fTemp1091 = (fTemp1056 + float((fTemp1055 > 0.0f)));
-				fTemp1092 = (fTemp101 + (0.00390625f * (fTemp1054 * std::pow(2.0f, (0.0f - fTemp1091)))));
-				iTemp1093 = int(fTemp1091);
-				fTemp1094 = ((((fTemp1060 + fTemp1053) + fTemp1052) + fTemp1051) + std::fmod((256.0f * ((fTemp1092 - (fTemp115 + std::floor((fTemp1092 - fTemp115)))) * (((float((iTemp1093 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp1093)))))) + float((iTemp1093 == 0))) + float(((iTemp1093 > 0) * int(std::pow(2.0f, float(iTemp1093)))))))), 1.0f));
-			}
-			if ((iSlow322 & iTemp76) | ((iSlow320 & iTemp76) | ((iSlow318 & iTemp76) | ((iSlow316 & iTemp76) | ((iSlow314 & iTemp76) | ((iSlow312 & iTemp76) | ((iSlow310 & iTemp76) | ((iSlow308 & iTemp76) | (iSlow306 & iTemp76))))))))) {
-				fTemp1095 = (fRec264[1] + (fTemp769 * (fTemp1094 - fRec265[1])));
-				fTemp1096 = (fTemp1095 / fTemp784);
-				fRec264[0] = ((2.0f * fTemp1096) - fRec264[1]);
-				fTemp1097 = (fRec265[1] + ((fTemp769 * fTemp1095) / fTemp784));
-				fRec265[0] = ((2.0f * fTemp1097) - fRec265[1]);
-				fRec266 = fTemp1097;
-			}
-			if ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | (iSlow306 & iTemp74))))))))) {
-				fTemp1098 = (fTemp769 * (fTemp1094 - fRec269[1]));
-				fTemp1099 = ((fTemp769 * ((((fRec269[1] + ((fTemp1098 + (0.215215757f * (fTemp832 * fRec267[1]))) / fTemp791)) + (fTemp793 * fRec268[1])) / fTemp794) - fRec267[1])) / fTemp791);
-				fRec267[0] = (fRec267[1] + (2.0f * fTemp1099));
-				fTemp1100 = (fRec267[1] + fTemp1099);
-				fRec268[0] = (fRec268[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp1100)) - fRec268[1])) / fTemp791)));
-				fRec269[0] = (fRec269[1] + (2.0f * (fTemp1098 / fTemp791)));
-				fRec270 = fTemp1100;
-			}
-			if ((iSlow322 & iTemp72) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp72) | (iSlow306 & iTemp72))))))))) {
-				fTemp1101 = (fTemp1094 - (fRec272[1] + (fTemp783 * fRec273[1])));
-				fTemp1102 = ((fTemp769 * fTemp1101) / fTemp784);
-				fTemp1103 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec273[1] + fTemp1102)));
-				fTemp1104 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp1103)));
-				fTemp1105 = ((fTemp769 * fTemp1103) * fTemp1104);
-				fRec271 = (fRec272[1] + fTemp1105);
-				fRec272[0] = (fRec272[1] + (2.0f * fTemp1105));
-				fTemp1106 = (fTemp1103 * fTemp1104);
-				fRec273[0] = (fTemp1102 + fTemp1106);
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fTemp1107 = (((fTemp766 * (((fTemp768 * fRec266) + (fTemp788 * fRec270)) + (fTemp798 * fRec271))) / fTemp805) + (fTemp806 * fTemp1094));
-				fVec43[0] = fTemp1107;
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fTemp1108 = (fTemp1107 - fVec43[1]);
-				fRec275[0] = ((std::fabs(fTemp1108) < 0.5f) ? (fConst0 * fTemp1108) : fRec275[1]);
-			}
-			if (iSlow322) {
-				fTemp1109 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec275[0])))))));
-				fTemp1110 = (1.0f - fTemp1109);
-			}
-			if (iSlow322 | iSlow308) {
-				fTemp1111 = std::floor(fTemp1107);
-				fTemp1112 = (fTemp1107 - fTemp1111);
-				fVec44[0] = fTemp1112;
-				iTemp1113 = (fTemp1112 < 0.5f);
-				iVec45[0] = iTemp1113;
-			}
-			if (iSlow322) {
-				iTemp1114 = ((iVec45[1] <= 0) & (iTemp1113 > 0));
-				fRec280[0] = ((fRec280[1] * float((1 - iTemp1114))) + (4.65661287e-10f * (fTemp36 * float(iTemp1114))));
-				fTemp1115 = (fTemp1109 + 1.0f);
-				fRec279[0] = (0.0f - (((fTemp1110 * fRec279[1]) - (fRec280[0] + fRec280[1])) / fTemp1115));
-				fRec278[0] = (0.0f - (((fTemp1110 * fRec278[1]) - (fRec279[0] + fRec279[1])) / fTemp1115));
-				fRec277[0] = (0.0f - (((fTemp1110 * fRec277[1]) - (fRec278[0] + fRec278[1])) / fTemp1115));
-				fRec276[0] = (0.0f - (((fTemp1110 * fRec276[1]) - (fRec277[0] + fRec277[1])) / fTemp1115));
-				fRec274[0] = (0.0f - (((fRec274[1] * fTemp1110) - (fRec276[0] + fRec276[1])) / fTemp1115));
-				fTemp1116 = (std::sin((6.28318548f * fTemp1107)) * ((fTemp1078 * (fRec274[0] + -1.0f)) + 1.0f));
-				fTemp1117 = (((fTemp1087 + (fTemp1088 * (fRec257[0] - fTemp1087))) * fTemp1090) + (fTemp1089 * (fTemp1116 + (fTemp1088 * (fRec274[0] - fTemp1116)))));
-			}
-			if (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312)))) {
-				fTemp1118 = (fTemp1076 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec258[0] - fConst7))))));
-			}
-			if (iSlow320 | (iSlow316 | (iSlow314 | iSlow312))) {
-				fTemp1119 = (1.0f - fTemp1118);
-			}
-			if (iSlow320) {
-				fTemp1120 = ((0.75f * fTemp1119) + (fTemp1074 + (0.5f * fTemp1118)));
-				fTemp1121 = std::floor(fTemp1120);
-			}
-			if (iSlow320 | iSlow312) {
-				fTemp1122 = (0.5f * fTemp1119);
-			}
-			if (iSlow320) {
-				fTemp1123 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp1122));
-				fTemp1124 = (0.5f - fTemp1123);
-			}
-			if (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | iSlow312)))) {
-				fTemp1125 = (fTemp1076 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec275[0] - fConst7))))));
-			}
-			if (iSlow320 | (iSlow316 | (iSlow314 | iSlow312))) {
-				fTemp1126 = (1.0f - fTemp1125);
-			}
-			if (iSlow320) {
-				fTemp1127 = ((0.75f * fTemp1126) + (fTemp1107 + (0.5f * fTemp1125)));
-				fTemp1128 = std::floor(fTemp1127);
-			}
-			if (iSlow320 | iSlow312) {
-				fTemp1129 = (0.5f * fTemp1126);
-			}
-			if (iSlow320) {
-				fTemp1130 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp1129));
-				fTemp1131 = (0.5f - fTemp1130);
-				fTemp1132 = ((fTemp1090 * std::cos((6.28318548f * ((fTemp1120 + std::min<float>((((fTemp1120 - fTemp1121) * fTemp1124) / fTemp1123), ((fTemp1124 * (fTemp1121 + (1.0f - fTemp1120))) / (1.0f - fTemp1123)))) - fTemp1121)))) + (fTemp1089 * std::cos((6.28318548f * ((fTemp1127 + std::min<float>((((fTemp1127 - fTemp1128) * fTemp1131) / fTemp1130), ((fTemp1131 * (fTemp1128 + (1.0f - fTemp1127))) / (1.0f - fTemp1130)))) - fTemp1128)))));
-			}
-			if (iSlow318) {
-				fTemp1133 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp1118));
-				fTemp1134 = (1.0f - fTemp1133);
-				fTemp1135 = (0.25f * fTemp1134);
-				fTemp1136 = (fTemp1074 - (fTemp1135 + std::floor((fTemp1074 - fTemp1135))));
-				fTemp1137 = (2.0f * fTemp1136);
-				fTemp1138 = std::floor((fTemp1137 + 1.0f));
-				fTemp1139 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp1125));
-				fTemp1140 = (1.0f - fTemp1139);
-				fTemp1141 = (0.25f * fTemp1140);
-				fTemp1142 = (fTemp1107 - (fTemp1141 + std::floor((fTemp1107 - fTemp1141))));
-				fTemp1143 = (2.0f * fTemp1142);
-				fTemp1144 = std::floor((fTemp1143 + 1.0f));
-				fTemp1145 = ((fTemp1090 * std::cos((3.14159274f * ((float((fTemp1136 >= 0.5f)) + fTemp1137) + (1.0f - (fTemp1138 + std::min<float>((fTemp1137 + (1.0f - fTemp1138)), ((fTemp1133 * (fTemp1138 - fTemp1137)) / fTemp1134)))))))) + (fTemp1089 * std::cos((3.14159274f * ((float((fTemp1142 >= 0.5f)) + fTemp1143) + (1.0f - (fTemp1144 + std::min<float>((fTemp1143 + (1.0f - fTemp1144)), ((fTemp1139 * (fTemp1144 - fTemp1143)) / fTemp1140)))))))));
-			}
-			if (iSlow316) {
-				fTemp1146 = (0.25f * fTemp1119);
-				fTemp1147 = (fTemp1146 + std::floor((fTemp1074 - fTemp1146)));
-			}
-			if (iSlow316 | (iSlow314 | (iSlow310 | iSlow306))) {
-				fTemp1148 = (1.0f - fTemp1074);
-			}
-			if (iSlow316) {
-				fTemp1149 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp1118));
-				fTemp1150 = (0.25f * fTemp1126);
-				fTemp1151 = (fTemp1150 + std::floor((fTemp1107 - fTemp1150)));
-			}
-			if (iSlow316 | (iSlow314 | (iSlow310 | iSlow306))) {
-				fTemp1152 = (1.0f - fTemp1107);
-			}
-			if (iSlow316) {
-				fTemp1153 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp1125));
-				fTemp1154 = ((fTemp1090 * std::cos((6.28318548f * (fTemp1074 - (fTemp1147 + std::min<float>((fTemp1074 - fTemp1147), (((fTemp1147 + fTemp1148) * fTemp1149) / (1.0f - fTemp1149)))))))) + (fTemp1089 * std::cos((6.28318548f * (fTemp1107 - (fTemp1151 + std::min<float>((fTemp1107 - fTemp1151), (((fTemp1151 + fTemp1152) * fTemp1153) / (1.0f - fTemp1153)))))))));
-			}
-			if (iSlow314) {
-				fTemp1155 = ((0.125f * fTemp1119) + (0.25f * fTemp1118));
-				fTemp1156 = (fTemp1155 + std::floor((fTemp1074 - fTemp1155)));
-				fTemp1157 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp1118));
-				fTemp1158 = (0.49000001f * fTemp1157);
-				fTemp1159 = ((0.125f * fTemp1126) + (0.25f * fTemp1125));
-				fTemp1160 = (fTemp1159 + std::floor((fTemp1107 - fTemp1159)));
-				fTemp1161 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp1125));
-				fTemp1162 = (0.49000001f * fTemp1161);
-				fTemp1163 = ((fTemp1090 * std::cos((12.566371f * ((fTemp1074 + std::min<float>((0.49000001f * (((fTemp1074 - fTemp1156) * fTemp1157) / (0.5f - fTemp1158))), (0.49000001f * ((fTemp1157 * (fTemp1156 + fTemp1148)) / (fTemp1158 + 0.5f))))) - fTemp1156)))) + (fTemp1089 * std::cos((12.566371f * ((fTemp1107 + std::min<float>((0.49000001f * (((fTemp1107 - fTemp1160) * fTemp1161) / (0.5f - fTemp1162))), (0.49000001f * ((fTemp1161 * (fTemp1160 + fTemp1152)) / (fTemp1162 + 0.5f))))) - fTemp1160)))));
-			}
-			if (iSlow312) {
-				fTemp1164 = std::min<float>(0.975000024f, fTemp1118);
-				fTemp1165 = (0.25f * (1.0f - fTemp1164));
-				fTemp1166 = (fTemp1165 + (0.5f * fTemp1164));
-				fTemp1167 = std::floor((fTemp1074 - fTemp1166));
-				fTemp1168 = (fTemp1074 - (fTemp1166 + fTemp1167));
-				fTemp1169 = std::min<float>(0.975000024f, fTemp1125);
-				fTemp1170 = (0.25f * (1.0f - fTemp1169));
-				fTemp1171 = (fTemp1170 + (0.5f * fTemp1169));
-				fTemp1172 = std::floor((fTemp1107 - fTemp1171));
-				fTemp1173 = (fTemp1107 - (fTemp1171 + fTemp1172));
-				fTemp1174 = ((fTemp1090 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1168 < 0.5f) ? fTemp1168 : (0.5f * (((fTemp1074 - ((fTemp1165 + fTemp1167) + (0.5f * (fTemp1164 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp1122))) + 1.0f))))))) + (fTemp1089 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1173 < 0.5f) ? fTemp1173 : (0.5f * (((fTemp1107 - ((fTemp1170 + fTemp1172) + (0.5f * (fTemp1169 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp1129))) + 1.0f))))))));
-			}
-			if (iSlow310 | iSlow306) {
-				fTemp1175 = (fTemp1074 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec258[0] * fSlow768) * fTemp1075))) / fRec258[0])));
-				fTemp1176 = (fTemp1107 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec275[0] * fSlow768) * fTemp1075))) / fRec275[0])));
-			}
-			if (iSlow310) {
-				fTemp1177 = ((fTemp1090 * (((0.0f - fTemp1148) * (1.0f - std::cos((6.28318548f * (fTemp1175 + (1.0f - std::floor((fTemp1175 + 1.0f)))))))) + 1.0f)) + (fTemp1089 * (((0.0f - fTemp1152) * (1.0f - std::cos((6.28318548f * (fTemp1176 + (1.0f - std::floor((fTemp1176 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow308) {
-				fTemp1178 = (fTemp1074 - (fTemp1082 + fVec41[1]));
-				fRec281[0] = ((std::fabs(fTemp1178) < 0.5f) ? (fConst0 * fTemp1178) : fRec281[1]);
-				fTemp1179 = (fTemp1083 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec281[0] * fSlow768) * fTemp1075))) / fRec281[0])));
-				fTemp1180 = (fTemp1107 - (fTemp1111 + fVec44[1]));
-				fRec282[0] = ((std::fabs(fTemp1180) < 0.5f) ? (fConst0 * fTemp1180) : fRec282[1]);
-				fTemp1181 = (fTemp1112 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec282[0] * fSlow768) * fTemp1075))) / fRec282[0])));
-				fTemp1182 = ((fTemp1090 * (((iTemp1084 ? (2.0f * fTemp1083) : (2.0f * (1.0f - fTemp1083))) * (std::cos((6.28318548f * (fTemp1179 + (1.0f - std::floor((fTemp1179 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp1089 * (((iTemp1113 ? (2.0f * fTemp1112) : (2.0f * (1.0f - fTemp1112))) * (std::cos((6.28318548f * (fTemp1181 + (1.0f - std::floor((fTemp1181 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow306) {
-				fTemp1183 = (((fTemp1090 * std::min<float>(1.0f, (2.0f * fTemp1148))) * std::sin((6.28318548f * (fTemp1175 - std::floor(fTemp1175))))) + ((fTemp1089 * std::min<float>(1.0f, (2.0f * fTemp1152))) * std::sin((6.28318548f * (fTemp1176 - std::floor(fTemp1176))))));
-			}
-			fRec173[0] = (((((((((fSlow321 * fTemp1117) + (fSlow319 * fTemp1132)) + (fSlow317 * fTemp1145)) + (fSlow315 * fTemp1154)) + (fSlow313 * fTemp1163)) + (fSlow311 * fTemp1174)) + (fSlow309 * fTemp1177)) + (fSlow307 * fTemp1182)) + (fSlow305 * fTemp1183));
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp1184 = (fRec174[1] * ((fTemp40 * (fTemp590 - fTemp591)) + (fTemp39 * (fTemp592 - fTemp593))));
-				fTemp1185 = (fRec173[1] * ((fTemp40 * (fTemp595 - fTemp596)) + (fTemp39 * (fTemp597 - fTemp598))));
-				fTemp1186 = (fRec172[1] * ((fTemp40 * (fTemp600 - fTemp601)) + (fTemp39 * (fTemp602 - fTemp603))));
-				fTemp1187 = ((fTemp40 * (fTemp605 - fTemp606)) + (fTemp39 * (fTemp607 - fTemp608)));
-				fTemp1188 = ((fTemp40 * (fTemp610 - fTemp611)) + (fTemp39 * (fTemp612 - fTemp613)));
-				fTemp1189 = std::floor(fTemp1188);
-				fTemp1190 = (fTemp1189 + float(((fTemp1188 < 0.0f) & (fTemp1188 != fTemp1189))));
-				fTemp1191 = (fTemp101 + (0.00390625f * (fTemp1187 * std::pow(2.0f, (0.0f - fTemp1190)))));
-				iTemp1192 = int(fTemp1190);
-				fTemp1193 = (fRec171[1] * ((fTemp40 * (fTemp619 - fTemp620)) + (fTemp39 * (fTemp621 - fTemp622))));
-				fTemp1194 = (fTemp1184 + (fTemp1185 + (fTemp1186 + (std::fmod((256.0f * ((fTemp1191 - (fTemp115 + std::floor((fTemp1191 - fTemp115)))) * (((float((iTemp1192 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp1192)))))) + float((iTemp1192 == 0))) + float(((iTemp1192 > 0) * int(std::pow(2.0f, float(iTemp1192)))))))), 1.0f) + fTemp1193))));
-			}
-			if ((iSlow302 & iTemp76) | ((iSlow300 & iTemp76) | ((iSlow298 & iTemp76) | ((iSlow296 & iTemp76) | ((iSlow294 & iTemp76) | ((iSlow292 & iTemp76) | ((iSlow290 & iTemp76) | ((iSlow288 & iTemp76) | (iSlow286 & iTemp76))))))))) {
-				fTemp1195 = (fRec283[1] + (fTemp769 * (fTemp1194 - fRec284[1])));
-				fTemp1196 = (fTemp1195 / fTemp784);
-				fRec283[0] = ((2.0f * fTemp1196) - fRec283[1]);
-				fTemp1197 = (fRec284[1] + ((fTemp769 * fTemp1195) / fTemp784));
-				fRec284[0] = ((2.0f * fTemp1197) - fRec284[1]);
-				fRec285 = fTemp1197;
-			}
-			if ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74))))))))) {
-				fTemp1198 = (fTemp769 * (fTemp1194 - fRec288[1]));
-				fTemp1199 = ((fTemp769 * ((((fRec288[1] + ((fTemp1198 + (0.215215757f * (fTemp832 * fRec286[1]))) / fTemp791)) + (fTemp793 * fRec287[1])) / fTemp794) - fRec286[1])) / fTemp791);
-				fRec286[0] = (fRec286[1] + (2.0f * fTemp1199));
-				fTemp1200 = (fRec286[1] + fTemp1199);
-				fRec287[0] = (fRec287[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp1200)) - fRec287[1])) / fTemp791)));
-				fRec288[0] = (fRec288[1] + (2.0f * (fTemp1198 / fTemp791)));
-				fRec289 = fTemp1200;
-			}
-			if ((iSlow302 & iTemp72) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp72) | (iSlow286 & iTemp72))))))))) {
-				fTemp1201 = (fTemp1194 - (fRec291[1] + (fTemp783 * fRec292[1])));
-				fTemp1202 = ((fTemp769 * fTemp1201) / fTemp784);
-				fTemp1203 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec292[1] + fTemp1202)));
-				fTemp1204 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp1203)));
-				fTemp1205 = ((fTemp769 * fTemp1203) * fTemp1204);
-				fRec290 = (fRec291[1] + fTemp1205);
-				fRec291[0] = (fRec291[1] + (2.0f * fTemp1205));
-				fTemp1206 = (fTemp1203 * fTemp1204);
-				fRec292[0] = (fTemp1202 + fTemp1206);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp1207 = (((fTemp766 * (((fTemp768 * fRec285) + (fTemp788 * fRec289)) + (fTemp798 * fRec290))) / fTemp805) + (fTemp806 * fTemp1194));
-				fVec46[0] = fTemp1207;
-				fTemp1208 = ((fTemp40 * (fTemp638 - fTemp639)) + (fTemp39 * (fTemp640 - fTemp641)));
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292))))) {
-				fTemp1209 = (fSlow881 * fTemp1208);
-			}
-			if (iSlow302) {
-				fTemp1210 = (2.0f * fTemp1209);
-				fTemp1211 = std::min<float>(1.0f, fTemp1210);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fTemp1212 = (fTemp1207 - fVec46[1]);
-				fRec294[0] = ((std::fabs(fTemp1212) < 0.5f) ? (fConst0 * fTemp1212) : fRec294[1]);
-			}
-			if (iSlow302) {
-				fTemp1213 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec294[0])))))));
-				fTemp1214 = (1.0f - fTemp1213);
-			}
-			if (iSlow302 | iSlow288) {
-				fTemp1215 = std::floor(fTemp1207);
-				fTemp1216 = (fTemp1207 - fTemp1215);
-				fVec47[0] = fTemp1216;
-				iTemp1217 = (fTemp1216 < 0.5f);
-				iVec48[0] = iTemp1217;
-			}
-			if (iSlow302) {
-				iTemp1218 = ((iVec48[1] <= 0) & (iTemp1217 > 0));
-				fRec299[0] = ((fRec299[1] * float((1 - iTemp1218))) + (4.65661287e-10f * (fTemp36 * float(iTemp1218))));
-				fTemp1219 = (fTemp1213 + 1.0f);
-				fRec298[0] = (0.0f - (((fTemp1214 * fRec298[1]) - (fRec299[0] + fRec299[1])) / fTemp1219));
-				fRec297[0] = (0.0f - (((fTemp1214 * fRec297[1]) - (fRec298[0] + fRec298[1])) / fTemp1219));
-				fRec296[0] = (0.0f - (((fTemp1214 * fRec296[1]) - (fRec297[0] + fRec297[1])) / fTemp1219));
-				fRec295[0] = (0.0f - (((fTemp1214 * fRec295[1]) - (fRec296[0] + fRec296[1])) / fTemp1219));
-				fRec293[0] = (0.0f - (((fRec293[1] * fTemp1214) - (fRec295[0] + fRec295[1])) / fTemp1219));
-				fTemp1220 = (std::sin((6.28318548f * fTemp1207)) * ((fTemp1211 * (fRec293[0] + -1.0f)) + 1.0f));
-				fTemp1221 = (std::max<float>(1.0f, fTemp1210) + -1.0f);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp1222 = std::fmod(std::fabs(fTemp1188), 1.0f);
-				fTemp1223 = (1.0f - fTemp1222);
-				fTemp1224 = (fTemp1189 + float((fTemp1188 > 0.0f)));
-				fTemp1225 = (fTemp101 + (0.00390625f * (fTemp1187 * std::pow(2.0f, (0.0f - fTemp1224)))));
-				iTemp1226 = int(fTemp1224);
-				fTemp1227 = ((((fTemp1193 + fTemp1186) + fTemp1185) + fTemp1184) + std::fmod((256.0f * ((fTemp1225 - (fTemp115 + std::floor((fTemp1225 - fTemp115)))) * (((float((iTemp1226 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTemp1226)))))) + float((iTemp1226 == 0))) + float(((iTemp1226 > 0) * int(std::pow(2.0f, float(iTemp1226)))))))), 1.0f));
-			}
-			if ((iSlow302 & iTemp76) | ((iSlow300 & iTemp76) | ((iSlow298 & iTemp76) | ((iSlow296 & iTemp76) | ((iSlow294 & iTemp76) | ((iSlow292 & iTemp76) | ((iSlow290 & iTemp76) | ((iSlow288 & iTemp76) | (iSlow286 & iTemp76))))))))) {
-				fTemp1228 = (fRec300[1] + (fTemp769 * (fTemp1227 - fRec301[1])));
-				fTemp1229 = (fTemp1228 / fTemp784);
-				fRec300[0] = ((2.0f * fTemp1229) - fRec300[1]);
-				fTemp1230 = (fRec301[1] + ((fTemp769 * fTemp1228) / fTemp784));
-				fRec301[0] = ((2.0f * fTemp1230) - fRec301[1]);
-				fRec302 = fTemp1230;
-			}
-			if ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74))))))))) {
-				fTemp1231 = (fTemp769 * (fTemp1227 - fRec305[1]));
-				fTemp1232 = ((fTemp769 * ((((fRec305[1] + ((fTemp1231 + (0.215215757f * (fTemp832 * fRec303[1]))) / fTemp791)) + (fTemp793 * fRec304[1])) / fTemp794) - fRec303[1])) / fTemp791);
-				fRec303[0] = (fRec303[1] + (2.0f * fTemp1232));
-				fTemp1233 = (fRec303[1] + fTemp1232);
-				fRec304[0] = (fRec304[1] + (2.0f * ((fTemp769 * ((0.215215757f * (fTemp790 * fTemp1233)) - fRec304[1])) / fTemp791)));
-				fRec305[0] = (fRec305[1] + (2.0f * (fTemp1231 / fTemp791)));
-				fRec306 = fTemp1233;
-			}
-			if ((iSlow302 & iTemp72) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp72) | (iSlow286 & iTemp72))))))))) {
-				fTemp1234 = (fTemp1227 - (fRec308[1] + (fTemp783 * fRec309[1])));
-				fTemp1235 = ((fTemp769 * fTemp1234) / fTemp784);
-				fTemp1236 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec309[1] + fTemp1235)));
-				fTemp1237 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTemp1236)));
-				fTemp1238 = ((fTemp769 * fTemp1236) * fTemp1237);
-				fRec307 = (fRec308[1] + fTemp1238);
-				fRec308[0] = (fRec308[1] + (2.0f * fTemp1238));
-				fTemp1239 = (fTemp1236 * fTemp1237);
-				fRec309[0] = (fTemp1235 + fTemp1239);
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fTemp1240 = (((fTemp766 * (((fTemp768 * fRec302) + (fTemp788 * fRec306)) + (fTemp798 * fRec307))) / fTemp805) + (fTemp806 * fTemp1227));
-				fVec49[0] = fTemp1240;
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fTemp1241 = (fTemp1240 - fVec49[1]);
-				fRec311[0] = ((std::fabs(fTemp1241) < 0.5f) ? (fConst0 * fTemp1241) : fRec311[1]);
-			}
-			if (iSlow302) {
-				fTemp1242 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec311[0])))))));
-				fTemp1243 = (1.0f - fTemp1242);
-			}
-			if (iSlow302 | iSlow288) {
-				fTemp1244 = std::floor(fTemp1240);
-				fTemp1245 = (fTemp1240 - fTemp1244);
-				fVec50[0] = fTemp1245;
-				iTemp1246 = (fTemp1245 < 0.5f);
-				iVec51[0] = iTemp1246;
-			}
-			if (iSlow302) {
-				iTemp1247 = ((iVec51[1] <= 0) & (iTemp1246 > 0));
-				fRec316[0] = ((fRec316[1] * float((1 - iTemp1247))) + (4.65661287e-10f * (fTemp36 * float(iTemp1247))));
-				fTemp1248 = (fTemp1242 + 1.0f);
-				fRec315[0] = (0.0f - (((fTemp1243 * fRec315[1]) - (fRec316[0] + fRec316[1])) / fTemp1248));
-				fRec314[0] = (0.0f - (((fTemp1243 * fRec314[1]) - (fRec315[0] + fRec315[1])) / fTemp1248));
-				fRec313[0] = (0.0f - (((fTemp1243 * fRec313[1]) - (fRec314[0] + fRec314[1])) / fTemp1248));
-				fRec312[0] = (0.0f - (((fTemp1243 * fRec312[1]) - (fRec313[0] + fRec313[1])) / fTemp1248));
-				fRec310[0] = (0.0f - (((fRec310[1] * fTemp1243) - (fRec312[0] + fRec312[1])) / fTemp1248));
-				fTemp1249 = (std::sin((6.28318548f * fTemp1240)) * ((fTemp1211 * (fRec310[0] + -1.0f)) + 1.0f));
-				fTemp1250 = (((fTemp1220 + (fTemp1221 * (fRec293[0] - fTemp1220))) * fTemp1223) + (fTemp1222 * (fTemp1249 + (fTemp1221 * (fRec310[0] - fTemp1249)))));
-			}
-			if (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292)))) {
-				fTemp1251 = (fTemp1209 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec294[0] - fConst7))))));
-			}
-			if (iSlow300 | (iSlow296 | (iSlow294 | iSlow292))) {
-				fTemp1252 = (1.0f - fTemp1251);
-			}
-			if (iSlow300) {
-				fTemp1253 = ((0.75f * fTemp1252) + (fTemp1207 + (0.5f * fTemp1251)));
-				fTemp1254 = std::floor(fTemp1253);
-			}
-			if (iSlow300 | iSlow292) {
-				fTemp1255 = (0.5f * fTemp1252);
-			}
-			if (iSlow300) {
-				fTemp1256 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp1255));
-				fTemp1257 = (0.5f - fTemp1256);
-			}
-			if (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | iSlow292)))) {
-				fTemp1258 = (fTemp1209 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec311[0] - fConst7))))));
-			}
-			if (iSlow300 | (iSlow296 | (iSlow294 | iSlow292))) {
-				fTemp1259 = (1.0f - fTemp1258);
-			}
-			if (iSlow300) {
-				fTemp1260 = ((0.75f * fTemp1259) + (fTemp1240 + (0.5f * fTemp1258)));
-				fTemp1261 = std::floor(fTemp1260);
-			}
-			if (iSlow300 | iSlow292) {
-				fTemp1262 = (0.5f * fTemp1259);
-			}
-			if (iSlow300) {
-				fTemp1263 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTemp1262));
-				fTemp1264 = (0.5f - fTemp1263);
-				fTemp1265 = ((fTemp1223 * std::cos((6.28318548f * ((fTemp1253 + std::min<float>((((fTemp1253 - fTemp1254) * fTemp1257) / fTemp1256), ((fTemp1257 * (fTemp1254 + (1.0f - fTemp1253))) / (1.0f - fTemp1256)))) - fTemp1254)))) + (fTemp1222 * std::cos((6.28318548f * ((fTemp1260 + std::min<float>((((fTemp1260 - fTemp1261) * fTemp1264) / fTemp1263), ((fTemp1264 * (fTemp1261 + (1.0f - fTemp1260))) / (1.0f - fTemp1263)))) - fTemp1261)))));
-			}
-			if (iSlow298) {
-				fTemp1266 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp1251));
-				fTemp1267 = (1.0f - fTemp1266);
-				fTemp1268 = (0.25f * fTemp1267);
-				fTemp1269 = (fTemp1207 - (fTemp1268 + std::floor((fTemp1207 - fTemp1268))));
-				fTemp1270 = (2.0f * fTemp1269);
-				fTemp1271 = std::floor((fTemp1270 + 1.0f));
-				fTemp1272 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTemp1258));
-				fTemp1273 = (1.0f - fTemp1272);
-				fTemp1274 = (0.25f * fTemp1273);
-				fTemp1275 = (fTemp1240 - (fTemp1274 + std::floor((fTemp1240 - fTemp1274))));
-				fTemp1276 = (2.0f * fTemp1275);
-				fTemp1277 = std::floor((fTemp1276 + 1.0f));
-				fTemp1278 = ((fTemp1223 * std::cos((3.14159274f * ((float((fTemp1269 >= 0.5f)) + fTemp1270) + (1.0f - (fTemp1271 + std::min<float>((fTemp1270 + (1.0f - fTemp1271)), ((fTemp1266 * (fTemp1271 - fTemp1270)) / fTemp1267)))))))) + (fTemp1222 * std::cos((3.14159274f * ((float((fTemp1275 >= 0.5f)) + fTemp1276) + (1.0f - (fTemp1277 + std::min<float>((fTemp1276 + (1.0f - fTemp1277)), ((fTemp1272 * (fTemp1277 - fTemp1276)) / fTemp1273)))))))));
-			}
-			if (iSlow296) {
-				fTemp1279 = (0.25f * fTemp1252);
-				fTemp1280 = (fTemp1279 + std::floor((fTemp1207 - fTemp1279)));
-			}
-			if (iSlow296 | (iSlow294 | (iSlow290 | iSlow286))) {
-				fTemp1281 = (1.0f - fTemp1207);
-			}
-			if (iSlow296) {
-				fTemp1282 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp1251));
-				fTemp1283 = (0.25f * fTemp1259);
-				fTemp1284 = (fTemp1283 + std::floor((fTemp1240 - fTemp1283)));
-			}
-			if (iSlow296 | (iSlow294 | (iSlow290 | iSlow286))) {
-				fTemp1285 = (1.0f - fTemp1240);
-			}
-			if (iSlow296) {
-				fTemp1286 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTemp1258));
-				fTemp1287 = ((fTemp1223 * std::cos((6.28318548f * (fTemp1207 - (fTemp1280 + std::min<float>((fTemp1207 - fTemp1280), (((fTemp1280 + fTemp1281) * fTemp1282) / (1.0f - fTemp1282)))))))) + (fTemp1222 * std::cos((6.28318548f * (fTemp1240 - (fTemp1284 + std::min<float>((fTemp1240 - fTemp1284), (((fTemp1284 + fTemp1285) * fTemp1286) / (1.0f - fTemp1286)))))))));
-			}
-			if (iSlow294) {
-				fTemp1288 = ((0.125f * fTemp1252) + (0.25f * fTemp1251));
-				fTemp1289 = (fTemp1288 + std::floor((fTemp1207 - fTemp1288)));
-				fTemp1290 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp1251));
-				fTemp1291 = (0.49000001f * fTemp1290);
-				fTemp1292 = ((0.125f * fTemp1259) + (0.25f * fTemp1258));
-				fTemp1293 = (fTemp1292 + std::floor((fTemp1240 - fTemp1292)));
-				fTemp1294 = std::min<float>(1.0f, std::max<float>(0.0f, fTemp1258));
-				fTemp1295 = (0.49000001f * fTemp1294);
-				fTemp1296 = ((fTemp1223 * std::cos((12.566371f * ((fTemp1207 + std::min<float>((0.49000001f * (((fTemp1207 - fTemp1289) * fTemp1290) / (0.5f - fTemp1291))), (0.49000001f * ((fTemp1290 * (fTemp1289 + fTemp1281)) / (fTemp1291 + 0.5f))))) - fTemp1289)))) + (fTemp1222 * std::cos((12.566371f * ((fTemp1240 + std::min<float>((0.49000001f * (((fTemp1240 - fTemp1293) * fTemp1294) / (0.5f - fTemp1295))), (0.49000001f * ((fTemp1294 * (fTemp1293 + fTemp1285)) / (fTemp1295 + 0.5f))))) - fTemp1293)))));
-			}
-			if (iSlow292) {
-				fTemp1297 = std::min<float>(0.975000024f, fTemp1251);
-				fTemp1298 = (0.25f * (1.0f - fTemp1297));
-				fTemp1299 = (fTemp1298 + (0.5f * fTemp1297));
-				fTemp1300 = std::floor((fTemp1207 - fTemp1299));
-				fTemp1301 = (fTemp1207 - (fTemp1299 + fTemp1300));
-				fTemp1302 = std::min<float>(0.975000024f, fTemp1258);
-				fTemp1303 = (0.25f * (1.0f - fTemp1302));
-				fTemp1304 = (fTemp1303 + (0.5f * fTemp1302));
-				fTemp1305 = std::floor((fTemp1240 - fTemp1304));
-				fTemp1306 = (fTemp1240 - (fTemp1304 + fTemp1305));
-				fTemp1307 = ((fTemp1223 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1301 < 0.5f) ? fTemp1301 : (0.5f * (((fTemp1207 - ((fTemp1298 + fTemp1300) + (0.5f * (fTemp1297 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp1255))) + 1.0f))))))) + (fTemp1222 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTemp1306 < 0.5f) ? fTemp1306 : (0.5f * (((fTemp1240 - ((fTemp1303 + fTemp1305) + (0.5f * (fTemp1302 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTemp1262))) + 1.0f))))))));
-			}
-			if (iSlow290 | iSlow286) {
-				fTemp1308 = (fTemp1207 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec294[0] * fSlow881) * fTemp1208))) / fRec294[0])));
-				fTemp1309 = (fTemp1240 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec311[0] * fSlow881) * fTemp1208))) / fRec311[0])));
-			}
-			if (iSlow290) {
-				fTemp1310 = ((fTemp1223 * (((0.0f - fTemp1281) * (1.0f - std::cos((6.28318548f * (fTemp1308 + (1.0f - std::floor((fTemp1308 + 1.0f)))))))) + 1.0f)) + (fTemp1222 * (((0.0f - fTemp1285) * (1.0f - std::cos((6.28318548f * (fTemp1309 + (1.0f - std::floor((fTemp1309 + 1.0f)))))))) + 1.0f)));
-			}
-			if (iSlow288) {
-				fTemp1311 = (fTemp1207 - (fTemp1215 + fVec47[1]));
-				fRec317[0] = ((std::fabs(fTemp1311) < 0.5f) ? (fConst0 * fTemp1311) : fRec317[1]);
-				fTemp1312 = (fTemp1216 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec317[0] * fSlow881) * fTemp1208))) / fRec317[0])));
-				fTemp1313 = (fTemp1240 - (fTemp1244 + fVec50[1]));
-				fRec318[0] = ((std::fabs(fTemp1313) < 0.5f) ? (fConst0 * fTemp1313) : fRec318[1]);
-				fTemp1314 = (fTemp1245 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec318[0] * fSlow881) * fTemp1208))) / fRec318[0])));
-				fTemp1315 = ((fTemp1223 * (((iTemp1217 ? (2.0f * fTemp1216) : (2.0f * (1.0f - fTemp1216))) * (std::cos((6.28318548f * (fTemp1312 + (1.0f - std::floor((fTemp1312 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTemp1222 * (((iTemp1246 ? (2.0f * fTemp1245) : (2.0f * (1.0f - fTemp1245))) * (std::cos((6.28318548f * (fTemp1314 + (1.0f - std::floor((fTemp1314 + 1.0f)))))) + 1.0f)) + -1.0f)));
-			}
-			if (iSlow286) {
-				fTemp1316 = (((fTemp1223 * std::min<float>(1.0f, (2.0f * fTemp1281))) * std::sin((6.28318548f * (fTemp1308 - std::floor(fTemp1308))))) + ((fTemp1222 * std::min<float>(1.0f, (2.0f * fTemp1285))) * std::sin((6.28318548f * (fTemp1309 - std::floor(fTemp1309))))));
-			}
-			fRec174[0] = (((((((((fSlow301 * fTemp1250) + (fSlow299 * fTemp1265)) + (fSlow297 * fTemp1278)) + (fSlow295 * fTemp1287)) + (fSlow293 * fTemp1296)) + (fSlow291 * fTemp1307)) + (fSlow289 * fTemp1310)) + (fSlow287 * fTemp1315)) + (fSlow285 * fTemp1316));
-			float fTemp1317 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp751 - fTemp752)) + (fTemp39 * (fTemp753 - fTemp754)))));
-			float fTemp1318 = (1.0f - fTemp1317);
-			float fTemp1319 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp757 - fTemp758)) + (fTemp39 * (fTemp759 - fTemp760)))));
-			output1[i] = FAUSTFLOAT((fHbargraph0 * ((((fRec171[0] * fTemp1318) + (fRec172[0] * fTemp1317)) * (1.0f - fTemp1319)) + (fTemp1319 * ((fRec173[0] * fTemp1318) + (fRec174[0] * fTemp1317))))));
-			iVec0[1] = iVec0[0];
-			fVec1[1] = fVec1[0];
-			iVec2[1] = iVec2[0];
-			iRec1[1] = iRec1[0];
-			fRec0[1] = fRec0[0];
-			fRec6[1] = fRec6[0];
-			fRec7[1] = fRec7[0];
-			fRec8[1] = fRec8[0];
-			fRec9[1] = fRec9[0];
-			fRec11[1] = fRec11[0];
-			fRec12[1] = fRec12[0];
-			fRec13[1] = fRec13[0];
-			fRec14[1] = fRec14[0];
-			iRec16[1] = iRec16[0];
-			fRec15[1] = fRec15[0];
-			fRec18[1] = fRec18[0];
-			fRec17[1] = fRec17[0];
-			fRec20[1] = fRec20[0];
-			fRec19[1] = fRec19[0];
-			fRec22[1] = fRec22[0];
-			fRec21[1] = fRec21[0];
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | (iSlow344 | (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | (iSlow326 | (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | (iSlow306 | (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286))))))))))))))))))))))))))))))))))) {
-				fRec27[1] = fRec27[0];
-				fRec28[1] = fRec28[0];
-				iVec3[1] = iVec3[0];
-				fRec26[1] = fRec26[0];
-				fRec29[1] = fRec29[0];
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow358 & iTemp69) | ((iSlow356 & iTemp69) | ((iSlow354 & iTemp69) | ((iSlow352 & iTemp69) | ((iSlow350 & iTemp69) | ((iSlow348 & iTemp69) | ((iSlow346 & iTemp69) | (iSlow344 & iTemp69))))))))) {
-				fRec23[1] = fRec23[0];
-				fRec24[1] = fRec24[0];
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fRec30[1] = fRec30[0];
-				fRec31[1] = fRec31[0];
-				fRec32[1] = fRec32[0];
-			}
-			if ((iSlow14 & iTemp77) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp77) | (iSlow344 & iTemp77))))))))) {
-				fRec35[1] = fRec35[0];
-				fRec36[1] = fRec36[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fVec4[1] = fVec4[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fRec38[1] = fRec38[0];
-			}
-			if (iSlow14 | iSlow346) {
-				fVec5[1] = fVec5[0];
-				iVec6[1] = iVec6[0];
-			}
-			if (iSlow14) {
-				fRec43[1] = fRec43[0];
-				fRec42[1] = fRec42[0];
-				fRec41[1] = fRec41[0];
-				fRec40[1] = fRec40[0];
-				fRec39[1] = fRec39[0];
-				fRec37[1] = fRec37[0];
-			}
-			if ((iSlow14 & iTemp69) | ((iSlow358 & iTemp69) | ((iSlow356 & iTemp69) | ((iSlow354 & iTemp69) | ((iSlow352 & iTemp69) | ((iSlow350 & iTemp69) | ((iSlow348 & iTemp69) | ((iSlow346 & iTemp69) | (iSlow344 & iTemp69))))))))) {
-				fRec44[1] = fRec44[0];
-				fRec45[1] = fRec45[0];
-			}
-			if ((iSlow14 & iTemp78) | ((iSlow358 & iTemp78) | ((iSlow356 & iTemp78) | ((iSlow354 & iTemp78) | ((iSlow352 & iTemp78) | ((iSlow350 & iTemp78) | ((iSlow348 & iTemp78) | ((iSlow346 & iTemp78) | (iSlow344 & iTemp78))))))))) {
-				fRec47[1] = fRec47[0];
-				fRec48[1] = fRec48[0];
-				fRec49[1] = fRec49[0];
-			}
-			if ((iSlow14 & iTemp77) | ((iSlow358 & iTemp77) | ((iSlow356 & iTemp77) | ((iSlow354 & iTemp77) | ((iSlow352 & iTemp77) | ((iSlow350 & iTemp77) | ((iSlow348 & iTemp77) | ((iSlow346 & iTemp77) | (iSlow344 & iTemp77))))))))) {
-				fRec52[1] = fRec52[0];
-				fRec53[1] = fRec53[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fVec7[1] = fVec7[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fRec55[1] = fRec55[0];
-			}
-			if (iSlow14 | iSlow346) {
-				fVec8[1] = fVec8[0];
-				iVec9[1] = iVec9[0];
-			}
-			if (iSlow14) {
-				fRec60[1] = fRec60[0];
-				fRec59[1] = fRec59[0];
-				fRec58[1] = fRec58[0];
-				fRec57[1] = fRec57[0];
-				fRec56[1] = fRec56[0];
-				fRec54[1] = fRec54[0];
-			}
-			if (iSlow346) {
-				fRec61[1] = fRec61[0];
-				fRec62[1] = fRec62[0];
-			}
-			fRec2[1] = fRec2[0];
-			if ((iSlow342 & iTemp69) | ((iSlow340 & iTemp69) | ((iSlow338 & iTemp69) | ((iSlow336 & iTemp69) | ((iSlow334 & iTemp69) | ((iSlow332 & iTemp69) | ((iSlow330 & iTemp69) | ((iSlow328 & iTemp69) | (iSlow326 & iTemp69))))))))) {
-				fRec63[1] = fRec63[0];
-				fRec64[1] = fRec64[0];
-			}
-			if ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | (iSlow326 & iTemp78))))))))) {
-				fRec66[1] = fRec66[0];
-				fRec67[1] = fRec67[0];
-				fRec68[1] = fRec68[0];
-			}
-			if ((iSlow342 & iTemp77) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp77) | (iSlow326 & iTemp77))))))))) {
-				fRec71[1] = fRec71[0];
-				fRec72[1] = fRec72[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fVec10[1] = fVec10[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fRec74[1] = fRec74[0];
-			}
-			if (iSlow342 | iSlow328) {
-				fVec11[1] = fVec11[0];
-				iVec12[1] = iVec12[0];
-			}
-			if (iSlow342) {
-				fRec79[1] = fRec79[0];
-				fRec78[1] = fRec78[0];
-				fRec77[1] = fRec77[0];
-				fRec76[1] = fRec76[0];
-				fRec75[1] = fRec75[0];
-				fRec73[1] = fRec73[0];
-			}
-			if ((iSlow342 & iTemp69) | ((iSlow340 & iTemp69) | ((iSlow338 & iTemp69) | ((iSlow336 & iTemp69) | ((iSlow334 & iTemp69) | ((iSlow332 & iTemp69) | ((iSlow330 & iTemp69) | ((iSlow328 & iTemp69) | (iSlow326 & iTemp69))))))))) {
-				fRec80[1] = fRec80[0];
-				fRec81[1] = fRec81[0];
-			}
-			if ((iSlow342 & iTemp78) | ((iSlow340 & iTemp78) | ((iSlow338 & iTemp78) | ((iSlow336 & iTemp78) | ((iSlow334 & iTemp78) | ((iSlow332 & iTemp78) | ((iSlow330 & iTemp78) | ((iSlow328 & iTemp78) | (iSlow326 & iTemp78))))))))) {
-				fRec83[1] = fRec83[0];
-				fRec84[1] = fRec84[0];
-				fRec85[1] = fRec85[0];
-			}
-			if ((iSlow342 & iTemp77) | ((iSlow340 & iTemp77) | ((iSlow338 & iTemp77) | ((iSlow336 & iTemp77) | ((iSlow334 & iTemp77) | ((iSlow332 & iTemp77) | ((iSlow330 & iTemp77) | ((iSlow328 & iTemp77) | (iSlow326 & iTemp77))))))))) {
-				fRec88[1] = fRec88[0];
-				fRec89[1] = fRec89[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fVec13[1] = fVec13[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fRec91[1] = fRec91[0];
-			}
-			if (iSlow342 | iSlow328) {
-				fVec14[1] = fVec14[0];
-				iVec15[1] = iVec15[0];
-			}
-			if (iSlow342) {
-				fRec96[1] = fRec96[0];
-				fRec95[1] = fRec95[0];
-				fRec94[1] = fRec94[0];
-				fRec93[1] = fRec93[0];
-				fRec92[1] = fRec92[0];
-				fRec90[1] = fRec90[0];
-			}
-			if (iSlow328) {
-				fRec97[1] = fRec97[0];
-				fRec98[1] = fRec98[0];
-			}
-			fRec3[1] = fRec3[0];
-			if ((iSlow322 & iTemp69) | ((iSlow320 & iTemp69) | ((iSlow318 & iTemp69) | ((iSlow316 & iTemp69) | ((iSlow314 & iTemp69) | ((iSlow312 & iTemp69) | ((iSlow310 & iTemp69) | ((iSlow308 & iTemp69) | (iSlow306 & iTemp69))))))))) {
-				fRec99[1] = fRec99[0];
-				fRec100[1] = fRec100[0];
-			}
-			if ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | (iSlow306 & iTemp78))))))))) {
-				fRec102[1] = fRec102[0];
-				fRec103[1] = fRec103[0];
-				fRec104[1] = fRec104[0];
-			}
-			if ((iSlow322 & iTemp77) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp77) | (iSlow306 & iTemp77))))))))) {
-				fRec107[1] = fRec107[0];
-				fRec108[1] = fRec108[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fVec16[1] = fVec16[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fRec110[1] = fRec110[0];
-			}
-			if (iSlow322 | iSlow308) {
-				fVec17[1] = fVec17[0];
-				iVec18[1] = iVec18[0];
-			}
-			if (iSlow322) {
-				fRec115[1] = fRec115[0];
-				fRec114[1] = fRec114[0];
-				fRec113[1] = fRec113[0];
-				fRec112[1] = fRec112[0];
-				fRec111[1] = fRec111[0];
-				fRec109[1] = fRec109[0];
-			}
-			if ((iSlow322 & iTemp69) | ((iSlow320 & iTemp69) | ((iSlow318 & iTemp69) | ((iSlow316 & iTemp69) | ((iSlow314 & iTemp69) | ((iSlow312 & iTemp69) | ((iSlow310 & iTemp69) | ((iSlow308 & iTemp69) | (iSlow306 & iTemp69))))))))) {
-				fRec116[1] = fRec116[0];
-				fRec117[1] = fRec117[0];
-			}
-			if ((iSlow322 & iTemp78) | ((iSlow320 & iTemp78) | ((iSlow318 & iTemp78) | ((iSlow316 & iTemp78) | ((iSlow314 & iTemp78) | ((iSlow312 & iTemp78) | ((iSlow310 & iTemp78) | ((iSlow308 & iTemp78) | (iSlow306 & iTemp78))))))))) {
-				fRec119[1] = fRec119[0];
-				fRec120[1] = fRec120[0];
-				fRec121[1] = fRec121[0];
-			}
-			if ((iSlow322 & iTemp77) | ((iSlow320 & iTemp77) | ((iSlow318 & iTemp77) | ((iSlow316 & iTemp77) | ((iSlow314 & iTemp77) | ((iSlow312 & iTemp77) | ((iSlow310 & iTemp77) | ((iSlow308 & iTemp77) | (iSlow306 & iTemp77))))))))) {
-				fRec124[1] = fRec124[0];
-				fRec125[1] = fRec125[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fVec19[1] = fVec19[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fRec127[1] = fRec127[0];
-			}
-			if (iSlow322 | iSlow308) {
-				fVec20[1] = fVec20[0];
-				iVec21[1] = iVec21[0];
-			}
-			if (iSlow322) {
-				fRec132[1] = fRec132[0];
-				fRec131[1] = fRec131[0];
-				fRec130[1] = fRec130[0];
-				fRec129[1] = fRec129[0];
-				fRec128[1] = fRec128[0];
-				fRec126[1] = fRec126[0];
-			}
-			if (iSlow308) {
-				fRec133[1] = fRec133[0];
-				fRec134[1] = fRec134[0];
-			}
-			fRec4[1] = fRec4[0];
-			if ((iSlow302 & iTemp69) | ((iSlow300 & iTemp69) | ((iSlow298 & iTemp69) | ((iSlow296 & iTemp69) | ((iSlow294 & iTemp69) | ((iSlow292 & iTemp69) | ((iSlow290 & iTemp69) | ((iSlow288 & iTemp69) | (iSlow286 & iTemp69))))))))) {
-				fRec135[1] = fRec135[0];
-				fRec136[1] = fRec136[0];
-			}
-			if ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78))))))))) {
-				fRec138[1] = fRec138[0];
-				fRec139[1] = fRec139[0];
-				fRec140[1] = fRec140[0];
-			}
-			if ((iSlow302 & iTemp77) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp77) | (iSlow286 & iTemp77))))))))) {
-				fRec143[1] = fRec143[0];
-				fRec144[1] = fRec144[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fVec22[1] = fVec22[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fRec146[1] = fRec146[0];
-			}
-			if (iSlow302 | iSlow288) {
-				fVec23[1] = fVec23[0];
-				iVec24[1] = iVec24[0];
-			}
-			if (iSlow302) {
-				fRec151[1] = fRec151[0];
-				fRec150[1] = fRec150[0];
-				fRec149[1] = fRec149[0];
-				fRec148[1] = fRec148[0];
-				fRec147[1] = fRec147[0];
-				fRec145[1] = fRec145[0];
-			}
-			if ((iSlow302 & iTemp69) | ((iSlow300 & iTemp69) | ((iSlow298 & iTemp69) | ((iSlow296 & iTemp69) | ((iSlow294 & iTemp69) | ((iSlow292 & iTemp69) | ((iSlow290 & iTemp69) | ((iSlow288 & iTemp69) | (iSlow286 & iTemp69))))))))) {
-				fRec152[1] = fRec152[0];
-				fRec153[1] = fRec153[0];
-			}
-			if ((iSlow302 & iTemp78) | ((iSlow300 & iTemp78) | ((iSlow298 & iTemp78) | ((iSlow296 & iTemp78) | ((iSlow294 & iTemp78) | ((iSlow292 & iTemp78) | ((iSlow290 & iTemp78) | ((iSlow288 & iTemp78) | (iSlow286 & iTemp78))))))))) {
-				fRec155[1] = fRec155[0];
-				fRec156[1] = fRec156[0];
-				fRec157[1] = fRec157[0];
-			}
-			if ((iSlow302 & iTemp77) | ((iSlow300 & iTemp77) | ((iSlow298 & iTemp77) | ((iSlow296 & iTemp77) | ((iSlow294 & iTemp77) | ((iSlow292 & iTemp77) | ((iSlow290 & iTemp77) | ((iSlow288 & iTemp77) | (iSlow286 & iTemp77))))))))) {
-				fRec160[1] = fRec160[0];
-				fRec161[1] = fRec161[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fVec25[1] = fVec25[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fRec163[1] = fRec163[0];
-			}
-			if (iSlow302 | iSlow288) {
-				fVec26[1] = fVec26[0];
-				iVec27[1] = iVec27[0];
-			}
-			if (iSlow302) {
-				fRec168[1] = fRec168[0];
-				fRec167[1] = fRec167[0];
-				fRec166[1] = fRec166[0];
-				fRec165[1] = fRec165[0];
-				fRec164[1] = fRec164[0];
-				fRec162[1] = fRec162[0];
-			}
-			if (iSlow288) {
-				fRec169[1] = fRec169[0];
-				fRec170[1] = fRec170[0];
-			}
-			fRec5[1] = fRec5[0];
-			if ((iSlow14 & iTemp76) | ((iSlow358 & iTemp76) | ((iSlow356 & iTemp76) | ((iSlow354 & iTemp76) | ((iSlow352 & iTemp76) | ((iSlow350 & iTemp76) | ((iSlow348 & iTemp76) | ((iSlow346 & iTemp76) | (iSlow344 & iTemp76))))))))) {
-				fRec175[1] = fRec175[0];
-				fRec176[1] = fRec176[0];
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fRec178[1] = fRec178[0];
-				fRec179[1] = fRec179[0];
-				fRec180[1] = fRec180[0];
-			}
-			if ((iSlow14 & iTemp72) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp72) | (iSlow344 & iTemp72))))))))) {
-				fRec183[1] = fRec183[0];
-				fRec184[1] = fRec184[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fVec28[1] = fVec28[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fRec186[1] = fRec186[0];
-			}
-			if (iSlow14 | iSlow346) {
-				fVec29[1] = fVec29[0];
-				iVec30[1] = iVec30[0];
-			}
-			if (iSlow14) {
-				fRec191[1] = fRec191[0];
-				fRec190[1] = fRec190[0];
-				fRec189[1] = fRec189[0];
-				fRec188[1] = fRec188[0];
-				fRec187[1] = fRec187[0];
-				fRec185[1] = fRec185[0];
-			}
-			if ((iSlow14 & iTemp76) | ((iSlow358 & iTemp76) | ((iSlow356 & iTemp76) | ((iSlow354 & iTemp76) | ((iSlow352 & iTemp76) | ((iSlow350 & iTemp76) | ((iSlow348 & iTemp76) | ((iSlow346 & iTemp76) | (iSlow344 & iTemp76))))))))) {
-				fRec192[1] = fRec192[0];
-				fRec193[1] = fRec193[0];
-			}
-			if ((iSlow14 & iTemp74) | ((iSlow358 & iTemp74) | ((iSlow356 & iTemp74) | ((iSlow354 & iTemp74) | ((iSlow352 & iTemp74) | ((iSlow350 & iTemp74) | ((iSlow348 & iTemp74) | ((iSlow346 & iTemp74) | (iSlow344 & iTemp74))))))))) {
-				fRec195[1] = fRec195[0];
-				fRec196[1] = fRec196[0];
-				fRec197[1] = fRec197[0];
-			}
-			if ((iSlow14 & iTemp72) | ((iSlow358 & iTemp72) | ((iSlow356 & iTemp72) | ((iSlow354 & iTemp72) | ((iSlow352 & iTemp72) | ((iSlow350 & iTemp72) | ((iSlow348 & iTemp72) | ((iSlow346 & iTemp72) | (iSlow344 & iTemp72))))))))) {
-				fRec200[1] = fRec200[0];
-				fRec201[1] = fRec201[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | (iSlow346 | iSlow344)))))))) {
-				fVec31[1] = fVec31[0];
-			}
-			if (iSlow14 | (iSlow358 | (iSlow356 | (iSlow354 | (iSlow352 | (iSlow350 | (iSlow348 | iSlow344))))))) {
-				fRec203[1] = fRec203[0];
-			}
-			if (iSlow14 | iSlow346) {
-				fVec32[1] = fVec32[0];
-				iVec33[1] = iVec33[0];
-			}
-			if (iSlow14) {
-				fRec208[1] = fRec208[0];
-				fRec207[1] = fRec207[0];
-				fRec206[1] = fRec206[0];
-				fRec205[1] = fRec205[0];
-				fRec204[1] = fRec204[0];
-				fRec202[1] = fRec202[0];
-			}
-			if (iSlow346) {
-				fRec209[1] = fRec209[0];
-				fRec210[1] = fRec210[0];
-			}
-			fRec171[1] = fRec171[0];
-			if ((iSlow342 & iTemp76) | ((iSlow340 & iTemp76) | ((iSlow338 & iTemp76) | ((iSlow336 & iTemp76) | ((iSlow334 & iTemp76) | ((iSlow332 & iTemp76) | ((iSlow330 & iTemp76) | ((iSlow328 & iTemp76) | (iSlow326 & iTemp76))))))))) {
-				fRec211[1] = fRec211[0];
-				fRec212[1] = fRec212[0];
-			}
-			if ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | (iSlow326 & iTemp74))))))))) {
-				fRec214[1] = fRec214[0];
-				fRec215[1] = fRec215[0];
-				fRec216[1] = fRec216[0];
-			}
-			if ((iSlow342 & iTemp72) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp72) | (iSlow326 & iTemp72))))))))) {
-				fRec219[1] = fRec219[0];
-				fRec220[1] = fRec220[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fVec34[1] = fVec34[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fRec222[1] = fRec222[0];
-			}
-			if (iSlow342 | iSlow328) {
-				fVec35[1] = fVec35[0];
-				iVec36[1] = iVec36[0];
-			}
-			if (iSlow342) {
-				fRec227[1] = fRec227[0];
-				fRec226[1] = fRec226[0];
-				fRec225[1] = fRec225[0];
-				fRec224[1] = fRec224[0];
-				fRec223[1] = fRec223[0];
-				fRec221[1] = fRec221[0];
-			}
-			if ((iSlow342 & iTemp76) | ((iSlow340 & iTemp76) | ((iSlow338 & iTemp76) | ((iSlow336 & iTemp76) | ((iSlow334 & iTemp76) | ((iSlow332 & iTemp76) | ((iSlow330 & iTemp76) | ((iSlow328 & iTemp76) | (iSlow326 & iTemp76))))))))) {
-				fRec228[1] = fRec228[0];
-				fRec229[1] = fRec229[0];
-			}
-			if ((iSlow342 & iTemp74) | ((iSlow340 & iTemp74) | ((iSlow338 & iTemp74) | ((iSlow336 & iTemp74) | ((iSlow334 & iTemp74) | ((iSlow332 & iTemp74) | ((iSlow330 & iTemp74) | ((iSlow328 & iTemp74) | (iSlow326 & iTemp74))))))))) {
-				fRec231[1] = fRec231[0];
-				fRec232[1] = fRec232[0];
-				fRec233[1] = fRec233[0];
-			}
-			if ((iSlow342 & iTemp72) | ((iSlow340 & iTemp72) | ((iSlow338 & iTemp72) | ((iSlow336 & iTemp72) | ((iSlow334 & iTemp72) | ((iSlow332 & iTemp72) | ((iSlow330 & iTemp72) | ((iSlow328 & iTemp72) | (iSlow326 & iTemp72))))))))) {
-				fRec236[1] = fRec236[0];
-				fRec237[1] = fRec237[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | (iSlow328 | iSlow326)))))))) {
-				fVec37[1] = fVec37[0];
-			}
-			if (iSlow342 | (iSlow340 | (iSlow338 | (iSlow336 | (iSlow334 | (iSlow332 | (iSlow330 | iSlow326))))))) {
-				fRec239[1] = fRec239[0];
-			}
-			if (iSlow342 | iSlow328) {
-				fVec38[1] = fVec38[0];
-				iVec39[1] = iVec39[0];
-			}
-			if (iSlow342) {
-				fRec244[1] = fRec244[0];
-				fRec243[1] = fRec243[0];
-				fRec242[1] = fRec242[0];
-				fRec241[1] = fRec241[0];
-				fRec240[1] = fRec240[0];
-				fRec238[1] = fRec238[0];
-			}
-			if (iSlow328) {
-				fRec245[1] = fRec245[0];
-				fRec246[1] = fRec246[0];
-			}
-			fRec172[1] = fRec172[0];
-			if ((iSlow322 & iTemp76) | ((iSlow320 & iTemp76) | ((iSlow318 & iTemp76) | ((iSlow316 & iTemp76) | ((iSlow314 & iTemp76) | ((iSlow312 & iTemp76) | ((iSlow310 & iTemp76) | ((iSlow308 & iTemp76) | (iSlow306 & iTemp76))))))))) {
-				fRec247[1] = fRec247[0];
-				fRec248[1] = fRec248[0];
-			}
-			if ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | (iSlow306 & iTemp74))))))))) {
-				fRec250[1] = fRec250[0];
-				fRec251[1] = fRec251[0];
-				fRec252[1] = fRec252[0];
-			}
-			if ((iSlow322 & iTemp72) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp72) | (iSlow306 & iTemp72))))))))) {
-				fRec255[1] = fRec255[0];
-				fRec256[1] = fRec256[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fVec40[1] = fVec40[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fRec258[1] = fRec258[0];
-			}
-			if (iSlow322 | iSlow308) {
-				fVec41[1] = fVec41[0];
-				iVec42[1] = iVec42[0];
-			}
-			if (iSlow322) {
-				fRec263[1] = fRec263[0];
-				fRec262[1] = fRec262[0];
-				fRec261[1] = fRec261[0];
-				fRec260[1] = fRec260[0];
-				fRec259[1] = fRec259[0];
-				fRec257[1] = fRec257[0];
-			}
-			if ((iSlow322 & iTemp76) | ((iSlow320 & iTemp76) | ((iSlow318 & iTemp76) | ((iSlow316 & iTemp76) | ((iSlow314 & iTemp76) | ((iSlow312 & iTemp76) | ((iSlow310 & iTemp76) | ((iSlow308 & iTemp76) | (iSlow306 & iTemp76))))))))) {
-				fRec264[1] = fRec264[0];
-				fRec265[1] = fRec265[0];
-			}
-			if ((iSlow322 & iTemp74) | ((iSlow320 & iTemp74) | ((iSlow318 & iTemp74) | ((iSlow316 & iTemp74) | ((iSlow314 & iTemp74) | ((iSlow312 & iTemp74) | ((iSlow310 & iTemp74) | ((iSlow308 & iTemp74) | (iSlow306 & iTemp74))))))))) {
-				fRec267[1] = fRec267[0];
-				fRec268[1] = fRec268[0];
-				fRec269[1] = fRec269[0];
-			}
-			if ((iSlow322 & iTemp72) | ((iSlow320 & iTemp72) | ((iSlow318 & iTemp72) | ((iSlow316 & iTemp72) | ((iSlow314 & iTemp72) | ((iSlow312 & iTemp72) | ((iSlow310 & iTemp72) | ((iSlow308 & iTemp72) | (iSlow306 & iTemp72))))))))) {
-				fRec272[1] = fRec272[0];
-				fRec273[1] = fRec273[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | (iSlow308 | iSlow306)))))))) {
-				fVec43[1] = fVec43[0];
-			}
-			if (iSlow322 | (iSlow320 | (iSlow318 | (iSlow316 | (iSlow314 | (iSlow312 | (iSlow310 | iSlow306))))))) {
-				fRec275[1] = fRec275[0];
-			}
-			if (iSlow322 | iSlow308) {
-				fVec44[1] = fVec44[0];
-				iVec45[1] = iVec45[0];
-			}
-			if (iSlow322) {
-				fRec280[1] = fRec280[0];
-				fRec279[1] = fRec279[0];
-				fRec278[1] = fRec278[0];
-				fRec277[1] = fRec277[0];
-				fRec276[1] = fRec276[0];
-				fRec274[1] = fRec274[0];
-			}
-			if (iSlow308) {
-				fRec281[1] = fRec281[0];
-				fRec282[1] = fRec282[0];
-			}
-			fRec173[1] = fRec173[0];
-			if ((iSlow302 & iTemp76) | ((iSlow300 & iTemp76) | ((iSlow298 & iTemp76) | ((iSlow296 & iTemp76) | ((iSlow294 & iTemp76) | ((iSlow292 & iTemp76) | ((iSlow290 & iTemp76) | ((iSlow288 & iTemp76) | (iSlow286 & iTemp76))))))))) {
-				fRec283[1] = fRec283[0];
-				fRec284[1] = fRec284[0];
-			}
-			if ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74))))))))) {
-				fRec286[1] = fRec286[0];
-				fRec287[1] = fRec287[0];
-				fRec288[1] = fRec288[0];
-			}
-			if ((iSlow302 & iTemp72) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp72) | (iSlow286 & iTemp72))))))))) {
-				fRec291[1] = fRec291[0];
-				fRec292[1] = fRec292[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fVec46[1] = fVec46[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fRec294[1] = fRec294[0];
-			}
-			if (iSlow302 | iSlow288) {
-				fVec47[1] = fVec47[0];
-				iVec48[1] = iVec48[0];
-			}
-			if (iSlow302) {
-				fRec299[1] = fRec299[0];
-				fRec298[1] = fRec298[0];
-				fRec297[1] = fRec297[0];
-				fRec296[1] = fRec296[0];
-				fRec295[1] = fRec295[0];
-				fRec293[1] = fRec293[0];
-			}
-			if ((iSlow302 & iTemp76) | ((iSlow300 & iTemp76) | ((iSlow298 & iTemp76) | ((iSlow296 & iTemp76) | ((iSlow294 & iTemp76) | ((iSlow292 & iTemp76) | ((iSlow290 & iTemp76) | ((iSlow288 & iTemp76) | (iSlow286 & iTemp76))))))))) {
-				fRec300[1] = fRec300[0];
-				fRec301[1] = fRec301[0];
-			}
-			if ((iSlow302 & iTemp74) | ((iSlow300 & iTemp74) | ((iSlow298 & iTemp74) | ((iSlow296 & iTemp74) | ((iSlow294 & iTemp74) | ((iSlow292 & iTemp74) | ((iSlow290 & iTemp74) | ((iSlow288 & iTemp74) | (iSlow286 & iTemp74))))))))) {
-				fRec303[1] = fRec303[0];
-				fRec304[1] = fRec304[0];
-				fRec305[1] = fRec305[0];
-			}
-			if ((iSlow302 & iTemp72) | ((iSlow300 & iTemp72) | ((iSlow298 & iTemp72) | ((iSlow296 & iTemp72) | ((iSlow294 & iTemp72) | ((iSlow292 & iTemp72) | ((iSlow290 & iTemp72) | ((iSlow288 & iTemp72) | (iSlow286 & iTemp72))))))))) {
-				fRec308[1] = fRec308[0];
-				fRec309[1] = fRec309[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | (iSlow288 | iSlow286)))))))) {
-				fVec49[1] = fVec49[0];
-			}
-			if (iSlow302 | (iSlow300 | (iSlow298 | (iSlow296 | (iSlow294 | (iSlow292 | (iSlow290 | iSlow286))))))) {
-				fRec311[1] = fRec311[0];
-			}
-			if (iSlow302 | iSlow288) {
-				fVec50[1] = fVec50[0];
-				iVec51[1] = iVec51[0];
-			}
-			if (iSlow302) {
-				fRec316[1] = fRec316[0];
-				fRec315[1] = fRec315[0];
-				fRec314[1] = fRec314[0];
-				fRec313[1] = fRec313[0];
-				fRec312[1] = fRec312[0];
-				fRec310[1] = fRec310[0];
-			}
-			if (iSlow288) {
-				fRec317[1] = fRec317[0];
-				fRec318[1] = fRec318[0];
-			}
-			fRec174[1] = fRec174[0];
+	
+	void control(int* iControl, FAUSTFLOAT* fControl) {
+		fControl[0] = float(fButton0);
+		iControl[0] = (fControl[0] > 0.0f);
+		iControl[1] = iControl[0];
+		fControl[1] = float(fHslider0);
+		fControl[2] = float(fHslider1);
+		iControl[2] = int((fConst0 * fControl[2]));
+		fControl[3] = float(fHslider2);
+		fControl[4] = float(fHslider4);
+		fControl[5] = (fControl[4] + -1.0f);
+		fControl[6] = ((float(fHslider3) * fControl[5]) + 1.0f);
+		fControl[7] = float(iControl[0]);
+		fControl[8] = (float(fHslider5) * fControl[7]);
+		fControl[9] = float(fVslider0);
+		fControl[10] = std::min<float>(8.0f, fControl[9]);
+		fControl[11] = float((0.0f == fControl[10]));
+		iControl[3] = (fControl[11] != 0.0f);
+		fControl[12] = float(fHslider6);
+		fControl[13] = std::fabs(fControl[12]);
+		fControl[14] = float(fHslider7);
+		fControl[15] = std::fabs(fControl[14]);
+		fControl[16] = float(fHslider8);
+		fControl[17] = std::fabs(fControl[16]);
+		fControl[18] = float(fHslider9);
+		fControl[19] = std::fabs(fControl[18]);
+		fControl[20] = float(fHslider10);
+		fControl[21] = std::fabs(fControl[20]);
+		fControl[22] = float(fHslider11);
+		fControl[23] = std::fabs(fControl[22]);
+		fControl[24] = float(fHslider12);
+		fControl[25] = std::fabs(fControl[24]);
+		fControl[26] = float(fHslider13);
+		fControl[27] = std::fabs(fControl[26]);
+		fControl[28] = float(fHslider14);
+		fControl[29] = std::fabs(fControl[28]);
+		fControl[30] = float(fHslider15);
+		fControl[31] = std::fabs(fControl[30]);
+		fControl[32] = float(fHslider16);
+		fControl[33] = std::fabs(fControl[32]);
+		fControl[34] = float(fHslider17);
+		fControl[35] = std::fabs(fControl[34]);
+		fControl[36] = float(fHslider18);
+		fControl[37] = std::fabs(fControl[36]);
+		fControl[38] = float(fHslider19);
+		fControl[39] = std::fabs(fControl[38]);
+		fControl[40] = (((((((fControl[13] + (fControl[15] + (fControl[17] + (fControl[19] + (fControl[21] + (fControl[23] + (fControl[25] + fControl[27]))))))) + fControl[29]) + fControl[31]) + fControl[33]) + fControl[35]) + fControl[37]) + fControl[39]);
+		fControl[41] = std::min<float>(1.0f, fControl[40]);
+		fControl[42] = (fControl[41] / std::max<float>(1.84317514e-35f, fControl[40]));
+		fControl[43] = std::max<float>(1.31655367e-36f, fControl[13]);
+		fControl[44] = ((fControl[13] < 0.0f) ? (0.0f - fControl[43]) : fControl[43]);
+		iControl[4] = (fControl[12] < 0.0f);
+		fControl[45] = float(fHslider20);
+		fControl[46] = float(fHslider21);
+		iControl[5] = int((fConst0 * fControl[46]));
+		fControl[47] = float(fHslider22);
+		fControl[48] = ((float(fHslider23) * fControl[5]) + 1.0f);
+		fControl[49] = (float(fHslider24) * fControl[7]);
+		fControl[50] = std::max<float>(1.31655367e-36f, fControl[15]);
+		fControl[51] = ((fControl[15] < 0.0f) ? (0.0f - fControl[50]) : fControl[50]);
+		iControl[6] = (fControl[14] < 0.0f);
+		fControl[52] = float(fHslider25);
+		fControl[53] = float(fHslider26);
+		iControl[7] = int((fConst0 * fControl[53]));
+		fControl[54] = float(fHslider27);
+		fControl[55] = ((float(fHslider28) * fControl[5]) + 1.0f);
+		fControl[56] = (float(fHslider29) * fControl[7]);
+		fControl[57] = std::max<float>(1.31655367e-36f, fControl[17]);
+		fControl[58] = ((fControl[17] < 0.0f) ? (0.0f - fControl[57]) : fControl[57]);
+		iControl[8] = (fControl[16] < 0.0f);
+		fControl[59] = float(fHslider30);
+		fControl[60] = float(fHslider31);
+		iControl[9] = int((fConst0 * fControl[60]));
+		fControl[61] = float(fHslider32);
+		fControl[62] = ((float(fHslider33) * fControl[5]) + 1.0f);
+		fControl[63] = (float(fHslider34) * fControl[7]);
+		fControl[64] = std::max<float>(1.31655367e-36f, fControl[19]);
+		fControl[65] = ((fControl[19] < 0.0f) ? (0.0f - fControl[64]) : fControl[64]);
+		iControl[10] = (fControl[18] < 0.0f);
+		fControl[66] = float(fHslider35);
+		fControl[67] = float(fHslider36);
+		iControl[11] = int((fConst0 * fControl[67]));
+		fControl[68] = float(fHslider37);
+		fControl[69] = ((float(fHslider38) * fControl[5]) + 1.0f);
+		fControl[70] = (float(fHslider39) * fControl[7]);
+		fControl[71] = std::max<float>(1.31655367e-36f, fControl[21]);
+		fControl[72] = ((fControl[21] < 0.0f) ? (0.0f - fControl[71]) : fControl[71]);
+		iControl[12] = (fControl[20] < 0.0f);
+		fControl[73] = (fConst1 * float(fHslider40));
+		fControl[74] = std::max<float>(1.31655367e-36f, fControl[23]);
+		fControl[75] = ((fControl[23] < 0.0f) ? (0.0f - fControl[74]) : fControl[74]);
+		iControl[13] = (fControl[22] < 0.0f);
+		fControl[76] = (fConst1 * float(fHslider41));
+		fControl[77] = std::max<float>(1.31655367e-36f, fControl[27]);
+		fControl[78] = ((fControl[27] < 0.0f) ? (0.0f - fControl[77]) : fControl[77]);
+		iControl[14] = (fControl[26] < 0.0f);
+		fControl[79] = (fConst1 * float(fHslider42));
+		fControl[80] = std::max<float>(1.31655367e-36f, fControl[25]);
+		fControl[81] = ((fControl[25] < 0.0f) ? (0.0f - fControl[80]) : fControl[80]);
+		iControl[15] = (fControl[24] < 0.0f);
+		fControl[82] = (fConst1 * float(fHslider43));
+		fControl[83] = std::max<float>(1.31655367e-36f, fControl[29]);
+		fControl[84] = (0.00787401572f * float(fVslider1));
+		fControl[85] = (1.0f - fControl[84]);
+		fControl[86] = (((fControl[29] < 0.0f) ? (0.0f - fControl[83]) : fControl[83]) * ((fControl[28] < 0.0f) ? fControl[85] : fControl[84]));
+		fControl[87] = std::max<float>(1.31655367e-36f, fControl[31]);
+		fControl[88] = (((fControl[31] < 0.0f) ? (0.0f - fControl[87]) : fControl[87]) * float(((fControl[30] < 0.0f) ? 1 : 0)));
+		fControl[89] = std::max<float>(1.31655367e-36f, fControl[33]);
+		fControl[90] = (1.0f - fControl[4]);
+		fControl[91] = (((fControl[33] < 0.0f) ? (0.0f - fControl[89]) : fControl[89]) * ((fControl[32] < 0.0f) ? fControl[90] : fControl[4]));
+		fControl[92] = std::max<float>(1.31655367e-36f, fControl[35]);
+		fControl[93] = (0.00787401572f * float(fVslider2));
+		fControl[94] = (1.0f - fControl[93]);
+		fControl[95] = (((fControl[35] < 0.0f) ? (0.0f - fControl[92]) : fControl[92]) * ((fControl[34] < 0.0f) ? fControl[94] : fControl[93]));
+		fControl[96] = std::max<float>(1.31655367e-36f, fControl[37]);
+		fControl[97] = float(fVslider3);
+		fControl[98] = (0.000122070312f * fControl[97]);
+		fControl[99] = (1.0f - fControl[98]);
+		fControl[100] = (((fControl[37] < 0.0f) ? (0.0f - fControl[96]) : fControl[96]) * ((fControl[36] < 0.0f) ? fControl[99] : fControl[98]));
+		fControl[101] = std::max<float>(1.31655367e-36f, fControl[39]);
+		fControl[102] = ((fControl[39] < 0.0f) ? (0.0f - fControl[101]) : fControl[101]);
+		iControl[16] = (fControl[38] < 0.0f);
+		fControl[103] = (1.0f - fControl[41]);
+		fControl[104] = float(fHslider44);
+		fControl[105] = float(fHslider45);
+		iControl[17] = (std::fabs(fControl[105]) < 1.1920929e-07f);
+		fControl[106] = (iControl[17] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[17] ? 1.0f : fControl[105])))));
+		fControl[107] = float(fHslider46);
+		iControl[18] = (std::fabs(fControl[107]) < 1.1920929e-07f);
+		fControl[108] = (iControl[18] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[18] ? 1.0f : fControl[107])))));
+		fControl[109] = float(fHslider47);
+		fControl[110] = float(fHslider48);
+		fControl[111] = std::fabs(fControl[110]);
+		fControl[112] = float(fHslider49);
+		fControl[113] = std::fabs(fControl[112]);
+		fControl[114] = float(fHslider50);
+		fControl[115] = std::fabs(fControl[114]);
+		fControl[116] = float(fHslider51);
+		fControl[117] = std::fabs(fControl[116]);
+		fControl[118] = float(fHslider52);
+		fControl[119] = std::fabs(fControl[118]);
+		fControl[120] = float(fHslider53);
+		fControl[121] = std::fabs(fControl[120]);
+		fControl[122] = float(fHslider54);
+		fControl[123] = std::fabs(fControl[122]);
+		fControl[124] = float(fHslider55);
+		fControl[125] = std::fabs(fControl[124]);
+		fControl[126] = float(fHslider56);
+		fControl[127] = std::fabs(fControl[126]);
+		fControl[128] = float(fHslider57);
+		fControl[129] = std::fabs(fControl[128]);
+		fControl[130] = float(fHslider58);
+		fControl[131] = std::fabs(fControl[130]);
+		fControl[132] = float(fHslider59);
+		fControl[133] = std::fabs(fControl[132]);
+		fControl[134] = float(fHslider60);
+		fControl[135] = std::fabs(fControl[134]);
+		fControl[136] = float(fHslider61);
+		fControl[137] = std::fabs(fControl[136]);
+		fControl[138] = (((((((fControl[111] + (fControl[113] + (fControl[115] + (fControl[117] + (fControl[119] + (fControl[121] + (fControl[123] + fControl[125]))))))) + fControl[127]) + fControl[129]) + fControl[131]) + fControl[133]) + fControl[135]) + fControl[137]);
+		fControl[139] = std::min<float>(1.0f, fControl[138]);
+		fControl[140] = (fControl[139] / std::max<float>(1.84317514e-35f, fControl[138]));
+		fControl[141] = std::max<float>(1.31655367e-36f, fControl[111]);
+		fControl[142] = ((fControl[111] < 0.0f) ? (0.0f - fControl[141]) : fControl[141]);
+		iControl[19] = (fControl[110] < 0.0f);
+		fControl[143] = std::max<float>(1.31655367e-36f, fControl[113]);
+		fControl[144] = ((fControl[113] < 0.0f) ? (0.0f - fControl[143]) : fControl[143]);
+		iControl[20] = (fControl[112] < 0.0f);
+		fControl[145] = std::max<float>(1.31655367e-36f, fControl[115]);
+		fControl[146] = ((fControl[115] < 0.0f) ? (0.0f - fControl[145]) : fControl[145]);
+		iControl[21] = (fControl[114] < 0.0f);
+		fControl[147] = std::max<float>(1.31655367e-36f, fControl[117]);
+		fControl[148] = ((fControl[117] < 0.0f) ? (0.0f - fControl[147]) : fControl[147]);
+		iControl[22] = (fControl[116] < 0.0f);
+		fControl[149] = std::max<float>(1.31655367e-36f, fControl[119]);
+		fControl[150] = ((fControl[119] < 0.0f) ? (0.0f - fControl[149]) : fControl[149]);
+		iControl[23] = (fControl[118] < 0.0f);
+		fControl[151] = std::max<float>(1.31655367e-36f, fControl[121]);
+		fControl[152] = ((fControl[121] < 0.0f) ? (0.0f - fControl[151]) : fControl[151]);
+		iControl[24] = (fControl[120] < 0.0f);
+		fControl[153] = std::max<float>(1.31655367e-36f, fControl[125]);
+		fControl[154] = ((fControl[125] < 0.0f) ? (0.0f - fControl[153]) : fControl[153]);
+		iControl[25] = (fControl[124] < 0.0f);
+		fControl[155] = std::max<float>(1.31655367e-36f, fControl[123]);
+		fControl[156] = ((fControl[123] < 0.0f) ? (0.0f - fControl[155]) : fControl[155]);
+		iControl[26] = (fControl[122] < 0.0f);
+		fControl[157] = std::max<float>(1.31655367e-36f, fControl[127]);
+		fControl[158] = (((fControl[127] < 0.0f) ? (0.0f - fControl[157]) : fControl[157]) * ((fControl[126] < 0.0f) ? fControl[85] : fControl[84]));
+		fControl[159] = std::max<float>(1.31655367e-36f, fControl[129]);
+		fControl[160] = (((fControl[129] < 0.0f) ? (0.0f - fControl[159]) : fControl[159]) * float(((fControl[128] < 0.0f) ? 1 : 0)));
+		fControl[161] = std::max<float>(1.31655367e-36f, fControl[131]);
+		fControl[162] = (((fControl[131] < 0.0f) ? (0.0f - fControl[161]) : fControl[161]) * ((fControl[130] < 0.0f) ? fControl[90] : fControl[4]));
+		fControl[163] = std::max<float>(1.31655367e-36f, fControl[133]);
+		fControl[164] = (((fControl[133] < 0.0f) ? (0.0f - fControl[163]) : fControl[163]) * ((fControl[132] < 0.0f) ? fControl[94] : fControl[93]));
+		fControl[165] = std::max<float>(1.31655367e-36f, fControl[135]);
+		fControl[166] = (((fControl[135] < 0.0f) ? (0.0f - fControl[165]) : fControl[165]) * ((fControl[134] < 0.0f) ? fControl[99] : fControl[98]));
+		fControl[167] = std::max<float>(1.31655367e-36f, fControl[137]);
+		fControl[168] = ((fControl[137] < 0.0f) ? (0.0f - fControl[167]) : fControl[167]);
+		iControl[27] = (fControl[136] < 0.0f);
+		fControl[169] = (1.0f - fControl[139]);
+		fControl[170] = float(fHslider62);
+		fControl[171] = float(fHslider63);
+		iControl[28] = (std::fabs(fControl[171]) < 1.1920929e-07f);
+		fControl[172] = (iControl[28] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[28] ? 1.0f : fControl[171])))));
+		fControl[173] = float(fHslider64);
+		iControl[29] = (std::fabs(fControl[173]) < 1.1920929e-07f);
+		fControl[174] = (iControl[29] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[29] ? 1.0f : fControl[173])))));
+		fControl[175] = float(fHslider65);
+		fControl[176] = float(fHslider66);
+		fControl[177] = std::fabs(fControl[176]);
+		fControl[178] = float(fHslider67);
+		fControl[179] = std::fabs(fControl[178]);
+		fControl[180] = float(fHslider68);
+		fControl[181] = std::fabs(fControl[180]);
+		fControl[182] = float(fHslider69);
+		fControl[183] = std::fabs(fControl[182]);
+		fControl[184] = float(fHslider70);
+		fControl[185] = std::fabs(fControl[184]);
+		fControl[186] = float(fHslider71);
+		fControl[187] = std::fabs(fControl[186]);
+		fControl[188] = float(fHslider72);
+		fControl[189] = std::fabs(fControl[188]);
+		fControl[190] = float(fHslider73);
+		fControl[191] = std::fabs(fControl[190]);
+		fControl[192] = float(fHslider74);
+		fControl[193] = std::fabs(fControl[192]);
+		fControl[194] = float(fHslider75);
+		fControl[195] = std::fabs(fControl[194]);
+		fControl[196] = float(fHslider76);
+		fControl[197] = std::fabs(fControl[196]);
+		fControl[198] = float(fHslider77);
+		fControl[199] = std::fabs(fControl[198]);
+		fControl[200] = float(fHslider78);
+		fControl[201] = std::fabs(fControl[200]);
+		fControl[202] = float(fHslider79);
+		fControl[203] = std::fabs(fControl[202]);
+		fControl[204] = (((((((fControl[177] + (fControl[179] + (fControl[181] + (fControl[183] + (fControl[185] + (fControl[187] + (fControl[189] + fControl[191]))))))) + fControl[193]) + fControl[195]) + fControl[197]) + fControl[199]) + fControl[201]) + fControl[203]);
+		fControl[205] = std::min<float>(1.0f, fControl[204]);
+		fControl[206] = (fControl[205] / std::max<float>(1.84317514e-35f, fControl[204]));
+		fControl[207] = std::max<float>(1.31655367e-36f, fControl[177]);
+		fControl[208] = ((fControl[177] < 0.0f) ? (0.0f - fControl[207]) : fControl[207]);
+		iControl[30] = (fControl[176] < 0.0f);
+		fControl[209] = std::max<float>(1.31655367e-36f, fControl[179]);
+		fControl[210] = ((fControl[179] < 0.0f) ? (0.0f - fControl[209]) : fControl[209]);
+		iControl[31] = (fControl[178] < 0.0f);
+		fControl[211] = std::max<float>(1.31655367e-36f, fControl[181]);
+		fControl[212] = ((fControl[181] < 0.0f) ? (0.0f - fControl[211]) : fControl[211]);
+		iControl[32] = (fControl[180] < 0.0f);
+		fControl[213] = std::max<float>(1.31655367e-36f, fControl[183]);
+		fControl[214] = ((fControl[183] < 0.0f) ? (0.0f - fControl[213]) : fControl[213]);
+		iControl[33] = (fControl[182] < 0.0f);
+		fControl[215] = std::max<float>(1.31655367e-36f, fControl[185]);
+		fControl[216] = ((fControl[185] < 0.0f) ? (0.0f - fControl[215]) : fControl[215]);
+		iControl[34] = (fControl[184] < 0.0f);
+		fControl[217] = std::max<float>(1.31655367e-36f, fControl[187]);
+		fControl[218] = ((fControl[187] < 0.0f) ? (0.0f - fControl[217]) : fControl[217]);
+		iControl[35] = (fControl[186] < 0.0f);
+		fControl[219] = std::max<float>(1.31655367e-36f, fControl[191]);
+		fControl[220] = ((fControl[191] < 0.0f) ? (0.0f - fControl[219]) : fControl[219]);
+		iControl[36] = (fControl[190] < 0.0f);
+		fControl[221] = std::max<float>(1.31655367e-36f, fControl[189]);
+		fControl[222] = ((fControl[189] < 0.0f) ? (0.0f - fControl[221]) : fControl[221]);
+		iControl[37] = (fControl[188] < 0.0f);
+		fControl[223] = std::max<float>(1.31655367e-36f, fControl[193]);
+		fControl[224] = (((fControl[193] < 0.0f) ? (0.0f - fControl[223]) : fControl[223]) * ((fControl[192] < 0.0f) ? fControl[85] : fControl[84]));
+		fControl[225] = std::max<float>(1.31655367e-36f, fControl[195]);
+		fControl[226] = (((fControl[195] < 0.0f) ? (0.0f - fControl[225]) : fControl[225]) * float(((fControl[194] < 0.0f) ? 1 : 0)));
+		fControl[227] = std::max<float>(1.31655367e-36f, fControl[197]);
+		fControl[228] = (((fControl[197] < 0.0f) ? (0.0f - fControl[227]) : fControl[227]) * ((fControl[196] < 0.0f) ? fControl[90] : fControl[4]));
+		fControl[229] = std::max<float>(1.31655367e-36f, fControl[199]);
+		fControl[230] = (((fControl[199] < 0.0f) ? (0.0f - fControl[229]) : fControl[229]) * ((fControl[198] < 0.0f) ? fControl[94] : fControl[93]));
+		fControl[231] = std::max<float>(1.31655367e-36f, fControl[201]);
+		fControl[232] = (((fControl[201] < 0.0f) ? (0.0f - fControl[231]) : fControl[231]) * ((fControl[200] < 0.0f) ? fControl[99] : fControl[98]));
+		fControl[233] = std::max<float>(1.31655367e-36f, fControl[203]);
+		fControl[234] = ((fControl[203] < 0.0f) ? (0.0f - fControl[233]) : fControl[233]);
+		iControl[38] = (fControl[202] < 0.0f);
+		fControl[235] = (1.0f - fControl[205]);
+		fControl[236] = float(fHslider80);
+		fControl[237] = float(fHslider81);
+		iControl[39] = (std::fabs(fControl[237]) < 1.1920929e-07f);
+		fControl[238] = (iControl[39] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[39] ? 1.0f : fControl[237])))));
+		fControl[239] = float(fHslider82);
+		iControl[40] = (std::fabs(fControl[239]) < 1.1920929e-07f);
+		fControl[240] = (iControl[40] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[40] ? 1.0f : fControl[239])))));
+		fControl[241] = float(fHslider83);
+		fControl[242] = float(fHslider84);
+		fControl[243] = float(fVslider4);
+		fControl[244] = std::min<float>(8.0f, fControl[243]);
+		fControl[245] = float((8.0f == fControl[244]));
+		iControl[41] = (fControl[245] != 0.0f);
+		fControl[246] = float((7.0f == fControl[244]));
+		iControl[42] = (fControl[246] != 0.0f);
+		fControl[247] = float((6.0f == fControl[244]));
+		iControl[43] = (fControl[247] != 0.0f);
+		fControl[248] = float((5.0f == fControl[244]));
+		iControl[44] = (fControl[248] != 0.0f);
+		fControl[249] = float((4.0f == fControl[244]));
+		iControl[45] = (fControl[249] != 0.0f);
+		fControl[250] = float((3.0f == fControl[244]));
+		iControl[46] = (fControl[250] != 0.0f);
+		fControl[251] = float((2.0f == fControl[244]));
+		iControl[47] = (fControl[251] != 0.0f);
+		fControl[252] = float((1.0f == fControl[244]));
+		iControl[48] = (fControl[252] != 0.0f);
+		fControl[253] = float((0.0f == fControl[244]));
+		iControl[49] = (fControl[253] != 0.0f);
+		fControl[254] = float(fVslider5);
+		fControl[255] = std::min<float>(8.0f, fControl[254]);
+		fControl[256] = float((8.0f == fControl[255]));
+		iControl[50] = (fControl[256] != 0.0f);
+		fControl[257] = float((7.0f == fControl[255]));
+		iControl[51] = (fControl[257] != 0.0f);
+		fControl[258] = float((6.0f == fControl[255]));
+		iControl[52] = (fControl[258] != 0.0f);
+		fControl[259] = float((5.0f == fControl[255]));
+		iControl[53] = (fControl[259] != 0.0f);
+		fControl[260] = float((4.0f == fControl[255]));
+		iControl[54] = (fControl[260] != 0.0f);
+		fControl[261] = float((3.0f == fControl[255]));
+		iControl[55] = (fControl[261] != 0.0f);
+		fControl[262] = float((2.0f == fControl[255]));
+		iControl[56] = (fControl[262] != 0.0f);
+		fControl[263] = float((1.0f == fControl[255]));
+		iControl[57] = (fControl[263] != 0.0f);
+		fControl[264] = float((0.0f == fControl[255]));
+		iControl[58] = (fControl[264] != 0.0f);
+		fControl[265] = float(fVslider6);
+		fControl[266] = std::min<float>(8.0f, fControl[265]);
+		fControl[267] = float((8.0f == fControl[266]));
+		iControl[59] = (fControl[267] != 0.0f);
+		fControl[268] = float((7.0f == fControl[266]));
+		iControl[60] = (fControl[268] != 0.0f);
+		fControl[269] = float((6.0f == fControl[266]));
+		iControl[61] = (fControl[269] != 0.0f);
+		fControl[270] = float((5.0f == fControl[266]));
+		iControl[62] = (fControl[270] != 0.0f);
+		fControl[271] = float((4.0f == fControl[266]));
+		iControl[63] = (fControl[271] != 0.0f);
+		fControl[272] = float((3.0f == fControl[266]));
+		iControl[64] = (fControl[272] != 0.0f);
+		fControl[273] = float((2.0f == fControl[266]));
+		iControl[65] = (fControl[273] != 0.0f);
+		fControl[274] = float((1.0f == fControl[266]));
+		iControl[66] = (fControl[274] != 0.0f);
+		fControl[275] = float((0.0f == fControl[266]));
+		iControl[67] = (fControl[275] != 0.0f);
+		fControl[276] = float((8.0f == fControl[10]));
+		iControl[68] = (fControl[276] != 0.0f);
+		fControl[277] = float((7.0f == fControl[10]));
+		iControl[69] = (fControl[277] != 0.0f);
+		fControl[278] = float((6.0f == fControl[10]));
+		iControl[70] = (fControl[278] != 0.0f);
+		fControl[279] = float((5.0f == fControl[10]));
+		iControl[71] = (fControl[279] != 0.0f);
+		fControl[280] = float((4.0f == fControl[10]));
+		iControl[72] = (fControl[280] != 0.0f);
+		fControl[281] = float((3.0f == fControl[10]));
+		iControl[73] = (fControl[281] != 0.0f);
+		fControl[282] = float((2.0f == fControl[10]));
+		iControl[74] = (fControl[282] != 0.0f);
+		fControl[283] = float((1.0f == fControl[10]));
+		iControl[75] = (fControl[283] != 0.0f);
+		fControl[284] = float(fHslider85);
+		fControl[285] = float(fHslider86);
+		fControl[286] = float(fHslider87);
+		fControl[287] = float(fHslider88);
+		fControl[288] = float(fHslider89);
+		fControl[289] = float(fHslider90);
+		fControl[290] = float(fHslider91);
+		fControl[291] = float(fHslider92);
+		fControl[292] = float(fHslider93);
+		fControl[293] = float(fHslider94);
+		fControl[294] = float(fHslider95);
+		fControl[295] = float(fHslider96);
+		fControl[296] = float(fHslider97);
+		fControl[297] = float(fHslider98);
+		fControl[298] = float(fHslider99);
+		fControl[299] = float(fHslider100);
+		fControl[300] = float(fHslider101);
+		fControl[301] = float(fHslider102);
+		fControl[302] = float(fHslider103);
+		fControl[303] = float(fHslider104);
+		fControl[304] = float(fHslider105);
+		fControl[305] = float(fHslider106);
+		fControl[306] = float(fHslider107);
+		fControl[307] = float(fHslider108);
+		fControl[308] = float(fHslider109);
+		fControl[309] = float(fHslider110);
+		fControl[310] = float(fHslider111);
+		fControl[311] = float(fHslider112);
+		fControl[312] = float(fHslider113);
+		fControl[313] = float(fHslider114);
+		fControl[314] = float(fHslider115);
+		fControl[315] = float(fHslider116);
+		fControl[316] = float(fHslider117);
+		fControl[317] = float(fHslider118);
+		fControl[318] = float(fHslider119);
+		fControl[319] = float(fHslider120);
+		fControl[320] = float(fHslider121);
+		fControl[321] = float(fHslider122);
+		fControl[322] = float(fHslider123);
+		fControl[323] = float(fHslider124);
+		fControl[324] = float(fHslider125);
+		fControl[325] = float(fHslider126);
+		fControl[326] = float(fHslider127);
+		fControl[327] = float(fHslider128);
+		fControl[328] = float(fHslider129);
+		fControl[329] = float(fHslider130);
+		fControl[330] = float(fHslider131);
+		fControl[331] = float(fHslider132);
+		fControl[332] = float(fHslider133);
+		fControl[333] = float(fHslider134);
+		fControl[334] = float(fHslider135);
+		fControl[335] = float(fHslider136);
+		fControl[336] = float(fHslider137);
+		fControl[337] = float(fHslider138);
+		fControl[338] = float(fHslider139);
+		fControl[339] = float(fHslider140);
+		fControl[340] = float(fHslider141);
+		fControl[341] = float(fHslider142);
+		fControl[342] = float(fHslider143);
+		fControl[343] = float(fHslider144);
+		fControl[344] = float(fHslider145);
+		fControl[345] = float(fHslider146);
+		fControl[346] = float(fHslider147);
+		fControl[347] = float(fHslider148);
+		fControl[348] = float(fHslider149);
+		fControl[349] = float(fHslider150);
+		fControl[350] = float(fHslider151);
+		fControl[351] = float(fHslider152);
+		fControl[352] = float(fHslider153);
+		fControl[353] = float(fHslider154);
+		fControl[354] = float(fHslider155);
+		fControl[355] = float(fHslider156);
+		fControl[356] = float(fHslider157);
+		fControl[357] = float(fHslider158);
+		fControl[358] = float(fHslider159);
+		fControl[359] = float(fHslider160);
+		fControl[360] = float(fHslider161);
+		fControl[361] = float(fHslider162);
+		fControl[362] = float(fHslider163);
+		fControl[363] = float(fHslider164);
+		fControl[364] = float(fHslider165);
+		fControl[365] = float(fHslider166);
+		fControl[366] = float(fHslider167);
+		fControl[367] = float(fHslider168);
+		fControl[368] = float(fHslider169);
+		fControl[369] = float(fHslider170);
+		fControl[370] = float(fHslider171);
+		fControl[371] = float(fHslider172);
+		fControl[372] = float(fHslider173);
+		fControl[373] = float(fHslider174);
+		fControl[374] = float(fHslider175);
+		fControl[375] = float(fHslider176);
+		fControl[376] = float(fHslider177);
+		fControl[377] = float(fHslider178);
+		fControl[378] = float(fHslider179);
+		fControl[379] = float(fHslider180);
+		fControl[380] = float(fHslider181);
+		fControl[381] = float(fHslider182);
+		fControl[382] = float(fHslider183);
+		fControl[383] = float(fHslider184);
+		fControl[384] = float(fHslider185);
+		fControl[385] = float(fHslider186);
+		fControl[386] = float(fHslider187);
+		fControl[387] = float(fHslider188);
+		fControl[388] = float(fHslider189);
+		fControl[389] = float(fHslider190);
+		fControl[390] = float(fHslider191);
+		fControl[391] = float(fHslider192);
+		iControl[76] = int(float(fEntry0));
+		iControl[77] = (iControl[76] == 0);
+		iControl[78] = (iControl[76] == 1);
+		fControl[392] = float(fVslider7);
+		iControl[79] = (std::fabs(fControl[392]) < 1.1920929e-07f);
+		fControl[393] = (iControl[79] ? 0.0f : std::exp((0.0f - (fConst1 / (iControl[79] ? 1.0f : fControl[392])))));
+		fControl[394] = (4.0f * float(fHslider193));
+		fControl[395] = (fControl[394] * (1.0f - fControl[393]));
+		fControl[396] = std::pow(2.0f, ((1.01725263e-05f * fControl[97]) * ((fControl[98] > 0.0f) ? float(fEntry2) : (0.0f - float(fEntry1)))));
+		iControl[80] = (float(fCheckbox0) != 1.0f);
+		fControl[397] = float(fVslider8);
+		fControl[398] = float(fHslider194);
+		fControl[399] = float(fHslider195);
+		fControl[400] = float(fHslider196);
+		fControl[401] = float(fHslider197);
+		fControl[402] = float(fHslider198);
+		fControl[403] = float(fHslider199);
+		fControl[404] = float(fHslider200);
+		fControl[405] = float(fHslider201);
+		fControl[406] = float(fHslider202);
+		fControl[407] = float(fHslider203);
+		fControl[408] = float(fHslider204);
+		fControl[409] = float(fHslider205);
+		fControl[410] = float(fHslider206);
+		fControl[411] = float(fHslider207);
+		fControl[412] = float(fHslider208);
+		fControl[413] = float(fHslider209);
+		fControl[414] = float(fHslider210);
+		fControl[415] = float(fHslider211);
+		fControl[416] = float(fHslider212);
+		fControl[417] = float(fHslider213);
+		fControl[418] = float(fHslider214);
+		fControl[419] = float(fHslider215);
+		fControl[420] = float(fHslider216);
+		fControl[421] = float(fHslider217);
+		fControl[422] = float(fHslider218);
+		fControl[423] = float(fHslider219);
+		fControl[424] = float(fHslider220);
+		fControl[425] = float(fHslider221);
+		fControl[426] = float(fHslider222);
+		fControl[427] = float(fHslider223);
+		fControl[428] = float(fHslider224);
+		fControl[429] = float(fHslider225);
+		fControl[430] = float(fHslider226);
+		fControl[431] = float(fHslider227);
+		fControl[432] = float(fHslider228);
+		fControl[433] = float(fHslider229);
+		fControl[434] = float(fHslider230);
+		fControl[435] = float(fHslider231);
+		fControl[436] = float(fHslider232);
+		fControl[437] = float(fHslider233);
+		fControl[438] = float(fHslider234);
+		fControl[439] = float(fHslider235);
+		fControl[440] = float(fHslider236);
+		fControl[441] = float(fHslider237);
+		fControl[442] = float(fHslider238);
+		fControl[443] = float(fHslider239);
+		fControl[444] = float(fHslider240);
+		fControl[445] = float(fHslider241);
+		fControl[446] = float(fHslider242);
+		fControl[447] = float(fHslider243);
+		fControl[448] = float(fHslider244);
+		fControl[449] = float(fHslider245);
+		fControl[450] = float(fHslider246);
+		fControl[451] = float(fHslider247);
+		fControl[452] = float(fHslider248);
+		fControl[453] = float(fHslider249);
+		fControl[454] = float(fHslider250);
+		fControl[455] = float(fHslider251);
+		fControl[456] = float(fHslider252);
+		fControl[457] = float(fHslider253);
+		fControl[458] = float(fHslider254);
+		fControl[459] = float(fHslider255);
+		fControl[460] = float(fHslider256);
+		fControl[461] = float(fHslider257);
+		fControl[462] = float(((fControl[9] > 5.0f) ? 64 : 1));
+		fControl[463] = float(fHslider258);
+		fControl[464] = float(fHslider259);
+		fControl[465] = float(fHslider260);
+		fControl[466] = float(fHslider261);
+		fControl[467] = float(fHslider262);
+		fControl[468] = float(fHslider263);
+		fControl[469] = float(fHslider264);
+		fControl[470] = float(fHslider265);
+		fControl[471] = float(fHslider266);
+		fControl[472] = float(fHslider267);
+		fControl[473] = float(fHslider268);
+		fControl[474] = float(fHslider269);
+		fControl[475] = float(fHslider270);
+		fControl[476] = float(fHslider271);
+		fControl[477] = float(fHslider272);
+		fControl[478] = float(fHslider273);
+		fControl[479] = float(fHslider274);
+		fControl[480] = float(fHslider275);
+		fControl[481] = float(fHslider276);
+		fControl[482] = float(fHslider277);
+		fControl[483] = float(fHslider278);
+		fControl[484] = float(fHslider279);
+		fControl[485] = float(fHslider280);
+		fControl[486] = float(fHslider281);
+		fControl[487] = float(fHslider282);
+		fControl[488] = float(fHslider283);
+		fControl[489] = float(fHslider284);
+		fControl[490] = float(fHslider285);
+		fControl[491] = float(fHslider286);
+		fControl[492] = float(fHslider287);
+		fControl[493] = float(fHslider288);
+		fControl[494] = float(fHslider289);
+		fControl[495] = float(fHslider290);
+		fControl[496] = float(fHslider291);
+		fControl[497] = float(fHslider292);
+		fControl[498] = float(fHslider293);
+		fControl[499] = float(fHslider294);
+		fControl[500] = float(fHslider295);
+		fControl[501] = float(fHslider296);
+		fControl[502] = float(fHslider297);
+		fControl[503] = float(fHslider298);
+		fControl[504] = float(fHslider299);
+		fControl[505] = float(fHslider300);
+		fControl[506] = float(fHslider301);
+		fControl[507] = float(fHslider302);
+		fControl[508] = float(fHslider303);
+		fControl[509] = float(fHslider304);
+		fControl[510] = float(fHslider305);
+		fControl[511] = float(fHslider306);
+		fControl[512] = float(fHslider307);
+		fControl[513] = float(fHslider308);
+		fControl[514] = float(fHslider309);
+		fControl[515] = float(fHslider310);
+		fControl[516] = float(fHslider311);
+		fControl[517] = float(fHslider312);
+		fControl[518] = float(fHslider313);
+		fControl[519] = float(fHslider314);
+		fControl[520] = float(fHslider315);
+		fControl[521] = float(fHslider316);
+		fControl[522] = float(fHslider317);
+		fControl[523] = float(fHslider318);
+		fControl[524] = float(fHslider319);
+		fControl[525] = float(fHslider320);
+		fControl[526] = float(fHslider321);
+		fControl[527] = float(fHslider322);
+		fControl[528] = float(fHslider323);
+		fControl[529] = float(fHslider324);
+		fControl[530] = float(fHslider325);
+		fControl[531] = float(fHslider326);
+		fControl[532] = float(fHslider327);
+		fControl[533] = float(fHslider328);
+		fControl[534] = float(fHslider329);
+		fControl[535] = float(fHslider330);
+		fControl[536] = float(fHslider331);
+		fControl[537] = float(fHslider332);
+		fControl[538] = float(fHslider333);
+		fControl[539] = float(fHslider334);
+		fControl[540] = float(fHslider335);
+		fControl[541] = float(fHslider336);
+		fControl[542] = float(fHslider337);
+		fControl[543] = float(fHslider338);
+		fControl[544] = float(fHslider339);
+		fControl[545] = float(fHslider340);
+		fControl[546] = float(fHslider341);
+		fControl[547] = float(fHslider342);
+		fControl[548] = float(fHslider343);
+		fControl[549] = float(fHslider344);
+		fControl[550] = float(fHslider345);
+		fControl[551] = float(fHslider346);
+		fControl[552] = float(fHslider347);
+		fControl[553] = float(fHslider348);
+		fControl[554] = float(fHslider349);
+		fControl[555] = float(fHslider350);
+		fControl[556] = float(fHslider351);
+		fControl[557] = float(fHslider352);
+		fControl[558] = float(fHslider353);
+		fControl[559] = float(fHslider354);
+		fControl[560] = float(fHslider355);
+		fControl[561] = float(fHslider356);
+		fControl[562] = float(fHslider357);
+		fControl[563] = float(fHslider358);
+		fControl[564] = float(fHslider359);
+		fControl[565] = float(fHslider360);
+		fControl[566] = float(fHslider361);
+		fControl[567] = float(fHslider362);
+		fControl[568] = float(fHslider363);
+		fControl[569] = float(fHslider364);
+		fControl[570] = float(fHslider365);
+		fControl[571] = float(fHslider366);
+		fControl[572] = float(fHslider367);
+		fControl[573] = float(fHslider368);
+		fControl[574] = float(fHslider369);
+		fControl[575] = float(((fControl[265] > 5.0f) ? 64 : 1));
+		fControl[576] = float(fHslider370);
+		fControl[577] = float(fHslider371);
+		fControl[578] = float(fHslider372);
+		fControl[579] = float(fHslider373);
+		fControl[580] = float(fHslider374);
+		fControl[581] = float(fHslider375);
+		fControl[582] = float(fHslider376);
+		fControl[583] = float(fHslider377);
+		fControl[584] = float(fHslider378);
+		fControl[585] = float(fHslider379);
+		fControl[586] = float(fHslider380);
+		fControl[587] = float(fHslider381);
+		fControl[588] = float(fHslider382);
+		fControl[589] = float(fHslider383);
+		fControl[590] = float(fHslider384);
+		fControl[591] = float(fHslider385);
+		fControl[592] = float(fHslider386);
+		fControl[593] = float(fHslider387);
+		fControl[594] = float(fHslider388);
+		fControl[595] = float(fHslider389);
+		fControl[596] = float(fHslider390);
+		fControl[597] = float(fHslider391);
+		fControl[598] = float(fHslider392);
+		fControl[599] = float(fHslider393);
+		fControl[600] = float(fHslider394);
+		fControl[601] = float(fHslider395);
+		fControl[602] = float(fHslider396);
+		fControl[603] = float(fHslider397);
+		fControl[604] = float(fHslider398);
+		fControl[605] = float(fHslider399);
+		fControl[606] = float(fHslider400);
+		fControl[607] = float(fHslider401);
+		fControl[608] = float(fHslider402);
+		fControl[609] = float(fHslider403);
+		fControl[610] = float(fHslider404);
+		fControl[611] = float(fHslider405);
+		fControl[612] = float(fHslider406);
+		fControl[613] = float(fHslider407);
+		fControl[614] = float(fHslider408);
+		fControl[615] = float(fHslider409);
+		fControl[616] = float(fHslider410);
+		fControl[617] = float(fHslider411);
+		fControl[618] = float(fHslider412);
+		fControl[619] = float(fHslider413);
+		fControl[620] = float(fHslider414);
+		fControl[621] = float(fHslider415);
+		fControl[622] = float(fHslider416);
+		fControl[623] = float(fHslider417);
+		fControl[624] = float(fHslider418);
+		fControl[625] = float(fHslider419);
+		fControl[626] = float(fHslider420);
+		fControl[627] = float(fHslider421);
+		fControl[628] = float(fHslider422);
+		fControl[629] = float(fHslider423);
+		fControl[630] = float(fHslider424);
+		fControl[631] = float(fHslider425);
+		fControl[632] = float(fHslider426);
+		fControl[633] = float(fHslider427);
+		fControl[634] = float(fHslider428);
+		fControl[635] = float(fHslider429);
+		fControl[636] = float(fHslider430);
+		fControl[637] = float(fHslider431);
+		fControl[638] = float(fHslider432);
+		fControl[639] = float(fHslider433);
+		fControl[640] = float(fHslider434);
+		fControl[641] = float(fHslider435);
+		fControl[642] = float(fHslider436);
+		fControl[643] = float(fHslider437);
+		fControl[644] = float(fHslider438);
+		fControl[645] = float(fHslider439);
+		fControl[646] = float(fHslider440);
+		fControl[647] = float(fHslider441);
+		fControl[648] = float(fHslider442);
+		fControl[649] = float(fHslider443);
+		fControl[650] = float(fHslider444);
+		fControl[651] = float(fHslider445);
+		fControl[652] = float(fHslider446);
+		fControl[653] = float(fHslider447);
+		fControl[654] = float(fHslider448);
+		fControl[655] = float(fHslider449);
+		fControl[656] = float(fHslider450);
+		fControl[657] = float(fHslider451);
+		fControl[658] = float(fHslider452);
+		fControl[659] = float(fHslider453);
+		fControl[660] = float(fHslider454);
+		fControl[661] = float(fHslider455);
+		fControl[662] = float(fHslider456);
+		fControl[663] = float(fHslider457);
+		fControl[664] = float(fHslider458);
+		fControl[665] = float(fHslider459);
+		fControl[666] = float(fHslider460);
+		fControl[667] = float(fHslider461);
+		fControl[668] = float(fHslider462);
+		fControl[669] = float(fHslider463);
+		fControl[670] = float(fHslider464);
+		fControl[671] = float(fHslider465);
+		fControl[672] = float(fHslider466);
+		fControl[673] = float(fHslider467);
+		fControl[674] = float(fHslider468);
+		fControl[675] = float(fHslider469);
+		fControl[676] = float(fHslider470);
+		fControl[677] = float(fHslider471);
+		fControl[678] = float(fHslider472);
+		fControl[679] = float(fHslider473);
+		fControl[680] = float(fHslider474);
+		fControl[681] = float(fHslider475);
+		fControl[682] = float(fHslider476);
+		fControl[683] = float(fHslider477);
+		fControl[684] = float(fHslider478);
+		fControl[685] = float(fHslider479);
+		fControl[686] = float(fHslider480);
+		fControl[687] = float(fHslider481);
+		fControl[688] = float(((fControl[254] > 5.0f) ? 64 : 1));
+		fControl[689] = float(fHslider482);
+		fControl[690] = float(fHslider483);
+		fControl[691] = float(fHslider484);
+		fControl[692] = float(fHslider485);
+		fControl[693] = float(fHslider486);
+		fControl[694] = float(fHslider487);
+		fControl[695] = float(fHslider488);
+		fControl[696] = float(fHslider489);
+		fControl[697] = float(fHslider490);
+		fControl[698] = float(fHslider491);
+		fControl[699] = float(fHslider492);
+		fControl[700] = float(fHslider493);
+		fControl[701] = float(fHslider494);
+		fControl[702] = float(fHslider495);
+		fControl[703] = float(fHslider496);
+		fControl[704] = float(fHslider497);
+		fControl[705] = float(fHslider498);
+		fControl[706] = float(fHslider499);
+		fControl[707] = float(fHslider500);
+		fControl[708] = float(fHslider501);
+		fControl[709] = float(fHslider502);
+		fControl[710] = float(fHslider503);
+		fControl[711] = float(fHslider504);
+		fControl[712] = float(fHslider505);
+		fControl[713] = float(fHslider506);
+		fControl[714] = float(fHslider507);
+		fControl[715] = float(fHslider508);
+		fControl[716] = float(fHslider509);
+		fControl[717] = float(fHslider510);
+		fControl[718] = float(fHslider511);
+		fControl[719] = float(fHslider512);
+		fControl[720] = float(fHslider513);
+		fControl[721] = float(fHslider514);
+		fControl[722] = float(fHslider515);
+		fControl[723] = float(fHslider516);
+		fControl[724] = float(fHslider517);
+		fControl[725] = float(fHslider518);
+		fControl[726] = float(fHslider519);
+		fControl[727] = float(fHslider520);
+		fControl[728] = float(fHslider521);
+		fControl[729] = float(fHslider522);
+		fControl[730] = float(fHslider523);
+		fControl[731] = float(fHslider524);
+		fControl[732] = float(fHslider525);
+		fControl[733] = float(fHslider526);
+		fControl[734] = float(fHslider527);
+		fControl[735] = float(fHslider528);
+		fControl[736] = float(fHslider529);
+		fControl[737] = float(fHslider530);
+		fControl[738] = float(fHslider531);
+		fControl[739] = float(fHslider532);
+		fControl[740] = float(fHslider533);
+		fControl[741] = float(fHslider534);
+		fControl[742] = float(fHslider535);
+		fControl[743] = float(fHslider536);
+		fControl[744] = float(fHslider537);
+		fControl[745] = float(fHslider538);
+		fControl[746] = float(fHslider539);
+		fControl[747] = float(fHslider540);
+		fControl[748] = float(fHslider541);
+		fControl[749] = float(fHslider542);
+		fControl[750] = float(fHslider543);
+		fControl[751] = float(fHslider544);
+		fControl[752] = float(fHslider545);
+		fControl[753] = float(fHslider546);
+		fControl[754] = float(fHslider547);
+		fControl[755] = float(fHslider548);
+		fControl[756] = float(fHslider549);
+		fControl[757] = float(fHslider550);
+		fControl[758] = float(fHslider551);
+		fControl[759] = float(fHslider552);
+		fControl[760] = float(fHslider553);
+		fControl[761] = float(fHslider554);
+		fControl[762] = float(fHslider555);
+		fControl[763] = float(fHslider556);
+		fControl[764] = float(fHslider557);
+		fControl[765] = float(fHslider558);
+		fControl[766] = float(fHslider559);
+		fControl[767] = float(fHslider560);
+		fControl[768] = float(fHslider561);
+		fControl[769] = float(fHslider562);
+		fControl[770] = float(fHslider563);
+		fControl[771] = float(fHslider564);
+		fControl[772] = float(fHslider565);
+		fControl[773] = float(fHslider566);
+		fControl[774] = float(fHslider567);
+		fControl[775] = float(fHslider568);
+		fControl[776] = float(fHslider569);
+		fControl[777] = float(fHslider570);
+		fControl[778] = float(fHslider571);
+		fControl[779] = float(fHslider572);
+		fControl[780] = float(fHslider573);
+		fControl[781] = float(fHslider574);
+		fControl[782] = float(fHslider575);
+		fControl[783] = float(fHslider576);
+		fControl[784] = float(fHslider577);
+		fControl[785] = float(fHslider578);
+		fControl[786] = float(fHslider579);
+		fControl[787] = float(fHslider580);
+		fControl[788] = float(fHslider581);
+		fControl[789] = float(fHslider582);
+		fControl[790] = float(fHslider583);
+		fControl[791] = float(fHslider584);
+		fControl[792] = float(fHslider585);
+		fControl[793] = float(fHslider586);
+		fControl[794] = float(fHslider587);
+		fControl[795] = float(fHslider588);
+		fControl[796] = float(fHslider589);
+		fControl[797] = float(fHslider590);
+		fControl[798] = float(fHslider591);
+		fControl[799] = float(fHslider592);
+		fControl[800] = float(fHslider593);
+		fControl[801] = float(((fControl[243] > 5.0f) ? 64 : 1));
+		fControl[802] = float(fHslider594);
+		fControl[803] = float(fHslider595);
+		fControl[804] = float(fHslider596);
+		fControl[805] = float(fHslider597);
+		fControl[806] = float(fHslider598);
+		fControl[807] = float(fHslider599);
+		fControl[808] = float(fHslider600);
+		fControl[809] = float(fHslider601);
+		fControl[810] = float(fHslider602);
+		fControl[811] = float(fHslider603);
+		fControl[812] = float(fHslider604);
+		fControl[813] = float(fHslider605);
+		fControl[814] = float(fHslider606);
+		fControl[815] = float(fHslider607);
+		fControl[816] = float(fHslider608);
+		fControl[817] = float(fHslider609);
+		fControl[818] = float(fHslider610);
+		fControl[819] = float(fHslider611);
+		fControl[820] = float(fHslider612);
+		fControl[821] = float(fHslider613);
+		fControl[822] = float(fHslider614);
+		fControl[823] = float(fHslider615);
+		fControl[824] = float(fHslider616);
+		fControl[825] = float(fHslider617);
+		fControl[826] = float(fHslider618);
+		fControl[827] = float(fHslider619);
+		fControl[828] = float(fHslider620);
+		fControl[829] = float(fHslider621);
+		fControl[830] = float(fHslider622);
+		fControl[831] = float(fHslider623);
+		fControl[832] = float(fHslider624);
+		fControl[833] = float(fHslider625);
+		fControl[834] = float(fHslider626);
+		fControl[835] = float(fHslider627);
+		fControl[836] = float(fHslider628);
+		fControl[837] = float(fHslider629);
+		fControl[838] = float(fHslider630);
+		fControl[839] = float(fHslider631);
+		fControl[840] = float(fHslider632);
+		fControl[841] = float(fHslider633);
+		fControl[842] = float(fHslider634);
+		fControl[843] = float(fHslider635);
+		fControl[844] = float(fHslider636);
+		fControl[845] = float(fHslider637);
+		fControl[846] = float(fHslider638);
+		fControl[847] = float(fHslider639);
+		fControl[848] = float(fHslider640);
+		fControl[849] = float(fHslider641);
+	}
+
+	int getNumIntControls() { return 81; }
+	int getNumRealControls() { return 850; }
+	
+	void compute(FAUSTFLOAT* inputs, FAUSTFLOAT* outputs, int* iControl, FAUSTFLOAT* fControl) {
+		float fRec25 = 0.0f;
+		float fRec33 = 0.0f;
+		float fRec34 = 0.0f;
+		float fRec46 = 0.0f;
+		float fRec50 = 0.0f;
+		float fRec51 = 0.0f;
+		float fRec65 = 0.0f;
+		float fRec69 = 0.0f;
+		float fRec70 = 0.0f;
+		float fRec82 = 0.0f;
+		float fRec86 = 0.0f;
+		float fRec87 = 0.0f;
+		float fRec101 = 0.0f;
+		float fRec105 = 0.0f;
+		float fRec106 = 0.0f;
+		float fRec118 = 0.0f;
+		float fRec122 = 0.0f;
+		float fRec123 = 0.0f;
+		float fRec137 = 0.0f;
+		float fRec141 = 0.0f;
+		float fRec142 = 0.0f;
+		float fRec154 = 0.0f;
+		float fRec158 = 0.0f;
+		float fRec159 = 0.0f;
+		float fRec177 = 0.0f;
+		float fRec181 = 0.0f;
+		float fRec182 = 0.0f;
+		float fRec194 = 0.0f;
+		float fRec198 = 0.0f;
+		float fRec199 = 0.0f;
+		float fRec213 = 0.0f;
+		float fRec217 = 0.0f;
+		float fRec218 = 0.0f;
+		float fRec230 = 0.0f;
+		float fRec234 = 0.0f;
+		float fRec235 = 0.0f;
+		float fRec249 = 0.0f;
+		float fRec253 = 0.0f;
+		float fRec254 = 0.0f;
+		float fRec266 = 0.0f;
+		float fRec270 = 0.0f;
+		float fRec271 = 0.0f;
+		float fRec285 = 0.0f;
+		float fRec289 = 0.0f;
+		float fRec290 = 0.0f;
+		float fRec302 = 0.0f;
+		float fRec306 = 0.0f;
+		float fRec307 = 0.0f;
+		iVec0[0] = 1;
+		fVec1[0] = fControl[0];
+		iVec2[0] = iControl[0];
+		iRec1[0] = (iControl[0] * (iRec1[1] + 1));
+		int iTemp0 = (iControl[0] - iVec2[1]);
+		int iTemp1 = (iTemp0 * (iTemp0 > 0));
+		int iTemp2 = ((iRec1[0] < iControl[2]) | iTemp1);
+		float fTemp3 = (0.144717798f * (iControl[1] ? (iTemp2 ? fControl[2] : fControl[3]) : fControl[1]));
+		int iTemp4 = (std::fabs(fTemp3) < 1.1920929e-07f);
+		float fTemp5 = (iTemp4 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp4 ? 1.0f : fTemp3)))));
+		fRec0[0] = ((fRec0[1] * fTemp5) + (fControl[6] * ((iControl[1] ? (iTemp2 ? fControl[7] : fControl[8]) : 0.0f) * (1.0f - fTemp5))));
+		fHbargraph0 = FAUSTFLOAT(fRec0[0]);
+		int iTemp6 = ((iRec1[0] < iControl[5]) | iTemp1);
+		float fTemp7 = (0.144717798f * (iControl[1] ? (iTemp6 ? fControl[46] : fControl[47]) : fControl[45]));
+		int iTemp8 = (std::fabs(fTemp7) < 1.1920929e-07f);
+		float fTemp9 = (iTemp8 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp8 ? 1.0f : fTemp7)))));
+		fRec6[0] = ((fRec6[1] * fTemp9) + (fControl[48] * ((iControl[1] ? (iTemp6 ? fControl[7] : fControl[49]) : 0.0f) * (1.0f - fTemp9))));
+		fHbargraph1 = FAUSTFLOAT(fRec6[0]);
+		float fTemp10 = (1.0f - fHbargraph1);
+		int iTemp11 = ((iRec1[0] < iControl[7]) | iTemp1);
+		float fTemp12 = (0.144717798f * (iControl[1] ? (iTemp11 ? fControl[53] : fControl[54]) : fControl[52]));
+		int iTemp13 = (std::fabs(fTemp12) < 1.1920929e-07f);
+		float fTemp14 = (iTemp13 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp13 ? 1.0f : fTemp12)))));
+		fRec7[0] = ((fRec7[1] * fTemp14) + (fControl[55] * ((iControl[1] ? (iTemp11 ? fControl[7] : fControl[56]) : 0.0f) * (1.0f - fTemp14))));
+		fHbargraph2 = FAUSTFLOAT(fRec7[0]);
+		float fTemp15 = (1.0f - fHbargraph2);
+		int iTemp16 = ((iRec1[0] < iControl[9]) | iTemp1);
+		float fTemp17 = (0.144717798f * (iControl[1] ? (iTemp16 ? fControl[60] : fControl[61]) : fControl[59]));
+		int iTemp18 = (std::fabs(fTemp17) < 1.1920929e-07f);
+		float fTemp19 = (iTemp18 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp18 ? 1.0f : fTemp17)))));
+		fRec8[0] = ((fRec8[1] * fTemp19) + (fControl[62] * ((iControl[1] ? (iTemp16 ? fControl[7] : fControl[63]) : 0.0f) * (1.0f - fTemp19))));
+		fHbargraph3 = FAUSTFLOAT(fRec8[0]);
+		float fTemp20 = (1.0f - fHbargraph3);
+		int iTemp21 = ((iRec1[0] < iControl[11]) | iTemp1);
+		float fTemp22 = (0.144717798f * (iControl[1] ? (iTemp21 ? fControl[67] : fControl[68]) : fControl[66]));
+		int iTemp23 = (std::fabs(fTemp22) < 1.1920929e-07f);
+		float fTemp24 = (iTemp23 ? 0.0f : std::exp((0.0f - (fConst1 / (iTemp23 ? 1.0f : fTemp22)))));
+		fRec9[0] = ((fRec9[1] * fTemp24) + (fControl[69] * ((iControl[1] ? (iTemp21 ? fControl[7] : fControl[70]) : 0.0f) * (1.0f - fTemp24))));
+		fHbargraph4 = FAUSTFLOAT(fRec9[0]);
+		float fTemp25 = (1.0f - fHbargraph4);
+		fRec11[0] = (fControl[73] + (fRec11[1] - std::floor((fControl[73] + fRec11[1]))));
+		fHbargraph5 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec11[0]))]);
+		float fTemp26 = (0.5f * (fHbargraph5 + 1.0f));
+		float fTemp27 = (1.0f - fTemp26);
+		fRec12[0] = (fControl[76] + (fRec12[1] - std::floor((fControl[76] + fRec12[1]))));
+		fHbargraph6 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec12[0]))]);
+		float fTemp28 = (0.5f * (fHbargraph6 + 1.0f));
+		float fTemp29 = (1.0f - fTemp28);
+		fRec13[0] = (fControl[79] + (fRec13[1] - std::floor((fControl[79] + fRec13[1]))));
+		fHbargraph7 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec13[0]))]);
+		float fTemp30 = (0.5f * (fHbargraph7 + 1.0f));
+		float fTemp31 = (1.0f - fTemp30);
+		fRec14[0] = (fControl[82] + (fRec14[1] - std::floor((fControl[82] + fRec14[1]))));
+		fHbargraph8 = FAUSTFLOAT(ftbl0mydspSIG0[int((65536.0f * fRec14[0]))]);
+		float fTemp32 = (0.5f * (fHbargraph8 + 1.0f));
+		float fTemp33 = (1.0f - fTemp32);
+		float fTemp34 = (fControl[0] - fVec1[1]);
+		float fTemp35 = (fTemp34 * float((fTemp34 > 0.0f)));
+		iRec16[0] = ((1103515245 * iRec16[1]) + 12345);
+		float fTemp36 = float(iRec16[0]);
+		fRec15[0] = (int(fTemp35) ? (4.65661287e-10f * fTemp36) : fRec15[1]);
+		float fTemp37 = (1.0f - fRec15[0]);
+		float fTemp38 = ((fRec17[1] > fControl[104]) ? fControl[108] : fControl[106]);
+		fRec18[0] = ((fRec18[1] * fTemp38) + (fControl[104] * (1.0f - fTemp38)));
+		fRec17[0] = fRec18[0];
+		fHbargraph9 = FAUSTFLOAT(((fControl[42] * ((((((((((((((fControl[44] * (iControl[4] ? fTemp10 : fHbargraph1)) + (fControl[51] * (iControl[6] ? fTemp15 : fHbargraph2))) + (fControl[58] * (iControl[8] ? fTemp20 : fHbargraph3))) + (fControl[65] * (iControl[10] ? fTemp25 : fHbargraph4))) + (fControl[72] * (iControl[12] ? fTemp27 : fTemp26))) + (fControl[75] * (iControl[13] ? fTemp29 : fTemp28))) + (fControl[78] * (iControl[14] ? fTemp31 : fTemp30))) + (fControl[81] * (iControl[15] ? fTemp33 : fTemp32))) + fControl[86]) + fControl[88]) + fControl[91]) + fControl[95]) + fControl[100]) + (fControl[102] * (iControl[16] ? fTemp37 : fRec15[0])))) + (fControl[103] * fRec17[0])));
+		float fTemp39 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph9));
+		float fTemp40 = (1.0f - fTemp39);
+		float fTemp41 = ((fRec19[1] > fControl[170]) ? fControl[174] : fControl[172]);
+		fRec20[0] = ((fRec20[1] * fTemp41) + (fControl[170] * (1.0f - fTemp41)));
+		fRec19[0] = fRec20[0];
+		fHbargraph10 = FAUSTFLOAT(((fControl[140] * ((((((((((((((fControl[142] * (iControl[19] ? fTemp10 : fHbargraph1)) + (fControl[144] * (iControl[20] ? fTemp15 : fHbargraph2))) + (fControl[146] * (iControl[21] ? fTemp20 : fHbargraph3))) + (fControl[148] * (iControl[22] ? fTemp25 : fHbargraph4))) + (fControl[150] * (iControl[23] ? fTemp27 : fTemp26))) + (fControl[152] * (iControl[24] ? fTemp29 : fTemp28))) + (fControl[154] * (iControl[25] ? fTemp31 : fTemp30))) + (fControl[156] * (iControl[26] ? fTemp33 : fTemp32))) + fControl[158]) + fControl[160]) + fControl[162]) + fControl[164]) + fControl[166]) + (fControl[168] * (iControl[27] ? fTemp37 : fRec15[0])))) + (fControl[169] * fRec19[0])));
+		float fTemp42 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph10));
+		float fTemp43 = (1.0f - fTemp42);
+		float fTemp44 = ((fRec21[1] > fControl[236]) ? fControl[240] : fControl[238]);
+		fRec22[0] = ((fRec22[1] * fTemp44) + (fControl[236] * (1.0f - fTemp44)));
+		fRec21[0] = fRec22[0];
+		fHbargraph11 = FAUSTFLOAT(((fControl[206] * ((((((((((((((fControl[208] * (iControl[30] ? fTemp10 : fHbargraph1)) + (fControl[210] * (iControl[31] ? fTemp15 : fHbargraph2))) + (fControl[212] * (iControl[32] ? fTemp20 : fHbargraph3))) + (fControl[214] * (iControl[33] ? fTemp25 : fHbargraph4))) + (fControl[216] * (iControl[34] ? fTemp27 : fTemp26))) + (fControl[218] * (iControl[35] ? fTemp29 : fTemp28))) + (fControl[220] * (iControl[36] ? fTemp31 : fTemp30))) + (fControl[222] * (iControl[37] ? fTemp33 : fTemp32))) + fControl[224]) + fControl[226]) + fControl[228]) + fControl[230]) + fControl[232]) + (fControl[234] * (iControl[38] ? fTemp37 : fRec15[0])))) + (fControl[235] * fRec21[0])));
+		float fTemp45 = std::min<float>(1.0f, std::max<float>(0.0f, fHbargraph11));
+		float fTemp46 = (1.0f - fTemp45);
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm0 = ((((fControl[109] * fTemp43) + (fControl[175] * fTemp42)) * fTemp46) + (fTemp45 * ((fControl[241] * fTemp43) + (fControl[242] * fTemp42))));
+			fTempPerm1 = ((fTemp46 * ((fControl[284] * fTemp43) + (fControl[285] * fTemp42))) + (fTemp45 * ((fControl[286] * fTemp43) + (fControl[287] * fTemp42))));
+			fTempPerm2 = ((fTemp46 * ((fControl[288] * fTemp43) + (fControl[289] * fTemp42))) + (fTemp45 * ((fControl[290] * fTemp43) + (fControl[291] * fTemp42))));
+			fTempPerm3 = ((fTemp46 * ((fControl[292] * fTemp43) + (fControl[293] * fTemp42))) + (fTemp45 * ((fControl[294] * fTemp43) + (fControl[295] * fTemp42))));
+			fTempPerm4 = ((fTemp40 * (fTempPerm0 + fTempPerm1)) + (fTemp39 * (fTempPerm2 + fTempPerm3)));
+			fTempPerm5 = std::fabs(fTempPerm4);
+			fTempPerm6 = ((fTemp46 * ((fControl[296] * fTemp43) + (fControl[297] * fTemp42))) + (fTemp45 * ((fControl[298] * fTemp43) + (fControl[299] * fTemp42))));
+			fTempPerm7 = ((fTemp46 * ((fControl[300] * fTemp43) + (fControl[301] * fTemp42))) + (fTemp45 * ((fControl[302] * fTemp43) + (fControl[303] * fTemp42))));
+			fTempPerm8 = ((fTemp46 * ((fControl[304] * fTemp43) + (fControl[305] * fTemp42))) + (fTemp45 * ((fControl[306] * fTemp43) + (fControl[307] * fTemp42))));
+			fTempPerm9 = ((fTemp46 * ((fControl[308] * fTemp43) + (fControl[309] * fTemp42))) + (fTemp45 * ((fControl[310] * fTemp43) + (fControl[311] * fTemp42))));
+			fTempPerm10 = ((fTemp40 * (fTempPerm6 + fTempPerm7)) + (fTemp39 * (fTempPerm8 + fTempPerm9)));
+			fTempPerm11 = std::fabs(fTempPerm10);
+			fTempPerm12 = ((fTemp46 * ((fControl[312] * fTemp43) + (fControl[313] * fTemp42))) + (fTemp45 * ((fControl[314] * fTemp43) + (fControl[315] * fTemp42))));
+			fTempPerm13 = ((fTemp46 * ((fControl[316] * fTemp43) + (fControl[317] * fTemp42))) + (fTemp45 * ((fControl[318] * fTemp43) + (fControl[319] * fTemp42))));
+			fTempPerm14 = ((fTemp46 * ((fControl[320] * fTemp43) + (fControl[321] * fTemp42))) + (fTemp45 * ((fControl[322] * fTemp43) + (fControl[323] * fTemp42))));
+			fTempPerm15 = ((fTemp46 * ((fControl[324] * fTemp43) + (fControl[325] * fTemp42))) + (fTemp45 * ((fControl[326] * fTemp43) + (fControl[327] * fTemp42))));
+			fTempPerm16 = ((fTemp40 * (fTempPerm12 + fTempPerm13)) + (fTemp39 * (fTempPerm14 + fTempPerm15)));
+			fTempPerm17 = std::fabs(fTempPerm16);
+			fTempPerm18 = ((fTempPerm5 + fTempPerm11) + fTempPerm17);
+			fTempPerm19 = std::min<float>(1.0f, fTempPerm18);
+			fTempPerm20 = std::max<float>(2.82118644e-37f, fTempPerm5);
+			fTempPerm21 = ((fTempPerm4 < 0.0f) ? (0.0f - fTempPerm20) : fTempPerm20);
+			iTempPerm22 = (float((fTempPerm4 != 0.0f)) != 0.0f);
+			fTempPerm23 = ((fTemp40 * (fTempPerm12 - fTempPerm13)) + (fTemp39 * (fTempPerm14 - fTempPerm15)));
+			iTempPerm24 = (float((fTempPerm23 != 0.0f)) != 0.0f);
+			fTempPerm25 = ((fTemp40 * (fTempPerm6 - fTempPerm7)) + (fTemp39 * (fTempPerm8 - fTempPerm9)));
+			iTempPerm26 = (float((fTempPerm25 != 0.0f)) != 0.0f);
+			fTempPerm27 = ((fTemp40 * (fTempPerm0 - fTempPerm1)) + (fTemp39 * (fTempPerm2 - fTempPerm3)));
+			iTempPerm28 = (float((fTempPerm27 != 0.0f)) != 0.0f);
+			iTempPerm29 = (float((fTempPerm16 != 0.0f)) != 0.0f);
+			iTempPerm30 = (float((fTempPerm10 != 0.0f)) != 0.0f);
 		}
-		fTempPerm0 = fTemp47;
-		fTempPerm1 = fTemp48;
-		fTempPerm2 = fTemp49;
-		fTempPerm3 = fTemp50;
-		fTempPerm4 = fTemp51;
-		fTempPerm5 = fTemp52;
-		fTempPerm6 = fTemp53;
-		fTempPerm7 = fTemp54;
-		fTempPerm8 = fTemp55;
-		fTempPerm9 = fTemp56;
-		fTempPerm10 = fTemp57;
-		fTempPerm11 = fTemp58;
-		fTempPerm12 = fTemp59;
-		fTempPerm13 = fTemp60;
-		fTempPerm14 = fTemp61;
-		fTempPerm15 = fTemp62;
-		fTempPerm16 = fTemp63;
-		fTempPerm17 = fTemp64;
-		fTempPerm18 = fTemp65;
-		fTempPerm19 = fTemp66;
-		fTempPerm20 = fTemp67;
-		fTempPerm21 = fTemp68;
-		iTempPerm22 = iTemp69;
-		fTempPerm23 = fTemp71;
-		iTempPerm24 = iTemp72;
-		fTempPerm25 = fTemp73;
-		iTempPerm26 = iTemp74;
-		fTempPerm27 = fTemp75;
-		iTempPerm28 = iTemp76;
-		iTempPerm29 = iTemp77;
-		iTempPerm30 = iTemp78;
-		fTempPerm31 = fTemp70;
-		fTempPerm32 = fTemp79;
-		fTempPerm33 = fTemp80;
-		fTempPerm34 = fTemp81;
-		fTempPerm35 = fTemp82;
-		fTempPerm36 = fTemp83;
-		fTempPerm37 = fTemp84;
-		fTempPerm38 = fTemp85;
-		fTempPerm39 = fTemp86;
-		fTempPerm40 = fTemp87;
-		fTempPerm41 = fTemp88;
-		fTempPerm42 = fTemp89;
-		fTempPerm43 = fTemp90;
-		fTempPerm44 = fTemp91;
-		fTempPerm45 = fTemp92;
-		fTempPerm46 = fTemp93;
-		fTempPerm47 = fTemp94;
-		fTempPerm48 = fTemp95;
-		fTempPerm49 = fTemp96;
-		fTempPerm50 = fTemp97;
-		fTempPerm51 = fTemp98;
-		fTempPerm52 = fTemp99;
-		fTempPerm53 = fTemp100;
-		fTempPerm54 = fTemp101;
-		fTempPerm55 = fTemp102;
-		fTempPerm56 = fTemp103;
-		fTempPerm57 = fTemp104;
-		fTempPerm58 = fTemp105;
-		fTempPerm59 = fTemp106;
-		fTempPerm60 = fTemp107;
-		fTempPerm61 = fTemp108;
-		fTempPerm62 = fTemp109;
-		fTempPerm63 = fTemp110;
-		fTempPerm64 = fTemp111;
-		fTempPerm65 = fTemp112;
-		fTempPerm66 = fTemp113;
-		fTempPerm67 = fTemp114;
-		fTempPerm68 = fTemp115;
-		iTempPerm69 = iTemp116;
-		fTempPerm70 = fTemp117;
-		fTempPerm71 = fTemp118;
-		fTempPerm72 = fTemp119;
-		fTempPerm73 = fTemp120;
-		fTempPerm74 = fTemp121;
-		fTempPerm75 = fTemp122;
-		fTempPerm76 = fTemp123;
-		fTempPerm77 = fTemp124;
-		fTempPerm78 = fTemp125;
-		fTempPerm79 = fTemp126;
-		fTempPerm80 = fTemp127;
-		fTempPerm81 = fTemp128;
-		fTempPerm82 = fTemp129;
-		fTempPerm83 = fTemp130;
-		fTempPerm84 = fTemp131;
-		fTempPerm85 = fTemp132;
-		fTempPerm86 = fTemp133;
-		fTempPerm87 = fTemp134;
-		fTempPerm88 = fTemp135;
-		fTempPerm89 = fTemp136;
-		fTempPerm90 = fTemp137;
-		fTempPerm91 = fTemp138;
-		fTempPerm92 = fTemp139;
-		fTempPerm93 = fTemp140;
-		fTempPerm94 = fTemp141;
-		fTempPerm95 = fTemp142;
-		fTempPerm96 = fTemp143;
-		fTempPerm97 = fTemp144;
-		fTempPerm98 = fTemp145;
-		fTempPerm99 = fTemp146;
-		fTempPerm100 = fTemp147;
-		fTempPerm101 = fTemp148;
-		fTempPerm102 = fTemp149;
-		fTempPerm103 = fTemp150;
-		fTempPerm104 = fTemp151;
-		fTempPerm105 = fTemp152;
-		fTempPerm106 = fTemp153;
-		fTempPerm107 = fTemp154;
-		fTempPerm108 = fTemp155;
-		fTempPerm109 = fTemp156;
-		fTempPerm110 = fTemp157;
-		fTempPerm111 = fTemp158;
-		fTempPerm112 = fTemp159;
-		fTempPerm113 = fTemp160;
-		fTempPerm114 = fTemp161;
-		fTempPerm115 = fTemp162;
-		fTempPerm116 = fTemp163;
-		fTempPerm117 = fTemp164;
-		fTempPerm118 = fTemp165;
-		fTempPerm119 = fTemp166;
-		iTempPerm120 = iTemp167;
-		iTempPerm121 = iTemp168;
-		fTempPerm122 = fTemp169;
-		fTempPerm123 = fTemp170;
-		fTempPerm124 = fTemp171;
-		fTempPerm125 = fTemp172;
-		fTempPerm126 = fTemp173;
-		fTempPerm127 = fTemp174;
-		fTempPerm128 = fTemp175;
-		iTempPerm129 = iTemp176;
-		fTempPerm130 = fTemp177;
-		fTempPerm131 = fTemp178;
-		fTempPerm132 = fTemp179;
-		fTempPerm133 = fTemp180;
-		fTempPerm134 = fTemp181;
-		fTempPerm135 = fTemp182;
-		fTempPerm136 = fTemp183;
-		fTempPerm137 = fTemp184;
-		fTempPerm138 = fTemp185;
-		fTempPerm139 = fTemp186;
-		fTempPerm140 = fTemp187;
-		fTempPerm141 = fTemp188;
-		fTempPerm142 = fTemp189;
-		fTempPerm143 = fTemp190;
-		fTempPerm144 = fTemp191;
-		fTempPerm145 = fTemp192;
-		fTempPerm146 = fTemp193;
-		fTempPerm147 = fTemp194;
-		fTempPerm148 = fTemp195;
-		fTempPerm149 = fTemp196;
-		iTempPerm150 = iTemp197;
-		iTempPerm151 = iTemp198;
-		fTempPerm152 = fTemp199;
-		fTempPerm153 = fTemp200;
-		fTempPerm154 = fTemp201;
-		fTempPerm155 = fTemp202;
-		fTempPerm156 = fTemp203;
-		fTempPerm157 = fTemp204;
-		fTempPerm158 = fTemp205;
-		fTempPerm159 = fTemp206;
-		fTempPerm160 = fTemp207;
-		fTempPerm161 = fTemp208;
-		fTempPerm162 = fTemp209;
-		fTempPerm163 = fTemp210;
-		fTempPerm164 = fTemp211;
-		fTempPerm165 = fTemp212;
-		fTempPerm166 = fTemp213;
-		fTempPerm167 = fTemp214;
-		fTempPerm168 = fTemp215;
-		fTempPerm169 = fTemp216;
-		fTempPerm170 = fTemp217;
-		fTempPerm171 = fTemp218;
-		fTempPerm172 = fTemp219;
-		fTempPerm173 = fTemp220;
-		fTempPerm174 = fTemp221;
-		fTempPerm175 = fTemp222;
-		fTempPerm176 = fTemp223;
-		fTempPerm177 = fTemp224;
-		fTempPerm178 = fTemp225;
-		fTempPerm179 = fTemp226;
-		fTempPerm180 = fTemp227;
-		fTempPerm181 = fTemp228;
-		fTempPerm182 = fTemp229;
-		fTempPerm183 = fTemp230;
-		fTempPerm184 = fTemp231;
-		fTempPerm185 = fTemp232;
-		fTempPerm186 = fTemp233;
-		fTempPerm187 = fTemp234;
-		fTempPerm188 = fTemp235;
-		fTempPerm189 = fTemp236;
-		fTempPerm190 = fTemp237;
-		fTempPerm191 = fTemp238;
-		fTempPerm192 = fTemp239;
-		fTempPerm193 = fTemp240;
-		fTempPerm194 = fTemp241;
-		fTempPerm195 = fTemp242;
-		fTempPerm196 = fTemp243;
-		fTempPerm197 = fTemp244;
-		fTempPerm198 = fTemp245;
-		fTempPerm199 = fTemp246;
-		fTempPerm200 = fTemp247;
-		fTempPerm201 = fTemp248;
-		fTempPerm202 = fTemp249;
-		fTempPerm203 = fTemp250;
-		fTempPerm204 = fTemp251;
-		fTempPerm205 = fTemp252;
-		fTempPerm206 = fTemp253;
-		fTempPerm207 = fTemp254;
-		fTempPerm208 = fTemp255;
-		fTempPerm209 = fTemp256;
-		fTempPerm210 = fTemp257;
-		fTempPerm211 = fTemp258;
-		fTempPerm212 = fTemp259;
-		fTempPerm213 = fTemp260;
-		fTempPerm214 = fTemp261;
-		fTempPerm215 = fTemp262;
-		fTempPerm216 = fTemp263;
-		fTempPerm217 = fTemp264;
-		fTempPerm218 = fTemp265;
-		fTempPerm219 = fTemp266;
-		fTempPerm220 = fTemp267;
-		fTempPerm221 = fTemp268;
-		fTempPerm222 = fTemp269;
-		fTempPerm223 = fTemp270;
-		fTempPerm224 = fTemp271;
-		fTempPerm225 = fTemp272;
-		fTempPerm226 = fTemp273;
-		fTempPerm227 = fTemp274;
-		fTempPerm228 = fTemp275;
-		fTempPerm229 = fTemp276;
-		fTempPerm230 = fTemp277;
-		fTempPerm231 = fTemp278;
-		fTempPerm232 = fTemp279;
-		fTempPerm233 = fTemp280;
-		fTempPerm234 = fTemp281;
-		fTempPerm235 = fTemp282;
-		fTempPerm236 = fTemp283;
-		fTempPerm237 = fTemp284;
-		fTempPerm238 = fTemp285;
-		fTempPerm239 = fTemp286;
-		fTempPerm240 = fTemp287;
-		fTempPerm241 = fTemp288;
-		fTempPerm242 = fTemp289;
-		fTempPerm243 = fTemp290;
-		fTempPerm244 = fTemp291;
-		fTempPerm245 = fTemp292;
-		fTempPerm246 = fTemp293;
-		fTempPerm247 = fTemp294;
-		fTempPerm248 = fTemp295;
-		iTempPerm249 = iTemp296;
-		fTempPerm250 = fTemp297;
-		fTempPerm251 = fTemp298;
-		fTempPerm252 = fTemp299;
-		fTempPerm253 = fTemp300;
-		fTempPerm254 = fTemp301;
-		fTempPerm255 = fTemp302;
-		fTempPerm256 = fTemp303;
-		fTempPerm257 = fTemp304;
-		fTempPerm258 = fTemp305;
-		fTempPerm259 = fTemp306;
-		fTempPerm260 = fTemp307;
-		fTempPerm261 = fTemp308;
-		fTempPerm262 = fTemp309;
-		fTempPerm263 = fTemp310;
-		fTempPerm264 = fTemp311;
-		fTempPerm265 = fTemp312;
-		fTempPerm266 = fTemp313;
-		fTempPerm267 = fTemp314;
-		fTempPerm268 = fTemp315;
-		fTempPerm269 = fTemp316;
-		fTempPerm270 = fTemp317;
-		fTempPerm271 = fTemp318;
-		fTempPerm272 = fTemp319;
-		fTempPerm273 = fTemp320;
-		fTempPerm274 = fTemp321;
-		fTempPerm275 = fTemp322;
-		fTempPerm276 = fTemp323;
-		fTempPerm277 = fTemp324;
-		fTempPerm278 = fTemp325;
-		fTempPerm279 = fTemp326;
-		fTempPerm280 = fTemp327;
-		fTempPerm281 = fTemp328;
-		iTempPerm282 = iTemp329;
-		iTempPerm283 = iTemp330;
-		fTempPerm284 = fTemp331;
-		fTempPerm285 = fTemp332;
-		fTempPerm286 = fTemp333;
-		fTempPerm287 = fTemp334;
-		fTempPerm288 = fTemp335;
-		fTempPerm289 = fTemp336;
-		fTempPerm290 = fTemp337;
-		iTempPerm291 = iTemp338;
-		fTempPerm292 = fTemp339;
-		fTempPerm293 = fTemp340;
-		fTempPerm294 = fTemp341;
-		fTempPerm295 = fTemp342;
-		fTempPerm296 = fTemp343;
-		fTempPerm297 = fTemp344;
-		fTempPerm298 = fTemp345;
-		fTempPerm299 = fTemp346;
-		fTempPerm300 = fTemp347;
-		fTempPerm301 = fTemp348;
-		fTempPerm302 = fTemp349;
-		fTempPerm303 = fTemp350;
-		fTempPerm304 = fTemp351;
-		fTempPerm305 = fTemp352;
-		fTempPerm306 = fTemp353;
-		fTempPerm307 = fTemp354;
-		fTempPerm308 = fTemp355;
-		fTempPerm309 = fTemp356;
-		fTempPerm310 = fTemp357;
-		iTempPerm311 = iTemp358;
-		iTempPerm312 = iTemp359;
-		fTempPerm313 = fTemp360;
-		fTempPerm314 = fTemp361;
-		fTempPerm315 = fTemp362;
-		fTempPerm316 = fTemp363;
-		fTempPerm317 = fTemp364;
-		fTempPerm318 = fTemp365;
-		fTempPerm319 = fTemp366;
-		fTempPerm320 = fTemp367;
-		fTempPerm321 = fTemp368;
-		fTempPerm322 = fTemp369;
-		fTempPerm323 = fTemp370;
-		fTempPerm324 = fTemp371;
-		fTempPerm325 = fTemp372;
-		fTempPerm326 = fTemp373;
-		fTempPerm327 = fTemp374;
-		fTempPerm328 = fTemp375;
-		fTempPerm329 = fTemp376;
-		fTempPerm330 = fTemp377;
-		fTempPerm331 = fTemp378;
-		fTempPerm332 = fTemp379;
-		fTempPerm333 = fTemp380;
-		fTempPerm334 = fTemp381;
-		fTempPerm335 = fTemp382;
-		fTempPerm336 = fTemp383;
-		fTempPerm337 = fTemp384;
-		fTempPerm338 = fTemp385;
-		fTempPerm339 = fTemp386;
-		fTempPerm340 = fTemp387;
-		fTempPerm341 = fTemp388;
-		fTempPerm342 = fTemp389;
-		fTempPerm343 = fTemp390;
-		fTempPerm344 = fTemp391;
-		fTempPerm345 = fTemp392;
-		fTempPerm346 = fTemp393;
-		fTempPerm347 = fTemp394;
-		fTempPerm348 = fTemp395;
-		fTempPerm349 = fTemp396;
-		fTempPerm350 = fTemp397;
-		fTempPerm351 = fTemp398;
-		fTempPerm352 = fTemp399;
-		fTempPerm353 = fTemp400;
-		fTempPerm354 = fTemp401;
-		fTempPerm355 = fTemp402;
-		fTempPerm356 = fTemp403;
-		fTempPerm357 = fTemp404;
-		fTempPerm358 = fTemp405;
-		fTempPerm359 = fTemp406;
-		fTempPerm360 = fTemp407;
-		fTempPerm361 = fTemp408;
-		fTempPerm362 = fTemp409;
-		fTempPerm363 = fTemp410;
-		fTempPerm364 = fTemp411;
-		fTempPerm365 = fTemp412;
-		fTempPerm366 = fTemp413;
-		fTempPerm367 = fTemp414;
-		fTempPerm368 = fTemp415;
-		fTempPerm369 = fTemp416;
-		fTempPerm370 = fTemp417;
-		fTempPerm371 = fTemp418;
-		fTempPerm372 = fTemp419;
-		fTempPerm373 = fTemp420;
-		fTempPerm374 = fTemp421;
-		fTempPerm375 = fTemp422;
-		fTempPerm376 = fTemp423;
-		fTempPerm377 = fTemp424;
-		fTempPerm378 = fTemp425;
-		fTempPerm379 = fTemp426;
-		fTempPerm380 = fTemp427;
-		fTempPerm381 = fTemp428;
-		fTempPerm382 = fTemp429;
-		fTempPerm383 = fTemp430;
-		fTempPerm384 = fTemp431;
-		fTempPerm385 = fTemp432;
-		fTempPerm386 = fTemp433;
-		fTempPerm387 = fTemp434;
-		fTempPerm388 = fTemp435;
-		fTempPerm389 = fTemp436;
-		fTempPerm390 = fTemp437;
-		fTempPerm391 = fTemp438;
-		fTempPerm392 = fTemp439;
-		fTempPerm393 = fTemp440;
-		fTempPerm394 = fTemp441;
-		fTempPerm395 = fTemp442;
-		fTempPerm396 = fTemp443;
-		fTempPerm397 = fTemp444;
-		fTempPerm398 = fTemp445;
-		fTempPerm399 = fTemp446;
-		fTempPerm400 = fTemp447;
-		fTempPerm401 = fTemp448;
-		fTempPerm402 = fTemp449;
-		fTempPerm403 = fTemp450;
-		fTempPerm404 = fTemp451;
-		fTempPerm405 = fTemp452;
-		fTempPerm406 = fTemp453;
-		fTempPerm407 = fTemp454;
-		fTempPerm408 = fTemp455;
-		fTempPerm409 = fTemp456;
-		iTempPerm410 = iTemp457;
-		fTempPerm411 = fTemp458;
-		fTempPerm412 = fTemp459;
-		fTempPerm413 = fTemp460;
-		fTempPerm414 = fTemp461;
-		fTempPerm415 = fTemp462;
-		fTempPerm416 = fTemp463;
-		fTempPerm417 = fTemp464;
-		fTempPerm418 = fTemp465;
-		fTempPerm419 = fTemp466;
-		fTempPerm420 = fTemp467;
-		fTempPerm421 = fTemp468;
-		fTempPerm422 = fTemp469;
-		fTempPerm423 = fTemp470;
-		fTempPerm424 = fTemp471;
-		fTempPerm425 = fTemp472;
-		fTempPerm426 = fTemp473;
-		fTempPerm427 = fTemp474;
-		fTempPerm428 = fTemp475;
-		fTempPerm429 = fTemp476;
-		fTempPerm430 = fTemp477;
-		fTempPerm431 = fTemp478;
-		fTempPerm432 = fTemp479;
-		fTempPerm433 = fTemp480;
-		fTempPerm434 = fTemp481;
-		fTempPerm435 = fTemp482;
-		fTempPerm436 = fTemp483;
-		fTempPerm437 = fTemp484;
-		fTempPerm438 = fTemp485;
-		fTempPerm439 = fTemp486;
-		fTempPerm440 = fTemp487;
-		fTempPerm441 = fTemp488;
-		fTempPerm442 = fTemp489;
-		iTempPerm443 = iTemp490;
-		iTempPerm444 = iTemp491;
-		fTempPerm445 = fTemp492;
-		fTempPerm446 = fTemp493;
-		fTempPerm447 = fTemp494;
-		fTempPerm448 = fTemp495;
-		fTempPerm449 = fTemp496;
-		fTempPerm450 = fTemp497;
-		fTempPerm451 = fTemp498;
-		iTempPerm452 = iTemp499;
-		fTempPerm453 = fTemp500;
-		fTempPerm454 = fTemp501;
-		fTempPerm455 = fTemp502;
-		fTempPerm456 = fTemp503;
-		fTempPerm457 = fTemp504;
-		fTempPerm458 = fTemp505;
-		fTempPerm459 = fTemp506;
-		fTempPerm460 = fTemp507;
-		fTempPerm461 = fTemp508;
-		fTempPerm462 = fTemp509;
-		fTempPerm463 = fTemp510;
-		fTempPerm464 = fTemp511;
-		fTempPerm465 = fTemp512;
-		fTempPerm466 = fTemp513;
-		fTempPerm467 = fTemp514;
-		fTempPerm468 = fTemp515;
-		fTempPerm469 = fTemp516;
-		fTempPerm470 = fTemp517;
-		fTempPerm471 = fTemp518;
-		iTempPerm472 = iTemp519;
-		iTempPerm473 = iTemp520;
-		fTempPerm474 = fTemp521;
-		fTempPerm475 = fTemp522;
-		fTempPerm476 = fTemp523;
-		fTempPerm477 = fTemp524;
-		fTempPerm478 = fTemp525;
-		fTempPerm479 = fTemp526;
-		fTempPerm480 = fTemp527;
-		fTempPerm481 = fTemp528;
-		fTempPerm482 = fTemp529;
-		fTempPerm483 = fTemp530;
-		fTempPerm484 = fTemp531;
-		fTempPerm485 = fTemp532;
-		fTempPerm486 = fTemp533;
-		fTempPerm487 = fTemp534;
-		fTempPerm488 = fTemp535;
-		fTempPerm489 = fTemp536;
-		fTempPerm490 = fTemp537;
-		fTempPerm491 = fTemp538;
-		fTempPerm492 = fTemp539;
-		fTempPerm493 = fTemp540;
-		fTempPerm494 = fTemp541;
-		fTempPerm495 = fTemp542;
-		fTempPerm496 = fTemp543;
-		fTempPerm497 = fTemp544;
-		fTempPerm498 = fTemp545;
-		fTempPerm499 = fTemp546;
-		fTempPerm500 = fTemp547;
-		fTempPerm501 = fTemp548;
-		fTempPerm502 = fTemp549;
-		fTempPerm503 = fTemp550;
-		fTempPerm504 = fTemp551;
-		fTempPerm505 = fTemp552;
-		fTempPerm506 = fTemp553;
-		fTempPerm507 = fTemp554;
-		fTempPerm508 = fTemp555;
-		fTempPerm509 = fTemp556;
-		fTempPerm510 = fTemp557;
-		fTempPerm511 = fTemp558;
-		fTempPerm512 = fTemp559;
-		fTempPerm513 = fTemp560;
-		fTempPerm514 = fTemp561;
-		fTempPerm515 = fTemp562;
-		fTempPerm516 = fTemp563;
-		fTempPerm517 = fTemp564;
-		fTempPerm518 = fTemp565;
-		fTempPerm519 = fTemp566;
-		fTempPerm520 = fTemp567;
-		fTempPerm521 = fTemp568;
-		fTempPerm522 = fTemp569;
-		fTempPerm523 = fTemp570;
-		fTempPerm524 = fTemp571;
-		fTempPerm525 = fTemp572;
-		fTempPerm526 = fTemp573;
-		fTempPerm527 = fTemp574;
-		fTempPerm528 = fTemp575;
-		fTempPerm529 = fTemp576;
-		fTempPerm530 = fTemp577;
-		fTempPerm531 = fTemp578;
-		fTempPerm532 = fTemp579;
-		fTempPerm533 = fTemp580;
-		fTempPerm534 = fTemp581;
-		fTempPerm535 = fTemp582;
-		fTempPerm536 = fTemp583;
-		fTempPerm537 = fTemp584;
-		fTempPerm538 = fTemp585;
-		fTempPerm539 = fTemp586;
-		fTempPerm540 = fTemp587;
-		fTempPerm541 = fTemp588;
-		fTempPerm542 = fTemp589;
-		fTempPerm543 = fTemp590;
-		fTempPerm544 = fTemp591;
-		fTempPerm545 = fTemp592;
-		fTempPerm546 = fTemp593;
-		fTempPerm547 = fTemp594;
-		fTempPerm548 = fTemp595;
-		fTempPerm549 = fTemp596;
-		fTempPerm550 = fTemp597;
-		fTempPerm551 = fTemp598;
-		fTempPerm552 = fTemp599;
-		fTempPerm553 = fTemp600;
-		fTempPerm554 = fTemp601;
-		fTempPerm555 = fTemp602;
-		fTempPerm556 = fTemp603;
-		fTempPerm557 = fTemp604;
-		fTempPerm558 = fTemp605;
-		fTempPerm559 = fTemp606;
-		fTempPerm560 = fTemp607;
-		fTempPerm561 = fTemp608;
-		fTempPerm562 = fTemp609;
-		fTempPerm563 = fTemp610;
-		fTempPerm564 = fTemp611;
-		fTempPerm565 = fTemp612;
-		fTempPerm566 = fTemp613;
-		fTempPerm567 = fTemp614;
-		fTempPerm568 = fTemp615;
-		fTempPerm569 = fTemp616;
-		fTempPerm570 = fTemp617;
-		iTempPerm571 = iTemp618;
-		fTempPerm572 = fTemp619;
-		fTempPerm573 = fTemp620;
-		fTempPerm574 = fTemp621;
-		fTempPerm575 = fTemp622;
-		fTempPerm576 = fTemp623;
-		fTempPerm577 = fTemp624;
-		fTempPerm578 = fTemp625;
-		fTempPerm579 = fTemp626;
-		fTempPerm580 = fTemp627;
-		fTempPerm581 = fTemp628;
-		fTempPerm582 = fTemp629;
-		fTempPerm583 = fTemp630;
-		fTempPerm584 = fTemp631;
-		fTempPerm585 = fTemp632;
-		fTempPerm586 = fTemp633;
-		fTempPerm587 = fTemp634;
-		fTempPerm588 = fTemp635;
-		fTempPerm589 = fTemp636;
-		fTempPerm590 = fTemp637;
-		fTempPerm591 = fTemp638;
-		fTempPerm592 = fTemp639;
-		fTempPerm593 = fTemp640;
-		fTempPerm594 = fTemp641;
-		fTempPerm595 = fTemp642;
-		fTempPerm596 = fTemp643;
-		fTempPerm597 = fTemp644;
-		fTempPerm598 = fTemp645;
-		fTempPerm599 = fTemp646;
-		fTempPerm600 = fTemp647;
-		fTempPerm601 = fTemp648;
-		fTempPerm602 = fTemp649;
-		fTempPerm603 = fTemp650;
-		iTempPerm604 = iTemp651;
-		iTempPerm605 = iTemp652;
-		fTempPerm606 = fTemp653;
-		fTempPerm607 = fTemp654;
-		fTempPerm608 = fTemp655;
-		fTempPerm609 = fTemp656;
-		fTempPerm610 = fTemp657;
-		fTempPerm611 = fTemp658;
-		fTempPerm612 = fTemp659;
-		iTempPerm613 = iTemp660;
-		fTempPerm614 = fTemp661;
-		fTempPerm615 = fTemp662;
-		fTempPerm616 = fTemp663;
-		fTempPerm617 = fTemp664;
-		fTempPerm618 = fTemp665;
-		fTempPerm619 = fTemp666;
-		fTempPerm620 = fTemp667;
-		fTempPerm621 = fTemp668;
-		fTempPerm622 = fTemp669;
-		fTempPerm623 = fTemp670;
-		fTempPerm624 = fTemp671;
-		fTempPerm625 = fTemp672;
-		fTempPerm626 = fTemp673;
-		fTempPerm627 = fTemp674;
-		fTempPerm628 = fTemp675;
-		fTempPerm629 = fTemp676;
-		fTempPerm630 = fTemp677;
-		fTempPerm631 = fTemp678;
-		fTempPerm632 = fTemp679;
-		iTempPerm633 = iTemp680;
-		iTempPerm634 = iTemp681;
-		fTempPerm635 = fTemp682;
-		fTempPerm636 = fTemp683;
-		fTempPerm637 = fTemp684;
-		fTempPerm638 = fTemp685;
-		fTempPerm639 = fTemp686;
-		fTempPerm640 = fTemp687;
-		fTempPerm641 = fTemp688;
-		fTempPerm642 = fTemp689;
-		fTempPerm643 = fTemp690;
-		fTempPerm644 = fTemp691;
-		fTempPerm645 = fTemp692;
-		fTempPerm646 = fTemp693;
-		fTempPerm647 = fTemp694;
-		fTempPerm648 = fTemp695;
-		fTempPerm649 = fTemp696;
-		fTempPerm650 = fTemp697;
-		fTempPerm651 = fTemp698;
-		fTempPerm652 = fTemp699;
-		fTempPerm653 = fTemp700;
-		fTempPerm654 = fTemp701;
-		fTempPerm655 = fTemp702;
-		fTempPerm656 = fTemp703;
-		fTempPerm657 = fTemp704;
-		fTempPerm658 = fTemp705;
-		fTempPerm659 = fTemp706;
-		fTempPerm660 = fTemp707;
-		fTempPerm661 = fTemp708;
-		fTempPerm662 = fTemp709;
-		fTempPerm663 = fTemp710;
-		fTempPerm664 = fTemp711;
-		fTempPerm665 = fTemp712;
-		fTempPerm666 = fTemp713;
-		fTempPerm667 = fTemp714;
-		fTempPerm668 = fTemp715;
-		fTempPerm669 = fTemp716;
-		fTempPerm670 = fTemp717;
-		fTempPerm671 = fTemp718;
-		fTempPerm672 = fTemp719;
-		fTempPerm673 = fTemp720;
-		fTempPerm674 = fTemp721;
-		fTempPerm675 = fTemp722;
-		fTempPerm676 = fTemp723;
-		fTempPerm677 = fTemp724;
-		fTempPerm678 = fTemp725;
-		fTempPerm679 = fTemp726;
-		fTempPerm680 = fTemp727;
-		fTempPerm681 = fTemp728;
-		fTempPerm682 = fTemp729;
-		fTempPerm683 = fTemp730;
-		fTempPerm684 = fTemp731;
-		fTempPerm685 = fTemp732;
-		fTempPerm686 = fTemp733;
-		fTempPerm687 = fTemp734;
-		fTempPerm688 = fTemp735;
-		fTempPerm689 = fTemp736;
-		fTempPerm690 = fTemp737;
-		fTempPerm691 = fTemp738;
-		fTempPerm692 = fTemp739;
-		fTempPerm693 = fTemp740;
-		fTempPerm694 = fTemp741;
-		fTempPerm695 = fTemp742;
-		fTempPerm696 = fTemp743;
-		fTempPerm697 = fTemp744;
-		fTempPerm698 = fTemp745;
-		fTempPerm699 = fTemp746;
-		fTempPerm700 = fTemp747;
-		fTempPerm701 = fTemp748;
-		fTempPerm702 = fTemp749;
-		fTempPerm703 = fTemp750;
-		fTempPerm704 = fTemp762;
-		fTempPerm705 = fTemp763;
-		fTempPerm706 = fTemp764;
-		fTempPerm707 = fTemp765;
-		fTempPerm708 = fTemp766;
-		fTempPerm709 = fTemp767;
-		fTempPerm710 = fTemp768;
-		fTempPerm711 = fTemp769;
-		fTempPerm712 = fTemp770;
-		fTempPerm713 = fTemp771;
-		fTempPerm714 = fTemp772;
-		fTempPerm715 = fTemp773;
-		fTempPerm716 = fTemp774;
-		fTempPerm717 = fTemp775;
-		fTempPerm718 = fTemp776;
-		fTempPerm719 = fTemp777;
-		iTempPerm720 = iTemp778;
-		fTempPerm721 = fTemp779;
-		fTempPerm722 = fTemp780;
-		fTempPerm723 = fTemp781;
-		fTempPerm724 = fTemp782;
-		fTempPerm725 = fTemp783;
-		fTempPerm726 = fTemp784;
-		fTempPerm727 = fTemp785;
-		fTempPerm728 = fTemp786;
-		fTempPerm729 = fTemp787;
-		fTempPerm730 = fTemp788;
-		fTempPerm731 = fTemp789;
-		fTempPerm732 = fTemp790;
-		fTempPerm733 = fTemp791;
-		fTempPerm734 = fTemp792;
-		fTempPerm735 = fTemp793;
-		fTempPerm736 = fTemp794;
-		fTempPerm737 = fTemp795;
-		fTempPerm738 = fTemp796;
-		fTempPerm739 = fTemp797;
-		fTempPerm740 = fTemp798;
-		fTempPerm741 = fTemp799;
-		fTempPerm742 = fTemp800;
-		fTempPerm743 = fTemp801;
-		fTempPerm744 = fTemp802;
-		fTempPerm745 = fTemp803;
-		fTempPerm746 = fTemp804;
-		fTempPerm747 = fTemp805;
-		fTempPerm748 = fTemp806;
-		fTempPerm749 = fTemp807;
-		fTempPerm750 = fTemp808;
-		fTempPerm751 = fTemp809;
-		fTempPerm752 = fTemp810;
-		fTempPerm753 = fTemp811;
-		fTempPerm754 = fTemp812;
-		fTempPerm755 = fTemp813;
-		fTempPerm756 = fTemp814;
-		fTempPerm757 = fTemp815;
-		fTempPerm758 = fTemp816;
-		iTempPerm759 = iTemp817;
-		iTempPerm760 = iTemp818;
-		fTempPerm761 = fTemp819;
-		fTempPerm762 = fTemp820;
-		fTempPerm763 = fTemp821;
-		fTempPerm764 = fTemp822;
-		fTempPerm765 = fTemp823;
-		fTempPerm766 = fTemp824;
-		fTempPerm767 = fTemp825;
-		iTempPerm768 = iTemp826;
-		fTempPerm769 = fTemp827;
-		fTempPerm770 = fTemp828;
-		fTempPerm771 = fTemp829;
-		fTempPerm772 = fTemp830;
-		fTempPerm773 = fTemp831;
-		fTempPerm774 = fTemp832;
-		fTempPerm775 = fTemp833;
-		fTempPerm776 = fTemp834;
-		fTempPerm777 = fTemp835;
-		fTempPerm778 = fTemp836;
-		fTempPerm779 = fTemp837;
-		fTempPerm780 = fTemp838;
-		fTempPerm781 = fTemp839;
-		fTempPerm782 = fTemp840;
-		fTempPerm783 = fTemp841;
-		fTempPerm784 = fTemp842;
-		fTempPerm785 = fTemp843;
-		fTempPerm786 = fTemp844;
-		fTempPerm787 = fTemp845;
-		fTempPerm788 = fTemp846;
-		iTempPerm789 = iTemp847;
-		iTempPerm790 = iTemp848;
-		fTempPerm791 = fTemp849;
-		fTempPerm792 = fTemp850;
-		fTempPerm793 = fTemp851;
-		fTempPerm794 = fTemp852;
-		fTempPerm795 = fTemp853;
-		fTempPerm796 = fTemp854;
-		fTempPerm797 = fTemp855;
-		fTempPerm798 = fTemp856;
-		fTempPerm799 = fTemp857;
-		fTempPerm800 = fTemp858;
-		fTempPerm801 = fTemp859;
-		fTempPerm802 = fTemp860;
-		fTempPerm803 = fTemp861;
-		fTempPerm804 = fTemp862;
-		fTempPerm805 = fTemp863;
-		fTempPerm806 = fTemp864;
-		fTempPerm807 = fTemp865;
-		fTempPerm808 = fTemp866;
-		fTempPerm809 = fTemp867;
-		fTempPerm810 = fTemp868;
-		fTempPerm811 = fTemp869;
-		fTempPerm812 = fTemp870;
-		fTempPerm813 = fTemp871;
-		fTempPerm814 = fTemp872;
-		fTempPerm815 = fTemp873;
-		fTempPerm816 = fTemp874;
-		fTempPerm817 = fTemp875;
-		fTempPerm818 = fTemp876;
-		fTempPerm819 = fTemp877;
-		fTempPerm820 = fTemp878;
-		fTempPerm821 = fTemp879;
-		fTempPerm822 = fTemp880;
-		fTempPerm823 = fTemp881;
-		fTempPerm824 = fTemp882;
-		fTempPerm825 = fTemp883;
-		fTempPerm826 = fTemp884;
-		fTempPerm827 = fTemp885;
-		fTempPerm828 = fTemp886;
-		fTempPerm829 = fTemp887;
-		fTempPerm830 = fTemp888;
-		fTempPerm831 = fTemp889;
-		fTempPerm832 = fTemp890;
-		fTempPerm833 = fTemp891;
-		fTempPerm834 = fTemp892;
-		fTempPerm835 = fTemp893;
-		fTempPerm836 = fTemp894;
-		fTempPerm837 = fTemp895;
-		fTempPerm838 = fTemp896;
-		fTempPerm839 = fTemp897;
-		fTempPerm840 = fTemp898;
-		fTempPerm841 = fTemp899;
-		fTempPerm842 = fTemp900;
-		fTempPerm843 = fTemp901;
-		fTempPerm844 = fTemp902;
-		fTempPerm845 = fTemp903;
-		fTempPerm846 = fTemp904;
-		fTempPerm847 = fTemp905;
-		fTempPerm848 = fTemp906;
-		fTempPerm849 = fTemp907;
-		fTempPerm850 = fTemp908;
-		fTempPerm851 = fTemp909;
-		fTempPerm852 = fTemp910;
-		fTempPerm853 = fTemp911;
-		fTempPerm854 = fTemp912;
-		fTempPerm855 = fTemp913;
-		fTempPerm856 = fTemp914;
-		fTempPerm857 = fTemp915;
-		fTempPerm858 = fTemp916;
-		fTempPerm859 = fTemp917;
-		fTempPerm860 = fTemp918;
-		fTempPerm861 = fTemp919;
-		fTempPerm862 = fTemp920;
-		fTempPerm863 = fTemp921;
-		fTempPerm864 = fTemp922;
-		fTempPerm865 = fTemp923;
-		fTempPerm866 = fTemp924;
-		fTempPerm867 = fTemp925;
-		iTempPerm868 = iTemp926;
-		fTempPerm869 = fTemp927;
-		fTempPerm870 = fTemp928;
-		fTempPerm871 = fTemp929;
-		fTempPerm872 = fTemp930;
-		fTempPerm873 = fTemp931;
-		fTempPerm874 = fTemp932;
-		fTempPerm875 = fTemp933;
-		fTempPerm876 = fTemp934;
-		fTempPerm877 = fTemp935;
-		fTempPerm878 = fTemp936;
-		fTempPerm879 = fTemp937;
-		fTempPerm880 = fTemp938;
-		fTempPerm881 = fTemp939;
-		fTempPerm882 = fTemp940;
-		fTempPerm883 = fTemp941;
-		fTempPerm884 = fTemp942;
-		fTempPerm885 = fTemp943;
-		fTempPerm886 = fTemp944;
-		fTempPerm887 = fTemp945;
-		fTempPerm888 = fTemp946;
-		fTempPerm889 = fTemp947;
-		fTempPerm890 = fTemp948;
-		fTempPerm891 = fTemp949;
-		fTempPerm892 = fTemp950;
-		iTempPerm893 = iTemp951;
-		iTempPerm894 = iTemp952;
-		fTempPerm895 = fTemp953;
-		fTempPerm896 = fTemp954;
-		fTempPerm897 = fTemp955;
-		fTempPerm898 = fTemp956;
-		fTempPerm899 = fTemp957;
-		fTempPerm900 = fTemp958;
-		fTempPerm901 = fTemp959;
-		iTempPerm902 = iTemp960;
-		fTempPerm903 = fTemp961;
-		fTempPerm904 = fTemp962;
-		fTempPerm905 = fTemp963;
-		fTempPerm906 = fTemp964;
-		fTempPerm907 = fTemp965;
-		fTempPerm908 = fTemp966;
-		fTempPerm909 = fTemp967;
-		fTempPerm910 = fTemp968;
-		fTempPerm911 = fTemp969;
-		fTempPerm912 = fTemp970;
-		fTempPerm913 = fTemp971;
-		fTempPerm914 = fTemp972;
-		fTempPerm915 = fTemp973;
-		fTempPerm916 = fTemp974;
-		fTempPerm917 = fTemp975;
-		fTempPerm918 = fTemp976;
-		fTempPerm919 = fTemp977;
-		fTempPerm920 = fTemp978;
-		fTempPerm921 = fTemp979;
-		iTempPerm922 = iTemp980;
-		iTempPerm923 = iTemp981;
-		fTempPerm924 = fTemp982;
-		fTempPerm925 = fTemp983;
-		fTempPerm926 = fTemp984;
-		fTempPerm927 = fTemp985;
-		fTempPerm928 = fTemp986;
-		fTempPerm929 = fTemp987;
-		fTempPerm930 = fTemp988;
-		fTempPerm931 = fTemp989;
-		fTempPerm932 = fTemp990;
-		fTempPerm933 = fTemp991;
-		fTempPerm934 = fTemp992;
-		fTempPerm935 = fTemp993;
-		fTempPerm936 = fTemp994;
-		fTempPerm937 = fTemp995;
-		fTempPerm938 = fTemp996;
-		fTempPerm939 = fTemp997;
-		fTempPerm940 = fTemp998;
-		fTempPerm941 = fTemp999;
-		fTempPerm942 = fTemp1000;
-		fTempPerm943 = fTemp1001;
-		fTempPerm944 = fTemp1002;
-		fTempPerm945 = fTemp1003;
-		fTempPerm946 = fTemp1004;
-		fTempPerm947 = fTemp1005;
-		fTempPerm948 = fTemp1006;
-		fTempPerm949 = fTemp1007;
-		fTempPerm950 = fTemp1008;
-		fTempPerm951 = fTemp1009;
-		fTempPerm952 = fTemp1010;
-		fTempPerm953 = fTemp1011;
-		fTempPerm954 = fTemp1012;
-		fTempPerm955 = fTemp1013;
-		fTempPerm956 = fTemp1014;
-		fTempPerm957 = fTemp1015;
-		fTempPerm958 = fTemp1016;
-		fTempPerm959 = fTemp1017;
-		fTempPerm960 = fTemp1018;
-		fTempPerm961 = fTemp1019;
-		fTempPerm962 = fTemp1020;
-		fTempPerm963 = fTemp1021;
-		fTempPerm964 = fTemp1022;
-		fTempPerm965 = fTemp1023;
-		fTempPerm966 = fTemp1024;
-		fTempPerm967 = fTemp1025;
-		fTempPerm968 = fTemp1026;
-		fTempPerm969 = fTemp1027;
-		fTempPerm970 = fTemp1028;
-		fTempPerm971 = fTemp1029;
-		fTempPerm972 = fTemp1030;
-		fTempPerm973 = fTemp1031;
-		fTempPerm974 = fTemp1032;
-		fTempPerm975 = fTemp1033;
-		fTempPerm976 = fTemp1034;
-		fTempPerm977 = fTemp1035;
-		fTempPerm978 = fTemp1036;
-		fTempPerm979 = fTemp1037;
-		fTempPerm980 = fTemp1038;
-		fTempPerm981 = fTemp1039;
-		fTempPerm982 = fTemp1040;
-		fTempPerm983 = fTemp1041;
-		fTempPerm984 = fTemp1042;
-		fTempPerm985 = fTemp1043;
-		fTempPerm986 = fTemp1044;
-		fTempPerm987 = fTemp1045;
-		fTempPerm988 = fTemp1046;
-		fTempPerm989 = fTemp1047;
-		fTempPerm990 = fTemp1048;
-		fTempPerm991 = fTemp1049;
-		fTempPerm992 = fTemp1050;
-		fTempPerm993 = fTemp1051;
-		fTempPerm994 = fTemp1052;
-		fTempPerm995 = fTemp1053;
-		fTempPerm996 = fTemp1054;
-		fTempPerm997 = fTemp1055;
-		fTempPerm998 = fTemp1056;
-		fTempPerm999 = fTemp1057;
-		fTempPerm1000 = fTemp1058;
-		iTempPerm1001 = iTemp1059;
-		fTempPerm1002 = fTemp1060;
-		fTempPerm1003 = fTemp1061;
-		fTempPerm1004 = fTemp1062;
-		fTempPerm1005 = fTemp1063;
-		fTempPerm1006 = fTemp1064;
-		fTempPerm1007 = fTemp1065;
-		fTempPerm1008 = fTemp1066;
-		fTempPerm1009 = fTemp1067;
-		fTempPerm1010 = fTemp1068;
-		fTempPerm1011 = fTemp1069;
-		fTempPerm1012 = fTemp1070;
-		fTempPerm1013 = fTemp1071;
-		fTempPerm1014 = fTemp1072;
-		fTempPerm1015 = fTemp1073;
-		fTempPerm1016 = fTemp1074;
-		fTempPerm1017 = fTemp1075;
-		fTempPerm1018 = fTemp1076;
-		fTempPerm1019 = fTemp1077;
-		fTempPerm1020 = fTemp1078;
-		fTempPerm1021 = fTemp1079;
-		fTempPerm1022 = fTemp1080;
-		fTempPerm1023 = fTemp1081;
-		fTempPerm1024 = fTemp1082;
-		fTempPerm1025 = fTemp1083;
-		iTempPerm1026 = iTemp1084;
-		iTempPerm1027 = iTemp1085;
-		fTempPerm1028 = fTemp1086;
-		fTempPerm1029 = fTemp1087;
-		fTempPerm1030 = fTemp1088;
-		fTempPerm1031 = fTemp1089;
-		fTempPerm1032 = fTemp1090;
-		fTempPerm1033 = fTemp1091;
-		fTempPerm1034 = fTemp1092;
-		iTempPerm1035 = iTemp1093;
-		fTempPerm1036 = fTemp1094;
-		fTempPerm1037 = fTemp1095;
-		fTempPerm1038 = fTemp1096;
-		fTempPerm1039 = fTemp1097;
-		fTempPerm1040 = fTemp1098;
-		fTempPerm1041 = fTemp1099;
-		fTempPerm1042 = fTemp1100;
-		fTempPerm1043 = fTemp1101;
-		fTempPerm1044 = fTemp1102;
-		fTempPerm1045 = fTemp1103;
-		fTempPerm1046 = fTemp1104;
-		fTempPerm1047 = fTemp1105;
-		fTempPerm1048 = fTemp1106;
-		fTempPerm1049 = fTemp1107;
-		fTempPerm1050 = fTemp1108;
-		fTempPerm1051 = fTemp1109;
-		fTempPerm1052 = fTemp1110;
-		fTempPerm1053 = fTemp1111;
-		fTempPerm1054 = fTemp1112;
-		iTempPerm1055 = iTemp1113;
-		iTempPerm1056 = iTemp1114;
-		fTempPerm1057 = fTemp1115;
-		fTempPerm1058 = fTemp1116;
-		fTempPerm1059 = fTemp1117;
-		fTempPerm1060 = fTemp1118;
-		fTempPerm1061 = fTemp1119;
-		fTempPerm1062 = fTemp1120;
-		fTempPerm1063 = fTemp1121;
-		fTempPerm1064 = fTemp1122;
-		fTempPerm1065 = fTemp1123;
-		fTempPerm1066 = fTemp1124;
-		fTempPerm1067 = fTemp1125;
-		fTempPerm1068 = fTemp1126;
-		fTempPerm1069 = fTemp1127;
-		fTempPerm1070 = fTemp1128;
-		fTempPerm1071 = fTemp1129;
-		fTempPerm1072 = fTemp1130;
-		fTempPerm1073 = fTemp1131;
-		fTempPerm1074 = fTemp1132;
-		fTempPerm1075 = fTemp1133;
-		fTempPerm1076 = fTemp1134;
-		fTempPerm1077 = fTemp1135;
-		fTempPerm1078 = fTemp1136;
-		fTempPerm1079 = fTemp1137;
-		fTempPerm1080 = fTemp1138;
-		fTempPerm1081 = fTemp1139;
-		fTempPerm1082 = fTemp1140;
-		fTempPerm1083 = fTemp1141;
-		fTempPerm1084 = fTemp1142;
-		fTempPerm1085 = fTemp1143;
-		fTempPerm1086 = fTemp1144;
-		fTempPerm1087 = fTemp1145;
-		fTempPerm1088 = fTemp1146;
-		fTempPerm1089 = fTemp1147;
-		fTempPerm1090 = fTemp1148;
-		fTempPerm1091 = fTemp1149;
-		fTempPerm1092 = fTemp1150;
-		fTempPerm1093 = fTemp1151;
-		fTempPerm1094 = fTemp1152;
-		fTempPerm1095 = fTemp1153;
-		fTempPerm1096 = fTemp1154;
-		fTempPerm1097 = fTemp1155;
-		fTempPerm1098 = fTemp1156;
-		fTempPerm1099 = fTemp1157;
-		fTempPerm1100 = fTemp1158;
-		fTempPerm1101 = fTemp1159;
-		fTempPerm1102 = fTemp1160;
-		fTempPerm1103 = fTemp1161;
-		fTempPerm1104 = fTemp1162;
-		fTempPerm1105 = fTemp1163;
-		fTempPerm1106 = fTemp1164;
-		fTempPerm1107 = fTemp1165;
-		fTempPerm1108 = fTemp1166;
-		fTempPerm1109 = fTemp1167;
-		fTempPerm1110 = fTemp1168;
-		fTempPerm1111 = fTemp1169;
-		fTempPerm1112 = fTemp1170;
-		fTempPerm1113 = fTemp1171;
-		fTempPerm1114 = fTemp1172;
-		fTempPerm1115 = fTemp1173;
-		fTempPerm1116 = fTemp1174;
-		fTempPerm1117 = fTemp1175;
-		fTempPerm1118 = fTemp1176;
-		fTempPerm1119 = fTemp1177;
-		fTempPerm1120 = fTemp1178;
-		fTempPerm1121 = fTemp1179;
-		fTempPerm1122 = fTemp1180;
-		fTempPerm1123 = fTemp1181;
-		fTempPerm1124 = fTemp1182;
-		fTempPerm1125 = fTemp1183;
-		fTempPerm1126 = fTemp1184;
-		fTempPerm1127 = fTemp1185;
-		fTempPerm1128 = fTemp1186;
-		fTempPerm1129 = fTemp1187;
-		fTempPerm1130 = fTemp1188;
-		fTempPerm1131 = fTemp1189;
-		fTempPerm1132 = fTemp1190;
-		fTempPerm1133 = fTemp1191;
-		iTempPerm1134 = iTemp1192;
-		fTempPerm1135 = fTemp1193;
-		fTempPerm1136 = fTemp1194;
-		fTempPerm1137 = fTemp1195;
-		fTempPerm1138 = fTemp1196;
-		fTempPerm1139 = fTemp1197;
-		fTempPerm1140 = fTemp1198;
-		fTempPerm1141 = fTemp1199;
-		fTempPerm1142 = fTemp1200;
-		fTempPerm1143 = fTemp1201;
-		fTempPerm1144 = fTemp1202;
-		fTempPerm1145 = fTemp1203;
-		fTempPerm1146 = fTemp1204;
-		fTempPerm1147 = fTemp1205;
-		fTempPerm1148 = fTemp1206;
-		fTempPerm1149 = fTemp1207;
-		fTempPerm1150 = fTemp1208;
-		fTempPerm1151 = fTemp1209;
-		fTempPerm1152 = fTemp1210;
-		fTempPerm1153 = fTemp1211;
-		fTempPerm1154 = fTemp1212;
-		fTempPerm1155 = fTemp1213;
-		fTempPerm1156 = fTemp1214;
-		fTempPerm1157 = fTemp1215;
-		fTempPerm1158 = fTemp1216;
-		iTempPerm1159 = iTemp1217;
-		iTempPerm1160 = iTemp1218;
-		fTempPerm1161 = fTemp1219;
-		fTempPerm1162 = fTemp1220;
-		fTempPerm1163 = fTemp1221;
-		fTempPerm1164 = fTemp1222;
-		fTempPerm1165 = fTemp1223;
-		fTempPerm1166 = fTemp1224;
-		fTempPerm1167 = fTemp1225;
-		iTempPerm1168 = iTemp1226;
-		fTempPerm1169 = fTemp1227;
-		fTempPerm1170 = fTemp1228;
-		fTempPerm1171 = fTemp1229;
-		fTempPerm1172 = fTemp1230;
-		fTempPerm1173 = fTemp1231;
-		fTempPerm1174 = fTemp1232;
-		fTempPerm1175 = fTemp1233;
-		fTempPerm1176 = fTemp1234;
-		fTempPerm1177 = fTemp1235;
-		fTempPerm1178 = fTemp1236;
-		fTempPerm1179 = fTemp1237;
-		fTempPerm1180 = fTemp1238;
-		fTempPerm1181 = fTemp1239;
-		fTempPerm1182 = fTemp1240;
-		fTempPerm1183 = fTemp1241;
-		fTempPerm1184 = fTemp1242;
-		fTempPerm1185 = fTemp1243;
-		fTempPerm1186 = fTemp1244;
-		fTempPerm1187 = fTemp1245;
-		iTempPerm1188 = iTemp1246;
-		iTempPerm1189 = iTemp1247;
-		fTempPerm1190 = fTemp1248;
-		fTempPerm1191 = fTemp1249;
-		fTempPerm1192 = fTemp1250;
-		fTempPerm1193 = fTemp1251;
-		fTempPerm1194 = fTemp1252;
-		fTempPerm1195 = fTemp1253;
-		fTempPerm1196 = fTemp1254;
-		fTempPerm1197 = fTemp1255;
-		fTempPerm1198 = fTemp1256;
-		fTempPerm1199 = fTemp1257;
-		fTempPerm1200 = fTemp1258;
-		fTempPerm1201 = fTemp1259;
-		fTempPerm1202 = fTemp1260;
-		fTempPerm1203 = fTemp1261;
-		fTempPerm1204 = fTemp1262;
-		fTempPerm1205 = fTemp1263;
-		fTempPerm1206 = fTemp1264;
-		fTempPerm1207 = fTemp1265;
-		fTempPerm1208 = fTemp1266;
-		fTempPerm1209 = fTemp1267;
-		fTempPerm1210 = fTemp1268;
-		fTempPerm1211 = fTemp1269;
-		fTempPerm1212 = fTemp1270;
-		fTempPerm1213 = fTemp1271;
-		fTempPerm1214 = fTemp1272;
-		fTempPerm1215 = fTemp1273;
-		fTempPerm1216 = fTemp1274;
-		fTempPerm1217 = fTemp1275;
-		fTempPerm1218 = fTemp1276;
-		fTempPerm1219 = fTemp1277;
-		fTempPerm1220 = fTemp1278;
-		fTempPerm1221 = fTemp1279;
-		fTempPerm1222 = fTemp1280;
-		fTempPerm1223 = fTemp1281;
-		fTempPerm1224 = fTemp1282;
-		fTempPerm1225 = fTemp1283;
-		fTempPerm1226 = fTemp1284;
-		fTempPerm1227 = fTemp1285;
-		fTempPerm1228 = fTemp1286;
-		fTempPerm1229 = fTemp1287;
-		fTempPerm1230 = fTemp1288;
-		fTempPerm1231 = fTemp1289;
-		fTempPerm1232 = fTemp1290;
-		fTempPerm1233 = fTemp1291;
-		fTempPerm1234 = fTemp1292;
-		fTempPerm1235 = fTemp1293;
-		fTempPerm1236 = fTemp1294;
-		fTempPerm1237 = fTemp1295;
-		fTempPerm1238 = fTemp1296;
-		fTempPerm1239 = fTemp1297;
-		fTempPerm1240 = fTemp1298;
-		fTempPerm1241 = fTemp1299;
-		fTempPerm1242 = fTemp1300;
-		fTempPerm1243 = fTemp1301;
-		fTempPerm1244 = fTemp1302;
-		fTempPerm1245 = fTemp1303;
-		fTempPerm1246 = fTemp1304;
-		fTempPerm1247 = fTemp1305;
-		fTempPerm1248 = fTemp1306;
-		fTempPerm1249 = fTemp1307;
-		fTempPerm1250 = fTemp1308;
-		fTempPerm1251 = fTemp1309;
-		fTempPerm1252 = fTemp1310;
-		fTempPerm1253 = fTemp1311;
-		fTempPerm1254 = fTemp1312;
-		fTempPerm1255 = fTemp1313;
-		fTempPerm1256 = fTemp1314;
-		fTempPerm1257 = fTemp1315;
-		fTempPerm1258 = fTemp1316;
+		if ((iControl[3] & iTempPerm22) | ((iControl[3] & iTempPerm30) | ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm22) | ((iControl[75] & iTempPerm30) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm22) | ((iControl[74] & iTempPerm30) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm22) | ((iControl[73] & iTempPerm30) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm22) | ((iControl[72] & iTempPerm30) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm22) | ((iControl[71] & iTempPerm30) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm22) | ((iControl[70] & iTempPerm30) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm22) | ((iControl[69] & iTempPerm30) | ((iControl[69] & iTempPerm29) | ((iControl[68] & iTempPerm22) | ((iControl[68] & iTempPerm30) | ((iControl[68] & iTempPerm29) | ((iControl[67] & iTempPerm22) | ((iControl[67] & iTempPerm30) | ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm22) | ((iControl[66] & iTempPerm30) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm22) | ((iControl[65] & iTempPerm30) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm22) | ((iControl[64] & iTempPerm30) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm22) | ((iControl[63] & iTempPerm30) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm22) | ((iControl[62] & iTempPerm30) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm22) | ((iControl[61] & iTempPerm30) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm22) | ((iControl[60] & iTempPerm30) | ((iControl[60] & iTempPerm29) | ((iControl[59] & iTempPerm22) | ((iControl[59] & iTempPerm30) | ((iControl[59] & iTempPerm29) | ((iControl[58] & iTempPerm22) | ((iControl[58] & iTempPerm30) | ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm22) | ((iControl[57] & iTempPerm30) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm22) | ((iControl[56] & iTempPerm30) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm22) | ((iControl[55] & iTempPerm30) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm22) | ((iControl[54] & iTempPerm30) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm22) | ((iControl[53] & iTempPerm30) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm22) | ((iControl[52] & iTempPerm30) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm22) | ((iControl[51] & iTempPerm30) | ((iControl[51] & iTempPerm29) | ((iControl[50] & iTempPerm22) | ((iControl[50] & iTempPerm30) | ((iControl[50] & iTempPerm29) | ((iControl[49] & iTempPerm22) | ((iControl[49] & iTempPerm30) | ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm22) | ((iControl[48] & iTempPerm30) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm22) | ((iControl[47] & iTempPerm30) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm22) | ((iControl[46] & iTempPerm30) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm22) | ((iControl[45] & iTempPerm30) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm22) | ((iControl[44] & iTempPerm30) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm22) | ((iControl[43] & iTempPerm30) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm22) | ((iControl[42] & iTempPerm30) | ((iControl[42] & iTempPerm29) | ((iControl[41] & iTempPerm22) | ((iControl[41] & iTempPerm30) | ((iControl[41] & iTempPerm29) | ((iControl[3] & iTempPerm28) | ((iControl[3] & iTempPerm26) | ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm28) | ((iControl[75] & iTempPerm26) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm28) | ((iControl[74] & iTempPerm26) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm28) | ((iControl[73] & iTempPerm26) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm28) | ((iControl[72] & iTempPerm26) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm28) | ((iControl[71] & iTempPerm26) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm28) | ((iControl[70] & iTempPerm26) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm28) | ((iControl[69] & iTempPerm26) | ((iControl[69] & iTempPerm24) | ((iControl[68] & iTempPerm28) | ((iControl[68] & iTempPerm26) | ((iControl[68] & iTempPerm24) | ((iControl[67] & iTempPerm28) | ((iControl[67] & iTempPerm26) | ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm28) | ((iControl[66] & iTempPerm26) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm28) | ((iControl[65] & iTempPerm26) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm28) | ((iControl[64] & iTempPerm26) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm28) | ((iControl[63] & iTempPerm26) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm28) | ((iControl[62] & iTempPerm26) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm28) | ((iControl[61] & iTempPerm26) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm28) | ((iControl[60] & iTempPerm26) | ((iControl[60] & iTempPerm24) | ((iControl[59] & iTempPerm28) | ((iControl[59] & iTempPerm26) | ((iControl[59] & iTempPerm24) | ((iControl[58] & iTempPerm28) | ((iControl[58] & iTempPerm26) | ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm28) | ((iControl[57] & iTempPerm26) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm28) | ((iControl[56] & iTempPerm26) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm28) | ((iControl[55] & iTempPerm26) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm28) | ((iControl[54] & iTempPerm26) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm28) | ((iControl[53] & iTempPerm26) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm28) | ((iControl[52] & iTempPerm26) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm28) | ((iControl[51] & iTempPerm26) | ((iControl[51] & iTempPerm24) | ((iControl[50] & iTempPerm28) | ((iControl[50] & iTempPerm26) | ((iControl[50] & iTempPerm24) | ((iControl[49] & iTempPerm28) | ((iControl[49] & iTempPerm26) | ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm28) | ((iControl[48] & iTempPerm26) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm28) | ((iControl[47] & iTempPerm26) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm28) | ((iControl[46] & iTempPerm26) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm28) | ((iControl[45] & iTempPerm26) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm28) | ((iControl[44] & iTempPerm26) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm28) | ((iControl[43] & iTempPerm26) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm28) | ((iControl[42] & iTempPerm26) | ((iControl[42] & iTempPerm24) | ((iControl[41] & iTempPerm28) | ((iControl[41] & iTempPerm26) | (iControl[41] & iTempPerm24)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm31 = ((fTemp46 * ((fControl[328] * fTemp43) + (fControl[329] * fTemp42))) + (fTemp45 * ((fControl[330] * fTemp43) + (fControl[331] * fTemp42))));
+			fTempPerm32 = ((fTemp46 * ((fControl[332] * fTemp43) + (fControl[333] * fTemp42))) + (fTemp45 * ((fControl[334] * fTemp43) + (fControl[335] * fTemp42))));
+			fTempPerm33 = ((fTemp46 * ((fControl[336] * fTemp43) + (fControl[337] * fTemp42))) + (fTemp45 * ((fControl[338] * fTemp43) + (fControl[339] * fTemp42))));
+			fTempPerm34 = ((fTemp46 * ((fControl[340] * fTemp43) + (fControl[341] * fTemp42))) + (fTemp45 * ((fControl[342] * fTemp43) + (fControl[343] * fTemp42))));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[3] & iTempPerm30) | ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm22) | ((iControl[75] & iTempPerm30) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm22) | ((iControl[74] & iTempPerm30) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm22) | ((iControl[73] & iTempPerm30) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm22) | ((iControl[72] & iTempPerm30) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm22) | ((iControl[71] & iTempPerm30) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm22) | ((iControl[70] & iTempPerm30) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm22) | ((iControl[69] & iTempPerm30) | ((iControl[69] & iTempPerm29) | ((iControl[68] & iTempPerm22) | ((iControl[68] & iTempPerm30) | ((iControl[68] & iTempPerm29) | ((iControl[67] & iTempPerm22) | ((iControl[67] & iTempPerm30) | ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm22) | ((iControl[66] & iTempPerm30) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm22) | ((iControl[65] & iTempPerm30) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm22) | ((iControl[64] & iTempPerm30) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm22) | ((iControl[63] & iTempPerm30) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm22) | ((iControl[62] & iTempPerm30) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm22) | ((iControl[61] & iTempPerm30) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm22) | ((iControl[60] & iTempPerm30) | ((iControl[60] & iTempPerm29) | ((iControl[59] & iTempPerm22) | ((iControl[59] & iTempPerm30) | ((iControl[59] & iTempPerm29) | ((iControl[58] & iTempPerm22) | ((iControl[58] & iTempPerm30) | ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm22) | ((iControl[57] & iTempPerm30) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm22) | ((iControl[56] & iTempPerm30) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm22) | ((iControl[55] & iTempPerm30) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm22) | ((iControl[54] & iTempPerm30) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm22) | ((iControl[53] & iTempPerm30) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm22) | ((iControl[52] & iTempPerm30) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm22) | ((iControl[51] & iTempPerm30) | ((iControl[51] & iTempPerm29) | ((iControl[50] & iTempPerm22) | ((iControl[50] & iTempPerm30) | ((iControl[50] & iTempPerm29) | ((iControl[49] & iTempPerm22) | ((iControl[49] & iTempPerm30) | ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm22) | ((iControl[48] & iTempPerm30) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm22) | ((iControl[47] & iTempPerm30) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm22) | ((iControl[46] & iTempPerm30) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm22) | ((iControl[45] & iTempPerm30) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm22) | ((iControl[44] & iTempPerm30) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm22) | ((iControl[43] & iTempPerm30) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm22) | ((iControl[42] & iTempPerm30) | ((iControl[42] & iTempPerm29) | ((iControl[41] & iTempPerm22) | ((iControl[41] & iTempPerm30) | (iControl[41] & iTempPerm29)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm35 = std::tan((fConst2 * std::min<float>(fConst4, std::max<float>(0.0f, (440.0f * std::pow(2.0f, (0.0833333358f * ((127.0f * std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTempPerm31 + fTempPerm32)) + (fTemp39 * (fTempPerm33 + fTempPerm34)))))) + -49.0f))))))));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm36 = ((fTemp46 * ((fControl[344] * fTemp43) + (fControl[345] * fTemp42))) + (fTemp45 * ((fControl[346] * fTemp43) + (fControl[347] * fTemp42))));
+			fTempPerm37 = ((fTemp46 * ((fControl[348] * fTemp43) + (fControl[349] * fTemp42))) + (fTemp45 * ((fControl[350] * fTemp43) + (fControl[351] * fTemp42))));
+			fTempPerm38 = ((fTemp46 * ((fControl[352] * fTemp43) + (fControl[353] * fTemp42))) + (fTemp45 * ((fControl[354] * fTemp43) + (fControl[355] * fTemp42))));
+			fTempPerm39 = ((fTemp46 * ((fControl[356] * fTemp43) + (fControl[357] * fTemp42))) + (fTemp45 * ((fControl[358] * fTemp43) + (fControl[359] * fTemp42))));
+			fTempPerm40 = (fRec5[1] * ((fTemp40 * (fTempPerm36 + fTempPerm37)) + (fTemp39 * (fTempPerm38 + fTempPerm39))));
+			fTempPerm41 = ((fTemp46 * ((fControl[360] * fTemp43) + (fControl[361] * fTemp42))) + (fTemp45 * ((fControl[362] * fTemp43) + (fControl[363] * fTemp42))));
+			fTempPerm42 = ((fTemp46 * ((fControl[364] * fTemp43) + (fControl[365] * fTemp42))) + (fTemp45 * ((fControl[366] * fTemp43) + (fControl[367] * fTemp42))));
+			fTempPerm43 = ((fTemp46 * ((fControl[368] * fTemp43) + (fControl[369] * fTemp42))) + (fTemp45 * ((fControl[370] * fTemp43) + (fControl[371] * fTemp42))));
+			fTempPerm44 = ((fTemp46 * ((fControl[372] * fTemp43) + (fControl[373] * fTemp42))) + (fTemp45 * ((fControl[374] * fTemp43) + (fControl[375] * fTemp42))));
+			fTempPerm45 = (fRec4[1] * ((fTemp40 * (fTempPerm41 + fTempPerm42)) + (fTemp39 * (fTempPerm43 + fTempPerm44))));
+			fTempPerm46 = ((fTemp46 * ((fControl[376] * fTemp43) + (fControl[377] * fTemp42))) + (fTemp45 * ((fControl[378] * fTemp43) + (fControl[379] * fTemp42))));
+			fTempPerm47 = ((fTemp46 * ((fControl[380] * fTemp43) + (fControl[381] * fTemp42))) + (fTemp45 * ((fControl[382] * fTemp43) + (fControl[383] * fTemp42))));
+			fTempPerm48 = ((fTemp46 * ((fControl[384] * fTemp43) + (fControl[385] * fTemp42))) + (fTemp45 * ((fControl[386] * fTemp43) + (fControl[387] * fTemp42))));
+			fTempPerm49 = ((fTemp46 * ((fControl[388] * fTemp43) + (fControl[389] * fTemp42))) + (fTemp45 * ((fControl[390] * fTemp43) + (fControl[391] * fTemp42))));
+			fTempPerm50 = (fRec3[1] * ((fTemp40 * (fTempPerm46 + fTempPerm47)) + (fTemp39 * (fTempPerm48 + fTempPerm49))));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fRec27[0] = ((fRec27[1] * fControl[393]) + fControl[395]);
+			fTempPerm51 = (float((int(fVec1[1]) & int(fControl[0]))) * fControl[393]);
+			fRec28[0] = ((fTempPerm51 * fRec28[1]) + (fControl[394] * (1.0f - fTempPerm51)));
+			fTempPerm52 = (fRec26[1] + (fConst5 * ((iControl[77] ? fControl[394] : (iControl[78] ? fRec28[0] : fRec27[0])) * fControl[396])));
+			iVec3[0] = (fHbargraph0 < 0.100000001f);
+			fRec26[0] = ((fTempPerm52 - std::floor(fTempPerm52)) * float((float((int(float((iVec3[1] & int(fTemp35)))) & iControl[80])) == 0.0f)));
+			fTempPerm53 = float(((1 - iVec0[1]) < 1));
+			fRec29[0] = ((fControl[397] * (1.0f - (0.999000013f * fTempPerm53))) + (0.999000013f * (fTempPerm53 * fRec29[1])));
+			fTempPerm54 = (fRec26[0] + fRec29[0]);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm55 = ((fTemp46 * ((fControl[398] * fTemp43) + (fControl[399] * fTemp42))) + (fTemp45 * ((fControl[400] * fTemp43) + (fControl[401] * fTemp42))));
+			fTempPerm56 = ((fTemp46 * ((fControl[402] * fTemp43) + (fControl[403] * fTemp42))) + (fTemp45 * ((fControl[404] * fTemp43) + (fControl[405] * fTemp42))));
+			fTempPerm57 = ((fTemp46 * ((fControl[406] * fTemp43) + (fControl[407] * fTemp42))) + (fTemp45 * ((fControl[408] * fTemp43) + (fControl[409] * fTemp42))));
+			fTempPerm58 = ((fTemp46 * ((fControl[410] * fTemp43) + (fControl[411] * fTemp42))) + (fTemp45 * ((fControl[412] * fTemp43) + (fControl[413] * fTemp42))));
+			fTempPerm59 = ((fTemp40 * (fTempPerm55 + fTempPerm56)) + (fTemp39 * (fTempPerm57 + fTempPerm58)));
+			fTempPerm60 = ((fTemp46 * ((fControl[414] * fTemp43) + (fControl[415] * fTemp42))) + (fTemp45 * ((fControl[416] * fTemp43) + (fControl[417] * fTemp42))));
+			fTempPerm61 = ((fTemp46 * ((fControl[418] * fTemp43) + (fControl[419] * fTemp42))) + (fTemp45 * ((fControl[420] * fTemp43) + (fControl[421] * fTemp42))));
+			fTempPerm62 = ((fTemp46 * ((fControl[422] * fTemp43) + (fControl[423] * fTemp42))) + (fTemp45 * ((fControl[424] * fTemp43) + (fControl[425] * fTemp42))));
+			fTempPerm63 = ((fTemp46 * ((fControl[426] * fTemp43) + (fControl[427] * fTemp42))) + (fTemp45 * ((fControl[428] * fTemp43) + (fControl[429] * fTemp42))));
+			fTempPerm64 = ((fTemp40 * (fTempPerm60 + fTempPerm61)) + (fTemp39 * (fTempPerm62 + fTempPerm63)));
+			fTempPerm65 = std::floor(fTempPerm64);
+			fTempPerm66 = (fTempPerm65 + float(((fTempPerm64 < 0.0f) & (fTempPerm64 != fTempPerm65))));
+			fTempPerm67 = (fTempPerm54 + (0.00390625f * (fTempPerm59 * std::pow(2.0f, (0.0f - fTempPerm66)))));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm68 = std::floor(fTempPerm54);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			iTempPerm69 = int(fTempPerm66);
+			fTempPerm70 = ((fTemp46 * ((fControl[430] * fTemp43) + (fControl[431] * fTemp42))) + (fTemp45 * ((fControl[432] * fTemp43) + (fControl[433] * fTemp42))));
+			fTempPerm71 = ((fTemp46 * ((fControl[434] * fTemp43) + (fControl[435] * fTemp42))) + (fTemp45 * ((fControl[436] * fTemp43) + (fControl[437] * fTemp42))));
+			fTempPerm72 = ((fTemp46 * ((fControl[438] * fTemp43) + (fControl[439] * fTemp42))) + (fTemp45 * ((fControl[440] * fTemp43) + (fControl[441] * fTemp42))));
+			fTempPerm73 = ((fTemp46 * ((fControl[442] * fTemp43) + (fControl[443] * fTemp42))) + (fTemp45 * ((fControl[444] * fTemp43) + (fControl[445] * fTemp42))));
+			fTempPerm74 = (fRec2[1] * ((fTemp40 * (fTempPerm70 + fTempPerm71)) + (fTemp39 * (fTempPerm72 + fTempPerm73))));
+			fTempPerm75 = (fTempPerm40 + (fTempPerm45 + (fTempPerm50 + (std::fmod((256.0f * ((fTempPerm67 - (fTempPerm68 + std::floor((fTempPerm67 - fTempPerm68)))) * (((float((iTempPerm69 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm69)))))) + float((iTempPerm69 == 0))) + float(((iTempPerm69 > 0) * int(std::pow(2.0f, float(iTempPerm69)))))))), 1.0f) + fTempPerm74))));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[75] & iTempPerm22) | ((iControl[74] & iTempPerm22) | ((iControl[73] & iTempPerm22) | ((iControl[72] & iTempPerm22) | ((iControl[71] & iTempPerm22) | ((iControl[70] & iTempPerm22) | ((iControl[69] & iTempPerm22) | (iControl[68] & iTempPerm22))))))))) {
+			fTempPerm76 = (fRec23[1] + (fTempPerm35 * (fTempPerm75 - fRec24[1])));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[3] & iTempPerm30) | ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm22) | ((iControl[75] & iTempPerm30) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm22) | ((iControl[74] & iTempPerm30) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm22) | ((iControl[73] & iTempPerm30) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm22) | ((iControl[72] & iTempPerm30) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm22) | ((iControl[71] & iTempPerm30) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm22) | ((iControl[70] & iTempPerm30) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm22) | ((iControl[69] & iTempPerm30) | ((iControl[69] & iTempPerm29) | ((iControl[68] & iTempPerm22) | ((iControl[68] & iTempPerm30) | ((iControl[68] & iTempPerm29) | ((iControl[67] & iTempPerm22) | ((iControl[67] & iTempPerm30) | ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm22) | ((iControl[66] & iTempPerm30) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm22) | ((iControl[65] & iTempPerm30) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm22) | ((iControl[64] & iTempPerm30) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm22) | ((iControl[63] & iTempPerm30) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm22) | ((iControl[62] & iTempPerm30) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm22) | ((iControl[61] & iTempPerm30) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm22) | ((iControl[60] & iTempPerm30) | ((iControl[60] & iTempPerm29) | ((iControl[59] & iTempPerm22) | ((iControl[59] & iTempPerm30) | ((iControl[59] & iTempPerm29) | ((iControl[58] & iTempPerm22) | ((iControl[58] & iTempPerm30) | ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm22) | ((iControl[57] & iTempPerm30) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm22) | ((iControl[56] & iTempPerm30) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm22) | ((iControl[55] & iTempPerm30) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm22) | ((iControl[54] & iTempPerm30) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm22) | ((iControl[53] & iTempPerm30) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm22) | ((iControl[52] & iTempPerm30) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm22) | ((iControl[51] & iTempPerm30) | ((iControl[51] & iTempPerm29) | ((iControl[50] & iTempPerm22) | ((iControl[50] & iTempPerm30) | ((iControl[50] & iTempPerm29) | ((iControl[49] & iTempPerm22) | ((iControl[49] & iTempPerm30) | ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm22) | ((iControl[48] & iTempPerm30) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm22) | ((iControl[47] & iTempPerm30) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm22) | ((iControl[46] & iTempPerm30) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm22) | ((iControl[45] & iTempPerm30) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm22) | ((iControl[44] & iTempPerm30) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm22) | ((iControl[43] & iTempPerm30) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm22) | ((iControl[42] & iTempPerm30) | ((iControl[42] & iTempPerm29) | ((iControl[41] & iTempPerm22) | ((iControl[41] & iTempPerm30) | ((iControl[41] & iTempPerm29) | ((iControl[3] & iTempPerm28) | ((iControl[3] & iTempPerm26) | ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm28) | ((iControl[75] & iTempPerm26) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm28) | ((iControl[74] & iTempPerm26) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm28) | ((iControl[73] & iTempPerm26) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm28) | ((iControl[72] & iTempPerm26) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm28) | ((iControl[71] & iTempPerm26) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm28) | ((iControl[70] & iTempPerm26) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm28) | ((iControl[69] & iTempPerm26) | ((iControl[69] & iTempPerm24) | ((iControl[68] & iTempPerm28) | ((iControl[68] & iTempPerm26) | ((iControl[68] & iTempPerm24) | ((iControl[67] & iTempPerm28) | ((iControl[67] & iTempPerm26) | ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm28) | ((iControl[66] & iTempPerm26) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm28) | ((iControl[65] & iTempPerm26) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm28) | ((iControl[64] & iTempPerm26) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm28) | ((iControl[63] & iTempPerm26) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm28) | ((iControl[62] & iTempPerm26) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm28) | ((iControl[61] & iTempPerm26) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm28) | ((iControl[60] & iTempPerm26) | ((iControl[60] & iTempPerm24) | ((iControl[59] & iTempPerm28) | ((iControl[59] & iTempPerm26) | ((iControl[59] & iTempPerm24) | ((iControl[58] & iTempPerm28) | ((iControl[58] & iTempPerm26) | ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm28) | ((iControl[57] & iTempPerm26) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm28) | ((iControl[56] & iTempPerm26) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm28) | ((iControl[55] & iTempPerm26) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm28) | ((iControl[54] & iTempPerm26) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm28) | ((iControl[53] & iTempPerm26) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm28) | ((iControl[52] & iTempPerm26) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm28) | ((iControl[51] & iTempPerm26) | ((iControl[51] & iTempPerm24) | ((iControl[50] & iTempPerm28) | ((iControl[50] & iTempPerm26) | ((iControl[50] & iTempPerm24) | ((iControl[49] & iTempPerm28) | ((iControl[49] & iTempPerm26) | ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm28) | ((iControl[48] & iTempPerm26) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm28) | ((iControl[47] & iTempPerm26) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm28) | ((iControl[46] & iTempPerm26) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm28) | ((iControl[45] & iTempPerm26) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm28) | ((iControl[44] & iTempPerm26) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm28) | ((iControl[43] & iTempPerm26) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm28) | ((iControl[42] & iTempPerm26) | ((iControl[42] & iTempPerm24) | ((iControl[41] & iTempPerm28) | ((iControl[41] & iTempPerm26) | (iControl[41] & iTempPerm24)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm77 = ((fTemp46 * ((fControl[446] * fTemp43) + (fControl[447] * fTemp42))) + (fTemp45 * ((fControl[448] * fTemp43) + (fControl[449] * fTemp42))));
+			fTempPerm78 = ((fTemp46 * ((fControl[450] * fTemp43) + (fControl[451] * fTemp42))) + (fTemp45 * ((fControl[452] * fTemp43) + (fControl[453] * fTemp42))));
+			fTempPerm79 = ((fTemp46 * ((fControl[454] * fTemp43) + (fControl[455] * fTemp42))) + (fTemp45 * ((fControl[456] * fTemp43) + (fControl[457] * fTemp42))));
+			fTempPerm80 = ((fTemp46 * ((fControl[458] * fTemp43) + (fControl[459] * fTemp42))) + (fTemp45 * ((fControl[460] * fTemp43) + (fControl[461] * fTemp42))));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[3] & iTempPerm30) | ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm22) | ((iControl[75] & iTempPerm30) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm22) | ((iControl[74] & iTempPerm30) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm22) | ((iControl[73] & iTempPerm30) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm22) | ((iControl[72] & iTempPerm30) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm22) | ((iControl[71] & iTempPerm30) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm22) | ((iControl[70] & iTempPerm30) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm22) | ((iControl[69] & iTempPerm30) | ((iControl[69] & iTempPerm29) | ((iControl[68] & iTempPerm22) | ((iControl[68] & iTempPerm30) | ((iControl[68] & iTempPerm29) | ((iControl[67] & iTempPerm22) | ((iControl[67] & iTempPerm30) | ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm22) | ((iControl[66] & iTempPerm30) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm22) | ((iControl[65] & iTempPerm30) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm22) | ((iControl[64] & iTempPerm30) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm22) | ((iControl[63] & iTempPerm30) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm22) | ((iControl[62] & iTempPerm30) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm22) | ((iControl[61] & iTempPerm30) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm22) | ((iControl[60] & iTempPerm30) | ((iControl[60] & iTempPerm29) | ((iControl[59] & iTempPerm22) | ((iControl[59] & iTempPerm30) | ((iControl[59] & iTempPerm29) | ((iControl[58] & iTempPerm22) | ((iControl[58] & iTempPerm30) | ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm22) | ((iControl[57] & iTempPerm30) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm22) | ((iControl[56] & iTempPerm30) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm22) | ((iControl[55] & iTempPerm30) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm22) | ((iControl[54] & iTempPerm30) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm22) | ((iControl[53] & iTempPerm30) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm22) | ((iControl[52] & iTempPerm30) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm22) | ((iControl[51] & iTempPerm30) | ((iControl[51] & iTempPerm29) | ((iControl[50] & iTempPerm22) | ((iControl[50] & iTempPerm30) | ((iControl[50] & iTempPerm29) | ((iControl[49] & iTempPerm22) | ((iControl[49] & iTempPerm30) | ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm22) | ((iControl[48] & iTempPerm30) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm22) | ((iControl[47] & iTempPerm30) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm22) | ((iControl[46] & iTempPerm30) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm22) | ((iControl[45] & iTempPerm30) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm22) | ((iControl[44] & iTempPerm30) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm22) | ((iControl[43] & iTempPerm30) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm22) | ((iControl[42] & iTempPerm30) | ((iControl[42] & iTempPerm29) | ((iControl[41] & iTempPerm22) | ((iControl[41] & iTempPerm30) | (iControl[41] & iTempPerm29)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm81 = std::min<float>(10.0f, std::max<float>(0.00999999978f, ((fTemp40 * (fTempPerm77 + fTempPerm78)) + (fTemp39 * (fTempPerm79 + fTempPerm80)))));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm22) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm22) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm22) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm22) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm22) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm22) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm22) | ((iControl[69] & iTempPerm29) | ((iControl[68] & iTempPerm22) | ((iControl[68] & iTempPerm29) | ((iControl[67] & iTempPerm22) | ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm22) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm22) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm22) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm22) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm22) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm22) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm22) | ((iControl[60] & iTempPerm29) | ((iControl[59] & iTempPerm22) | ((iControl[59] & iTempPerm29) | ((iControl[58] & iTempPerm22) | ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm22) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm22) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm22) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm22) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm22) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm22) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm22) | ((iControl[51] & iTempPerm29) | ((iControl[50] & iTempPerm22) | ((iControl[50] & iTempPerm29) | ((iControl[49] & iTempPerm22) | ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm22) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm22) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm22) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm22) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm22) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm22) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm22) | ((iControl[42] & iTempPerm29) | ((iControl[41] & iTempPerm22) | (iControl[41] & iTempPerm29)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm82 = (fTempPerm35 + (1.0f / fTempPerm81));
+			fTempPerm83 = ((fTempPerm35 * fTempPerm82) + 1.0f);
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[75] & iTempPerm22) | ((iControl[74] & iTempPerm22) | ((iControl[73] & iTempPerm22) | ((iControl[72] & iTempPerm22) | ((iControl[71] & iTempPerm22) | ((iControl[70] & iTempPerm22) | ((iControl[69] & iTempPerm22) | (iControl[68] & iTempPerm22))))))))) {
+			fTempPerm84 = (fTempPerm76 / fTempPerm83);
+			fRec23[0] = ((2.0f * fTempPerm84) - fRec23[1]);
+			fTempPerm85 = (fRec24[1] + ((fTempPerm35 * fTempPerm76) / fTempPerm83));
+			fRec24[0] = ((2.0f * fTempPerm85) - fRec24[1]);
+			fRec25 = fTempPerm85;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm86 = std::max<float>(2.82118644e-37f, fTempPerm11);
+			fTempPerm87 = ((fTempPerm10 < 0.0f) ? (0.0f - fTempPerm86) : fTempPerm86);
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fTempPerm88 = (fTempPerm35 * (fTempPerm75 - fRec32[1]));
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | ((iControl[68] & iTempPerm30) | ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | ((iControl[59] & iTempPerm30) | ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | ((iControl[50] & iTempPerm30) | ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30)))))))))))))))))))))))))))))))))))) {
+			fTempPerm89 = (fTempPerm81 + -0.707000017f);
+			fTempPerm90 = (fTempPerm35 + 1.0f);
+			fTempPerm91 = (1.0f - (fTempPerm35 / fTempPerm90));
+			fTempPerm92 = (0.0f - (1.0f / fTempPerm90));
+			fTempPerm93 = (1.0f - (0.215215757f * (((fTempPerm35 * fTempPerm89) * fTempPerm91) / fTempPerm90)));
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fTempPerm94 = ((fTempPerm35 * ((((fRec32[1] + ((fTempPerm88 + (0.215215757f * ((fRec30[1] * fTempPerm89) * fTempPerm91))) / fTempPerm90)) + (fRec31[1] * fTempPerm92)) / fTempPerm93) - fRec30[1])) / fTempPerm90);
+			fRec30[0] = (fRec30[1] + (2.0f * fTempPerm94));
+			fTempPerm95 = (fRec30[1] + fTempPerm94);
+			fRec31[0] = (fRec31[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm95)) - fRec31[1])) / fTempPerm90)));
+			fRec32[0] = (fRec32[1] + (2.0f * (fTempPerm88 / fTempPerm90)));
+			fRec33 = fTempPerm95;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm96 = std::max<float>(2.82118644e-37f, fTempPerm17);
+			fTempPerm97 = ((fTempPerm16 < 0.0f) ? (0.0f - fTempPerm96) : fTempPerm96);
+		}
+		if ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm29) | (iControl[68] & iTempPerm29))))))))) {
+			fTempPerm98 = (fTempPerm75 - (fRec35[1] + (fTempPerm82 * fRec36[1])));
+			fTempPerm99 = ((fTempPerm35 * fTempPerm98) / fTempPerm83);
+			fTempPerm100 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec36[1] + fTempPerm99)));
+			fTempPerm101 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm100)));
+			fTempPerm102 = ((fTempPerm35 * fTempPerm100) * fTempPerm101);
+			fRec34 = (fRec35[1] + fTempPerm102);
+			fRec35[0] = (fRec35[1] + (2.0f * fTempPerm102));
+			fTempPerm103 = (fTempPerm100 * fTempPerm101);
+			fRec36[0] = (fTempPerm99 + fTempPerm103);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm104 = std::max<float>(8.46355933e-37f, fTempPerm18);
+			fTempPerm105 = (1.0f - fTempPerm19);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm106 = (((fTempPerm19 * (((fTempPerm21 * fRec25) + (fTempPerm87 * fRec33)) + (fTempPerm97 * fRec34))) / fTempPerm104) + (fTempPerm75 * fTempPerm105));
+			fVec4[0] = fTempPerm106;
+			fTempPerm107 = ((fTemp46 * ((fControl[463] * fTemp43) + (fControl[464] * fTemp42))) + (fTemp45 * ((fControl[465] * fTemp43) + (fControl[466] * fTemp42))));
+			fTempPerm108 = ((fTemp46 * ((fControl[467] * fTemp43) + (fControl[468] * fTemp42))) + (fTemp45 * ((fControl[469] * fTemp43) + (fControl[470] * fTemp42))));
+			fTempPerm109 = ((fTemp46 * ((fControl[471] * fTemp43) + (fControl[472] * fTemp42))) + (fTemp45 * ((fControl[473] * fTemp43) + (fControl[474] * fTemp42))));
+			fTempPerm110 = ((fTemp46 * ((fControl[475] * fTemp43) + (fControl[476] * fTemp42))) + (fTemp45 * ((fControl[477] * fTemp43) + (fControl[478] * fTemp42))));
+			fTempPerm111 = ((fTemp40 * (fTempPerm107 + fTempPerm108)) + (fTemp39 * (fTempPerm109 + fTempPerm110)));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71]))))) {
+			fTempPerm112 = (fControl[462] * fTempPerm111);
+		}
+		if (iControl[3]) {
+			fTempPerm113 = (2.0f * fTempPerm112);
+			fTempPerm114 = std::min<float>(1.0f, fTempPerm113);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fTempPerm115 = (fTempPerm106 - fVec4[1]);
+			fRec38[0] = ((std::fabs(fTempPerm115) < 0.5f) ? (fConst0 * fTempPerm115) : fRec38[1]);
+		}
+		if (iControl[3]) {
+			fTempPerm116 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec38[0])))))));
+			fTempPerm117 = (1.0f - fTempPerm116);
+		}
+		if (iControl[3] | iControl[69]) {
+			fTempPerm118 = std::floor(fTempPerm106);
+			fTempPerm119 = (fTempPerm106 - fTempPerm118);
+			fVec5[0] = fTempPerm119;
+			iTempPerm120 = (fTempPerm119 < 0.5f);
+			iVec6[0] = iTempPerm120;
+		}
+		if (iControl[3]) {
+			iTempPerm121 = ((iVec6[1] <= 0) & (iTempPerm120 > 0));
+			fRec43[0] = ((fRec43[1] * float((1 - iTempPerm121))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm121))));
+			fTempPerm122 = (fTempPerm116 + 1.0f);
+			fRec42[0] = (0.0f - (((fTempPerm117 * fRec42[1]) - (fRec43[0] + fRec43[1])) / fTempPerm122));
+			fRec41[0] = (0.0f - (((fTempPerm117 * fRec41[1]) - (fRec42[0] + fRec42[1])) / fTempPerm122));
+			fRec40[0] = (0.0f - (((fTempPerm117 * fRec40[1]) - (fRec41[0] + fRec41[1])) / fTempPerm122));
+			fRec39[0] = (0.0f - (((fTempPerm117 * fRec39[1]) - (fRec40[0] + fRec40[1])) / fTempPerm122));
+			fRec37[0] = (0.0f - (((fRec37[1] * fTempPerm117) - (fRec39[0] + fRec39[1])) / fTempPerm122));
+			fTempPerm123 = (std::sin((6.28318548f * fTempPerm106)) * ((fTempPerm114 * (fRec37[0] + -1.0f)) + 1.0f));
+			fTempPerm124 = (std::max<float>(1.0f, fTempPerm113) + -1.0f);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm125 = std::fmod(std::fabs(fTempPerm64), 1.0f);
+			fTempPerm126 = (1.0f - fTempPerm125);
+			fTempPerm127 = (fTempPerm65 + float((fTempPerm64 > 0.0f)));
+			fTempPerm128 = (fTempPerm54 + (0.00390625f * (fTempPerm59 * std::pow(2.0f, (0.0f - fTempPerm127)))));
+			iTempPerm129 = int(fTempPerm127);
+			fTempPerm130 = ((((fTempPerm74 + fTempPerm50) + fTempPerm45) + fTempPerm40) + std::fmod((256.0f * ((fTempPerm128 - (fTempPerm68 + std::floor((fTempPerm128 - fTempPerm68)))) * (((float((iTempPerm129 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm129)))))) + float((iTempPerm129 == 0))) + float(((iTempPerm129 > 0) * int(std::pow(2.0f, float(iTempPerm129)))))))), 1.0f));
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[75] & iTempPerm22) | ((iControl[74] & iTempPerm22) | ((iControl[73] & iTempPerm22) | ((iControl[72] & iTempPerm22) | ((iControl[71] & iTempPerm22) | ((iControl[70] & iTempPerm22) | ((iControl[69] & iTempPerm22) | (iControl[68] & iTempPerm22))))))))) {
+			fTempPerm131 = (fRec44[1] + (fTempPerm35 * (fTempPerm130 - fRec45[1])));
+			fTempPerm132 = (fTempPerm131 / fTempPerm83);
+			fRec44[0] = ((2.0f * fTempPerm132) - fRec44[1]);
+			fTempPerm133 = (fRec45[1] + ((fTempPerm35 * fTempPerm131) / fTempPerm83));
+			fRec45[0] = ((2.0f * fTempPerm133) - fRec45[1]);
+			fRec46 = fTempPerm133;
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fTempPerm134 = (fTempPerm35 * (fTempPerm130 - fRec49[1]));
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | ((iControl[68] & iTempPerm30) | ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | ((iControl[59] & iTempPerm30) | ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | ((iControl[50] & iTempPerm30) | ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30)))))))))))))))))))))))))))))))))))) {
+			fTempPerm135 = (fTempPerm89 * fTempPerm91);
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fTempPerm136 = ((fTempPerm35 * ((((fRec49[1] + ((fTempPerm134 + (0.215215757f * (fTempPerm135 * fRec47[1]))) / fTempPerm90)) + (fTempPerm92 * fRec48[1])) / fTempPerm93) - fRec47[1])) / fTempPerm90);
+			fRec47[0] = (fRec47[1] + (2.0f * fTempPerm136));
+			fTempPerm137 = (fRec47[1] + fTempPerm136);
+			fRec48[0] = (fRec48[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm137)) - fRec48[1])) / fTempPerm90)));
+			fRec49[0] = (fRec49[1] + (2.0f * (fTempPerm134 / fTempPerm90)));
+			fRec50 = fTempPerm137;
+		}
+		if ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm29) | (iControl[68] & iTempPerm29))))))))) {
+			fTempPerm138 = (fTempPerm130 - (fRec52[1] + (fTempPerm82 * fRec53[1])));
+			fTempPerm139 = ((fTempPerm35 * fTempPerm138) / fTempPerm83);
+			fTempPerm140 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec53[1] + fTempPerm139)));
+			fTempPerm141 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm140)));
+			fTempPerm142 = ((fTempPerm35 * fTempPerm140) * fTempPerm141);
+			fRec51 = (fRec52[1] + fTempPerm142);
+			fRec52[0] = (fRec52[1] + (2.0f * fTempPerm142));
+			fTempPerm143 = (fTempPerm140 * fTempPerm141);
+			fRec53[0] = (fTempPerm139 + fTempPerm143);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm144 = (((fTempPerm19 * (((fTempPerm21 * fRec46) + (fTempPerm87 * fRec50)) + (fTempPerm97 * fRec51))) / fTempPerm104) + (fTempPerm105 * fTempPerm130));
+			fVec7[0] = fTempPerm144;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fTempPerm145 = (fTempPerm144 - fVec7[1]);
+			fRec55[0] = ((std::fabs(fTempPerm145) < 0.5f) ? (fConst0 * fTempPerm145) : fRec55[1]);
+		}
+		if (iControl[3]) {
+			fTempPerm146 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec55[0])))))));
+			fTempPerm147 = (1.0f - fTempPerm146);
+		}
+		if (iControl[3] | iControl[69]) {
+			fTempPerm148 = std::floor(fTempPerm144);
+			fTempPerm149 = (fTempPerm144 - fTempPerm148);
+			fVec8[0] = fTempPerm149;
+			iTempPerm150 = (fTempPerm149 < 0.5f);
+			iVec9[0] = iTempPerm150;
+		}
+		if (iControl[3]) {
+			iTempPerm151 = ((iVec9[1] <= 0) & (iTempPerm150 > 0));
+			fRec60[0] = ((fRec60[1] * float((1 - iTempPerm151))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm151))));
+			fTempPerm152 = (fTempPerm146 + 1.0f);
+			fRec59[0] = (0.0f - (((fTempPerm147 * fRec59[1]) - (fRec60[0] + fRec60[1])) / fTempPerm152));
+			fRec58[0] = (0.0f - (((fTempPerm147 * fRec58[1]) - (fRec59[0] + fRec59[1])) / fTempPerm152));
+			fRec57[0] = (0.0f - (((fTempPerm147 * fRec57[1]) - (fRec58[0] + fRec58[1])) / fTempPerm152));
+			fRec56[0] = (0.0f - (((fTempPerm147 * fRec56[1]) - (fRec57[0] + fRec57[1])) / fTempPerm152));
+			fRec54[0] = (0.0f - (((fRec54[1] * fTempPerm147) - (fRec56[0] + fRec56[1])) / fTempPerm152));
+			fTempPerm153 = (std::sin((6.28318548f * fTempPerm144)) * ((fTempPerm114 * (fRec54[0] + -1.0f)) + 1.0f));
+			fTempPerm154 = (((fTempPerm123 + (fTempPerm124 * (fRec37[0] - fTempPerm123))) * fTempPerm126) + (fTempPerm125 * (fTempPerm153 + (fTempPerm124 * (fRec54[0] - fTempPerm153)))));
+		}
+		if (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71])))) {
+			fTempPerm155 = (fTempPerm112 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec38[0] - fConst7))))));
+		}
+		if (iControl[75] | (iControl[73] | (iControl[72] | iControl[71]))) {
+			fTempPerm156 = (1.0f - fTempPerm155);
+		}
+		if (iControl[75]) {
+			fTempPerm157 = ((0.75f * fTempPerm156) + (fTempPerm106 + (0.5f * fTempPerm155)));
+			fTempPerm158 = std::floor(fTempPerm157);
+		}
+		if (iControl[75] | iControl[71]) {
+			fTempPerm159 = (0.5f * fTempPerm156);
+		}
+		if (iControl[75]) {
+			fTempPerm160 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm159));
+			fTempPerm161 = (0.5f - fTempPerm160);
+		}
+		if (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71])))) {
+			fTempPerm162 = (fTempPerm112 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec55[0] - fConst7))))));
+		}
+		if (iControl[75] | (iControl[73] | (iControl[72] | iControl[71]))) {
+			fTempPerm163 = (1.0f - fTempPerm162);
+		}
+		if (iControl[75]) {
+			fTempPerm164 = ((0.75f * fTempPerm163) + (fTempPerm144 + (0.5f * fTempPerm162)));
+			fTempPerm165 = std::floor(fTempPerm164);
+		}
+		if (iControl[75] | iControl[71]) {
+			fTempPerm166 = (0.5f * fTempPerm163);
+		}
+		if (iControl[75]) {
+			fTempPerm167 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm166));
+			fTempPerm168 = (0.5f - fTempPerm167);
+			fTempPerm169 = ((fTempPerm126 * std::cos((6.28318548f * ((fTempPerm157 + std::min<float>((((fTempPerm157 - fTempPerm158) * fTempPerm161) / fTempPerm160), ((fTempPerm161 * (fTempPerm158 + (1.0f - fTempPerm157))) / (1.0f - fTempPerm160)))) - fTempPerm158)))) + (fTempPerm125 * std::cos((6.28318548f * ((fTempPerm164 + std::min<float>((((fTempPerm164 - fTempPerm165) * fTempPerm168) / fTempPerm167), ((fTempPerm168 * (fTempPerm165 + (1.0f - fTempPerm164))) / (1.0f - fTempPerm167)))) - fTempPerm165)))));
+		}
+		if (iControl[74]) {
+			fTempPerm170 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm155));
+			fTempPerm171 = (1.0f - fTempPerm170);
+			fTempPerm172 = (0.25f * fTempPerm171);
+			fTempPerm173 = (fTempPerm106 - (fTempPerm172 + std::floor((fTempPerm106 - fTempPerm172))));
+			fTempPerm174 = (2.0f * fTempPerm173);
+			fTempPerm175 = std::floor((fTempPerm174 + 1.0f));
+			fTempPerm176 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm162));
+			fTempPerm177 = (1.0f - fTempPerm176);
+			fTempPerm178 = (0.25f * fTempPerm177);
+			fTempPerm179 = (fTempPerm144 - (fTempPerm178 + std::floor((fTempPerm144 - fTempPerm178))));
+			fTempPerm180 = (2.0f * fTempPerm179);
+			fTempPerm181 = std::floor((fTempPerm180 + 1.0f));
+			fTempPerm182 = ((fTempPerm126 * std::cos((3.14159274f * ((float((fTempPerm173 >= 0.5f)) + fTempPerm174) + (1.0f - (fTempPerm175 + std::min<float>((fTempPerm174 + (1.0f - fTempPerm175)), ((fTempPerm170 * (fTempPerm175 - fTempPerm174)) / fTempPerm171)))))))) + (fTempPerm125 * std::cos((3.14159274f * ((float((fTempPerm179 >= 0.5f)) + fTempPerm180) + (1.0f - (fTempPerm181 + std::min<float>((fTempPerm180 + (1.0f - fTempPerm181)), ((fTempPerm176 * (fTempPerm181 - fTempPerm180)) / fTempPerm177)))))))));
+		}
+		if (iControl[73]) {
+			fTempPerm183 = (0.25f * fTempPerm156);
+			fTempPerm184 = (fTempPerm183 + std::floor((fTempPerm106 - fTempPerm183)));
+		}
+		if (iControl[73] | (iControl[72] | (iControl[70] | iControl[68]))) {
+			fTempPerm185 = (1.0f - fTempPerm106);
+		}
+		if (iControl[73]) {
+			fTempPerm186 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm155));
+			fTempPerm187 = (0.25f * fTempPerm163);
+			fTempPerm188 = (fTempPerm187 + std::floor((fTempPerm144 - fTempPerm187)));
+		}
+		if (iControl[73] | (iControl[72] | (iControl[70] | iControl[68]))) {
+			fTempPerm189 = (1.0f - fTempPerm144);
+		}
+		if (iControl[73]) {
+			fTempPerm190 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm162));
+			fTempPerm191 = ((fTempPerm126 * std::cos((6.28318548f * (fTempPerm106 - (fTempPerm184 + std::min<float>((fTempPerm106 - fTempPerm184), (((fTempPerm184 + fTempPerm185) * fTempPerm186) / (1.0f - fTempPerm186)))))))) + (fTempPerm125 * std::cos((6.28318548f * (fTempPerm144 - (fTempPerm188 + std::min<float>((fTempPerm144 - fTempPerm188), (((fTempPerm188 + fTempPerm189) * fTempPerm190) / (1.0f - fTempPerm190)))))))));
+		}
+		if (iControl[72]) {
+			fTempPerm192 = ((0.125f * fTempPerm156) + (0.25f * fTempPerm155));
+			fTempPerm193 = (fTempPerm192 + std::floor((fTempPerm106 - fTempPerm192)));
+			fTempPerm194 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm155));
+			fTempPerm195 = (0.49000001f * fTempPerm194);
+			fTempPerm196 = ((0.125f * fTempPerm163) + (0.25f * fTempPerm162));
+			fTempPerm197 = (fTempPerm196 + std::floor((fTempPerm144 - fTempPerm196)));
+			fTempPerm198 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm162));
+			fTempPerm199 = (0.49000001f * fTempPerm198);
+			fTempPerm200 = ((fTempPerm126 * std::cos((12.566371f * ((fTempPerm106 + std::min<float>((0.49000001f * (((fTempPerm106 - fTempPerm193) * fTempPerm194) / (0.5f - fTempPerm195))), (0.49000001f * ((fTempPerm194 * (fTempPerm193 + fTempPerm185)) / (fTempPerm195 + 0.5f))))) - fTempPerm193)))) + (fTempPerm125 * std::cos((12.566371f * ((fTempPerm144 + std::min<float>((0.49000001f * (((fTempPerm144 - fTempPerm197) * fTempPerm198) / (0.5f - fTempPerm199))), (0.49000001f * ((fTempPerm198 * (fTempPerm197 + fTempPerm189)) / (fTempPerm199 + 0.5f))))) - fTempPerm197)))));
+		}
+		if (iControl[71]) {
+			fTempPerm201 = std::min<float>(0.975000024f, fTempPerm155);
+			fTempPerm202 = (0.25f * (1.0f - fTempPerm201));
+			fTempPerm203 = (fTempPerm202 + (0.5f * fTempPerm201));
+			fTempPerm204 = std::floor((fTempPerm106 - fTempPerm203));
+			fTempPerm205 = (fTempPerm106 - (fTempPerm203 + fTempPerm204));
+			fTempPerm206 = std::min<float>(0.975000024f, fTempPerm162);
+			fTempPerm207 = (0.25f * (1.0f - fTempPerm206));
+			fTempPerm208 = (fTempPerm207 + (0.5f * fTempPerm206));
+			fTempPerm209 = std::floor((fTempPerm144 - fTempPerm208));
+			fTempPerm210 = (fTempPerm144 - (fTempPerm208 + fTempPerm209));
+			fTempPerm211 = ((fTempPerm126 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm205 < 0.5f) ? fTempPerm205 : (0.5f * (((fTempPerm106 - ((fTempPerm202 + fTempPerm204) + (0.5f * (fTempPerm201 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm159))) + 1.0f))))))) + (fTempPerm125 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm210 < 0.5f) ? fTempPerm210 : (0.5f * (((fTempPerm144 - ((fTempPerm207 + fTempPerm209) + (0.5f * (fTempPerm206 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm166))) + 1.0f))))))));
+		}
+		if (iControl[70] | iControl[68]) {
+			fTempPerm212 = (fTempPerm106 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec38[0] * fControl[462]) * fTempPerm111))) / fRec38[0])));
+			fTempPerm213 = (fTempPerm144 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec55[0] * fControl[462]) * fTempPerm111))) / fRec55[0])));
+		}
+		if (iControl[70]) {
+			fTempPerm214 = ((fTempPerm126 * (((0.0f - fTempPerm185) * (1.0f - std::cos((6.28318548f * (fTempPerm212 + (1.0f - std::floor((fTempPerm212 + 1.0f)))))))) + 1.0f)) + (fTempPerm125 * (((0.0f - fTempPerm189) * (1.0f - std::cos((6.28318548f * (fTempPerm213 + (1.0f - std::floor((fTempPerm213 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[69]) {
+			fTempPerm215 = (fTempPerm106 - (fTempPerm118 + fVec5[1]));
+			fRec61[0] = ((std::fabs(fTempPerm215) < 0.5f) ? (fConst0 * fTempPerm215) : fRec61[1]);
+			fTempPerm216 = (fTempPerm119 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec61[0] * fControl[462]) * fTempPerm111))) / fRec61[0])));
+			fTempPerm217 = (fTempPerm144 - (fTempPerm148 + fVec8[1]));
+			fRec62[0] = ((std::fabs(fTempPerm217) < 0.5f) ? (fConst0 * fTempPerm217) : fRec62[1]);
+			fTempPerm218 = (fTempPerm149 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec62[0] * fControl[462]) * fTempPerm111))) / fRec62[0])));
+			fTempPerm219 = ((fTempPerm126 * (((iTempPerm120 ? (2.0f * fTempPerm119) : (2.0f * (1.0f - fTempPerm119))) * (std::cos((6.28318548f * (fTempPerm216 + (1.0f - std::floor((fTempPerm216 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm125 * (((iTempPerm150 ? (2.0f * fTempPerm149) : (2.0f * (1.0f - fTempPerm149))) * (std::cos((6.28318548f * (fTempPerm218 + (1.0f - std::floor((fTempPerm218 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[68]) {
+			fTempPerm220 = (((fTempPerm126 * std::min<float>(1.0f, (2.0f * fTempPerm185))) * std::sin((6.28318548f * (fTempPerm212 - std::floor(fTempPerm212))))) + ((fTempPerm125 * std::min<float>(1.0f, (2.0f * fTempPerm189))) * std::sin((6.28318548f * (fTempPerm213 - std::floor(fTempPerm213))))));
+		}
+		fRec2[0] = (((((((((fControl[11] * fTempPerm154) + (fControl[283] * fTempPerm169)) + (fControl[282] * fTempPerm182)) + (fControl[281] * fTempPerm191)) + (fControl[280] * fTempPerm200)) + (fControl[279] * fTempPerm211)) + (fControl[278] * fTempPerm214)) + (fControl[277] * fTempPerm219)) + (fControl[276] * fTempPerm220));
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm221 = ((fTemp46 * ((fControl[479] * fTemp43) + (fControl[480] * fTemp42))) + (fTemp45 * ((fControl[481] * fTemp43) + (fControl[482] * fTemp42))));
+			fTempPerm222 = ((fTemp46 * ((fControl[483] * fTemp43) + (fControl[484] * fTemp42))) + (fTemp45 * ((fControl[485] * fTemp43) + (fControl[486] * fTemp42))));
+			fTempPerm223 = ((fTemp46 * ((fControl[487] * fTemp43) + (fControl[488] * fTemp42))) + (fTemp45 * ((fControl[489] * fTemp43) + (fControl[490] * fTemp42))));
+			fTempPerm224 = ((fTemp46 * ((fControl[491] * fTemp43) + (fControl[492] * fTemp42))) + (fTemp45 * ((fControl[493] * fTemp43) + (fControl[494] * fTemp42))));
+			fTempPerm225 = (fRec5[1] * ((fTemp40 * (fTempPerm221 + fTempPerm222)) + (fTemp39 * (fTempPerm223 + fTempPerm224))));
+			fTempPerm226 = ((fTemp46 * ((fControl[495] * fTemp43) + (fControl[496] * fTemp42))) + (fTemp45 * ((fControl[497] * fTemp43) + (fControl[498] * fTemp42))));
+			fTempPerm227 = ((fTemp46 * ((fControl[499] * fTemp43) + (fControl[500] * fTemp42))) + (fTemp45 * ((fControl[501] * fTemp43) + (fControl[502] * fTemp42))));
+			fTempPerm228 = ((fTemp46 * ((fControl[503] * fTemp43) + (fControl[504] * fTemp42))) + (fTemp45 * ((fControl[505] * fTemp43) + (fControl[506] * fTemp42))));
+			fTempPerm229 = ((fTemp46 * ((fControl[507] * fTemp43) + (fControl[508] * fTemp42))) + (fTemp45 * ((fControl[509] * fTemp43) + (fControl[510] * fTemp42))));
+			fTempPerm230 = (fRec4[1] * ((fTemp40 * (fTempPerm226 + fTempPerm227)) + (fTemp39 * (fTempPerm228 + fTempPerm229))));
+			fTempPerm231 = ((fTemp46 * ((fControl[511] * fTemp43) + (fControl[512] * fTemp42))) + (fTemp45 * ((fControl[513] * fTemp43) + (fControl[514] * fTemp42))));
+			fTempPerm232 = ((fTemp46 * ((fControl[515] * fTemp43) + (fControl[516] * fTemp42))) + (fTemp45 * ((fControl[517] * fTemp43) + (fControl[518] * fTemp42))));
+			fTempPerm233 = ((fTemp46 * ((fControl[519] * fTemp43) + (fControl[520] * fTemp42))) + (fTemp45 * ((fControl[521] * fTemp43) + (fControl[522] * fTemp42))));
+			fTempPerm234 = ((fTemp46 * ((fControl[523] * fTemp43) + (fControl[524] * fTemp42))) + (fTemp45 * ((fControl[525] * fTemp43) + (fControl[526] * fTemp42))));
+			fTempPerm235 = (fRec3[1] * ((fTemp40 * (fTempPerm231 + fTempPerm232)) + (fTemp39 * (fTempPerm233 + fTempPerm234))));
+			fTempPerm236 = ((fTemp46 * ((fControl[527] * fTemp43) + (fControl[528] * fTemp42))) + (fTemp45 * ((fControl[529] * fTemp43) + (fControl[530] * fTemp42))));
+			fTempPerm237 = ((fTemp46 * ((fControl[531] * fTemp43) + (fControl[532] * fTemp42))) + (fTemp45 * ((fControl[533] * fTemp43) + (fControl[534] * fTemp42))));
+			fTempPerm238 = ((fTemp46 * ((fControl[535] * fTemp43) + (fControl[536] * fTemp42))) + (fTemp45 * ((fControl[537] * fTemp43) + (fControl[538] * fTemp42))));
+			fTempPerm239 = ((fTemp46 * ((fControl[539] * fTemp43) + (fControl[540] * fTemp42))) + (fTemp45 * ((fControl[541] * fTemp43) + (fControl[542] * fTemp42))));
+			fTempPerm240 = ((fTemp40 * (fTempPerm236 + fTempPerm237)) + (fTemp39 * (fTempPerm238 + fTempPerm239)));
+			fTempPerm241 = ((fTemp46 * ((fControl[543] * fTemp43) + (fControl[544] * fTemp42))) + (fTemp45 * ((fControl[545] * fTemp43) + (fControl[546] * fTemp42))));
+			fTempPerm242 = ((fTemp46 * ((fControl[547] * fTemp43) + (fControl[548] * fTemp42))) + (fTemp45 * ((fControl[549] * fTemp43) + (fControl[550] * fTemp42))));
+			fTempPerm243 = ((fTemp46 * ((fControl[551] * fTemp43) + (fControl[552] * fTemp42))) + (fTemp45 * ((fControl[553] * fTemp43) + (fControl[554] * fTemp42))));
+			fTempPerm244 = ((fTemp46 * ((fControl[555] * fTemp43) + (fControl[556] * fTemp42))) + (fTemp45 * ((fControl[557] * fTemp43) + (fControl[558] * fTemp42))));
+			fTempPerm245 = ((fTemp40 * (fTempPerm241 + fTempPerm242)) + (fTemp39 * (fTempPerm243 + fTempPerm244)));
+			fTempPerm246 = std::floor(fTempPerm245);
+			fTempPerm247 = (fTempPerm246 + float(((fTempPerm245 < 0.0f) & (fTempPerm245 != fTempPerm246))));
+			fTempPerm248 = (fTempPerm54 + (0.00390625f * (fTempPerm240 * std::pow(2.0f, (0.0f - fTempPerm247)))));
+			iTempPerm249 = int(fTempPerm247);
+			fTempPerm250 = ((fTemp46 * ((fControl[559] * fTemp43) + (fControl[560] * fTemp42))) + (fTemp45 * ((fControl[561] * fTemp43) + (fControl[562] * fTemp42))));
+			fTempPerm251 = ((fTemp46 * ((fControl[563] * fTemp43) + (fControl[564] * fTemp42))) + (fTemp45 * ((fControl[565] * fTemp43) + (fControl[566] * fTemp42))));
+			fTempPerm252 = ((fTemp46 * ((fControl[567] * fTemp43) + (fControl[568] * fTemp42))) + (fTemp45 * ((fControl[569] * fTemp43) + (fControl[570] * fTemp42))));
+			fTempPerm253 = ((fTemp46 * ((fControl[571] * fTemp43) + (fControl[572] * fTemp42))) + (fTemp45 * ((fControl[573] * fTemp43) + (fControl[574] * fTemp42))));
+			fTempPerm254 = (fRec2[1] * ((fTemp40 * (fTempPerm250 + fTempPerm251)) + (fTemp39 * (fTempPerm252 + fTempPerm253))));
+			fTempPerm255 = (fTempPerm225 + (fTempPerm230 + (fTempPerm235 + (std::fmod((256.0f * ((fTempPerm248 - (fTempPerm68 + std::floor((fTempPerm248 - fTempPerm68)))) * (((float((iTempPerm249 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm249)))))) + float((iTempPerm249 == 0))) + float(((iTempPerm249 > 0) * int(std::pow(2.0f, float(iTempPerm249)))))))), 1.0f) + fTempPerm254))));
+		}
+		if ((iControl[67] & iTempPerm22) | ((iControl[66] & iTempPerm22) | ((iControl[65] & iTempPerm22) | ((iControl[64] & iTempPerm22) | ((iControl[63] & iTempPerm22) | ((iControl[62] & iTempPerm22) | ((iControl[61] & iTempPerm22) | ((iControl[60] & iTempPerm22) | (iControl[59] & iTempPerm22))))))))) {
+			fTempPerm256 = (fRec63[1] + (fTempPerm35 * (fTempPerm255 - fRec64[1])));
+			fTempPerm257 = (fTempPerm256 / fTempPerm83);
+			fRec63[0] = ((2.0f * fTempPerm257) - fRec63[1]);
+			fTempPerm258 = (fRec64[1] + ((fTempPerm35 * fTempPerm256) / fTempPerm83));
+			fRec64[0] = ((2.0f * fTempPerm258) - fRec64[1]);
+			fRec65 = fTempPerm258;
+		}
+		if ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | (iControl[59] & iTempPerm30))))))))) {
+			fTempPerm259 = (fTempPerm35 * (fTempPerm255 - fRec68[1]));
+			fTempPerm260 = ((fTempPerm35 * ((((fRec68[1] + ((fTempPerm259 + (0.215215757f * (fTempPerm135 * fRec66[1]))) / fTempPerm90)) + (fTempPerm92 * fRec67[1])) / fTempPerm93) - fRec66[1])) / fTempPerm90);
+			fRec66[0] = (fRec66[1] + (2.0f * fTempPerm260));
+			fTempPerm261 = (fRec66[1] + fTempPerm260);
+			fRec67[0] = (fRec67[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm261)) - fRec67[1])) / fTempPerm90)));
+			fRec68[0] = (fRec68[1] + (2.0f * (fTempPerm259 / fTempPerm90)));
+			fRec69 = fTempPerm261;
+		}
+		if ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm29) | (iControl[59] & iTempPerm29))))))))) {
+			fTempPerm262 = (fTempPerm255 - (fRec71[1] + (fTempPerm82 * fRec72[1])));
+			fTempPerm263 = ((fTempPerm35 * fTempPerm262) / fTempPerm83);
+			fTempPerm264 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec72[1] + fTempPerm263)));
+			fTempPerm265 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm264)));
+			fTempPerm266 = ((fTempPerm35 * fTempPerm264) * fTempPerm265);
+			fRec70 = (fRec71[1] + fTempPerm266);
+			fRec71[0] = (fRec71[1] + (2.0f * fTempPerm266));
+			fTempPerm267 = (fTempPerm264 * fTempPerm265);
+			fRec72[0] = (fTempPerm263 + fTempPerm267);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm268 = (((fTempPerm19 * (((fTempPerm21 * fRec65) + (fTempPerm87 * fRec69)) + (fTempPerm97 * fRec70))) / fTempPerm104) + (fTempPerm105 * fTempPerm255));
+			fVec10[0] = fTempPerm268;
+			fTempPerm269 = ((fTemp46 * ((fControl[576] * fTemp43) + (fControl[577] * fTemp42))) + (fTemp45 * ((fControl[578] * fTemp43) + (fControl[579] * fTemp42))));
+			fTempPerm270 = ((fTemp46 * ((fControl[580] * fTemp43) + (fControl[581] * fTemp42))) + (fTemp45 * ((fControl[582] * fTemp43) + (fControl[583] * fTemp42))));
+			fTempPerm271 = ((fTemp46 * ((fControl[584] * fTemp43) + (fControl[585] * fTemp42))) + (fTemp45 * ((fControl[586] * fTemp43) + (fControl[587] * fTemp42))));
+			fTempPerm272 = ((fTemp46 * ((fControl[588] * fTemp43) + (fControl[589] * fTemp42))) + (fTemp45 * ((fControl[590] * fTemp43) + (fControl[591] * fTemp42))));
+			fTempPerm273 = ((fTemp40 * (fTempPerm269 + fTempPerm270)) + (fTemp39 * (fTempPerm271 + fTempPerm272)));
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62]))))) {
+			fTempPerm274 = (fControl[575] * fTempPerm273);
+		}
+		if (iControl[67]) {
+			fTempPerm275 = (2.0f * fTempPerm274);
+			fTempPerm276 = std::min<float>(1.0f, fTempPerm275);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fTempPerm277 = (fTempPerm268 - fVec10[1]);
+			fRec74[0] = ((std::fabs(fTempPerm277) < 0.5f) ? (fConst0 * fTempPerm277) : fRec74[1]);
+		}
+		if (iControl[67]) {
+			fTempPerm278 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec74[0])))))));
+			fTempPerm279 = (1.0f - fTempPerm278);
+		}
+		if (iControl[67] | iControl[60]) {
+			fTempPerm280 = std::floor(fTempPerm268);
+			fTempPerm281 = (fTempPerm268 - fTempPerm280);
+			fVec11[0] = fTempPerm281;
+			iTempPerm282 = (fTempPerm281 < 0.5f);
+			iVec12[0] = iTempPerm282;
+		}
+		if (iControl[67]) {
+			iTempPerm283 = ((iVec12[1] <= 0) & (iTempPerm282 > 0));
+			fRec79[0] = ((fRec79[1] * float((1 - iTempPerm283))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm283))));
+			fTempPerm284 = (fTempPerm278 + 1.0f);
+			fRec78[0] = (0.0f - (((fTempPerm279 * fRec78[1]) - (fRec79[0] + fRec79[1])) / fTempPerm284));
+			fRec77[0] = (0.0f - (((fTempPerm279 * fRec77[1]) - (fRec78[0] + fRec78[1])) / fTempPerm284));
+			fRec76[0] = (0.0f - (((fTempPerm279 * fRec76[1]) - (fRec77[0] + fRec77[1])) / fTempPerm284));
+			fRec75[0] = (0.0f - (((fTempPerm279 * fRec75[1]) - (fRec76[0] + fRec76[1])) / fTempPerm284));
+			fRec73[0] = (0.0f - (((fRec73[1] * fTempPerm279) - (fRec75[0] + fRec75[1])) / fTempPerm284));
+			fTempPerm285 = (std::sin((6.28318548f * fTempPerm268)) * ((fTempPerm276 * (fRec73[0] + -1.0f)) + 1.0f));
+			fTempPerm286 = (std::max<float>(1.0f, fTempPerm275) + -1.0f);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm287 = std::fmod(std::fabs(fTempPerm245), 1.0f);
+			fTempPerm288 = (1.0f - fTempPerm287);
+			fTempPerm289 = (fTempPerm246 + float((fTempPerm245 > 0.0f)));
+			fTempPerm290 = (fTempPerm54 + (0.00390625f * (fTempPerm240 * std::pow(2.0f, (0.0f - fTempPerm289)))));
+			iTempPerm291 = int(fTempPerm289);
+			fTempPerm292 = ((((fTempPerm254 + fTempPerm235) + fTempPerm230) + fTempPerm225) + std::fmod((256.0f * ((fTempPerm290 - (fTempPerm68 + std::floor((fTempPerm290 - fTempPerm68)))) * (((float((iTempPerm291 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm291)))))) + float((iTempPerm291 == 0))) + float(((iTempPerm291 > 0) * int(std::pow(2.0f, float(iTempPerm291)))))))), 1.0f));
+		}
+		if ((iControl[67] & iTempPerm22) | ((iControl[66] & iTempPerm22) | ((iControl[65] & iTempPerm22) | ((iControl[64] & iTempPerm22) | ((iControl[63] & iTempPerm22) | ((iControl[62] & iTempPerm22) | ((iControl[61] & iTempPerm22) | ((iControl[60] & iTempPerm22) | (iControl[59] & iTempPerm22))))))))) {
+			fTempPerm293 = (fRec80[1] + (fTempPerm35 * (fTempPerm292 - fRec81[1])));
+			fTempPerm294 = (fTempPerm293 / fTempPerm83);
+			fRec80[0] = ((2.0f * fTempPerm294) - fRec80[1]);
+			fTempPerm295 = (fRec81[1] + ((fTempPerm35 * fTempPerm293) / fTempPerm83));
+			fRec81[0] = ((2.0f * fTempPerm295) - fRec81[1]);
+			fRec82 = fTempPerm295;
+		}
+		if ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | (iControl[59] & iTempPerm30))))))))) {
+			fTempPerm296 = (fTempPerm35 * (fTempPerm292 - fRec85[1]));
+			fTempPerm297 = ((fTempPerm35 * ((((fRec85[1] + ((fTempPerm296 + (0.215215757f * (fTempPerm135 * fRec83[1]))) / fTempPerm90)) + (fTempPerm92 * fRec84[1])) / fTempPerm93) - fRec83[1])) / fTempPerm90);
+			fRec83[0] = (fRec83[1] + (2.0f * fTempPerm297));
+			fTempPerm298 = (fRec83[1] + fTempPerm297);
+			fRec84[0] = (fRec84[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm298)) - fRec84[1])) / fTempPerm90)));
+			fRec85[0] = (fRec85[1] + (2.0f * (fTempPerm296 / fTempPerm90)));
+			fRec86 = fTempPerm298;
+		}
+		if ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm29) | (iControl[59] & iTempPerm29))))))))) {
+			fTempPerm299 = (fTempPerm292 - (fRec88[1] + (fTempPerm82 * fRec89[1])));
+			fTempPerm300 = ((fTempPerm35 * fTempPerm299) / fTempPerm83);
+			fTempPerm301 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec89[1] + fTempPerm300)));
+			fTempPerm302 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm301)));
+			fTempPerm303 = ((fTempPerm35 * fTempPerm301) * fTempPerm302);
+			fRec87 = (fRec88[1] + fTempPerm303);
+			fRec88[0] = (fRec88[1] + (2.0f * fTempPerm303));
+			fTempPerm304 = (fTempPerm301 * fTempPerm302);
+			fRec89[0] = (fTempPerm300 + fTempPerm304);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm305 = (((fTempPerm19 * (((fTempPerm21 * fRec82) + (fTempPerm87 * fRec86)) + (fTempPerm97 * fRec87))) / fTempPerm104) + (fTempPerm105 * fTempPerm292));
+			fVec13[0] = fTempPerm305;
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fTempPerm306 = (fTempPerm305 - fVec13[1]);
+			fRec91[0] = ((std::fabs(fTempPerm306) < 0.5f) ? (fConst0 * fTempPerm306) : fRec91[1]);
+		}
+		if (iControl[67]) {
+			fTempPerm307 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec91[0])))))));
+			fTempPerm308 = (1.0f - fTempPerm307);
+		}
+		if (iControl[67] | iControl[60]) {
+			fTempPerm309 = std::floor(fTempPerm305);
+			fTempPerm310 = (fTempPerm305 - fTempPerm309);
+			fVec14[0] = fTempPerm310;
+			iTempPerm311 = (fTempPerm310 < 0.5f);
+			iVec15[0] = iTempPerm311;
+		}
+		if (iControl[67]) {
+			iTempPerm312 = ((iVec15[1] <= 0) & (iTempPerm311 > 0));
+			fRec96[0] = ((fRec96[1] * float((1 - iTempPerm312))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm312))));
+			fTempPerm313 = (fTempPerm307 + 1.0f);
+			fRec95[0] = (0.0f - (((fTempPerm308 * fRec95[1]) - (fRec96[0] + fRec96[1])) / fTempPerm313));
+			fRec94[0] = (0.0f - (((fTempPerm308 * fRec94[1]) - (fRec95[0] + fRec95[1])) / fTempPerm313));
+			fRec93[0] = (0.0f - (((fTempPerm308 * fRec93[1]) - (fRec94[0] + fRec94[1])) / fTempPerm313));
+			fRec92[0] = (0.0f - (((fTempPerm308 * fRec92[1]) - (fRec93[0] + fRec93[1])) / fTempPerm313));
+			fRec90[0] = (0.0f - (((fRec90[1] * fTempPerm308) - (fRec92[0] + fRec92[1])) / fTempPerm313));
+			fTempPerm314 = (std::sin((6.28318548f * fTempPerm305)) * ((fTempPerm276 * (fRec90[0] + -1.0f)) + 1.0f));
+			fTempPerm315 = (((fTempPerm285 + (fTempPerm286 * (fRec73[0] - fTempPerm285))) * fTempPerm288) + (fTempPerm287 * (fTempPerm314 + (fTempPerm286 * (fRec90[0] - fTempPerm314)))));
+		}
+		if (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62])))) {
+			fTempPerm316 = (fTempPerm274 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec74[0] - fConst7))))));
+		}
+		if (iControl[66] | (iControl[64] | (iControl[63] | iControl[62]))) {
+			fTempPerm317 = (1.0f - fTempPerm316);
+		}
+		if (iControl[66]) {
+			fTempPerm318 = ((0.75f * fTempPerm317) + (fTempPerm268 + (0.5f * fTempPerm316)));
+			fTempPerm319 = std::floor(fTempPerm318);
+		}
+		if (iControl[66] | iControl[62]) {
+			fTempPerm320 = (0.5f * fTempPerm317);
+		}
+		if (iControl[66]) {
+			fTempPerm321 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm320));
+			fTempPerm322 = (0.5f - fTempPerm321);
+		}
+		if (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62])))) {
+			fTempPerm323 = (fTempPerm274 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec91[0] - fConst7))))));
+		}
+		if (iControl[66] | (iControl[64] | (iControl[63] | iControl[62]))) {
+			fTempPerm324 = (1.0f - fTempPerm323);
+		}
+		if (iControl[66]) {
+			fTempPerm325 = ((0.75f * fTempPerm324) + (fTempPerm305 + (0.5f * fTempPerm323)));
+			fTempPerm326 = std::floor(fTempPerm325);
+		}
+		if (iControl[66] | iControl[62]) {
+			fTempPerm327 = (0.5f * fTempPerm324);
+		}
+		if (iControl[66]) {
+			fTempPerm328 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm327));
+			fTempPerm329 = (0.5f - fTempPerm328);
+			fTempPerm330 = ((fTempPerm288 * std::cos((6.28318548f * ((fTempPerm318 + std::min<float>((((fTempPerm318 - fTempPerm319) * fTempPerm322) / fTempPerm321), ((fTempPerm322 * (fTempPerm319 + (1.0f - fTempPerm318))) / (1.0f - fTempPerm321)))) - fTempPerm319)))) + (fTempPerm287 * std::cos((6.28318548f * ((fTempPerm325 + std::min<float>((((fTempPerm325 - fTempPerm326) * fTempPerm329) / fTempPerm328), ((fTempPerm329 * (fTempPerm326 + (1.0f - fTempPerm325))) / (1.0f - fTempPerm328)))) - fTempPerm326)))));
+		}
+		if (iControl[65]) {
+			fTempPerm331 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm316));
+			fTempPerm332 = (1.0f - fTempPerm331);
+			fTempPerm333 = (0.25f * fTempPerm332);
+			fTempPerm334 = (fTempPerm268 - (fTempPerm333 + std::floor((fTempPerm268 - fTempPerm333))));
+			fTempPerm335 = (2.0f * fTempPerm334);
+			fTempPerm336 = std::floor((fTempPerm335 + 1.0f));
+			fTempPerm337 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm323));
+			fTempPerm338 = (1.0f - fTempPerm337);
+			fTempPerm339 = (0.25f * fTempPerm338);
+			fTempPerm340 = (fTempPerm305 - (fTempPerm339 + std::floor((fTempPerm305 - fTempPerm339))));
+			fTempPerm341 = (2.0f * fTempPerm340);
+			fTempPerm342 = std::floor((fTempPerm341 + 1.0f));
+			fTempPerm343 = ((fTempPerm288 * std::cos((3.14159274f * ((float((fTempPerm334 >= 0.5f)) + fTempPerm335) + (1.0f - (fTempPerm336 + std::min<float>((fTempPerm335 + (1.0f - fTempPerm336)), ((fTempPerm331 * (fTempPerm336 - fTempPerm335)) / fTempPerm332)))))))) + (fTempPerm287 * std::cos((3.14159274f * ((float((fTempPerm340 >= 0.5f)) + fTempPerm341) + (1.0f - (fTempPerm342 + std::min<float>((fTempPerm341 + (1.0f - fTempPerm342)), ((fTempPerm337 * (fTempPerm342 - fTempPerm341)) / fTempPerm338)))))))));
+		}
+		if (iControl[64]) {
+			fTempPerm344 = (0.25f * fTempPerm317);
+			fTempPerm345 = (fTempPerm344 + std::floor((fTempPerm268 - fTempPerm344)));
+		}
+		if (iControl[64] | (iControl[63] | (iControl[61] | iControl[59]))) {
+			fTempPerm346 = (1.0f - fTempPerm268);
+		}
+		if (iControl[64]) {
+			fTempPerm347 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm316));
+			fTempPerm348 = (0.25f * fTempPerm324);
+			fTempPerm349 = (fTempPerm348 + std::floor((fTempPerm305 - fTempPerm348)));
+		}
+		if (iControl[64] | (iControl[63] | (iControl[61] | iControl[59]))) {
+			fTempPerm350 = (1.0f - fTempPerm305);
+		}
+		if (iControl[64]) {
+			fTempPerm351 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm323));
+			fTempPerm352 = ((fTempPerm288 * std::cos((6.28318548f * (fTempPerm268 - (fTempPerm345 + std::min<float>((fTempPerm268 - fTempPerm345), (((fTempPerm345 + fTempPerm346) * fTempPerm347) / (1.0f - fTempPerm347)))))))) + (fTempPerm287 * std::cos((6.28318548f * (fTempPerm305 - (fTempPerm349 + std::min<float>((fTempPerm305 - fTempPerm349), (((fTempPerm349 + fTempPerm350) * fTempPerm351) / (1.0f - fTempPerm351)))))))));
+		}
+		if (iControl[63]) {
+			fTempPerm353 = ((0.125f * fTempPerm317) + (0.25f * fTempPerm316));
+			fTempPerm354 = (fTempPerm353 + std::floor((fTempPerm268 - fTempPerm353)));
+			fTempPerm355 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm316));
+			fTempPerm356 = (0.49000001f * fTempPerm355);
+			fTempPerm357 = ((0.125f * fTempPerm324) + (0.25f * fTempPerm323));
+			fTempPerm358 = (fTempPerm357 + std::floor((fTempPerm305 - fTempPerm357)));
+			fTempPerm359 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm323));
+			fTempPerm360 = (0.49000001f * fTempPerm359);
+			fTempPerm361 = ((fTempPerm288 * std::cos((12.566371f * ((fTempPerm268 + std::min<float>((0.49000001f * (((fTempPerm268 - fTempPerm354) * fTempPerm355) / (0.5f - fTempPerm356))), (0.49000001f * ((fTempPerm355 * (fTempPerm354 + fTempPerm346)) / (fTempPerm356 + 0.5f))))) - fTempPerm354)))) + (fTempPerm287 * std::cos((12.566371f * ((fTempPerm305 + std::min<float>((0.49000001f * (((fTempPerm305 - fTempPerm358) * fTempPerm359) / (0.5f - fTempPerm360))), (0.49000001f * ((fTempPerm359 * (fTempPerm358 + fTempPerm350)) / (fTempPerm360 + 0.5f))))) - fTempPerm358)))));
+		}
+		if (iControl[62]) {
+			fTempPerm362 = std::min<float>(0.975000024f, fTempPerm316);
+			fTempPerm363 = (0.25f * (1.0f - fTempPerm362));
+			fTempPerm364 = (fTempPerm363 + (0.5f * fTempPerm362));
+			fTempPerm365 = std::floor((fTempPerm268 - fTempPerm364));
+			fTempPerm366 = (fTempPerm268 - (fTempPerm364 + fTempPerm365));
+			fTempPerm367 = std::min<float>(0.975000024f, fTempPerm323);
+			fTempPerm368 = (0.25f * (1.0f - fTempPerm367));
+			fTempPerm369 = (fTempPerm368 + (0.5f * fTempPerm367));
+			fTempPerm370 = std::floor((fTempPerm305 - fTempPerm369));
+			fTempPerm371 = (fTempPerm305 - (fTempPerm369 + fTempPerm370));
+			fTempPerm372 = ((fTempPerm288 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm366 < 0.5f) ? fTempPerm366 : (0.5f * (((fTempPerm268 - ((fTempPerm363 + fTempPerm365) + (0.5f * (fTempPerm362 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm320))) + 1.0f))))))) + (fTempPerm287 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm371 < 0.5f) ? fTempPerm371 : (0.5f * (((fTempPerm305 - ((fTempPerm368 + fTempPerm370) + (0.5f * (fTempPerm367 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm327))) + 1.0f))))))));
+		}
+		if (iControl[61] | iControl[59]) {
+			fTempPerm373 = (fTempPerm268 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec74[0] * fControl[575]) * fTempPerm273))) / fRec74[0])));
+			fTempPerm374 = (fTempPerm305 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec91[0] * fControl[575]) * fTempPerm273))) / fRec91[0])));
+		}
+		if (iControl[61]) {
+			fTempPerm375 = ((fTempPerm288 * (((0.0f - fTempPerm346) * (1.0f - std::cos((6.28318548f * (fTempPerm373 + (1.0f - std::floor((fTempPerm373 + 1.0f)))))))) + 1.0f)) + (fTempPerm287 * (((0.0f - fTempPerm350) * (1.0f - std::cos((6.28318548f * (fTempPerm374 + (1.0f - std::floor((fTempPerm374 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[60]) {
+			fTempPerm376 = (fTempPerm268 - (fTempPerm280 + fVec11[1]));
+			fRec97[0] = ((std::fabs(fTempPerm376) < 0.5f) ? (fConst0 * fTempPerm376) : fRec97[1]);
+			fTempPerm377 = (fTempPerm281 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec97[0] * fControl[575]) * fTempPerm273))) / fRec97[0])));
+			fTempPerm378 = (fTempPerm305 - (fTempPerm309 + fVec14[1]));
+			fRec98[0] = ((std::fabs(fTempPerm378) < 0.5f) ? (fConst0 * fTempPerm378) : fRec98[1]);
+			fTempPerm379 = (fTempPerm310 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec98[0] * fControl[575]) * fTempPerm273))) / fRec98[0])));
+			fTempPerm380 = ((fTempPerm288 * (((iTempPerm282 ? (2.0f * fTempPerm281) : (2.0f * (1.0f - fTempPerm281))) * (std::cos((6.28318548f * (fTempPerm377 + (1.0f - std::floor((fTempPerm377 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm287 * (((iTempPerm311 ? (2.0f * fTempPerm310) : (2.0f * (1.0f - fTempPerm310))) * (std::cos((6.28318548f * (fTempPerm379 + (1.0f - std::floor((fTempPerm379 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[59]) {
+			fTempPerm381 = (((fTempPerm288 * std::min<float>(1.0f, (2.0f * fTempPerm346))) * std::sin((6.28318548f * (fTempPerm373 - std::floor(fTempPerm373))))) + ((fTempPerm287 * std::min<float>(1.0f, (2.0f * fTempPerm350))) * std::sin((6.28318548f * (fTempPerm374 - std::floor(fTempPerm374))))));
+		}
+		fRec3[0] = (((((((((fControl[275] * fTempPerm315) + (fControl[274] * fTempPerm330)) + (fControl[273] * fTempPerm343)) + (fControl[272] * fTempPerm352)) + (fControl[271] * fTempPerm361)) + (fControl[270] * fTempPerm372)) + (fControl[269] * fTempPerm375)) + (fControl[268] * fTempPerm380)) + (fControl[267] * fTempPerm381));
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm382 = ((fTemp46 * ((fControl[592] * fTemp43) + (fControl[593] * fTemp42))) + (fTemp45 * ((fControl[594] * fTemp43) + (fControl[595] * fTemp42))));
+			fTempPerm383 = ((fTemp46 * ((fControl[596] * fTemp43) + (fControl[597] * fTemp42))) + (fTemp45 * ((fControl[598] * fTemp43) + (fControl[599] * fTemp42))));
+			fTempPerm384 = ((fTemp46 * ((fControl[600] * fTemp43) + (fControl[601] * fTemp42))) + (fTemp45 * ((fControl[602] * fTemp43) + (fControl[603] * fTemp42))));
+			fTempPerm385 = ((fTemp46 * ((fControl[604] * fTemp43) + (fControl[605] * fTemp42))) + (fTemp45 * ((fControl[606] * fTemp43) + (fControl[607] * fTemp42))));
+			fTempPerm386 = (fRec5[1] * ((fTemp40 * (fTempPerm382 + fTempPerm383)) + (fTemp39 * (fTempPerm384 + fTempPerm385))));
+			fTempPerm387 = ((fTemp46 * ((fControl[608] * fTemp43) + (fControl[609] * fTemp42))) + (fTemp45 * ((fControl[610] * fTemp43) + (fControl[611] * fTemp42))));
+			fTempPerm388 = ((fTemp46 * ((fControl[612] * fTemp43) + (fControl[613] * fTemp42))) + (fTemp45 * ((fControl[614] * fTemp43) + (fControl[615] * fTemp42))));
+			fTempPerm389 = ((fTemp46 * ((fControl[616] * fTemp43) + (fControl[617] * fTemp42))) + (fTemp45 * ((fControl[618] * fTemp43) + (fControl[619] * fTemp42))));
+			fTempPerm390 = ((fTemp46 * ((fControl[620] * fTemp43) + (fControl[621] * fTemp42))) + (fTemp45 * ((fControl[622] * fTemp43) + (fControl[623] * fTemp42))));
+			fTempPerm391 = (fRec4[1] * ((fTemp40 * (fTempPerm387 + fTempPerm388)) + (fTemp39 * (fTempPerm389 + fTempPerm390))));
+			fTempPerm392 = ((fTemp46 * ((fControl[624] * fTemp43) + (fControl[625] * fTemp42))) + (fTemp45 * ((fControl[626] * fTemp43) + (fControl[627] * fTemp42))));
+			fTempPerm393 = ((fTemp46 * ((fControl[628] * fTemp43) + (fControl[629] * fTemp42))) + (fTemp45 * ((fControl[630] * fTemp43) + (fControl[631] * fTemp42))));
+			fTempPerm394 = ((fTemp46 * ((fControl[632] * fTemp43) + (fControl[633] * fTemp42))) + (fTemp45 * ((fControl[634] * fTemp43) + (fControl[635] * fTemp42))));
+			fTempPerm395 = ((fTemp46 * ((fControl[636] * fTemp43) + (fControl[637] * fTemp42))) + (fTemp45 * ((fControl[638] * fTemp43) + (fControl[639] * fTemp42))));
+			fTempPerm396 = (fRec3[1] * ((fTemp40 * (fTempPerm392 + fTempPerm393)) + (fTemp39 * (fTempPerm394 + fTempPerm395))));
+			fTempPerm397 = ((fTemp46 * ((fControl[640] * fTemp43) + (fControl[641] * fTemp42))) + (fTemp45 * ((fControl[642] * fTemp43) + (fControl[643] * fTemp42))));
+			fTempPerm398 = ((fTemp46 * ((fControl[644] * fTemp43) + (fControl[645] * fTemp42))) + (fTemp45 * ((fControl[646] * fTemp43) + (fControl[647] * fTemp42))));
+			fTempPerm399 = ((fTemp46 * ((fControl[648] * fTemp43) + (fControl[649] * fTemp42))) + (fTemp45 * ((fControl[650] * fTemp43) + (fControl[651] * fTemp42))));
+			fTempPerm400 = ((fTemp46 * ((fControl[652] * fTemp43) + (fControl[653] * fTemp42))) + (fTemp45 * ((fControl[654] * fTemp43) + (fControl[655] * fTemp42))));
+			fTempPerm401 = ((fTemp40 * (fTempPerm397 + fTempPerm398)) + (fTemp39 * (fTempPerm399 + fTempPerm400)));
+			fTempPerm402 = ((fTemp46 * ((fControl[656] * fTemp43) + (fControl[657] * fTemp42))) + (fTemp45 * ((fControl[658] * fTemp43) + (fControl[659] * fTemp42))));
+			fTempPerm403 = ((fTemp46 * ((fControl[660] * fTemp43) + (fControl[661] * fTemp42))) + (fTemp45 * ((fControl[662] * fTemp43) + (fControl[663] * fTemp42))));
+			fTempPerm404 = ((fTemp46 * ((fControl[664] * fTemp43) + (fControl[665] * fTemp42))) + (fTemp45 * ((fControl[666] * fTemp43) + (fControl[667] * fTemp42))));
+			fTempPerm405 = ((fTemp46 * ((fControl[668] * fTemp43) + (fControl[669] * fTemp42))) + (fTemp45 * ((fControl[670] * fTemp43) + (fControl[671] * fTemp42))));
+			fTempPerm406 = ((fTemp40 * (fTempPerm402 + fTempPerm403)) + (fTemp39 * (fTempPerm404 + fTempPerm405)));
+			fTempPerm407 = std::floor(fTempPerm406);
+			fTempPerm408 = (fTempPerm407 + float(((fTempPerm406 < 0.0f) & (fTempPerm406 != fTempPerm407))));
+			fTempPerm409 = (fTempPerm54 + (0.00390625f * (fTempPerm401 * std::pow(2.0f, (0.0f - fTempPerm408)))));
+			iTempPerm410 = int(fTempPerm408);
+			fTempPerm411 = ((fTemp46 * ((fControl[672] * fTemp43) + (fControl[673] * fTemp42))) + (fTemp45 * ((fControl[674] * fTemp43) + (fControl[675] * fTemp42))));
+			fTempPerm412 = ((fTemp46 * ((fControl[676] * fTemp43) + (fControl[677] * fTemp42))) + (fTemp45 * ((fControl[678] * fTemp43) + (fControl[679] * fTemp42))));
+			fTempPerm413 = ((fTemp46 * ((fControl[680] * fTemp43) + (fControl[681] * fTemp42))) + (fTemp45 * ((fControl[682] * fTemp43) + (fControl[683] * fTemp42))));
+			fTempPerm414 = ((fTemp46 * ((fControl[684] * fTemp43) + (fControl[685] * fTemp42))) + (fTemp45 * ((fControl[686] * fTemp43) + (fControl[687] * fTemp42))));
+			fTempPerm415 = (fRec2[1] * ((fTemp40 * (fTempPerm411 + fTempPerm412)) + (fTemp39 * (fTempPerm413 + fTempPerm414))));
+			fTempPerm416 = (fTempPerm386 + (fTempPerm391 + (fTempPerm396 + (std::fmod((256.0f * ((fTempPerm409 - (fTempPerm68 + std::floor((fTempPerm409 - fTempPerm68)))) * (((float((iTempPerm410 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm410)))))) + float((iTempPerm410 == 0))) + float(((iTempPerm410 > 0) * int(std::pow(2.0f, float(iTempPerm410)))))))), 1.0f) + fTempPerm415))));
+		}
+		if ((iControl[58] & iTempPerm22) | ((iControl[57] & iTempPerm22) | ((iControl[56] & iTempPerm22) | ((iControl[55] & iTempPerm22) | ((iControl[54] & iTempPerm22) | ((iControl[53] & iTempPerm22) | ((iControl[52] & iTempPerm22) | ((iControl[51] & iTempPerm22) | (iControl[50] & iTempPerm22))))))))) {
+			fTempPerm417 = (fRec99[1] + (fTempPerm35 * (fTempPerm416 - fRec100[1])));
+			fTempPerm418 = (fTempPerm417 / fTempPerm83);
+			fRec99[0] = ((2.0f * fTempPerm418) - fRec99[1]);
+			fTempPerm419 = (fRec100[1] + ((fTempPerm35 * fTempPerm417) / fTempPerm83));
+			fRec100[0] = ((2.0f * fTempPerm419) - fRec100[1]);
+			fRec101 = fTempPerm419;
+		}
+		if ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | (iControl[50] & iTempPerm30))))))))) {
+			fTempPerm420 = (fTempPerm35 * (fTempPerm416 - fRec104[1]));
+			fTempPerm421 = ((fTempPerm35 * ((((fRec104[1] + ((fTempPerm420 + (0.215215757f * (fTempPerm135 * fRec102[1]))) / fTempPerm90)) + (fTempPerm92 * fRec103[1])) / fTempPerm93) - fRec102[1])) / fTempPerm90);
+			fRec102[0] = (fRec102[1] + (2.0f * fTempPerm421));
+			fTempPerm422 = (fRec102[1] + fTempPerm421);
+			fRec103[0] = (fRec103[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm422)) - fRec103[1])) / fTempPerm90)));
+			fRec104[0] = (fRec104[1] + (2.0f * (fTempPerm420 / fTempPerm90)));
+			fRec105 = fTempPerm422;
+		}
+		if ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm29) | (iControl[50] & iTempPerm29))))))))) {
+			fTempPerm423 = (fTempPerm416 - (fRec107[1] + (fTempPerm82 * fRec108[1])));
+			fTempPerm424 = ((fTempPerm35 * fTempPerm423) / fTempPerm83);
+			fTempPerm425 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec108[1] + fTempPerm424)));
+			fTempPerm426 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm425)));
+			fTempPerm427 = ((fTempPerm35 * fTempPerm425) * fTempPerm426);
+			fRec106 = (fRec107[1] + fTempPerm427);
+			fRec107[0] = (fRec107[1] + (2.0f * fTempPerm427));
+			fTempPerm428 = (fTempPerm425 * fTempPerm426);
+			fRec108[0] = (fTempPerm424 + fTempPerm428);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm429 = (((fTempPerm19 * (((fTempPerm21 * fRec101) + (fTempPerm87 * fRec105)) + (fTempPerm97 * fRec106))) / fTempPerm104) + (fTempPerm105 * fTempPerm416));
+			fVec16[0] = fTempPerm429;
+			fTempPerm430 = ((fTemp46 * ((fControl[689] * fTemp43) + (fControl[690] * fTemp42))) + (fTemp45 * ((fControl[691] * fTemp43) + (fControl[692] * fTemp42))));
+			fTempPerm431 = ((fTemp46 * ((fControl[693] * fTemp43) + (fControl[694] * fTemp42))) + (fTemp45 * ((fControl[695] * fTemp43) + (fControl[696] * fTemp42))));
+			fTempPerm432 = ((fTemp46 * ((fControl[697] * fTemp43) + (fControl[698] * fTemp42))) + (fTemp45 * ((fControl[699] * fTemp43) + (fControl[700] * fTemp42))));
+			fTempPerm433 = ((fTemp46 * ((fControl[701] * fTemp43) + (fControl[702] * fTemp42))) + (fTemp45 * ((fControl[703] * fTemp43) + (fControl[704] * fTemp42))));
+			fTempPerm434 = ((fTemp40 * (fTempPerm430 + fTempPerm431)) + (fTemp39 * (fTempPerm432 + fTempPerm433)));
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53]))))) {
+			fTempPerm435 = (fControl[688] * fTempPerm434);
+		}
+		if (iControl[58]) {
+			fTempPerm436 = (2.0f * fTempPerm435);
+			fTempPerm437 = std::min<float>(1.0f, fTempPerm436);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fTempPerm438 = (fTempPerm429 - fVec16[1]);
+			fRec110[0] = ((std::fabs(fTempPerm438) < 0.5f) ? (fConst0 * fTempPerm438) : fRec110[1]);
+		}
+		if (iControl[58]) {
+			fTempPerm439 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec110[0])))))));
+			fTempPerm440 = (1.0f - fTempPerm439);
+		}
+		if (iControl[58] | iControl[51]) {
+			fTempPerm441 = std::floor(fTempPerm429);
+			fTempPerm442 = (fTempPerm429 - fTempPerm441);
+			fVec17[0] = fTempPerm442;
+			iTempPerm443 = (fTempPerm442 < 0.5f);
+			iVec18[0] = iTempPerm443;
+		}
+		if (iControl[58]) {
+			iTempPerm444 = ((iVec18[1] <= 0) & (iTempPerm443 > 0));
+			fRec115[0] = ((fRec115[1] * float((1 - iTempPerm444))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm444))));
+			fTempPerm445 = (fTempPerm439 + 1.0f);
+			fRec114[0] = (0.0f - (((fTempPerm440 * fRec114[1]) - (fRec115[0] + fRec115[1])) / fTempPerm445));
+			fRec113[0] = (0.0f - (((fTempPerm440 * fRec113[1]) - (fRec114[0] + fRec114[1])) / fTempPerm445));
+			fRec112[0] = (0.0f - (((fTempPerm440 * fRec112[1]) - (fRec113[0] + fRec113[1])) / fTempPerm445));
+			fRec111[0] = (0.0f - (((fTempPerm440 * fRec111[1]) - (fRec112[0] + fRec112[1])) / fTempPerm445));
+			fRec109[0] = (0.0f - (((fRec109[1] * fTempPerm440) - (fRec111[0] + fRec111[1])) / fTempPerm445));
+			fTempPerm446 = (std::sin((6.28318548f * fTempPerm429)) * ((fTempPerm437 * (fRec109[0] + -1.0f)) + 1.0f));
+			fTempPerm447 = (std::max<float>(1.0f, fTempPerm436) + -1.0f);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm448 = std::fmod(std::fabs(fTempPerm406), 1.0f);
+			fTempPerm449 = (1.0f - fTempPerm448);
+			fTempPerm450 = (fTempPerm407 + float((fTempPerm406 > 0.0f)));
+			fTempPerm451 = (fTempPerm54 + (0.00390625f * (fTempPerm401 * std::pow(2.0f, (0.0f - fTempPerm450)))));
+			iTempPerm452 = int(fTempPerm450);
+			fTempPerm453 = ((((fTempPerm415 + fTempPerm396) + fTempPerm391) + fTempPerm386) + std::fmod((256.0f * ((fTempPerm451 - (fTempPerm68 + std::floor((fTempPerm451 - fTempPerm68)))) * (((float((iTempPerm452 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm452)))))) + float((iTempPerm452 == 0))) + float(((iTempPerm452 > 0) * int(std::pow(2.0f, float(iTempPerm452)))))))), 1.0f));
+		}
+		if ((iControl[58] & iTempPerm22) | ((iControl[57] & iTempPerm22) | ((iControl[56] & iTempPerm22) | ((iControl[55] & iTempPerm22) | ((iControl[54] & iTempPerm22) | ((iControl[53] & iTempPerm22) | ((iControl[52] & iTempPerm22) | ((iControl[51] & iTempPerm22) | (iControl[50] & iTempPerm22))))))))) {
+			fTempPerm454 = (fRec116[1] + (fTempPerm35 * (fTempPerm453 - fRec117[1])));
+			fTempPerm455 = (fTempPerm454 / fTempPerm83);
+			fRec116[0] = ((2.0f * fTempPerm455) - fRec116[1]);
+			fTempPerm456 = (fRec117[1] + ((fTempPerm35 * fTempPerm454) / fTempPerm83));
+			fRec117[0] = ((2.0f * fTempPerm456) - fRec117[1]);
+			fRec118 = fTempPerm456;
+		}
+		if ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | (iControl[50] & iTempPerm30))))))))) {
+			fTempPerm457 = (fTempPerm35 * (fTempPerm453 - fRec121[1]));
+			fTempPerm458 = ((fTempPerm35 * ((((fRec121[1] + ((fTempPerm457 + (0.215215757f * (fTempPerm135 * fRec119[1]))) / fTempPerm90)) + (fTempPerm92 * fRec120[1])) / fTempPerm93) - fRec119[1])) / fTempPerm90);
+			fRec119[0] = (fRec119[1] + (2.0f * fTempPerm458));
+			fTempPerm459 = (fRec119[1] + fTempPerm458);
+			fRec120[0] = (fRec120[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm459)) - fRec120[1])) / fTempPerm90)));
+			fRec121[0] = (fRec121[1] + (2.0f * (fTempPerm457 / fTempPerm90)));
+			fRec122 = fTempPerm459;
+		}
+		if ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm29) | (iControl[50] & iTempPerm29))))))))) {
+			fTempPerm460 = (fTempPerm453 - (fRec124[1] + (fTempPerm82 * fRec125[1])));
+			fTempPerm461 = ((fTempPerm35 * fTempPerm460) / fTempPerm83);
+			fTempPerm462 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec125[1] + fTempPerm461)));
+			fTempPerm463 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm462)));
+			fTempPerm464 = ((fTempPerm35 * fTempPerm462) * fTempPerm463);
+			fRec123 = (fRec124[1] + fTempPerm464);
+			fRec124[0] = (fRec124[1] + (2.0f * fTempPerm464));
+			fTempPerm465 = (fTempPerm462 * fTempPerm463);
+			fRec125[0] = (fTempPerm461 + fTempPerm465);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm466 = (((fTempPerm19 * (((fTempPerm21 * fRec118) + (fTempPerm87 * fRec122)) + (fTempPerm97 * fRec123))) / fTempPerm104) + (fTempPerm105 * fTempPerm453));
+			fVec19[0] = fTempPerm466;
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fTempPerm467 = (fTempPerm466 - fVec19[1]);
+			fRec127[0] = ((std::fabs(fTempPerm467) < 0.5f) ? (fConst0 * fTempPerm467) : fRec127[1]);
+		}
+		if (iControl[58]) {
+			fTempPerm468 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec127[0])))))));
+			fTempPerm469 = (1.0f - fTempPerm468);
+		}
+		if (iControl[58] | iControl[51]) {
+			fTempPerm470 = std::floor(fTempPerm466);
+			fTempPerm471 = (fTempPerm466 - fTempPerm470);
+			fVec20[0] = fTempPerm471;
+			iTempPerm472 = (fTempPerm471 < 0.5f);
+			iVec21[0] = iTempPerm472;
+		}
+		if (iControl[58]) {
+			iTempPerm473 = ((iVec21[1] <= 0) & (iTempPerm472 > 0));
+			fRec132[0] = ((fRec132[1] * float((1 - iTempPerm473))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm473))));
+			fTempPerm474 = (fTempPerm468 + 1.0f);
+			fRec131[0] = (0.0f - (((fTempPerm469 * fRec131[1]) - (fRec132[0] + fRec132[1])) / fTempPerm474));
+			fRec130[0] = (0.0f - (((fTempPerm469 * fRec130[1]) - (fRec131[0] + fRec131[1])) / fTempPerm474));
+			fRec129[0] = (0.0f - (((fTempPerm469 * fRec129[1]) - (fRec130[0] + fRec130[1])) / fTempPerm474));
+			fRec128[0] = (0.0f - (((fTempPerm469 * fRec128[1]) - (fRec129[0] + fRec129[1])) / fTempPerm474));
+			fRec126[0] = (0.0f - (((fRec126[1] * fTempPerm469) - (fRec128[0] + fRec128[1])) / fTempPerm474));
+			fTempPerm475 = (std::sin((6.28318548f * fTempPerm466)) * ((fTempPerm437 * (fRec126[0] + -1.0f)) + 1.0f));
+			fTempPerm476 = (((fTempPerm446 + (fTempPerm447 * (fRec109[0] - fTempPerm446))) * fTempPerm449) + (fTempPerm448 * (fTempPerm475 + (fTempPerm447 * (fRec126[0] - fTempPerm475)))));
+		}
+		if (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53])))) {
+			fTempPerm477 = (fTempPerm435 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec110[0] - fConst7))))));
+		}
+		if (iControl[57] | (iControl[55] | (iControl[54] | iControl[53]))) {
+			fTempPerm478 = (1.0f - fTempPerm477);
+		}
+		if (iControl[57]) {
+			fTempPerm479 = ((0.75f * fTempPerm478) + (fTempPerm429 + (0.5f * fTempPerm477)));
+			fTempPerm480 = std::floor(fTempPerm479);
+		}
+		if (iControl[57] | iControl[53]) {
+			fTempPerm481 = (0.5f * fTempPerm478);
+		}
+		if (iControl[57]) {
+			fTempPerm482 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm481));
+			fTempPerm483 = (0.5f - fTempPerm482);
+		}
+		if (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53])))) {
+			fTempPerm484 = (fTempPerm435 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec127[0] - fConst7))))));
+		}
+		if (iControl[57] | (iControl[55] | (iControl[54] | iControl[53]))) {
+			fTempPerm485 = (1.0f - fTempPerm484);
+		}
+		if (iControl[57]) {
+			fTempPerm486 = ((0.75f * fTempPerm485) + (fTempPerm466 + (0.5f * fTempPerm484)));
+			fTempPerm487 = std::floor(fTempPerm486);
+		}
+		if (iControl[57] | iControl[53]) {
+			fTempPerm488 = (0.5f * fTempPerm485);
+		}
+		if (iControl[57]) {
+			fTempPerm489 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm488));
+			fTempPerm490 = (0.5f - fTempPerm489);
+			fTempPerm491 = ((fTempPerm449 * std::cos((6.28318548f * ((fTempPerm479 + std::min<float>((((fTempPerm479 - fTempPerm480) * fTempPerm483) / fTempPerm482), ((fTempPerm483 * (fTempPerm480 + (1.0f - fTempPerm479))) / (1.0f - fTempPerm482)))) - fTempPerm480)))) + (fTempPerm448 * std::cos((6.28318548f * ((fTempPerm486 + std::min<float>((((fTempPerm486 - fTempPerm487) * fTempPerm490) / fTempPerm489), ((fTempPerm490 * (fTempPerm487 + (1.0f - fTempPerm486))) / (1.0f - fTempPerm489)))) - fTempPerm487)))));
+		}
+		if (iControl[56]) {
+			fTempPerm492 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm477));
+			fTempPerm493 = (1.0f - fTempPerm492);
+			fTempPerm494 = (0.25f * fTempPerm493);
+			fTempPerm495 = (fTempPerm429 - (fTempPerm494 + std::floor((fTempPerm429 - fTempPerm494))));
+			fTempPerm496 = (2.0f * fTempPerm495);
+			fTempPerm497 = std::floor((fTempPerm496 + 1.0f));
+			fTempPerm498 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm484));
+			fTempPerm499 = (1.0f - fTempPerm498);
+			fTempPerm500 = (0.25f * fTempPerm499);
+			fTempPerm501 = (fTempPerm466 - (fTempPerm500 + std::floor((fTempPerm466 - fTempPerm500))));
+			fTempPerm502 = (2.0f * fTempPerm501);
+			fTempPerm503 = std::floor((fTempPerm502 + 1.0f));
+			fTempPerm504 = ((fTempPerm449 * std::cos((3.14159274f * ((float((fTempPerm495 >= 0.5f)) + fTempPerm496) + (1.0f - (fTempPerm497 + std::min<float>((fTempPerm496 + (1.0f - fTempPerm497)), ((fTempPerm492 * (fTempPerm497 - fTempPerm496)) / fTempPerm493)))))))) + (fTempPerm448 * std::cos((3.14159274f * ((float((fTempPerm501 >= 0.5f)) + fTempPerm502) + (1.0f - (fTempPerm503 + std::min<float>((fTempPerm502 + (1.0f - fTempPerm503)), ((fTempPerm498 * (fTempPerm503 - fTempPerm502)) / fTempPerm499)))))))));
+		}
+		if (iControl[55]) {
+			fTempPerm505 = (0.25f * fTempPerm478);
+			fTempPerm506 = (fTempPerm505 + std::floor((fTempPerm429 - fTempPerm505)));
+		}
+		if (iControl[55] | (iControl[54] | (iControl[52] | iControl[50]))) {
+			fTempPerm507 = (1.0f - fTempPerm429);
+		}
+		if (iControl[55]) {
+			fTempPerm508 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm477));
+			fTempPerm509 = (0.25f * fTempPerm485);
+			fTempPerm510 = (fTempPerm509 + std::floor((fTempPerm466 - fTempPerm509)));
+		}
+		if (iControl[55] | (iControl[54] | (iControl[52] | iControl[50]))) {
+			fTempPerm511 = (1.0f - fTempPerm466);
+		}
+		if (iControl[55]) {
+			fTempPerm512 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm484));
+			fTempPerm513 = ((fTempPerm449 * std::cos((6.28318548f * (fTempPerm429 - (fTempPerm506 + std::min<float>((fTempPerm429 - fTempPerm506), (((fTempPerm506 + fTempPerm507) * fTempPerm508) / (1.0f - fTempPerm508)))))))) + (fTempPerm448 * std::cos((6.28318548f * (fTempPerm466 - (fTempPerm510 + std::min<float>((fTempPerm466 - fTempPerm510), (((fTempPerm510 + fTempPerm511) * fTempPerm512) / (1.0f - fTempPerm512)))))))));
+		}
+		if (iControl[54]) {
+			fTempPerm514 = ((0.125f * fTempPerm478) + (0.25f * fTempPerm477));
+			fTempPerm515 = (fTempPerm514 + std::floor((fTempPerm429 - fTempPerm514)));
+			fTempPerm516 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm477));
+			fTempPerm517 = (0.49000001f * fTempPerm516);
+			fTempPerm518 = ((0.125f * fTempPerm485) + (0.25f * fTempPerm484));
+			fTempPerm519 = (fTempPerm518 + std::floor((fTempPerm466 - fTempPerm518)));
+			fTempPerm520 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm484));
+			fTempPerm521 = (0.49000001f * fTempPerm520);
+			fTempPerm522 = ((fTempPerm449 * std::cos((12.566371f * ((fTempPerm429 + std::min<float>((0.49000001f * (((fTempPerm429 - fTempPerm515) * fTempPerm516) / (0.5f - fTempPerm517))), (0.49000001f * ((fTempPerm516 * (fTempPerm515 + fTempPerm507)) / (fTempPerm517 + 0.5f))))) - fTempPerm515)))) + (fTempPerm448 * std::cos((12.566371f * ((fTempPerm466 + std::min<float>((0.49000001f * (((fTempPerm466 - fTempPerm519) * fTempPerm520) / (0.5f - fTempPerm521))), (0.49000001f * ((fTempPerm520 * (fTempPerm519 + fTempPerm511)) / (fTempPerm521 + 0.5f))))) - fTempPerm519)))));
+		}
+		if (iControl[53]) {
+			fTempPerm523 = std::min<float>(0.975000024f, fTempPerm477);
+			fTempPerm524 = (0.25f * (1.0f - fTempPerm523));
+			fTempPerm525 = (fTempPerm524 + (0.5f * fTempPerm523));
+			fTempPerm526 = std::floor((fTempPerm429 - fTempPerm525));
+			fTempPerm527 = (fTempPerm429 - (fTempPerm525 + fTempPerm526));
+			fTempPerm528 = std::min<float>(0.975000024f, fTempPerm484);
+			fTempPerm529 = (0.25f * (1.0f - fTempPerm528));
+			fTempPerm530 = (fTempPerm529 + (0.5f * fTempPerm528));
+			fTempPerm531 = std::floor((fTempPerm466 - fTempPerm530));
+			fTempPerm532 = (fTempPerm466 - (fTempPerm530 + fTempPerm531));
+			fTempPerm533 = ((fTempPerm449 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm527 < 0.5f) ? fTempPerm527 : (0.5f * (((fTempPerm429 - ((fTempPerm524 + fTempPerm526) + (0.5f * (fTempPerm523 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm481))) + 1.0f))))))) + (fTempPerm448 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm532 < 0.5f) ? fTempPerm532 : (0.5f * (((fTempPerm466 - ((fTempPerm529 + fTempPerm531) + (0.5f * (fTempPerm528 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm488))) + 1.0f))))))));
+		}
+		if (iControl[52] | iControl[50]) {
+			fTempPerm534 = (fTempPerm429 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec110[0] * fControl[688]) * fTempPerm434))) / fRec110[0])));
+			fTempPerm535 = (fTempPerm466 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec127[0] * fControl[688]) * fTempPerm434))) / fRec127[0])));
+		}
+		if (iControl[52]) {
+			fTempPerm536 = ((fTempPerm449 * (((0.0f - fTempPerm507) * (1.0f - std::cos((6.28318548f * (fTempPerm534 + (1.0f - std::floor((fTempPerm534 + 1.0f)))))))) + 1.0f)) + (fTempPerm448 * (((0.0f - fTempPerm511) * (1.0f - std::cos((6.28318548f * (fTempPerm535 + (1.0f - std::floor((fTempPerm535 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[51]) {
+			fTempPerm537 = (fTempPerm429 - (fTempPerm441 + fVec17[1]));
+			fRec133[0] = ((std::fabs(fTempPerm537) < 0.5f) ? (fConst0 * fTempPerm537) : fRec133[1]);
+			fTempPerm538 = (fTempPerm442 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec133[0] * fControl[688]) * fTempPerm434))) / fRec133[0])));
+			fTempPerm539 = (fTempPerm466 - (fTempPerm470 + fVec20[1]));
+			fRec134[0] = ((std::fabs(fTempPerm539) < 0.5f) ? (fConst0 * fTempPerm539) : fRec134[1]);
+			fTempPerm540 = (fTempPerm471 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec134[0] * fControl[688]) * fTempPerm434))) / fRec134[0])));
+			fTempPerm541 = ((fTempPerm449 * (((iTempPerm443 ? (2.0f * fTempPerm442) : (2.0f * (1.0f - fTempPerm442))) * (std::cos((6.28318548f * (fTempPerm538 + (1.0f - std::floor((fTempPerm538 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm448 * (((iTempPerm472 ? (2.0f * fTempPerm471) : (2.0f * (1.0f - fTempPerm471))) * (std::cos((6.28318548f * (fTempPerm540 + (1.0f - std::floor((fTempPerm540 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[50]) {
+			fTempPerm542 = (((fTempPerm449 * std::min<float>(1.0f, (2.0f * fTempPerm507))) * std::sin((6.28318548f * (fTempPerm534 - std::floor(fTempPerm534))))) + ((fTempPerm448 * std::min<float>(1.0f, (2.0f * fTempPerm511))) * std::sin((6.28318548f * (fTempPerm535 - std::floor(fTempPerm535))))));
+		}
+		fRec4[0] = (((((((((fControl[264] * fTempPerm476) + (fControl[263] * fTempPerm491)) + (fControl[262] * fTempPerm504)) + (fControl[261] * fTempPerm513)) + (fControl[260] * fTempPerm522)) + (fControl[259] * fTempPerm533)) + (fControl[258] * fTempPerm536)) + (fControl[257] * fTempPerm541)) + (fControl[256] * fTempPerm542));
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm543 = ((fTemp46 * ((fControl[705] * fTemp43) + (fControl[706] * fTemp42))) + (fTemp45 * ((fControl[707] * fTemp43) + (fControl[708] * fTemp42))));
+			fTempPerm544 = ((fTemp46 * ((fControl[709] * fTemp43) + (fControl[710] * fTemp42))) + (fTemp45 * ((fControl[711] * fTemp43) + (fControl[712] * fTemp42))));
+			fTempPerm545 = ((fTemp46 * ((fControl[713] * fTemp43) + (fControl[714] * fTemp42))) + (fTemp45 * ((fControl[715] * fTemp43) + (fControl[716] * fTemp42))));
+			fTempPerm546 = ((fTemp46 * ((fControl[717] * fTemp43) + (fControl[718] * fTemp42))) + (fTemp45 * ((fControl[719] * fTemp43) + (fControl[720] * fTemp42))));
+			fTempPerm547 = (fRec5[1] * ((fTemp40 * (fTempPerm543 + fTempPerm544)) + (fTemp39 * (fTempPerm545 + fTempPerm546))));
+			fTempPerm548 = ((fTemp46 * ((fControl[721] * fTemp43) + (fControl[722] * fTemp42))) + (fTemp45 * ((fControl[723] * fTemp43) + (fControl[724] * fTemp42))));
+			fTempPerm549 = ((fTemp46 * ((fControl[725] * fTemp43) + (fControl[726] * fTemp42))) + (fTemp45 * ((fControl[727] * fTemp43) + (fControl[728] * fTemp42))));
+			fTempPerm550 = ((fTemp46 * ((fControl[729] * fTemp43) + (fControl[730] * fTemp42))) + (fTemp45 * ((fControl[731] * fTemp43) + (fControl[732] * fTemp42))));
+			fTempPerm551 = ((fTemp46 * ((fControl[733] * fTemp43) + (fControl[734] * fTemp42))) + (fTemp45 * ((fControl[735] * fTemp43) + (fControl[736] * fTemp42))));
+			fTempPerm552 = (fRec4[1] * ((fTemp40 * (fTempPerm548 + fTempPerm549)) + (fTemp39 * (fTempPerm550 + fTempPerm551))));
+			fTempPerm553 = ((fTemp46 * ((fControl[737] * fTemp43) + (fControl[738] * fTemp42))) + (fTemp45 * ((fControl[739] * fTemp43) + (fControl[740] * fTemp42))));
+			fTempPerm554 = ((fTemp46 * ((fControl[741] * fTemp43) + (fControl[742] * fTemp42))) + (fTemp45 * ((fControl[743] * fTemp43) + (fControl[744] * fTemp42))));
+			fTempPerm555 = ((fTemp46 * ((fControl[745] * fTemp43) + (fControl[746] * fTemp42))) + (fTemp45 * ((fControl[747] * fTemp43) + (fControl[748] * fTemp42))));
+			fTempPerm556 = ((fTemp46 * ((fControl[749] * fTemp43) + (fControl[750] * fTemp42))) + (fTemp45 * ((fControl[751] * fTemp43) + (fControl[752] * fTemp42))));
+			fTempPerm557 = (fRec3[1] * ((fTemp40 * (fTempPerm553 + fTempPerm554)) + (fTemp39 * (fTempPerm555 + fTempPerm556))));
+			fTempPerm558 = ((fTemp46 * ((fControl[753] * fTemp43) + (fControl[754] * fTemp42))) + (fTemp45 * ((fControl[755] * fTemp43) + (fControl[756] * fTemp42))));
+			fTempPerm559 = ((fTemp46 * ((fControl[757] * fTemp43) + (fControl[758] * fTemp42))) + (fTemp45 * ((fControl[759] * fTemp43) + (fControl[760] * fTemp42))));
+			fTempPerm560 = ((fTemp46 * ((fControl[761] * fTemp43) + (fControl[762] * fTemp42))) + (fTemp45 * ((fControl[763] * fTemp43) + (fControl[764] * fTemp42))));
+			fTempPerm561 = ((fTemp46 * ((fControl[765] * fTemp43) + (fControl[766] * fTemp42))) + (fTemp45 * ((fControl[767] * fTemp43) + (fControl[768] * fTemp42))));
+			fTempPerm562 = ((fTemp40 * (fTempPerm558 + fTempPerm559)) + (fTemp39 * (fTempPerm560 + fTempPerm561)));
+			fTempPerm563 = ((fTemp46 * ((fControl[769] * fTemp43) + (fControl[770] * fTemp42))) + (fTemp45 * ((fControl[771] * fTemp43) + (fControl[772] * fTemp42))));
+			fTempPerm564 = ((fTemp46 * ((fControl[773] * fTemp43) + (fControl[774] * fTemp42))) + (fTemp45 * ((fControl[775] * fTemp43) + (fControl[776] * fTemp42))));
+			fTempPerm565 = ((fTemp46 * ((fControl[777] * fTemp43) + (fControl[778] * fTemp42))) + (fTemp45 * ((fControl[779] * fTemp43) + (fControl[780] * fTemp42))));
+			fTempPerm566 = ((fTemp46 * ((fControl[781] * fTemp43) + (fControl[782] * fTemp42))) + (fTemp45 * ((fControl[783] * fTemp43) + (fControl[784] * fTemp42))));
+			fTempPerm567 = ((fTemp40 * (fTempPerm563 + fTempPerm564)) + (fTemp39 * (fTempPerm565 + fTempPerm566)));
+			fTempPerm568 = std::floor(fTempPerm567);
+			fTempPerm569 = (fTempPerm568 + float(((fTempPerm567 < 0.0f) & (fTempPerm567 != fTempPerm568))));
+			fTempPerm570 = (fTempPerm54 + (0.00390625f * (fTempPerm562 * std::pow(2.0f, (0.0f - fTempPerm569)))));
+			iTempPerm571 = int(fTempPerm569);
+			fTempPerm572 = ((fTemp46 * ((fControl[785] * fTemp43) + (fControl[786] * fTemp42))) + (fTemp45 * ((fControl[787] * fTemp43) + (fControl[788] * fTemp42))));
+			fTempPerm573 = ((fTemp46 * ((fControl[789] * fTemp43) + (fControl[790] * fTemp42))) + (fTemp45 * ((fControl[791] * fTemp43) + (fControl[792] * fTemp42))));
+			fTempPerm574 = ((fTemp46 * ((fControl[793] * fTemp43) + (fControl[794] * fTemp42))) + (fTemp45 * ((fControl[795] * fTemp43) + (fControl[796] * fTemp42))));
+			fTempPerm575 = ((fTemp46 * ((fControl[797] * fTemp43) + (fControl[798] * fTemp42))) + (fTemp45 * ((fControl[799] * fTemp43) + (fControl[800] * fTemp42))));
+			fTempPerm576 = (fRec2[1] * ((fTemp40 * (fTempPerm572 + fTempPerm573)) + (fTemp39 * (fTempPerm574 + fTempPerm575))));
+			fTempPerm577 = (fTempPerm547 + (fTempPerm552 + (fTempPerm557 + (std::fmod((256.0f * ((fTempPerm570 - (fTempPerm68 + std::floor((fTempPerm570 - fTempPerm68)))) * (((float((iTempPerm571 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm571)))))) + float((iTempPerm571 == 0))) + float(((iTempPerm571 > 0) * int(std::pow(2.0f, float(iTempPerm571)))))))), 1.0f) + fTempPerm576))));
+		}
+		if ((iControl[49] & iTempPerm22) | ((iControl[48] & iTempPerm22) | ((iControl[47] & iTempPerm22) | ((iControl[46] & iTempPerm22) | ((iControl[45] & iTempPerm22) | ((iControl[44] & iTempPerm22) | ((iControl[43] & iTempPerm22) | ((iControl[42] & iTempPerm22) | (iControl[41] & iTempPerm22))))))))) {
+			fTempPerm578 = (fRec135[1] + (fTempPerm35 * (fTempPerm577 - fRec136[1])));
+			fTempPerm579 = (fTempPerm578 / fTempPerm83);
+			fRec135[0] = ((2.0f * fTempPerm579) - fRec135[1]);
+			fTempPerm580 = (fRec136[1] + ((fTempPerm35 * fTempPerm578) / fTempPerm83));
+			fRec136[0] = ((2.0f * fTempPerm580) - fRec136[1]);
+			fRec137 = fTempPerm580;
+		}
+		if ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30))))))))) {
+			fTempPerm581 = (fTempPerm35 * (fTempPerm577 - fRec140[1]));
+			fTempPerm582 = ((fTempPerm35 * ((((fRec140[1] + ((fTempPerm581 + (0.215215757f * (fTempPerm135 * fRec138[1]))) / fTempPerm90)) + (fTempPerm92 * fRec139[1])) / fTempPerm93) - fRec138[1])) / fTempPerm90);
+			fRec138[0] = (fRec138[1] + (2.0f * fTempPerm582));
+			fTempPerm583 = (fRec138[1] + fTempPerm582);
+			fRec139[0] = (fRec139[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm583)) - fRec139[1])) / fTempPerm90)));
+			fRec140[0] = (fRec140[1] + (2.0f * (fTempPerm581 / fTempPerm90)));
+			fRec141 = fTempPerm583;
+		}
+		if ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm29) | (iControl[41] & iTempPerm29))))))))) {
+			fTempPerm584 = (fTempPerm577 - (fRec143[1] + (fTempPerm82 * fRec144[1])));
+			fTempPerm585 = ((fTempPerm35 * fTempPerm584) / fTempPerm83);
+			fTempPerm586 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec144[1] + fTempPerm585)));
+			fTempPerm587 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm586)));
+			fTempPerm588 = ((fTempPerm35 * fTempPerm586) * fTempPerm587);
+			fRec142 = (fRec143[1] + fTempPerm588);
+			fRec143[0] = (fRec143[1] + (2.0f * fTempPerm588));
+			fTempPerm589 = (fTempPerm586 * fTempPerm587);
+			fRec144[0] = (fTempPerm585 + fTempPerm589);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm590 = (((fTempPerm19 * (((fTempPerm21 * fRec137) + (fTempPerm87 * fRec141)) + (fTempPerm97 * fRec142))) / fTempPerm104) + (fTempPerm105 * fTempPerm577));
+			fVec22[0] = fTempPerm590;
+			fTempPerm591 = ((fTemp46 * ((fControl[802] * fTemp43) + (fControl[803] * fTemp42))) + (fTemp45 * ((fControl[804] * fTemp43) + (fControl[805] * fTemp42))));
+			fTempPerm592 = ((fTemp46 * ((fControl[806] * fTemp43) + (fControl[807] * fTemp42))) + (fTemp45 * ((fControl[808] * fTemp43) + (fControl[809] * fTemp42))));
+			fTempPerm593 = ((fTemp46 * ((fControl[810] * fTemp43) + (fControl[811] * fTemp42))) + (fTemp45 * ((fControl[812] * fTemp43) + (fControl[813] * fTemp42))));
+			fTempPerm594 = ((fTemp46 * ((fControl[814] * fTemp43) + (fControl[815] * fTemp42))) + (fTemp45 * ((fControl[816] * fTemp43) + (fControl[817] * fTemp42))));
+			fTempPerm595 = ((fTemp40 * (fTempPerm591 + fTempPerm592)) + (fTemp39 * (fTempPerm593 + fTempPerm594)));
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44]))))) {
+			fTempPerm596 = (fControl[801] * fTempPerm595);
+		}
+		if (iControl[49]) {
+			fTempPerm597 = (2.0f * fTempPerm596);
+			fTempPerm598 = std::min<float>(1.0f, fTempPerm597);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fTempPerm599 = (fTempPerm590 - fVec22[1]);
+			fRec146[0] = ((std::fabs(fTempPerm599) < 0.5f) ? (fConst0 * fTempPerm599) : fRec146[1]);
+		}
+		if (iControl[49]) {
+			fTempPerm600 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec146[0])))))));
+			fTempPerm601 = (1.0f - fTempPerm600);
+		}
+		if (iControl[49] | iControl[42]) {
+			fTempPerm602 = std::floor(fTempPerm590);
+			fTempPerm603 = (fTempPerm590 - fTempPerm602);
+			fVec23[0] = fTempPerm603;
+			iTempPerm604 = (fTempPerm603 < 0.5f);
+			iVec24[0] = iTempPerm604;
+		}
+		if (iControl[49]) {
+			iTempPerm605 = ((iVec24[1] <= 0) & (iTempPerm604 > 0));
+			fRec151[0] = ((fRec151[1] * float((1 - iTempPerm605))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm605))));
+			fTempPerm606 = (fTempPerm600 + 1.0f);
+			fRec150[0] = (0.0f - (((fTempPerm601 * fRec150[1]) - (fRec151[0] + fRec151[1])) / fTempPerm606));
+			fRec149[0] = (0.0f - (((fTempPerm601 * fRec149[1]) - (fRec150[0] + fRec150[1])) / fTempPerm606));
+			fRec148[0] = (0.0f - (((fTempPerm601 * fRec148[1]) - (fRec149[0] + fRec149[1])) / fTempPerm606));
+			fRec147[0] = (0.0f - (((fTempPerm601 * fRec147[1]) - (fRec148[0] + fRec148[1])) / fTempPerm606));
+			fRec145[0] = (0.0f - (((fRec145[1] * fTempPerm601) - (fRec147[0] + fRec147[1])) / fTempPerm606));
+			fTempPerm607 = (std::sin((6.28318548f * fTempPerm590)) * ((fTempPerm598 * (fRec145[0] + -1.0f)) + 1.0f));
+			fTempPerm608 = (std::max<float>(1.0f, fTempPerm597) + -1.0f);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm609 = std::fmod(std::fabs(fTempPerm567), 1.0f);
+			fTempPerm610 = (1.0f - fTempPerm609);
+			fTempPerm611 = (fTempPerm568 + float((fTempPerm567 > 0.0f)));
+			fTempPerm612 = (fTempPerm54 + (0.00390625f * (fTempPerm562 * std::pow(2.0f, (0.0f - fTempPerm611)))));
+			iTempPerm613 = int(fTempPerm611);
+			fTempPerm614 = ((((fTempPerm576 + fTempPerm557) + fTempPerm552) + fTempPerm547) + std::fmod((256.0f * ((fTempPerm612 - (fTempPerm68 + std::floor((fTempPerm612 - fTempPerm68)))) * (((float((iTempPerm613 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm613)))))) + float((iTempPerm613 == 0))) + float(((iTempPerm613 > 0) * int(std::pow(2.0f, float(iTempPerm613)))))))), 1.0f));
+		}
+		if ((iControl[49] & iTempPerm22) | ((iControl[48] & iTempPerm22) | ((iControl[47] & iTempPerm22) | ((iControl[46] & iTempPerm22) | ((iControl[45] & iTempPerm22) | ((iControl[44] & iTempPerm22) | ((iControl[43] & iTempPerm22) | ((iControl[42] & iTempPerm22) | (iControl[41] & iTempPerm22))))))))) {
+			fTempPerm615 = (fRec152[1] + (fTempPerm35 * (fTempPerm614 - fRec153[1])));
+			fTempPerm616 = (fTempPerm615 / fTempPerm83);
+			fRec152[0] = ((2.0f * fTempPerm616) - fRec152[1]);
+			fTempPerm617 = (fRec153[1] + ((fTempPerm35 * fTempPerm615) / fTempPerm83));
+			fRec153[0] = ((2.0f * fTempPerm617) - fRec153[1]);
+			fRec154 = fTempPerm617;
+		}
+		if ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30))))))))) {
+			fTempPerm618 = (fTempPerm35 * (fTempPerm614 - fRec157[1]));
+			fTempPerm619 = ((fTempPerm35 * ((((fRec157[1] + ((fTempPerm618 + (0.215215757f * (fTempPerm135 * fRec155[1]))) / fTempPerm90)) + (fTempPerm92 * fRec156[1])) / fTempPerm93) - fRec155[1])) / fTempPerm90);
+			fRec155[0] = (fRec155[1] + (2.0f * fTempPerm619));
+			fTempPerm620 = (fRec155[1] + fTempPerm619);
+			fRec156[0] = (fRec156[1] + (2.0f * ((fTempPerm35 * ((0.215215757f * (fTempPerm89 * fTempPerm620)) - fRec156[1])) / fTempPerm90)));
+			fRec157[0] = (fRec157[1] + (2.0f * (fTempPerm618 / fTempPerm90)));
+			fRec158 = fTempPerm620;
+		}
+		if ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm29) | (iControl[41] & iTempPerm29))))))))) {
+			fTempPerm621 = (fTempPerm614 - (fRec160[1] + (fTempPerm82 * fRec161[1])));
+			fTempPerm622 = ((fTempPerm35 * fTempPerm621) / fTempPerm83);
+			fTempPerm623 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec161[1] + fTempPerm622)));
+			fTempPerm624 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm623)));
+			fTempPerm625 = ((fTempPerm35 * fTempPerm623) * fTempPerm624);
+			fRec159 = (fRec160[1] + fTempPerm625);
+			fRec160[0] = (fRec160[1] + (2.0f * fTempPerm625));
+			fTempPerm626 = (fTempPerm623 * fTempPerm624);
+			fRec161[0] = (fTempPerm622 + fTempPerm626);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm627 = (((fTempPerm19 * (((fTempPerm21 * fRec154) + (fTempPerm87 * fRec158)) + (fTempPerm97 * fRec159))) / fTempPerm104) + (fTempPerm105 * fTempPerm614));
+			fVec25[0] = fTempPerm627;
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fTempPerm628 = (fTempPerm627 - fVec25[1]);
+			fRec163[0] = ((std::fabs(fTempPerm628) < 0.5f) ? (fConst0 * fTempPerm628) : fRec163[1]);
+		}
+		if (iControl[49]) {
+			fTempPerm629 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec163[0])))))));
+			fTempPerm630 = (1.0f - fTempPerm629);
+		}
+		if (iControl[49] | iControl[42]) {
+			fTempPerm631 = std::floor(fTempPerm627);
+			fTempPerm632 = (fTempPerm627 - fTempPerm631);
+			fVec26[0] = fTempPerm632;
+			iTempPerm633 = (fTempPerm632 < 0.5f);
+			iVec27[0] = iTempPerm633;
+		}
+		if (iControl[49]) {
+			iTempPerm634 = ((iVec27[1] <= 0) & (iTempPerm633 > 0));
+			fRec168[0] = ((fRec168[1] * float((1 - iTempPerm634))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm634))));
+			fTempPerm635 = (fTempPerm629 + 1.0f);
+			fRec167[0] = (0.0f - (((fTempPerm630 * fRec167[1]) - (fRec168[0] + fRec168[1])) / fTempPerm635));
+			fRec166[0] = (0.0f - (((fTempPerm630 * fRec166[1]) - (fRec167[0] + fRec167[1])) / fTempPerm635));
+			fRec165[0] = (0.0f - (((fTempPerm630 * fRec165[1]) - (fRec166[0] + fRec166[1])) / fTempPerm635));
+			fRec164[0] = (0.0f - (((fTempPerm630 * fRec164[1]) - (fRec165[0] + fRec165[1])) / fTempPerm635));
+			fRec162[0] = (0.0f - (((fRec162[1] * fTempPerm630) - (fRec164[0] + fRec164[1])) / fTempPerm635));
+			fTempPerm636 = (std::sin((6.28318548f * fTempPerm627)) * ((fTempPerm598 * (fRec162[0] + -1.0f)) + 1.0f));
+			fTempPerm637 = (((fTempPerm607 + (fTempPerm608 * (fRec145[0] - fTempPerm607))) * fTempPerm610) + (fTempPerm609 * (fTempPerm636 + (fTempPerm608 * (fRec162[0] - fTempPerm636)))));
+		}
+		if (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44])))) {
+			fTempPerm638 = (fTempPerm596 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec146[0] - fConst7))))));
+		}
+		if (iControl[48] | (iControl[46] | (iControl[45] | iControl[44]))) {
+			fTempPerm639 = (1.0f - fTempPerm638);
+		}
+		if (iControl[48]) {
+			fTempPerm640 = ((0.75f * fTempPerm639) + (fTempPerm590 + (0.5f * fTempPerm638)));
+			fTempPerm641 = std::floor(fTempPerm640);
+		}
+		if (iControl[48] | iControl[44]) {
+			fTempPerm642 = (0.5f * fTempPerm639);
+		}
+		if (iControl[48]) {
+			fTempPerm643 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm642));
+			fTempPerm644 = (0.5f - fTempPerm643);
+		}
+		if (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44])))) {
+			fTempPerm645 = (fTempPerm596 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec163[0] - fConst7))))));
+		}
+		if (iControl[48] | (iControl[46] | (iControl[45] | iControl[44]))) {
+			fTempPerm646 = (1.0f - fTempPerm645);
+		}
+		if (iControl[48]) {
+			fTempPerm647 = ((0.75f * fTempPerm646) + (fTempPerm627 + (0.5f * fTempPerm645)));
+			fTempPerm648 = std::floor(fTempPerm647);
+		}
+		if (iControl[48] | iControl[44]) {
+			fTempPerm649 = (0.5f * fTempPerm646);
+		}
+		if (iControl[48]) {
+			fTempPerm650 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm649));
+			fTempPerm651 = (0.5f - fTempPerm650);
+			fTempPerm652 = ((fTempPerm610 * std::cos((6.28318548f * ((fTempPerm640 + std::min<float>((((fTempPerm640 - fTempPerm641) * fTempPerm644) / fTempPerm643), ((fTempPerm644 * (fTempPerm641 + (1.0f - fTempPerm640))) / (1.0f - fTempPerm643)))) - fTempPerm641)))) + (fTempPerm609 * std::cos((6.28318548f * ((fTempPerm647 + std::min<float>((((fTempPerm647 - fTempPerm648) * fTempPerm651) / fTempPerm650), ((fTempPerm651 * (fTempPerm648 + (1.0f - fTempPerm647))) / (1.0f - fTempPerm650)))) - fTempPerm648)))));
+		}
+		if (iControl[47]) {
+			fTempPerm653 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm638));
+			fTempPerm654 = (1.0f - fTempPerm653);
+			fTempPerm655 = (0.25f * fTempPerm654);
+			fTempPerm656 = (fTempPerm590 - (fTempPerm655 + std::floor((fTempPerm590 - fTempPerm655))));
+			fTempPerm657 = (2.0f * fTempPerm656);
+			fTempPerm658 = std::floor((fTempPerm657 + 1.0f));
+			fTempPerm659 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm645));
+			fTempPerm660 = (1.0f - fTempPerm659);
+			fTempPerm661 = (0.25f * fTempPerm660);
+			fTempPerm662 = (fTempPerm627 - (fTempPerm661 + std::floor((fTempPerm627 - fTempPerm661))));
+			fTempPerm663 = (2.0f * fTempPerm662);
+			fTempPerm664 = std::floor((fTempPerm663 + 1.0f));
+			fTempPerm665 = ((fTempPerm610 * std::cos((3.14159274f * ((float((fTempPerm656 >= 0.5f)) + fTempPerm657) + (1.0f - (fTempPerm658 + std::min<float>((fTempPerm657 + (1.0f - fTempPerm658)), ((fTempPerm653 * (fTempPerm658 - fTempPerm657)) / fTempPerm654)))))))) + (fTempPerm609 * std::cos((3.14159274f * ((float((fTempPerm662 >= 0.5f)) + fTempPerm663) + (1.0f - (fTempPerm664 + std::min<float>((fTempPerm663 + (1.0f - fTempPerm664)), ((fTempPerm659 * (fTempPerm664 - fTempPerm663)) / fTempPerm660)))))))));
+		}
+		if (iControl[46]) {
+			fTempPerm666 = (0.25f * fTempPerm639);
+			fTempPerm667 = (fTempPerm666 + std::floor((fTempPerm590 - fTempPerm666)));
+		}
+		if (iControl[46] | (iControl[45] | (iControl[43] | iControl[41]))) {
+			fTempPerm668 = (1.0f - fTempPerm590);
+		}
+		if (iControl[46]) {
+			fTempPerm669 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm638));
+			fTempPerm670 = (0.25f * fTempPerm646);
+			fTempPerm671 = (fTempPerm670 + std::floor((fTempPerm627 - fTempPerm670)));
+		}
+		if (iControl[46] | (iControl[45] | (iControl[43] | iControl[41]))) {
+			fTempPerm672 = (1.0f - fTempPerm627);
+		}
+		if (iControl[46]) {
+			fTempPerm673 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm645));
+			fTempPerm674 = ((fTempPerm610 * std::cos((6.28318548f * (fTempPerm590 - (fTempPerm667 + std::min<float>((fTempPerm590 - fTempPerm667), (((fTempPerm667 + fTempPerm668) * fTempPerm669) / (1.0f - fTempPerm669)))))))) + (fTempPerm609 * std::cos((6.28318548f * (fTempPerm627 - (fTempPerm671 + std::min<float>((fTempPerm627 - fTempPerm671), (((fTempPerm671 + fTempPerm672) * fTempPerm673) / (1.0f - fTempPerm673)))))))));
+		}
+		if (iControl[45]) {
+			fTempPerm675 = ((0.125f * fTempPerm639) + (0.25f * fTempPerm638));
+			fTempPerm676 = (fTempPerm675 + std::floor((fTempPerm590 - fTempPerm675)));
+			fTempPerm677 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm638));
+			fTempPerm678 = (0.49000001f * fTempPerm677);
+			fTempPerm679 = ((0.125f * fTempPerm646) + (0.25f * fTempPerm645));
+			fTempPerm680 = (fTempPerm679 + std::floor((fTempPerm627 - fTempPerm679)));
+			fTempPerm681 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm645));
+			fTempPerm682 = (0.49000001f * fTempPerm681);
+			fTempPerm683 = ((fTempPerm610 * std::cos((12.566371f * ((fTempPerm590 + std::min<float>((0.49000001f * (((fTempPerm590 - fTempPerm676) * fTempPerm677) / (0.5f - fTempPerm678))), (0.49000001f * ((fTempPerm677 * (fTempPerm676 + fTempPerm668)) / (fTempPerm678 + 0.5f))))) - fTempPerm676)))) + (fTempPerm609 * std::cos((12.566371f * ((fTempPerm627 + std::min<float>((0.49000001f * (((fTempPerm627 - fTempPerm680) * fTempPerm681) / (0.5f - fTempPerm682))), (0.49000001f * ((fTempPerm681 * (fTempPerm680 + fTempPerm672)) / (fTempPerm682 + 0.5f))))) - fTempPerm680)))));
+		}
+		if (iControl[44]) {
+			fTempPerm684 = std::min<float>(0.975000024f, fTempPerm638);
+			fTempPerm685 = (0.25f * (1.0f - fTempPerm684));
+			fTempPerm686 = (fTempPerm685 + (0.5f * fTempPerm684));
+			fTempPerm687 = std::floor((fTempPerm590 - fTempPerm686));
+			fTempPerm688 = (fTempPerm590 - (fTempPerm686 + fTempPerm687));
+			fTempPerm689 = std::min<float>(0.975000024f, fTempPerm645);
+			fTempPerm690 = (0.25f * (1.0f - fTempPerm689));
+			fTempPerm691 = (fTempPerm690 + (0.5f * fTempPerm689));
+			fTempPerm692 = std::floor((fTempPerm627 - fTempPerm691));
+			fTempPerm693 = (fTempPerm627 - (fTempPerm691 + fTempPerm692));
+			fTempPerm694 = ((fTempPerm610 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm688 < 0.5f) ? fTempPerm688 : (0.5f * (((fTempPerm590 - ((fTempPerm685 + fTempPerm687) + (0.5f * (fTempPerm684 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm642))) + 1.0f))))))) + (fTempPerm609 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm693 < 0.5f) ? fTempPerm693 : (0.5f * (((fTempPerm627 - ((fTempPerm690 + fTempPerm692) + (0.5f * (fTempPerm689 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm649))) + 1.0f))))))));
+		}
+		if (iControl[43] | iControl[41]) {
+			fTempPerm695 = (fTempPerm590 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec146[0] * fControl[801]) * fTempPerm595))) / fRec146[0])));
+			fTempPerm696 = (fTempPerm627 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec163[0] * fControl[801]) * fTempPerm595))) / fRec163[0])));
+		}
+		if (iControl[43]) {
+			fTempPerm697 = ((fTempPerm610 * (((0.0f - fTempPerm668) * (1.0f - std::cos((6.28318548f * (fTempPerm695 + (1.0f - std::floor((fTempPerm695 + 1.0f)))))))) + 1.0f)) + (fTempPerm609 * (((0.0f - fTempPerm672) * (1.0f - std::cos((6.28318548f * (fTempPerm696 + (1.0f - std::floor((fTempPerm696 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[42]) {
+			fTempPerm698 = (fTempPerm590 - (fTempPerm602 + fVec23[1]));
+			fRec169[0] = ((std::fabs(fTempPerm698) < 0.5f) ? (fConst0 * fTempPerm698) : fRec169[1]);
+			fTempPerm699 = (fTempPerm603 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec169[0] * fControl[801]) * fTempPerm595))) / fRec169[0])));
+			fTempPerm700 = (fTempPerm627 - (fTempPerm631 + fVec26[1]));
+			fRec170[0] = ((std::fabs(fTempPerm700) < 0.5f) ? (fConst0 * fTempPerm700) : fRec170[1]);
+			fTempPerm701 = (fTempPerm632 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec170[0] * fControl[801]) * fTempPerm595))) / fRec170[0])));
+			fTempPerm702 = ((fTempPerm610 * (((iTempPerm604 ? (2.0f * fTempPerm603) : (2.0f * (1.0f - fTempPerm603))) * (std::cos((6.28318548f * (fTempPerm699 + (1.0f - std::floor((fTempPerm699 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm609 * (((iTempPerm633 ? (2.0f * fTempPerm632) : (2.0f * (1.0f - fTempPerm632))) * (std::cos((6.28318548f * (fTempPerm701 + (1.0f - std::floor((fTempPerm701 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[41]) {
+			fTempPerm703 = (((fTempPerm610 * std::min<float>(1.0f, (2.0f * fTempPerm668))) * std::sin((6.28318548f * (fTempPerm695 - std::floor(fTempPerm695))))) + ((fTempPerm609 * std::min<float>(1.0f, (2.0f * fTempPerm672))) * std::sin((6.28318548f * (fTempPerm696 - std::floor(fTempPerm696))))));
+		}
+		fRec5[0] = (((((((((fControl[253] * fTempPerm637) + (fControl[252] * fTempPerm652)) + (fControl[251] * fTempPerm665)) + (fControl[250] * fTempPerm674)) + (fControl[249] * fTempPerm683)) + (fControl[248] * fTempPerm694)) + (fControl[247] * fTempPerm697)) + (fControl[246] * fTempPerm702)) + (fControl[245] * fTempPerm703));
+		float fTemp751 = ((fTemp46 * ((fControl[818] * fTemp43) + (fControl[819] * fTemp42))) + (fTemp45 * ((fControl[820] * fTemp43) + (fControl[821] * fTemp42))));
+		float fTemp752 = ((fTemp46 * ((fControl[822] * fTemp43) + (fControl[823] * fTemp42))) + (fTemp45 * ((fControl[824] * fTemp43) + (fControl[825] * fTemp42))));
+		float fTemp753 = ((fTemp46 * ((fControl[826] * fTemp43) + (fControl[827] * fTemp42))) + (fTemp45 * ((fControl[828] * fTemp43) + (fControl[829] * fTemp42))));
+		float fTemp754 = ((fTemp46 * ((fControl[830] * fTemp43) + (fControl[831] * fTemp42))) + (fTemp45 * ((fControl[832] * fTemp43) + (fControl[833] * fTemp42))));
+		float fTemp755 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp751 + fTemp752)) + (fTemp39 * (fTemp753 + fTemp754)))));
+		float fTemp756 = (1.0f - fTemp755);
+		float fTemp757 = ((fTemp46 * ((fControl[834] * fTemp43) + (fControl[835] * fTemp42))) + (fTemp45 * ((fControl[836] * fTemp43) + (fControl[837] * fTemp42))));
+		float fTemp758 = ((fTemp46 * ((fControl[838] * fTemp43) + (fControl[839] * fTemp42))) + (fTemp45 * ((fControl[840] * fTemp43) + (fControl[841] * fTemp42))));
+		float fTemp759 = ((fTemp46 * ((fControl[842] * fTemp43) + (fControl[843] * fTemp42))) + (fTemp45 * ((fControl[844] * fTemp43) + (fControl[845] * fTemp42))));
+		float fTemp760 = ((fTemp46 * ((fControl[846] * fTemp43) + (fControl[847] * fTemp42))) + (fTemp45 * ((fControl[848] * fTemp43) + (fControl[849] * fTemp42))));
+		float fTemp761 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp757 + fTemp758)) + (fTemp39 * (fTemp759 + fTemp760)))));
+		outputs[0] = FAUSTFLOAT((fHbargraph0 * ((((fRec2[0] * fTemp756) + (fRec3[0] * fTemp755)) * (1.0f - fTemp761)) + (fTemp761 * ((fRec4[0] * fTemp756) + (fRec5[0] * fTemp755))))));
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm704 = std::fabs(fTempPerm27);
+			fTempPerm705 = std::fabs(fTempPerm25);
+			fTempPerm706 = std::fabs(fTempPerm23);
+			fTempPerm707 = ((fTempPerm704 + fTempPerm705) + fTempPerm706);
+			fTempPerm708 = std::min<float>(1.0f, fTempPerm707);
+			fTempPerm709 = std::max<float>(2.82118644e-37f, fTempPerm704);
+			fTempPerm710 = ((fTempPerm27 < 0.0f) ? (0.0f - fTempPerm709) : fTempPerm709);
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[3] & iTempPerm26) | ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm28) | ((iControl[75] & iTempPerm26) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm28) | ((iControl[74] & iTempPerm26) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm28) | ((iControl[73] & iTempPerm26) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm28) | ((iControl[72] & iTempPerm26) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm28) | ((iControl[71] & iTempPerm26) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm28) | ((iControl[70] & iTempPerm26) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm28) | ((iControl[69] & iTempPerm26) | ((iControl[69] & iTempPerm24) | ((iControl[68] & iTempPerm28) | ((iControl[68] & iTempPerm26) | ((iControl[68] & iTempPerm24) | ((iControl[67] & iTempPerm28) | ((iControl[67] & iTempPerm26) | ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm28) | ((iControl[66] & iTempPerm26) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm28) | ((iControl[65] & iTempPerm26) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm28) | ((iControl[64] & iTempPerm26) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm28) | ((iControl[63] & iTempPerm26) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm28) | ((iControl[62] & iTempPerm26) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm28) | ((iControl[61] & iTempPerm26) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm28) | ((iControl[60] & iTempPerm26) | ((iControl[60] & iTempPerm24) | ((iControl[59] & iTempPerm28) | ((iControl[59] & iTempPerm26) | ((iControl[59] & iTempPerm24) | ((iControl[58] & iTempPerm28) | ((iControl[58] & iTempPerm26) | ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm28) | ((iControl[57] & iTempPerm26) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm28) | ((iControl[56] & iTempPerm26) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm28) | ((iControl[55] & iTempPerm26) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm28) | ((iControl[54] & iTempPerm26) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm28) | ((iControl[53] & iTempPerm26) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm28) | ((iControl[52] & iTempPerm26) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm28) | ((iControl[51] & iTempPerm26) | ((iControl[51] & iTempPerm24) | ((iControl[50] & iTempPerm28) | ((iControl[50] & iTempPerm26) | ((iControl[50] & iTempPerm24) | ((iControl[49] & iTempPerm28) | ((iControl[49] & iTempPerm26) | ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm28) | ((iControl[48] & iTempPerm26) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm28) | ((iControl[47] & iTempPerm26) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm28) | ((iControl[46] & iTempPerm26) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm28) | ((iControl[45] & iTempPerm26) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm28) | ((iControl[44] & iTempPerm26) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm28) | ((iControl[43] & iTempPerm26) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm28) | ((iControl[42] & iTempPerm26) | ((iControl[42] & iTempPerm24) | ((iControl[41] & iTempPerm28) | ((iControl[41] & iTempPerm26) | (iControl[41] & iTempPerm24)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm711 = std::tan((fConst2 * std::min<float>(fConst4, std::max<float>(0.0f, (440.0f * std::pow(2.0f, (0.0833333358f * ((127.0f * std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTempPerm31 - fTempPerm32)) + (fTemp39 * (fTempPerm33 - fTempPerm34)))))) + -49.0f))))))));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm712 = (fRec174[1] * ((fTemp40 * (fTempPerm36 - fTempPerm37)) + (fTemp39 * (fTempPerm38 - fTempPerm39))));
+			fTempPerm713 = (fRec173[1] * ((fTemp40 * (fTempPerm41 - fTempPerm42)) + (fTemp39 * (fTempPerm43 - fTempPerm44))));
+			fTempPerm714 = (fRec172[1] * ((fTemp40 * (fTempPerm46 - fTempPerm47)) + (fTemp39 * (fTempPerm48 - fTempPerm49))));
+			fTempPerm715 = ((fTemp40 * (fTempPerm55 - fTempPerm56)) + (fTemp39 * (fTempPerm57 - fTempPerm58)));
+			fTempPerm716 = ((fTemp40 * (fTempPerm60 - fTempPerm61)) + (fTemp39 * (fTempPerm62 - fTempPerm63)));
+			fTempPerm717 = std::floor(fTempPerm716);
+			fTempPerm718 = (fTempPerm717 + float(((fTempPerm716 < 0.0f) & (fTempPerm716 != fTempPerm717))));
+			fTempPerm719 = (fTempPerm54 + (0.00390625f * (fTempPerm715 * std::pow(2.0f, (0.0f - fTempPerm718)))));
+			iTempPerm720 = int(fTempPerm718);
+			fTempPerm721 = (fRec171[1] * ((fTemp40 * (fTempPerm70 - fTempPerm71)) + (fTemp39 * (fTempPerm72 - fTempPerm73))));
+			fTempPerm722 = (fTempPerm712 + (fTempPerm713 + (fTempPerm714 + (std::fmod((256.0f * ((fTempPerm719 - (fTempPerm68 + std::floor((fTempPerm719 - fTempPerm68)))) * (((float((iTempPerm720 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm720)))))) + float((iTempPerm720 == 0))) + float(((iTempPerm720 > 0) * int(std::pow(2.0f, float(iTempPerm720)))))))), 1.0f) + fTempPerm721))));
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[75] & iTempPerm28) | ((iControl[74] & iTempPerm28) | ((iControl[73] & iTempPerm28) | ((iControl[72] & iTempPerm28) | ((iControl[71] & iTempPerm28) | ((iControl[70] & iTempPerm28) | ((iControl[69] & iTempPerm28) | (iControl[68] & iTempPerm28))))))))) {
+			fTempPerm723 = (fRec175[1] + (fTempPerm711 * (fTempPerm722 - fRec176[1])));
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[3] & iTempPerm26) | ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm28) | ((iControl[75] & iTempPerm26) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm28) | ((iControl[74] & iTempPerm26) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm28) | ((iControl[73] & iTempPerm26) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm28) | ((iControl[72] & iTempPerm26) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm28) | ((iControl[71] & iTempPerm26) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm28) | ((iControl[70] & iTempPerm26) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm28) | ((iControl[69] & iTempPerm26) | ((iControl[69] & iTempPerm24) | ((iControl[68] & iTempPerm28) | ((iControl[68] & iTempPerm26) | ((iControl[68] & iTempPerm24) | ((iControl[67] & iTempPerm28) | ((iControl[67] & iTempPerm26) | ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm28) | ((iControl[66] & iTempPerm26) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm28) | ((iControl[65] & iTempPerm26) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm28) | ((iControl[64] & iTempPerm26) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm28) | ((iControl[63] & iTempPerm26) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm28) | ((iControl[62] & iTempPerm26) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm28) | ((iControl[61] & iTempPerm26) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm28) | ((iControl[60] & iTempPerm26) | ((iControl[60] & iTempPerm24) | ((iControl[59] & iTempPerm28) | ((iControl[59] & iTempPerm26) | ((iControl[59] & iTempPerm24) | ((iControl[58] & iTempPerm28) | ((iControl[58] & iTempPerm26) | ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm28) | ((iControl[57] & iTempPerm26) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm28) | ((iControl[56] & iTempPerm26) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm28) | ((iControl[55] & iTempPerm26) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm28) | ((iControl[54] & iTempPerm26) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm28) | ((iControl[53] & iTempPerm26) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm28) | ((iControl[52] & iTempPerm26) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm28) | ((iControl[51] & iTempPerm26) | ((iControl[51] & iTempPerm24) | ((iControl[50] & iTempPerm28) | ((iControl[50] & iTempPerm26) | ((iControl[50] & iTempPerm24) | ((iControl[49] & iTempPerm28) | ((iControl[49] & iTempPerm26) | ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm28) | ((iControl[48] & iTempPerm26) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm28) | ((iControl[47] & iTempPerm26) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm28) | ((iControl[46] & iTempPerm26) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm28) | ((iControl[45] & iTempPerm26) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm28) | ((iControl[44] & iTempPerm26) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm28) | ((iControl[43] & iTempPerm26) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm28) | ((iControl[42] & iTempPerm26) | ((iControl[42] & iTempPerm24) | ((iControl[41] & iTempPerm28) | ((iControl[41] & iTempPerm26) | (iControl[41] & iTempPerm24)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm724 = std::min<float>(10.0f, std::max<float>(0.00999999978f, ((fTemp40 * (fTempPerm77 - fTempPerm78)) + (fTemp39 * (fTempPerm79 - fTempPerm80)))));
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm28) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm28) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm28) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm28) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm28) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm28) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm28) | ((iControl[69] & iTempPerm24) | ((iControl[68] & iTempPerm28) | ((iControl[68] & iTempPerm24) | ((iControl[67] & iTempPerm28) | ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm28) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm28) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm28) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm28) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm28) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm28) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm28) | ((iControl[60] & iTempPerm24) | ((iControl[59] & iTempPerm28) | ((iControl[59] & iTempPerm24) | ((iControl[58] & iTempPerm28) | ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm28) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm28) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm28) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm28) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm28) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm28) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm28) | ((iControl[51] & iTempPerm24) | ((iControl[50] & iTempPerm28) | ((iControl[50] & iTempPerm24) | ((iControl[49] & iTempPerm28) | ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm28) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm28) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm28) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm28) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm28) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm28) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm28) | ((iControl[42] & iTempPerm24) | ((iControl[41] & iTempPerm28) | (iControl[41] & iTempPerm24)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))) {
+			fTempPerm725 = (fTempPerm711 + (1.0f / fTempPerm724));
+			fTempPerm726 = ((fTempPerm711 * fTempPerm725) + 1.0f);
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[75] & iTempPerm28) | ((iControl[74] & iTempPerm28) | ((iControl[73] & iTempPerm28) | ((iControl[72] & iTempPerm28) | ((iControl[71] & iTempPerm28) | ((iControl[70] & iTempPerm28) | ((iControl[69] & iTempPerm28) | (iControl[68] & iTempPerm28))))))))) {
+			fTempPerm727 = (fTempPerm723 / fTempPerm726);
+			fRec175[0] = ((2.0f * fTempPerm727) - fRec175[1]);
+			fTempPerm728 = (fRec176[1] + ((fTempPerm711 * fTempPerm723) / fTempPerm726));
+			fRec176[0] = ((2.0f * fTempPerm728) - fRec176[1]);
+			fRec177 = fTempPerm728;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm729 = std::max<float>(2.82118644e-37f, fTempPerm705);
+			fTempPerm730 = ((fTempPerm25 < 0.0f) ? (0.0f - fTempPerm729) : fTempPerm729);
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fTempPerm731 = (fTempPerm711 * (fTempPerm722 - fRec180[1]));
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | ((iControl[68] & iTempPerm26) | ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | ((iControl[59] & iTempPerm26) | ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | ((iControl[50] & iTempPerm26) | ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26)))))))))))))))))))))))))))))))))))) {
+			fTempPerm732 = (fTempPerm724 + -0.707000017f);
+			fTempPerm733 = (fTempPerm711 + 1.0f);
+			fTempPerm734 = (1.0f - (fTempPerm711 / fTempPerm733));
+			fTempPerm735 = (0.0f - (1.0f / fTempPerm733));
+			fTempPerm736 = (1.0f - (0.215215757f * (((fTempPerm711 * fTempPerm732) * fTempPerm734) / fTempPerm733)));
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fTempPerm737 = ((fTempPerm711 * ((((fRec180[1] + ((fTempPerm731 + (0.215215757f * ((fRec178[1] * fTempPerm732) * fTempPerm734))) / fTempPerm733)) + (fRec179[1] * fTempPerm735)) / fTempPerm736) - fRec178[1])) / fTempPerm733);
+			fRec178[0] = (fRec178[1] + (2.0f * fTempPerm737));
+			fTempPerm738 = (fRec178[1] + fTempPerm737);
+			fRec179[0] = (fRec179[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm738)) - fRec179[1])) / fTempPerm733)));
+			fRec180[0] = (fRec180[1] + (2.0f * (fTempPerm731 / fTempPerm733)));
+			fRec181 = fTempPerm738;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm739 = std::max<float>(2.82118644e-37f, fTempPerm706);
+			fTempPerm740 = ((fTempPerm23 < 0.0f) ? (0.0f - fTempPerm739) : fTempPerm739);
+		}
+		if ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm24) | (iControl[68] & iTempPerm24))))))))) {
+			fTempPerm741 = (fTempPerm722 - (fRec183[1] + (fTempPerm725 * fRec184[1])));
+			fTempPerm742 = ((fTempPerm711 * fTempPerm741) / fTempPerm726);
+			fTempPerm743 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec184[1] + fTempPerm742)));
+			fTempPerm744 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm743)));
+			fTempPerm745 = ((fTempPerm711 * fTempPerm743) * fTempPerm744);
+			fRec182 = (fRec183[1] + fTempPerm745);
+			fRec183[0] = (fRec183[1] + (2.0f * fTempPerm745));
+			fTempPerm746 = (fTempPerm743 * fTempPerm744);
+			fRec184[0] = (fTempPerm742 + fTempPerm746);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fTempPerm747 = std::max<float>(8.46355933e-37f, fTempPerm707);
+			fTempPerm748 = (1.0f - fTempPerm708);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm749 = (((fTempPerm708 * (((fTempPerm710 * fRec177) + (fTempPerm730 * fRec181)) + (fTempPerm740 * fRec182))) / fTempPerm747) + (fTempPerm722 * fTempPerm748));
+			fVec28[0] = fTempPerm749;
+			fTempPerm750 = ((fTemp40 * (fTempPerm107 - fTempPerm108)) + (fTemp39 * (fTempPerm109 - fTempPerm110)));
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71]))))) {
+			fTempPerm751 = (fControl[462] * fTempPerm750);
+		}
+		if (iControl[3]) {
+			fTempPerm752 = (2.0f * fTempPerm751);
+			fTempPerm753 = std::min<float>(1.0f, fTempPerm752);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fTempPerm754 = (fTempPerm749 - fVec28[1]);
+			fRec186[0] = ((std::fabs(fTempPerm754) < 0.5f) ? (fConst0 * fTempPerm754) : fRec186[1]);
+		}
+		if (iControl[3]) {
+			fTempPerm755 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec186[0])))))));
+			fTempPerm756 = (1.0f - fTempPerm755);
+		}
+		if (iControl[3] | iControl[69]) {
+			fTempPerm757 = std::floor(fTempPerm749);
+			fTempPerm758 = (fTempPerm749 - fTempPerm757);
+			fVec29[0] = fTempPerm758;
+			iTempPerm759 = (fTempPerm758 < 0.5f);
+			iVec30[0] = iTempPerm759;
+		}
+		if (iControl[3]) {
+			iTempPerm760 = ((iVec30[1] <= 0) & (iTempPerm759 > 0));
+			fRec191[0] = ((fRec191[1] * float((1 - iTempPerm760))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm760))));
+			fTempPerm761 = (fTempPerm755 + 1.0f);
+			fRec190[0] = (0.0f - (((fTempPerm756 * fRec190[1]) - (fRec191[0] + fRec191[1])) / fTempPerm761));
+			fRec189[0] = (0.0f - (((fTempPerm756 * fRec189[1]) - (fRec190[0] + fRec190[1])) / fTempPerm761));
+			fRec188[0] = (0.0f - (((fTempPerm756 * fRec188[1]) - (fRec189[0] + fRec189[1])) / fTempPerm761));
+			fRec187[0] = (0.0f - (((fTempPerm756 * fRec187[1]) - (fRec188[0] + fRec188[1])) / fTempPerm761));
+			fRec185[0] = (0.0f - (((fRec185[1] * fTempPerm756) - (fRec187[0] + fRec187[1])) / fTempPerm761));
+			fTempPerm762 = (std::sin((6.28318548f * fTempPerm749)) * ((fTempPerm753 * (fRec185[0] + -1.0f)) + 1.0f));
+			fTempPerm763 = (std::max<float>(1.0f, fTempPerm752) + -1.0f);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm764 = std::fmod(std::fabs(fTempPerm716), 1.0f);
+			fTempPerm765 = (1.0f - fTempPerm764);
+			fTempPerm766 = (fTempPerm717 + float((fTempPerm716 > 0.0f)));
+			fTempPerm767 = (fTempPerm54 + (0.00390625f * (fTempPerm715 * std::pow(2.0f, (0.0f - fTempPerm766)))));
+			iTempPerm768 = int(fTempPerm766);
+			fTempPerm769 = ((((fTempPerm721 + fTempPerm714) + fTempPerm713) + fTempPerm712) + std::fmod((256.0f * ((fTempPerm767 - (fTempPerm68 + std::floor((fTempPerm767 - fTempPerm68)))) * (((float((iTempPerm768 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm768)))))) + float((iTempPerm768 == 0))) + float(((iTempPerm768 > 0) * int(std::pow(2.0f, float(iTempPerm768)))))))), 1.0f));
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[75] & iTempPerm28) | ((iControl[74] & iTempPerm28) | ((iControl[73] & iTempPerm28) | ((iControl[72] & iTempPerm28) | ((iControl[71] & iTempPerm28) | ((iControl[70] & iTempPerm28) | ((iControl[69] & iTempPerm28) | (iControl[68] & iTempPerm28))))))))) {
+			fTempPerm770 = (fRec192[1] + (fTempPerm711 * (fTempPerm769 - fRec193[1])));
+			fTempPerm771 = (fTempPerm770 / fTempPerm726);
+			fRec192[0] = ((2.0f * fTempPerm771) - fRec192[1]);
+			fTempPerm772 = (fRec193[1] + ((fTempPerm711 * fTempPerm770) / fTempPerm726));
+			fRec193[0] = ((2.0f * fTempPerm772) - fRec193[1]);
+			fRec194 = fTempPerm772;
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fTempPerm773 = (fTempPerm711 * (fTempPerm769 - fRec197[1]));
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | ((iControl[68] & iTempPerm26) | ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | ((iControl[59] & iTempPerm26) | ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | ((iControl[50] & iTempPerm26) | ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26)))))))))))))))))))))))))))))))))))) {
+			fTempPerm774 = (fTempPerm732 * fTempPerm734);
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fTempPerm775 = ((fTempPerm711 * ((((fRec197[1] + ((fTempPerm773 + (0.215215757f * (fTempPerm774 * fRec195[1]))) / fTempPerm733)) + (fTempPerm735 * fRec196[1])) / fTempPerm736) - fRec195[1])) / fTempPerm733);
+			fRec195[0] = (fRec195[1] + (2.0f * fTempPerm775));
+			fTempPerm776 = (fRec195[1] + fTempPerm775);
+			fRec196[0] = (fRec196[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm776)) - fRec196[1])) / fTempPerm733)));
+			fRec197[0] = (fRec197[1] + (2.0f * (fTempPerm773 / fTempPerm733)));
+			fRec198 = fTempPerm776;
+		}
+		if ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm24) | (iControl[68] & iTempPerm24))))))))) {
+			fTempPerm777 = (fTempPerm769 - (fRec200[1] + (fTempPerm725 * fRec201[1])));
+			fTempPerm778 = ((fTempPerm711 * fTempPerm777) / fTempPerm726);
+			fTempPerm779 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec201[1] + fTempPerm778)));
+			fTempPerm780 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm779)));
+			fTempPerm781 = ((fTempPerm711 * fTempPerm779) * fTempPerm780);
+			fRec199 = (fRec200[1] + fTempPerm781);
+			fRec200[0] = (fRec200[1] + (2.0f * fTempPerm781));
+			fTempPerm782 = (fTempPerm779 * fTempPerm780);
+			fRec201[0] = (fTempPerm778 + fTempPerm782);
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fTempPerm783 = (((fTempPerm708 * (((fTempPerm710 * fRec194) + (fTempPerm730 * fRec198)) + (fTempPerm740 * fRec199))) / fTempPerm747) + (fTempPerm748 * fTempPerm769));
+			fVec31[0] = fTempPerm783;
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fTempPerm784 = (fTempPerm783 - fVec31[1]);
+			fRec203[0] = ((std::fabs(fTempPerm784) < 0.5f) ? (fConst0 * fTempPerm784) : fRec203[1]);
+		}
+		if (iControl[3]) {
+			fTempPerm785 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec203[0])))))));
+			fTempPerm786 = (1.0f - fTempPerm785);
+		}
+		if (iControl[3] | iControl[69]) {
+			fTempPerm787 = std::floor(fTempPerm783);
+			fTempPerm788 = (fTempPerm783 - fTempPerm787);
+			fVec32[0] = fTempPerm788;
+			iTempPerm789 = (fTempPerm788 < 0.5f);
+			iVec33[0] = iTempPerm789;
+		}
+		if (iControl[3]) {
+			iTempPerm790 = ((iVec33[1] <= 0) & (iTempPerm789 > 0));
+			fRec208[0] = ((fRec208[1] * float((1 - iTempPerm790))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm790))));
+			fTempPerm791 = (fTempPerm785 + 1.0f);
+			fRec207[0] = (0.0f - (((fTempPerm786 * fRec207[1]) - (fRec208[0] + fRec208[1])) / fTempPerm791));
+			fRec206[0] = (0.0f - (((fTempPerm786 * fRec206[1]) - (fRec207[0] + fRec207[1])) / fTempPerm791));
+			fRec205[0] = (0.0f - (((fTempPerm786 * fRec205[1]) - (fRec206[0] + fRec206[1])) / fTempPerm791));
+			fRec204[0] = (0.0f - (((fTempPerm786 * fRec204[1]) - (fRec205[0] + fRec205[1])) / fTempPerm791));
+			fRec202[0] = (0.0f - (((fRec202[1] * fTempPerm786) - (fRec204[0] + fRec204[1])) / fTempPerm791));
+			fTempPerm792 = (std::sin((6.28318548f * fTempPerm783)) * ((fTempPerm753 * (fRec202[0] + -1.0f)) + 1.0f));
+			fTempPerm793 = (((fTempPerm762 + (fTempPerm763 * (fRec185[0] - fTempPerm762))) * fTempPerm765) + (fTempPerm764 * (fTempPerm792 + (fTempPerm763 * (fRec202[0] - fTempPerm792)))));
+		}
+		if (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71])))) {
+			fTempPerm794 = (fTempPerm751 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec186[0] - fConst7))))));
+		}
+		if (iControl[75] | (iControl[73] | (iControl[72] | iControl[71]))) {
+			fTempPerm795 = (1.0f - fTempPerm794);
+		}
+		if (iControl[75]) {
+			fTempPerm796 = ((0.75f * fTempPerm795) + (fTempPerm749 + (0.5f * fTempPerm794)));
+			fTempPerm797 = std::floor(fTempPerm796);
+		}
+		if (iControl[75] | iControl[71]) {
+			fTempPerm798 = (0.5f * fTempPerm795);
+		}
+		if (iControl[75]) {
+			fTempPerm799 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm798));
+			fTempPerm800 = (0.5f - fTempPerm799);
+		}
+		if (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | iControl[71])))) {
+			fTempPerm801 = (fTempPerm751 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec203[0] - fConst7))))));
+		}
+		if (iControl[75] | (iControl[73] | (iControl[72] | iControl[71]))) {
+			fTempPerm802 = (1.0f - fTempPerm801);
+		}
+		if (iControl[75]) {
+			fTempPerm803 = ((0.75f * fTempPerm802) + (fTempPerm783 + (0.5f * fTempPerm801)));
+			fTempPerm804 = std::floor(fTempPerm803);
+		}
+		if (iControl[75] | iControl[71]) {
+			fTempPerm805 = (0.5f * fTempPerm802);
+		}
+		if (iControl[75]) {
+			fTempPerm806 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm805));
+			fTempPerm807 = (0.5f - fTempPerm806);
+			fTempPerm808 = ((fTempPerm765 * std::cos((6.28318548f * ((fTempPerm796 + std::min<float>((((fTempPerm796 - fTempPerm797) * fTempPerm800) / fTempPerm799), ((fTempPerm800 * (fTempPerm797 + (1.0f - fTempPerm796))) / (1.0f - fTempPerm799)))) - fTempPerm797)))) + (fTempPerm764 * std::cos((6.28318548f * ((fTempPerm803 + std::min<float>((((fTempPerm803 - fTempPerm804) * fTempPerm807) / fTempPerm806), ((fTempPerm807 * (fTempPerm804 + (1.0f - fTempPerm803))) / (1.0f - fTempPerm806)))) - fTempPerm804)))));
+		}
+		if (iControl[74]) {
+			fTempPerm809 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm794));
+			fTempPerm810 = (1.0f - fTempPerm809);
+			fTempPerm811 = (0.25f * fTempPerm810);
+			fTempPerm812 = (fTempPerm749 - (fTempPerm811 + std::floor((fTempPerm749 - fTempPerm811))));
+			fTempPerm813 = (2.0f * fTempPerm812);
+			fTempPerm814 = std::floor((fTempPerm813 + 1.0f));
+			fTempPerm815 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm801));
+			fTempPerm816 = (1.0f - fTempPerm815);
+			fTempPerm817 = (0.25f * fTempPerm816);
+			fTempPerm818 = (fTempPerm783 - (fTempPerm817 + std::floor((fTempPerm783 - fTempPerm817))));
+			fTempPerm819 = (2.0f * fTempPerm818);
+			fTempPerm820 = std::floor((fTempPerm819 + 1.0f));
+			fTempPerm821 = ((fTempPerm765 * std::cos((3.14159274f * ((float((fTempPerm812 >= 0.5f)) + fTempPerm813) + (1.0f - (fTempPerm814 + std::min<float>((fTempPerm813 + (1.0f - fTempPerm814)), ((fTempPerm809 * (fTempPerm814 - fTempPerm813)) / fTempPerm810)))))))) + (fTempPerm764 * std::cos((3.14159274f * ((float((fTempPerm818 >= 0.5f)) + fTempPerm819) + (1.0f - (fTempPerm820 + std::min<float>((fTempPerm819 + (1.0f - fTempPerm820)), ((fTempPerm815 * (fTempPerm820 - fTempPerm819)) / fTempPerm816)))))))));
+		}
+		if (iControl[73]) {
+			fTempPerm822 = (0.25f * fTempPerm795);
+			fTempPerm823 = (fTempPerm822 + std::floor((fTempPerm749 - fTempPerm822)));
+		}
+		if (iControl[73] | (iControl[72] | (iControl[70] | iControl[68]))) {
+			fTempPerm824 = (1.0f - fTempPerm749);
+		}
+		if (iControl[73]) {
+			fTempPerm825 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm794));
+			fTempPerm826 = (0.25f * fTempPerm802);
+			fTempPerm827 = (fTempPerm826 + std::floor((fTempPerm783 - fTempPerm826)));
+		}
+		if (iControl[73] | (iControl[72] | (iControl[70] | iControl[68]))) {
+			fTempPerm828 = (1.0f - fTempPerm783);
+		}
+		if (iControl[73]) {
+			fTempPerm829 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm801));
+			fTempPerm830 = ((fTempPerm765 * std::cos((6.28318548f * (fTempPerm749 - (fTempPerm823 + std::min<float>((fTempPerm749 - fTempPerm823), (((fTempPerm823 + fTempPerm824) * fTempPerm825) / (1.0f - fTempPerm825)))))))) + (fTempPerm764 * std::cos((6.28318548f * (fTempPerm783 - (fTempPerm827 + std::min<float>((fTempPerm783 - fTempPerm827), (((fTempPerm827 + fTempPerm828) * fTempPerm829) / (1.0f - fTempPerm829)))))))));
+		}
+		if (iControl[72]) {
+			fTempPerm831 = ((0.125f * fTempPerm795) + (0.25f * fTempPerm794));
+			fTempPerm832 = (fTempPerm831 + std::floor((fTempPerm749 - fTempPerm831)));
+			fTempPerm833 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm794));
+			fTempPerm834 = (0.49000001f * fTempPerm833);
+			fTempPerm835 = ((0.125f * fTempPerm802) + (0.25f * fTempPerm801));
+			fTempPerm836 = (fTempPerm835 + std::floor((fTempPerm783 - fTempPerm835)));
+			fTempPerm837 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm801));
+			fTempPerm838 = (0.49000001f * fTempPerm837);
+			fTempPerm839 = ((fTempPerm765 * std::cos((12.566371f * ((fTempPerm749 + std::min<float>((0.49000001f * (((fTempPerm749 - fTempPerm832) * fTempPerm833) / (0.5f - fTempPerm834))), (0.49000001f * ((fTempPerm833 * (fTempPerm832 + fTempPerm824)) / (fTempPerm834 + 0.5f))))) - fTempPerm832)))) + (fTempPerm764 * std::cos((12.566371f * ((fTempPerm783 + std::min<float>((0.49000001f * (((fTempPerm783 - fTempPerm836) * fTempPerm837) / (0.5f - fTempPerm838))), (0.49000001f * ((fTempPerm837 * (fTempPerm836 + fTempPerm828)) / (fTempPerm838 + 0.5f))))) - fTempPerm836)))));
+		}
+		if (iControl[71]) {
+			fTempPerm840 = std::min<float>(0.975000024f, fTempPerm794);
+			fTempPerm841 = (0.25f * (1.0f - fTempPerm840));
+			fTempPerm842 = (fTempPerm841 + (0.5f * fTempPerm840));
+			fTempPerm843 = std::floor((fTempPerm749 - fTempPerm842));
+			fTempPerm844 = (fTempPerm749 - (fTempPerm842 + fTempPerm843));
+			fTempPerm845 = std::min<float>(0.975000024f, fTempPerm801);
+			fTempPerm846 = (0.25f * (1.0f - fTempPerm845));
+			fTempPerm847 = (fTempPerm846 + (0.5f * fTempPerm845));
+			fTempPerm848 = std::floor((fTempPerm783 - fTempPerm847));
+			fTempPerm849 = (fTempPerm783 - (fTempPerm847 + fTempPerm848));
+			fTempPerm850 = ((fTempPerm765 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm844 < 0.5f) ? fTempPerm844 : (0.5f * (((fTempPerm749 - ((fTempPerm841 + fTempPerm843) + (0.5f * (fTempPerm840 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm798))) + 1.0f))))))) + (fTempPerm764 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm849 < 0.5f) ? fTempPerm849 : (0.5f * (((fTempPerm783 - ((fTempPerm846 + fTempPerm848) + (0.5f * (fTempPerm845 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm805))) + 1.0f))))))));
+		}
+		if (iControl[70] | iControl[68]) {
+			fTempPerm851 = (fTempPerm749 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec186[0] * fControl[462]) * fTempPerm750))) / fRec186[0])));
+			fTempPerm852 = (fTempPerm783 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec203[0] * fControl[462]) * fTempPerm750))) / fRec203[0])));
+		}
+		if (iControl[70]) {
+			fTempPerm853 = ((fTempPerm765 * (((0.0f - fTempPerm824) * (1.0f - std::cos((6.28318548f * (fTempPerm851 + (1.0f - std::floor((fTempPerm851 + 1.0f)))))))) + 1.0f)) + (fTempPerm764 * (((0.0f - fTempPerm828) * (1.0f - std::cos((6.28318548f * (fTempPerm852 + (1.0f - std::floor((fTempPerm852 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[69]) {
+			fTempPerm854 = (fTempPerm749 - (fTempPerm757 + fVec29[1]));
+			fRec209[0] = ((std::fabs(fTempPerm854) < 0.5f) ? (fConst0 * fTempPerm854) : fRec209[1]);
+			fTempPerm855 = (fTempPerm758 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec209[0] * fControl[462]) * fTempPerm750))) / fRec209[0])));
+			fTempPerm856 = (fTempPerm783 - (fTempPerm787 + fVec32[1]));
+			fRec210[0] = ((std::fabs(fTempPerm856) < 0.5f) ? (fConst0 * fTempPerm856) : fRec210[1]);
+			fTempPerm857 = (fTempPerm788 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec210[0] * fControl[462]) * fTempPerm750))) / fRec210[0])));
+			fTempPerm858 = ((fTempPerm765 * (((iTempPerm759 ? (2.0f * fTempPerm758) : (2.0f * (1.0f - fTempPerm758))) * (std::cos((6.28318548f * (fTempPerm855 + (1.0f - std::floor((fTempPerm855 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm764 * (((iTempPerm789 ? (2.0f * fTempPerm788) : (2.0f * (1.0f - fTempPerm788))) * (std::cos((6.28318548f * (fTempPerm857 + (1.0f - std::floor((fTempPerm857 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[68]) {
+			fTempPerm859 = (((fTempPerm765 * std::min<float>(1.0f, (2.0f * fTempPerm824))) * std::sin((6.28318548f * (fTempPerm851 - std::floor(fTempPerm851))))) + ((fTempPerm764 * std::min<float>(1.0f, (2.0f * fTempPerm828))) * std::sin((6.28318548f * (fTempPerm852 - std::floor(fTempPerm852))))));
+		}
+		fRec171[0] = (((((((((fControl[11] * fTempPerm793) + (fControl[283] * fTempPerm808)) + (fControl[282] * fTempPerm821)) + (fControl[281] * fTempPerm830)) + (fControl[280] * fTempPerm839)) + (fControl[279] * fTempPerm850)) + (fControl[278] * fTempPerm853)) + (fControl[277] * fTempPerm858)) + (fControl[276] * fTempPerm859));
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm860 = (fRec174[1] * ((fTemp40 * (fTempPerm221 - fTempPerm222)) + (fTemp39 * (fTempPerm223 - fTempPerm224))));
+			fTempPerm861 = (fRec173[1] * ((fTemp40 * (fTempPerm226 - fTempPerm227)) + (fTemp39 * (fTempPerm228 - fTempPerm229))));
+			fTempPerm862 = (fRec172[1] * ((fTemp40 * (fTempPerm231 - fTempPerm232)) + (fTemp39 * (fTempPerm233 - fTempPerm234))));
+			fTempPerm863 = ((fTemp40 * (fTempPerm236 - fTempPerm237)) + (fTemp39 * (fTempPerm238 - fTempPerm239)));
+			fTempPerm864 = ((fTemp40 * (fTempPerm241 - fTempPerm242)) + (fTemp39 * (fTempPerm243 - fTempPerm244)));
+			fTempPerm865 = std::floor(fTempPerm864);
+			fTempPerm866 = (fTempPerm865 + float(((fTempPerm864 < 0.0f) & (fTempPerm864 != fTempPerm865))));
+			fTempPerm867 = (fTempPerm54 + (0.00390625f * (fTempPerm863 * std::pow(2.0f, (0.0f - fTempPerm866)))));
+			iTempPerm868 = int(fTempPerm866);
+			fTempPerm869 = (fRec171[1] * ((fTemp40 * (fTempPerm250 - fTempPerm251)) + (fTemp39 * (fTempPerm252 - fTempPerm253))));
+			fTempPerm870 = (fTempPerm860 + (fTempPerm861 + (fTempPerm862 + (std::fmod((256.0f * ((fTempPerm867 - (fTempPerm68 + std::floor((fTempPerm867 - fTempPerm68)))) * (((float((iTempPerm868 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm868)))))) + float((iTempPerm868 == 0))) + float(((iTempPerm868 > 0) * int(std::pow(2.0f, float(iTempPerm868)))))))), 1.0f) + fTempPerm869))));
+		}
+		if ((iControl[67] & iTempPerm28) | ((iControl[66] & iTempPerm28) | ((iControl[65] & iTempPerm28) | ((iControl[64] & iTempPerm28) | ((iControl[63] & iTempPerm28) | ((iControl[62] & iTempPerm28) | ((iControl[61] & iTempPerm28) | ((iControl[60] & iTempPerm28) | (iControl[59] & iTempPerm28))))))))) {
+			fTempPerm871 = (fRec211[1] + (fTempPerm711 * (fTempPerm870 - fRec212[1])));
+			fTempPerm872 = (fTempPerm871 / fTempPerm726);
+			fRec211[0] = ((2.0f * fTempPerm872) - fRec211[1]);
+			fTempPerm873 = (fRec212[1] + ((fTempPerm711 * fTempPerm871) / fTempPerm726));
+			fRec212[0] = ((2.0f * fTempPerm873) - fRec212[1]);
+			fRec213 = fTempPerm873;
+		}
+		if ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | (iControl[59] & iTempPerm26))))))))) {
+			fTempPerm874 = (fTempPerm711 * (fTempPerm870 - fRec216[1]));
+			fTempPerm875 = ((fTempPerm711 * ((((fRec216[1] + ((fTempPerm874 + (0.215215757f * (fTempPerm774 * fRec214[1]))) / fTempPerm733)) + (fTempPerm735 * fRec215[1])) / fTempPerm736) - fRec214[1])) / fTempPerm733);
+			fRec214[0] = (fRec214[1] + (2.0f * fTempPerm875));
+			fTempPerm876 = (fRec214[1] + fTempPerm875);
+			fRec215[0] = (fRec215[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm876)) - fRec215[1])) / fTempPerm733)));
+			fRec216[0] = (fRec216[1] + (2.0f * (fTempPerm874 / fTempPerm733)));
+			fRec217 = fTempPerm876;
+		}
+		if ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm24) | (iControl[59] & iTempPerm24))))))))) {
+			fTempPerm877 = (fTempPerm870 - (fRec219[1] + (fTempPerm725 * fRec220[1])));
+			fTempPerm878 = ((fTempPerm711 * fTempPerm877) / fTempPerm726);
+			fTempPerm879 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec220[1] + fTempPerm878)));
+			fTempPerm880 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm879)));
+			fTempPerm881 = ((fTempPerm711 * fTempPerm879) * fTempPerm880);
+			fRec218 = (fRec219[1] + fTempPerm881);
+			fRec219[0] = (fRec219[1] + (2.0f * fTempPerm881));
+			fTempPerm882 = (fTempPerm879 * fTempPerm880);
+			fRec220[0] = (fTempPerm878 + fTempPerm882);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm883 = (((fTempPerm708 * (((fTempPerm710 * fRec213) + (fTempPerm730 * fRec217)) + (fTempPerm740 * fRec218))) / fTempPerm747) + (fTempPerm748 * fTempPerm870));
+			fVec34[0] = fTempPerm883;
+			fTempPerm884 = ((fTemp40 * (fTempPerm269 - fTempPerm270)) + (fTemp39 * (fTempPerm271 - fTempPerm272)));
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62]))))) {
+			fTempPerm885 = (fControl[575] * fTempPerm884);
+		}
+		if (iControl[67]) {
+			fTempPerm886 = (2.0f * fTempPerm885);
+			fTempPerm887 = std::min<float>(1.0f, fTempPerm886);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fTempPerm888 = (fTempPerm883 - fVec34[1]);
+			fRec222[0] = ((std::fabs(fTempPerm888) < 0.5f) ? (fConst0 * fTempPerm888) : fRec222[1]);
+		}
+		if (iControl[67]) {
+			fTempPerm889 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec222[0])))))));
+			fTempPerm890 = (1.0f - fTempPerm889);
+		}
+		if (iControl[67] | iControl[60]) {
+			fTempPerm891 = std::floor(fTempPerm883);
+			fTempPerm892 = (fTempPerm883 - fTempPerm891);
+			fVec35[0] = fTempPerm892;
+			iTempPerm893 = (fTempPerm892 < 0.5f);
+			iVec36[0] = iTempPerm893;
+		}
+		if (iControl[67]) {
+			iTempPerm894 = ((iVec36[1] <= 0) & (iTempPerm893 > 0));
+			fRec227[0] = ((fRec227[1] * float((1 - iTempPerm894))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm894))));
+			fTempPerm895 = (fTempPerm889 + 1.0f);
+			fRec226[0] = (0.0f - (((fTempPerm890 * fRec226[1]) - (fRec227[0] + fRec227[1])) / fTempPerm895));
+			fRec225[0] = (0.0f - (((fTempPerm890 * fRec225[1]) - (fRec226[0] + fRec226[1])) / fTempPerm895));
+			fRec224[0] = (0.0f - (((fTempPerm890 * fRec224[1]) - (fRec225[0] + fRec225[1])) / fTempPerm895));
+			fRec223[0] = (0.0f - (((fTempPerm890 * fRec223[1]) - (fRec224[0] + fRec224[1])) / fTempPerm895));
+			fRec221[0] = (0.0f - (((fRec221[1] * fTempPerm890) - (fRec223[0] + fRec223[1])) / fTempPerm895));
+			fTempPerm896 = (std::sin((6.28318548f * fTempPerm883)) * ((fTempPerm887 * (fRec221[0] + -1.0f)) + 1.0f));
+			fTempPerm897 = (std::max<float>(1.0f, fTempPerm886) + -1.0f);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm898 = std::fmod(std::fabs(fTempPerm864), 1.0f);
+			fTempPerm899 = (1.0f - fTempPerm898);
+			fTempPerm900 = (fTempPerm865 + float((fTempPerm864 > 0.0f)));
+			fTempPerm901 = (fTempPerm54 + (0.00390625f * (fTempPerm863 * std::pow(2.0f, (0.0f - fTempPerm900)))));
+			iTempPerm902 = int(fTempPerm900);
+			fTempPerm903 = ((((fTempPerm869 + fTempPerm862) + fTempPerm861) + fTempPerm860) + std::fmod((256.0f * ((fTempPerm901 - (fTempPerm68 + std::floor((fTempPerm901 - fTempPerm68)))) * (((float((iTempPerm902 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm902)))))) + float((iTempPerm902 == 0))) + float(((iTempPerm902 > 0) * int(std::pow(2.0f, float(iTempPerm902)))))))), 1.0f));
+		}
+		if ((iControl[67] & iTempPerm28) | ((iControl[66] & iTempPerm28) | ((iControl[65] & iTempPerm28) | ((iControl[64] & iTempPerm28) | ((iControl[63] & iTempPerm28) | ((iControl[62] & iTempPerm28) | ((iControl[61] & iTempPerm28) | ((iControl[60] & iTempPerm28) | (iControl[59] & iTempPerm28))))))))) {
+			fTempPerm904 = (fRec228[1] + (fTempPerm711 * (fTempPerm903 - fRec229[1])));
+			fTempPerm905 = (fTempPerm904 / fTempPerm726);
+			fRec228[0] = ((2.0f * fTempPerm905) - fRec228[1]);
+			fTempPerm906 = (fRec229[1] + ((fTempPerm711 * fTempPerm904) / fTempPerm726));
+			fRec229[0] = ((2.0f * fTempPerm906) - fRec229[1]);
+			fRec230 = fTempPerm906;
+		}
+		if ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | (iControl[59] & iTempPerm26))))))))) {
+			fTempPerm907 = (fTempPerm711 * (fTempPerm903 - fRec233[1]));
+			fTempPerm908 = ((fTempPerm711 * ((((fRec233[1] + ((fTempPerm907 + (0.215215757f * (fTempPerm774 * fRec231[1]))) / fTempPerm733)) + (fTempPerm735 * fRec232[1])) / fTempPerm736) - fRec231[1])) / fTempPerm733);
+			fRec231[0] = (fRec231[1] + (2.0f * fTempPerm908));
+			fTempPerm909 = (fRec231[1] + fTempPerm908);
+			fRec232[0] = (fRec232[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm909)) - fRec232[1])) / fTempPerm733)));
+			fRec233[0] = (fRec233[1] + (2.0f * (fTempPerm907 / fTempPerm733)));
+			fRec234 = fTempPerm909;
+		}
+		if ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm24) | (iControl[59] & iTempPerm24))))))))) {
+			fTempPerm910 = (fTempPerm903 - (fRec236[1] + (fTempPerm725 * fRec237[1])));
+			fTempPerm911 = ((fTempPerm711 * fTempPerm910) / fTempPerm726);
+			fTempPerm912 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec237[1] + fTempPerm911)));
+			fTempPerm913 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm912)));
+			fTempPerm914 = ((fTempPerm711 * fTempPerm912) * fTempPerm913);
+			fRec235 = (fRec236[1] + fTempPerm914);
+			fRec236[0] = (fRec236[1] + (2.0f * fTempPerm914));
+			fTempPerm915 = (fTempPerm912 * fTempPerm913);
+			fRec237[0] = (fTempPerm911 + fTempPerm915);
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fTempPerm916 = (((fTempPerm708 * (((fTempPerm710 * fRec230) + (fTempPerm730 * fRec234)) + (fTempPerm740 * fRec235))) / fTempPerm747) + (fTempPerm748 * fTempPerm903));
+			fVec37[0] = fTempPerm916;
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fTempPerm917 = (fTempPerm916 - fVec37[1]);
+			fRec239[0] = ((std::fabs(fTempPerm917) < 0.5f) ? (fConst0 * fTempPerm917) : fRec239[1]);
+		}
+		if (iControl[67]) {
+			fTempPerm918 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec239[0])))))));
+			fTempPerm919 = (1.0f - fTempPerm918);
+		}
+		if (iControl[67] | iControl[60]) {
+			fTempPerm920 = std::floor(fTempPerm916);
+			fTempPerm921 = (fTempPerm916 - fTempPerm920);
+			fVec38[0] = fTempPerm921;
+			iTempPerm922 = (fTempPerm921 < 0.5f);
+			iVec39[0] = iTempPerm922;
+		}
+		if (iControl[67]) {
+			iTempPerm923 = ((iVec39[1] <= 0) & (iTempPerm922 > 0));
+			fRec244[0] = ((fRec244[1] * float((1 - iTempPerm923))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm923))));
+			fTempPerm924 = (fTempPerm918 + 1.0f);
+			fRec243[0] = (0.0f - (((fTempPerm919 * fRec243[1]) - (fRec244[0] + fRec244[1])) / fTempPerm924));
+			fRec242[0] = (0.0f - (((fTempPerm919 * fRec242[1]) - (fRec243[0] + fRec243[1])) / fTempPerm924));
+			fRec241[0] = (0.0f - (((fTempPerm919 * fRec241[1]) - (fRec242[0] + fRec242[1])) / fTempPerm924));
+			fRec240[0] = (0.0f - (((fTempPerm919 * fRec240[1]) - (fRec241[0] + fRec241[1])) / fTempPerm924));
+			fRec238[0] = (0.0f - (((fRec238[1] * fTempPerm919) - (fRec240[0] + fRec240[1])) / fTempPerm924));
+			fTempPerm925 = (std::sin((6.28318548f * fTempPerm916)) * ((fTempPerm887 * (fRec238[0] + -1.0f)) + 1.0f));
+			fTempPerm926 = (((fTempPerm896 + (fTempPerm897 * (fRec221[0] - fTempPerm896))) * fTempPerm899) + (fTempPerm898 * (fTempPerm925 + (fTempPerm897 * (fRec238[0] - fTempPerm925)))));
+		}
+		if (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62])))) {
+			fTempPerm927 = (fTempPerm885 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec222[0] - fConst7))))));
+		}
+		if (iControl[66] | (iControl[64] | (iControl[63] | iControl[62]))) {
+			fTempPerm928 = (1.0f - fTempPerm927);
+		}
+		if (iControl[66]) {
+			fTempPerm929 = ((0.75f * fTempPerm928) + (fTempPerm883 + (0.5f * fTempPerm927)));
+			fTempPerm930 = std::floor(fTempPerm929);
+		}
+		if (iControl[66] | iControl[62]) {
+			fTempPerm931 = (0.5f * fTempPerm928);
+		}
+		if (iControl[66]) {
+			fTempPerm932 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm931));
+			fTempPerm933 = (0.5f - fTempPerm932);
+		}
+		if (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | iControl[62])))) {
+			fTempPerm934 = (fTempPerm885 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec239[0] - fConst7))))));
+		}
+		if (iControl[66] | (iControl[64] | (iControl[63] | iControl[62]))) {
+			fTempPerm935 = (1.0f - fTempPerm934);
+		}
+		if (iControl[66]) {
+			fTempPerm936 = ((0.75f * fTempPerm935) + (fTempPerm916 + (0.5f * fTempPerm934)));
+			fTempPerm937 = std::floor(fTempPerm936);
+		}
+		if (iControl[66] | iControl[62]) {
+			fTempPerm938 = (0.5f * fTempPerm935);
+		}
+		if (iControl[66]) {
+			fTempPerm939 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm938));
+			fTempPerm940 = (0.5f - fTempPerm939);
+			fTempPerm941 = ((fTempPerm899 * std::cos((6.28318548f * ((fTempPerm929 + std::min<float>((((fTempPerm929 - fTempPerm930) * fTempPerm933) / fTempPerm932), ((fTempPerm933 * (fTempPerm930 + (1.0f - fTempPerm929))) / (1.0f - fTempPerm932)))) - fTempPerm930)))) + (fTempPerm898 * std::cos((6.28318548f * ((fTempPerm936 + std::min<float>((((fTempPerm936 - fTempPerm937) * fTempPerm940) / fTempPerm939), ((fTempPerm940 * (fTempPerm937 + (1.0f - fTempPerm936))) / (1.0f - fTempPerm939)))) - fTempPerm937)))));
+		}
+		if (iControl[65]) {
+			fTempPerm942 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm927));
+			fTempPerm943 = (1.0f - fTempPerm942);
+			fTempPerm944 = (0.25f * fTempPerm943);
+			fTempPerm945 = (fTempPerm883 - (fTempPerm944 + std::floor((fTempPerm883 - fTempPerm944))));
+			fTempPerm946 = (2.0f * fTempPerm945);
+			fTempPerm947 = std::floor((fTempPerm946 + 1.0f));
+			fTempPerm948 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm934));
+			fTempPerm949 = (1.0f - fTempPerm948);
+			fTempPerm950 = (0.25f * fTempPerm949);
+			fTempPerm951 = (fTempPerm916 - (fTempPerm950 + std::floor((fTempPerm916 - fTempPerm950))));
+			fTempPerm952 = (2.0f * fTempPerm951);
+			fTempPerm953 = std::floor((fTempPerm952 + 1.0f));
+			fTempPerm954 = ((fTempPerm899 * std::cos((3.14159274f * ((float((fTempPerm945 >= 0.5f)) + fTempPerm946) + (1.0f - (fTempPerm947 + std::min<float>((fTempPerm946 + (1.0f - fTempPerm947)), ((fTempPerm942 * (fTempPerm947 - fTempPerm946)) / fTempPerm943)))))))) + (fTempPerm898 * std::cos((3.14159274f * ((float((fTempPerm951 >= 0.5f)) + fTempPerm952) + (1.0f - (fTempPerm953 + std::min<float>((fTempPerm952 + (1.0f - fTempPerm953)), ((fTempPerm948 * (fTempPerm953 - fTempPerm952)) / fTempPerm949)))))))));
+		}
+		if (iControl[64]) {
+			fTempPerm955 = (0.25f * fTempPerm928);
+			fTempPerm956 = (fTempPerm955 + std::floor((fTempPerm883 - fTempPerm955)));
+		}
+		if (iControl[64] | (iControl[63] | (iControl[61] | iControl[59]))) {
+			fTempPerm957 = (1.0f - fTempPerm883);
+		}
+		if (iControl[64]) {
+			fTempPerm958 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm927));
+			fTempPerm959 = (0.25f * fTempPerm935);
+			fTempPerm960 = (fTempPerm959 + std::floor((fTempPerm916 - fTempPerm959)));
+		}
+		if (iControl[64] | (iControl[63] | (iControl[61] | iControl[59]))) {
+			fTempPerm961 = (1.0f - fTempPerm916);
+		}
+		if (iControl[64]) {
+			fTempPerm962 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm934));
+			fTempPerm963 = ((fTempPerm899 * std::cos((6.28318548f * (fTempPerm883 - (fTempPerm956 + std::min<float>((fTempPerm883 - fTempPerm956), (((fTempPerm956 + fTempPerm957) * fTempPerm958) / (1.0f - fTempPerm958)))))))) + (fTempPerm898 * std::cos((6.28318548f * (fTempPerm916 - (fTempPerm960 + std::min<float>((fTempPerm916 - fTempPerm960), (((fTempPerm960 + fTempPerm961) * fTempPerm962) / (1.0f - fTempPerm962)))))))));
+		}
+		if (iControl[63]) {
+			fTempPerm964 = ((0.125f * fTempPerm928) + (0.25f * fTempPerm927));
+			fTempPerm965 = (fTempPerm964 + std::floor((fTempPerm883 - fTempPerm964)));
+			fTempPerm966 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm927));
+			fTempPerm967 = (0.49000001f * fTempPerm966);
+			fTempPerm968 = ((0.125f * fTempPerm935) + (0.25f * fTempPerm934));
+			fTempPerm969 = (fTempPerm968 + std::floor((fTempPerm916 - fTempPerm968)));
+			fTempPerm970 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm934));
+			fTempPerm971 = (0.49000001f * fTempPerm970);
+			fTempPerm972 = ((fTempPerm899 * std::cos((12.566371f * ((fTempPerm883 + std::min<float>((0.49000001f * (((fTempPerm883 - fTempPerm965) * fTempPerm966) / (0.5f - fTempPerm967))), (0.49000001f * ((fTempPerm966 * (fTempPerm965 + fTempPerm957)) / (fTempPerm967 + 0.5f))))) - fTempPerm965)))) + (fTempPerm898 * std::cos((12.566371f * ((fTempPerm916 + std::min<float>((0.49000001f * (((fTempPerm916 - fTempPerm969) * fTempPerm970) / (0.5f - fTempPerm971))), (0.49000001f * ((fTempPerm970 * (fTempPerm969 + fTempPerm961)) / (fTempPerm971 + 0.5f))))) - fTempPerm969)))));
+		}
+		if (iControl[62]) {
+			fTempPerm973 = std::min<float>(0.975000024f, fTempPerm927);
+			fTempPerm974 = (0.25f * (1.0f - fTempPerm973));
+			fTempPerm975 = (fTempPerm974 + (0.5f * fTempPerm973));
+			fTempPerm976 = std::floor((fTempPerm883 - fTempPerm975));
+			fTempPerm977 = (fTempPerm883 - (fTempPerm975 + fTempPerm976));
+			fTempPerm978 = std::min<float>(0.975000024f, fTempPerm934);
+			fTempPerm979 = (0.25f * (1.0f - fTempPerm978));
+			fTempPerm980 = (fTempPerm979 + (0.5f * fTempPerm978));
+			fTempPerm981 = std::floor((fTempPerm916 - fTempPerm980));
+			fTempPerm982 = (fTempPerm916 - (fTempPerm980 + fTempPerm981));
+			fTempPerm983 = ((fTempPerm899 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm977 < 0.5f) ? fTempPerm977 : (0.5f * (((fTempPerm883 - ((fTempPerm974 + fTempPerm976) + (0.5f * (fTempPerm973 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm931))) + 1.0f))))))) + (fTempPerm898 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm982 < 0.5f) ? fTempPerm982 : (0.5f * (((fTempPerm916 - ((fTempPerm979 + fTempPerm981) + (0.5f * (fTempPerm978 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm938))) + 1.0f))))))));
+		}
+		if (iControl[61] | iControl[59]) {
+			fTempPerm984 = (fTempPerm883 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec222[0] * fControl[575]) * fTempPerm884))) / fRec222[0])));
+			fTempPerm985 = (fTempPerm916 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec239[0] * fControl[575]) * fTempPerm884))) / fRec239[0])));
+		}
+		if (iControl[61]) {
+			fTempPerm986 = ((fTempPerm899 * (((0.0f - fTempPerm957) * (1.0f - std::cos((6.28318548f * (fTempPerm984 + (1.0f - std::floor((fTempPerm984 + 1.0f)))))))) + 1.0f)) + (fTempPerm898 * (((0.0f - fTempPerm961) * (1.0f - std::cos((6.28318548f * (fTempPerm985 + (1.0f - std::floor((fTempPerm985 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[60]) {
+			fTempPerm987 = (fTempPerm883 - (fTempPerm891 + fVec35[1]));
+			fRec245[0] = ((std::fabs(fTempPerm987) < 0.5f) ? (fConst0 * fTempPerm987) : fRec245[1]);
+			fTempPerm988 = (fTempPerm892 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec245[0] * fControl[575]) * fTempPerm884))) / fRec245[0])));
+			fTempPerm989 = (fTempPerm916 - (fTempPerm920 + fVec38[1]));
+			fRec246[0] = ((std::fabs(fTempPerm989) < 0.5f) ? (fConst0 * fTempPerm989) : fRec246[1]);
+			fTempPerm990 = (fTempPerm921 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec246[0] * fControl[575]) * fTempPerm884))) / fRec246[0])));
+			fTempPerm991 = ((fTempPerm899 * (((iTempPerm893 ? (2.0f * fTempPerm892) : (2.0f * (1.0f - fTempPerm892))) * (std::cos((6.28318548f * (fTempPerm988 + (1.0f - std::floor((fTempPerm988 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm898 * (((iTempPerm922 ? (2.0f * fTempPerm921) : (2.0f * (1.0f - fTempPerm921))) * (std::cos((6.28318548f * (fTempPerm990 + (1.0f - std::floor((fTempPerm990 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[59]) {
+			fTempPerm992 = (((fTempPerm899 * std::min<float>(1.0f, (2.0f * fTempPerm957))) * std::sin((6.28318548f * (fTempPerm984 - std::floor(fTempPerm984))))) + ((fTempPerm898 * std::min<float>(1.0f, (2.0f * fTempPerm961))) * std::sin((6.28318548f * (fTempPerm985 - std::floor(fTempPerm985))))));
+		}
+		fRec172[0] = (((((((((fControl[275] * fTempPerm926) + (fControl[274] * fTempPerm941)) + (fControl[273] * fTempPerm954)) + (fControl[272] * fTempPerm963)) + (fControl[271] * fTempPerm972)) + (fControl[270] * fTempPerm983)) + (fControl[269] * fTempPerm986)) + (fControl[268] * fTempPerm991)) + (fControl[267] * fTempPerm992));
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm993 = (fRec174[1] * ((fTemp40 * (fTempPerm382 - fTempPerm383)) + (fTemp39 * (fTempPerm384 - fTempPerm385))));
+			fTempPerm994 = (fRec173[1] * ((fTemp40 * (fTempPerm387 - fTempPerm388)) + (fTemp39 * (fTempPerm389 - fTempPerm390))));
+			fTempPerm995 = (fRec172[1] * ((fTemp40 * (fTempPerm392 - fTempPerm393)) + (fTemp39 * (fTempPerm394 - fTempPerm395))));
+			fTempPerm996 = ((fTemp40 * (fTempPerm397 - fTempPerm398)) + (fTemp39 * (fTempPerm399 - fTempPerm400)));
+			fTempPerm997 = ((fTemp40 * (fTempPerm402 - fTempPerm403)) + (fTemp39 * (fTempPerm404 - fTempPerm405)));
+			fTempPerm998 = std::floor(fTempPerm997);
+			fTempPerm999 = (fTempPerm998 + float(((fTempPerm997 < 0.0f) & (fTempPerm997 != fTempPerm998))));
+			fTempPerm1000 = (fTempPerm54 + (0.00390625f * (fTempPerm996 * std::pow(2.0f, (0.0f - fTempPerm999)))));
+			iTempPerm1001 = int(fTempPerm999);
+			fTempPerm1002 = (fRec171[1] * ((fTemp40 * (fTempPerm411 - fTempPerm412)) + (fTemp39 * (fTempPerm413 - fTempPerm414))));
+			fTempPerm1003 = (fTempPerm993 + (fTempPerm994 + (fTempPerm995 + (std::fmod((256.0f * ((fTempPerm1000 - (fTempPerm68 + std::floor((fTempPerm1000 - fTempPerm68)))) * (((float((iTempPerm1001 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm1001)))))) + float((iTempPerm1001 == 0))) + float(((iTempPerm1001 > 0) * int(std::pow(2.0f, float(iTempPerm1001)))))))), 1.0f) + fTempPerm1002))));
+		}
+		if ((iControl[58] & iTempPerm28) | ((iControl[57] & iTempPerm28) | ((iControl[56] & iTempPerm28) | ((iControl[55] & iTempPerm28) | ((iControl[54] & iTempPerm28) | ((iControl[53] & iTempPerm28) | ((iControl[52] & iTempPerm28) | ((iControl[51] & iTempPerm28) | (iControl[50] & iTempPerm28))))))))) {
+			fTempPerm1004 = (fRec247[1] + (fTempPerm711 * (fTempPerm1003 - fRec248[1])));
+			fTempPerm1005 = (fTempPerm1004 / fTempPerm726);
+			fRec247[0] = ((2.0f * fTempPerm1005) - fRec247[1]);
+			fTempPerm1006 = (fRec248[1] + ((fTempPerm711 * fTempPerm1004) / fTempPerm726));
+			fRec248[0] = ((2.0f * fTempPerm1006) - fRec248[1]);
+			fRec249 = fTempPerm1006;
+		}
+		if ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | (iControl[50] & iTempPerm26))))))))) {
+			fTempPerm1007 = (fTempPerm711 * (fTempPerm1003 - fRec252[1]));
+			fTempPerm1008 = ((fTempPerm711 * ((((fRec252[1] + ((fTempPerm1007 + (0.215215757f * (fTempPerm774 * fRec250[1]))) / fTempPerm733)) + (fTempPerm735 * fRec251[1])) / fTempPerm736) - fRec250[1])) / fTempPerm733);
+			fRec250[0] = (fRec250[1] + (2.0f * fTempPerm1008));
+			fTempPerm1009 = (fRec250[1] + fTempPerm1008);
+			fRec251[0] = (fRec251[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm1009)) - fRec251[1])) / fTempPerm733)));
+			fRec252[0] = (fRec252[1] + (2.0f * (fTempPerm1007 / fTempPerm733)));
+			fRec253 = fTempPerm1009;
+		}
+		if ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm24) | (iControl[50] & iTempPerm24))))))))) {
+			fTempPerm1010 = (fTempPerm1003 - (fRec255[1] + (fTempPerm725 * fRec256[1])));
+			fTempPerm1011 = ((fTempPerm711 * fTempPerm1010) / fTempPerm726);
+			fTempPerm1012 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec256[1] + fTempPerm1011)));
+			fTempPerm1013 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm1012)));
+			fTempPerm1014 = ((fTempPerm711 * fTempPerm1012) * fTempPerm1013);
+			fRec254 = (fRec255[1] + fTempPerm1014);
+			fRec255[0] = (fRec255[1] + (2.0f * fTempPerm1014));
+			fTempPerm1015 = (fTempPerm1012 * fTempPerm1013);
+			fRec256[0] = (fTempPerm1011 + fTempPerm1015);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm1016 = (((fTempPerm708 * (((fTempPerm710 * fRec249) + (fTempPerm730 * fRec253)) + (fTempPerm740 * fRec254))) / fTempPerm747) + (fTempPerm748 * fTempPerm1003));
+			fVec40[0] = fTempPerm1016;
+			fTempPerm1017 = ((fTemp40 * (fTempPerm430 - fTempPerm431)) + (fTemp39 * (fTempPerm432 - fTempPerm433)));
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53]))))) {
+			fTempPerm1018 = (fControl[688] * fTempPerm1017);
+		}
+		if (iControl[58]) {
+			fTempPerm1019 = (2.0f * fTempPerm1018);
+			fTempPerm1020 = std::min<float>(1.0f, fTempPerm1019);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fTempPerm1021 = (fTempPerm1016 - fVec40[1]);
+			fRec258[0] = ((std::fabs(fTempPerm1021) < 0.5f) ? (fConst0 * fTempPerm1021) : fRec258[1]);
+		}
+		if (iControl[58]) {
+			fTempPerm1022 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec258[0])))))));
+			fTempPerm1023 = (1.0f - fTempPerm1022);
+		}
+		if (iControl[58] | iControl[51]) {
+			fTempPerm1024 = std::floor(fTempPerm1016);
+			fTempPerm1025 = (fTempPerm1016 - fTempPerm1024);
+			fVec41[0] = fTempPerm1025;
+			iTempPerm1026 = (fTempPerm1025 < 0.5f);
+			iVec42[0] = iTempPerm1026;
+		}
+		if (iControl[58]) {
+			iTempPerm1027 = ((iVec42[1] <= 0) & (iTempPerm1026 > 0));
+			fRec263[0] = ((fRec263[1] * float((1 - iTempPerm1027))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm1027))));
+			fTempPerm1028 = (fTempPerm1022 + 1.0f);
+			fRec262[0] = (0.0f - (((fTempPerm1023 * fRec262[1]) - (fRec263[0] + fRec263[1])) / fTempPerm1028));
+			fRec261[0] = (0.0f - (((fTempPerm1023 * fRec261[1]) - (fRec262[0] + fRec262[1])) / fTempPerm1028));
+			fRec260[0] = (0.0f - (((fTempPerm1023 * fRec260[1]) - (fRec261[0] + fRec261[1])) / fTempPerm1028));
+			fRec259[0] = (0.0f - (((fTempPerm1023 * fRec259[1]) - (fRec260[0] + fRec260[1])) / fTempPerm1028));
+			fRec257[0] = (0.0f - (((fRec257[1] * fTempPerm1023) - (fRec259[0] + fRec259[1])) / fTempPerm1028));
+			fTempPerm1029 = (std::sin((6.28318548f * fTempPerm1016)) * ((fTempPerm1020 * (fRec257[0] + -1.0f)) + 1.0f));
+			fTempPerm1030 = (std::max<float>(1.0f, fTempPerm1019) + -1.0f);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm1031 = std::fmod(std::fabs(fTempPerm997), 1.0f);
+			fTempPerm1032 = (1.0f - fTempPerm1031);
+			fTempPerm1033 = (fTempPerm998 + float((fTempPerm997 > 0.0f)));
+			fTempPerm1034 = (fTempPerm54 + (0.00390625f * (fTempPerm996 * std::pow(2.0f, (0.0f - fTempPerm1033)))));
+			iTempPerm1035 = int(fTempPerm1033);
+			fTempPerm1036 = ((((fTempPerm1002 + fTempPerm995) + fTempPerm994) + fTempPerm993) + std::fmod((256.0f * ((fTempPerm1034 - (fTempPerm68 + std::floor((fTempPerm1034 - fTempPerm68)))) * (((float((iTempPerm1035 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm1035)))))) + float((iTempPerm1035 == 0))) + float(((iTempPerm1035 > 0) * int(std::pow(2.0f, float(iTempPerm1035)))))))), 1.0f));
+		}
+		if ((iControl[58] & iTempPerm28) | ((iControl[57] & iTempPerm28) | ((iControl[56] & iTempPerm28) | ((iControl[55] & iTempPerm28) | ((iControl[54] & iTempPerm28) | ((iControl[53] & iTempPerm28) | ((iControl[52] & iTempPerm28) | ((iControl[51] & iTempPerm28) | (iControl[50] & iTempPerm28))))))))) {
+			fTempPerm1037 = (fRec264[1] + (fTempPerm711 * (fTempPerm1036 - fRec265[1])));
+			fTempPerm1038 = (fTempPerm1037 / fTempPerm726);
+			fRec264[0] = ((2.0f * fTempPerm1038) - fRec264[1]);
+			fTempPerm1039 = (fRec265[1] + ((fTempPerm711 * fTempPerm1037) / fTempPerm726));
+			fRec265[0] = ((2.0f * fTempPerm1039) - fRec265[1]);
+			fRec266 = fTempPerm1039;
+		}
+		if ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | (iControl[50] & iTempPerm26))))))))) {
+			fTempPerm1040 = (fTempPerm711 * (fTempPerm1036 - fRec269[1]));
+			fTempPerm1041 = ((fTempPerm711 * ((((fRec269[1] + ((fTempPerm1040 + (0.215215757f * (fTempPerm774 * fRec267[1]))) / fTempPerm733)) + (fTempPerm735 * fRec268[1])) / fTempPerm736) - fRec267[1])) / fTempPerm733);
+			fRec267[0] = (fRec267[1] + (2.0f * fTempPerm1041));
+			fTempPerm1042 = (fRec267[1] + fTempPerm1041);
+			fRec268[0] = (fRec268[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm1042)) - fRec268[1])) / fTempPerm733)));
+			fRec269[0] = (fRec269[1] + (2.0f * (fTempPerm1040 / fTempPerm733)));
+			fRec270 = fTempPerm1042;
+		}
+		if ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm24) | (iControl[50] & iTempPerm24))))))))) {
+			fTempPerm1043 = (fTempPerm1036 - (fRec272[1] + (fTempPerm725 * fRec273[1])));
+			fTempPerm1044 = ((fTempPerm711 * fTempPerm1043) / fTempPerm726);
+			fTempPerm1045 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec273[1] + fTempPerm1044)));
+			fTempPerm1046 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm1045)));
+			fTempPerm1047 = ((fTempPerm711 * fTempPerm1045) * fTempPerm1046);
+			fRec271 = (fRec272[1] + fTempPerm1047);
+			fRec272[0] = (fRec272[1] + (2.0f * fTempPerm1047));
+			fTempPerm1048 = (fTempPerm1045 * fTempPerm1046);
+			fRec273[0] = (fTempPerm1044 + fTempPerm1048);
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fTempPerm1049 = (((fTempPerm708 * (((fTempPerm710 * fRec266) + (fTempPerm730 * fRec270)) + (fTempPerm740 * fRec271))) / fTempPerm747) + (fTempPerm748 * fTempPerm1036));
+			fVec43[0] = fTempPerm1049;
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fTempPerm1050 = (fTempPerm1049 - fVec43[1]);
+			fRec275[0] = ((std::fabs(fTempPerm1050) < 0.5f) ? (fConst0 * fTempPerm1050) : fRec275[1]);
+		}
+		if (iControl[58]) {
+			fTempPerm1051 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec275[0])))))));
+			fTempPerm1052 = (1.0f - fTempPerm1051);
+		}
+		if (iControl[58] | iControl[51]) {
+			fTempPerm1053 = std::floor(fTempPerm1049);
+			fTempPerm1054 = (fTempPerm1049 - fTempPerm1053);
+			fVec44[0] = fTempPerm1054;
+			iTempPerm1055 = (fTempPerm1054 < 0.5f);
+			iVec45[0] = iTempPerm1055;
+		}
+		if (iControl[58]) {
+			iTempPerm1056 = ((iVec45[1] <= 0) & (iTempPerm1055 > 0));
+			fRec280[0] = ((fRec280[1] * float((1 - iTempPerm1056))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm1056))));
+			fTempPerm1057 = (fTempPerm1051 + 1.0f);
+			fRec279[0] = (0.0f - (((fTempPerm1052 * fRec279[1]) - (fRec280[0] + fRec280[1])) / fTempPerm1057));
+			fRec278[0] = (0.0f - (((fTempPerm1052 * fRec278[1]) - (fRec279[0] + fRec279[1])) / fTempPerm1057));
+			fRec277[0] = (0.0f - (((fTempPerm1052 * fRec277[1]) - (fRec278[0] + fRec278[1])) / fTempPerm1057));
+			fRec276[0] = (0.0f - (((fTempPerm1052 * fRec276[1]) - (fRec277[0] + fRec277[1])) / fTempPerm1057));
+			fRec274[0] = (0.0f - (((fRec274[1] * fTempPerm1052) - (fRec276[0] + fRec276[1])) / fTempPerm1057));
+			fTempPerm1058 = (std::sin((6.28318548f * fTempPerm1049)) * ((fTempPerm1020 * (fRec274[0] + -1.0f)) + 1.0f));
+			fTempPerm1059 = (((fTempPerm1029 + (fTempPerm1030 * (fRec257[0] - fTempPerm1029))) * fTempPerm1032) + (fTempPerm1031 * (fTempPerm1058 + (fTempPerm1030 * (fRec274[0] - fTempPerm1058)))));
+		}
+		if (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53])))) {
+			fTempPerm1060 = (fTempPerm1018 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec258[0] - fConst7))))));
+		}
+		if (iControl[57] | (iControl[55] | (iControl[54] | iControl[53]))) {
+			fTempPerm1061 = (1.0f - fTempPerm1060);
+		}
+		if (iControl[57]) {
+			fTempPerm1062 = ((0.75f * fTempPerm1061) + (fTempPerm1016 + (0.5f * fTempPerm1060)));
+			fTempPerm1063 = std::floor(fTempPerm1062);
+		}
+		if (iControl[57] | iControl[53]) {
+			fTempPerm1064 = (0.5f * fTempPerm1061);
+		}
+		if (iControl[57]) {
+			fTempPerm1065 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm1064));
+			fTempPerm1066 = (0.5f - fTempPerm1065);
+		}
+		if (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | iControl[53])))) {
+			fTempPerm1067 = (fTempPerm1018 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec275[0] - fConst7))))));
+		}
+		if (iControl[57] | (iControl[55] | (iControl[54] | iControl[53]))) {
+			fTempPerm1068 = (1.0f - fTempPerm1067);
+		}
+		if (iControl[57]) {
+			fTempPerm1069 = ((0.75f * fTempPerm1068) + (fTempPerm1049 + (0.5f * fTempPerm1067)));
+			fTempPerm1070 = std::floor(fTempPerm1069);
+		}
+		if (iControl[57] | iControl[53]) {
+			fTempPerm1071 = (0.5f * fTempPerm1068);
+		}
+		if (iControl[57]) {
+			fTempPerm1072 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm1071));
+			fTempPerm1073 = (0.5f - fTempPerm1072);
+			fTempPerm1074 = ((fTempPerm1032 * std::cos((6.28318548f * ((fTempPerm1062 + std::min<float>((((fTempPerm1062 - fTempPerm1063) * fTempPerm1066) / fTempPerm1065), ((fTempPerm1066 * (fTempPerm1063 + (1.0f - fTempPerm1062))) / (1.0f - fTempPerm1065)))) - fTempPerm1063)))) + (fTempPerm1031 * std::cos((6.28318548f * ((fTempPerm1069 + std::min<float>((((fTempPerm1069 - fTempPerm1070) * fTempPerm1073) / fTempPerm1072), ((fTempPerm1073 * (fTempPerm1070 + (1.0f - fTempPerm1069))) / (1.0f - fTempPerm1072)))) - fTempPerm1070)))));
+		}
+		if (iControl[56]) {
+			fTempPerm1075 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm1060));
+			fTempPerm1076 = (1.0f - fTempPerm1075);
+			fTempPerm1077 = (0.25f * fTempPerm1076);
+			fTempPerm1078 = (fTempPerm1016 - (fTempPerm1077 + std::floor((fTempPerm1016 - fTempPerm1077))));
+			fTempPerm1079 = (2.0f * fTempPerm1078);
+			fTempPerm1080 = std::floor((fTempPerm1079 + 1.0f));
+			fTempPerm1081 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm1067));
+			fTempPerm1082 = (1.0f - fTempPerm1081);
+			fTempPerm1083 = (0.25f * fTempPerm1082);
+			fTempPerm1084 = (fTempPerm1049 - (fTempPerm1083 + std::floor((fTempPerm1049 - fTempPerm1083))));
+			fTempPerm1085 = (2.0f * fTempPerm1084);
+			fTempPerm1086 = std::floor((fTempPerm1085 + 1.0f));
+			fTempPerm1087 = ((fTempPerm1032 * std::cos((3.14159274f * ((float((fTempPerm1078 >= 0.5f)) + fTempPerm1079) + (1.0f - (fTempPerm1080 + std::min<float>((fTempPerm1079 + (1.0f - fTempPerm1080)), ((fTempPerm1075 * (fTempPerm1080 - fTempPerm1079)) / fTempPerm1076)))))))) + (fTempPerm1031 * std::cos((3.14159274f * ((float((fTempPerm1084 >= 0.5f)) + fTempPerm1085) + (1.0f - (fTempPerm1086 + std::min<float>((fTempPerm1085 + (1.0f - fTempPerm1086)), ((fTempPerm1081 * (fTempPerm1086 - fTempPerm1085)) / fTempPerm1082)))))))));
+		}
+		if (iControl[55]) {
+			fTempPerm1088 = (0.25f * fTempPerm1061);
+			fTempPerm1089 = (fTempPerm1088 + std::floor((fTempPerm1016 - fTempPerm1088)));
+		}
+		if (iControl[55] | (iControl[54] | (iControl[52] | iControl[50]))) {
+			fTempPerm1090 = (1.0f - fTempPerm1016);
+		}
+		if (iControl[55]) {
+			fTempPerm1091 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm1060));
+			fTempPerm1092 = (0.25f * fTempPerm1068);
+			fTempPerm1093 = (fTempPerm1092 + std::floor((fTempPerm1049 - fTempPerm1092)));
+		}
+		if (iControl[55] | (iControl[54] | (iControl[52] | iControl[50]))) {
+			fTempPerm1094 = (1.0f - fTempPerm1049);
+		}
+		if (iControl[55]) {
+			fTempPerm1095 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm1067));
+			fTempPerm1096 = ((fTempPerm1032 * std::cos((6.28318548f * (fTempPerm1016 - (fTempPerm1089 + std::min<float>((fTempPerm1016 - fTempPerm1089), (((fTempPerm1089 + fTempPerm1090) * fTempPerm1091) / (1.0f - fTempPerm1091)))))))) + (fTempPerm1031 * std::cos((6.28318548f * (fTempPerm1049 - (fTempPerm1093 + std::min<float>((fTempPerm1049 - fTempPerm1093), (((fTempPerm1093 + fTempPerm1094) * fTempPerm1095) / (1.0f - fTempPerm1095)))))))));
+		}
+		if (iControl[54]) {
+			fTempPerm1097 = ((0.125f * fTempPerm1061) + (0.25f * fTempPerm1060));
+			fTempPerm1098 = (fTempPerm1097 + std::floor((fTempPerm1016 - fTempPerm1097)));
+			fTempPerm1099 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm1060));
+			fTempPerm1100 = (0.49000001f * fTempPerm1099);
+			fTempPerm1101 = ((0.125f * fTempPerm1068) + (0.25f * fTempPerm1067));
+			fTempPerm1102 = (fTempPerm1101 + std::floor((fTempPerm1049 - fTempPerm1101)));
+			fTempPerm1103 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm1067));
+			fTempPerm1104 = (0.49000001f * fTempPerm1103);
+			fTempPerm1105 = ((fTempPerm1032 * std::cos((12.566371f * ((fTempPerm1016 + std::min<float>((0.49000001f * (((fTempPerm1016 - fTempPerm1098) * fTempPerm1099) / (0.5f - fTempPerm1100))), (0.49000001f * ((fTempPerm1099 * (fTempPerm1098 + fTempPerm1090)) / (fTempPerm1100 + 0.5f))))) - fTempPerm1098)))) + (fTempPerm1031 * std::cos((12.566371f * ((fTempPerm1049 + std::min<float>((0.49000001f * (((fTempPerm1049 - fTempPerm1102) * fTempPerm1103) / (0.5f - fTempPerm1104))), (0.49000001f * ((fTempPerm1103 * (fTempPerm1102 + fTempPerm1094)) / (fTempPerm1104 + 0.5f))))) - fTempPerm1102)))));
+		}
+		if (iControl[53]) {
+			fTempPerm1106 = std::min<float>(0.975000024f, fTempPerm1060);
+			fTempPerm1107 = (0.25f * (1.0f - fTempPerm1106));
+			fTempPerm1108 = (fTempPerm1107 + (0.5f * fTempPerm1106));
+			fTempPerm1109 = std::floor((fTempPerm1016 - fTempPerm1108));
+			fTempPerm1110 = (fTempPerm1016 - (fTempPerm1108 + fTempPerm1109));
+			fTempPerm1111 = std::min<float>(0.975000024f, fTempPerm1067);
+			fTempPerm1112 = (0.25f * (1.0f - fTempPerm1111));
+			fTempPerm1113 = (fTempPerm1112 + (0.5f * fTempPerm1111));
+			fTempPerm1114 = std::floor((fTempPerm1049 - fTempPerm1113));
+			fTempPerm1115 = (fTempPerm1049 - (fTempPerm1113 + fTempPerm1114));
+			fTempPerm1116 = ((fTempPerm1032 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm1110 < 0.5f) ? fTempPerm1110 : (0.5f * (((fTempPerm1016 - ((fTempPerm1107 + fTempPerm1109) + (0.5f * (fTempPerm1106 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm1064))) + 1.0f))))))) + (fTempPerm1031 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm1115 < 0.5f) ? fTempPerm1115 : (0.5f * (((fTempPerm1049 - ((fTempPerm1112 + fTempPerm1114) + (0.5f * (fTempPerm1111 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm1071))) + 1.0f))))))));
+		}
+		if (iControl[52] | iControl[50]) {
+			fTempPerm1117 = (fTempPerm1016 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec258[0] * fControl[688]) * fTempPerm1017))) / fRec258[0])));
+			fTempPerm1118 = (fTempPerm1049 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec275[0] * fControl[688]) * fTempPerm1017))) / fRec275[0])));
+		}
+		if (iControl[52]) {
+			fTempPerm1119 = ((fTempPerm1032 * (((0.0f - fTempPerm1090) * (1.0f - std::cos((6.28318548f * (fTempPerm1117 + (1.0f - std::floor((fTempPerm1117 + 1.0f)))))))) + 1.0f)) + (fTempPerm1031 * (((0.0f - fTempPerm1094) * (1.0f - std::cos((6.28318548f * (fTempPerm1118 + (1.0f - std::floor((fTempPerm1118 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[51]) {
+			fTempPerm1120 = (fTempPerm1016 - (fTempPerm1024 + fVec41[1]));
+			fRec281[0] = ((std::fabs(fTempPerm1120) < 0.5f) ? (fConst0 * fTempPerm1120) : fRec281[1]);
+			fTempPerm1121 = (fTempPerm1025 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec281[0] * fControl[688]) * fTempPerm1017))) / fRec281[0])));
+			fTempPerm1122 = (fTempPerm1049 - (fTempPerm1053 + fVec44[1]));
+			fRec282[0] = ((std::fabs(fTempPerm1122) < 0.5f) ? (fConst0 * fTempPerm1122) : fRec282[1]);
+			fTempPerm1123 = (fTempPerm1054 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec282[0] * fControl[688]) * fTempPerm1017))) / fRec282[0])));
+			fTempPerm1124 = ((fTempPerm1032 * (((iTempPerm1026 ? (2.0f * fTempPerm1025) : (2.0f * (1.0f - fTempPerm1025))) * (std::cos((6.28318548f * (fTempPerm1121 + (1.0f - std::floor((fTempPerm1121 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm1031 * (((iTempPerm1055 ? (2.0f * fTempPerm1054) : (2.0f * (1.0f - fTempPerm1054))) * (std::cos((6.28318548f * (fTempPerm1123 + (1.0f - std::floor((fTempPerm1123 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[50]) {
+			fTempPerm1125 = (((fTempPerm1032 * std::min<float>(1.0f, (2.0f * fTempPerm1090))) * std::sin((6.28318548f * (fTempPerm1117 - std::floor(fTempPerm1117))))) + ((fTempPerm1031 * std::min<float>(1.0f, (2.0f * fTempPerm1094))) * std::sin((6.28318548f * (fTempPerm1118 - std::floor(fTempPerm1118))))));
+		}
+		fRec173[0] = (((((((((fControl[264] * fTempPerm1059) + (fControl[263] * fTempPerm1074)) + (fControl[262] * fTempPerm1087)) + (fControl[261] * fTempPerm1096)) + (fControl[260] * fTempPerm1105)) + (fControl[259] * fTempPerm1116)) + (fControl[258] * fTempPerm1119)) + (fControl[257] * fTempPerm1124)) + (fControl[256] * fTempPerm1125));
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm1126 = (fRec174[1] * ((fTemp40 * (fTempPerm543 - fTempPerm544)) + (fTemp39 * (fTempPerm545 - fTempPerm546))));
+			fTempPerm1127 = (fRec173[1] * ((fTemp40 * (fTempPerm548 - fTempPerm549)) + (fTemp39 * (fTempPerm550 - fTempPerm551))));
+			fTempPerm1128 = (fRec172[1] * ((fTemp40 * (fTempPerm553 - fTempPerm554)) + (fTemp39 * (fTempPerm555 - fTempPerm556))));
+			fTempPerm1129 = ((fTemp40 * (fTempPerm558 - fTempPerm559)) + (fTemp39 * (fTempPerm560 - fTempPerm561)));
+			fTempPerm1130 = ((fTemp40 * (fTempPerm563 - fTempPerm564)) + (fTemp39 * (fTempPerm565 - fTempPerm566)));
+			fTempPerm1131 = std::floor(fTempPerm1130);
+			fTempPerm1132 = (fTempPerm1131 + float(((fTempPerm1130 < 0.0f) & (fTempPerm1130 != fTempPerm1131))));
+			fTempPerm1133 = (fTempPerm54 + (0.00390625f * (fTempPerm1129 * std::pow(2.0f, (0.0f - fTempPerm1132)))));
+			iTempPerm1134 = int(fTempPerm1132);
+			fTempPerm1135 = (fRec171[1] * ((fTemp40 * (fTempPerm572 - fTempPerm573)) + (fTemp39 * (fTempPerm574 - fTempPerm575))));
+			fTempPerm1136 = (fTempPerm1126 + (fTempPerm1127 + (fTempPerm1128 + (std::fmod((256.0f * ((fTempPerm1133 - (fTempPerm68 + std::floor((fTempPerm1133 - fTempPerm68)))) * (((float((iTempPerm1134 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm1134)))))) + float((iTempPerm1134 == 0))) + float(((iTempPerm1134 > 0) * int(std::pow(2.0f, float(iTempPerm1134)))))))), 1.0f) + fTempPerm1135))));
+		}
+		if ((iControl[49] & iTempPerm28) | ((iControl[48] & iTempPerm28) | ((iControl[47] & iTempPerm28) | ((iControl[46] & iTempPerm28) | ((iControl[45] & iTempPerm28) | ((iControl[44] & iTempPerm28) | ((iControl[43] & iTempPerm28) | ((iControl[42] & iTempPerm28) | (iControl[41] & iTempPerm28))))))))) {
+			fTempPerm1137 = (fRec283[1] + (fTempPerm711 * (fTempPerm1136 - fRec284[1])));
+			fTempPerm1138 = (fTempPerm1137 / fTempPerm726);
+			fRec283[0] = ((2.0f * fTempPerm1138) - fRec283[1]);
+			fTempPerm1139 = (fRec284[1] + ((fTempPerm711 * fTempPerm1137) / fTempPerm726));
+			fRec284[0] = ((2.0f * fTempPerm1139) - fRec284[1]);
+			fRec285 = fTempPerm1139;
+		}
+		if ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26))))))))) {
+			fTempPerm1140 = (fTempPerm711 * (fTempPerm1136 - fRec288[1]));
+			fTempPerm1141 = ((fTempPerm711 * ((((fRec288[1] + ((fTempPerm1140 + (0.215215757f * (fTempPerm774 * fRec286[1]))) / fTempPerm733)) + (fTempPerm735 * fRec287[1])) / fTempPerm736) - fRec286[1])) / fTempPerm733);
+			fRec286[0] = (fRec286[1] + (2.0f * fTempPerm1141));
+			fTempPerm1142 = (fRec286[1] + fTempPerm1141);
+			fRec287[0] = (fRec287[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm1142)) - fRec287[1])) / fTempPerm733)));
+			fRec288[0] = (fRec288[1] + (2.0f * (fTempPerm1140 / fTempPerm733)));
+			fRec289 = fTempPerm1142;
+		}
+		if ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm24) | (iControl[41] & iTempPerm24))))))))) {
+			fTempPerm1143 = (fTempPerm1136 - (fRec291[1] + (fTempPerm725 * fRec292[1])));
+			fTempPerm1144 = ((fTempPerm711 * fTempPerm1143) / fTempPerm726);
+			fTempPerm1145 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec292[1] + fTempPerm1144)));
+			fTempPerm1146 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm1145)));
+			fTempPerm1147 = ((fTempPerm711 * fTempPerm1145) * fTempPerm1146);
+			fRec290 = (fRec291[1] + fTempPerm1147);
+			fRec291[0] = (fRec291[1] + (2.0f * fTempPerm1147));
+			fTempPerm1148 = (fTempPerm1145 * fTempPerm1146);
+			fRec292[0] = (fTempPerm1144 + fTempPerm1148);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm1149 = (((fTempPerm708 * (((fTempPerm710 * fRec285) + (fTempPerm730 * fRec289)) + (fTempPerm740 * fRec290))) / fTempPerm747) + (fTempPerm748 * fTempPerm1136));
+			fVec46[0] = fTempPerm1149;
+			fTempPerm1150 = ((fTemp40 * (fTempPerm591 - fTempPerm592)) + (fTemp39 * (fTempPerm593 - fTempPerm594)));
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44]))))) {
+			fTempPerm1151 = (fControl[801] * fTempPerm1150);
+		}
+		if (iControl[49]) {
+			fTempPerm1152 = (2.0f * fTempPerm1151);
+			fTempPerm1153 = std::min<float>(1.0f, fTempPerm1152);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fTempPerm1154 = (fTempPerm1149 - fVec46[1]);
+			fRec294[0] = ((std::fabs(fTempPerm1154) < 0.5f) ? (fConst0 * fTempPerm1154) : fRec294[1]);
+		}
+		if (iControl[49]) {
+			fTempPerm1155 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec294[0])))))));
+			fTempPerm1156 = (1.0f - fTempPerm1155);
+		}
+		if (iControl[49] | iControl[42]) {
+			fTempPerm1157 = std::floor(fTempPerm1149);
+			fTempPerm1158 = (fTempPerm1149 - fTempPerm1157);
+			fVec47[0] = fTempPerm1158;
+			iTempPerm1159 = (fTempPerm1158 < 0.5f);
+			iVec48[0] = iTempPerm1159;
+		}
+		if (iControl[49]) {
+			iTempPerm1160 = ((iVec48[1] <= 0) & (iTempPerm1159 > 0));
+			fRec299[0] = ((fRec299[1] * float((1 - iTempPerm1160))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm1160))));
+			fTempPerm1161 = (fTempPerm1155 + 1.0f);
+			fRec298[0] = (0.0f - (((fTempPerm1156 * fRec298[1]) - (fRec299[0] + fRec299[1])) / fTempPerm1161));
+			fRec297[0] = (0.0f - (((fTempPerm1156 * fRec297[1]) - (fRec298[0] + fRec298[1])) / fTempPerm1161));
+			fRec296[0] = (0.0f - (((fTempPerm1156 * fRec296[1]) - (fRec297[0] + fRec297[1])) / fTempPerm1161));
+			fRec295[0] = (0.0f - (((fTempPerm1156 * fRec295[1]) - (fRec296[0] + fRec296[1])) / fTempPerm1161));
+			fRec293[0] = (0.0f - (((fRec293[1] * fTempPerm1156) - (fRec295[0] + fRec295[1])) / fTempPerm1161));
+			fTempPerm1162 = (std::sin((6.28318548f * fTempPerm1149)) * ((fTempPerm1153 * (fRec293[0] + -1.0f)) + 1.0f));
+			fTempPerm1163 = (std::max<float>(1.0f, fTempPerm1152) + -1.0f);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm1164 = std::fmod(std::fabs(fTempPerm1130), 1.0f);
+			fTempPerm1165 = (1.0f - fTempPerm1164);
+			fTempPerm1166 = (fTempPerm1131 + float((fTempPerm1130 > 0.0f)));
+			fTempPerm1167 = (fTempPerm54 + (0.00390625f * (fTempPerm1129 * std::pow(2.0f, (0.0f - fTempPerm1166)))));
+			iTempPerm1168 = int(fTempPerm1166);
+			fTempPerm1169 = ((((fTempPerm1135 + fTempPerm1128) + fTempPerm1127) + fTempPerm1126) + std::fmod((256.0f * ((fTempPerm1167 - (fTempPerm68 + std::floor((fTempPerm1167 - fTempPerm68)))) * (((float((iTempPerm1168 < 0)) / float(int(std::pow(2.0f, float(std::abs(iTempPerm1168)))))) + float((iTempPerm1168 == 0))) + float(((iTempPerm1168 > 0) * int(std::pow(2.0f, float(iTempPerm1168)))))))), 1.0f));
+		}
+		if ((iControl[49] & iTempPerm28) | ((iControl[48] & iTempPerm28) | ((iControl[47] & iTempPerm28) | ((iControl[46] & iTempPerm28) | ((iControl[45] & iTempPerm28) | ((iControl[44] & iTempPerm28) | ((iControl[43] & iTempPerm28) | ((iControl[42] & iTempPerm28) | (iControl[41] & iTempPerm28))))))))) {
+			fTempPerm1170 = (fRec300[1] + (fTempPerm711 * (fTempPerm1169 - fRec301[1])));
+			fTempPerm1171 = (fTempPerm1170 / fTempPerm726);
+			fRec300[0] = ((2.0f * fTempPerm1171) - fRec300[1]);
+			fTempPerm1172 = (fRec301[1] + ((fTempPerm711 * fTempPerm1170) / fTempPerm726));
+			fRec301[0] = ((2.0f * fTempPerm1172) - fRec301[1]);
+			fRec302 = fTempPerm1172;
+		}
+		if ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26))))))))) {
+			fTempPerm1173 = (fTempPerm711 * (fTempPerm1169 - fRec305[1]));
+			fTempPerm1174 = ((fTempPerm711 * ((((fRec305[1] + ((fTempPerm1173 + (0.215215757f * (fTempPerm774 * fRec303[1]))) / fTempPerm733)) + (fTempPerm735 * fRec304[1])) / fTempPerm736) - fRec303[1])) / fTempPerm733);
+			fRec303[0] = (fRec303[1] + (2.0f * fTempPerm1174));
+			fTempPerm1175 = (fRec303[1] + fTempPerm1174);
+			fRec304[0] = (fRec304[1] + (2.0f * ((fTempPerm711 * ((0.215215757f * (fTempPerm732 * fTempPerm1175)) - fRec304[1])) / fTempPerm733)));
+			fRec305[0] = (fRec305[1] + (2.0f * (fTempPerm1173 / fTempPerm733)));
+			fRec306 = fTempPerm1175;
+		}
+		if ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm24) | (iControl[41] & iTempPerm24))))))))) {
+			fTempPerm1176 = (fTempPerm1169 - (fRec308[1] + (fTempPerm725 * fRec309[1])));
+			fTempPerm1177 = ((fTempPerm711 * fTempPerm1176) / fTempPerm726);
+			fTempPerm1178 = std::max<float>(-1.0f, std::min<float>(1.0f, (fRec309[1] + fTempPerm1177)));
+			fTempPerm1179 = (1.0f - (0.333333343f * mydsp_faustpower2_f(fTempPerm1178)));
+			fTempPerm1180 = ((fTempPerm711 * fTempPerm1178) * fTempPerm1179);
+			fRec307 = (fRec308[1] + fTempPerm1180);
+			fRec308[0] = (fRec308[1] + (2.0f * fTempPerm1180));
+			fTempPerm1181 = (fTempPerm1178 * fTempPerm1179);
+			fRec309[0] = (fTempPerm1177 + fTempPerm1181);
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fTempPerm1182 = (((fTempPerm708 * (((fTempPerm710 * fRec302) + (fTempPerm730 * fRec306)) + (fTempPerm740 * fRec307))) / fTempPerm747) + (fTempPerm748 * fTempPerm1169));
+			fVec49[0] = fTempPerm1182;
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fTempPerm1183 = (fTempPerm1182 - fVec49[1]);
+			fRec311[0] = ((std::fabs(fTempPerm1183) < 0.5f) ? (fConst0 * fTempPerm1183) : fRec311[1]);
+		}
+		if (iControl[49]) {
+			fTempPerm1184 = (1.0f / std::tan((fConst2 * std::min<float>(fConst3, float(std::max<int>(20, int(fRec311[0])))))));
+			fTempPerm1185 = (1.0f - fTempPerm1184);
+		}
+		if (iControl[49] | iControl[42]) {
+			fTempPerm1186 = std::floor(fTempPerm1182);
+			fTempPerm1187 = (fTempPerm1182 - fTempPerm1186);
+			fVec50[0] = fTempPerm1187;
+			iTempPerm1188 = (fTempPerm1187 < 0.5f);
+			iVec51[0] = iTempPerm1188;
+		}
+		if (iControl[49]) {
+			iTempPerm1189 = ((iVec51[1] <= 0) & (iTempPerm1188 > 0));
+			fRec316[0] = ((fRec316[1] * float((1 - iTempPerm1189))) + (4.65661287e-10f * (fTemp36 * float(iTempPerm1189))));
+			fTempPerm1190 = (fTempPerm1184 + 1.0f);
+			fRec315[0] = (0.0f - (((fTempPerm1185 * fRec315[1]) - (fRec316[0] + fRec316[1])) / fTempPerm1190));
+			fRec314[0] = (0.0f - (((fTempPerm1185 * fRec314[1]) - (fRec315[0] + fRec315[1])) / fTempPerm1190));
+			fRec313[0] = (0.0f - (((fTempPerm1185 * fRec313[1]) - (fRec314[0] + fRec314[1])) / fTempPerm1190));
+			fRec312[0] = (0.0f - (((fTempPerm1185 * fRec312[1]) - (fRec313[0] + fRec313[1])) / fTempPerm1190));
+			fRec310[0] = (0.0f - (((fRec310[1] * fTempPerm1185) - (fRec312[0] + fRec312[1])) / fTempPerm1190));
+			fTempPerm1191 = (std::sin((6.28318548f * fTempPerm1182)) * ((fTempPerm1153 * (fRec310[0] + -1.0f)) + 1.0f));
+			fTempPerm1192 = (((fTempPerm1162 + (fTempPerm1163 * (fRec293[0] - fTempPerm1162))) * fTempPerm1165) + (fTempPerm1164 * (fTempPerm1191 + (fTempPerm1163 * (fRec310[0] - fTempPerm1191)))));
+		}
+		if (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44])))) {
+			fTempPerm1193 = (fTempPerm1151 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec294[0] - fConst7))))));
+		}
+		if (iControl[48] | (iControl[46] | (iControl[45] | iControl[44]))) {
+			fTempPerm1194 = (1.0f - fTempPerm1193);
+		}
+		if (iControl[48]) {
+			fTempPerm1195 = ((0.75f * fTempPerm1194) + (fTempPerm1149 + (0.5f * fTempPerm1193)));
+			fTempPerm1196 = std::floor(fTempPerm1195);
+		}
+		if (iControl[48] | iControl[44]) {
+			fTempPerm1197 = (0.5f * fTempPerm1194);
+		}
+		if (iControl[48]) {
+			fTempPerm1198 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm1197));
+			fTempPerm1199 = (0.5f - fTempPerm1198);
+		}
+		if (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | iControl[44])))) {
+			fTempPerm1200 = (fTempPerm1151 * (1.0f - std::min<float>(1.0f, std::max<float>(0.0f, (fConst6 * (fRec311[0] - fConst7))))));
+		}
+		if (iControl[48] | (iControl[46] | (iControl[45] | iControl[44]))) {
+			fTempPerm1201 = (1.0f - fTempPerm1200);
+		}
+		if (iControl[48]) {
+			fTempPerm1202 = ((0.75f * fTempPerm1201) + (fTempPerm1182 + (0.5f * fTempPerm1200)));
+			fTempPerm1203 = std::floor(fTempPerm1202);
+		}
+		if (iControl[48] | iControl[44]) {
+			fTempPerm1204 = (0.5f * fTempPerm1201);
+		}
+		if (iControl[48]) {
+			fTempPerm1205 = std::min<float>(0.5f, std::max<float>(0.00999999978f, fTempPerm1204));
+			fTempPerm1206 = (0.5f - fTempPerm1205);
+			fTempPerm1207 = ((fTempPerm1165 * std::cos((6.28318548f * ((fTempPerm1195 + std::min<float>((((fTempPerm1195 - fTempPerm1196) * fTempPerm1199) / fTempPerm1198), ((fTempPerm1199 * (fTempPerm1196 + (1.0f - fTempPerm1195))) / (1.0f - fTempPerm1198)))) - fTempPerm1196)))) + (fTempPerm1164 * std::cos((6.28318548f * ((fTempPerm1202 + std::min<float>((((fTempPerm1202 - fTempPerm1203) * fTempPerm1206) / fTempPerm1205), ((fTempPerm1206 * (fTempPerm1203 + (1.0f - fTempPerm1202))) / (1.0f - fTempPerm1205)))) - fTempPerm1203)))));
+		}
+		if (iControl[47]) {
+			fTempPerm1208 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm1193));
+			fTempPerm1209 = (1.0f - fTempPerm1208);
+			fTempPerm1210 = (0.25f * fTempPerm1209);
+			fTempPerm1211 = (fTempPerm1149 - (fTempPerm1210 + std::floor((fTempPerm1149 - fTempPerm1210))));
+			fTempPerm1212 = (2.0f * fTempPerm1211);
+			fTempPerm1213 = std::floor((fTempPerm1212 + 1.0f));
+			fTempPerm1214 = std::min<float>(1.0f, std::max<float>(1.17549435e-38f, fTempPerm1200));
+			fTempPerm1215 = (1.0f - fTempPerm1214);
+			fTempPerm1216 = (0.25f * fTempPerm1215);
+			fTempPerm1217 = (fTempPerm1182 - (fTempPerm1216 + std::floor((fTempPerm1182 - fTempPerm1216))));
+			fTempPerm1218 = (2.0f * fTempPerm1217);
+			fTempPerm1219 = std::floor((fTempPerm1218 + 1.0f));
+			fTempPerm1220 = ((fTempPerm1165 * std::cos((3.14159274f * ((float((fTempPerm1211 >= 0.5f)) + fTempPerm1212) + (1.0f - (fTempPerm1213 + std::min<float>((fTempPerm1212 + (1.0f - fTempPerm1213)), ((fTempPerm1208 * (fTempPerm1213 - fTempPerm1212)) / fTempPerm1209)))))))) + (fTempPerm1164 * std::cos((3.14159274f * ((float((fTempPerm1217 >= 0.5f)) + fTempPerm1218) + (1.0f - (fTempPerm1219 + std::min<float>((fTempPerm1218 + (1.0f - fTempPerm1219)), ((fTempPerm1214 * (fTempPerm1219 - fTempPerm1218)) / fTempPerm1215)))))))));
+		}
+		if (iControl[46]) {
+			fTempPerm1221 = (0.25f * fTempPerm1194);
+			fTempPerm1222 = (fTempPerm1221 + std::floor((fTempPerm1149 - fTempPerm1221)));
+		}
+		if (iControl[46] | (iControl[45] | (iControl[43] | iControl[41]))) {
+			fTempPerm1223 = (1.0f - fTempPerm1149);
+		}
+		if (iControl[46]) {
+			fTempPerm1224 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm1193));
+			fTempPerm1225 = (0.25f * fTempPerm1201);
+			fTempPerm1226 = (fTempPerm1225 + std::floor((fTempPerm1182 - fTempPerm1225)));
+		}
+		if (iControl[46] | (iControl[45] | (iControl[43] | iControl[41]))) {
+			fTempPerm1227 = (1.0f - fTempPerm1182);
+		}
+		if (iControl[46]) {
+			fTempPerm1228 = std::max<float>(0.0f, std::min<float>(0.99000001f, fTempPerm1200));
+			fTempPerm1229 = ((fTempPerm1165 * std::cos((6.28318548f * (fTempPerm1149 - (fTempPerm1222 + std::min<float>((fTempPerm1149 - fTempPerm1222), (((fTempPerm1222 + fTempPerm1223) * fTempPerm1224) / (1.0f - fTempPerm1224)))))))) + (fTempPerm1164 * std::cos((6.28318548f * (fTempPerm1182 - (fTempPerm1226 + std::min<float>((fTempPerm1182 - fTempPerm1226), (((fTempPerm1226 + fTempPerm1227) * fTempPerm1228) / (1.0f - fTempPerm1228)))))))));
+		}
+		if (iControl[45]) {
+			fTempPerm1230 = ((0.125f * fTempPerm1194) + (0.25f * fTempPerm1193));
+			fTempPerm1231 = (fTempPerm1230 + std::floor((fTempPerm1149 - fTempPerm1230)));
+			fTempPerm1232 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm1193));
+			fTempPerm1233 = (0.49000001f * fTempPerm1232);
+			fTempPerm1234 = ((0.125f * fTempPerm1201) + (0.25f * fTempPerm1200));
+			fTempPerm1235 = (fTempPerm1234 + std::floor((fTempPerm1182 - fTempPerm1234)));
+			fTempPerm1236 = std::min<float>(1.0f, std::max<float>(0.0f, fTempPerm1200));
+			fTempPerm1237 = (0.49000001f * fTempPerm1236);
+			fTempPerm1238 = ((fTempPerm1165 * std::cos((12.566371f * ((fTempPerm1149 + std::min<float>((0.49000001f * (((fTempPerm1149 - fTempPerm1231) * fTempPerm1232) / (0.5f - fTempPerm1233))), (0.49000001f * ((fTempPerm1232 * (fTempPerm1231 + fTempPerm1223)) / (fTempPerm1233 + 0.5f))))) - fTempPerm1231)))) + (fTempPerm1164 * std::cos((12.566371f * ((fTempPerm1182 + std::min<float>((0.49000001f * (((fTempPerm1182 - fTempPerm1235) * fTempPerm1236) / (0.5f - fTempPerm1237))), (0.49000001f * ((fTempPerm1236 * (fTempPerm1235 + fTempPerm1227)) / (fTempPerm1237 + 0.5f))))) - fTempPerm1235)))));
+		}
+		if (iControl[44]) {
+			fTempPerm1239 = std::min<float>(0.975000024f, fTempPerm1193);
+			fTempPerm1240 = (0.25f * (1.0f - fTempPerm1239));
+			fTempPerm1241 = (fTempPerm1240 + (0.5f * fTempPerm1239));
+			fTempPerm1242 = std::floor((fTempPerm1149 - fTempPerm1241));
+			fTempPerm1243 = (fTempPerm1149 - (fTempPerm1241 + fTempPerm1242));
+			fTempPerm1244 = std::min<float>(0.975000024f, fTempPerm1200);
+			fTempPerm1245 = (0.25f * (1.0f - fTempPerm1244));
+			fTempPerm1246 = (fTempPerm1245 + (0.5f * fTempPerm1244));
+			fTempPerm1247 = std::floor((fTempPerm1182 - fTempPerm1246));
+			fTempPerm1248 = (fTempPerm1182 - (fTempPerm1246 + fTempPerm1247));
+			fTempPerm1249 = ((fTempPerm1165 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm1243 < 0.5f) ? fTempPerm1243 : (0.5f * (((fTempPerm1149 - ((fTempPerm1240 + fTempPerm1242) + (0.5f * (fTempPerm1239 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm1197))) + 1.0f))))))) + (fTempPerm1164 * std::cos((6.28318548f * std::min<float>(1.0f, ((fTempPerm1248 < 0.5f) ? fTempPerm1248 : (0.5f * (((fTempPerm1182 - ((fTempPerm1245 + fTempPerm1247) + (0.5f * (fTempPerm1244 + 1.0f)))) / std::max<float>(0.00999999978f, std::min<float>(0.5f, fTempPerm1204))) + 1.0f))))))));
+		}
+		if (iControl[43] | iControl[41]) {
+			fTempPerm1250 = (fTempPerm1149 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec294[0] * fControl[801]) * fTempPerm1150))) / fRec294[0])));
+			fTempPerm1251 = (fTempPerm1182 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec311[0] * fControl[801]) * fTempPerm1150))) / fRec311[0])));
+		}
+		if (iControl[43]) {
+			fTempPerm1252 = ((fTempPerm1165 * (((0.0f - fTempPerm1223) * (1.0f - std::cos((6.28318548f * (fTempPerm1250 + (1.0f - std::floor((fTempPerm1250 + 1.0f)))))))) + 1.0f)) + (fTempPerm1164 * (((0.0f - fTempPerm1227) * (1.0f - std::cos((6.28318548f * (fTempPerm1251 + (1.0f - std::floor((fTempPerm1251 + 1.0f)))))))) + 1.0f)));
+		}
+		if (iControl[42]) {
+			fTempPerm1253 = (fTempPerm1149 - (fTempPerm1157 + fVec47[1]));
+			fRec317[0] = ((std::fabs(fTempPerm1253) < 0.5f) ? (fConst0 * fTempPerm1253) : fRec317[1]);
+			fTempPerm1254 = (fTempPerm1158 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec317[0] * fControl[801]) * fTempPerm1150))) / fRec317[0])));
+			fTempPerm1255 = (fTempPerm1182 - (fTempPerm1186 + fVec50[1]));
+			fRec318[0] = ((std::fabs(fTempPerm1255) < 0.5f) ? (fConst0 * fTempPerm1255) : fRec318[1]);
+			fTempPerm1256 = (fTempPerm1187 * std::max<float>(1.0f, (std::min<float>(fConst8, std::max<float>(0.0f, ((fRec318[0] * fControl[801]) * fTempPerm1150))) / fRec318[0])));
+			fTempPerm1257 = ((fTempPerm1165 * (((iTempPerm1159 ? (2.0f * fTempPerm1158) : (2.0f * (1.0f - fTempPerm1158))) * (std::cos((6.28318548f * (fTempPerm1254 + (1.0f - std::floor((fTempPerm1254 + 1.0f)))))) + 1.0f)) + -1.0f)) + (fTempPerm1164 * (((iTempPerm1188 ? (2.0f * fTempPerm1187) : (2.0f * (1.0f - fTempPerm1187))) * (std::cos((6.28318548f * (fTempPerm1256 + (1.0f - std::floor((fTempPerm1256 + 1.0f)))))) + 1.0f)) + -1.0f)));
+		}
+		if (iControl[41]) {
+			fTempPerm1258 = (((fTempPerm1165 * std::min<float>(1.0f, (2.0f * fTempPerm1223))) * std::sin((6.28318548f * (fTempPerm1250 - std::floor(fTempPerm1250))))) + ((fTempPerm1164 * std::min<float>(1.0f, (2.0f * fTempPerm1227))) * std::sin((6.28318548f * (fTempPerm1251 - std::floor(fTempPerm1251))))));
+		}
+		fRec174[0] = (((((((((fControl[253] * fTempPerm1192) + (fControl[252] * fTempPerm1207)) + (fControl[251] * fTempPerm1220)) + (fControl[250] * fTempPerm1229)) + (fControl[249] * fTempPerm1238)) + (fControl[248] * fTempPerm1249)) + (fControl[247] * fTempPerm1252)) + (fControl[246] * fTempPerm1257)) + (fControl[245] * fTempPerm1258));
+		float fTemp1317 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp751 - fTemp752)) + (fTemp39 * (fTemp753 - fTemp754)))));
+		float fTemp1318 = (1.0f - fTemp1317);
+		float fTemp1319 = std::min<float>(1.0f, std::max<float>(0.0f, ((fTemp40 * (fTemp757 - fTemp758)) + (fTemp39 * (fTemp759 - fTemp760)))));
+		outputs[1] = FAUSTFLOAT((fHbargraph0 * ((((fRec171[0] * fTemp1318) + (fRec172[0] * fTemp1317)) * (1.0f - fTemp1319)) + (fTemp1319 * ((fRec173[0] * fTemp1318) + (fRec174[0] * fTemp1317))))));
+		iVec0[1] = iVec0[0];
+		fVec1[1] = fVec1[0];
+		iVec2[1] = iVec2[0];
+		iRec1[1] = iRec1[0];
+		fRec0[1] = fRec0[0];
+		fRec6[1] = fRec6[0];
+		fRec7[1] = fRec7[0];
+		fRec8[1] = fRec8[0];
+		fRec9[1] = fRec9[0];
+		fRec11[1] = fRec11[0];
+		fRec12[1] = fRec12[0];
+		fRec13[1] = fRec13[0];
+		fRec14[1] = fRec14[0];
+		iRec16[1] = iRec16[0];
+		fRec15[1] = fRec15[0];
+		fRec18[1] = fRec18[0];
+		fRec17[1] = fRec17[0];
+		fRec20[1] = fRec20[0];
+		fRec19[1] = fRec19[0];
+		fRec22[1] = fRec22[0];
+		fRec21[1] = fRec21[0];
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | (iControl[68] | (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | (iControl[59] | (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | (iControl[50] | (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41]))))))))))))))))))))))))))))))))))) {
+			fRec27[1] = fRec27[0];
+			fRec28[1] = fRec28[0];
+			iVec3[1] = iVec3[0];
+			fRec26[1] = fRec26[0];
+			fRec29[1] = fRec29[0];
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[75] & iTempPerm22) | ((iControl[74] & iTempPerm22) | ((iControl[73] & iTempPerm22) | ((iControl[72] & iTempPerm22) | ((iControl[71] & iTempPerm22) | ((iControl[70] & iTempPerm22) | ((iControl[69] & iTempPerm22) | (iControl[68] & iTempPerm22))))))))) {
+			fRec23[1] = fRec23[0];
+			fRec24[1] = fRec24[0];
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fRec30[1] = fRec30[0];
+			fRec31[1] = fRec31[0];
+			fRec32[1] = fRec32[0];
+		}
+		if ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm29) | (iControl[68] & iTempPerm29))))))))) {
+			fRec35[1] = fRec35[0];
+			fRec36[1] = fRec36[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fVec4[1] = fVec4[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fRec38[1] = fRec38[0];
+		}
+		if (iControl[3] | iControl[69]) {
+			fVec5[1] = fVec5[0];
+			iVec6[1] = iVec6[0];
+		}
+		if (iControl[3]) {
+			fRec43[1] = fRec43[0];
+			fRec42[1] = fRec42[0];
+			fRec41[1] = fRec41[0];
+			fRec40[1] = fRec40[0];
+			fRec39[1] = fRec39[0];
+			fRec37[1] = fRec37[0];
+		}
+		if ((iControl[3] & iTempPerm22) | ((iControl[75] & iTempPerm22) | ((iControl[74] & iTempPerm22) | ((iControl[73] & iTempPerm22) | ((iControl[72] & iTempPerm22) | ((iControl[71] & iTempPerm22) | ((iControl[70] & iTempPerm22) | ((iControl[69] & iTempPerm22) | (iControl[68] & iTempPerm22))))))))) {
+			fRec44[1] = fRec44[0];
+			fRec45[1] = fRec45[0];
+		}
+		if ((iControl[3] & iTempPerm30) | ((iControl[75] & iTempPerm30) | ((iControl[74] & iTempPerm30) | ((iControl[73] & iTempPerm30) | ((iControl[72] & iTempPerm30) | ((iControl[71] & iTempPerm30) | ((iControl[70] & iTempPerm30) | ((iControl[69] & iTempPerm30) | (iControl[68] & iTempPerm30))))))))) {
+			fRec47[1] = fRec47[0];
+			fRec48[1] = fRec48[0];
+			fRec49[1] = fRec49[0];
+		}
+		if ((iControl[3] & iTempPerm29) | ((iControl[75] & iTempPerm29) | ((iControl[74] & iTempPerm29) | ((iControl[73] & iTempPerm29) | ((iControl[72] & iTempPerm29) | ((iControl[71] & iTempPerm29) | ((iControl[70] & iTempPerm29) | ((iControl[69] & iTempPerm29) | (iControl[68] & iTempPerm29))))))))) {
+			fRec52[1] = fRec52[0];
+			fRec53[1] = fRec53[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fVec7[1] = fVec7[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fRec55[1] = fRec55[0];
+		}
+		if (iControl[3] | iControl[69]) {
+			fVec8[1] = fVec8[0];
+			iVec9[1] = iVec9[0];
+		}
+		if (iControl[3]) {
+			fRec60[1] = fRec60[0];
+			fRec59[1] = fRec59[0];
+			fRec58[1] = fRec58[0];
+			fRec57[1] = fRec57[0];
+			fRec56[1] = fRec56[0];
+			fRec54[1] = fRec54[0];
+		}
+		if (iControl[69]) {
+			fRec61[1] = fRec61[0];
+			fRec62[1] = fRec62[0];
+		}
+		fRec2[1] = fRec2[0];
+		if ((iControl[67] & iTempPerm22) | ((iControl[66] & iTempPerm22) | ((iControl[65] & iTempPerm22) | ((iControl[64] & iTempPerm22) | ((iControl[63] & iTempPerm22) | ((iControl[62] & iTempPerm22) | ((iControl[61] & iTempPerm22) | ((iControl[60] & iTempPerm22) | (iControl[59] & iTempPerm22))))))))) {
+			fRec63[1] = fRec63[0];
+			fRec64[1] = fRec64[0];
+		}
+		if ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | (iControl[59] & iTempPerm30))))))))) {
+			fRec66[1] = fRec66[0];
+			fRec67[1] = fRec67[0];
+			fRec68[1] = fRec68[0];
+		}
+		if ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm29) | (iControl[59] & iTempPerm29))))))))) {
+			fRec71[1] = fRec71[0];
+			fRec72[1] = fRec72[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fVec10[1] = fVec10[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fRec74[1] = fRec74[0];
+		}
+		if (iControl[67] | iControl[60]) {
+			fVec11[1] = fVec11[0];
+			iVec12[1] = iVec12[0];
+		}
+		if (iControl[67]) {
+			fRec79[1] = fRec79[0];
+			fRec78[1] = fRec78[0];
+			fRec77[1] = fRec77[0];
+			fRec76[1] = fRec76[0];
+			fRec75[1] = fRec75[0];
+			fRec73[1] = fRec73[0];
+		}
+		if ((iControl[67] & iTempPerm22) | ((iControl[66] & iTempPerm22) | ((iControl[65] & iTempPerm22) | ((iControl[64] & iTempPerm22) | ((iControl[63] & iTempPerm22) | ((iControl[62] & iTempPerm22) | ((iControl[61] & iTempPerm22) | ((iControl[60] & iTempPerm22) | (iControl[59] & iTempPerm22))))))))) {
+			fRec80[1] = fRec80[0];
+			fRec81[1] = fRec81[0];
+		}
+		if ((iControl[67] & iTempPerm30) | ((iControl[66] & iTempPerm30) | ((iControl[65] & iTempPerm30) | ((iControl[64] & iTempPerm30) | ((iControl[63] & iTempPerm30) | ((iControl[62] & iTempPerm30) | ((iControl[61] & iTempPerm30) | ((iControl[60] & iTempPerm30) | (iControl[59] & iTempPerm30))))))))) {
+			fRec83[1] = fRec83[0];
+			fRec84[1] = fRec84[0];
+			fRec85[1] = fRec85[0];
+		}
+		if ((iControl[67] & iTempPerm29) | ((iControl[66] & iTempPerm29) | ((iControl[65] & iTempPerm29) | ((iControl[64] & iTempPerm29) | ((iControl[63] & iTempPerm29) | ((iControl[62] & iTempPerm29) | ((iControl[61] & iTempPerm29) | ((iControl[60] & iTempPerm29) | (iControl[59] & iTempPerm29))))))))) {
+			fRec88[1] = fRec88[0];
+			fRec89[1] = fRec89[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fVec13[1] = fVec13[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fRec91[1] = fRec91[0];
+		}
+		if (iControl[67] | iControl[60]) {
+			fVec14[1] = fVec14[0];
+			iVec15[1] = iVec15[0];
+		}
+		if (iControl[67]) {
+			fRec96[1] = fRec96[0];
+			fRec95[1] = fRec95[0];
+			fRec94[1] = fRec94[0];
+			fRec93[1] = fRec93[0];
+			fRec92[1] = fRec92[0];
+			fRec90[1] = fRec90[0];
+		}
+		if (iControl[60]) {
+			fRec97[1] = fRec97[0];
+			fRec98[1] = fRec98[0];
+		}
+		fRec3[1] = fRec3[0];
+		if ((iControl[58] & iTempPerm22) | ((iControl[57] & iTempPerm22) | ((iControl[56] & iTempPerm22) | ((iControl[55] & iTempPerm22) | ((iControl[54] & iTempPerm22) | ((iControl[53] & iTempPerm22) | ((iControl[52] & iTempPerm22) | ((iControl[51] & iTempPerm22) | (iControl[50] & iTempPerm22))))))))) {
+			fRec99[1] = fRec99[0];
+			fRec100[1] = fRec100[0];
+		}
+		if ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | (iControl[50] & iTempPerm30))))))))) {
+			fRec102[1] = fRec102[0];
+			fRec103[1] = fRec103[0];
+			fRec104[1] = fRec104[0];
+		}
+		if ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm29) | (iControl[50] & iTempPerm29))))))))) {
+			fRec107[1] = fRec107[0];
+			fRec108[1] = fRec108[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fVec16[1] = fVec16[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fRec110[1] = fRec110[0];
+		}
+		if (iControl[58] | iControl[51]) {
+			fVec17[1] = fVec17[0];
+			iVec18[1] = iVec18[0];
+		}
+		if (iControl[58]) {
+			fRec115[1] = fRec115[0];
+			fRec114[1] = fRec114[0];
+			fRec113[1] = fRec113[0];
+			fRec112[1] = fRec112[0];
+			fRec111[1] = fRec111[0];
+			fRec109[1] = fRec109[0];
+		}
+		if ((iControl[58] & iTempPerm22) | ((iControl[57] & iTempPerm22) | ((iControl[56] & iTempPerm22) | ((iControl[55] & iTempPerm22) | ((iControl[54] & iTempPerm22) | ((iControl[53] & iTempPerm22) | ((iControl[52] & iTempPerm22) | ((iControl[51] & iTempPerm22) | (iControl[50] & iTempPerm22))))))))) {
+			fRec116[1] = fRec116[0];
+			fRec117[1] = fRec117[0];
+		}
+		if ((iControl[58] & iTempPerm30) | ((iControl[57] & iTempPerm30) | ((iControl[56] & iTempPerm30) | ((iControl[55] & iTempPerm30) | ((iControl[54] & iTempPerm30) | ((iControl[53] & iTempPerm30) | ((iControl[52] & iTempPerm30) | ((iControl[51] & iTempPerm30) | (iControl[50] & iTempPerm30))))))))) {
+			fRec119[1] = fRec119[0];
+			fRec120[1] = fRec120[0];
+			fRec121[1] = fRec121[0];
+		}
+		if ((iControl[58] & iTempPerm29) | ((iControl[57] & iTempPerm29) | ((iControl[56] & iTempPerm29) | ((iControl[55] & iTempPerm29) | ((iControl[54] & iTempPerm29) | ((iControl[53] & iTempPerm29) | ((iControl[52] & iTempPerm29) | ((iControl[51] & iTempPerm29) | (iControl[50] & iTempPerm29))))))))) {
+			fRec124[1] = fRec124[0];
+			fRec125[1] = fRec125[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fVec19[1] = fVec19[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fRec127[1] = fRec127[0];
+		}
+		if (iControl[58] | iControl[51]) {
+			fVec20[1] = fVec20[0];
+			iVec21[1] = iVec21[0];
+		}
+		if (iControl[58]) {
+			fRec132[1] = fRec132[0];
+			fRec131[1] = fRec131[0];
+			fRec130[1] = fRec130[0];
+			fRec129[1] = fRec129[0];
+			fRec128[1] = fRec128[0];
+			fRec126[1] = fRec126[0];
+		}
+		if (iControl[51]) {
+			fRec133[1] = fRec133[0];
+			fRec134[1] = fRec134[0];
+		}
+		fRec4[1] = fRec4[0];
+		if ((iControl[49] & iTempPerm22) | ((iControl[48] & iTempPerm22) | ((iControl[47] & iTempPerm22) | ((iControl[46] & iTempPerm22) | ((iControl[45] & iTempPerm22) | ((iControl[44] & iTempPerm22) | ((iControl[43] & iTempPerm22) | ((iControl[42] & iTempPerm22) | (iControl[41] & iTempPerm22))))))))) {
+			fRec135[1] = fRec135[0];
+			fRec136[1] = fRec136[0];
+		}
+		if ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30))))))))) {
+			fRec138[1] = fRec138[0];
+			fRec139[1] = fRec139[0];
+			fRec140[1] = fRec140[0];
+		}
+		if ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm29) | (iControl[41] & iTempPerm29))))))))) {
+			fRec143[1] = fRec143[0];
+			fRec144[1] = fRec144[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fVec22[1] = fVec22[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fRec146[1] = fRec146[0];
+		}
+		if (iControl[49] | iControl[42]) {
+			fVec23[1] = fVec23[0];
+			iVec24[1] = iVec24[0];
+		}
+		if (iControl[49]) {
+			fRec151[1] = fRec151[0];
+			fRec150[1] = fRec150[0];
+			fRec149[1] = fRec149[0];
+			fRec148[1] = fRec148[0];
+			fRec147[1] = fRec147[0];
+			fRec145[1] = fRec145[0];
+		}
+		if ((iControl[49] & iTempPerm22) | ((iControl[48] & iTempPerm22) | ((iControl[47] & iTempPerm22) | ((iControl[46] & iTempPerm22) | ((iControl[45] & iTempPerm22) | ((iControl[44] & iTempPerm22) | ((iControl[43] & iTempPerm22) | ((iControl[42] & iTempPerm22) | (iControl[41] & iTempPerm22))))))))) {
+			fRec152[1] = fRec152[0];
+			fRec153[1] = fRec153[0];
+		}
+		if ((iControl[49] & iTempPerm30) | ((iControl[48] & iTempPerm30) | ((iControl[47] & iTempPerm30) | ((iControl[46] & iTempPerm30) | ((iControl[45] & iTempPerm30) | ((iControl[44] & iTempPerm30) | ((iControl[43] & iTempPerm30) | ((iControl[42] & iTempPerm30) | (iControl[41] & iTempPerm30))))))))) {
+			fRec155[1] = fRec155[0];
+			fRec156[1] = fRec156[0];
+			fRec157[1] = fRec157[0];
+		}
+		if ((iControl[49] & iTempPerm29) | ((iControl[48] & iTempPerm29) | ((iControl[47] & iTempPerm29) | ((iControl[46] & iTempPerm29) | ((iControl[45] & iTempPerm29) | ((iControl[44] & iTempPerm29) | ((iControl[43] & iTempPerm29) | ((iControl[42] & iTempPerm29) | (iControl[41] & iTempPerm29))))))))) {
+			fRec160[1] = fRec160[0];
+			fRec161[1] = fRec161[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fVec25[1] = fVec25[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fRec163[1] = fRec163[0];
+		}
+		if (iControl[49] | iControl[42]) {
+			fVec26[1] = fVec26[0];
+			iVec27[1] = iVec27[0];
+		}
+		if (iControl[49]) {
+			fRec168[1] = fRec168[0];
+			fRec167[1] = fRec167[0];
+			fRec166[1] = fRec166[0];
+			fRec165[1] = fRec165[0];
+			fRec164[1] = fRec164[0];
+			fRec162[1] = fRec162[0];
+		}
+		if (iControl[42]) {
+			fRec169[1] = fRec169[0];
+			fRec170[1] = fRec170[0];
+		}
+		fRec5[1] = fRec5[0];
+		if ((iControl[3] & iTempPerm28) | ((iControl[75] & iTempPerm28) | ((iControl[74] & iTempPerm28) | ((iControl[73] & iTempPerm28) | ((iControl[72] & iTempPerm28) | ((iControl[71] & iTempPerm28) | ((iControl[70] & iTempPerm28) | ((iControl[69] & iTempPerm28) | (iControl[68] & iTempPerm28))))))))) {
+			fRec175[1] = fRec175[0];
+			fRec176[1] = fRec176[0];
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fRec178[1] = fRec178[0];
+			fRec179[1] = fRec179[0];
+			fRec180[1] = fRec180[0];
+		}
+		if ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm24) | (iControl[68] & iTempPerm24))))))))) {
+			fRec183[1] = fRec183[0];
+			fRec184[1] = fRec184[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fVec28[1] = fVec28[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fRec186[1] = fRec186[0];
+		}
+		if (iControl[3] | iControl[69]) {
+			fVec29[1] = fVec29[0];
+			iVec30[1] = iVec30[0];
+		}
+		if (iControl[3]) {
+			fRec191[1] = fRec191[0];
+			fRec190[1] = fRec190[0];
+			fRec189[1] = fRec189[0];
+			fRec188[1] = fRec188[0];
+			fRec187[1] = fRec187[0];
+			fRec185[1] = fRec185[0];
+		}
+		if ((iControl[3] & iTempPerm28) | ((iControl[75] & iTempPerm28) | ((iControl[74] & iTempPerm28) | ((iControl[73] & iTempPerm28) | ((iControl[72] & iTempPerm28) | ((iControl[71] & iTempPerm28) | ((iControl[70] & iTempPerm28) | ((iControl[69] & iTempPerm28) | (iControl[68] & iTempPerm28))))))))) {
+			fRec192[1] = fRec192[0];
+			fRec193[1] = fRec193[0];
+		}
+		if ((iControl[3] & iTempPerm26) | ((iControl[75] & iTempPerm26) | ((iControl[74] & iTempPerm26) | ((iControl[73] & iTempPerm26) | ((iControl[72] & iTempPerm26) | ((iControl[71] & iTempPerm26) | ((iControl[70] & iTempPerm26) | ((iControl[69] & iTempPerm26) | (iControl[68] & iTempPerm26))))))))) {
+			fRec195[1] = fRec195[0];
+			fRec196[1] = fRec196[0];
+			fRec197[1] = fRec197[0];
+		}
+		if ((iControl[3] & iTempPerm24) | ((iControl[75] & iTempPerm24) | ((iControl[74] & iTempPerm24) | ((iControl[73] & iTempPerm24) | ((iControl[72] & iTempPerm24) | ((iControl[71] & iTempPerm24) | ((iControl[70] & iTempPerm24) | ((iControl[69] & iTempPerm24) | (iControl[68] & iTempPerm24))))))))) {
+			fRec200[1] = fRec200[0];
+			fRec201[1] = fRec201[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | (iControl[69] | iControl[68])))))))) {
+			fVec31[1] = fVec31[0];
+		}
+		if (iControl[3] | (iControl[75] | (iControl[74] | (iControl[73] | (iControl[72] | (iControl[71] | (iControl[70] | iControl[68]))))))) {
+			fRec203[1] = fRec203[0];
+		}
+		if (iControl[3] | iControl[69]) {
+			fVec32[1] = fVec32[0];
+			iVec33[1] = iVec33[0];
+		}
+		if (iControl[3]) {
+			fRec208[1] = fRec208[0];
+			fRec207[1] = fRec207[0];
+			fRec206[1] = fRec206[0];
+			fRec205[1] = fRec205[0];
+			fRec204[1] = fRec204[0];
+			fRec202[1] = fRec202[0];
+		}
+		if (iControl[69]) {
+			fRec209[1] = fRec209[0];
+			fRec210[1] = fRec210[0];
+		}
+		fRec171[1] = fRec171[0];
+		if ((iControl[67] & iTempPerm28) | ((iControl[66] & iTempPerm28) | ((iControl[65] & iTempPerm28) | ((iControl[64] & iTempPerm28) | ((iControl[63] & iTempPerm28) | ((iControl[62] & iTempPerm28) | ((iControl[61] & iTempPerm28) | ((iControl[60] & iTempPerm28) | (iControl[59] & iTempPerm28))))))))) {
+			fRec211[1] = fRec211[0];
+			fRec212[1] = fRec212[0];
+		}
+		if ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | (iControl[59] & iTempPerm26))))))))) {
+			fRec214[1] = fRec214[0];
+			fRec215[1] = fRec215[0];
+			fRec216[1] = fRec216[0];
+		}
+		if ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm24) | (iControl[59] & iTempPerm24))))))))) {
+			fRec219[1] = fRec219[0];
+			fRec220[1] = fRec220[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fVec34[1] = fVec34[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fRec222[1] = fRec222[0];
+		}
+		if (iControl[67] | iControl[60]) {
+			fVec35[1] = fVec35[0];
+			iVec36[1] = iVec36[0];
+		}
+		if (iControl[67]) {
+			fRec227[1] = fRec227[0];
+			fRec226[1] = fRec226[0];
+			fRec225[1] = fRec225[0];
+			fRec224[1] = fRec224[0];
+			fRec223[1] = fRec223[0];
+			fRec221[1] = fRec221[0];
+		}
+		if ((iControl[67] & iTempPerm28) | ((iControl[66] & iTempPerm28) | ((iControl[65] & iTempPerm28) | ((iControl[64] & iTempPerm28) | ((iControl[63] & iTempPerm28) | ((iControl[62] & iTempPerm28) | ((iControl[61] & iTempPerm28) | ((iControl[60] & iTempPerm28) | (iControl[59] & iTempPerm28))))))))) {
+			fRec228[1] = fRec228[0];
+			fRec229[1] = fRec229[0];
+		}
+		if ((iControl[67] & iTempPerm26) | ((iControl[66] & iTempPerm26) | ((iControl[65] & iTempPerm26) | ((iControl[64] & iTempPerm26) | ((iControl[63] & iTempPerm26) | ((iControl[62] & iTempPerm26) | ((iControl[61] & iTempPerm26) | ((iControl[60] & iTempPerm26) | (iControl[59] & iTempPerm26))))))))) {
+			fRec231[1] = fRec231[0];
+			fRec232[1] = fRec232[0];
+			fRec233[1] = fRec233[0];
+		}
+		if ((iControl[67] & iTempPerm24) | ((iControl[66] & iTempPerm24) | ((iControl[65] & iTempPerm24) | ((iControl[64] & iTempPerm24) | ((iControl[63] & iTempPerm24) | ((iControl[62] & iTempPerm24) | ((iControl[61] & iTempPerm24) | ((iControl[60] & iTempPerm24) | (iControl[59] & iTempPerm24))))))))) {
+			fRec236[1] = fRec236[0];
+			fRec237[1] = fRec237[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | (iControl[60] | iControl[59])))))))) {
+			fVec37[1] = fVec37[0];
+		}
+		if (iControl[67] | (iControl[66] | (iControl[65] | (iControl[64] | (iControl[63] | (iControl[62] | (iControl[61] | iControl[59]))))))) {
+			fRec239[1] = fRec239[0];
+		}
+		if (iControl[67] | iControl[60]) {
+			fVec38[1] = fVec38[0];
+			iVec39[1] = iVec39[0];
+		}
+		if (iControl[67]) {
+			fRec244[1] = fRec244[0];
+			fRec243[1] = fRec243[0];
+			fRec242[1] = fRec242[0];
+			fRec241[1] = fRec241[0];
+			fRec240[1] = fRec240[0];
+			fRec238[1] = fRec238[0];
+		}
+		if (iControl[60]) {
+			fRec245[1] = fRec245[0];
+			fRec246[1] = fRec246[0];
+		}
+		fRec172[1] = fRec172[0];
+		if ((iControl[58] & iTempPerm28) | ((iControl[57] & iTempPerm28) | ((iControl[56] & iTempPerm28) | ((iControl[55] & iTempPerm28) | ((iControl[54] & iTempPerm28) | ((iControl[53] & iTempPerm28) | ((iControl[52] & iTempPerm28) | ((iControl[51] & iTempPerm28) | (iControl[50] & iTempPerm28))))))))) {
+			fRec247[1] = fRec247[0];
+			fRec248[1] = fRec248[0];
+		}
+		if ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | (iControl[50] & iTempPerm26))))))))) {
+			fRec250[1] = fRec250[0];
+			fRec251[1] = fRec251[0];
+			fRec252[1] = fRec252[0];
+		}
+		if ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm24) | (iControl[50] & iTempPerm24))))))))) {
+			fRec255[1] = fRec255[0];
+			fRec256[1] = fRec256[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fVec40[1] = fVec40[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fRec258[1] = fRec258[0];
+		}
+		if (iControl[58] | iControl[51]) {
+			fVec41[1] = fVec41[0];
+			iVec42[1] = iVec42[0];
+		}
+		if (iControl[58]) {
+			fRec263[1] = fRec263[0];
+			fRec262[1] = fRec262[0];
+			fRec261[1] = fRec261[0];
+			fRec260[1] = fRec260[0];
+			fRec259[1] = fRec259[0];
+			fRec257[1] = fRec257[0];
+		}
+		if ((iControl[58] & iTempPerm28) | ((iControl[57] & iTempPerm28) | ((iControl[56] & iTempPerm28) | ((iControl[55] & iTempPerm28) | ((iControl[54] & iTempPerm28) | ((iControl[53] & iTempPerm28) | ((iControl[52] & iTempPerm28) | ((iControl[51] & iTempPerm28) | (iControl[50] & iTempPerm28))))))))) {
+			fRec264[1] = fRec264[0];
+			fRec265[1] = fRec265[0];
+		}
+		if ((iControl[58] & iTempPerm26) | ((iControl[57] & iTempPerm26) | ((iControl[56] & iTempPerm26) | ((iControl[55] & iTempPerm26) | ((iControl[54] & iTempPerm26) | ((iControl[53] & iTempPerm26) | ((iControl[52] & iTempPerm26) | ((iControl[51] & iTempPerm26) | (iControl[50] & iTempPerm26))))))))) {
+			fRec267[1] = fRec267[0];
+			fRec268[1] = fRec268[0];
+			fRec269[1] = fRec269[0];
+		}
+		if ((iControl[58] & iTempPerm24) | ((iControl[57] & iTempPerm24) | ((iControl[56] & iTempPerm24) | ((iControl[55] & iTempPerm24) | ((iControl[54] & iTempPerm24) | ((iControl[53] & iTempPerm24) | ((iControl[52] & iTempPerm24) | ((iControl[51] & iTempPerm24) | (iControl[50] & iTempPerm24))))))))) {
+			fRec272[1] = fRec272[0];
+			fRec273[1] = fRec273[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | (iControl[51] | iControl[50])))))))) {
+			fVec43[1] = fVec43[0];
+		}
+		if (iControl[58] | (iControl[57] | (iControl[56] | (iControl[55] | (iControl[54] | (iControl[53] | (iControl[52] | iControl[50]))))))) {
+			fRec275[1] = fRec275[0];
+		}
+		if (iControl[58] | iControl[51]) {
+			fVec44[1] = fVec44[0];
+			iVec45[1] = iVec45[0];
+		}
+		if (iControl[58]) {
+			fRec280[1] = fRec280[0];
+			fRec279[1] = fRec279[0];
+			fRec278[1] = fRec278[0];
+			fRec277[1] = fRec277[0];
+			fRec276[1] = fRec276[0];
+			fRec274[1] = fRec274[0];
+		}
+		if (iControl[51]) {
+			fRec281[1] = fRec281[0];
+			fRec282[1] = fRec282[0];
+		}
+		fRec173[1] = fRec173[0];
+		if ((iControl[49] & iTempPerm28) | ((iControl[48] & iTempPerm28) | ((iControl[47] & iTempPerm28) | ((iControl[46] & iTempPerm28) | ((iControl[45] & iTempPerm28) | ((iControl[44] & iTempPerm28) | ((iControl[43] & iTempPerm28) | ((iControl[42] & iTempPerm28) | (iControl[41] & iTempPerm28))))))))) {
+			fRec283[1] = fRec283[0];
+			fRec284[1] = fRec284[0];
+		}
+		if ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26))))))))) {
+			fRec286[1] = fRec286[0];
+			fRec287[1] = fRec287[0];
+			fRec288[1] = fRec288[0];
+		}
+		if ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm24) | (iControl[41] & iTempPerm24))))))))) {
+			fRec291[1] = fRec291[0];
+			fRec292[1] = fRec292[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fVec46[1] = fVec46[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fRec294[1] = fRec294[0];
+		}
+		if (iControl[49] | iControl[42]) {
+			fVec47[1] = fVec47[0];
+			iVec48[1] = iVec48[0];
+		}
+		if (iControl[49]) {
+			fRec299[1] = fRec299[0];
+			fRec298[1] = fRec298[0];
+			fRec297[1] = fRec297[0];
+			fRec296[1] = fRec296[0];
+			fRec295[1] = fRec295[0];
+			fRec293[1] = fRec293[0];
+		}
+		if ((iControl[49] & iTempPerm28) | ((iControl[48] & iTempPerm28) | ((iControl[47] & iTempPerm28) | ((iControl[46] & iTempPerm28) | ((iControl[45] & iTempPerm28) | ((iControl[44] & iTempPerm28) | ((iControl[43] & iTempPerm28) | ((iControl[42] & iTempPerm28) | (iControl[41] & iTempPerm28))))))))) {
+			fRec300[1] = fRec300[0];
+			fRec301[1] = fRec301[0];
+		}
+		if ((iControl[49] & iTempPerm26) | ((iControl[48] & iTempPerm26) | ((iControl[47] & iTempPerm26) | ((iControl[46] & iTempPerm26) | ((iControl[45] & iTempPerm26) | ((iControl[44] & iTempPerm26) | ((iControl[43] & iTempPerm26) | ((iControl[42] & iTempPerm26) | (iControl[41] & iTempPerm26))))))))) {
+			fRec303[1] = fRec303[0];
+			fRec304[1] = fRec304[0];
+			fRec305[1] = fRec305[0];
+		}
+		if ((iControl[49] & iTempPerm24) | ((iControl[48] & iTempPerm24) | ((iControl[47] & iTempPerm24) | ((iControl[46] & iTempPerm24) | ((iControl[45] & iTempPerm24) | ((iControl[44] & iTempPerm24) | ((iControl[43] & iTempPerm24) | ((iControl[42] & iTempPerm24) | (iControl[41] & iTempPerm24))))))))) {
+			fRec308[1] = fRec308[0];
+			fRec309[1] = fRec309[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | (iControl[42] | iControl[41])))))))) {
+			fVec49[1] = fVec49[0];
+		}
+		if (iControl[49] | (iControl[48] | (iControl[47] | (iControl[46] | (iControl[45] | (iControl[44] | (iControl[43] | iControl[41]))))))) {
+			fRec311[1] = fRec311[0];
+		}
+		if (iControl[49] | iControl[42]) {
+			fVec50[1] = fVec50[0];
+			iVec51[1] = iVec51[0];
+		}
+		if (iControl[49]) {
+			fRec316[1] = fRec316[0];
+			fRec315[1] = fRec315[0];
+			fRec314[1] = fRec314[0];
+			fRec313[1] = fRec313[0];
+			fRec312[1] = fRec312[0];
+			fRec310[1] = fRec310[0];
+		}
+		if (iControl[42]) {
+			fRec317[1] = fRec317[0];
+			fRec318[1] = fRec318[0];
+		}
+		fRec174[1] = fRec174[0];
 	}
 
 };
