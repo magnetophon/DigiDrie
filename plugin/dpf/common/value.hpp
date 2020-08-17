@@ -18,7 +18,7 @@
 #pragma once
 
 #ifndef TEST_BUILD
-#include "DistrhoPlugin.hpp"
+  #include "DistrhoPlugin.hpp"
 #endif
 
 #include "dsp/scale.hpp"
@@ -60,11 +60,11 @@ struct ValueInterface {
 #endif
   virtual const char *getName() const = 0;
   virtual double getFloat() const = 0;
-  virtual uint32_t getInt() const = 0;
+  virtual int32_t getInt() const = 0;
   virtual double getNormalized() = 0;
-  virtual uint32_t getDefaultInt() = 0;
+  virtual int32_t getDefaultInt() = 0;
   virtual double getDefaultNormalized() = 0;
-  virtual void setFromInt(uint32_t value) = 0;
+  virtual void setFromInt(int32_t value) = 0;
   virtual void setFromFloat(double value) = 0;
   virtual void setFromNormalized(double value) = 0;
 };
@@ -72,13 +72,13 @@ struct ValueInterface {
 struct IntValue : public ValueInterface {
   SomeDSP::IntScale<double> &scale;
   double defaultNormalized;
-  uint32_t raw;
+  int32_t raw;
 
   std::string name;
   uint32_t hints;
 
   IntValue(
-    uint32_t defaultRaw,
+    int32_t defaultRaw,
     SomeDSP::IntScale<double> &scale,
     const char *name,
     uint32_t hints)
@@ -101,13 +101,13 @@ struct IntValue : public ValueInterface {
 #endif
 
   inline const char *getName() const override { return name.c_str(); }
-  inline uint32_t getInt() const override { return raw; }
+  inline int32_t getInt() const override { return raw; }
   inline double getFloat() const override { return raw; }
   double getNormalized() override { return scale.invmap(raw); }
-  uint32_t getDefaultInt() { return scale.map(defaultNormalized); }
+  int32_t getDefaultInt() { return scale.map(defaultNormalized); }
   inline double getDefaultNormalized() override { return defaultNormalized; }
 
-  void setFromInt(uint32_t value)
+  void setFromInt(int32_t value)
   {
     raw = value < scale.getMin() ? scale.getMin()
                                  : value > scale.getMax() ? scale.getMax() : value;
@@ -115,7 +115,7 @@ struct IntValue : public ValueInterface {
 
   void setFromFloat(double valueFloat) override
   {
-    uint32_t value = uint32_t(valueFloat);
+    int32_t value = int32_t(valueFloat);
     raw = value < scale.getMin() ? scale.getMin()
                                  : value > scale.getMax() ? scale.getMax() : value;
   }
@@ -152,13 +152,13 @@ template<typename Scale> struct FloatValue : public ValueInterface {
 #endif
 
   inline const char *getName() const override { return name.c_str(); }
-  inline uint32_t getInt() const override { return uint32_t(raw); }
+  inline int32_t getInt() const override { return int32_t(raw); }
   inline double getFloat() const override { return raw; }
   double getNormalized() override { return scale.invmap(raw); }
-  uint32_t getDefaultInt() { return uint32_t(scale.map(defaultNormalized)); }
+  int32_t getDefaultInt() { return int32_t(scale.map(defaultNormalized)); }
   inline double getDefaultNormalized() override { return defaultNormalized; }
 
-  void setFromInt(uint32_t value) override
+  void setFromInt(int32_t value) override
   {
     raw = value < scale.getMin() ? scale.getMin()
                                  : value > scale.getMax() ? scale.getMax() : value;

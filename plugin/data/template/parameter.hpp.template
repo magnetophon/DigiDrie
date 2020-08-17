@@ -22,7 +22,9 @@ static const uint32_t kParameterIsLogarithmic = 0x08;
 namespace ParameterID {
 enum ID {
   bypass,
+  aftertouch,
   pitchBend,
+  modulationWheel,
 
   {% for prm in parameters -%}
   {{ prm.ident }},
@@ -33,7 +35,9 @@ enum ID {
 
 struct Scales {
   static SomeDSP::IntScale<double> boolScale;
-  static SomeDSP::LinearScale<double> defaultScale;
+  static SomeDSP::LinearScale<double> aftertouch;
+  static SomeDSP::LinearScale<double> pitchBend;
+  static SomeDSP::LinearScale<double> modulationWheel;
 
   {% for scale in scales %}
     {#- #}static SomeDSP::{{ scale.type }}Scale<double> {{ scale.label }};
@@ -54,13 +58,25 @@ struct GlobalParameter : public ParameterInterface {
     // using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
 
     value[ID::bypass] = std::make_unique<IntValue>(
-      0, Scales::boolScale, "bypass", kParameterIsAutomable | kParameterIsBoolean);
+      0, Scales::boolScale, "bypass",
+      kParameterIsAutomable | kParameterIsBoolean);
+    value[ID::aftertouch] = std::make_unique<LinearValue>(
+      Scales::aftertouch.invmap(0), Scales::aftertouch, "aftertouch",
+      kParameterIsAutomable);
     value[ID::pitchBend] = std::make_unique<LinearValue>(
-      0.5, Scales::defaultScale, "pitchBend", kParameterIsAutomable);
+      0, Scales::pitchBend, "pitchBend",
+      kParameterIsAutomable);
+    value[ID::modulationWheel] = std::make_unique<LinearValue>(
+      Scales::modulationWheel.invmap(0), Scales::modulationWheel, "modulationWheel",
+      kParameterIsAutomable);
 
     {% for prm in parameters -%}
     value[ID::{{ prm.ident }}] = std::make_unique<{{ prm.value_type }}>(
-      Scales::{{ prm.scale }}.invmap({{ prm.init }}),
+      {% if prm.value_type == "IntValue" -%}
+        {{ prm.init }}
+      {%- else -%}
+        Scales::{{ prm.scale }}.invmap({{ prm.init }})
+      {%- endif %},
       Scales::{{ prm.scale }},
       "{{ prm.ident }}",
       0{% for hint in prm.hints %} | {{hint}}{% endfor %});

@@ -21,14 +21,15 @@
 #include "somemath.hpp"
 
 #include <algorithm>
+#include <cassert>
 #include <cstdint>
 
 namespace SomeDSP {
 
 // If there are elements of 0, 1, 2, then max is 2.
-template<typename T> class IntScale {
+template<typename T> class UintScale {
 public:
-  IntScale(uint32_t max) : max(max) {}
+  UintScale(uint32_t max) : max(max) {}
   uint32_t map(T input) const { return uint32_t(std::min<T>(max, input * (max + 1))); }
   uint32_t reverseMap(T input) const { return map(T(1.0) - input); }
   T invmap(uint32_t input) const { return input / T(max); }
@@ -37,6 +38,30 @@ public:
 
 protected:
   const uint32_t max;
+};
+
+template<typename T> class IntScale {
+public:
+  IntScale(int32_t min, int32_t max) : min(min), max(max), diff(max - min)
+  {
+    assert(min != max);
+  }
+
+  int32_t map(T input) const
+  {
+    return int32_t(std::min<T>(diff, input * (diff + 1))) + min;
+  }
+
+  int32_t reverseMap(T input) const { return map(T(1.0) - input); }
+
+  T invmap(int32_t input) const { return (input - min) / T(diff); }
+  T getMin() { return T(min); }
+  T getMax() { return T(max); }
+
+protected:
+  const int32_t min;
+  const int32_t max;
+  const int32_t diff;
 };
 
 // Maps a value in [0, 1] to [min, max].

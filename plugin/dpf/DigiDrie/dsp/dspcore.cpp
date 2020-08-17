@@ -708,17 +708,26 @@ void DSPCORE_NAME::setParameters(float tempo) {
   
 
   // MIDI parameters.
-  // - `fHslider193`: note frequency in Hz.
-  // - `fButton0`: note gain (velocity).
-  // - `fHslider4`: note gate.
+  // - `fHslider193: note frequency in Hz.
+  // - `fButton0: note gain (velocity).
+  // - `fHslider4: note gate.
+  // - `fVslider1: aftertouch. [0, 127].
+  // - `fVslider2: CC1 (0x01). [0, 127].
+  // - `fVslider3: pitch bend. [-8192, 8191].
   if (!noteStack.empty()) {
     synth.fHslider193 = noteStack.back().frequency;
     synth.fHslider4 = noteStack.back().velocity;
     synth.fButton0 = 1.0f;
+    synth.fVslider1 = pv[ID::aftertouch]->getFloat();
+    synth.fVslider2 = pv[ID::modulationWheel]->getFloat();
+    synth.fVslider3 = pv[ID::pitchBend]->getFloat();
   } else {
     synth.fHslider193 = 0;
     synth.fHslider4 = 0;
     synth.fButton0 = 0;
+    synth.fVslider1 = 0;
+    synth.fVslider2 = 0;
+    synth.fVslider3 = 0;
   }
 
   synth.control(&synth.ictrl[0], &synth.rctrl[0]);

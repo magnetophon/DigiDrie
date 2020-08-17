@@ -24,3 +24,7 @@ Generated files are placed in `generated` directory.
 - Check all parameters are exposed.
 - Change small knob style.
 - The names of the category (filter,A,B,C,D) to the left of the knobs instead of above the knobs.
+- Test MIDI
+  - note-on with velocity 0 as note-off.
+  - Aftertouch.
+  - Modulation wheel.

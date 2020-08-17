@@ -2691,22 +2691,59 @@ public:
     const auto global_top1 = global_top0 + labelY;
     const auto global_top2 = global_top1 + knobY;
     const auto global_left1 = globaltabInsideLeft0 + 2 * knobX;
+    ////tabviewGlobal->addWidget(globaltabIndex::global,
+    //  addKnob(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1,
+    //    knobWidth, margin, uiTextSize,
+    //    "positivebendrange", ID::{'address': 'global0x00Positivebendrange', 'scale': 'positivebendrange'}));
+    ////tabviewGlobal->addWidget(globaltabIndex::global,
+    //  addKnob(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1,
+    //    knobWidth, margin, uiTextSize,
+    //    "negativebendrange", ID::{'address': 'global0x00Negativebendrange', 'scale': 'negativebendrange'}));
+    ////tabviewGlobal->addWidget(globaltabIndex::global,
+    //  addKnob(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1,
+    //    knobWidth, margin, uiTextSize,
+    //    "masterphase", ID::{'address': 'globalMasterphase', 'scale': 'masterphase'}));
+    ////tabviewGlobal->addWidget(globaltabIndex::global,
+    //  addKnob(globaltabInsideLeft0 + 3 * 2 * knobX, global_top1,
+    //    knobWidth, margin, uiTextSize,
+    //    "portamento", ID::{'address': 'globalPortamento', 'scale': 'portamento'}));
+    //
     tabviewGlobal->addWidget(globaltabIndex::global,
-      addKnob(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1,
-        knobWidth, margin, uiTextSize,
-        "positivebendrange", ID::global0x00Positivebendrange));
+      addLabel(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1,
+        knobX, labelHeight, uiTextSize,
+        "positivebendrange"));
     tabviewGlobal->addWidget(globaltabIndex::global,
-      addKnob(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1,
-        knobWidth, margin, uiTextSize,
-        "negativebendrange", ID::global0x00Negativebendrange));
+      addTextKnob(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1 + labelY,
+        knobWidth, labelHeight, uiTextSize,
+        ID::global0x00Positivebendrange,
+        Scales::positivebendrange, false, 3));
     tabviewGlobal->addWidget(globaltabIndex::global,
-      addKnob(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1,
-        knobWidth, margin, uiTextSize,
-        "masterphase", ID::globalMasterphase));
+      addLabel(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1,
+        knobX, labelHeight, uiTextSize,
+        "negativebendrange"));
     tabviewGlobal->addWidget(globaltabIndex::global,
-      addKnob(globaltabInsideLeft0 + 3 * 2 * knobX, global_top1,
-        knobWidth, margin, uiTextSize,
-        "portamento", ID::globalPortamento));
+      addTextKnob(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1 + labelY,
+        knobWidth, labelHeight, uiTextSize,
+        ID::global0x00Negativebendrange,
+        Scales::negativebendrange, false, 3));
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addLabel(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1,
+        knobX, labelHeight, uiTextSize,
+        "masterphase"));
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addTextKnob(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1 + labelY,
+        knobWidth, labelHeight, uiTextSize,
+        ID::globalMasterphase,
+        Scales::masterphase, false, 3));
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addLabel(globaltabInsideLeft0 + 3 * 2 * knobX, global_top1,
+        knobX, labelHeight, uiTextSize,
+        "portamento"));
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addTextKnob(globaltabInsideLeft0 + 3 * 2 * knobX, global_top1 + labelY,
+        knobWidth, labelHeight, uiTextSize,
+        ID::globalPortamento,
+        Scales::portamento, false, 3));
     
     std::vector<std::string> portaoff_auto_on_options = {
       "off",
@@ -2898,7 +2935,7 @@ public:
         "lfofreq", ID::lfosLfo3Lfofreq));
     
     const auto modulationTop0 = globaltabInsideTop0;
-    const auto modulationTop1 = globaltabInsideTop0 + 2 * knobY;
+    const auto modulationTop1 = globaltabInsideTop0 + knobY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addKnob(globaltabInsideLeft0 + 0 * knobX, modulationTop0,
         knobWidth, margin, uiTextSize,
@@ -2912,7 +2949,7 @@ public:
         knobWidth, margin, uiTextSize,
         "Axis 3", ID::modulation3Macro));
     
-    const auto mod1_top0 = modulationTop1 + 0 * sectionHeight;
+    const auto mod1_top0 = modulationTop1 + 0 * (sectionHeight + knobY);
     const auto mod1_top1 = mod1_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod1_top0, globaltabInnerWidth,
@@ -2958,31 +2995,31 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation1Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 10 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation1After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 11 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation1Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 12 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation1Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 13 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation1Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 14 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation1Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 15 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation1Random));
     
-    const auto mod2_top0 = modulationTop1 + 1 * sectionHeight;
+    const auto mod2_top0 = modulationTop1 + 1 * (sectionHeight + knobY);
     const auto mod2_top1 = mod2_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod2_top0, globaltabInnerWidth,
@@ -3028,31 +3065,31 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation2Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 10 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation2After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 11 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation2Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 12 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation2Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 13 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation2Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 14 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation2Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 15 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation2Random));
     
-    const auto mod3_top0 = modulationTop1 + 2 * sectionHeight;
+    const auto mod3_top0 = modulationTop1 + 2 * (sectionHeight + knobY);
     const auto mod3_top1 = mod3_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod3_top0, globaltabInnerWidth,
@@ -3098,27 +3135,27 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation3Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 10 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation3After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 11 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation3Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 12 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation3Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 13 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation3Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 14 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation3Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 15 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation3Random));
     

@@ -175,11 +175,22 @@ public:
     const auto global_top1 = global_top0 + labelY;
     const auto global_top2 = global_top1 + knobY;
     const auto global_left1 = globaltabInsideLeft0 + 2 * knobX;
-    {% for ctrl, addr in global_items.items() -%}
+    //{% for ctrl, addr in global_items.items() -%}
+    //tabviewGlobal->addWidget(globaltabIndex::global,
+    //  addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * 2 * knobX, global_top1,
+    //    knobWidth, margin, uiTextSize,
+    //    "{{ ctrl }}", ID::{{ addr }}));
+    //{% endfor %}
+    {% for ctrl, item in global_items.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::global,
-      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * 2 * knobX, global_top1,
-        knobWidth, margin, uiTextSize,
-        "{{ ctrl }}", ID::{{ addr }}));
+      addLabel(globaltabInsideLeft0 + {{ loop.index0 }} * 2 * knobX, global_top1,
+        knobX, labelHeight, uiTextSize,
+        "{{ ctrl }}"));
+    tabviewGlobal->addWidget(globaltabIndex::global,
+      addTextKnob(globaltabInsideLeft0 + {{ loop.index0 }} * 2 * knobX, global_top1 + labelY,
+        knobWidth, labelHeight, uiTextSize,
+        ID::{{ item["address"] }},
+        Scales::{{ item["scale"] }}, false, 3));
     {% endfor %}
     {% for label, ctrl in global_menus.items() -%}
     std::vector<std::string> {{ label }}_options = {
@@ -233,7 +244,7 @@ public:
 
     {# Modulation tab. -#}
     const auto modulationTop0 = globaltabInsideTop0;
-    const auto modulationTop1 = globaltabInsideTop0 + 2 * knobY;
+    const auto modulationTop1 = globaltabInsideTop0 + knobY;
     {% for ctrl, addr in modulation_axes.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, modulationTop0,
@@ -241,14 +252,14 @@ public:
         "Axis {{ ctrl }}", ID::{{ addr }}));
     {% endfor %}
     {% for sctn, controls in modulation_items.items() -%}
-    const auto mod{{ sctn }}_top0 = modulationTop1 + {{ loop.index0 }} * sectionHeight;
+    const auto mod{{ sctn }}_top0 = modulationTop1 + {{ loop.index0 }} * (sectionHeight + knobY);
     const auto mod{{ sctn }}_top1 = mod{{ sctn }}_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod{{ sctn }}_top0, globaltabInnerWidth,
         labelHeight, midTextSize, "{{ sctn.capitalize() }}"));
     {% for ctrl, addr in controls.items() -%}
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + {{ loop.index0 }} * knobX, mod{{ sctn }}_top1,
+      addKnob(globaltabInsideLeft0 + {% if loop.index0 < 10 %}{{ loop.index0 }}{% else %}{{ loop.index0 - 10 }}{% endif %} * knobX, mod{{ sctn }}_top1{% if loop.index0 >= 10 %} + knobY{% endif %},
         knobWidth, margin, uiTextSize,
         "{{ ctrl }}", ID::{{ addr }}));
     {% endfor %}

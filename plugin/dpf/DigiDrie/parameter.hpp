@@ -22,7 +22,9 @@ static const uint32_t kParameterIsLogarithmic = 0x08;
 namespace ParameterID {
 enum ID {
   bypass,
+  aftertouch,
   pitchBend,
+  modulationWheel,
 
   global0x00Freefloatosc,
   global0x00Positivebendrange,
@@ -681,7 +683,9 @@ enum ID {
 
 struct Scales {
   static SomeDSP::IntScale<double> boolScale;
-  static SomeDSP::LinearScale<double> defaultScale;
+  static SomeDSP::LinearScale<double> aftertouch;
+  static SomeDSP::LinearScale<double> pitchBend;
+  static SomeDSP::LinearScale<double> modulationWheel;
 
   static SomeDSP::IntScale<double> freefloatosc;
   static SomeDSP::IntScale<double> positivebendrange;
@@ -736,27 +740,35 @@ struct GlobalParameter : public ParameterInterface {
     // using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
 
     value[ID::bypass] = std::make_unique<IntValue>(
-      0, Scales::boolScale, "bypass", kParameterIsAutomable | kParameterIsBoolean);
+      0, Scales::boolScale, "bypass",
+      kParameterIsAutomable | kParameterIsBoolean);
+    value[ID::aftertouch] = std::make_unique<LinearValue>(
+      Scales::aftertouch.invmap(0), Scales::aftertouch, "aftertouch",
+      kParameterIsAutomable);
     value[ID::pitchBend] = std::make_unique<LinearValue>(
-      0.5, Scales::defaultScale, "pitchBend", kParameterIsAutomable);
+      0, Scales::pitchBend, "pitchBend",
+      kParameterIsAutomable);
+    value[ID::modulationWheel] = std::make_unique<LinearValue>(
+      Scales::modulationWheel.invmap(0), Scales::modulationWheel, "modulationWheel",
+      kParameterIsAutomable);
 
     value[ID::global0x00Freefloatosc] = std::make_unique<IntValue>(
-      Scales::freefloatosc.invmap(0.0f),
+      0.0f,
       Scales::freefloatosc,
       "global0x00Freefloatosc",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Positivebendrange] = std::make_unique<IntValue>(
-      Scales::positivebendrange.invmap(12.0f),
+      12.0f,
       Scales::positivebendrange,
       "global0x00Positivebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Negativebendrange] = std::make_unique<IntValue>(
-      Scales::negativebendrange.invmap(-12.0f),
+      -12.0f,
       Scales::negativebendrange,
       "global0x00Negativebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::global0x00Portaoff_auto_on] = std::make_unique<IntValue>(
-      Scales::portaoff_auto_on.invmap(1.0f),
+      1.0f,
       Scales::portaoff_auto_on,
       "global0x00Portaoff_auto_on",
       0 | kParameterIsAutomable | kParameterIsInteger);
@@ -1891,7 +1903,7 @@ struct GlobalParameter : public ParameterInterface {
       "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::aType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2.0f),
+      2.0f,
       Scales::type,
       "aType",
       0 | kParameterIsAutomable | kParameterIsInteger);
@@ -2456,7 +2468,7 @@ struct GlobalParameter : public ParameterInterface {
       "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::bType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2.0f),
+      2.0f,
       Scales::type,
       "bType",
       0 | kParameterIsAutomable | kParameterIsInteger);
@@ -3021,7 +3033,7 @@ struct GlobalParameter : public ParameterInterface {
       "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::cType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2.0f),
+      2.0f,
       Scales::type,
       "cType",
       0 | kParameterIsAutomable | kParameterIsInteger);
@@ -3586,7 +3598,7 @@ struct GlobalParameter : public ParameterInterface {
       "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
       0 | kParameterIsAutomable | kParameterIsLogarithmic);
     value[ID::dType] = std::make_unique<IntValue>(
-      Scales::type.invmap(2.0f),
+      2.0f,
       Scales::type,
       "dType",
       0 | kParameterIsAutomable | kParameterIsInteger);

@@ -8,11 +8,11 @@ active and passive are Element object from `xml.etree.ElementTree`.
 For debugging xml, use following code to write data to file.
 
 ```
-# tree = ET.ElementTree(active)
-# tree.write("active.xml")
+tree = ET.ElementTree(active)
+tree.write("active.xml")
 ```
 
-For debugging dict and list that are passed to template,
+Fordebugging dict and list that are passed to template,
 use following code to write data to json.
 
 ```
@@ -167,12 +167,7 @@ def generate_dspcore_cpp(active, passive, midi_widgets):
     midi = {}
     for elem in midi_widgets.iter("widget"):
         addr = eval(elem.find("address").text)
-        if "freq" in addr:
-            midi["freq"] = {"varname": elem.find("varname").text}
-        if "gain" in addr:
-            midi["gain"] = {"varname": elem.find("varname").text}
-        if "gate" in addr:
-            midi["gate"] = {"varname": elem.find("varname").text}
+        midi[addr[2]] = {"varname": elem.find("varname").text}
 
     jinja_env = Environment(loader=FileSystemLoader("."))
     template = jinja_env.get_template("template/dspcore.cpp.template")
@@ -455,7 +450,10 @@ def get_global_items(widgets, nrMacro):
         if elem.attrib["type"] == "checkbox":
             global_checkboxes[addr[-1]] = elem.find("cppident").text
         else:
-            global_items[addr[-1]] = elem.find("cppident").text
+            global_items[addr[-1]] = {
+                "address": elem.find("cppident").text,
+                "scale": elem.find("scale").text
+            }
 
     return global_items, global_menus, global_checkboxes, crossfade_items
 

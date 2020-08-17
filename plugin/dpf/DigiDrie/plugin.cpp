@@ -108,24 +108,59 @@ protected:
   void activate() { dsp->startup(); }
   void deactivate() { dsp->reset(); }
 
-  void handleMidi(const MidiEvent ev)
+  void handleControlChange(
+    const MidiEvent &ev,
+    const MidiEvent *midiEvents,
+    uint32_t &midiIndex,
+    uint32_t midiEventCount)
+  {
+    switch (ev.data[1]) {
+      // Modulation wheel or lever.
+      case 0x01: {
+        // Check if LSB is available. Only considering consecutive case.
+        if (midiIndex >= midiEventCount - 1) break;
+
+        auto &next = midiEvents[midiIndex + 1].data;
+        if (next[0] == 0xB0 && next[1] == 0x33) { // LSB is available.
+          dsp->param.value[ParameterID::modulationWheel]->setFromFloat(
+            ((uint16_t(ev.data[2]) << 7) + ev.data[1]) / 16383.0f);
+          ++midiIndex;
+        } else { // LSB is not available.
+          dsp->param.value[ParameterID::modulationWheel]->setFromInt(ev.data[2]);
+        }
+      } break;
+    }
+  }
+
+  void handleNoteOff(const MidiEvent &ev)
+  {
+    auto it = std::find_if(
+      lastNoteId.begin(), lastNoteId.end(),
+      [&](const std::pair<uint8_t, uint32_t> &p) { return p.first == ev.data[1]; });
+    if (it == std::end(lastNoteId)) return;
+    dsp->pushMidiNote(false, ev.frame, it->second, 0, 0, 0);
+    lastNoteId.erase(it);
+  }
+
+  void handleMidi(
+    const MidiEvent &ev,
+    const MidiEvent *midiEvents,
+    uint32_t &midiIndex,
+    uint32_t midiEventCount)
   {
     if (ev.size != 3) return;
 
     switch (ev.data[0] & 0xf0) {
       // Note off.
       case 0x80: {
-        auto it = std::find_if(
-          lastNoteId.begin(), lastNoteId.end(),
-          [&](const std::pair<uint8_t, uint32_t> &p) { return p.first == ev.data[1]; });
-        if (it == std::end(lastNoteId)) break;
-        dsp->pushMidiNote(false, ev.frame, it->second, 0, 0, 0);
-        lastNoteId.erase(it);
+        handleNoteOff(ev);
       } break;
 
       // Note on. data[1]: note number, data[2] velocity.
-      case 0x90:
-        if (ev.data[2] > 0) {
+      case 0x90: {
+        if (ev.data[2] == 0) { // velocity 0 means note off.
+          handleNoteOff(ev);
+        } else {
           auto it = std::find_if(
             alreadyRecievedNote.begin(), alreadyRecievedNote.end(),
             [&](const uint8_t &noteNo) { return noteNo == ev.data[1]; });
@@ -136,13 +171,28 @@ protected:
           alreadyRecievedNote.push_back(ev.data[1]);
           noteId += 1;
         }
-        break;
+      } break;
+
+      // Polyphonic Key Pressure (Aftertouch).
+      case 0xA0: {
+        dsp->param.value[ParameterID::pitchBend]->setFromInt(ev.data[2]);
+      } break;
+
+      // Control Change.
+      case 0xB0: {
+        handleControlChange(ev, midiEvents, midiIndex, midiEventCount);
+      } break;
+
+      // Channel Pressure (Aftertouch).
+      case 0xD0: {
+        dsp->param.value[ParameterID::pitchBend]->setFromInt(ev.data[1]);
+      } break;
 
       // Pitch bend. Center is 8192 (0x2000).
-      case 0xe0:
-        // dsp->param.value[ParameterID::pitchBend]->setFromFloat(
-        //   ((uint16_t(ev.data[2]) << 7) + ev.data[1]) / 16384.0f);
-        break;
+      case 0xE0: {
+        dsp->param.value[ParameterID::pitchBend]->setFromInt(
+          ((int32_t(ev.data[2]) << 7) + ev.data[1]) - 8192);
+      } break;
 
       default:
         break;
@@ -163,7 +213,8 @@ protected:
     if (!wasPlaying && timePos.playing) dsp->startup();
     wasPlaying = timePos.playing;
 
-    for (size_t i = 0; i < midiEventCount; ++i) handleMidi(midiEvents[i]);
+    for (uint32_t i = 0; i < midiEventCount; ++i)
+      handleMidi(midiEvents[i], midiEvents, i, midiEventCount);
     alreadyRecievedNote.resize(0);
 
     dsp->setParameters(timePos.bbt.beatsPerMinute);

@@ -3,6 +3,8 @@ data/DigiFaustMidi.dsp.json
 data/DigiFaustMidi.cpp
 data/DigiFaustMidi.hpp
 data/generated
+data/active.xml
+data/passive.xml
 
 dpf/bin
 dpf/build

@@ -5,8 +5,10 @@
 
 using namespace SomeDSP;
 
-IntScale<double> Scales::boolScale(1);
-LinearScale<double> Scales::defaultScale(0.0, 1.0);
+IntScale<double> Scales::boolScale(0, 1);
+LinearScale<double> Scales::aftertouch(0.0, 127.0);
+LinearScale<double> Scales::pitchBend(-8192.0, 8191.0);
+LinearScale<double> Scales::modulationWheel(0.0, 127.0);
 
 {% for scl in scales %}
   {%- if scl.type == "Linear" %}
@@ -14,7 +16,7 @@ LinearScale<double> Scales::defaultScale(0.0, 1.0);
   {%- elif scl.type == "Log" %}
     {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }}, 0.5, {{ (scl.min + scl.max) / 2 }});
   {%- elif scl.type == "Int" %}
-    {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.max }});
+    {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }});
   {%- else %}
     {#- #}// Invalid scale type in {{ scl.label }}
   {%- endif %}

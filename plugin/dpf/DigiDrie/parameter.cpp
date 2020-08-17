@@ -5,13 +5,15 @@
 
 using namespace SomeDSP;
 
-IntScale<double> Scales::boolScale(1);
-LinearScale<double> Scales::defaultScale(0.0, 1.0);
+IntScale<double> Scales::boolScale(0, 1);
+LinearScale<double> Scales::aftertouch(0.0, 127.0);
+LinearScale<double> Scales::pitchBend(-8192.0, 8191.0);
+LinearScale<double> Scales::modulationWheel(0.0, 127.0);
 
-IntScale<double> Scales::freefloatosc(1);
-IntScale<double> Scales::positivebendrange(127.0);
-IntScale<double> Scales::negativebendrange(0.0);
-IntScale<double> Scales::portaoff_auto_on(2.0);
+IntScale<double> Scales::freefloatosc(0, 1);
+IntScale<double> Scales::positivebendrange(0.0, 127.0);
+IntScale<double> Scales::negativebendrange(-127.0, 0.0);
+IntScale<double> Scales::portaoff_auto_on(0.0, 2.0);
 LinearScale<double> Scales::masterphase(-1.0, 1.0);
 LogScale<double> Scales::portamento(0.0, 1.0, 0.5, 0.5);
 LinearScale<double> Scales::ab_cd(0.0, 1.0);
@@ -26,7 +28,7 @@ LogScale<double> Scales::pma(-20.0, 20.0, 0.5, 0.0);
 LogScale<double> Scales::pmb(-20.0, 20.0, 0.5, 0.0);
 LogScale<double> Scales::pmc(-20.0, 20.0, 0.5, 0.0);
 LogScale<double> Scales::pmd(-20.0, 20.0, 0.5, 0.0);
-IntScale<double> Scales::type(8.0);
+IntScale<double> Scales::type(0.0, 8.0);
 LogScale<double> Scales::attack(0.0, 20.0, 0.5, 10.0);
 LogScale<double> Scales::decay(0.0, 20.0, 0.5, 10.0);
 LinearScale<double> Scales::sustain(0.0, 1.0);
