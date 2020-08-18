@@ -166,9 +166,9 @@ velocity(i) = VEL(i:max(-1):int) with {
 };
 
 // afterTouch(note) = midiGroup(hslider("Channel Aftertouch [midi:chanpress %note]", 0, 0, 127, 1) )/127;
-afterTouch = midiGroup(vslider("Channel Aftertouch [midi:chanpress 12][scale:int]", 0, 0, 127, 1) )/127;
-modWheel   = midiGroup(vslider("Mod Wheel [midi:ctrl 1][scale:int]", 0, 0, 127, 1) )/127;
-pitchWheel = midiGroup(vslider("Pitchwheel Value IN  [midi:pitchwheel][scale:int]", 0, -8192, 8191, 1))/8192;
+afterTouch = midiGroup(vslider("Channel Aftertouch[midi:chanpress 12]", 0, 0, 127, 1) )/127;
+modWheel   = midiGroup(vslider("Mod Wheel[midi:ctrl 1]", 0, 0, 127, 1) )/127;
+pitchWheel = midiGroup(vslider("Pitchwheel[midi:pitchwheel]", 0, -8192, 8191, 1))/8192;
 
 
 // pre-filter /////////////////////////////////////////////////////////////////
