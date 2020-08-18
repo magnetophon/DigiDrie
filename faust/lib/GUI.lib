@@ -37,7 +37,7 @@ macroGroup(i,x)       = tabs(vgroup("[302]modulation", hgroup("%i", x)));
 
 midiGroup(x)          = tabs(hgroup("[999]midi", x));
 
-switchesGroup(x) = globalGroup(vgroup("[0]", x));
+switchesGroup(x) = globalGroup(vgroup("[0]switches", x));
 
 mainGroup(x)          = stereoGroup(vgroup("[0]main", x));
 offsetGroup(x)        = stereoGroup(vgroup("[1]L-R offset", x));
