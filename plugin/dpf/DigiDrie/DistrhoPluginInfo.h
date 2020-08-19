@@ -8,9 +8,9 @@ TODO:
 #ifndef DISTRHO_PLUGIN_INFO_H_INCLUDED
 #define DISTRHO_PLUGIN_INFO_H_INCLUDED
 
-#define DISTRHO_PLUGIN_BRAND "Uhhyou"
+#define DISTRHO_PLUGIN_BRAND "Digital Magic Industries"
 #define DISTRHO_PLUGIN_NAME "DigiDrie"
-#define DISTRHO_PLUGIN_URI "https://github.com/ryukau/LV2Plugins/tree/master/DigiDrie"
+#define DISTRHO_PLUGIN_URI "https://github.com/magnetophon/DigiDrie"
 
 #define DISTRHO_PLUGIN_HAS_UI 1
 #define DISTRHO_PLUGIN_IS_RT_SAFE 1

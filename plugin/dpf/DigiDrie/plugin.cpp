@@ -53,7 +53,7 @@ protected:
   {
     return "A monster monophonic synth, written in faust.";
   }
-  const char *getMaker() const override { return "DigiDrie Team"; }
+  const char *getMaker() const override { return "Digital Magic Industries"; }
   const char *getHomePage() const override
   {
     return "https://github.com/magnetophon/DigiDrie";
