@@ -25,6 +25,7 @@ constexpr float knobHeight = 40.0f;
 constexpr float spreadKnobWidth = 20.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
+constexpr float xyPadSize = 128.0f;
 
 constexpr float sectionHeight = labelY + knobY;
 constexpr float knobPairWidth = knobX + spreadKnobWidth;
@@ -54,12 +55,150 @@ enum globaltabIndex {
 
 class DigiDrieUI : public PluginUIBase {
 protected:
+  std::shared_ptr<XYPad> xypad_macro1_abcd;
+  std::shared_ptr<ValueWidget> widget_macro1_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro1_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro2_abcd;
+  std::shared_ptr<ValueWidget> widget_macro2_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro2_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro3_abcd;
+  std::shared_ptr<ValueWidget> widget_macro3_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro3_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro4_abcd;
+  std::shared_ptr<ValueWidget> widget_macro4_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro4_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro5_abcd;
+  std::shared_ptr<ValueWidget> widget_macro5_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro5_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro6_abcd;
+  std::shared_ptr<ValueWidget> widget_macro6_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro6_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro7_abcd;
+  std::shared_ptr<ValueWidget> widget_macro7_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro7_ac_bd;
+  
+  std::shared_ptr<XYPad> xypad_macro8_abcd;
+  std::shared_ptr<ValueWidget> widget_macro8_ab_cd;
+  std::shared_ptr<ValueWidget> widget_macro8_ac_bd;
+  
+  
+
   void onNanoDisplay() override
   {
     beginPath();
     rect(0, 0, getWidth(), getHeight());
     fillColor(palette.background());
     fill();
+  }
+
+  void parameterChanged(uint32_t index, float value) override
+  {
+    PluginUIBase::parameterChanged(index, value);
+  }
+
+  bool syncUI(uint32_t id, float normalized) {
+    using ID = ParameterID::ID;
+
+    switch (id) {
+      case ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd:
+        xypad_macro1_abcd->setValueAt(0, normalized);
+        widget_macro1_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd:
+        xypad_macro1_abcd->setValueAt(1, normalized);
+        widget_macro1_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd:
+        xypad_macro2_abcd->setValueAt(0, normalized);
+        widget_macro2_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd:
+        xypad_macro2_abcd->setValueAt(1, normalized);
+        widget_macro2_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd:
+        xypad_macro3_abcd->setValueAt(0, normalized);
+        widget_macro3_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd:
+        xypad_macro3_abcd->setValueAt(1, normalized);
+        widget_macro3_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd:
+        xypad_macro4_abcd->setValueAt(0, normalized);
+        widget_macro4_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd:
+        xypad_macro4_abcd->setValueAt(1, normalized);
+        widget_macro4_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd:
+        xypad_macro5_abcd->setValueAt(0, normalized);
+        widget_macro5_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd:
+        xypad_macro5_abcd->setValueAt(1, normalized);
+        widget_macro5_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd:
+        xypad_macro6_abcd->setValueAt(0, normalized);
+        widget_macro6_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd:
+        xypad_macro6_abcd->setValueAt(1, normalized);
+        widget_macro6_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd:
+        xypad_macro7_abcd->setValueAt(0, normalized);
+        widget_macro7_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd:
+        xypad_macro7_abcd->setValueAt(1, normalized);
+        widget_macro7_ac_bd->setValue(normalized);
+        break;
+      
+      case ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd:
+        xypad_macro8_abcd->setValueAt(0, normalized);
+        widget_macro8_ab_cd->setValue(normalized);
+        break;
+      case ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd:
+        xypad_macro8_abcd->setValueAt(1, normalized);
+        widget_macro8_ac_bd->setValue(normalized);
+        break;
+      
+      
+
+      default:
+        return false;
+    }
+    repaint();
+    return true;
+  }
+
+  void updateUI(uint32_t id, float normalized) override
+  {
+    if (syncUI(id, normalized)) return;
+    PluginUIBase::updateUI(id, normalized);
+    return;
+  }
+
+  void updateValue(uint32_t id, float normalized) override
+  {
+    if (syncUI(id, normalized)) return;
+    PluginUIBase::updateValue(id, normalized);
+    return;
   }
 
   DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DigiDrieUI)
@@ -2467,142 +2606,224 @@ public:
         "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     
-    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight + labelY;
-    tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd));
+    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight;
+    const auto abcd_crossfade_top1 = abcd_crossfade_top0 + knobY;
+    const auto abcd_crossfade_left1 = macrotabInsideLeft0 + xyPadSize;
+    xypad_macro1_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro1, xypad_macro1_abcd);
+    auto tuple_macro1_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ab_cd_main);
+    widget_macro1_ab_cd = std::get<0>(tuple_macro1_ab_cd_main);
+    auto tuple_macro1_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ab_cd_l_roffset);
+    auto tuple_macro1_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ac_bd_main);
+    widget_macro1_ac_bd = std::get<0>(tuple_macro1_ac_bd_main);
+    auto tuple_macro1_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd));
+    xypad_macro2_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro2, xypad_macro2_abcd);
+    auto tuple_macro2_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ab_cd_main);
+    widget_macro2_ab_cd = std::get<0>(tuple_macro2_ab_cd_main);
+    auto tuple_macro2_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ab_cd_l_roffset);
+    auto tuple_macro2_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ac_bd_main);
+    widget_macro2_ac_bd = std::get<0>(tuple_macro2_ac_bd_main);
+    auto tuple_macro2_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd));
+    xypad_macro3_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro3, xypad_macro3_abcd);
+    auto tuple_macro3_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ab_cd_main);
+    widget_macro3_ab_cd = std::get<0>(tuple_macro3_ab_cd_main);
+    auto tuple_macro3_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ab_cd_l_roffset);
+    auto tuple_macro3_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ac_bd_main);
+    widget_macro3_ac_bd = std::get<0>(tuple_macro3_ac_bd_main);
+    auto tuple_macro3_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd));
+    xypad_macro4_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro4, xypad_macro4_abcd);
+    auto tuple_macro4_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ab_cd_main);
+    widget_macro4_ab_cd = std::get<0>(tuple_macro4_ab_cd_main);
+    auto tuple_macro4_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ab_cd_l_roffset);
+    auto tuple_macro4_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ac_bd_main);
+    widget_macro4_ac_bd = std::get<0>(tuple_macro4_ac_bd_main);
+    auto tuple_macro4_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd));
+    xypad_macro5_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro5, xypad_macro5_abcd);
+    auto tuple_macro5_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ab_cd_main);
+    widget_macro5_ab_cd = std::get<0>(tuple_macro5_ab_cd_main);
+    auto tuple_macro5_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ab_cd_l_roffset);
+    auto tuple_macro5_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ac_bd_main);
+    widget_macro5_ac_bd = std::get<0>(tuple_macro5_ac_bd_main);
+    auto tuple_macro5_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd));
+    xypad_macro6_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro6, xypad_macro6_abcd);
+    auto tuple_macro6_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ab_cd_main);
+    widget_macro6_ab_cd = std::get<0>(tuple_macro6_ab_cd_main);
+    auto tuple_macro6_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ab_cd_l_roffset);
+    auto tuple_macro6_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ac_bd_main);
+    widget_macro6_ac_bd = std::get<0>(tuple_macro6_ac_bd_main);
+    auto tuple_macro6_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd));
+    xypad_macro7_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro7, xypad_macro7_abcd);
+    auto tuple_macro7_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ab_cd_main);
+    widget_macro7_ab_cd = std::get<0>(tuple_macro7_ab_cd_main);
+    auto tuple_macro7_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ab_cd_l_roffset);
+    auto tuple_macro7_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ac_bd_main);
+    widget_macro7_ac_bd = std::get<0>(tuple_macro7_ac_bd_main);
+    auto tuple_macro7_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ac_bd_l_roffset);
     
-    tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd));
-    tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd));
-    tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd));
+    xypad_macro8_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro8, xypad_macro8_abcd);
+    auto tuple_macro8_ab_cd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top0,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ab_cd_main);
+    widget_macro8_ab_cd = std::get<0>(tuple_macro8_ab_cd_main);
+    auto tuple_macro8_ab_cd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd);
+    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ab_cd_l_roffset);
+    auto tuple_macro8_ac_bd_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ac_bd_main);
+    widget_macro8_ac_bd = std::get<0>(tuple_macro8_ac_bd_main);
+    auto tuple_macro8_ac_bd_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd);
+    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ac_bd_l_roffset);
     
     tabviewMacro->refreshTab();
 

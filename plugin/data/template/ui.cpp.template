@@ -25,6 +25,7 @@ constexpr float knobHeight = 40.0f;
 constexpr float spreadKnobWidth = 20.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
+constexpr float xyPadSize = 128.0f;
 
 constexpr float sectionHeight = labelY + knobY;
 constexpr float knobPairWidth = knobX + spreadKnobWidth;
@@ -49,12 +50,58 @@ enum globaltabIndex {
 
 class DigiDrieUI : public PluginUIBase {
 protected:
+  {% for macro, controls in crossfade_items.items() -%}
+  std::shared_ptr<XYPad> xypad_{{ macro }}_abcd;
+  {% for ctrl, addr in controls.items() -%}
+  std::shared_ptr<ValueWidget> widget_{{ macro }}_{{ ctrl }};
+  {% endfor %}
+  {% endfor %}
+
   void onNanoDisplay() override
   {
     beginPath();
     rect(0, 0, getWidth(), getHeight());
     fillColor(palette.background());
     fill();
+  }
+
+  void parameterChanged(uint32_t index, float value) override
+  {
+    PluginUIBase::parameterChanged(index, value);
+  }
+
+  bool syncUI(uint32_t id, float normalized) {
+    using ID = ParameterID::ID;
+
+    switch (id) {
+      {% for macro, controls in crossfade_items.items() -%}
+      {% for ctrl, addr in controls.items() -%}
+      case ID::{{ addr["main"] }}:
+        xypad_{{ macro }}_abcd->setValueAt({{ loop.index0 }}, normalized);
+        widget_{{ macro }}_{{ ctrl }}->setValue(normalized);
+        break;
+      {% endfor %}
+      {% endfor %}
+
+      default:
+        return false;
+    }
+    repaint();
+    return true;
+  }
+
+  void updateUI(uint32_t id, float normalized) override
+  {
+    if (syncUI(id, normalized)) return;
+    PluginUIBase::updateUI(id, normalized);
+    return;
+  }
+
+  void updateValue(uint32_t id, float normalized) override
+  {
+    if (syncUI(id, normalized)) return;
+    PluginUIBase::updateValue(id, normalized);
+    return;
   }
 
   DISTRHO_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DigiDrieUI)
@@ -125,17 +172,26 @@ public:
     {% endfor %}
     {% endfor -%}
 
-    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight + labelY;
+    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight;
+    const auto abcd_crossfade_top1 = abcd_crossfade_top0 + knobY;
+    const auto abcd_crossfade_left1 = macrotabInsideLeft0 + xyPadSize;
     {% for macro, controls in crossfade_items.items() -%}
+    xypad_{{ macro }}_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
+      xyPadSize, xyPadSize,
+      ID::{{ controls["ab_cd"]["main"] }}, ID::{{ controls["ac_bd"]["main"] }});
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }}, xypad_{{ macro }}_abcd);
     {% for ctrl, addr in controls.items() -%}
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, abcd_crossfade_top0,
-        knobWidth, margin, uiTextSize,
-        "{{ ctrl }}", ID::{{ addr["main"] }}));
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, abcd_crossfade_top0,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::{{ addr["l_roffset"] }}));
+    auto tuple_{{ macro }}_{{ ctrl }}_main = addKnob(
+      abcd_crossfade_left1, abcd_crossfade_top{{ loop.index0 }},
+      knobWidth, margin, uiTextSize,
+      "{{ ctrl }}", ID::{{ addr["main"] }});
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }}, tuple_{{ macro }}_{{ ctrl }}_main);
+    widget_{{ macro }}_{{ ctrl }} = std::get<0>(tuple_{{ macro }}_{{ ctrl }}_main);
+    auto tuple_{{ macro }}_{{ ctrl }}_l_roffset = addKnob(
+      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top{{ loop.index0 }},
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::{{ addr["l_roffset"] }});
+    tabviewMacro->addWidget(macrotabIndex::{{ macro }}, tuple_{{ macro }}_{{ ctrl }}_l_roffset);
     {% endfor %}
     {% endfor -%}
 
