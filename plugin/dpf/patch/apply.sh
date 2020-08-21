@@ -24,3 +24,8 @@ patch --forward --reject-file=- \
   ../lib/DPF/dgl/src/NanoVG.cpp \
   NanoVG.cpp.patch\
   || true
+
+patch --forward --reject-file=- \
+  ../lib/DPF/dgl/Widget.hpp \
+  Widget.hpp.patch\
+  || true

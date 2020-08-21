@@ -34,6 +34,7 @@
 #include "gui/tabview.hpp"
 #include "gui/textview.hpp"
 #include "gui/vslider.hpp"
+#include "gui/xypad.hpp"
 
 #include <memory>
 #include <tuple>
@@ -55,12 +56,12 @@ protected:
   std::unordered_map<int, std::shared_ptr<ArrayWidget>> arrayWidget;
   std::unordered_map<std::string, std::shared_ptr<StateWidget>> stateWidget;
 
-  void parameterChanged(uint32_t index, float value) override
+  virtual void parameterChanged(uint32_t index, float value) override
   {
     updateUI(index, param->parameterChanged(index, value));
   }
 
-  void updateUI(uint32_t id, float normalized)
+  virtual void updateUI(uint32_t id, float normalized)
   {
     auto vWidget = valueWidget.find(id);
     if (vWidget != valueWidget.end()) {
@@ -77,7 +78,7 @@ protected:
     }
   }
 
-  void updateValue(uint32_t id, float normalized) override
+  virtual void updateValue(uint32_t id, float normalized) override
   {
     if (id >= param->idLength()) return;
     setParameterValue(id, param->updateValue(id, normalized));
@@ -144,6 +145,23 @@ protected:
     for (size_t i = 0; i < value.size(); ++i)
       arrayWidget.emplace(std::make_pair(id0 + i, barBox));
     return barBox;
+  }
+
+  auto
+  addXYPad(float left, float top, float width, float height, uint32_t id0, uint32_t id1)
+  {
+    std::vector<uint32_t> id{id0, id1};
+    std::vector<double> value(id.size());
+    for (size_t i = 0; i < value.size(); ++i)
+      value[i] = param->getDefaultNormalized(id[i]);
+    std::vector<double> defaultValue(value);
+
+    auto xyPad = std::make_shared<XYPad>(this, this, id, value, defaultValue, palette);
+    xyPad->setSize(width, height);
+    xyPad->setAbsolutePos(left, top);
+
+    for (const auto &ident : id) arrayWidget.emplace(std::make_pair(ident, xyPad));
+    return xyPad;
   }
 
   template<typename Parent>
@@ -307,6 +325,23 @@ protected:
     auto label = addKnobLabel(
       left, top, width, height, labelMargin, textSize, name, labelPosition);
     return std::make_tuple(knob, label);
+  }
+
+  template<Style style = Style::common>
+  auto addSmallKnob(float left, float top, float width, float margin, uint32_t id)
+  {
+    auto height = width - 2.0f * margin;
+
+    auto knob = std::make_shared<SmallKnob<style>>(this, this, palette);
+    knob->id = id;
+    knob->setSize(width - 2.0f * margin, height);
+    knob->setAbsolutePos(left + margin, top + margin);
+    auto defaultValue = param->getDefaultNormalized(id);
+    knob->setDefaultValue(defaultValue);
+    knob->setValue(defaultValue);
+    valueWidget.emplace(std::make_pair(id, knob));
+
+    return knob;
   }
 
   template<Style style = Style::common, typename Scale>

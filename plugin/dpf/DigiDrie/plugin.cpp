@@ -123,7 +123,7 @@ protected:
         auto &next = midiEvents[midiIndex + 1].data;
         if (next[0] == 0xB0 && next[1] == 0x33) { // LSB is available.
           dsp->param.value[ParameterID::modulationWheel]->setFromFloat(
-            ((uint16_t(ev.data[2]) << 7) + ev.data[1]) / 16383.0f);
+            ((uint16_t(ev.data[2]) << 7) + ev.data[1]) / 129.0f);
           ++midiIndex;
         } else { // LSB is not available.
           dsp->param.value[ParameterID::modulationWheel]->setFromInt(ev.data[2]);

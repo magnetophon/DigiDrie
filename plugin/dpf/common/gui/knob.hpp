@@ -174,6 +174,60 @@ public:
   }
 };
 
+template<Style style = Style::common> class SmallKnob : public KnobBase {
+public:
+  explicit SmallKnob(NanoWidget *group, PluginUI *ui, Palette &palette)
+    : KnobBase(group, ui, palette)
+  {
+  }
+
+  void onNanoDisplay() override
+  {
+    resetTransform();
+    translate(getAbsoluteX(), getAbsoluteY());
+
+    const auto width = getWidth();
+    const auto height = getHeight();
+    const auto centerX = width / 2;
+    const auto centerY = height / 2;
+
+    // Arc.
+    if constexpr (style == Style::accent) {
+      strokeColor(isMouseEntered ? pal.highlightAccent() : pal.unfocused());
+    } else if (style == Style::warning) {
+      strokeColor(isMouseEntered ? pal.highlightWarning() : pal.unfocused());
+    } else {
+      strokeColor(isMouseEntered ? pal.highlightMain() : pal.unfocused());
+    }
+    lineCap(ROUND);
+    lineJoin(ROUND);
+    strokeWidth(3.0f);
+    const auto radius = (centerX > centerY ? centerY : centerX) - halfArcWidth;
+    beginPath();
+    arc(
+      centerX, centerY, radius, float(SomeDSP::pi) / 2.0f - arcNotchHalf,
+      float(SomeDSP::pi) / 2.0f + arcNotchHalf, CCW);
+    stroke();
+
+    // Tick for default value. Sharing color and style with Arc.
+    strokeWidth(halfArcWidth / 2.0f);
+    beginPath();
+    auto point = mapValueToArc(defaultValue, -radius * defaultTickLength);
+    moveTo(point.getX() + centerX, point.getY() + centerY);
+    point = mapValueToArc(defaultValue, -radius);
+    lineTo(point.getX() + centerX, point.getY() + centerY);
+    stroke();
+
+    // Line from center to tip.
+    strokeColor(pal.foreground());
+    beginPath();
+    moveTo(centerX, centerY);
+    const auto tip = mapValueToArc(value, -radius);
+    lineTo(tip.getX() + centerX, tip.getY() + centerY);
+    stroke();
+  }
+};
+
 template<typename Scale, Style style = Style::common> class TextKnob : public KnobBase {
 public:
   int32_t offset = 0;

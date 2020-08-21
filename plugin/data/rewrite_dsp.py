@@ -310,7 +310,7 @@ def get_osc_items(widgets, nrMacro):
     macro_labels = [f"macro{idx + 1}" for idx in range(nrMacro)]
     section_labels = ["filter", "a", "b", "c", "d"]
     offset_labels = ["main", "l_roffset"]
-    idents_filt = ["svf", "ms20", "oberheim", "normfreq", "q"]
+    idents_filt = ["normfreq", "q", "svf", "ms20", "oberheim"]
     idents_osc = ["index", "octave", "phase", "pma", "pmb", "pmc", "pmd"]
 
     osc_items = {}
