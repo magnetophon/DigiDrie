@@ -26,10 +26,10 @@ enum ID {
   pitchBend,
   modulationWheel,
 
-  global0x00Freefloatosc,
-  global0x00Positivebendrange,
-  global0x00Negativebendrange,
-  global0x00Portaoff_auto_on,
+  globalSwitchesFreefloatosc,
+  globalSwitchesPositivebendrange,
+  globalSwitchesNegativebendrange,
+  globalSwitchesPortaoff_auto_on,
   globalMasterphase,
   globalPortamento,
   globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd,
@@ -701,10 +701,10 @@ struct Scales {
   static SomeDSP::LinearScale<double> index;
   static SomeDSP::LinearScale<double> octave;
   static SomeDSP::LinearScale<double> phase;
-  static SomeDSP::LogScale<double> pma;
-  static SomeDSP::LogScale<double> pmb;
-  static SomeDSP::LogScale<double> pmc;
-  static SomeDSP::LogScale<double> pmd;
+  static SomeDSP::SPolyScale<double> pma;
+  static SomeDSP::SPolyScale<double> pmb;
+  static SomeDSP::SPolyScale<double> pmc;
+  static SomeDSP::SPolyScale<double> pmd;
   static SomeDSP::IntScale<double> type;
   static SomeDSP::LogScale<double> attack;
   static SomeDSP::LogScale<double> decay;
@@ -736,7 +736,7 @@ struct GlobalParameter : public ParameterInterface {
     using ID = ParameterID::ID;
     using LinearValue = FloatValue<SomeDSP::LinearScale<double>>;
     using LogValue = FloatValue<SomeDSP::LogScale<double>>;
-    // using SPolyValue = FloatValue<SomeDSP::SPolyScale<double>>;
+    using SPolyValue = FloatValue<SomeDSP::SPolyScale<double>>;
     // using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
 
     value[ID::bypass] = std::make_unique<IntValue>(
@@ -752,25 +752,25 @@ struct GlobalParameter : public ParameterInterface {
       Scales::modulationWheel.invmap(0), Scales::modulationWheel, "modulationWheel",
       kParameterIsAutomable);
 
-    value[ID::global0x00Freefloatosc] = std::make_unique<IntValue>(
+    value[ID::globalSwitchesFreefloatosc] = std::make_unique<IntValue>(
       0.0f,
       Scales::freefloatosc,
-      "global0x00Freefloatosc",
+      "globalSwitchesFreefloatosc",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::global0x00Positivebendrange] = std::make_unique<IntValue>(
+    value[ID::globalSwitchesPositivebendrange] = std::make_unique<IntValue>(
       12.0f,
       Scales::positivebendrange,
-      "global0x00Positivebendrange",
+      "globalSwitchesPositivebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::global0x00Negativebendrange] = std::make_unique<IntValue>(
+    value[ID::globalSwitchesNegativebendrange] = std::make_unique<IntValue>(
       -12.0f,
       Scales::negativebendrange,
-      "global0x00Negativebendrange",
+      "globalSwitchesNegativebendrange",
       0 | kParameterIsAutomable | kParameterIsInteger);
-    value[ID::global0x00Portaoff_auto_on] = std::make_unique<IntValue>(
+    value[ID::globalSwitchesPortaoff_auto_on] = std::make_unique<IntValue>(
       1.0f,
       Scales::portaoff_auto_on,
-      "global0x00Portaoff_auto_on",
+      "globalSwitchesPortaoff_auto_on",
       0 | kParameterIsAutomable | kParameterIsInteger);
     value[ID::globalMasterphase] = std::make_unique<LinearValue>(
       Scales::masterphase.invmap(0.0f),
@@ -1462,166 +1462,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "aStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
       Scales::index.invmap(0.0f),
       Scales::index,
@@ -1742,166 +1742,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::aType] = std::make_unique<IntValue>(
       2.0f,
       Scales::type,
@@ -2027,166 +2027,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "bStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
       Scales::index.invmap(0.0f),
       Scales::index,
@@ -2307,166 +2307,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::bType] = std::make_unique<IntValue>(
       2.0f,
       Scales::type,
@@ -2592,166 +2592,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "cStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
       Scales::index.invmap(0.0f),
       Scales::index,
@@ -2872,166 +2872,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::cType] = std::make_unique<IntValue>(
       2.0f,
       Scales::type,
@@ -3157,166 +3157,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "dStereoMainCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoMainCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index] = std::make_unique<LinearValue>(
       Scales::index.invmap(0.0f),
       Scales::index,
@@ -3437,166 +3437,166 @@ struct GlobalParameter : public ParameterInterface {
       Scales::phase,
       "dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase",
       0 | kParameterIsAutomable);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<LogValue>(
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma] = std::make_unique<SPolyValue>(
       Scales::pma.invmap(0.0f),
       Scales::pma,
       "dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb] = std::make_unique<SPolyValue>(
       Scales::pmb.invmap(0.0f),
       Scales::pmb,
       "dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc] = std::make_unique<SPolyValue>(
       Scales::pmc.invmap(0.0f),
       Scales::pmc,
       "dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
-    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<LogValue>(
+      0 | kParameterIsAutomable);
+    value[ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd] = std::make_unique<SPolyValue>(
       Scales::pmd.invmap(0.0f),
       Scales::pmd,
       "dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd",
-      0 | kParameterIsAutomable | kParameterIsLogarithmic);
+      0 | kParameterIsAutomable);
     value[ID::dType] = std::make_unique<IntValue>(
       2.0f,
       Scales::type,

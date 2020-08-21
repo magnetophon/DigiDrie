@@ -2771,11 +2771,11 @@ public:
     ////tabviewGlobal->addWidget(globaltabIndex::global,
     //  addKnob(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1,
     //    knobWidth, margin, uiTextSize,
-    //    "positivebendrange", ID::{'address': 'global0x00Positivebendrange', 'scale': 'positivebendrange'}));
+    //    "positivebendrange", ID::{'address': 'globalSwitchesPositivebendrange', 'scale': 'positivebendrange'}));
     ////tabviewGlobal->addWidget(globaltabIndex::global,
     //  addKnob(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1,
     //    knobWidth, margin, uiTextSize,
-    //    "negativebendrange", ID::{'address': 'global0x00Negativebendrange', 'scale': 'negativebendrange'}));
+    //    "negativebendrange", ID::{'address': 'globalSwitchesNegativebendrange', 'scale': 'negativebendrange'}));
     ////tabviewGlobal->addWidget(globaltabIndex::global,
     //  addKnob(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1,
     //    knobWidth, margin, uiTextSize,
@@ -2792,7 +2792,7 @@ public:
     tabviewGlobal->addWidget(globaltabIndex::global,
       addTextKnob(globaltabInsideLeft0 + 0 * 2 * knobX, global_top1 + labelY,
         knobWidth, labelHeight, uiTextSize,
-        ID::global0x00Positivebendrange,
+        ID::globalSwitchesPositivebendrange,
         Scales::positivebendrange, false, 3));
     tabviewGlobal->addWidget(globaltabIndex::global,
       addLabel(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1,
@@ -2801,7 +2801,7 @@ public:
     tabviewGlobal->addWidget(globaltabIndex::global,
       addTextKnob(globaltabInsideLeft0 + 1 * 2 * knobX, global_top1 + labelY,
         knobWidth, labelHeight, uiTextSize,
-        ID::global0x00Negativebendrange,
+        ID::globalSwitchesNegativebendrange,
         Scales::negativebendrange, false, 3));
     tabviewGlobal->addWidget(globaltabIndex::global,
       addLabel(globaltabInsideLeft0 + 2 * 2 * knobX, global_top1,
@@ -2832,13 +2832,13 @@ public:
       addOptionMenu(
         globaltabInsideLeft0, global_top2 + 0 * labelY,
         knobX, labelHeight, uiTextSize,
-        ID::global0x00Portaoff_auto_on, portaoff_auto_on_options));
+        ID::globalSwitchesPortaoff_auto_on, portaoff_auto_on_options));
     
     tabviewGlobal->addWidget(globaltabIndex::global,
       addCheckbox(
         global_left1, global_top2 + 0 * labelY,
         2 * knobX, labelHeight, uiTextSize,
-        "freefloatosc", ID::global0x00Freefloatosc));
+        "freefloatosc", ID::globalSwitchesFreefloatosc));
     
 
     const auto envelope_1_top0 = globaltabInsideTop0 + 0 * sectionHeight;

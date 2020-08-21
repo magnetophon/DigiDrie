@@ -54,7 +54,7 @@ struct GlobalParameter : public ParameterInterface {
     using ID = ParameterID::ID;
     using LinearValue = FloatValue<SomeDSP::LinearScale<double>>;
     using LogValue = FloatValue<SomeDSP::LogScale<double>>;
-    // using SPolyValue = FloatValue<SomeDSP::SPolyScale<double>>;
+    using SPolyValue = FloatValue<SomeDSP::SPolyScale<double>>;
     // using DecibelValue = FloatValue<SomeDSP::DecibelScale<double>>;
 
     value[ID::bypass] = std::make_unique<IntValue>(

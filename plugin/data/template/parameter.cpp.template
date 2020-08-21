@@ -17,6 +17,8 @@ LinearScale<double> Scales::modulationWheel(0.0, 127.0);
     {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }}, 0.5, {{ (scl.min + scl.max) / 2 }});
   {%- elif scl.type == "Int" %}
     {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }});
+  {%- elif scl.type == "SPoly" %}
+    {{- scl.type }}Scale<double> Scales::{{ scl.label }}({{ scl.min }}, {{ scl.max }}, 0.15);
   {%- else %}
     {#- #}// Invalid scale type in {{ scl.label }}
   {%- endif %}

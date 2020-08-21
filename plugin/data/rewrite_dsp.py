@@ -221,6 +221,11 @@ def get_scale_data(wdgt):
     elif scale == "log":
         hints.append("kParameterIsLogarithmic")
 
+    if scale == "spoly":
+        scale = "SPoly"
+    else:
+        scale = scale.capitalize()
+
     return (scale, hints)
 
 def get_value_with_fallback(widget, key, fallback):
@@ -245,7 +250,7 @@ def get_scale_info(widgets):
         scale, hints = get_scale_data(wdgt)
 
         info_dict[label] = {
-            "type": scale.capitalize(),
+            "type": scale,
             "hints": hints,
             "init": get_value_with_fallback(wdgt, "init", 0),
             "min": get_value_with_fallback(wdgt, "min", 0),

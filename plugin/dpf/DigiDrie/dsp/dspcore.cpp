@@ -55,10 +55,10 @@ void DSPCORE_NAME::setParameters(float tempo) {
   using ID = ParameterID::ID;
   auto &pv = param.value;
 
-  synth.fCheckbox0 = pv[ID::global0x00Freefloatosc]->getFloat();
-  synth.fEntry2 = pv[ID::global0x00Positivebendrange]->getFloat();
-  synth.fEntry1 = pv[ID::global0x00Negativebendrange]->getFloat();
-  synth.fEntry0 = pv[ID::global0x00Portaoff_auto_on]->getFloat();
+  synth.fCheckbox0 = pv[ID::globalSwitchesFreefloatosc]->getFloat();
+  synth.fEntry2 = pv[ID::globalSwitchesPositivebendrange]->getFloat();
+  synth.fEntry1 = pv[ID::globalSwitchesNegativebendrange]->getFloat();
+  synth.fEntry0 = pv[ID::globalSwitchesPortaoff_auto_on]->getFloat();
   synth.fVslider8 = pv[ID::globalMasterphase]->getFloat();
   synth.fVslider7 = pv[ID::globalPortamento]->getFloat();
   synth.fHslider626 = pv[ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd]->getFloat();
