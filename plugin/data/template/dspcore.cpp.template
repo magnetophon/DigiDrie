@@ -65,21 +65,21 @@ void DSPCORE_NAME::setParameters(float tempo) {
   // - `{{ midi["gain"]["varname"] }}: note gate.
   // - `{{ midi["channelaftertouch"]["varname"] }}: aftertouch. [0, 127].
   // - `{{ midi["modwheel"]["varname"] }}: CC1 (0x01). [0, 127].
-  // - `{{ midi["pitchwheelvaluein"]["varname"] }}: pitch bend. [-8192, 8191].
+  // - `{{ midi["pitchwheel"]["varname"] }}: pitch bend. [-8192, 8191].
   if (!noteStack.empty()) {
     synth.{{ midi["freq"]["varname"] }} = noteStack.back().frequency;
     synth.{{ midi["gain"]["varname"] }} = noteStack.back().velocity;
     synth.{{ midi["gate"]["varname"] }} = 1.0f;
     synth.{{ midi["channelaftertouch"]["varname"] }} = pv[ID::aftertouch]->getFloat();
     synth.{{ midi["modwheel"]["varname"] }} = pv[ID::modulationWheel]->getFloat();
-    synth.{{ midi["pitchwheelvaluein"]["varname"] }} = pv[ID::pitchBend]->getFloat();
+    synth.{{ midi["pitchwheel"]["varname"] }} = pv[ID::pitchBend]->getFloat();
   } else {
     synth.{{ midi["freq"]["varname"] }} = 0;
     synth.{{ midi["gain"]["varname"] }} = 0;
     synth.{{ midi["gate"]["varname"] }} = 0;
     synth.{{ midi["channelaftertouch"]["varname"] }} = 0;
     synth.{{ midi["modwheel"]["varname"] }} = 0;
-    synth.{{ midi["pitchwheelvaluein"]["varname"] }} = 0;
+    synth.{{ midi["pitchwheel"]["varname"] }} = 0;
   }
 
   synth.control(&synth.ictrl[0], &synth.rctrl[0]);
