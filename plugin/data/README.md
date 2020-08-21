@@ -1,8 +1,23 @@
 # C++ Code Generation
-Run following command to generate C++ code.
+Run following command to build plugin from Faust code.
 
 ```bash
-python3 rewrite_dsp.py
+git clone --recursive https://github.com/magnetophon/DigiDrie/
+cd DigiDrie
+
+# Generate xml.
+cd faust/
+faust -t 0 -time -xml DigiFaustMidi.dsp > DigiFaustMidi.hpp
+cp DigiFaustMidi.hpp     ../plugin/data/
+cp DigiFaustMidi.dsp.xml ../plugin/data/
+
+# Generate C++ code from xml.
+cd ../plugin/data
+./copy.sh
+
+# Build plugin.
+cd ../dpf
+make -j
 ```
 
 Using [Jinja](https://jinja.palletsprojects.com/en/2.11.x/). Templates are found in `template` directory.

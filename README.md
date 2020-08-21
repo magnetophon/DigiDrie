@@ -65,28 +65,11 @@ It increases the size of the diagram a lot, and doesn't help to clarify the actu
 
 ### Plugin
 
-This is work in progress. Plugin won't work properly for now.
+This is work in progress. If something is not working, please open issue.
 
 ```bash
 git clone --recursive https://github.com/magnetophon/DigiDrie/
-
-# Run following command if you forget to add `--recursive`,
-# or update from already cloned repo:
-cd DigiDrie
-git submodule update --init --recursive
-
-# Generate xml.
-cd faust/
-faust -t 0 -time -xml DigiFaustMidi.dsp > DigiFaustMidi.hpp
-cp DigiFaustMidi.hpp     ../plugin/data/
-cp DigiFaustMidi.dsp.xml ../plugin/data/
-
-# Generate C++ code from xml.
-cd ../plugin/data
-./copy.sh
-
-# Build plugin.
-cd ../dpf
+cd DigiDrie/plugin/dpf
 make -j
 ```
 
@@ -95,6 +78,8 @@ Plugins are built into `DigiDrie/dpf/bin`.
 - `DigiDrie`: JACK standalone
 - `DigiDrie.lv2`: LV2
 - `DigiDrie-vst.so`: VST2
+
+To build plugin from Faust code, see [`plugin/data/README.md`](https://github.com/magnetophon/DigiDrie/blob/master/plugin/data/README.md).
 
 ## issues
 
