@@ -222,7 +222,7 @@ protected:
 
   void updateValue(uint32_t id, float normalized) override
   {
-    if (syncUI(id, normalized)) return;
+    syncUI(id, normalized);
     PluginUIBase::updateValue(id, normalized);
     return;
   }
