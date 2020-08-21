@@ -210,9 +210,9 @@ public:
         "{{ ctrl }}", ID::{{ addr["main"] }}));
     {%- endif %}
     tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, {{ macro }}_{{ sctn }}_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::{{ addr["l_roffset"] }}));
+      addSmallKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, {{ macro }}_{{ sctn }}_top1,
+        spreadKnobWidth + 10, margin,
+        ID::{{ addr["l_roffset"] }}));
     {% endfor %}
     {% endfor %}
     {% endfor -%}
@@ -383,11 +383,11 @@ public:
       knobWidth, margin, uiTextSize,
       "{{ ctrl }}", ID::{{ addr["main"] }});
     widget_{{ macro }}_{{ ctrl }} = std::get<0>(tuple_{{ macro }}_{{ ctrl }}_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_{{ macro }} + knobWidth,
       abcd_crossfade_top{{ loop.index0 }}_{{ macro }},
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::{{ addr["l_roffset"] }});
+      spreadKnobWidth + 10, margin,
+      ID::{{ addr["l_roffset"] }});
     {% endfor %}
     {% endfor -%}
   }

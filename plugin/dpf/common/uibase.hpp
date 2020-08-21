@@ -327,6 +327,23 @@ protected:
     return std::make_tuple(knob, label);
   }
 
+  template<Style style = Style::common>
+  auto addSmallKnob(float left, float top, float width, float margin, uint32_t id)
+  {
+    auto height = width - 2.0f * margin;
+
+    auto knob = std::make_shared<SmallKnob<style>>(this, this, palette);
+    knob->id = id;
+    knob->setSize(width - 2.0f * margin, height);
+    knob->setAbsolutePos(left + margin, top + margin);
+    auto defaultValue = param->getDefaultNormalized(id);
+    knob->setDefaultValue(defaultValue);
+    knob->setValue(defaultValue);
+    valueWidget.emplace(std::make_pair(id, knob));
+
+    return knob;
+  }
+
   template<Style style = Style::common, typename Scale>
   auto addNumberKnob(
     float left,

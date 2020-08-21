@@ -301,41 +301,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro1Q));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level));
     
     const auto macro1_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro1_a_top1 = macro1_a_top0 + labelY;
@@ -348,57 +348,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro1_4Macro1Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro1_4Macro1Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
     
     const auto macro1_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro1_b_top1 = macro1_b_top0 + labelY;
@@ -411,57 +411,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro1_4Macro1Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro1_4Macro1Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
     
     const auto macro1_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro1_c_top1 = macro1_c_top0 + labelY;
@@ -474,57 +474,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro1_4Macro1Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro1_4Macro1Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
     
     const auto macro1_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro1_d_top1 = macro1_d_top0 + labelY;
@@ -537,57 +537,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro1Index));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro1_4Macro1Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro1Octave));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro1Phase));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro1Pma));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro1Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro1Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro1_4Macro1Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro1,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro1_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro1Pmd));
     
     
     const auto macro2_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -601,41 +601,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro2Q));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level));
     
     const auto macro2_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro2_a_top1 = macro2_a_top0 + labelY;
@@ -648,57 +648,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro1_4Macro2Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro1_4Macro2Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
     
     const auto macro2_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro2_b_top1 = macro2_b_top0 + labelY;
@@ -711,57 +711,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro1_4Macro2Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro1_4Macro2Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
     
     const auto macro2_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro2_c_top1 = macro2_c_top0 + labelY;
@@ -774,57 +774,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro1_4Macro2Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro1_4Macro2Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
     
     const auto macro2_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro2_d_top1 = macro2_d_top0 + labelY;
@@ -837,57 +837,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro2Index));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro1_4Macro2Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro2Octave));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro2Phase));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro2Pma));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro2Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro2Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro1_4Macro2Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro2,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro2_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro2Pmd));
     
     
     const auto macro3_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -901,41 +901,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro3Q));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level));
     
     const auto macro3_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro3_a_top1 = macro3_a_top0 + labelY;
@@ -948,57 +948,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro1_4Macro3Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro1_4Macro3Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
     
     const auto macro3_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro3_b_top1 = macro3_b_top0 + labelY;
@@ -1011,57 +1011,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro1_4Macro3Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro1_4Macro3Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
     
     const auto macro3_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro3_c_top1 = macro3_c_top0 + labelY;
@@ -1074,57 +1074,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro1_4Macro3Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro1_4Macro3Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
     
     const auto macro3_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro3_d_top1 = macro3_d_top0 + labelY;
@@ -1137,57 +1137,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro3Index));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro1_4Macro3Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro3Octave));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro3Phase));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro3Pma));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro3Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro3Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro1_4Macro3Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro3,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro3_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro3Pmd));
     
     
     const auto macro4_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -1201,41 +1201,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro4Q));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level));
     
     const auto macro4_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro4_a_top1 = macro4_a_top0 + labelY;
@@ -1248,57 +1248,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro1_4Macro4Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro1_4Macro4Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
     
     const auto macro4_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro4_b_top1 = macro4_b_top0 + labelY;
@@ -1311,57 +1311,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro1_4Macro4Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro1_4Macro4Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
     
     const auto macro4_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro4_c_top1 = macro4_c_top0 + labelY;
@@ -1374,57 +1374,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro1_4Macro4Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro1_4Macro4Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
     
     const auto macro4_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro4_d_top1 = macro4_d_top0 + labelY;
@@ -1437,57 +1437,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro1_4Macro4Index));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro1_4Macro4Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro1_4Macro4Octave));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro1_4Macro4Phase));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro1_4Macro4Pma));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro1_4Macro4Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro1_4Macro4Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro1_4Macro4Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro4,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro4_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro1_4Macro4Pmd));
     
     
     const auto macro5_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -1501,41 +1501,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro5Q));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level));
     
     const auto macro5_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro5_a_top1 = macro5_a_top0 + labelY;
@@ -1548,57 +1548,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro5_8Macro5Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro5_8Macro5Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
     
     const auto macro5_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro5_b_top1 = macro5_b_top0 + labelY;
@@ -1611,57 +1611,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro5_8Macro5Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro5_8Macro5Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
     
     const auto macro5_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro5_c_top1 = macro5_c_top0 + labelY;
@@ -1674,57 +1674,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro5_8Macro5Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro5_8Macro5Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
     
     const auto macro5_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro5_d_top1 = macro5_d_top0 + labelY;
@@ -1737,57 +1737,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro5Index));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro5_8Macro5Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro5Octave));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro5Phase));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro5Pma));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro5Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro5Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro5_8Macro5Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro5,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro5_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro5Pmd));
     
     
     const auto macro6_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -1801,41 +1801,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro6Q));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level));
     
     const auto macro6_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro6_a_top1 = macro6_a_top0 + labelY;
@@ -1848,57 +1848,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro5_8Macro6Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro5_8Macro6Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
     
     const auto macro6_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro6_b_top1 = macro6_b_top0 + labelY;
@@ -1911,57 +1911,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro5_8Macro6Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro5_8Macro6Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
     
     const auto macro6_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro6_c_top1 = macro6_c_top0 + labelY;
@@ -1974,57 +1974,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro5_8Macro6Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro5_8Macro6Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
     
     const auto macro6_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro6_d_top1 = macro6_d_top0 + labelY;
@@ -2037,57 +2037,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro6Index));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro5_8Macro6Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro6Octave));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro6Phase));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro6Pma));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro6Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro6Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro5_8Macro6Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro6,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro6_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro6Pmd));
     
     
     const auto macro7_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -2101,41 +2101,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro7Q));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level));
     
     const auto macro7_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro7_a_top1 = macro7_a_top0 + labelY;
@@ -2148,57 +2148,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro5_8Macro7Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro5_8Macro7Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
     
     const auto macro7_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro7_b_top1 = macro7_b_top0 + labelY;
@@ -2211,57 +2211,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro5_8Macro7Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro5_8Macro7Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
     
     const auto macro7_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro7_c_top1 = macro7_c_top0 + labelY;
@@ -2274,57 +2274,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro5_8Macro7Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro5_8Macro7Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
     
     const auto macro7_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro7_d_top1 = macro7_d_top0 + labelY;
@@ -2337,57 +2337,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro7Index));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro5_8Macro7Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro7Octave));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro7Phase));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro7Pma));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro7Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro7Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro5_8Macro7Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro7,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro7_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro7Pmd));
     
     
     const auto macro8_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
@@ -2401,41 +2401,41 @@ public:
         knobWidth, margin, uiTextSize,
         "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
         "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro8Q));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
         "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
         "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
         "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
+        spreadKnobWidth + 10, margin,
+        ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level));
     
     const auto macro8_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro8_a_top1 = macro8_a_top0 + labelY;
@@ -2448,57 +2448,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::aStereoMainCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::aStereoMainCz_pmCzOctaveMacro5_8Macro8Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::aStereoMainCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::aStereoMainCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::aStereoMainCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::aStereoMainCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::aStereoMainCz_pmPmPmdMacro5_8Macro8Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_a_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_a_top1,
+        spreadKnobWidth + 10, margin,
+        ID::aStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     const auto macro8_b_top0 = macrotabInsideTop0 + 2 * sectionHeight;
     const auto macro8_b_top1 = macro8_b_top0 + labelY;
@@ -2511,57 +2511,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::bStereoMainCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::bStereoMainCz_pmCzOctaveMacro5_8Macro8Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::bStereoMainCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::bStereoMainCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::bStereoMainCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::bStereoMainCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::bStereoMainCz_pmPmPmdMacro5_8Macro8Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_b_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_b_top1,
+        spreadKnobWidth + 10, margin,
+        ID::bStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     const auto macro8_c_top0 = macrotabInsideTop0 + 3 * sectionHeight;
     const auto macro8_c_top1 = macro8_c_top0 + labelY;
@@ -2574,57 +2574,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::cStereoMainCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::cStereoMainCz_pmCzOctaveMacro5_8Macro8Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::cStereoMainCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::cStereoMainCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::cStereoMainCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::cStereoMainCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::cStereoMainCz_pmPmPmdMacro5_8Macro8Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_c_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_c_top1,
+        spreadKnobWidth + 10, margin,
+        ID::cStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     const auto macro8_d_top0 = macrotabInsideTop0 + 4 * sectionHeight;
     const auto macro8_d_top1 = macro8_d_top0 + labelY;
@@ -2637,57 +2637,57 @@ public:
         knobWidth, margin, uiTextSize,
         "index", ID::dStereoMainCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
+      addSmallKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzIndexMacro5_8Macro8Index));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addNumberKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "octave", ID::dStereoMainCz_pmCzOctaveMacro5_8Macro8Octave, Scales::octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
+      addSmallKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzOctaveMacro5_8Macro8Octave));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "phase", ID::dStereoMainCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
+      addSmallKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmCzPhaseMacro5_8Macro8Phase));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "pma", ID::dStereoMainCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
+      addSmallKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmaMacro5_8Macro8Pma));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "pmb", ID::dStereoMainCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
+      addSmallKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmbMacro5_8Macro8Pmb));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 5 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "pmc", ID::dStereoMainCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
+      addSmallKnob(macrotabInsideLeft0 + 5 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmcMacro5_8Macro8Pmc));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 6 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
         "pmd", ID::dStereoMainCz_pmPmPmdMacro5_8Macro8Pmd));
     tabviewMacro->addWidget(macrotabIndex::macro8,
-      addKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_d_top1,
-        spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
+      addSmallKnob(macrotabInsideLeft0 + 6 * knobPairWidth + knobWidth - margin, macro8_d_top1,
+        spreadKnobWidth + 10, margin,
+        ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     
     std::vector<std::string> osc_type_a_options = {
@@ -3300,21 +3300,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd);
     widget_macro1_ab_cd = std::get<0>(tuple_macro1_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro1 + knobWidth,
       abcd_crossfade_top0_macro1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd);
     auto tuple_macro1_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro1, abcd_crossfade_top1_macro1,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
     widget_macro1_ac_bd = std::get<0>(tuple_macro1_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro1 + knobWidth,
       abcd_crossfade_top1_macro1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd);
     
     const auto abcd_crossfade_top0_macro2
       = abcd_crossfade_top0 + 1 * crossfade_height;
@@ -3335,21 +3335,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd);
     widget_macro2_ab_cd = std::get<0>(tuple_macro2_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro2 + knobWidth,
       abcd_crossfade_top0_macro2,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd);
     auto tuple_macro2_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro2, abcd_crossfade_top1_macro2,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
     widget_macro2_ac_bd = std::get<0>(tuple_macro2_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro2 + knobWidth,
       abcd_crossfade_top1_macro2,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd);
     
     const auto abcd_crossfade_top0_macro3
       = abcd_crossfade_top0 + 2 * crossfade_height;
@@ -3370,21 +3370,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd);
     widget_macro3_ab_cd = std::get<0>(tuple_macro3_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro3 + knobWidth,
       abcd_crossfade_top0_macro3,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd);
     auto tuple_macro3_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro3, abcd_crossfade_top1_macro3,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
     widget_macro3_ac_bd = std::get<0>(tuple_macro3_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro3 + knobWidth,
       abcd_crossfade_top1_macro3,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd);
     
     const auto abcd_crossfade_top0_macro4
       = abcd_crossfade_top0 + 3 * crossfade_height;
@@ -3405,21 +3405,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd);
     widget_macro4_ab_cd = std::get<0>(tuple_macro4_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro4 + knobWidth,
       abcd_crossfade_top0_macro4,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd);
     auto tuple_macro4_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro4, abcd_crossfade_top1_macro4,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
     widget_macro4_ac_bd = std::get<0>(tuple_macro4_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro4 + knobWidth,
       abcd_crossfade_top1_macro4,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd);
     
     const auto abcd_crossfade_top0_macro5
       = abcd_crossfade_top0 + 0 * crossfade_height;
@@ -3440,21 +3440,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd);
     widget_macro5_ab_cd = std::get<0>(tuple_macro5_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro5 + knobWidth,
       abcd_crossfade_top0_macro5,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd);
     auto tuple_macro5_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro5, abcd_crossfade_top1_macro5,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
     widget_macro5_ac_bd = std::get<0>(tuple_macro5_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro5 + knobWidth,
       abcd_crossfade_top1_macro5,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd);
     
     const auto abcd_crossfade_top0_macro6
       = abcd_crossfade_top0 + 1 * crossfade_height;
@@ -3475,21 +3475,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd);
     widget_macro6_ab_cd = std::get<0>(tuple_macro6_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro6 + knobWidth,
       abcd_crossfade_top0_macro6,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd);
     auto tuple_macro6_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro6, abcd_crossfade_top1_macro6,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
     widget_macro6_ac_bd = std::get<0>(tuple_macro6_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro6 + knobWidth,
       abcd_crossfade_top1_macro6,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd);
     
     const auto abcd_crossfade_top0_macro7
       = abcd_crossfade_top0 + 2 * crossfade_height;
@@ -3510,21 +3510,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd);
     widget_macro7_ab_cd = std::get<0>(tuple_macro7_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro7 + knobWidth,
       abcd_crossfade_top0_macro7,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd);
     auto tuple_macro7_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro7, abcd_crossfade_top1_macro7,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
     widget_macro7_ac_bd = std::get<0>(tuple_macro7_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro7 + knobWidth,
       abcd_crossfade_top1_macro7,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd);
     
     const auto abcd_crossfade_top0_macro8
       = abcd_crossfade_top0 + 3 * crossfade_height;
@@ -3545,21 +3545,21 @@ public:
       knobWidth, margin, uiTextSize,
       "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd);
     widget_macro8_ab_cd = std::get<0>(tuple_macro8_ab_cd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro8 + knobWidth,
       abcd_crossfade_top0_macro8,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd);
     auto tuple_macro8_ac_bd_main = addKnob(
       abcd_crossfade_left1_macro8, abcd_crossfade_top1_macro8,
       knobWidth, margin, uiTextSize,
       "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
     widget_macro8_ac_bd = std::get<0>(tuple_macro8_ac_bd_main);
-    addKnob(
+    addSmallKnob(
       abcd_crossfade_left1_macro8 + knobWidth,
       abcd_crossfade_top1_macro8,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd);
+      spreadKnobWidth + 10, margin,
+      ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd);
     
     }
 };
