@@ -48,8 +48,9 @@ enum macrotabIndex {
 
 enum globaltabIndex {
   global,
-  envelopes,
-  LFOs,
+  synthesizer,
+  envelope,
+  lfo,
   modulation,
 };
 
@@ -88,6 +89,13 @@ protected:
   std::shared_ptr<ValueWidget> widget_macro8_ac_bd;
   
   
+
+  std::shared_ptr<XYPad> xypad_xy;
+  std::shared_ptr<XYPad> xypad_xz;
+  std::shared_ptr<XYPad> xypad_zy;
+  std::shared_ptr<ValueWidget> widget_axis1;
+  std::shared_ptr<ValueWidget> widget_axis2;
+  std::shared_ptr<ValueWidget> widget_axis3;
 
   void onNanoDisplay() override
   {
@@ -180,6 +188,24 @@ protected:
       
       
 
+      case ID::modulation1Macro:
+        xypad_xy->setValueAt(0, normalized);
+        xypad_xz->setValueAt(0, normalized);
+        widget_axis1->setValue(normalized);
+        break;
+
+      case ID::modulation2Macro:
+        xypad_xy->setValueAt(1, normalized);
+        xypad_zy->setValueAt(1, normalized);
+        widget_axis2->setValue(normalized);
+        break;
+
+      case ID::modulation3Macro:
+        xypad_xz->setValueAt(1, normalized);
+        xypad_zy->setValueAt(0, normalized);
+        widget_axis3->setValue(normalized);
+        break;
+
       default:
         return false;
     }
@@ -226,9 +252,26 @@ public:
 
     const auto tabTop0 = top0;
     const auto tabLeft0 = left0;
-    const auto macrotabInnerWidth = 8 * knobPairWidth;
-    const auto macrotabWidth = macrotabInnerWidth + 2 * uiMargin;
-    const auto macrotabHeight = innerHeight;
+    const auto globaltabInnerWidth = 7 * knobPairWidth;
+    const auto globaltabWidth = globaltabInnerWidth + 2 * uiMargin;
+    const auto globaltabHeight = innerHeight;
+    std::vector<std::string> globalTabs = {
+      "Global",
+      "Synthesizer",
+      "Envelope",
+      "LFO",
+      "Modulation",
+    };
+    auto tabviewGlobal
+      = addTabView(tabLeft0, tabTop0, globaltabWidth, globaltabHeight,
+        uiTextSize, labelY, globalTabs);
+
+    const auto globaltabInsideTop0 = tabTop0 + labelY + uiMargin;
+    const auto globaltabInsideLeft0 = tabLeft0 + uiMargin;
+
+    const auto macrotabInnerWidth = globaltabInnerWidth;
+    const auto macrotabWidth = globaltabWidth;
+    const auto macrotabHeight = globaltabHeight - labelY;
     std::vector<std::string> macroTabs = {
       "Macro1",
       "Macro2",
@@ -240,63 +283,66 @@ public:
       "Macro8",
       };
     auto tabviewMacro
-      = addTabView(tabLeft0, tabTop0, macrotabWidth, macrotabHeight,
-        uiTextSize, labelY, macroTabs);
+      = addTabView(tabLeft0, tabTop0 + labelY,
+        macrotabWidth, macrotabHeight, uiTextSize, labelY, macroTabs);
+    tabviewGlobal->addWidget(globaltabIndex::synthesizer, tabviewMacro);
 
-    const auto macrotabInsideTop0 = tabTop0 + labelY + uiMargin;
+    const auto macrotabInsideTop0 = tabTop0 + 2 * labelY + uiMargin;
     const auto macrotabInsideLeft0 = tabLeft0 + uiMargin;
 
     const auto macro1_filter_top0 = macrotabInsideTop0 + 0 * sectionHeight;
     const auto macro1_filter_top1 = macro1_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addGroupLabel(macrotabInsideLeft0, macro1_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro1Q));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro1Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro1Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro1_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro1Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro1Level));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro1_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro1Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro1Level));
     
     const auto macro1_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro1_a_top1 = macro1_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addGroupLabel(macrotabInsideLeft0, macro1_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro1_a_top1,
         knobWidth, margin, uiTextSize,
@@ -358,7 +404,8 @@ public:
     const auto macro1_b_top1 = macro1_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addGroupLabel(macrotabInsideLeft0, macro1_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro1_b_top1,
         knobWidth, margin, uiTextSize,
@@ -420,7 +467,8 @@ public:
     const auto macro1_c_top1 = macro1_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addGroupLabel(macrotabInsideLeft0, macro1_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro1_c_top1,
         knobWidth, margin, uiTextSize,
@@ -482,7 +530,8 @@ public:
     const auto macro1_d_top1 = macro1_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addGroupLabel(macrotabInsideLeft0, macro1_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro1,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro1_d_top1,
         knobWidth, margin, uiTextSize,
@@ -545,53 +594,55 @@ public:
     const auto macro2_filter_top1 = macro2_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addGroupLabel(macrotabInsideLeft0, macro2_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro2Q));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro2Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro2Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro2_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro2Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro2Level));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro2_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro2Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro2Level));
     
     const auto macro2_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro2_a_top1 = macro2_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addGroupLabel(macrotabInsideLeft0, macro2_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro2_a_top1,
         knobWidth, margin, uiTextSize,
@@ -653,7 +704,8 @@ public:
     const auto macro2_b_top1 = macro2_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addGroupLabel(macrotabInsideLeft0, macro2_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro2_b_top1,
         knobWidth, margin, uiTextSize,
@@ -715,7 +767,8 @@ public:
     const auto macro2_c_top1 = macro2_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addGroupLabel(macrotabInsideLeft0, macro2_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro2_c_top1,
         knobWidth, margin, uiTextSize,
@@ -777,7 +830,8 @@ public:
     const auto macro2_d_top1 = macro2_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addGroupLabel(macrotabInsideLeft0, macro2_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro2,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro2_d_top1,
         knobWidth, margin, uiTextSize,
@@ -840,53 +894,55 @@ public:
     const auto macro3_filter_top1 = macro3_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addGroupLabel(macrotabInsideLeft0, macro3_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro3Q));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro3Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro3Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro3_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro3Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro3Level));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro3_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro3Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro3Level));
     
     const auto macro3_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro3_a_top1 = macro3_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addGroupLabel(macrotabInsideLeft0, macro3_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro3_a_top1,
         knobWidth, margin, uiTextSize,
@@ -948,7 +1004,8 @@ public:
     const auto macro3_b_top1 = macro3_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addGroupLabel(macrotabInsideLeft0, macro3_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro3_b_top1,
         knobWidth, margin, uiTextSize,
@@ -1010,7 +1067,8 @@ public:
     const auto macro3_c_top1 = macro3_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addGroupLabel(macrotabInsideLeft0, macro3_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro3_c_top1,
         knobWidth, margin, uiTextSize,
@@ -1072,7 +1130,8 @@ public:
     const auto macro3_d_top1 = macro3_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addGroupLabel(macrotabInsideLeft0, macro3_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro3,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro3_d_top1,
         knobWidth, margin, uiTextSize,
@@ -1135,53 +1194,55 @@ public:
     const auto macro4_filter_top1 = macro4_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addGroupLabel(macrotabInsideLeft0, macro4_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro4Q));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro1_4Macro4Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro1_4Macro4Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro4_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro1_4Macro4Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro1_4Macro4Level));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro4_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro1_4Macro4Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro1_4Macro4Level));
     
     const auto macro4_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro4_a_top1 = macro4_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addGroupLabel(macrotabInsideLeft0, macro4_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro4_a_top1,
         knobWidth, margin, uiTextSize,
@@ -1243,7 +1304,8 @@ public:
     const auto macro4_b_top1 = macro4_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addGroupLabel(macrotabInsideLeft0, macro4_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro4_b_top1,
         knobWidth, margin, uiTextSize,
@@ -1305,7 +1367,8 @@ public:
     const auto macro4_c_top1 = macro4_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addGroupLabel(macrotabInsideLeft0, macro4_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro4_c_top1,
         knobWidth, margin, uiTextSize,
@@ -1367,7 +1430,8 @@ public:
     const auto macro4_d_top1 = macro4_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addGroupLabel(macrotabInsideLeft0, macro4_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro4,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro4_d_top1,
         knobWidth, margin, uiTextSize,
@@ -1430,53 +1494,55 @@ public:
     const auto macro5_filter_top1 = macro5_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addGroupLabel(macrotabInsideLeft0, macro5_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro5Q));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro5Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro5Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro5_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro5Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro5Level));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro5_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro5Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro5Level));
     
     const auto macro5_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro5_a_top1 = macro5_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addGroupLabel(macrotabInsideLeft0, macro5_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro5_a_top1,
         knobWidth, margin, uiTextSize,
@@ -1538,7 +1604,8 @@ public:
     const auto macro5_b_top1 = macro5_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addGroupLabel(macrotabInsideLeft0, macro5_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro5_b_top1,
         knobWidth, margin, uiTextSize,
@@ -1600,7 +1667,8 @@ public:
     const auto macro5_c_top1 = macro5_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addGroupLabel(macrotabInsideLeft0, macro5_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro5_c_top1,
         knobWidth, margin, uiTextSize,
@@ -1662,7 +1730,8 @@ public:
     const auto macro5_d_top1 = macro5_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addGroupLabel(macrotabInsideLeft0, macro5_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro5,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro5_d_top1,
         knobWidth, margin, uiTextSize,
@@ -1725,53 +1794,55 @@ public:
     const auto macro6_filter_top1 = macro6_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addGroupLabel(macrotabInsideLeft0, macro6_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro6Q));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro6Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro6Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro6_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro6Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro6Level));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro6_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro6Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro6Level));
     
     const auto macro6_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro6_a_top1 = macro6_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addGroupLabel(macrotabInsideLeft0, macro6_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro6_a_top1,
         knobWidth, margin, uiTextSize,
@@ -1833,7 +1904,8 @@ public:
     const auto macro6_b_top1 = macro6_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addGroupLabel(macrotabInsideLeft0, macro6_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro6_b_top1,
         knobWidth, margin, uiTextSize,
@@ -1895,7 +1967,8 @@ public:
     const auto macro6_c_top1 = macro6_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addGroupLabel(macrotabInsideLeft0, macro6_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro6_c_top1,
         knobWidth, margin, uiTextSize,
@@ -1957,7 +2030,8 @@ public:
     const auto macro6_d_top1 = macro6_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addGroupLabel(macrotabInsideLeft0, macro6_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro6,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro6_d_top1,
         knobWidth, margin, uiTextSize,
@@ -2020,53 +2094,55 @@ public:
     const auto macro7_filter_top1 = macro7_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addGroupLabel(macrotabInsideLeft0, macro7_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro7Q));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro7Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro7Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro7_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro7Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro7Level));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro7_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro7Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro7Level));
     
     const auto macro7_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro7_a_top1 = macro7_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addGroupLabel(macrotabInsideLeft0, macro7_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro7_a_top1,
         knobWidth, margin, uiTextSize,
@@ -2128,7 +2204,8 @@ public:
     const auto macro7_b_top1 = macro7_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addGroupLabel(macrotabInsideLeft0, macro7_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro7_b_top1,
         knobWidth, margin, uiTextSize,
@@ -2190,7 +2267,8 @@ public:
     const auto macro7_c_top1 = macro7_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addGroupLabel(macrotabInsideLeft0, macro7_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro7_c_top1,
         knobWidth, margin, uiTextSize,
@@ -2252,7 +2330,8 @@ public:
     const auto macro7_d_top1 = macro7_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addGroupLabel(macrotabInsideLeft0, macro7_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro7,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro7_d_top1,
         knobWidth, margin, uiTextSize,
@@ -2315,53 +2394,55 @@ public:
     const auto macro8_filter_top1 = macro8_filter_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addGroupLabel(macrotabInsideLeft0, macro8_filter_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "Filter"));
+        labelHeight, midTextSize, "Filter",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
-        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level));
+        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
-        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level));
+        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro8Q));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 1 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level));
+        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
-        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level));
+        "svf", ID::filterStereoMainMix_tweakMixSvfMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 2 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level));
+        "", ID::filterStereoL_roffsetMix_tweakMixSvfMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
-        "normfreq", ID::filterStereoMainMix_tweakTweakFreqMacro5_8Macro8Normfreq));
+        "ms20", ID::filterStereoMainMix_tweakMixMs20Macro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 3 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakFreqMacro5_8Macro8Normfreq));
+        "", ID::filterStereoL_roffsetMix_tweakMixMs20Macro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth, macro8_filter_top1,
         knobWidth, margin, uiTextSize,
-        "q", ID::filterStereoMainMix_tweakTweakQMacro5_8Macro8Q));
+        "oberheim", ID::filterStereoMainMix_tweakMixOberheimMacro5_8Macro8Level));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 4 * knobPairWidth + knobWidth - margin, macro8_filter_top1,
         spreadKnobWidth + 10, margin, uiTextSize,
-        "", ID::filterStereoL_roffsetMix_tweakTweakQMacro5_8Macro8Q));
+        "", ID::filterStereoL_roffsetMix_tweakMixOberheimMacro5_8Macro8Level));
     
     const auto macro8_a_top0 = macrotabInsideTop0 + 1 * sectionHeight;
     const auto macro8_a_top1 = macro8_a_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addGroupLabel(macrotabInsideLeft0, macro8_a_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "A"));
+        labelHeight, midTextSize, "A",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro8_a_top1,
         knobWidth, margin, uiTextSize,
@@ -2423,7 +2504,8 @@ public:
     const auto macro8_b_top1 = macro8_b_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addGroupLabel(macrotabInsideLeft0, macro8_b_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "B"));
+        labelHeight, midTextSize, "B",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro8_b_top1,
         knobWidth, margin, uiTextSize,
@@ -2485,7 +2567,8 @@ public:
     const auto macro8_c_top1 = macro8_c_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addGroupLabel(macrotabInsideLeft0, macro8_c_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "C"));
+        labelHeight, midTextSize, "C",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro8_c_top1,
         knobWidth, margin, uiTextSize,
@@ -2547,7 +2630,8 @@ public:
     const auto macro8_d_top1 = macro8_d_top0 + labelY;
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addGroupLabel(macrotabInsideLeft0, macro8_d_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "D"));
+        labelHeight, midTextSize, "D",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewMacro->addWidget(macrotabIndex::macro8,
       addKnob(macrotabInsideLeft0 + 0 * knobPairWidth, macro8_d_top1,
         knobWidth, margin, uiTextSize,
@@ -2606,227 +2690,6 @@ public:
         "", ID::dStereoL_roffsetCz_pmPmPmdMacro5_8Macro8Pmd));
     
     
-    const auto abcd_crossfade_top0 = macrotabInsideTop0 + 5 * sectionHeight;
-    const auto abcd_crossfade_top1 = abcd_crossfade_top0 + knobY;
-    const auto abcd_crossfade_left1 = macrotabInsideLeft0 + xyPadSize;
-    xypad_macro1_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro1, xypad_macro1_abcd);
-    auto tuple_macro1_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ab_cd_main);
-    widget_macro1_ab_cd = std::get<0>(tuple_macro1_ab_cd_main);
-    auto tuple_macro1_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ab_cd_l_roffset);
-    auto tuple_macro1_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ac_bd_main);
-    widget_macro1_ac_bd = std::get<0>(tuple_macro1_ac_bd_main);
-    auto tuple_macro1_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro1, tuple_macro1_ac_bd_l_roffset);
-    
-    xypad_macro2_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro2, xypad_macro2_abcd);
-    auto tuple_macro2_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ab_cd_main);
-    widget_macro2_ab_cd = std::get<0>(tuple_macro2_ab_cd_main);
-    auto tuple_macro2_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ab_cd_l_roffset);
-    auto tuple_macro2_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ac_bd_main);
-    widget_macro2_ac_bd = std::get<0>(tuple_macro2_ac_bd_main);
-    auto tuple_macro2_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro2, tuple_macro2_ac_bd_l_roffset);
-    
-    xypad_macro3_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro3, xypad_macro3_abcd);
-    auto tuple_macro3_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ab_cd_main);
-    widget_macro3_ab_cd = std::get<0>(tuple_macro3_ab_cd_main);
-    auto tuple_macro3_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ab_cd_l_roffset);
-    auto tuple_macro3_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ac_bd_main);
-    widget_macro3_ac_bd = std::get<0>(tuple_macro3_ac_bd_main);
-    auto tuple_macro3_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro3, tuple_macro3_ac_bd_l_roffset);
-    
-    xypad_macro4_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro4, xypad_macro4_abcd);
-    auto tuple_macro4_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ab_cd_main);
-    widget_macro4_ab_cd = std::get<0>(tuple_macro4_ab_cd_main);
-    auto tuple_macro4_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ab_cd_l_roffset);
-    auto tuple_macro4_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ac_bd_main);
-    widget_macro4_ac_bd = std::get<0>(tuple_macro4_ac_bd_main);
-    auto tuple_macro4_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro4, tuple_macro4_ac_bd_l_roffset);
-    
-    xypad_macro5_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro5, xypad_macro5_abcd);
-    auto tuple_macro5_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ab_cd_main);
-    widget_macro5_ab_cd = std::get<0>(tuple_macro5_ab_cd_main);
-    auto tuple_macro5_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ab_cd_l_roffset);
-    auto tuple_macro5_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ac_bd_main);
-    widget_macro5_ac_bd = std::get<0>(tuple_macro5_ac_bd_main);
-    auto tuple_macro5_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro5, tuple_macro5_ac_bd_l_roffset);
-    
-    xypad_macro6_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro6, xypad_macro6_abcd);
-    auto tuple_macro6_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ab_cd_main);
-    widget_macro6_ab_cd = std::get<0>(tuple_macro6_ab_cd_main);
-    auto tuple_macro6_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ab_cd_l_roffset);
-    auto tuple_macro6_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ac_bd_main);
-    widget_macro6_ac_bd = std::get<0>(tuple_macro6_ac_bd_main);
-    auto tuple_macro6_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro6, tuple_macro6_ac_bd_l_roffset);
-    
-    xypad_macro7_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro7, xypad_macro7_abcd);
-    auto tuple_macro7_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ab_cd_main);
-    widget_macro7_ab_cd = std::get<0>(tuple_macro7_ab_cd_main);
-    auto tuple_macro7_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ab_cd_l_roffset);
-    auto tuple_macro7_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ac_bd_main);
-    widget_macro7_ac_bd = std::get<0>(tuple_macro7_ac_bd_main);
-    auto tuple_macro7_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro7, tuple_macro7_ac_bd_l_roffset);
-    
-    xypad_macro8_abcd = addXYPad(macrotabInsideLeft0, abcd_crossfade_top0,
-      xyPadSize, xyPadSize,
-      ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro8, xypad_macro8_abcd);
-    auto tuple_macro8_ab_cd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top0,
-      knobWidth, margin, uiTextSize,
-      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ab_cd_main);
-    widget_macro8_ab_cd = std::get<0>(tuple_macro8_ab_cd_main);
-    auto tuple_macro8_ab_cd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top0,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd);
-    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ab_cd_l_roffset);
-    auto tuple_macro8_ac_bd_main = addKnob(
-      abcd_crossfade_left1, abcd_crossfade_top1,
-      knobWidth, margin, uiTextSize,
-      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ac_bd_main);
-    widget_macro8_ac_bd = std::get<0>(tuple_macro8_ac_bd_main);
-    auto tuple_macro8_ac_bd_l_roffset = addKnob(
-      abcd_crossfade_left1 + knobWidth, abcd_crossfade_top1,
-      spreadKnobWidth + 10, margin, uiTextSize,
-      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd);
-    tabviewMacro->addWidget(macrotabIndex::macro8, tuple_macro8_ac_bd_l_roffset);
-    
-    tabviewMacro->refreshTab();
-
     std::vector<std::string> osc_type_a_options = {
       "Sine-Noise",
       "Sawtooth",
@@ -2839,10 +2702,12 @@ public:
       "Resonant Trap",
       
     };
-    addOptionMenu(
-      macrotabInsideLeft0, macrotabInsideTop0 + 1 * sectionHeight,
-      2 * knobX, labelHeight, uiTextSize,
-      ID::aType, osc_type_a_options);
+    tabviewGlobal->addWidget(globaltabIndex::synthesizer,
+      addOptionMenu(
+        macrotabInsideLeft0 + knobPairWidth,
+        macrotabInsideTop0 + 1 * sectionHeight,
+        2 * knobX, labelHeight, uiTextSize,
+        ID::aType, osc_type_a_options));
     std::vector<std::string> osc_type_b_options = {
       "Sine-Noise",
       "Sawtooth",
@@ -2855,10 +2720,12 @@ public:
       "Resonant Trap",
       
     };
-    addOptionMenu(
-      macrotabInsideLeft0, macrotabInsideTop0 + 2 * sectionHeight,
-      2 * knobX, labelHeight, uiTextSize,
-      ID::bType, osc_type_b_options);
+    tabviewGlobal->addWidget(globaltabIndex::synthesizer,
+      addOptionMenu(
+        macrotabInsideLeft0 + knobPairWidth,
+        macrotabInsideTop0 + 2 * sectionHeight,
+        2 * knobX, labelHeight, uiTextSize,
+        ID::bType, osc_type_b_options));
     std::vector<std::string> osc_type_c_options = {
       "Sine-Noise",
       "Sawtooth",
@@ -2871,10 +2738,12 @@ public:
       "Resonant Trap",
       
     };
-    addOptionMenu(
-      macrotabInsideLeft0, macrotabInsideTop0 + 3 * sectionHeight,
-      2 * knobX, labelHeight, uiTextSize,
-      ID::cType, osc_type_c_options);
+    tabviewGlobal->addWidget(globaltabIndex::synthesizer,
+      addOptionMenu(
+        macrotabInsideLeft0 + knobPairWidth,
+        macrotabInsideTop0 + 3 * sectionHeight,
+        2 * knobX, labelHeight, uiTextSize,
+        ID::cType, osc_type_c_options));
     std::vector<std::string> osc_type_d_options = {
       "Sine-Noise",
       "Sawtooth",
@@ -2887,26 +2756,13 @@ public:
       "Resonant Trap",
       
     };
-    addOptionMenu(
-      macrotabInsideLeft0, macrotabInsideTop0 + 4 * sectionHeight,
-      2 * knobX, labelHeight, uiTextSize,
-      ID::dType, osc_type_d_options);
-    const auto tabLeft1 = tabLeft0 + macrotabWidth + uiMargin;
-    const auto globaltabInnerWidth = 10 * knobX;
-    const auto globaltabWidth = globaltabInnerWidth + 2 * uiMargin;
-    const auto globaltabHeight = innerHeight;
-    std::vector<std::string> globalTabs = {
-      "Global",
-      "Envelopes",
-      "LFOs",
-      "Modulation",
-    };
-    auto tabviewGlobal
-      = addTabView(tabLeft1, tabTop0, globaltabWidth, globaltabHeight,
-        uiTextSize, labelY, globalTabs);
-
-    const auto globaltabInsideTop0 = tabTop0 + labelY + uiMargin;
-    const auto globaltabInsideLeft0 = tabLeft1 + uiMargin;
+    tabviewGlobal->addWidget(globaltabIndex::synthesizer,
+      addOptionMenu(
+        macrotabInsideLeft0 + knobPairWidth,
+        macrotabInsideTop0 + 4 * sectionHeight,
+        2 * knobX, labelHeight, uiTextSize,
+        ID::dType, osc_type_d_options));
+    tabviewMacro->refreshTab();
 
     const auto global_top0 = globaltabInsideTop0;
     const auto global_top1 = global_top0 + labelY;
@@ -2987,194 +2843,190 @@ public:
 
     const auto envelope_1_top0 = globaltabInsideTop0 + 0 * sectionHeight;
     const auto envelope_1_top1 = envelope_1_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addGroupLabel(globaltabInsideLeft0, envelope_1_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Envelope_1"));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+        labelHeight, midTextSize, "Envelope_1",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 0 * knobX, envelope_1_top1,
         knobWidth, margin, uiTextSize,
         "attack", ID::envelopesEnvelope_1Attack));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 1 * knobX, envelope_1_top1,
         knobWidth, margin, uiTextSize,
         "decay", ID::envelopesEnvelope_1Decay));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 2 * knobX, envelope_1_top1,
         knobWidth, margin, uiTextSize,
         "sustain", ID::envelopesEnvelope_1Sustain));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 3 * knobX, envelope_1_top1,
         knobWidth, margin, uiTextSize,
         "release", ID::envelopesEnvelope_1Release));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 4 * knobX, envelope_1_top1,
         knobWidth, margin, uiTextSize,
         "velsens", ID::envelopesEnvelope_1Velsens));
     
     const auto envelope0_top0 = globaltabInsideTop0 + 1 * sectionHeight;
     const auto envelope0_top1 = envelope0_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addGroupLabel(globaltabInsideLeft0, envelope0_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Envelope0"));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+        labelHeight, midTextSize, "Envelope0",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 0 * knobX, envelope0_top1,
         knobWidth, margin, uiTextSize,
         "attack", ID::envelopesEnvelope0Attack));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 1 * knobX, envelope0_top1,
         knobWidth, margin, uiTextSize,
         "decay", ID::envelopesEnvelope0Decay));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 2 * knobX, envelope0_top1,
         knobWidth, margin, uiTextSize,
         "sustain", ID::envelopesEnvelope0Sustain));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 3 * knobX, envelope0_top1,
         knobWidth, margin, uiTextSize,
         "release", ID::envelopesEnvelope0Release));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 4 * knobX, envelope0_top1,
         knobWidth, margin, uiTextSize,
         "velsens", ID::envelopesEnvelope0Velsens));
     
     const auto envelope1_top0 = globaltabInsideTop0 + 2 * sectionHeight;
     const auto envelope1_top1 = envelope1_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addGroupLabel(globaltabInsideLeft0, envelope1_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Envelope1"));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+        labelHeight, midTextSize, "Envelope1",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 0 * knobX, envelope1_top1,
         knobWidth, margin, uiTextSize,
         "attack", ID::envelopesEnvelope1Attack));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 1 * knobX, envelope1_top1,
         knobWidth, margin, uiTextSize,
         "decay", ID::envelopesEnvelope1Decay));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 2 * knobX, envelope1_top1,
         knobWidth, margin, uiTextSize,
         "sustain", ID::envelopesEnvelope1Sustain));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 3 * knobX, envelope1_top1,
         knobWidth, margin, uiTextSize,
         "release", ID::envelopesEnvelope1Release));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 4 * knobX, envelope1_top1,
         knobWidth, margin, uiTextSize,
         "velsens", ID::envelopesEnvelope1Velsens));
     
     const auto envelope2_top0 = globaltabInsideTop0 + 3 * sectionHeight;
     const auto envelope2_top1 = envelope2_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addGroupLabel(globaltabInsideLeft0, envelope2_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Envelope2"));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+        labelHeight, midTextSize, "Envelope2",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 0 * knobX, envelope2_top1,
         knobWidth, margin, uiTextSize,
         "attack", ID::envelopesEnvelope2Attack));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 1 * knobX, envelope2_top1,
         knobWidth, margin, uiTextSize,
         "decay", ID::envelopesEnvelope2Decay));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 2 * knobX, envelope2_top1,
         knobWidth, margin, uiTextSize,
         "sustain", ID::envelopesEnvelope2Sustain));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 3 * knobX, envelope2_top1,
         knobWidth, margin, uiTextSize,
         "release", ID::envelopesEnvelope2Release));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 4 * knobX, envelope2_top1,
         knobWidth, margin, uiTextSize,
         "velsens", ID::envelopesEnvelope2Velsens));
     
     const auto envelope3_top0 = globaltabInsideTop0 + 4 * sectionHeight;
     const auto envelope3_top1 = envelope3_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addGroupLabel(globaltabInsideLeft0, envelope3_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Envelope3"));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+        labelHeight, midTextSize, "Envelope3",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 0 * knobX, envelope3_top1,
         knobWidth, margin, uiTextSize,
         "attack", ID::envelopesEnvelope3Attack));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 1 * knobX, envelope3_top1,
         knobWidth, margin, uiTextSize,
         "decay", ID::envelopesEnvelope3Decay));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 2 * knobX, envelope3_top1,
         knobWidth, margin, uiTextSize,
         "sustain", ID::envelopesEnvelope3Sustain));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 3 * knobX, envelope3_top1,
         knobWidth, margin, uiTextSize,
         "release", ID::envelopesEnvelope3Release));
-    tabviewGlobal->addWidget(globaltabIndex::envelopes,
+    tabviewGlobal->addWidget(globaltabIndex::envelope,
       addKnob(globaltabInsideLeft0 + 4 * knobX, envelope3_top1,
         knobWidth, margin, uiTextSize,
         "velsens", ID::envelopesEnvelope3Velsens));
     
     const auto lfo0_top0 = globaltabInsideTop0 + 0 * sectionHeight;
     const auto lfo0_top1 = lfo0_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addGroupLabel(globaltabInsideLeft0, lfo0_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Lfo0"));
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+        labelHeight, midTextSize, "Lfo0",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addKnob(globaltabInsideLeft0 + 0 * knobX, lfo0_top1,
         knobWidth, margin, uiTextSize,
         "lfofreq", ID::lfosLfo0Lfofreq));
     
     const auto lfo1_top0 = globaltabInsideTop0 + 1 * sectionHeight;
     const auto lfo1_top1 = lfo1_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addGroupLabel(globaltabInsideLeft0, lfo1_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Lfo1"));
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+        labelHeight, midTextSize, "Lfo1",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addKnob(globaltabInsideLeft0 + 0 * knobX, lfo1_top1,
         knobWidth, margin, uiTextSize,
         "lfofreq", ID::lfosLfo1Lfofreq));
     
     const auto lfo2_top0 = globaltabInsideTop0 + 2 * sectionHeight;
     const auto lfo2_top1 = lfo2_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addGroupLabel(globaltabInsideLeft0, lfo2_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Lfo2"));
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+        labelHeight, midTextSize, "Lfo2",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addKnob(globaltabInsideLeft0 + 0 * knobX, lfo2_top1,
         knobWidth, margin, uiTextSize,
         "lfofreq", ID::lfosLfo2Lfofreq));
     
     const auto lfo3_top0 = globaltabInsideTop0 + 3 * sectionHeight;
     const auto lfo3_top1 = lfo3_top0 + labelY;
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addGroupLabel(globaltabInsideLeft0, lfo3_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "Lfo3"));
-    tabviewGlobal->addWidget(globaltabIndex::LFOs,
+        labelHeight, midTextSize, "Lfo3",
+        ALIGN_LEFT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::lfo,
       addKnob(globaltabInsideLeft0 + 0 * knobX, lfo3_top1,
         knobWidth, margin, uiTextSize,
         "lfofreq", ID::lfosLfo3Lfofreq));
     
     const auto modulationTop0 = globaltabInsideTop0;
-    const auto modulationTop1 = globaltabInsideTop0 + knobY;
-    tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 0 * knobX, modulationTop0,
-        knobWidth, margin, uiTextSize,
-        "Axis 1", ID::modulation1Macro));
-    tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 1 * knobX, modulationTop0,
-        knobWidth, margin, uiTextSize,
-        "Axis 2", ID::modulation2Macro));
-    tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 2 * knobX, modulationTop0,
-        knobWidth, margin, uiTextSize,
-        "Axis 3", ID::modulation3Macro));
-    
-    const auto mod1_top0 = modulationTop1 + 0 * (sectionHeight + knobY);
+    const auto mod1_top0 = modulationTop0 + 0 * (sectionHeight + knobY);
     const auto mod1_top1 = mod1_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod1_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "1"));
+        labelHeight, midTextSize, "1",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addKnob(globaltabInsideLeft0 + 0 * knobX, mod1_top1,
         knobWidth, margin, uiTextSize,
@@ -3208,43 +3060,44 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo1", ID::modulation1Lfo1));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 8 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo2", ID::modulation1Lfo2));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 9 * knobX, mod1_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation1Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 0 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation1After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 1 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation1Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 2 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation1Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 3 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation1Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 4 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 6 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation1Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 5 * knobX, mod1_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 7 * knobX, mod1_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation1Random));
     
-    const auto mod2_top0 = modulationTop1 + 1 * (sectionHeight + knobY);
+    const auto mod2_top0 = modulationTop0 + 1 * (sectionHeight + knobY);
     const auto mod2_top1 = mod2_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod2_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "2"));
+        labelHeight, midTextSize, "2",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addKnob(globaltabInsideLeft0 + 0 * knobX, mod2_top1,
         knobWidth, margin, uiTextSize,
@@ -3278,43 +3131,44 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo1", ID::modulation2Lfo1));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 8 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo2", ID::modulation2Lfo2));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 9 * knobX, mod2_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation2Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 0 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation2After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 1 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation2Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 2 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation2Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 3 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation2Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 4 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 6 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation2Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 5 * knobX, mod2_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 7 * knobX, mod2_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation2Random));
     
-    const auto mod3_top0 = modulationTop1 + 2 * (sectionHeight + knobY);
+    const auto mod3_top0 = modulationTop0 + 2 * (sectionHeight + knobY);
     const auto mod3_top1 = mod3_top0 + labelY;
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addGroupLabel(globaltabInsideLeft0, mod3_top0, globaltabInnerWidth,
-        labelHeight, midTextSize, "3"));
+        labelHeight, midTextSize, "3",
+        ALIGN_LEFT | ALIGN_MIDDLE));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
       addKnob(globaltabInsideLeft0 + 0 * knobX, mod3_top1,
         knobWidth, margin, uiTextSize,
@@ -3348,40 +3202,366 @@ public:
         knobWidth, margin, uiTextSize,
         "lfo1", ID::modulation3Lfo1));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 8 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 0 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo2", ID::modulation3Lfo2));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 9 * knobX, mod3_top1,
+      addKnob(globaltabInsideLeft0 + 1 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "lfo3", ID::modulation3Lfo3));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 0 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 2 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "after_touch", ID::modulation3After_touch));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 1 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 3 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "note", ID::modulation3Note));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 2 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 4 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "velocity", ID::modulation3Velocity));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 3 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 5 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "mod_wheel", ID::modulation3Mod_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 4 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 6 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "pitch_wheel", ID::modulation3Pitch_wheel));
     tabviewGlobal->addWidget(globaltabIndex::modulation,
-      addKnob(globaltabInsideLeft0 + 5 * knobX, mod3_top1 + knobY,
+      addKnob(globaltabInsideLeft0 + 7 * knobX, mod3_top1 + knobY,
         knobWidth, margin, uiTextSize,
         "random", ID::modulation3Random));
     
     tabviewGlobal->refreshTab();
-  }
+
+    const auto crossfade_width = xyPadSize + knobPairWidth + uiMargin;
+    const auto crossfade_height = xyPadSize + labelY + uiMargin;
+    const auto xyz_crossfade_top0 = top0;
+    const auto xyz_crossfade_left0 = left0 + uiMargin + globaltabWidth + 2 * crossfade_width;
+    const auto xyz_crossfade_left1 = xyz_crossfade_left0 + xyPadSize + uiMargin;
+    auto tuple_axis1 = addKnob(
+      xyz_crossfade_left1, xyz_crossfade_top0 + 0 * knobY,
+      knobWidth, margin, uiTextSize,
+      "Axis 1", ID::modulation1Macro);
+    widget_axis1 = std::get<0>(tuple_axis1);
+    auto tuple_axis2 = addKnob(
+      xyz_crossfade_left1, xyz_crossfade_top0 + 1 * knobY,
+      knobWidth, margin, uiTextSize,
+      "Axis 2", ID::modulation2Macro);
+    widget_axis2 = std::get<0>(tuple_axis2);
+    auto tuple_axis3 = addKnob(
+      xyz_crossfade_left1, xyz_crossfade_top0 + 2 * knobY,
+      knobWidth, margin, uiTextSize,
+      "Axis 3", ID::modulation3Macro);
+    widget_axis3 = std::get<0>(tuple_axis3);
+    
+    const auto xyz_crossfade_top1 = xyz_crossfade_top0;
+    addLabel(xyz_crossfade_left0, xyz_crossfade_top1,
+      xyPadSize, labelHeight, uiTextSize, "X-Y");
+    xypad_xy = addXYPad(
+      xyz_crossfade_left0, xyz_crossfade_top1 + labelY,
+      xyPadSize, xyPadSize,
+      ID::modulation1Macro, ID::modulation2Macro);
+    const auto xyz_crossfade_top2 = xyz_crossfade_top1 + crossfade_height;
+    addLabel(xyz_crossfade_left0, xyz_crossfade_top2,
+      xyPadSize, labelHeight, uiTextSize, "X-Z");
+    xypad_xz = addXYPad(
+      xyz_crossfade_left0, xyz_crossfade_top2 + labelY,
+      xyPadSize, xyPadSize,
+      ID::modulation1Macro, ID::modulation3Macro);
+    const auto xyz_crossfade_top3 = xyz_crossfade_top2 + crossfade_height;
+    addLabel(xyz_crossfade_left0, xyz_crossfade_top3,
+      xyPadSize, labelHeight, uiTextSize, "Z-Y");
+    xypad_zy = addXYPad(
+      xyz_crossfade_left0, xyz_crossfade_top3 + labelY,
+      xyPadSize, xyPadSize,
+      ID::modulation3Macro, ID::modulation2Macro);
+
+    const auto abcd_crossfade_top0 = top0;
+    const auto abcd_crossfade_left0 = left0 + globaltabWidth + uiMargin;
+    const auto abcd_crossfade_top0_macro1
+      = abcd_crossfade_top0 + 0 * crossfade_height;
+    const auto abcd_crossfade_top1_macro1
+      = abcd_crossfade_top0_macro1 + knobY;
+    const auto abcd_crossfade_left0_macro1
+      = abcd_crossfade_left0 + 0 * crossfade_width;
+    const auto abcd_crossfade_left1_macro1
+      = abcd_crossfade_left0_macro1 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro1, abcd_crossfade_top0_macro1,
+      xyPadSize, labelHeight, uiTextSize, "macro1");
+    xypad_macro1_abcd = addXYPad(
+      abcd_crossfade_left0_macro1, abcd_crossfade_top0_macro1 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
+    auto tuple_macro1_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro1, abcd_crossfade_top0_macro1,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro1Ab_cd);
+    widget_macro1_ab_cd = std::get<0>(tuple_macro1_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro1 + knobWidth,
+      abcd_crossfade_top0_macro1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro1Ab_cd);
+    auto tuple_macro1_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro1, abcd_crossfade_top1_macro1,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro1Ac_bd);
+    widget_macro1_ac_bd = std::get<0>(tuple_macro1_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro1 + knobWidth,
+      abcd_crossfade_top1_macro1,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro1Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro2
+      = abcd_crossfade_top0 + 1 * crossfade_height;
+    const auto abcd_crossfade_top1_macro2
+      = abcd_crossfade_top0_macro2 + knobY;
+    const auto abcd_crossfade_left0_macro2
+      = abcd_crossfade_left0 + 0 * crossfade_width;
+    const auto abcd_crossfade_left1_macro2
+      = abcd_crossfade_left0_macro2 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro2, abcd_crossfade_top0_macro2,
+      xyPadSize, labelHeight, uiTextSize, "macro2");
+    xypad_macro2_abcd = addXYPad(
+      abcd_crossfade_left0_macro2, abcd_crossfade_top0_macro2 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
+    auto tuple_macro2_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro2, abcd_crossfade_top0_macro2,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro2Ab_cd);
+    widget_macro2_ab_cd = std::get<0>(tuple_macro2_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro2 + knobWidth,
+      abcd_crossfade_top0_macro2,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro2Ab_cd);
+    auto tuple_macro2_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro2, abcd_crossfade_top1_macro2,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro2Ac_bd);
+    widget_macro2_ac_bd = std::get<0>(tuple_macro2_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro2 + knobWidth,
+      abcd_crossfade_top1_macro2,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro2Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro3
+      = abcd_crossfade_top0 + 2 * crossfade_height;
+    const auto abcd_crossfade_top1_macro3
+      = abcd_crossfade_top0_macro3 + knobY;
+    const auto abcd_crossfade_left0_macro3
+      = abcd_crossfade_left0 + 0 * crossfade_width;
+    const auto abcd_crossfade_left1_macro3
+      = abcd_crossfade_left0_macro3 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro3, abcd_crossfade_top0_macro3,
+      xyPadSize, labelHeight, uiTextSize, "macro3");
+    xypad_macro3_abcd = addXYPad(
+      abcd_crossfade_left0_macro3, abcd_crossfade_top0_macro3 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
+    auto tuple_macro3_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro3, abcd_crossfade_top0_macro3,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro3Ab_cd);
+    widget_macro3_ab_cd = std::get<0>(tuple_macro3_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro3 + knobWidth,
+      abcd_crossfade_top0_macro3,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro3Ab_cd);
+    auto tuple_macro3_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro3, abcd_crossfade_top1_macro3,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro3Ac_bd);
+    widget_macro3_ac_bd = std::get<0>(tuple_macro3_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro3 + knobWidth,
+      abcd_crossfade_top1_macro3,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro3Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro4
+      = abcd_crossfade_top0 + 3 * crossfade_height;
+    const auto abcd_crossfade_top1_macro4
+      = abcd_crossfade_top0_macro4 + knobY;
+    const auto abcd_crossfade_left0_macro4
+      = abcd_crossfade_left0 + 0 * crossfade_width;
+    const auto abcd_crossfade_left1_macro4
+      = abcd_crossfade_left0_macro4 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro4, abcd_crossfade_top0_macro4,
+      xyPadSize, labelHeight, uiTextSize, "macro4");
+    xypad_macro4_abcd = addXYPad(
+      abcd_crossfade_left0_macro4, abcd_crossfade_top0_macro4 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd, ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
+    auto tuple_macro4_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro4, abcd_crossfade_top0_macro4,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro1_4Macro4Ab_cd);
+    widget_macro4_ab_cd = std::get<0>(tuple_macro4_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro4 + knobWidth,
+      abcd_crossfade_top0_macro4,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro1_4Macro4Ab_cd);
+    auto tuple_macro4_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro4, abcd_crossfade_top1_macro4,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro1_4Macro4Ac_bd);
+    widget_macro4_ac_bd = std::get<0>(tuple_macro4_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro4 + knobWidth,
+      abcd_crossfade_top1_macro4,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro1_4Macro4Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro5
+      = abcd_crossfade_top0 + 0 * crossfade_height;
+    const auto abcd_crossfade_top1_macro5
+      = abcd_crossfade_top0_macro5 + knobY;
+    const auto abcd_crossfade_left0_macro5
+      = abcd_crossfade_left0 + 1 * crossfade_width;
+    const auto abcd_crossfade_left1_macro5
+      = abcd_crossfade_left0_macro5 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro5, abcd_crossfade_top0_macro5,
+      xyPadSize, labelHeight, uiTextSize, "macro5");
+    xypad_macro5_abcd = addXYPad(
+      abcd_crossfade_left0_macro5, abcd_crossfade_top0_macro5 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
+    auto tuple_macro5_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro5, abcd_crossfade_top0_macro5,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro5Ab_cd);
+    widget_macro5_ab_cd = std::get<0>(tuple_macro5_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro5 + knobWidth,
+      abcd_crossfade_top0_macro5,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro5Ab_cd);
+    auto tuple_macro5_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro5, abcd_crossfade_top1_macro5,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro5Ac_bd);
+    widget_macro5_ac_bd = std::get<0>(tuple_macro5_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro5 + knobWidth,
+      abcd_crossfade_top1_macro5,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro5Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro6
+      = abcd_crossfade_top0 + 1 * crossfade_height;
+    const auto abcd_crossfade_top1_macro6
+      = abcd_crossfade_top0_macro6 + knobY;
+    const auto abcd_crossfade_left0_macro6
+      = abcd_crossfade_left0 + 1 * crossfade_width;
+    const auto abcd_crossfade_left1_macro6
+      = abcd_crossfade_left0_macro6 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro6, abcd_crossfade_top0_macro6,
+      xyPadSize, labelHeight, uiTextSize, "macro6");
+    xypad_macro6_abcd = addXYPad(
+      abcd_crossfade_left0_macro6, abcd_crossfade_top0_macro6 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
+    auto tuple_macro6_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro6, abcd_crossfade_top0_macro6,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro6Ab_cd);
+    widget_macro6_ab_cd = std::get<0>(tuple_macro6_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro6 + knobWidth,
+      abcd_crossfade_top0_macro6,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro6Ab_cd);
+    auto tuple_macro6_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro6, abcd_crossfade_top1_macro6,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro6Ac_bd);
+    widget_macro6_ac_bd = std::get<0>(tuple_macro6_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro6 + knobWidth,
+      abcd_crossfade_top1_macro6,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro6Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro7
+      = abcd_crossfade_top0 + 2 * crossfade_height;
+    const auto abcd_crossfade_top1_macro7
+      = abcd_crossfade_top0_macro7 + knobY;
+    const auto abcd_crossfade_left0_macro7
+      = abcd_crossfade_left0 + 1 * crossfade_width;
+    const auto abcd_crossfade_left1_macro7
+      = abcd_crossfade_left0_macro7 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro7, abcd_crossfade_top0_macro7,
+      xyPadSize, labelHeight, uiTextSize, "macro7");
+    xypad_macro7_abcd = addXYPad(
+      abcd_crossfade_left0_macro7, abcd_crossfade_top0_macro7 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
+    auto tuple_macro7_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro7, abcd_crossfade_top0_macro7,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro7Ab_cd);
+    widget_macro7_ab_cd = std::get<0>(tuple_macro7_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro7 + knobWidth,
+      abcd_crossfade_top0_macro7,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro7Ab_cd);
+    auto tuple_macro7_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro7, abcd_crossfade_top1_macro7,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro7Ac_bd);
+    widget_macro7_ac_bd = std::get<0>(tuple_macro7_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro7 + knobWidth,
+      abcd_crossfade_top1_macro7,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro7Ac_bd);
+    
+    const auto abcd_crossfade_top0_macro8
+      = abcd_crossfade_top0 + 3 * crossfade_height;
+    const auto abcd_crossfade_top1_macro8
+      = abcd_crossfade_top0_macro8 + knobY;
+    const auto abcd_crossfade_left0_macro8
+      = abcd_crossfade_left0 + 1 * crossfade_width;
+    const auto abcd_crossfade_left1_macro8
+      = abcd_crossfade_left0_macro8 + xyPadSize + 2 * margin;
+    addLabel(abcd_crossfade_left0_macro8, abcd_crossfade_top0_macro8,
+      xyPadSize, labelHeight, uiTextSize, "macro8");
+    xypad_macro8_abcd = addXYPad(
+      abcd_crossfade_left0_macro8, abcd_crossfade_top0_macro8 + labelY,
+      xyPadSize, xyPadSize,
+      ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd, ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
+    auto tuple_macro8_ab_cd_main = addKnob(
+      abcd_crossfade_left1_macro8, abcd_crossfade_top0_macro8,
+      knobWidth, margin, uiTextSize,
+      "ab_cd", ID::globalStereoMainVectorAb_cdMacro5_8Macro8Ab_cd);
+    widget_macro8_ab_cd = std::get<0>(tuple_macro8_ab_cd_main);
+    addKnob(
+      abcd_crossfade_left1_macro8 + knobWidth,
+      abcd_crossfade_top0_macro8,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAb_cdMacro5_8Macro8Ab_cd);
+    auto tuple_macro8_ac_bd_main = addKnob(
+      abcd_crossfade_left1_macro8, abcd_crossfade_top1_macro8,
+      knobWidth, margin, uiTextSize,
+      "ac_bd", ID::globalStereoMainVectorAc_bdMacro5_8Macro8Ac_bd);
+    widget_macro8_ac_bd = std::get<0>(tuple_macro8_ac_bd_main);
+    addKnob(
+      abcd_crossfade_left1_macro8 + knobWidth,
+      abcd_crossfade_top1_macro8,
+      spreadKnobWidth + 10, margin, uiTextSize,
+      "", ID::globalStereoL_roffsetVectorAc_bdMacro5_8Macro8Ac_bd);
+    
+    }
 };
 
 UI *createUI() { return new DigiDrieUI(); }

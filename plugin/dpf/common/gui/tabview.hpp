@@ -108,6 +108,22 @@ public:
     }
   }
 
+  /**
+  Using modufied DPF.
+  */
+  virtual void setVisible(bool yesNo) override
+  {
+    if (yesNo) {
+      refreshTab();
+    } else {
+      for (size_t idx = 0; idx < tabs.size(); ++idx) {
+        for (auto &widget : widgets[idx]) widget->setVisible(false);
+      }
+    }
+
+    NanoWidget::setVisible(yesNo);
+  }
+
   void onNanoDisplay() override
   {
     resetTransform();
