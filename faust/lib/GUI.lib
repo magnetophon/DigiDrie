@@ -126,8 +126,12 @@ release(i)  = envelopeGroup(i,hslider("[3]release[scale:log]", defaultRelease, 0
 velSens(i)  = envelopeGroup(i,hslider("[4]vel sens", 0, 0, 1, stepsize));
 envMeter(i) = envelopeGroup(i,hbargraph("[5]envelope %i", 0, 1));
 
-lfo_freq(i) = lfoGroup(i,hslider("[0]lfo freq[scale:log]", 1, 0, 99, stepsize));
-lfoMeter(i) = lfoGroup(i,hbargraph("[1]lfo %i", -1, 1));
+lfo_type(i)      = lfoGroup(i,vslider("[0]type[scale:int][style:menu{'Sine-Noise':0;'Sawtooth':1;'Square':2;'Pulse':3;'Sine-Pulse':4;'Half Sine':5;'Resonant Saw':6;'Resonant Tri':7;'Resonant Trap':8}]", 2, 0, 8, 1));
+lfo_freq(i)      = lfoGroup(i,hslider("[1]lfo freq[scale:log]", 1, 0, 99, stepsize));
+lfo_index(i)     = lfoGroup(i,hslider("[2]lfo index", 0, 0, 1, stepsize));
+lfo_phase(i)     = lfoGroup(i,hslider("[3]lfo phase", 1, -1, 1, stepsize));
+lfo_freefloat(i) = lfoGroup(i,checkbox("[4]free float lfo[scale:int]"));
+lfoMeter(i)      = lfoGroup(i,hbargraph("[5]lfo %i", -1, 1));
 
 macroSlider           = hslider("[00]macro[style:knob]", 0, 0, 1, stepsize);
 macroUp               = hslider("[01]up time[style:knob]", defaultRelease, 0, maxAttack, stepsize);

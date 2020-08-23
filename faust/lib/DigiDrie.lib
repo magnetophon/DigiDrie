@@ -429,7 +429,29 @@ with {
   GAIN = si.interpolate(velSens(i),1,gain);
 };
 
-lfo(i,gate,gain) =  os.osc(lfo_freq(i)):lfoMeter(i);
+lfo(i,gate,gain) =
+  (
+    // os.lf_sawpos(lfo_freq(i))
+    lf_sawpos_phase_reset(lfo_freq(i),lfo_phase(i),(gate:ba.impulsify) & ( lfo_freefloat(i) != 1 ))
+   ,lfo_index(i))
+  : LFOselector(i);
+// os.osc(lfo_freq(i)):lfoMeter(i);
+
+
+LFOselector(i) =
+  si.bus(2)<:
+  (
+    sineNoise
+  , CZsawP
+  , CZsquareP
+  , CZpulseP
+  , CZsinePulseP
+  , CZhalfSineP
+  , CZresSaw
+  , CZresTriangle
+  , CZresTrap
+  ) : enableOneOfN(9,lfo_type(i));
+
 // master = lf_sawpos_reset(freq,reset) ;
 master(note) = lf_sawpos_phase_reset(freq(note)*minOctMult,masterPhase,reset(note)) ;
 masterReset(note,gate,gain) = lf_sawpos_phase_reset(freq(note)*minOctMult,masterPhase,resetX(note,gate,gain)) ;
