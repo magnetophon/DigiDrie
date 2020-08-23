@@ -26,24 +26,22 @@ constexpr float spreadKnobWidth = 20.0f;
 constexpr float knobX = 60.0f; // With margin.
 constexpr float knobY = knobHeight + labelY;
 constexpr float xyPadSize = 128.0f;
+constexpr float matrixKnobSize = labelHeight;
+constexpr float crossfade_width = xyPadSize + knobX + uiMargin;
+constexpr float crossfade_height = xyPadSize + labelY + uiMargin;
 
 constexpr float sectionHeight = labelY + knobY;
 constexpr float knobPairWidth = knobX + spreadKnobWidth;
 constexpr float innerWidth = 1400;
-constexpr float innerHeight = 700;
+constexpr float innerHeight = 800;
 
 constexpr uint32_t defaultWidth = uint32_t(2 * uiMargin + innerWidth);
 constexpr uint32_t defaultHeight = uint32_t(2 * uiMargin + innerHeight);
 
-enum macrotabIndex {
-  {% for idx in range(nrMacro) -%}
-    macro{{ idx + 1 }},
-  {% endfor -%}
-};
-
 enum globaltabIndex {
   global,
-  synthesizer,
+  main,
+  l_roffset,
   envelope,
   lfo,
   modulation,
@@ -52,9 +50,11 @@ enum globaltabIndex {
 class DigiDrieUI : public PluginUIBase {
 protected:
   {% for macro, controls in crossfade_items.items() -%}
-  std::shared_ptr<XYPad> xypad_{{ macro }}_abcd;
+  std::shared_ptr<XYPad> xypad_abcd_{{ macro }}_main;
+  std::shared_ptr<XYPad> xypad_abcd_{{ macro }}_offset;
   {% for ctrl, addr in controls.items() -%}
-  std::shared_ptr<ValueWidget> widget_{{ macro }}_{{ ctrl }};
+  std::shared_ptr<ValueWidget> widget_{{ macro }}_{{ ctrl }}_main;
+  std::shared_ptr<ValueWidget> widget_{{ macro }}_{{ ctrl }}_offset;
   {% endfor %}
   {% endfor %}
 
@@ -85,8 +85,13 @@ protected:
       {% for macro, controls in crossfade_items.items() -%}
       {% for ctrl, addr in controls.items() -%}
       case ID::{{ addr["main"] }}:
-        xypad_{{ macro }}_abcd->setValueAt({{ loop.index0 }}, normalized);
-        widget_{{ macro }}_{{ ctrl }}->setValue(normalized);
+        xypad_abcd_{{ macro }}_main->setValueAt({{ loop.index0 }}, normalized);
+        widget_{{ macro }}_{{ ctrl }}_main->setValue(normalized);
+        break;
+
+      case ID::{{ addr["l_roffset"] }}:
+        xypad_abcd_{{ macro }}_offset->setValueAt({{ loop.index0 }}, normalized);
+        widget_{{ macro }}_{{ ctrl }}_offset->setValue(normalized);
         break;
       {% endfor %}
       {% endfor %}
@@ -155,12 +160,13 @@ public:
 
     const auto tabTop0 = top0;
     const auto tabLeft0 = left0;
-    const auto globaltabInnerWidth = 7 * knobPairWidth;
+    const auto globaltabInnerWidth = 10 * knobPairWidth;
     const auto globaltabWidth = globaltabInnerWidth + 2 * uiMargin;
     const auto globaltabHeight = innerHeight;
     std::vector<std::string> globalTabs = {
       "Global",
-      "Synthesizer",
+      "Main",
+      "L-R Offset",
       "Envelope",
       "LFO",
       "Modulation",
@@ -172,48 +178,117 @@ public:
     const auto globaltabInsideTop0 = tabTop0 + labelY + uiMargin;
     const auto globaltabInsideLeft0 = tabLeft0 + uiMargin;
 
-    const auto macrotabInnerWidth = globaltabInnerWidth;
-    const auto macrotabWidth = globaltabWidth;
-    const auto macrotabHeight = globaltabHeight - labelY;
-    std::vector<std::string> macroTabs = {
-      {% for idx in range(nrMacro) -%}
-        "Macro{{ idx + 1 }}",
-      {% endfor -%}
-    };
-    auto tabviewMacro
-      = addTabView(tabLeft0, tabTop0 + labelY,
-        macrotabWidth, macrotabHeight, uiTextSize, labelY, macroTabs);
-    tabviewGlobal->addWidget(globaltabIndex::synthesizer, tabviewMacro);
-
-    const auto macrotabInsideTop0 = tabTop0 + 2 * labelY + uiMargin;
-    const auto macrotabInsideLeft0 = tabLeft0 + uiMargin;
-
     {# Macro tabs. -#}
-    {% for macro, sections in osc_items.items() -%}
+    constexpr uint32_t nRow = {{ nMacroParam }};
+    constexpr uint32_t nCol = {{ nrMacro }};
+    constexpr uint32_t matrixWidth = nCol * matrixKnobSize;
+    constexpr uint32_t matrixHeight = nRow * matrixKnobSize;
+    constexpr float matrixLabelWidth = 2 * knobX - margin;
+    const auto macroTop0 = globaltabInsideTop0;
+    const auto macroTop1 = macroTop0 + 2 * labelHeight;
+    const auto macroTop2 = macroTop1 + matrixHeight + margin;
+    const auto macroLeft0 = globaltabInsideLeft0;
+    const auto macroLeft1 = macroLeft0 + 2 * knobX;
+    std::vector<uint32_t> mainMatrixId(nRow * nCol);
+    std::vector<uint32_t> offsetMatrixId(nRow * nCol);
+    {% for macro, sections in osc_items.items() %}
+    constexpr uint32_t {{ macro }}_index = {{ loop.index0 }};
+    {% set ns = namespace(row=0) -%}
     {% for sctn, controls in sections.items() -%}
-    const auto {{ macro }}_{{ sctn }}_top0 = macrotabInsideTop0 + {{ loop.index0 }} * sectionHeight;
-    const auto {{ macro }}_{{ sctn }}_top1 = {{ macro }}_{{ sctn }}_top0 + labelY;
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addGroupLabel(macrotabInsideLeft0, {{ macro }}_{{ sctn }}_top0, macrotabInnerWidth,
-        labelHeight, midTextSize, "{{ sctn.capitalize() }}",
-        ALIGN_LEFT | ALIGN_MIDDLE));
     {% for ctrl, addr in controls.items() -%}
-    {% if ctrl == "octave" -%}
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addNumberKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, {{ macro }}_{{ sctn }}_top1,
-        knobWidth, margin, uiTextSize,
-        "{{ ctrl }}", ID::{{ addr["main"] }}, Scales::octave));
-    {%- else -%}
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth, {{ macro }}_{{ sctn }}_top1,
-        knobWidth, margin, uiTextSize,
-        "{{ ctrl }}", ID::{{ addr["main"] }}));
+    {% if macro == "macro1" %}
+    tabviewGlobal->addWidget(globaltabIndex::main,
+      addLabel(macroLeft0, macroTop1 + {{ ns.row }} * matrixKnobSize,
+        matrixLabelWidth, matrixKnobSize, uiTextSize,
+        "{{ sctn }}.{{ ctrl }}", ALIGN_RIGHT | ALIGN_MIDDLE));
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset,
+      addLabel(macroLeft0, macroTop1 + {{ ns.row }} * matrixKnobSize,
+        matrixLabelWidth, matrixKnobSize, uiTextSize,
+        "{{ sctn }}.{{ ctrl }}", ALIGN_RIGHT | ALIGN_MIDDLE));
     {%- endif %}
-    tabviewMacro->addWidget(macrotabIndex::{{ macro }},
-      addSmallKnob(macrotabInsideLeft0 + {{ loop.index0 }} * knobPairWidth + knobWidth - margin, {{ macro }}_{{ sctn }}_top1,
-        spreadKnobWidth + 10, margin,
-        ID::{{ addr["l_roffset"] }}));
+    mainMatrixId[{{ macro }}_index + {{ ns.row }} * nCol]
+      = ID::{{ addr["main"] }};
+    offsetMatrixId[{{ macro }}_index + {{ ns.row }} * nCol]
+      = ID::{{ addr["l_roffset"] }};
+    {%- set ns.row = ns.row + 1 -%}
+    {% endfor -%}
     {% endfor %}
+    {% endfor -%}
+
+    tabviewGlobal->addWidget(globaltabIndex::main,
+      addLabel(macroLeft1, macroTop0 - margin,
+        matrixWidth, matrixKnobSize, uiTextSize, "Macro"));
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset,
+      addLabel(macroLeft1, macroTop0 - margin,
+        matrixWidth, matrixKnobSize, uiTextSize, "Macro"));
+    {% for idx in range(1, nrMacro + 1) %}
+    tabviewGlobal->addWidget(globaltabIndex::main,
+      addLabel(macroLeft1 + {{ loop.index0 }} * matrixKnobSize, macroTop0 + matrixKnobSize,
+        matrixKnobSize, matrixKnobSize, uiTextSize, "{{ idx }}"));
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset,
+      addLabel(macroLeft1 + {{ loop.index0 }} * matrixKnobSize, macroTop0 + matrixKnobSize,
+        matrixKnobSize, matrixKnobSize, uiTextSize, "{{ idx }}"));
+    {% endfor %}
+
+    auto textViewMainStatus = addTextView(
+      macroLeft0, macroTop2, matrixWidth + knobX + margin, 2 * labelHeight,
+      uiTextSize, "Initialized.");
+    tabviewGlobal->addWidget(globaltabIndex::main, textViewMainStatus);
+    tabviewGlobal->addWidget(globaltabIndex::main,
+      addMatrixKnob(
+        macroLeft1, macroTop1, matrixWidth, matrixHeight,
+        nRow, nCol, mainMatrixId, textViewMainStatus));
+
+    auto textViewOffsetStatus = addTextView(
+      macroLeft0, macroTop2, matrixWidth + knobX + margin, 2 * labelHeight,
+      uiTextSize, "Initialized.");
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset, textViewOffsetStatus);
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset,
+      addMatrixKnob(
+        macroLeft1, macroTop1, matrixWidth, matrixHeight,
+        nRow, nCol, offsetMatrixId, textViewOffsetStatus));
+
+    const auto abcd_crossfade_top0 = globaltabInsideTop0;
+    const auto abcd_crossfade_left0
+      = globaltabInsideLeft0 + 2 * knobX + matrixWidth + uiMargin;
+    {% for macro, controls in crossfade_items.items() -%}
+    const auto abcd_crossfade_top0_{{ macro }}
+      = abcd_crossfade_top0 + {{ loop.index0 % 4 }} * crossfade_height;
+    const auto abcd_crossfade_top1_{{ macro }}
+      = abcd_crossfade_top0_{{ macro }} + knobY;
+    const auto abcd_crossfade_left0_{{ macro }}
+      = abcd_crossfade_left0 + {{ loop.index0 // 4 }} * crossfade_width;
+    const auto abcd_crossfade_left1_{{ macro }}
+      = abcd_crossfade_left0_{{ macro }} + xyPadSize + 2 * margin;
+    tabviewGlobal->addWidget(globaltabIndex::main,
+      addLabel(abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }},
+        xyPadSize, labelHeight, uiTextSize, "{{ macro }}"));
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset,
+      addLabel(abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }},
+        xyPadSize, labelHeight, uiTextSize, "{{ macro }}"));
+    xypad_abcd_{{ macro }}_main = addXYPad(
+      abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }} + labelY,
+      xyPadSize, xyPadSize,
+      ID::{{ controls["ab_cd"]["main"] }}, ID::{{ controls["ac_bd"]["main"] }});
+    tabviewGlobal->addWidget(globaltabIndex::main, xypad_abcd_{{ macro }}_main);
+    xypad_abcd_{{ macro }}_offset = addXYPad(
+      abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }} + labelY,
+      xyPadSize, xyPadSize,
+      ID::{{ controls["ab_cd"]["l_roffset"] }}, ID::{{ controls["ac_bd"]["l_roffset"] }});
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset, xypad_abcd_{{ macro }}_offset);
+    {% for ctrl, addr in controls.items() -%}
+    auto tuple_{{ macro }}_{{ ctrl }}_main = addKnob(
+      abcd_crossfade_left1_{{ macro }}, abcd_crossfade_top{{ loop.index0 }}_{{ macro }},
+      knobWidth, margin, uiTextSize,
+      "{{ ctrl }}", ID::{{ addr["main"] }});
+    widget_{{ macro }}_{{ ctrl }}_main = std::get<0>(tuple_{{ macro }}_{{ ctrl }}_main);
+    tabviewGlobal->addWidget(globaltabIndex::main, tuple_{{ macro }}_{{ ctrl }}_main);
+    auto tuple_{{ macro }}_{{ ctrl }}_offset = addKnob(
+      abcd_crossfade_left1_{{ macro }}, abcd_crossfade_top{{ loop.index0 }}_{{ macro }},
+      knobWidth, margin, uiTextSize,
+      "{{ ctrl }}", ID::{{ addr["l_roffset"] }});
+    widget_{{ macro }}_{{ ctrl }}_offset = std::get<0>(tuple_{{ macro }}_{{ ctrl }}_offset);
+    tabviewGlobal->addWidget(globaltabIndex::l_roffset, tuple_{{ macro }}_{{ ctrl }}_offset);
     {% endfor %}
     {% endfor -%}
 
@@ -223,15 +298,13 @@ public:
       "{{ menu }}",
       {% endfor %}
     };
-    tabviewGlobal->addWidget(globaltabIndex::synthesizer,
-      addOptionMenu(
-        macrotabInsideLeft0 + knobPairWidth,
-        macrotabInsideTop0 + {{ loop.index }} * sectionHeight,
-        2 * knobX, labelHeight, uiTextSize,
-        ID::{{ ctrl["address"] }}, osc_type_{{ label }}_options));
+    //tabviewGlobal->addWidget(globaltabIndex::main,
+    //  addOptionMenu(
+    //    macrotabInsideLeft0 + knobPairWidth,
+    //    macrotabInsideTop0 + {{ loop.index }} * sectionHeight,
+    //    2 * knobX, labelHeight, uiTextSize,
+    //    ID::{{ ctrl["address"] }}, osc_type_{{ label }}_options));
     {% endfor -%}
-
-    tabviewMacro->refreshTab();
 
     {# Global tab. -#}
     const auto global_top0 = globaltabInsideTop0;
@@ -326,10 +399,8 @@ public:
 
     tabviewGlobal->refreshTab();
 
-    const auto crossfade_width = xyPadSize + knobPairWidth + uiMargin;
-    const auto crossfade_height = xyPadSize + labelY + uiMargin;
     const auto xyz_crossfade_top0 = top0;
-    const auto xyz_crossfade_left0 = left0 + uiMargin + globaltabWidth + 2 * crossfade_width;
+    const auto xyz_crossfade_left0 = left0 + uiMargin + globaltabWidth;
     const auto xyz_crossfade_left1 = xyz_crossfade_left0 + xyPadSize + uiMargin;
     {% for ctrl, addr in modulation_axes.items() -%}
     auto tuple_axis{{ ctrl }} = addKnob(
@@ -359,37 +430,6 @@ public:
       xyz_crossfade_left0, xyz_crossfade_top3 + labelY,
       xyPadSize, xyPadSize,
       ID::{{ modulation_axes["3"] }}, ID::{{ modulation_axes["2"] }});
-
-    const auto abcd_crossfade_top0 = top0;
-    const auto abcd_crossfade_left0 = left0 + globaltabWidth + uiMargin;
-    {% for macro, controls in crossfade_items.items() -%}
-    const auto abcd_crossfade_top0_{{ macro }}
-      = abcd_crossfade_top0 + {{ loop.index0 % 4 }} * crossfade_height;
-    const auto abcd_crossfade_top1_{{ macro }}
-      = abcd_crossfade_top0_{{ macro }} + knobY;
-    const auto abcd_crossfade_left0_{{ macro }}
-      = abcd_crossfade_left0 + {{ loop.index0 // 4 }} * crossfade_width;
-    const auto abcd_crossfade_left1_{{ macro }}
-      = abcd_crossfade_left0_{{ macro }} + xyPadSize + 2 * margin;
-    addLabel(abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }},
-      xyPadSize, labelHeight, uiTextSize, "{{ macro }}");
-    xypad_{{ macro }}_abcd = addXYPad(
-      abcd_crossfade_left0_{{ macro }}, abcd_crossfade_top0_{{ macro }} + labelY,
-      xyPadSize, xyPadSize,
-      ID::{{ controls["ab_cd"]["main"] }}, ID::{{ controls["ac_bd"]["main"] }});
-    {% for ctrl, addr in controls.items() -%}
-    auto tuple_{{ macro }}_{{ ctrl }}_main = addKnob(
-      abcd_crossfade_left1_{{ macro }}, abcd_crossfade_top{{ loop.index0 }}_{{ macro }},
-      knobWidth, margin, uiTextSize,
-      "{{ ctrl }}", ID::{{ addr["main"] }});
-    widget_{{ macro }}_{{ ctrl }} = std::get<0>(tuple_{{ macro }}_{{ ctrl }}_main);
-    addSmallKnob(
-      abcd_crossfade_left1_{{ macro }} + knobWidth,
-      abcd_crossfade_top{{ loop.index0 }}_{{ macro }},
-      spreadKnobWidth + 10, margin,
-      ID::{{ addr["l_roffset"] }});
-    {% endfor %}
-    {% endfor -%}
   }
 };
 

@@ -462,10 +462,19 @@ def get_global_items(widgets, nrMacro):
 
     return global_items, global_menus, global_checkboxes, crossfade_items
 
+def get_n_macro_param(osc_items):
+    m1 = osc_items["macro1"]
+    nMacroParam = 0
+    for _, section in m1.items():
+        nMacroParam += len(section.items())
+    return nMacroParam
+
 def generate_ui_cpp(active, passive):
     nrMacro = 8 # TODO: Get info from xml.
 
     osc_items, osc_type = get_osc_items(active, nrMacro)
+    nMacroParam = get_n_macro_param(osc_items)
+
     envelope_items = get_envelope_items(active)
     lfo_items = get_lfo_items(active)
     modulation_items, modulation_axes = get_modulation_items(active)
@@ -476,6 +485,7 @@ def generate_ui_cpp(active, passive):
     template = jinja_env.get_template("template/ui.cpp.template")
     text = template.render(
         nrMacro=nrMacro,
+        nMacroParam=nMacroParam,
         osc_items=osc_items,
         osc_type=osc_type,
         crossfade_items=crossfade_items,

@@ -24,12 +24,12 @@
 
 #include <algorithm>
 #include <assert.h>
+#include <cfloat>
 #include <cmath>
 #include <functional>
 #include <memory>
 #include <random>
-
-#include <iostream> // debug
+#include <unordered_map>
 
 class MatrixKnob : public ArrayWidget {
 private:
@@ -49,6 +49,7 @@ private:
   std::vector<std::vector<double>> undoValue;
   std::vector<double> copyRow;
   std::vector<double> copyCol;
+  std::unordered_map<uint32_t, uint32_t> idMap;
 
   const uint32_t nRow;
   const uint32_t nCol; // col is short for column.
@@ -93,6 +94,7 @@ public:
     for (size_t i = 0; i < 4; ++i) undoValue.emplace_back(defaultValue);
     copyRow.resize(nRow);
     copyCol.resize(nCol);
+    for (uint32_t i = 0; i < id.size(); ++i) idMap.emplace(std::pair(id[i], i));
   }
 
   void onNanoDisplay() override
@@ -281,6 +283,18 @@ public:
       }
     }
     updateValue();
+  }
+
+  virtual void setValueFromId(int id, double normalized) override
+  {
+    auto idPair = idMap.find(id);
+    if (idPair == idMap.end()) return;
+    auto index = idPair->second;
+    if (index < value.size()) {
+      auto tmp = std::clamp(normalized, 0.0, 1.0);
+      if (std::fabs(tmp - defaultValue[index]) < FLT_EPSILON) tmp = defaultValue[index];
+      value[index] = tmp;
+    }
   }
 
 private:
