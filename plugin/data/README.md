@@ -27,6 +27,25 @@ Generated files are placed in `generated` directory.
 ## Dependencies
 - [Jinja](https://jinja.palletsprojects.com/en/2.11.x/).
 
+## MatrixKnob
+
+| Input | Control                        |
+| ----- | ------------------------------ |
+| c     | Copy                           |
+| d     | Reset to Default               |
+| r     | Randomize                      |
+| t     | Subtle Randomize (Random walk) |
+| v     | Paste                          |
+| z     | Undo                           |
+| Z     | Redo                           |
+| q     | Toggle Column Mode             |
+| w     | Toggle Row Mode                |
+| l     | Toggle Link Mode               |
+
+Copy and Paste only works when Row, Column, or both modes are enabled.
+
+Link mode only works when Row, Column, or both modes are enabled. Amount of change will be linked.
+
 ## TODO
 - Determin parameter group value type.
   - "button", "checkbox" are bool.
