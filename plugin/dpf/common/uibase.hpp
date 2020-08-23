@@ -26,6 +26,7 @@
 #include "gui/checkbox.hpp"
 #include "gui/knob.hpp"
 #include "gui/label.hpp"
+#include "gui/matrixknob.hpp"
 #include "gui/optionmenu.hpp"
 #include "gui/rotaryknob.hpp"
 #include "gui/scrollbar.hpp"
@@ -162,6 +163,30 @@ protected:
 
     for (const auto &ident : id) arrayWidget.emplace(std::make_pair(ident, xyPad));
     return xyPad;
+  }
+
+  auto addMatrixKnob(
+    float left,
+    float top,
+    float width,
+    float height,
+    uint32_t nRow,
+    uint32_t nColumn,
+    std::vector<uint32_t> id,
+    std::shared_ptr<TextView> textView)
+  {
+    std::vector<double> value(id.size());
+    for (size_t i = 0; i < value.size(); ++i)
+      value[i] = param->getDefaultNormalized(id[i]);
+    std::vector<double> defaultValue(value);
+
+    auto matrix = std::make_shared<MatrixKnob>(
+      this, this, id, value, defaultValue, nRow, nColumn, textView, palette);
+    matrix->setSize(width, height);
+    matrix->setAbsolutePos(left, top);
+
+    for (const auto &ident : id) arrayWidget.emplace(std::make_pair(ident, matrix));
+    return matrix;
   }
 
   template<typename Parent>

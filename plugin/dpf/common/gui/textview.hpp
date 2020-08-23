@@ -33,14 +33,7 @@ public:
     NanoWidget *group, std::string content, FontId fontId, Palette &palette)
     : NanoWidget(group), fontId(fontId), pal(palette)
   {
-    std::stringstream ss(content);
-    std::string line;
-    while (std::getline(ss, line, '\n')) {
-      if (line.size() <= 0)
-        str.push_back(" ");
-      else
-        str.push_back(line);
-    }
+    setText(content);
   }
 
   void onNanoDisplay() override
@@ -55,6 +48,20 @@ public:
     fontSize(textSize);
     for (size_t idx = 0; idx < str.size(); ++idx)
       text(0.0f, idx * (textSize + 2), str[idx].c_str(), nullptr);
+  }
+
+  void setText(std::string content)
+  {
+    std::stringstream ss(content);
+    std::string line;
+    str.clear();
+    while (std::getline(ss, line, '\n')) {
+      if (line.size() <= 0)
+        str.push_back(" ");
+      else
+        str.push_back(line);
+    }
+    repaint();
   }
 
 protected:

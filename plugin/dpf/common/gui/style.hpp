@@ -47,6 +47,7 @@ public:
   const DGL::Color &highlightWarning() { return _highlightWarning; }
   const DGL::Color &overlay() { return _overlay; }
   const DGL::Color &overlayHighlight() { return _overlayHighlight; }
+  const DGL::Color &overlayFaint() { return _overlayFaint; }
 
 private:
   std::string _fontPath;
@@ -65,4 +66,5 @@ private:
   DGL::Color _highlightWarning{0xfc, 0x80, 0x80};
   DGL::Color _overlay{0x00, 0x00, 0x00, 0x88};
   DGL::Color _overlayHighlight{0x00, 0xff, 0x00, 0x33};
+  DGL::Color _overlayFaint{0x00, 0x00, 0x00, 0x0b};
 };

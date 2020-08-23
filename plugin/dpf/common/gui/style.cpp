@@ -146,4 +146,5 @@ void Palette::load()
   loadColor(data, "highlightWarning", _highlightWarning);
   loadColor(data, "overlay", _overlay);
   loadColor(data, "overlayHighlight", _overlayHighlight);
+  loadColor(data, "overlayFaint", _overlayFaint);
 }
