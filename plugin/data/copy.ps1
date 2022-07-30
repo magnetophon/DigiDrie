@@ -1,8 +1,4 @@
-#!/bin/bash
-
-set -e
-
-python3 rewrite_dsp.py
+python rewrite_dsp.py
 
 cp generated/parameter.hpp ../vst3/DigiDrie/source
 cp generated/parameter.cpp ../vst3/DigiDrie/source

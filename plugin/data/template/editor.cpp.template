@@ -53,7 +53,8 @@ Editor::Editor(void *controller) : PlugEditor(controller)
   setRect(viewRect);
 }
 
-bool Editor::syncUI(ParamID id, float normalized) {
+bool Editor::syncUI(ParamID id, float normalized)
+{
   using ID = Synth::ParameterID::ID;
 
   switch (id) {
