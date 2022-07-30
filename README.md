@@ -62,22 +62,38 @@ faust -lang ocpp -t 0 -time -svg -f 1 DigiDiagram.dsp -o -drf  /dev/null && xdg-
 The file ``DigiDiagram.dsp`` is slightly different from the main dsp, in that it doesn't use a [cludge written in faust](https://github.com/magnetophon/DigiDrie/blob/master/lib/lastNote.lib) to work around the [poor monophonic handeling](https://github.com/grame-cncm/faust/issues/252) faust currently has.
 It increases the size of the diagram a lot, and doesn't help to clarify the actual synth.
 
-
 ### Plugin
 
 This is work in progress. If something is not working, please open issue.
 
+Below is a command list to build first time.
+
 ```bash
 git clone --recursive https://github.com/magnetophon/DigiDrie/
-cd DigiDrie/plugin/dpf
-make -j
+cd DigiDrie/plugin
+mkdir build
+
+cmake -S vst3sdk -B build               \
+  -DCMAKE_BUILD_TYPE=Release            \
+  -DSMTG_ADD_VST3_HOSTING_SAMPLES=False \
+  -DSMTG_ADD_VST3_PLUGINS_SAMPLES=False \
+  -DSMTG_CREATE_PLUGIN_LINK=True        \
+  -DSMTG_MYPLUGINS_SRC_PATH="vst3"      \
+  -DVSTGUI_ENABLE_XMLPARSER=False
+
+cmake --build build --config Release
 ```
 
-Plugins are built into `DigiDrie/dpf/bin`.
+To rebuild, use following commands.
 
-- `DigiDrie`: JACK standalone
-- `DigiDrie.lv2`: LV2
-- `DigiDrie-vst.so`: VST2
+```bash
+cd DigiDrie/plugin
+cmake --build build --config Release
+```
+
+Plugin is built into `DigiDrie/plugin/build/VST3/Release/DigiDrie.vst3`. When `-DSMTG_CREATE_PLUGIN_LINK=True`, it automatically creates a link to a VST 3 install directory.
+
+On Windows, use `-DSMTG_CREATE_PLUGIN_LINK=False`, instead of `True`. Enabling `SMTG_CREATE_PLUGIN_LINK` tries to create link to `C:\Program Files\Common Files\VST3`. It fails in default, because of the permission to access `Probram Files` is not granted.
 
 To build plugin from Faust code, see [`plugin/data/README.md`](https://github.com/magnetophon/DigiDrie/blob/master/plugin/data/README.md).
 
