@@ -52,8 +52,8 @@ public:
 
   T map(T input) const
   {
-    T value = input * scale + min + T(0.5);
-    return std::clamp(int32_t(value), min, max);
+    T value = input * scale + min;
+    return std::clamp(int32_t(std::floor(value + T(0.5))), min, max);
   }
 
   T reverseMap(T input) const { return map(T(1.0) - input); }
