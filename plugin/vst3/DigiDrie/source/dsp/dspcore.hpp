@@ -1,14 +1,25 @@
-/*
-TODO:
-- Add license.
-- Integrate Faust code.
-*/
+// (c) 2022 Digital Magic Industries
+//
+// This file is part of DigiDrie.
+//
+// DigiDrie is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// DigiDrie is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with DigiDrie.  If not, see <https://www.gnu.org/licenses/>.
 
 #pragma once
 
-#include "../../common/dsp/constants.hpp"
-#include "../../common/dsp/smoother.hpp"
-#include "../../lib/vcl/vectorclass.h"
+#include "../../../common/dsp/constants.hpp"
+#include "../../../common/dsp/multirate.hpp"
+#include "../../../common/dsp/smoother.hpp"
 #include "../parameter.hpp"
 #include "faustdsp.hpp"
 
@@ -16,6 +27,9 @@ TODO:
 #include <cmath>
 #include <memory>
 #include <random>
+
+using namespace SomeDSP;
+using namespace Steinberg::Synth;
 
 using namespace SomeDSP;
 
@@ -29,13 +43,15 @@ class DSPInterface {
 public:
   virtual ~DSPInterface(){};
 
-  static const size_t maxVoice = 128;
   GlobalParameter param;
+  bool isPlaying = false;
+  float tempo = 120.0f;
+  double beatsElapsed = 0.0f;
 
   virtual void setup(double sampleRate) = 0;
   virtual void reset() = 0;   // Stop sounds.
   virtual void startup() = 0; // Reset phase, random seed etc.
-  virtual void setParameters(float tempo) = 0;
+  virtual void setParameters() = 0;
   virtual void process(const uint32_t length, float *out0, float *out1) = 0;
   virtual void noteOn(int32_t noteId, int16_t pitch, float tuning, float velocity) = 0;
   virtual void noteOff(int32_t noteId) = 0;
@@ -70,7 +86,7 @@ public:
     void setup(double sampleRate) override;                                              \
     void reset() override;                                                               \
     void startup() override;                                                             \
-    void setParameters(float tempo) override;                                            \
+    void setParameters() override;                                                       \
     void process(const uint32_t length, float *out0, float *out1) override;              \
     void noteOn(int32_t noteId, int16_t pitch, float tuning, float velocity) override;   \
     void noteOff(int32_t noteId) override;                                               \
@@ -112,13 +128,10 @@ public:
   private:                                                                               \
     float sampleRate = 44100.0f;                                                         \
                                                                                          \
-    DecibelScale<float> velocityMap{-30, 0, true};                                       \
+    DecibelScale<float> velocityMap{-60, 0, true};                                       \
     std::vector<NoteInfo> noteStack; /* Top of this stack is current note. */            \
                                                                                          \
     mydsp synth;                                                                         \
   };
 
-DSPCORE_CLASS(AVX512)
-DSPCORE_CLASS(AVX2)
-DSPCORE_CLASS(SSE41)
-DSPCORE_CLASS(SSE2)
+DSPCORE_CLASS(Plain)

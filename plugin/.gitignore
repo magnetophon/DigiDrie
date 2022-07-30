@@ -6,5 +6,4 @@ data/generated
 data/active.xml
 data/passive.xml
 
-dpf/bin
-dpf/build
+build

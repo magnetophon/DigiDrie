@@ -203,7 +203,7 @@ def get_scale_data(wdgt):
 
     prim_type = wdgt.attrib["type"]
     if "bargraph" not in prim_type:
-        hints.append("kParameterIsAutomable")
+        hints.append("Info::kCanAutomate")
 
     if wdgt.find("meta") is None:
         return ("Linear", hints)
@@ -216,10 +216,10 @@ def get_scale_data(wdgt):
         print(f"Warning: 2 scale metadatas {scale} in {wdgt.find('address').text}.")
     scale = scale[0].text
 
-    if scale == "int":
-        hints.append("kParameterIsInteger")
-    elif scale == "log":
-        hints.append("kParameterIsLogarithmic")
+    # if scale == "int":
+    #     hints.append("kParameterIsInteger")
+    # elif scale == "log":
+    #     hints.append("kParameterIsLogarithmic")
 
     if scale == "spoly":
         scale = "SPoly"
@@ -463,7 +463,7 @@ def get_global_items(widgets, nrMacro):
     return global_items, global_menus, global_checkboxes, crossfade_items
 
 def generate_ui_cpp(active, passive):
-    nrMacro = 8 # TODO: Get info from xml.
+    nrMacro = 8  # TODO: Get info from xml.
 
     osc_items, osc_type = get_osc_items(active, nrMacro)
     envelope_items = get_envelope_items(active)
@@ -473,22 +473,23 @@ def generate_ui_cpp(active, passive):
         active, nrMacro)
 
     jinja_env = Environment(loader=FileSystemLoader("."))
-    template = jinja_env.get_template("template/ui.cpp.template")
-    text = template.render(
-        nrMacro=nrMacro,
-        osc_items=osc_items,
-        osc_type=osc_type,
-        crossfade_items=crossfade_items,
-        global_items=global_items,
-        global_menus=global_menus,
-        global_checkboxes=global_checkboxes,
-        envelope_items=envelope_items,
-        lfo_items=lfo_items,
-        modulation_items=modulation_items,
-        modulation_axes=modulation_axes,
-    )
-    with open("generated/ui.cpp", "w", encoding="utf-8") as fi:
-        fi.write(text)
+    for suffix in ["cpp", "hpp"]:
+        template = jinja_env.get_template(f"template/editor.{suffix}.template")
+        text = template.render(
+            nrMacro=nrMacro,
+            osc_items=osc_items,
+            osc_type=osc_type,
+            crossfade_items=crossfade_items,
+            global_items=global_items,
+            global_menus=global_menus,
+            global_checkboxes=global_checkboxes,
+            envelope_items=envelope_items,
+            lfo_items=lfo_items,
+            modulation_items=modulation_items,
+            modulation_axes=modulation_axes,
+        )
+        with open(f"generated/editor.{suffix}", "w", encoding="utf-8") as fi:
+            fi.write(text)
 
 if __name__ == "__main__":
     format_faust_cpp("DigiFaustMidi.hpp")
