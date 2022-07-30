@@ -24,15 +24,13 @@ void DSPCORE_NAME::setup(double sampleRate)
 {
   this->sampleRate = sampleRate;
 
-  noteStack.resize(0);
-  synth.init(sampleRate);
-
-  startup();
+  reset();
 }
 
 void DSPCORE_NAME::reset()
 {
   noteStack.resize(0);
+  synth.init(sampleRate);
   startup();
 }
 
