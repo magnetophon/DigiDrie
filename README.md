@@ -81,6 +81,12 @@ cmake -S vst3sdk -B build               \
   -DSMTG_MYPLUGINS_SRC_PATH="vst3"      \
   -DVSTGUI_ENABLE_XMLPARSER=False
 
+# Apply Linux patch.
+patch \
+  vst3sdk/vstgui4/vstgui/lib/platform/linux/cairocontext.cpp \
+  patch/cairocontext.cpp.diff
+
+# Start build.
 cmake --build build --config Release
 ```
 
