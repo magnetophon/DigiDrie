@@ -32,7 +32,7 @@ protected:
 
     auto knob = new Knob<style>(
       CRect(left + margin, top + margin, left + width, top + width - margin), this, tag, palette);
-    knob->setSlitWidth(1.0);
+    knob->setSlitWidth(2.0);
     knob->setValueNormalized(controller->getParamNormalized(tag));
     knob->setDefaultValue(param->getDefaultNormalized(tag));
     frame->addView(knob);
