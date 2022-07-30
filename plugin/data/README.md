@@ -7,7 +7,7 @@ cd DigiDrie
 
 # Generate xml.
 cd faust/
-faust -t 0 -time -xml -os -mapp -vec DigiFaustMidi.dsp > DigiFaustMidi.hpp
+faust -t 0 -time -xml -os DigiFaustMidi.dsp > DigiFaustMidi.hpp
 cp DigiFaustMidi.hpp     ../plugin/data/
 cp DigiFaustMidi.dsp.xml ../plugin/data/
 
