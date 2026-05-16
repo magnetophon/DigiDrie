@@ -6,6 +6,7 @@
 #include "../common/parameterinterface.hpp"
 #include "../common/value.hpp"
 
+#include <array>
 #include <memory>
 #include <string>
 #include <vector>
