@@ -29,6 +29,18 @@ endif
 
 BUILD_C_FLAGS   += -I.
 BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl $(INCLUDE_LIB)
+
+# DPF's Makefile.base.mk treats any TARGET_PROCESSOR matching `arm%`
+# as 32-bit ARM and unconditionally adds -mfpu=neon-vfpv4 -mfloat-abi=hard.
+# Apple Silicon's `uname -m` returns `arm64`, which matches that glob
+# but is a 64-bit target — Apple clang then errors out with
+#   clang++: error: unsupported option '-mfpu=' for target 'arm64-apple-darwin*'
+# Linux aarch64 isn't affected (its `uname -m` returns `aarch64`, which
+# doesn't match `arm%`). Strip the arm32-only flags whenever the target
+# is actually arm64.
+ifneq (,$(filter arm64%,$(TARGET_PROCESSOR)))
+BASE_OPTS := $(filter-out -mfpu=% -mfloat-abi=%,$(BASE_OPTS))
+endif
 # stdc++fs is a GCC-only artefact: GCC <= 8 needed it to use
 # <filesystem>, and GCC >= 9 keeps an empty stub for compatibility.
 # Apple clang's libc++ has <filesystem> in the standard library and
