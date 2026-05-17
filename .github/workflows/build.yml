@@ -110,6 +110,7 @@ jobs:
             base-devel
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-pkgconf
+            mingw-w64-x86_64-ccache
             zip
 
       - name: Set up ccache
