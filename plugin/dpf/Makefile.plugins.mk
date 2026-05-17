@@ -95,6 +95,20 @@ vst        = $(TARGET_DIR)/$(NAME)-vst$(LIB_EXT)
 vstfiles   =
 endif
 
+# CLAP: single .clap file on Linux/Windows (LIB_EXT is implied by being a
+# loadable shared library with .clap as the extension); a .clap bundle on
+# macOS, paralleling VST2. The .clap binary inside the bundle has no
+# extension, matching upstream DPF's CLAP_FILENAME layout.
+ifeq ($(MACOS),true)
+clap       = $(TARGET_DIR)/$(NAME).clap/Contents/MacOS/$(NAME)
+clapfiles  = $(TARGET_DIR)/$(NAME).clap/Contents/Info.plist \
+             $(TARGET_DIR)/$(NAME).clap/Contents/PkgInfo \
+             $(TARGET_DIR)/$(NAME).clap/Contents/Resources/empty.lproj
+else
+clap       = $(TARGET_DIR)/$(NAME).clap
+clapfiles  =
+endif
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Handle UI stuff, disable UI support automatically
 
@@ -269,6 +283,20 @@ $(vst): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o
 endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating VST plugin for $(NAME)"
+	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# CLAP
+
+clap: $(clap) $(clapfiles)
+
+ifeq ($(HAVE_DGL),true)
+$(clap): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_CLAP.cpp.o $(BUILD_DIR)/DistrhoUIMain_CLAP.cpp.o $(DGL_LIB)
+else
+$(clap): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_CLAP.cpp.o
+endif
+	-@mkdir -p $(shell dirname $@)
+	@echo "Creating CLAP plugin for $(NAME)"
 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
 
 # ---------------------------------------------------------------------------------------------------------------------

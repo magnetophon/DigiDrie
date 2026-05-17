@@ -12,6 +12,11 @@ TODO:
 #define DISTRHO_PLUGIN_NAME "DigiDrie"
 #define DISTRHO_PLUGIN_URI "https://github.com/magnetophon/DigiDrie"
 
+// Stable reverse-DNS identifier used by CLAP hosts to remap plugin instances
+// across sessions. Matches the CFBundleIdentifier used by the macOS .vst /
+// .clap bundles, so hosts that key off either see consistent identity.
+#define DISTRHO_PLUGIN_CLAP_ID "com.magnetophon.DigiDrie"
+
 #define DISTRHO_PLUGIN_HAS_UI 1
 #define DISTRHO_PLUGIN_IS_RT_SAFE 1
 #define DISTRHO_PLUGIN_IS_SYNTH 1

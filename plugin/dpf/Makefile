@@ -15,6 +15,7 @@ generate_ttl: build
 
 LV2 ?= true
 VST2 ?= true
+CLAP ?= true
 JACK ?= true
 
 # DigiDrie's UI is OpenGL via NanoVG; the Cairo DGL variant is unused.
@@ -40,6 +41,9 @@ endif
 ifeq ($(VST2),true)
 INSTALL_TARGET += installVST2
 endif
+ifeq ($(CLAP),true)
+INSTALL_TARGET += installCLAP
+endif
 ifeq ($(JACK),true)
 INSTALL_TARGET += installJACK
 endif
@@ -48,6 +52,7 @@ pkgname ?= magnetophon
 PREFIX ?= /usr/local
 lv2dir ?= $(DESTDIR)$(PREFIX)/lib/lv2
 vst2dir ?= $(DESTDIR)$(PREFIX)/lib/lxvst
+clapdir ?= $(DESTDIR)$(PREFIX)/lib/clap
 bindir ?= $(DESTDIR)$(PREFIX)/bin
 sysconfdir ?= $(DESTDIR)$(PREFIX)/etc
 datarootdir ?= $(DESTDIR)$(PREFIX)/share
@@ -64,7 +69,7 @@ common: dpf
 
 .PHONY: DigiDrie
 DigiDrie: common
-	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) JACK=$(JACK)
+	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) CLAP=$(CLAP) JACK=$(JACK)
 
 .PHONY: install
 install: $(INSTALL_TARGET) installConfig installResource installDoc
@@ -95,6 +100,11 @@ installLV2:
 installVST2:
 	mkdir -p $(vst2dir)/$(pkgname)
 	cp -r bin/*-vst.so $(vst2dir)/$(pkgname)
+
+.PHONY: installCLAP
+installCLAP:
+	mkdir -p $(clapdir)
+	cp -r bin/*.clap $(clapdir)
 
 .PHONY: installJACK
 installJACK:
