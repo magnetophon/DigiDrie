@@ -123,7 +123,15 @@ jobs:
       - name: Patch bundled DPF and build
         working-directory: plugin/dpf
         run: |
-          export PATH="/usr/lib/ccache:$PATH"
+          # Wrap the compilers via ccache explicitly. The older
+          # `export PATH=/usr/lib/ccache:$PATH` approach only works on
+          # Debian-apt systems that ship ccache with /usr/lib/ccache/*
+          # symlinks; hendrikmuhs/ccache-action installs ccache without
+          # creating those, so on macOS (Homebrew) and Windows (MSYS2)
+          # PATH manipulation does nothing, hence 0/0 in stats.
+          # CC/CXX as make command-line overrides win over the ?= in
+          # DPF's Makefile.base.mk and propagate to sub-makes via
+          # MAKEFLAGS.
           make patch
           # nproc works on Linux and MSYS2; macOS needs sysctl.
           if command -v nproc >/dev/null 2>&1; then
@@ -131,7 +139,9 @@ jobs:
           else
             JOBS=$(sysctl -n hw.ncpu)
           fi
-          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true VST3=true CLAP=true AU=true
+          make -j"$JOBS" \
+            CC="ccache gcc" CXX="ccache g++" \
+            JACK=${{ matrix.jack }} LV2=true VST2=true VST3=true CLAP=true AU=true
 
       # --- Stage artifacts into a portable on-disk layout ---
 
