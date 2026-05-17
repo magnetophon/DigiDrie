@@ -231,6 +231,16 @@ $(BUILD_DIR)/DistrhoUIMain_%.cpp.o: $(DPF_PATH)/distrho/DistrhoUIMain.cpp
 	@echo "Compiling DistrhoUIMain.cpp ($*)"
 	@$(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
 
+# The AU variants of DistrhoPluginMain.cpp and DistrhoUIMain.cpp pull in
+# DistrhoPluginAU.cpp / DistrhoUIAU.mm which contain Objective-C++ code
+# (NSString, [obj method] syntax, @class). Compile them with -ObjC++ so
+# clang treats them as Objective-C++ regardless of the .cpp extension.
+# Target-specific BUILD_CXX_FLAGS additions take effect only for these
+# two specific .o targets; the generic _% pattern rule above sees the
+# augmented flags when it expands for $*=AU.
+$(BUILD_DIR)/DistrhoPluginMain_AU.cpp.o: BUILD_CXX_FLAGS += -ObjC++
+$(BUILD_DIR)/DistrhoUIMain_AU.cpp.o: BUILD_CXX_FLAGS += -ObjC++
+
 $(BUILD_DIR)/DistrhoUI_macOS_%.mm.o: $(DPF_PATH)/distrho/DistrhoUI_macOS.mm
 	-@mkdir -p $(BUILD_DIR)
 	@echo "Compiling DistrhoUI_macOS.mm ($*)"
