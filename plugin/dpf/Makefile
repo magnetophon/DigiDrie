@@ -56,7 +56,7 @@ docdir ?= $(datarootdir)/doc
 
 .PHONY: dpf
 dpf:
-	$(MAKE) -C lib/DPF HAVE_CAIRO=$(HAVE_CAIRO) dgl utils/lv2_ttl_generator
+	$(MAKE) -C lib/DPF HAVE_CAIRO=$(HAVE_CAIRO) USE_WEB_VIEW=false dgl utils/lv2_ttl_generator
 
 .PHONY: common
 common: dpf

@@ -62,6 +62,13 @@ endif
 OBJS_DSP += $(FILES_DSP:%=$(BUILD_DIR)/%.o)
 OBJS_UI  += $(FILES_UI:%=$(BUILD_DIR)/%.o)
 
+# Current DPF moves the non-static `getDesktopScaleFactor` definition into a
+# separate Objective-C++ source file, so it must be compiled and linked
+# explicitly on macOS or the UI fails to link.
+ifeq ($(MACOS),true)
+OBJS_UI += $(BUILD_DIR)/DistrhoUI_macOS_$(NAME).mm.o
+endif
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Set plugin binary file targets
 
@@ -157,6 +164,11 @@ $(BUILD_DIR)/DistrhoUIMain_%.cpp.o: $(DPF_PATH)/distrho/DistrhoUIMain.cpp
 	-@mkdir -p $(BUILD_DIR)
 	@echo "Compiling DistrhoUIMain.cpp ($*)"
 	@$(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+
+$(BUILD_DIR)/DistrhoUI_macOS_%.mm.o: $(DPF_PATH)/distrho/DistrhoUI_macOS.mm
+	-@mkdir -p $(BUILD_DIR)
+	@echo "Compiling DistrhoUI_macOS.mm ($*)"
+	@$(CXX) $< $(BUILD_CXX_FLAGS) -ObjC++ -c -o $@
 
 $(BUILD_DIR)/DistrhoPluginMain_JACK.cpp.o: $(DPF_PATH)/distrho/DistrhoPluginMain.cpp
 	-@mkdir -p $(BUILD_DIR)
