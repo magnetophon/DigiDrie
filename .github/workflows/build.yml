@@ -147,14 +147,14 @@ jobs:
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
           mkdir -p "$STAGE/bin" "$STAGE/lib/vst" "$STAGE/lib/lv2" \
-                   "$STAGE/share/UhhyouPlugins"
+                   "$STAGE/share/magnetophon"
           if [ "${{ matrix.jack }}" = "true" ]; then
             cp "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" "$STAGE/bin/"
           fi
           cp "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" "$STAGE/lib/vst/"
           cp -r plugin/dpf/bin/DigiDrie.lv2                     "$STAGE/lib/lv2/"
           cp README.md LICENSE.txt                              "$STAGE/"
-          cp -r plugin/dpf/style                                "$STAGE/share/UhhyouPlugins/"
+          cp -r plugin/dpf/style                                "$STAGE/share/magnetophon/"
 
       # --- macOS: wrap the bare VST2 .dylib into a proper .vst bundle ---
       #
@@ -190,7 +190,7 @@ jobs:
           <dict>
               <key>CFBundleDevelopmentRegion</key><string>English</string>
               <key>CFBundleExecutable</key><string>$name</string>
-              <key>CFBundleIdentifier</key><string>com.uhhyou.$name</string>
+              <key>CFBundleIdentifier</key><string>com.magnetophon.$name</string>
               <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
               <key>CFBundlePackageType</key><string>BNDL</string>
               <key>CFBundleSignature</key><string>????</string>

@@ -86,7 +86,7 @@ Copy `DigiDrie-vst.dll` (and the `DigiDrie.lv2` directory, if your host supports
 
 ### themes (optional)
 
-The plugin reads `UhhyouPlugins/style/style.json` from `$XDG_CONFIG_HOME` (typically `~/.config/` on Linux and macOS) and falls back to `/usr/local/etc/` and `/etc/`.
+The plugin reads `magnetophon/style/style.json` from `$XDG_CONFIG_HOME` (typically `~/.config/` on Linux and macOS) and falls back to `/usr/local/etc/` and `/etc/`.
 The `style/` directory bundled in the archive contains presets you can drop in there; if you don't, the plugin uses a built-in default theme.
 
 ## building

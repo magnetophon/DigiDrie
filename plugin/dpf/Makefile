@@ -44,7 +44,7 @@ ifeq ($(JACK),true)
 INSTALL_TARGET += installJACK
 endif
 
-pkgname ?= UhhyouPlugins
+pkgname ?= magnetophon
 PREFIX ?= /usr/local
 lv2dir ?= $(DESTDIR)$(PREFIX)/lib/lv2
 vst2dir ?= $(DESTDIR)$(PREFIX)/lib/lxvst

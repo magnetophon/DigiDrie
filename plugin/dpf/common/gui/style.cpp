@@ -52,23 +52,23 @@ inline void logNotExist(fs::path path)
 
 inline fs::path getConfigPath()
 {
-  auto styleJsonPath = getXdgConfigHome() / fs::path("UhhyouPlugins/style/style.json");
+  auto styleJsonPath = getXdgConfigHome() / fs::path("magnetophon/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
   logNotExist(styleJsonPath);
 
-  styleJsonPath = fs::path("/usr/local/etc/UhhyouPlugins/style/style.json");
+  styleJsonPath = fs::path("/usr/local/etc/magnetophon/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
   logNotExist(styleJsonPath);
 
-  styleJsonPath = fs::path("/etc/UhhyouPlugins/style/style.json");
+  styleJsonPath = fs::path("/etc/magnetophon/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
   logNotExist(styleJsonPath);
 
-  return fs::path("UhhyouPlugins/style/style.json");
+  return fs::path("magnetophon/style/style.json");
 }
 
 /**
-Load style config from `$CONFIG_PATH/UhhyouPlugins/style/style.json`.
+Load style config from `$CONFIG_PATH/magnetophon/style/style.json`.
 
 $CONFIG_PATH will be set as following order:
 
