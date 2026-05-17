@@ -161,6 +161,56 @@ jobs:
           cp README.md LICENSE.txt                              "$STAGE/"
           cp -r plugin/dpf/style                                "$STAGE/share/UhhyouPlugins/"
 
+      # --- macOS: wrap the bare VST2 .dylib into a proper .vst bundle ---
+      #
+      # The pinned DPF (Jul 2020, 1700+ commits behind upstream) emits VST2 on
+      # macOS as a bare DigiDrie-vst.dylib. Current DPF builds a .vst bundle
+      # instead, and most VST2 hosts on Mac (Ableton Live, Bitwig, Cubase,
+      # Studio One) refuse to load anything that isn't a bundle. Reaper is
+      # the only common exception. Rather than risk a wholesale DPF bump,
+      # we backport the bundle layout here: the dylib is moved into
+      # DigiDrie.vst/Contents/MacOS/DigiDrie and accompanied by an Info.plist
+      # and PkgInfo whose semantics match DPF's own utils/plugin.bundle/
+      # templates (CFBundlePackageType=BNDL, signature ????, executable
+      # name matching the binary), so any host that accepts current DPF's
+      # output will accept ours. Ad-hoc codesigning at the end keeps
+      # Gatekeeper from rejecting the bundle outright — users still need
+      # `xattr -dr com.apple.quarantine` after downloading, but without the
+      # signature the dylib would also be refused by hardened-runtime
+      # hosts even after dequarantine.
+      - name: Wrap VST2 dylib into .vst bundle (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          STAGE="staging/DigiDrie-${{ matrix.name }}"
+          name=DigiDrie
+          vst="$STAGE/lib/vst/${name}.vst"
+          dylib="$STAGE/lib/vst/${name}-vst.dylib"
+          mkdir -p "$vst/Contents/MacOS" "$vst/Contents/Resources"
+          touch "$vst/Contents/Resources/empty.lproj"
+          cp "$dylib" "$vst/Contents/MacOS/$name"
+          cat > "$vst/Contents/Info.plist" <<EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+              <key>CFBundleDevelopmentRegion</key><string>English</string>
+              <key>CFBundleExecutable</key><string>$name</string>
+              <key>CFBundleIdentifier</key><string>com.uhhyou.$name</string>
+              <key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+              <key>CFBundlePackageType</key><string>BNDL</string>
+              <key>CFBundleSignature</key><string>????</string>
+              <key>CFBundleVersion</key><string>1.0</string>
+              <key>CSResourcesFileMapped</key><true/>
+          </dict>
+          </plist>
+          EOF
+          printf 'BNDL????' > "$vst/Contents/PkgInfo"
+          rm "$dylib"
+          codesign --force --sign - "$vst"
+          # Sanity check: confirm the binary is in the right place and signed.
+          test -f "$vst/Contents/MacOS/$name"
+          codesign --verify --strict --verbose=2 "$vst"
+
       - name: Stage artifacts (Windows layout)
         if: runner.os == 'Windows'
         # Windows users expect a flat directory rather than FHS-style
