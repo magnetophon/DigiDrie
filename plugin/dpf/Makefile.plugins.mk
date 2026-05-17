@@ -28,7 +28,7 @@ BUILD_DIR = ../build/$(NAME)
 endif
 
 BUILD_C_FLAGS   += -I.
-BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl $(INCLUDE_LIB)
+BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl -I$(DPF_PATH)/dgl/src/pugl-upstream/include $(INCLUDE_LIB)
 
 # stdc++fs is a GCC-only artefact: GCC <= 8 needed it to use
 # <filesystem>, and GCC >= 9 keeps an empty stub for compatibility.
@@ -237,9 +237,9 @@ $(lv2_ui): $(OBJS_UI) $(BUILD_DIR)/DistrhoUIMain_LV2.cpp.o $(DGL_LIB)
 vst: $(vst)
 
 ifeq ($(HAVE_DGL),true)
-$(vst): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST.cpp.o $(DGL_LIB)
+$(vst): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST2.cpp.o $(DGL_LIB)
 else
-$(vst): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST.cpp.o
+$(vst): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o
 endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating VST plugin for $(NAME)"
