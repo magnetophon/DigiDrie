@@ -39,7 +39,7 @@ public:
   float borderWidth = 2.0f;
 
   explicit XYPad(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::vector<uint32_t> id,
     std::vector<double> value,

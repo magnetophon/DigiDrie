@@ -27,7 +27,7 @@
 class CreditSplash : public NanoWidget {
 public:
   explicit CreditSplash(
-    NanoWidget *group, std::string name, FontId fontId, Palette &palette)
+    NanoTopLevelWidget *group, std::string name, FontId fontId, Palette &palette)
     : NanoWidget(group), name(name), fontId(fontId), pal(palette)
   {
     hide();
@@ -92,7 +92,7 @@ protected:
 class SplashButton : public NanoWidget {
 public:
   explicit SplashButton(
-    NanoWidget *group, std::string labelText, FontId fontId, Palette &palette)
+    NanoTopLevelWidget *group, std::string labelText, FontId fontId, Palette &palette)
     : NanoWidget(group), labelText(labelText), fontId(fontId), pal(palette)
   {
   }

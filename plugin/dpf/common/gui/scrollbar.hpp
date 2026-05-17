@@ -28,7 +28,7 @@
 template<typename Scrollable> class ScrollBar : public NanoWidget {
 public:
   explicit ScrollBar(
-    NanoWidget *group, std::shared_ptr<Scrollable> parent, Palette &palette)
+    NanoTopLevelWidget *group, std::shared_ptr<Scrollable> parent, Palette &palette)
     : NanoWidget(group), parent(parent), pal(palette)
   {
   }

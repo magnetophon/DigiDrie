@@ -28,7 +28,7 @@
 // Incremental encoder.
 template<Style style = Style::common> class RotaryKnob : public ValueWidget {
 public:
-  explicit RotaryKnob(NanoWidget *group, PluginUI *ui, Palette &palette)
+  explicit RotaryKnob(NanoTopLevelWidget *group, PluginUI *ui, Palette &palette)
     : ValueWidget(group, ui, 0.1f), pal(palette)
   {
   }
@@ -156,7 +156,7 @@ protected:
   float sensitivity = 0.004f; // MovedPixel * sensitivity = valueChanged.
   float lowSensitivity = sensitivity / 5.0f;
 
-  Point<int> anchorPoint{0, 0};
+  Point<double> anchorPoint{0, 0};
   bool isMouseLeftDown = false;
   bool isMouseEntered = false;
 

@@ -24,7 +24,7 @@
 
 template<Style style = Style::common> class VSlider : public ValueWidget {
 public:
-  explicit VSlider(NanoWidget *group, PluginUI *ui, Palette &palette)
+  explicit VSlider(NanoTopLevelWidget *group, PluginUI *ui, Palette &palette)
     : ValueWidget(group, ui, 0.1f), pal(palette)
   {
   }
@@ -142,7 +142,7 @@ private:
   const float sensitivity = 0.004f; // MovedPixel * sensitivity = valueChanged.
   const float lowSensitivity = sensitivity / 5.0f;
 
-  Point<int> anchorPoint{0, 0};
+  Point<double> anchorPoint{0, 0};
   bool isMouseLeftDown = false;
   bool isMouseEntered = false;
 

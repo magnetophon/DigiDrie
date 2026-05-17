@@ -65,7 +65,7 @@ public:
   std::vector<double> snapValue;
 
   explicit BarBox(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::vector<uint32_t> id,
     Scale &scale,

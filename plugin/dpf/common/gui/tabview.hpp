@@ -62,7 +62,7 @@ public:
   size_t activeTabIndex = 0;
 
   explicit TabView(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     std::vector<std::string> tabNames,
     FontId fontId,
     Palette &palette,

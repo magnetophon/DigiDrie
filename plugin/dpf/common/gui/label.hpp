@@ -30,7 +30,7 @@ public:
   bool drawBorder = false;
 
   explicit Label(
-    NanoWidget *group, std::string labelText, FontId fontId, Palette &palette)
+    NanoTopLevelWidget *group, std::string labelText, FontId fontId, Palette &palette)
     : NanoWidget(group), labelText(labelText), fontId(fontId), pal(palette)
   {
   }
@@ -90,7 +90,7 @@ protected:
 class VLabel : public Label {
 public:
   explicit VLabel(
-    NanoWidget *group, std::string labelText, FontId fontId, Palette &palette)
+    NanoTopLevelWidget *group, std::string labelText, FontId fontId, Palette &palette)
     : Label(group, labelText, fontId, palette)
   {
   }

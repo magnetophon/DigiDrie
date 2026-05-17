@@ -32,7 +32,7 @@ public:
   std::string value;
 
   explicit StateWidget(
-    NanoWidget *group, PluginUI *ui, std::string key, std::string value)
+    NanoTopLevelWidget *group, PluginUI *ui, std::string key, std::string value)
     : NanoWidget(group), key(key), value(value), ui(ui)
   {
   }
@@ -51,7 +51,7 @@ class ValueWidget : public NanoWidget {
 public:
   uint32_t id;
 
-  explicit ValueWidget(NanoWidget *group, PluginUI *ui, double value)
+  explicit ValueWidget(NanoTopLevelWidget *group, PluginUI *ui, double value)
     : NanoWidget(group), ui(ui), value(value)
   {
   }
@@ -78,7 +78,7 @@ public:
   std::vector<double> value;
 
   explicit ArrayWidget(
-    NanoWidget *group, PluginUI *ui, std::vector<uint32_t> id, std::vector<double> value)
+    NanoTopLevelWidget *group, PluginUI *ui, std::vector<uint32_t> id, std::vector<double> value)
     : NanoWidget(group), ui(ui), id(id), value(value)
   {
     if (id.size() != value.size())
