@@ -88,11 +88,22 @@ else
 SIMD_OPT_FLAG = -O3
 endif
 
+# Pin VCL's INSTRSET per variant so its class-name dispatch
+# (DSPCore_SSE2 / DSPCore_SSE41 / DSPCore_AVX2 / DSPCore_AVX512 in
+# dspcore.cpp) doesn't depend on which CPU-feature macros the
+# compiler predefines for its target triple. Apple clang on
+# x86_64-apple-macos defines __SSE4_1__ in its default baseline, so
+# without this override the -msse2 compile silently produces a
+# second DSPCore_SSE41 instead of DSPCore_SSE2 and plugin.cpp's
+# dispatcher fails to link with
+#   Undefined symbols: DSPCore_SSE2::DSPCore_SSE2()
+# On Linux gcc and MinGW64 gcc the explicit values match what VCL's
+# auto-detection in instrset.h already chose, so this is a no-op there.
 $(OBJ_DIR_SIMD)/%.avx512.o: %.cpp
-	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -mavx512f -mfma -mavx512vl -mavx512bw -mavx512dq -std=c++17 -c $< -o$@
+	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -mavx512f -mfma -mavx512vl -mavx512bw -mavx512dq -DINSTRSET=10 -std=c++17 -c $< -o$@
 $(OBJ_DIR_SIMD)/%.avx2.o: %.cpp
-	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -mavx2 -mfma -std=c++17 -c $< -o$@
+	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -mavx2 -mfma -DINSTRSET=8 -std=c++17 -c $< -o$@
 $(OBJ_DIR_SIMD)/%.sse41.o: %.cpp
-	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse4.1 -std=c++17 -c $< -o$@
+	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse4.1 -DINSTRSET=5 -std=c++17 -c $< -o$@
 $(OBJ_DIR_SIMD)/%.sse2.o: %.cpp
-	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse2 -std=c++17 -c $< -o$@
+	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse2 -DINSTRSET=2 -std=c++17 -c $< -o$@
