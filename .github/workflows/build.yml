@@ -26,12 +26,21 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          # JACK standalone is Linux-only on purpose:
+          #   * Windows: practically no end users run a JACK server
+          #     (most use ASIO/WASAPI through their DAW directly), and
+          #     enabling it would require pulling jack2 through MSYS2.
+          #   * macOS: same situation — JACK is rare on Mac desktops,
+          #     and Homebrew jack is not installed by default.
+          # LV2 and VST2 are the plugin formats people actually load
+          # into Reaper/Bitwig/Ardour/etc., and those build everywhere.
           - name: linux-x86_64
             runs-on: ubuntu-24.04
             shell: bash
             archive-ext: tar.gz
-            jack-ext: ''
             lib-ext: .so
+            jack: 'true'
+            jack-ext: ''
           - name: macos-x86_64
             # Apple Silicon can't compile DigiDrie (x86 SIMD, no scalar
             # fallback). macos-15-intel is the only free Intel runner
@@ -41,16 +50,18 @@ jobs:
             runs-on: macos-15-intel
             shell: bash
             archive-ext: tar.gz
-            jack-ext: ''
             lib-ext: .dylib
+            jack: 'false'
+            jack-ext: ''
           - name: windows-x86_64
             runs-on: windows-latest
             # MSYS2 MinGW64 is the standard environment for building
             # DPF plugins on Windows. setup-msys2 (below) provisions it.
             shell: 'msys2 {0}'
             archive-ext: zip
-            jack-ext: .exe
             lib-ext: .dll
+            jack: 'false'
+            jack-ext: .exe
 
     steps:
       - name: Checkout
@@ -105,7 +116,7 @@ jobs:
           else
             JOBS=$(sysctl -n hw.ncpu)
           fi
-          make -j"$JOBS" JACK=true LV2=true VST2=true
+          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true
 
       # --- Stage artifacts into a portable on-disk layout ---
 
@@ -113,8 +124,10 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
-          install -Dm755 "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" \
-                         "$STAGE/bin/DigiDrie${{ matrix.jack-ext }}"
+          if [ "${{ matrix.jack }}" = "true" ]; then
+            install -Dm755 "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" \
+                           "$STAGE/bin/DigiDrie${{ matrix.jack-ext }}"
+          fi
           install -Dm755 "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" \
                          "$STAGE/lib/vst/DigiDrie-vst${{ matrix.lib-ext }}"
           mkdir -p "$STAGE/lib/lv2"
@@ -127,12 +140,11 @@ jobs:
       - name: Stage artifacts (Windows layout)
         if: runner.os == 'Windows'
         # Windows users expect a flat directory rather than FHS-style
-        # bin/lib/share. Put binaries, plugin, and resources next to each
-        # other.
+        # bin/lib/share. Put plugin and resources next to each other.
+        # No JACK standalone — see the matrix comment above.
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
           mkdir -p "$STAGE"
-          cp plugin/dpf/bin/DigiDrie.exe         "$STAGE/"
           cp plugin/dpf/bin/DigiDrie-vst.dll     "$STAGE/"
           cp -r plugin/dpf/bin/DigiDrie.lv2      "$STAGE/"
           cp README.md LICENSE.txt               "$STAGE/"

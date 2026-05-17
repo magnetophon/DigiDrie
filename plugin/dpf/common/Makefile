@@ -1,6 +1,6 @@
 BUILD_DIR = ../build/common
 
-OBJ ::= \
+OBJ := \
 	$(BUILD_DIR)/gui/style.o \
 	$(BUILD_DIR)/gui/TinosBoldItalic.o \
 

@@ -1,26 +1,26 @@
 # Project name, used for binaries
 NAME = DigiDrie
 
-USER_LIB_PATH ::=
+USER_LIB_PATH :=
 
 # SIMD related variables.
 FILES_SIMD = dsp/dspcore.cpp
 
-OBJ_DIR_SIMD ::= $(addsuffix /simd,../build/$(NAME))
+OBJ_DIR_SIMD := $(addsuffix /simd,../build/$(NAME))
 
-NAME_SIMD ::= $(FILES_SIMD:.cpp=)
+NAME_SIMD := $(FILES_SIMD:.cpp=)
 
-OBJ_AVX512 ::= $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx512.o,$(NAME_SIMD)))
-OBJ_AVX2 ::= $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx2.o,$(NAME_SIMD)))
-OBJ_SSE41 ::= $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .sse41.o,$(NAME_SIMD)))
-OBJ_SSE2 ::= $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .sse2.o,$(NAME_SIMD)))
+OBJ_AVX512 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx512.o,$(NAME_SIMD)))
+OBJ_AVX2 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx2.o,$(NAME_SIMD)))
+OBJ_SSE41 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .sse41.o,$(NAME_SIMD)))
+OBJ_SSE2 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .sse2.o,$(NAME_SIMD)))
 
 # If CPU doesn't support AVX512, changing order of object file cause illegal instruction.
 #
 # Same problem on stackoverflow:
 # https://stackoverflow.com/questions/15406658/cpu-dispatcher-for-visual-studio-for-avx-and-sse
 #
-OBJ_SIMD ::= $(OBJ_SSE2) $(OBJ_SSE41) $(OBJ_AVX2) $(OBJ_AVX512)
+OBJ_SIMD := $(OBJ_SSE2) $(OBJ_SSE41) $(OBJ_AVX2) $(OBJ_AVX512)
 
 OBJS_DSP += $(OBJ_SIMD)
 
