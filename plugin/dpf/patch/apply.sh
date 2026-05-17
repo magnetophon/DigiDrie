@@ -29,3 +29,8 @@ patch --forward --reject-file=- \
   ../lib/DPF/dgl/Widget.hpp \
   Widget.hpp.patch\
   || true
+
+patch --forward --reject-file=- \
+  ../lib/DPF/Makefile.base.mk \
+  Makefile.base.mk.patch\
+  || true
