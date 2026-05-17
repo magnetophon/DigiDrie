@@ -34,6 +34,61 @@ So:
 By default, "modulation->1/2/3" are all 0, so you hear preset 1.
 When you turn up "modulation->1", the settings morph to preset 2.
 
+## installation
+
+Prebuilt binaries are attached to each [release](https://github.com/magnetophon/DigiDrie/releases) for Linux (x86_64 and aarch64), macOS (x86_64 and Apple Silicon), and Windows (x86_64).
+Pick the archive matching your platform, extract it, and copy the plugin into your host's plug-in folder.
+DigiDrie ships as VST2 and LV2 on every platform, plus a JACK standalone on Linux.
+There's no AU build (Logic Pro is unsupported) and no VST3 build.
+
+### Linux
+
+```bash
+# VST2
+cp -r DigiDrie-linux-x86_64/lib/vst/DigiDrie-vst.so   ~/.vst/
+# LV2 — copy the whole bundle directory, not just the .so files inside
+cp -r DigiDrie-linux-x86_64/lib/lv2/DigiDrie.lv2      ~/.lv2/
+```
+
+If you want the JACK standalone:
+
+```bash
+mkdir -p ~/.local/bin
+cp DigiDrie-linux-x86_64/bin/DigiDrie ~/.local/bin/
+chmod +x ~/.local/bin/DigiDrie
+```
+
+The `chmod +x` step is needed because GitHub's artifact format doesn't preserve file modes; release downloads via the releases page have it already set, but artifacts grabbed directly from a CI run will not.
+
+### macOS
+
+```bash
+# VST2 — DigiDrie.vst is a bundle directory; move the whole thing
+cp -r DigiDrie-macos-aarch64/lib/vst/DigiDrie.vst     ~/Library/Audio/Plug-Ins/VST/
+# LV2 — same: the .lv2 is a directory
+cp -r DigiDrie-macos-aarch64/lib/lv2/DigiDrie.lv2     ~/Library/Audio/Plug-Ins/LV2/
+
+# Strip Gatekeeper's quarantine attribute on the downloaded files,
+# otherwise hosts will silently refuse to load them.
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST/DigiDrie.vst
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/LV2/DigiDrie.lv2
+```
+
+Substitute `macos-x86_64` for `macos-aarch64` on Intel Macs.
+The binaries are ad-hoc codesigned but not Developer-ID-signed and not notarized, which is why the quarantine step is needed.
+
+### Windows
+
+VST2 plugin lookup paths vary by host — Reaper, Bitwig, Studio One, etc.
+all read different locations and most let you configure the scan path in settings.
+A common system-wide spot is `C:\Program Files\Common Files\VST2\`; per-user, hosts usually accept anywhere under your profile.
+Copy `DigiDrie-vst.dll` (and the `DigiDrie.lv2` directory, if your host supports LV2) into whichever folder your host scans.
+
+### themes (optional)
+
+The plugin reads `UhhyouPlugins/style/style.json` from `$XDG_CONFIG_HOME` (typically `~/.config/` on Linux and macOS) and falls back to `/usr/local/etc/` and `/etc/`.
+The `style/` directory bundled in the archive contains presets you can drop in there; if you don't, the plugin uses a built-in default theme.
+
 ## building
 
 ### Faust
@@ -67,17 +122,18 @@ It increases the size of the diagram a lot, and doesn't help to clarify the actu
 
 This is work in progress. If something is not working, please open issue.
 
+Building from source works on Linux (x86_64 and aarch64), macOS (x86_64 and Apple Silicon), and Windows via MSYS2 MinGW64.
+The CI workflow at `.github/workflows/build.yml` is the authoritative reference for the toolchain and dependencies on each platform.
+
 ```bash
 git clone --recursive https://github.com/magnetophon/DigiDrie/
 cd DigiDrie/plugin/dpf
 make -j
 ```
 
-Plugins are built into `DigiDrie/dpf/bin`.
-
-- `DigiDrie`: JACK standalone
-- `DigiDrie.lv2`: LV2
-- `DigiDrie-vst.so`: VST2
+Plugins are built into `plugin/dpf/bin/`.
+Filenames depend on the platform — `.so` on Linux, `.dylib` (wrapped into a `.vst` bundle on macOS by the CI workflow), `.dll` on Windows.
+On Linux you additionally get a `DigiDrie` JACK standalone.
 
 To build plugin from Faust code, see [`plugin/data/README.md`](https://github.com/magnetophon/DigiDrie/blob/master/plugin/data/README.md).
 
