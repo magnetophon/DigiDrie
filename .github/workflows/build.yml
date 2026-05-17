@@ -122,20 +122,24 @@ jobs:
 
       - name: Stage artifacts (Unix layout)
         if: runner.os != 'Windows'
+        # GNU coreutils' `install -D` auto-creates the destination's
+        # parent directories; BSD install on macOS doesn't have -D and
+        # then can't write its temp file into a non-existent directory
+        # (you get a cryptic "install: .../INS@XXXXX: No such file or
+        # directory" failure). Use `mkdir -p` + plain `cp` instead —
+        # `cp` preserves modes, and the build emits sensible permissions
+        # already, so we don't need an explicit chmod.
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
+          mkdir -p "$STAGE/bin" "$STAGE/lib/vst" "$STAGE/lib/lv2" \
+                   "$STAGE/share/UhhyouPlugins"
           if [ "${{ matrix.jack }}" = "true" ]; then
-            install -Dm755 "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" \
-                           "$STAGE/bin/DigiDrie${{ matrix.jack-ext }}"
+            cp "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" "$STAGE/bin/"
           fi
-          install -Dm755 "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" \
-                         "$STAGE/lib/vst/DigiDrie-vst${{ matrix.lib-ext }}"
-          mkdir -p "$STAGE/lib/lv2"
-          cp -r plugin/dpf/bin/DigiDrie.lv2 "$STAGE/lib/lv2/"
-          install -Dm644 README.md   "$STAGE/README.md"
-          install -Dm644 LICENSE.txt "$STAGE/LICENSE.txt"
-          mkdir -p "$STAGE/share/UhhyouPlugins"
-          cp -r plugin/dpf/style "$STAGE/share/UhhyouPlugins/"
+          cp "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" "$STAGE/lib/vst/"
+          cp -r plugin/dpf/bin/DigiDrie.lv2                     "$STAGE/lib/lv2/"
+          cp README.md LICENSE.txt                              "$STAGE/"
+          cp -r plugin/dpf/style                                "$STAGE/share/UhhyouPlugins/"
 
       - name: Stage artifacts (Windows layout)
         if: runner.os == 'Windows'
