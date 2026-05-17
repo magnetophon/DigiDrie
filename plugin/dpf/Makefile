@@ -17,6 +17,23 @@ LV2 ?= true
 VST2 ?= true
 JACK ?= true
 
+# DigiDrie's UI is OpenGL via NanoVG; the Cairo DGL variant is unused.
+# Default HAVE_CAIRO to false so DPF doesn't auto-detect and try to
+# build libdgl-cairo.a, which (a) is wasted work on every platform and
+# (b) fails on environments where Cairo's headers aren't pre-installed
+# (e.g. the macos-15 Apple Silicon runner image as of May 2026, where
+# pkg-config reports cairo as present but the headers aren't actually
+# on the include path).
+#
+# DPF's Makefile.base.mk does `HAVE_CAIRO = $(shell pkg-config ...)`,
+# which is an unconditional assignment that would clobber any value
+# inherited from the environment. We therefore pass HAVE_CAIRO as a
+# *command-line* variable to each `$(MAKE) -C ...` call below, since
+# command-line definitions are the only ones that win against an
+# unconditional Makefile assignment in GNU make. Override locally with
+# `make HAVE_CAIRO=true` if you ever want to build the Cairo variant.
+HAVE_CAIRO ?= false
+
 ifeq ($(LV2),true)
 INSTALL_TARGET += installLV2
 endif
@@ -39,7 +56,7 @@ docdir ?= $(datarootdir)/doc
 
 .PHONY: dpf
 dpf:
-	$(MAKE) -C lib/DPF dgl utils/lv2_ttl_generator
+	$(MAKE) -C lib/DPF HAVE_CAIRO=$(HAVE_CAIRO) dgl utils/lv2_ttl_generator
 
 .PHONY: common
 common: dpf
@@ -47,7 +64,7 @@ common: dpf
 
 .PHONY: DigiDrie
 DigiDrie: common
-	$(MAKE) -C DigiDrie LV2=$(LV2) VST2=$(VST2) JACK=$(JACK)
+	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) JACK=$(JACK)
 
 .PHONY: install
 install: $(INSTALL_TARGET) installConfig installResource installDoc
