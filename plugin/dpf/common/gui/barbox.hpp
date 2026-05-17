@@ -46,8 +46,8 @@ private:
 
   Scale &scale;
 
-  Point<int> mousePosition{-1, -1};
-  Point<int> anchor{0, 0};
+  Point<double> mousePosition{-1, -1};
+  Point<double> anchor{0, 0};
   BarState anchorState = BarState::active;
   int indexL = 0;
   int indexR = 0;
@@ -632,7 +632,7 @@ public:
         setStateFromLine(anchor, ev.pos, anchorState);
       } else if (ev.mod & kModifierShift) {
         mousePosition
-          = Point<int>(anchor.getX(), std::clamp<int>(ev.pos.getY(), 0, getHeight()));
+          = Point<double>(anchor.getX(), std::clamp<double>(ev.pos.getY(), 0.0, double(getHeight())));
         setValueFromPosition(mousePosition, 0);
       } else {
         setValueFromLine(anchor, ev.pos, ev.mod);
@@ -676,7 +676,7 @@ public:
   }
 
 private:
-  inline size_t calcIndex(Point<int> position)
+  inline size_t calcIndex(Point<double> position)
   {
     return size_t(indexL + position.getX() / sliderWidth);
   }
@@ -699,7 +699,7 @@ private:
     return idx < snapValue.size() ? snapValue[idx] : 1.0;
   }
 
-  BarState setStateFromPosition(Point<int> position, BarState state)
+  BarState setStateFromPosition(Point<double> position, BarState state)
   {
     size_t index = calcIndex(position);
     if (index >= value.size()) return BarState::active;
@@ -708,7 +708,7 @@ private:
     return barState[index];
   }
 
-  void setStateFromLine(Point<int> p0, Point<int> p1, BarState state)
+  void setStateFromLine(Point<double> p0, Point<double> p1, BarState state)
   {
     if (p0.getX() > p1.getX()) std::swap(p0, p1);
 
@@ -728,7 +728,7 @@ private:
     repaint();
   }
 
-  void setValueFromPosition(Point<int> position, uint modifier)
+  void setValueFromPosition(Point<double> position, uint modifier)
   {
     size_t index = calcIndex(position);
     if (index >= value.size()) return;
@@ -748,7 +748,7 @@ private:
     repaint();
   }
 
-  void setValueFromLine(Point<int> p0, Point<int> p1, uint modifier)
+  void setValueFromLine(Point<double> p0, Point<double> p1, uint modifier)
   {
     if (p0.getX() > p1.getX()) std::swap(p0, p1);
 

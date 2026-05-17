@@ -87,7 +87,7 @@ endif
 
 ifeq ($(UI_TYPE),cairo)
 ifeq ($(HAVE_CAIRO),true)
-DGL_FLAGS += $(CAIRO_FLAGS) -DDGL_CAIRO
+DGL_FLAGS += $(CAIRO_FLAGS) -DDGL_CAIRO -DHAVE_DGL
 DGL_LIBS  += $(CAIRO_LIBS)
 DGL_LIB    = $(DPF_PATH)/build/libdgl-cairo.a
 HAVE_DGL   = true
@@ -98,7 +98,7 @@ endif
 
 ifeq ($(UI_TYPE),opengl)
 ifeq ($(HAVE_OPENGL),true)
-DGL_FLAGS += $(OPENGL_FLAGS) -DDGL_OPENGL
+DGL_FLAGS += $(OPENGL_FLAGS) -DDGL_OPENGL -DHAVE_DGL
 DGL_LIBS  += $(OPENGL_LIBS)
 DGL_LIB    = $(DPF_PATH)/build/libdgl-opengl.a
 HAVE_DGL   = true
