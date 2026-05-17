@@ -153,7 +153,11 @@ protected:
     uint32_t &midiIndex,
     uint32_t midiEventCount)
   {
-    if (ev.size != 3) return;
+    // Channel Pressure is a 2-byte message (status + value); the
+    // earlier `!= 3` guard silently dropped every 0xD0 event. Use the
+    // minimum-2 floor and let each case rely on its own status-byte
+    // convention for how many bytes it actually inspects.
+    if (ev.size < 2) return;
 
     switch (ev.data[0] & 0xf0) {
       // Note off.
@@ -178,9 +182,10 @@ protected:
         }
       } break;
 
-      // Polyphonic Key Pressure (Aftertouch).
+      // Polyphonic Key Pressure. data[1]: note, data[2]: pressure.
+      // Applied as global aftertouch since the synth is monophonic.
       case 0xA0: {
-        dsp->param.value[ParameterID::pitchBend]->setFromInt(ev.data[2]);
+        dsp->param.value[ParameterID::aftertouch]->setFromInt(ev.data[2]);
       } break;
 
       // Control Change.
@@ -188,9 +193,9 @@ protected:
         handleControlChange(ev, midiEvents, midiIndex, midiEventCount);
       } break;
 
-      // Channel Pressure (Aftertouch).
+      // Channel Pressure. data[1]: pressure (no data[2]; 2-byte msg).
       case 0xD0: {
-        dsp->param.value[ParameterID::pitchBend]->setFromInt(ev.data[1]);
+        dsp->param.value[ParameterID::aftertouch]->setFromInt(ev.data[1]);
       } break;
 
       // Pitch bend. Center is 8192 (0x2000).
