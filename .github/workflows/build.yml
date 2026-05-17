@@ -7,97 +7,198 @@ on:
   pull_request:
   workflow_dispatch:
 
-# Cancel superseded PR builds. Keep branch builds queued so tagged releases
+# Cancel superseded PR builds. Leave branch/tag builds alone so releases
 # don't get killed by a follow-up commit.
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
-  build-linux:
-    name: linux-x86_64
-    runs-on: ubuntu-24.04
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runs-on }}
+
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: linux-x86_64
+            runs-on: ubuntu-24.04
+            shell: bash
+            archive-ext: tar.gz
+            jack-ext: ''
+            lib-ext: .so
+          - name: macos-x86_64
+            # Apple Silicon can't compile DigiDrie (x86 SIMD, no scalar
+            # fallback). macos-15-intel is the only free Intel runner
+            # since GitHub retired macos-13 in December 2025; Apple is
+            # discontinuing x86_64 macOS support entirely after macos-15
+            # retires in Fall 2027.
+            runs-on: macos-15-intel
+            shell: bash
+            archive-ext: tar.gz
+            jack-ext: ''
+            lib-ext: .dylib
+          - name: windows-x86_64
+            runs-on: windows-latest
+            # MSYS2 MinGW64 is the standard environment for building
+            # DPF plugins on Windows. setup-msys2 (below) provisions it.
+            shell: 'msys2 {0}'
+            archive-ext: zip
+            jack-ext: .exe
+            lib-ext: .dll
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Install build dependencies
+      # --- Per-OS dependency setup ---
+
+      - name: Install dependencies (Linux)
+        if: runner.os == 'Linux'
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            pkg-config \
-            libgl-dev \
-            libx11-dev \
-            libjack-jackd2-dev \
-            lilv-utils
+            pkg-config libgl-dev libx11-dev libjack-jackd2-dev lilv-utils
+
+      - name: Install dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          # Xcode CLI tools and the macOS SDK are pre-installed.
+          # DPF on macOS uses Cocoa and CoreAudio — no JACK or X11.
+          true
+
+      - name: Install dependencies (Windows / MSYS2)
+        if: runner.os == 'Windows'
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: >-
+            base-devel
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-pkgconf
+            zip
 
       - name: Set up ccache
         uses: hendrikmuhs/ccache-action@v1.2
         with:
-          key: linux-x86_64-${{ github.ref }}
-          restore-keys: linux-x86_64-
+          key: ${{ matrix.name }}-${{ github.ref }}
+          restore-keys: ${{ matrix.name }}-
 
-      - name: Patch bundled DPF
-        working-directory: plugin/dpf
-        run: make patch
+      # --- Build ---
 
-      - name: Build
+      - name: Patch bundled DPF and build
         working-directory: plugin/dpf
         run: |
           export PATH="/usr/lib/ccache:$PATH"
-          make -j$(nproc) JACK=true LV2=true VST2=true
+          make patch
+          # nproc works on Linux and MSYS2; macOS needs sysctl.
+          if command -v nproc >/dev/null 2>&1; then
+            JOBS=$(nproc)
+          else
+            JOBS=$(sysctl -n hw.ncpu)
+          fi
+          make -j"$JOBS" JACK=true LV2=true VST2=true
 
-      - name: Stage artifacts
+      # --- Stage artifacts into a portable on-disk layout ---
+
+      - name: Stage artifacts (Unix layout)
+        if: runner.os != 'Windows'
         run: |
-          STAGE=staging/DigiDrie-linux-x86_64
-          install -Dm755 plugin/dpf/bin/DigiDrie         "$STAGE/bin/DigiDrie"
-          install -Dm755 plugin/dpf/bin/DigiDrie-vst.so  "$STAGE/lib/vst/DigiDrie-vst.so"
+          STAGE="staging/DigiDrie-${{ matrix.name }}"
+          install -Dm755 "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" \
+                         "$STAGE/bin/DigiDrie${{ matrix.jack-ext }}"
+          install -Dm755 "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" \
+                         "$STAGE/lib/vst/DigiDrie-vst${{ matrix.lib-ext }}"
           mkdir -p "$STAGE/lib/lv2"
-          cp -r           plugin/dpf/bin/DigiDrie.lv2    "$STAGE/lib/lv2/"
-          install -Dm644  README.md                      "$STAGE/README.md"
-          install -Dm644  LICENSE.txt                    "$STAGE/LICENSE.txt"
+          cp -r plugin/dpf/bin/DigiDrie.lv2 "$STAGE/lib/lv2/"
+          install -Dm644 README.md   "$STAGE/README.md"
+          install -Dm644 LICENSE.txt "$STAGE/LICENSE.txt"
           mkdir -p "$STAGE/share/UhhyouPlugins"
-          cp -r           plugin/dpf/style               "$STAGE/share/UhhyouPlugins/"
+          cp -r plugin/dpf/style "$STAGE/share/UhhyouPlugins/"
+
+      - name: Stage artifacts (Windows layout)
+        if: runner.os == 'Windows'
+        # Windows users expect a flat directory rather than FHS-style
+        # bin/lib/share. Put binaries, plugin, and resources next to each
+        # other.
+        run: |
+          STAGE="staging/DigiDrie-${{ matrix.name }}"
+          mkdir -p "$STAGE"
+          cp plugin/dpf/bin/DigiDrie.exe         "$STAGE/"
+          cp plugin/dpf/bin/DigiDrie-vst.dll     "$STAGE/"
+          cp -r plugin/dpf/bin/DigiDrie.lv2      "$STAGE/"
+          cp README.md LICENSE.txt               "$STAGE/"
+          cp -r plugin/dpf/style                 "$STAGE/"
+
+      # --- Sanity check the LV2 bundle (Linux only; lilv is most
+      # readily available there and the bundle format is OS-agnostic). ---
 
       - name: Verify LV2 bundle is discoverable
+        if: runner.os == 'Linux'
         run: |
-          STAGE="$PWD/staging/DigiDrie-linux-x86_64"
+          STAGE="$PWD/staging/DigiDrie-${{ matrix.name }}"
           LV2_PATH="$STAGE/lib/lv2" lv2ls
           LV2_PATH="$STAGE/lib/lv2" \
             lv2info https://github.com/magnetophon/DigiDrie | head -20
 
-      - name: Upload build artifacts
+      # --- Archive into the platform-conventional format ---
+
+      - name: Archive (tar.gz)
+        if: matrix.archive-ext == 'tar.gz'
+        run: |
+          cd staging
+          tar -czf "../DigiDrie-${{ matrix.name }}.tar.gz" \
+                   "DigiDrie-${{ matrix.name }}"
+
+      - name: Archive (zip)
+        if: matrix.archive-ext == 'zip'
+        run: |
+          cd staging
+          zip -r "../DigiDrie-${{ matrix.name }}.zip" \
+                 "DigiDrie-${{ matrix.name }}"
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DigiDrie-linux-x86_64
-          path: staging/
+          name: DigiDrie-${{ matrix.name }}
+          path: DigiDrie-${{ matrix.name }}.${{ matrix.archive-ext }}
           if-no-files-found: error
 
   release:
     name: release
-    needs: build-linux
+    needs: build
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:
-      - name: Download build artifact
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          name: DigiDrie-linux-x86_64
-          path: staging
+          path: artifacts
+          merge-multiple: true
 
-      - name: Package
+      - name: Rename archives with version
         run: |
-          cd staging
-          tar -czf ../DigiDrie-${GITHUB_REF_NAME}-linux-x86_64.tar.gz \
-              DigiDrie-linux-x86_64
+          mkdir -p release
+          for f in artifacts/DigiDrie-*; do
+            base=$(basename "$f")
+            # DigiDrie-linux-x86_64.tar.gz -> DigiDrie-v1.2.3-linux-x86_64.tar.gz
+            mv "$f" "release/DigiDrie-${GITHUB_REF_NAME}-${base#DigiDrie-}"
+          done
+          ls -la release/
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          files: DigiDrie-*-linux-x86_64.tar.gz
+          files: release/DigiDrie-*
           draft: false
           generate_release_notes: true
