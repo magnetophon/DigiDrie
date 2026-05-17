@@ -29,7 +29,15 @@ endif
 
 BUILD_C_FLAGS   += -I.
 BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl $(INCLUDE_LIB)
+# stdc++fs is a GCC-only artefact: GCC <= 8 needed it to use
+# <filesystem>, and GCC >= 9 keeps an empty stub for compatibility.
+# Apple clang's libc++ has <filesystem> in the standard library and
+# ships no such archive, so passing it there breaks the link with
+# "ld: library 'stdc++fs' not found". MinGW64's gcc on Windows behaves
+# like Linux gcc and still accepts the flag, so only macOS is excluded.
+ifneq ($(MACOS),true)
 LINK_FLAGS      += -lstdc++fs
+endif
 
 ifeq ($(HAVE_CAIRO),true)
 DGL_FLAGS += -DHAVE_CAIRO
