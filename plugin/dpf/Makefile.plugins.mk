@@ -79,7 +79,21 @@ dssi_ui    = $(TARGET_DIR)/$(NAME)-dssi/$(NAME)_ui$(APP_EXT)
 lv2        = $(TARGET_DIR)/$(NAME).lv2/$(NAME)$(LIB_EXT)
 lv2_dsp    = $(TARGET_DIR)/$(NAME).lv2/$(NAME)_dsp$(LIB_EXT)
 lv2_ui     = $(TARGET_DIR)/$(NAME).lv2/$(NAME)_ui$(LIB_EXT)
+# Current DPF emits VST2 as a proper .vst bundle on macOS (binary at
+# Contents/MacOS/<name>, plus Info.plist / PkgInfo / Resources/empty.lproj).
+# Most VST2 hosts on Mac (Ableton Live, Bitwig, Cubase, Studio One) refuse
+# to load anything that isn't a bundle. Backport the bundle layout here so
+# the build emits a host-loadable artifact directly, without a CI wrapping
+# step. On Linux and Windows the VST2 plugin is still a single .so/.dll.
+ifeq ($(MACOS),true)
+vst        = $(TARGET_DIR)/$(NAME).vst/Contents/MacOS/$(NAME)
+vstfiles   = $(TARGET_DIR)/$(NAME).vst/Contents/Info.plist \
+             $(TARGET_DIR)/$(NAME).vst/Contents/PkgInfo \
+             $(TARGET_DIR)/$(NAME).vst/Contents/Resources/empty.lproj
+else
 vst        = $(TARGET_DIR)/$(NAME)-vst$(LIB_EXT)
+vstfiles   =
+endif
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Handle UI stuff, disable UI support automatically
@@ -246,7 +260,7 @@ $(lv2_ui): $(OBJS_UI) $(BUILD_DIR)/DistrhoUIMain_LV2.cpp.o $(DGL_LIB)
 # ---------------------------------------------------------------------------------------------------------------------
 # VST
 
-vst: $(vst)
+vst: $(vst) $(vstfiles)
 
 ifeq ($(HAVE_DGL),true)
 $(vst): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST2.cpp.o $(DGL_LIB)
@@ -256,6 +270,30 @@ endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating VST plugin for $(NAME)"
 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# macOS .vst bundle resources
+#
+# Pattern-match against $(TARGET_DIR)/<bundle-name>/Contents/... so the same
+# rules would also serve future .vst3 / .component bundles if we add AU/VST3
+# later. The Info.plist's @INFO_PLIST_PROJECT_NAME@ token gets substituted
+# with the project name; the bundle ID prefix is rewritten from upstream's
+# generic studio.kx.distrho.* to com.magnetophon.* so hosts that already
+# know v0.2.0's bundle ID don't see this as a separate plugin.
+ifeq ($(MACOS),true)
+$(TARGET_DIR)/%/Contents/Info.plist: $(DPF_PATH)/utils/plugin.bundle/Contents/Info.plist
+	-@mkdir -p $(shell dirname $@)
+	@sed -e 's/@INFO_PLIST_PROJECT_NAME@/$(NAME)/' \
+	     -e 's|studio\.kx\.distrho|com.magnetophon|' $< > $@
+
+$(TARGET_DIR)/%/Contents/PkgInfo: $(DPF_PATH)/utils/plugin.bundle/Contents/PkgInfo
+	-@mkdir -p $(shell dirname $@)
+	@cp $< $@
+
+$(TARGET_DIR)/%/Contents/Resources/empty.lproj: $(DPF_PATH)/utils/plugin.bundle/Contents/Resources/empty.lproj
+	-@mkdir -p $(shell dirname $@)
+	@cp $< $@
+endif
 
 # ---------------------------------------------------------------------------------------------------------------------
 
