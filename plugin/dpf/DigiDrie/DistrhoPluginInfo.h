@@ -23,6 +23,19 @@ TODO:
 // but less specific.
 #define DISTRHO_PLUGIN_VST3_CATEGORIES "Instrument|Synth|Stereo"
 
+// AU (AudioUnit, macOS-only) identification codes. AU plugins are
+// addressed by a triple of 4-character OSType codes:
+//   - TYPE        what kind of plugin (aumu = music device / instrument)
+//   - BRAND_ID    publisher; must contain at least one non-lowercase char
+//   - UNIQUE_ID   plugin slug within the publisher
+// Setting BRAND_ID also changes the VST3 plugin UID (DPF derives it from
+// brand + unique-id when both are defined). This isn't a problem here
+// because v0.2.x had no VST3 build; v0.3.0 ships VST3 and AU together,
+// so they're consistent from the first release that has either.
+#define DISTRHO_PLUGIN_AU_TYPE      aumu
+#define DISTRHO_PLUGIN_BRAND_ID     Mgnt
+#define DISTRHO_PLUGIN_UNIQUE_ID    DgDr
+
 #define DISTRHO_PLUGIN_HAS_UI 1
 #define DISTRHO_PLUGIN_IS_RT_SAFE 1
 #define DISTRHO_PLUGIN_IS_SYNTH 1

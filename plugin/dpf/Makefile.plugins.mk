@@ -128,6 +128,25 @@ vst3       = $(TARGET_DIR)/$(NAME).vst3/$(VST3_BINARY_DIR)/$(NAME).vst3
 vst3files  =
 endif
 
+# AU (AudioUnit) is macOS-only and always a bundle. The bundle's
+# Info.plist must carry an AudioComponents array with type / subtype /
+# manufacturer / version values that come from the plugin's own
+# metadata, so it can't be a simple sed substitution of DPF's template.
+# Instead the Makefile builds a host-side 'export' executable from the
+# plugin code with -DDISTRHO_PLUGIN_TARGET_EXPORT, then runs it at
+# build time to emit the Info.plist (see the rules near the bottom).
+# PkgInfo and Resources/empty.lproj reuse the generic bundle-resource
+# pattern rules.
+ifeq ($(MACOS),true)
+au         = $(TARGET_DIR)/$(NAME).component/Contents/MacOS/$(NAME)
+aufiles    = $(TARGET_DIR)/$(NAME).component/Contents/Info.plist \
+             $(TARGET_DIR)/$(NAME).component/Contents/PkgInfo \
+             $(TARGET_DIR)/$(NAME).component/Contents/Resources/empty.lproj
+else
+au         =
+aufiles    =
+endif
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Handle UI stuff, disable UI support automatically
 
@@ -331,6 +350,47 @@ endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating VST3 plugin for $(NAME)"
 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# AU (AudioUnit, macOS-only)
+
+au: $(au) $(aufiles)
+
+ifeq ($(HAVE_DGL),true)
+$(au): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_AU.cpp.o $(BUILD_DIR)/DistrhoUIMain_AU.cpp.o $(DGL_LIB)
+else
+$(au): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_AU.cpp.o
+endif
+	-@mkdir -p $(shell dirname $@)
+	@echo "Creating AU component for $(NAME)"
+	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) -framework AudioToolbox -framework AudioUnit -framework CoreFoundation $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# The 'export' tool is the plugin compiled as an executable instead of a
+# loadable .dylib. DPF's DistrhoPluginMain.cpp, when built with
+# -DDISTRHO_PLUGIN_TARGET_EXPORT, pulls in src/DistrhoPluginExport.cpp
+# which provides an int main(). Running ./export NAME from inside a
+# bundle's Contents/ directory writes Info.plist there with the AU
+# AudioComponents array populated from the plugin's compiled-in
+# metadata (getMaker(), getName(), getDescription(), etc).
+ifeq ($(HAVE_DGL),true)
+$(BUILD_DIR)/export: $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_EXPORT.cpp.o $(BUILD_DIR)/DistrhoUIMain_EXPORT.cpp.o $(DGL_LIB)
+else
+$(BUILD_DIR)/export: $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_EXPORT.cpp.o
+endif
+	-@mkdir -p $(shell dirname $@)
+	@echo "Creating export tool for $(NAME)"
+	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) -o $@ $(USER_LIB_PATH)
+
+# Explicit rule for the AU bundle's Info.plist that overrides the
+# generic $(TARGET_DIR)/%/Contents/Info.plist pattern. GNU Make prefers
+# explicit rules over pattern rules, so VST2 / VST3 / CLAP bundles
+# still get the sed-substituted template while .component uses this.
+ifeq ($(MACOS),true)
+$(TARGET_DIR)/$(NAME).component/Contents/Info.plist: $(BUILD_DIR)/export
+	-@mkdir -p $(shell dirname $@)
+	@echo "Generating AU Info.plist for $(NAME)"
+	@cd $(TARGET_DIR)/$(NAME).component/Contents && $(abspath $<) "$(NAME)"
+endif
 
 # ---------------------------------------------------------------------------------------------------------------------
 # macOS .vst bundle resources

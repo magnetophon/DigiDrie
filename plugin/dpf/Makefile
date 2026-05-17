@@ -17,6 +17,7 @@ LV2 ?= true
 VST2 ?= true
 VST3 ?= true
 CLAP ?= true
+AU   ?= true
 JACK ?= true
 
 # DigiDrie's UI is OpenGL via NanoVG; the Cairo DGL variant is unused.
@@ -74,7 +75,7 @@ common: dpf
 
 .PHONY: DigiDrie
 DigiDrie: common
-	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) VST3=$(VST3) CLAP=$(CLAP) JACK=$(JACK)
+	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) VST3=$(VST3) CLAP=$(CLAP) AU=$(AU) JACK=$(JACK)
 
 .PHONY: install
 install: $(INSTALL_TARGET) installConfig installResource installDoc

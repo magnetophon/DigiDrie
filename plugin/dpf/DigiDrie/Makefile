@@ -83,6 +83,7 @@ LV2 ?= true
 VST2 ?= true
 VST3 ?= true
 CLAP ?= true
+AU   ?= true
 JACK ?= true
 
 ifeq ($(JACK)$(HAVE_JACK)$(HAVE_OPENGL),truetruetrue)
@@ -107,6 +108,10 @@ endif
 
 ifeq ($(VST3),true)
 TARGETS += vst3
+endif
+
+ifeq ($(AU)$(MACOS),truetrue)
+TARGETS += au
 endif
 
 # Rule entry point.

@@ -131,7 +131,7 @@ jobs:
           else
             JOBS=$(sysctl -n hw.ncpu)
           fi
-          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true VST3=true CLAP=true
+          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true VST3=true CLAP=true AU=true
 
       # --- Stage artifacts into a portable on-disk layout ---
 
@@ -160,10 +160,13 @@ jobs:
           # same shape: bundle dir on macOS, single .clap on Linux. VST3 is
           # always a bundle directory on every platform (the binary's parent
           # path varies by OS — Contents/<arch>-linux/, Contents/MacOS/, etc.
-          # — but the .vst3 top-level is always a directory).
+          # — but the .vst3 top-level is always a directory). AU is
+          # macOS-only and always a .component bundle directory.
           if [ "$RUNNER_OS" = "macOS" ]; then
+            mkdir -p "$STAGE/lib/au"
             cp -r plugin/dpf/bin/DigiDrie.vst                   "$STAGE/lib/vst/"
             cp -r plugin/dpf/bin/DigiDrie.clap                  "$STAGE/lib/clap/"
+            cp -r plugin/dpf/bin/DigiDrie.component             "$STAGE/lib/au/"
           else
             cp "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" "$STAGE/lib/vst/"
             cp plugin/dpf/bin/DigiDrie.clap                     "$STAGE/lib/clap/"
@@ -182,13 +185,14 @@ jobs:
       # `xattr -dr com.apple.quarantine` after downloading because the
       # signature is ad-hoc (not Developer ID), but without any signature
       # the bundle would be rejected outright on recent macOS regardless.
-      - name: Codesign VST2 + VST3 + CLAP bundles (macOS)
+      - name: Codesign VST2 + VST3 + CLAP + AU bundles (macOS)
         if: runner.os == 'macOS'
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
           for bundle in "$STAGE/lib/vst/DigiDrie.vst" \
                         "$STAGE/lib/vst3/DigiDrie.vst3" \
-                        "$STAGE/lib/clap/DigiDrie.clap"; do
+                        "$STAGE/lib/clap/DigiDrie.clap" \
+                        "$STAGE/lib/au/DigiDrie.component"; do
             codesign --force --sign - "$bundle"
             test -f "$bundle/Contents/MacOS/DigiDrie"
             codesign --verify --strict --verbose=2 "$bundle"

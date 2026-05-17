@@ -39,8 +39,8 @@ When you turn up "modulation->1", the settings morph to preset 2.
 
 Prebuilt binaries are attached to each [release](https://github.com/magnetophon/DigiDrie/releases) for Linux (x86_64 and aarch64), macOS (x86_64 and Apple Silicon), and Windows (x86_64).
 Pick the archive matching your platform, extract it, and copy the plugin into your host's plug-in folder.
-DigiDrie ships as VST2, VST3, LV2, and CLAP on every platform, plus a JACK standalone on Linux.
-There's no AU build (Logic Pro is unsupported).
+DigiDrie ships as VST2, VST3, LV2, and CLAP on every platform, plus AU on macOS and a JACK standalone on Linux.
+Logic Pro and other AU-only macOS hosts are supported through the AU build.
 
 ### Linux
 
@@ -71,18 +71,21 @@ The `chmod +x` step is needed because GitHub's artifact format doesn't preserve 
 
 ```bash
 # VST2 — DigiDrie.vst is a bundle directory; move the whole thing
-cp -r DigiDrie-macos-aarch64/lib/vst/DigiDrie.vst     ~/Library/Audio/Plug-Ins/VST/
+cp -r DigiDrie-macos-aarch64/lib/vst/DigiDrie.vst                 ~/Library/Audio/Plug-Ins/VST/
 # VST3 — same, a bundle directory
-cp -r DigiDrie-macos-aarch64/lib/vst3/DigiDrie.vst3   ~/Library/Audio/Plug-Ins/VST3/
+cp -r DigiDrie-macos-aarch64/lib/vst3/DigiDrie.vst3               ~/Library/Audio/Plug-Ins/VST3/
+# AU — for Logic Pro etc.; .component is a bundle directory
+cp -r DigiDrie-macos-aarch64/lib/au/DigiDrie.component            ~/Library/Audio/Plug-Ins/Components/
 # LV2 — same: the .lv2 is a directory
-cp -r DigiDrie-macos-aarch64/lib/lv2/DigiDrie.lv2     ~/Library/Audio/Plug-Ins/LV2/
+cp -r DigiDrie-macos-aarch64/lib/lv2/DigiDrie.lv2                 ~/Library/Audio/Plug-Ins/LV2/
 # CLAP — same shape as VST2 on macOS
-cp -r DigiDrie-macos-aarch64/lib/clap/DigiDrie.clap   ~/Library/Audio/Plug-Ins/CLAP/
+cp -r DigiDrie-macos-aarch64/lib/clap/DigiDrie.clap               ~/Library/Audio/Plug-Ins/CLAP/
 
 # Strip Gatekeeper's quarantine attribute on the downloaded files,
 # otherwise hosts will silently refuse to load them.
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST/DigiDrie.vst
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/DigiDrie.vst3
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/Components/DigiDrie.component
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/LV2/DigiDrie.lv2
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/CLAP/DigiDrie.clap
 ```
