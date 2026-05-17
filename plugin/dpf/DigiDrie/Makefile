@@ -3,12 +3,28 @@ NAME = DigiDrie
 
 USER_LIB_PATH :=
 
+# Architecture detection. `uname -m` returns:
+#   x86_64 / amd64           on x86_64 Linux / macOS / BSD / MinGW
+#   i386 / i686              on 32-bit x86 (vanishingly rare nowadays)
+#   arm64                    on Apple Silicon macOS
+#   aarch64                  on aarch64 Linux
+#
+# Only the x86 family has VCL support and SSE/AVX runtime dispatch via
+# instrset_detect(); other architectures get a single non-vectorised
+# DSPCore_Generic class with no VCL include and no -mavxN flags.
+ARCH := $(shell uname -m)
+ifeq ($(filter $(ARCH),x86_64 amd64 i386 i686),)
+USE_X86_SIMD_DISPATCH := false
+else
+USE_X86_SIMD_DISPATCH := true
+endif
+
 # SIMD related variables.
 FILES_SIMD = dsp/dspcore.cpp
-
 OBJ_DIR_SIMD := $(addsuffix /simd,../build/$(NAME))
-
 NAME_SIMD := $(FILES_SIMD:.cpp=)
+
+ifeq ($(USE_X86_SIMD_DISPATCH),true)
 
 OBJ_AVX512 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx512.o,$(NAME_SIMD)))
 OBJ_AVX2 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .avx2.o,$(NAME_SIMD)))
@@ -21,7 +37,6 @@ OBJ_SSE2 := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .sse2.o,$(NAME_SIMD)))
 # https://stackoverflow.com/questions/15406658/cpu-dispatcher-for-visual-studio-for-avx-and-sse
 #
 OBJ_SIMD := $(OBJ_SSE2) $(OBJ_SSE41) $(OBJ_AVX2) $(OBJ_AVX512)
-
 OBJS_DSP += $(OBJ_SIMD)
 
 # Files to build
@@ -30,6 +45,19 @@ FILES_DSP = \
 	plugin.cpp \
 	parameter.cpp \
 	parameter_preset.cpp \
+
+else  # USE_X86_SIMD_DISPATCH
+
+# Non-x86 path: single scalar DSPCore_Generic, no VCL, no instrset_detect.
+OBJ_GENERIC := $(addprefix $(OBJ_DIR_SIMD)/,$(addsuffix .generic.o,$(NAME_SIMD)))
+OBJS_DSP += $(OBJ_GENERIC)
+
+FILES_DSP = \
+	plugin.cpp \
+	parameter.cpp \
+	parameter_preset.cpp \
+
+endif  # USE_X86_SIMD_DISPATCH
 
 FILES_UI  = \
 	ui.cpp \
@@ -75,7 +103,11 @@ endif
 all: simd $(TARGETS)
 
 # SIMD rules.
+ifeq ($(USE_X86_SIMD_DISPATCH),true)
 simd: mkdir_build $(OBJ_AVX512) $(OBJ_AVX2) $(OBJ_SSE41) $(OBJ_SSE2)
+else
+simd: mkdir_build $(OBJ_GENERIC)
+endif
 
 mkdir_build:
 	@mkdir -p $(OBJ_DIR_SIMD)/dsp
@@ -107,3 +139,5 @@ $(OBJ_DIR_SIMD)/%.sse41.o: %.cpp
 	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse4.1 -DINSTRSET=5 -std=c++17 -c $< -o$@
 $(OBJ_DIR_SIMD)/%.sse2.o: %.cpp
 	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -msse2 -DINSTRSET=2 -std=c++17 -c $< -o$@
+$(OBJ_DIR_SIMD)/%.generic.o: %.cpp
+	$(CXX) $(DPF_INCLUDE_PATH) $(SIMD_OPT_FLAG) -fPIC -std=c++17 -c $< -o$@

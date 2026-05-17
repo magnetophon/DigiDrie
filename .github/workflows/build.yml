@@ -41,13 +41,33 @@ jobs:
             lib-ext: .so
             jack: 'true'
             jack-ext: ''
+          - name: linux-aarch64
+            # Free arm64 Linux runner (4 vCPU on public repos since
+            # Jan 2025). The native compile is straightforward because
+            # the build now has a non-x86 path that produces a single
+            # scalar DSPCore_Generic with no VCL / no -mavxN flags.
+            runs-on: ubuntu-24.04-arm
+            shell: bash
+            archive-ext: tar.gz
+            lib-ext: .so
+            jack: 'true'
+            jack-ext: ''
           - name: macos-x86_64
-            # Apple Silicon can't compile DigiDrie (x86 SIMD, no scalar
-            # fallback). macos-15-intel is the only free Intel runner
-            # since GitHub retired macos-13 in December 2025; Apple is
-            # discontinuing x86_64 macOS support entirely after macos-15
-            # retires in Fall 2027.
+            # macos-15-intel is the only free Intel runner since GitHub
+            # retired macos-13 in December 2025. Apple is discontinuing
+            # x86_64 macOS support entirely after macos-15 retires in
+            # Fall 2027 — at that point this matrix row should be removed.
             runs-on: macos-15-intel
+            shell: bash
+            archive-ext: tar.gz
+            lib-ext: .dylib
+            jack: 'false'
+            jack-ext: ''
+          - name: macos-aarch64
+            # Apple Silicon. macos-15 is the default Apple Silicon label
+            # and is free for public repos. Same scalar build as Linux
+            # aarch64 — DSPCore_Generic only, no SSE/AVX dispatch.
+            runs-on: macos-15
             shell: bash
             archive-ext: tar.gz
             lib-ext: .dylib

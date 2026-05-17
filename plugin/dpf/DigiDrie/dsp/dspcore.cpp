@@ -8,20 +8,26 @@
 
 #include <iostream>
 
-#if INSTRSET >= 10
-  #define NOTE_NAME Note_AVX512
-  #define DSPCORE_NAME DSPCore_AVX512
-#elif INSTRSET >= 8
-  #define NOTE_NAME Note_AVX2
-  #define DSPCORE_NAME DSPCore_AVX2
-#elif INSTRSET >= 5
-  #define NOTE_NAME Note_SSE41
-  #define DSPCORE_NAME DSPCore_SSE41
-#elif INSTRSET >= 2
-  #define NOTE_NAME Note_SSE2
-  #define DSPCORE_NAME DSPCore_SSE2
+#if defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86)
+  #if INSTRSET >= 10
+    #define NOTE_NAME Note_AVX512
+    #define DSPCORE_NAME DSPCore_AVX512
+  #elif INSTRSET >= 8
+    #define NOTE_NAME Note_AVX2
+    #define DSPCORE_NAME DSPCore_AVX2
+  #elif INSTRSET >= 5
+    #define NOTE_NAME Note_SSE41
+    #define DSPCORE_NAME DSPCore_SSE41
+  #elif INSTRSET >= 2
+    #define NOTE_NAME Note_SSE2
+    #define DSPCORE_NAME DSPCore_SSE2
+  #else
+    #error Unsupported instruction set
+  #endif
 #else
-  #error Unsupported instruction set
+  // Non-x86 build: no VCL, no runtime ISA dispatch — single class.
+  #define NOTE_NAME Note_Generic
+  #define DSPCORE_NAME DSPCore_Generic
 #endif
 
 inline float

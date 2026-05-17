@@ -26,6 +26,7 @@ public:
   DigiDrie()
     : Plugin(ParameterID::ID_ENUM_LENGTH, GlobalParameter::Preset::Preset_ENUM_LENGTH, 0)
   {
+#if defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86)
     auto iset = instrset_detect();
     if (iset >= 10) {
       dsp = std::make_unique<DSPCore_AVX512>();
@@ -39,6 +40,10 @@ public:
       std::cerr << "\nError: Instruction set SSE2 not supported on this computer";
       exit(EXIT_FAILURE);
     }
+#else
+    // Non-x86 (Apple Silicon, aarch64 Linux): single non-vectorised core.
+    dsp = std::make_unique<DSPCore_Generic>();
+#endif
     dsp->param.validate();
 
     sampleRateChanged(getSampleRate());

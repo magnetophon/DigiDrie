@@ -8,7 +8,9 @@ TODO:
 
 #include "../../common/dsp/constants.hpp"
 #include "../../common/dsp/smoother.hpp"
-#include "../../lib/vcl/vectorclass.h"
+#if defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86)
+  #include "../../lib/vcl/vectorclass.h"
+#endif
 #include "../parameter.hpp"
 #include "faustdsp.hpp"
 
@@ -118,7 +120,13 @@ public:
     mydsp synth;                                                                         \
   };
 
+#if defined(__x86_64__) || defined(_M_X64) || defined(__i386__) || defined(_M_IX86)
 DSPCORE_CLASS(AVX512)
 DSPCORE_CLASS(AVX2)
 DSPCORE_CLASS(SSE41)
 DSPCORE_CLASS(SSE2)
+#else
+// On non-x86 (Apple Silicon, aarch64 Linux, etc.) VCL is unavailable;
+// build a single non-vectorised DSPCore selected unconditionally.
+DSPCORE_CLASS(Generic)
+#endif
