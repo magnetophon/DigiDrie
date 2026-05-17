@@ -37,7 +37,6 @@ jobs:
           - name: linux-x86_64
             runs-on: ubuntu-24.04
             shell: bash
-            archive-ext: tar.gz
             lib-ext: .so
             jack: 'true'
             jack-ext: ''
@@ -48,7 +47,6 @@ jobs:
             # scalar DSPCore_Generic with no VCL / no -mavxN flags.
             runs-on: ubuntu-24.04-arm
             shell: bash
-            archive-ext: tar.gz
             lib-ext: .so
             jack: 'true'
             jack-ext: ''
@@ -59,7 +57,6 @@ jobs:
             # Fall 2027 — at that point this matrix row should be removed.
             runs-on: macos-15-intel
             shell: bash
-            archive-ext: tar.gz
             lib-ext: .dylib
             jack: 'false'
             jack-ext: ''
@@ -69,7 +66,6 @@ jobs:
             # aarch64 — DSPCore_Generic only, no SSE/AVX dispatch.
             runs-on: macos-15
             shell: bash
-            archive-ext: tar.gz
             lib-ext: .dylib
             jack: 'false'
             jack-ext: ''
@@ -78,7 +74,6 @@ jobs:
             # MSYS2 MinGW64 is the standard environment for building
             # DPF plugins on Windows. setup-msys2 (below) provisions it.
             shell: 'msys2 {0}'
-            archive-ext: zip
             lib-ext: .dll
             jack: 'false'
             jack-ext: .exe
@@ -235,27 +230,31 @@ jobs:
           LV2_PATH="$STAGE/lib/lv2" \
             lv2info https://github.com/magnetophon/DigiDrie | head -20
 
-      # --- Archive into the platform-conventional format ---
-
-      - name: Archive (tar.gz)
-        if: matrix.archive-ext == 'tar.gz'
-        run: |
-          cd staging
-          tar -czf "../DigiDrie-${{ matrix.name }}.tar.gz" \
-                   "DigiDrie-${{ matrix.name }}"
-
-      - name: Archive (zip)
-        if: matrix.archive-ext == 'zip'
-        run: |
-          cd staging
-          zip -r "../DigiDrie-${{ matrix.name }}.zip" \
-                 "DigiDrie-${{ matrix.name }}"
-
+      # --- Upload artifacts ---
+      #
+      # Upload the unpacked staging directory rather than a pre-built
+      # archive. `actions/upload-artifact@v4` always wraps its payload in a
+      # zip when served via the web UI / `gh run download` — so uploading a
+      # .tar.gz would force people to extract twice (zip → tar.gz → dir),
+      # and uploading a .zip would force a zip-of-zip. Uploading the
+      # directory makes that wrap-zip act as the archive itself, so CI
+      # consumers get a single archive containing the FHS-style layout
+      # directly.
+      #
+      # Trade-off: upload-artifact normalises file permissions to 644/755
+      # (files / dirs), which strips +x from the JACK standalone binary on
+      # Linux. The plugin shared libraries (.so/.dylib/.dll) and the macOS
+      # .vst bundle binary at Contents/MacOS/<name> don't need +x — dlopen
+      # on glibc and dyld on macOS both load loadable bundles by content,
+      # not by mode. So only `bin/DigiDrie` is affected. The release job
+      # restores +x on `bin/*` before tagged-release re-archiving; CI users
+      # poking at the standalone for testing can `chmod +x bin/DigiDrie`
+      # themselves after extracting.
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: DigiDrie-${{ matrix.name }}
-          path: DigiDrie-${{ matrix.name }}.${{ matrix.archive-ext }}
+          path: staging/DigiDrie-${{ matrix.name }}/
           if-no-files-found: error
 
   release:
@@ -270,15 +269,43 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
-          merge-multiple: true
+          # No merge-multiple: each artifact stays in its own subdir
+          # (artifacts/DigiDrie-linux-x86_64/, artifacts/DigiDrie-macos-aarch64/,
+          # etc.) so we can re-archive each one separately.
 
-      - name: Rename archives with version
+      # Build job uploads the unpacked staging directory, so we re-archive
+      # here in the platform-conventional format for the GitHub release
+      # page: tar.gz on Unix (preserves perms via the chmod step below),
+      # zip on Windows. Picking the format from the artifact name keeps
+      # this loop matrix-free — adding a new matrix row only requires the
+      # name to contain "windows" if it should ship a zip.
+      - name: Re-archive for release
         run: |
           mkdir -p release
-          for f in artifacts/DigiDrie-*; do
-            base=$(basename "$f")
-            # DigiDrie-linux-x86_64.tar.gz -> DigiDrie-v1.2.3-linux-x86_64.tar.gz
-            mv "$f" "release/DigiDrie-${GITHUB_REF_NAME}-${base#DigiDrie-}"
+          for dir in artifacts/DigiDrie-*/; do
+            base=$(basename "$dir")          # e.g. DigiDrie-linux-x86_64
+            suffix=${base#DigiDrie-}         # e.g. linux-x86_64
+            out="DigiDrie-${GITHUB_REF_NAME}-${suffix}"
+
+            # upload-artifact strips file modes; restore +x on any
+            # standalone binary in bin/. The .vst bundle binary on macOS
+            # (lib/vst/*.vst/Contents/MacOS/*) doesn't need +x — dyld
+            # loads it via dlopen — but chmod-ing it is harmless and
+            # arguably more correct, so do that too.
+            if [ -d "$dir/bin" ]; then
+              find "$dir/bin" -type f -exec chmod +x {} +
+            fi
+            find "$dir" -path '*.vst/Contents/MacOS/*' -type f \
+              -exec chmod +x {} + 2>/dev/null || true
+
+            case "$base" in
+              *windows*)
+                (cd artifacts && zip -qr "../release/${out}.zip" "$base")
+                ;;
+              *)
+                tar -czf "release/${out}.tar.gz" -C artifacts "$base"
+                ;;
+            esac
           done
           ls -la release/
 
