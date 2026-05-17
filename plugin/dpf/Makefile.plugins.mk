@@ -109,6 +109,25 @@ clap       = $(TARGET_DIR)/$(NAME).clap
 clapfiles  =
 endif
 
+# VST3 is always a bundle, but the binary path inside it is
+# platform-dependent (Linux puts it in Contents/<arch>-linux/, macOS in
+# Contents/MacOS/, Windows in Contents/<arch>-win/). DPF's Makefile.base.mk
+# computes the correct VST3_BINARY_DIR; reuse it directly rather than
+# re-deriving the arch ourselves. Bundle Info.plist / PkgInfo / empty.lproj
+# resources only apply on macOS, matching upstream behavior.
+ifeq ($(MACOS),true)
+vst3       = $(TARGET_DIR)/$(NAME).vst3/$(VST3_BINARY_DIR)/$(NAME)
+vst3files  = $(TARGET_DIR)/$(NAME).vst3/Contents/Info.plist \
+             $(TARGET_DIR)/$(NAME).vst3/Contents/PkgInfo \
+             $(TARGET_DIR)/$(NAME).vst3/Contents/Resources/empty.lproj
+else ifeq ($(LINUX),true)
+vst3       = $(TARGET_DIR)/$(NAME).vst3/$(VST3_BINARY_DIR)/$(NAME)$(LIB_EXT)
+vst3files  =
+else ifeq ($(WINDOWS),true)
+vst3       = $(TARGET_DIR)/$(NAME).vst3/$(VST3_BINARY_DIR)/$(NAME).vst3
+vst3files  =
+endif
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Handle UI stuff, disable UI support automatically
 
@@ -297,6 +316,20 @@ $(clap): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_CLAP.cpp.o
 endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating CLAP plugin for $(NAME)"
+	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# VST3
+
+vst3: $(vst3) $(vst3files)
+
+ifeq ($(HAVE_DGL),true)
+$(vst3): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST3.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST3.cpp.o $(DGL_LIB)
+else
+$(vst3): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST3.cpp.o
+endif
+	-@mkdir -p $(shell dirname $@)
+	@echo "Creating VST3 plugin for $(NAME)"
 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
 
 # ---------------------------------------------------------------------------------------------------------------------

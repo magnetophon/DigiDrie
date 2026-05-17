@@ -81,6 +81,7 @@ endif
 # Enable all possible plugin types
 LV2 ?= true
 VST2 ?= true
+VST3 ?= true
 CLAP ?= true
 JACK ?= true
 
@@ -102,6 +103,10 @@ endif
 
 ifeq ($(CLAP),true)
 TARGETS += clap
+endif
+
+ifeq ($(VST3),true)
+TARGETS += vst3
 endif
 
 # Rule entry point.

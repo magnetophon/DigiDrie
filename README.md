@@ -39,15 +39,18 @@ When you turn up "modulation->1", the settings morph to preset 2.
 
 Prebuilt binaries are attached to each [release](https://github.com/magnetophon/DigiDrie/releases) for Linux (x86_64 and aarch64), macOS (x86_64 and Apple Silicon), and Windows (x86_64).
 Pick the archive matching your platform, extract it, and copy the plugin into your host's plug-in folder.
-DigiDrie ships as VST2, LV2, and CLAP on every platform, plus a JACK standalone on Linux.
-There's no AU build (Logic Pro is unsupported) and no VST3 build.
+DigiDrie ships as VST2, VST3, LV2, and CLAP on every platform, plus a JACK standalone on Linux.
+There's no AU build (Logic Pro is unsupported).
 
 ### Linux
 
 ```bash
 # VST2
 cp -r DigiDrie-linux-x86_64/lib/vst/DigiDrie-vst.so   ~/.vst/
-# LV2 — copy the whole bundle directory, not just the .so files inside
+# VST3 — copy the whole bundle directory (the .so is inside)
+mkdir -p ~/.vst3
+cp -r DigiDrie-linux-x86_64/lib/vst3/DigiDrie.vst3    ~/.vst3/
+# LV2 — same, copy the whole bundle directory
 cp -r DigiDrie-linux-x86_64/lib/lv2/DigiDrie.lv2      ~/.lv2/
 # CLAP
 mkdir -p ~/.clap
@@ -69,6 +72,8 @@ The `chmod +x` step is needed because GitHub's artifact format doesn't preserve 
 ```bash
 # VST2 — DigiDrie.vst is a bundle directory; move the whole thing
 cp -r DigiDrie-macos-aarch64/lib/vst/DigiDrie.vst     ~/Library/Audio/Plug-Ins/VST/
+# VST3 — same, a bundle directory
+cp -r DigiDrie-macos-aarch64/lib/vst3/DigiDrie.vst3   ~/Library/Audio/Plug-Ins/VST3/
 # LV2 — same: the .lv2 is a directory
 cp -r DigiDrie-macos-aarch64/lib/lv2/DigiDrie.lv2     ~/Library/Audio/Plug-Ins/LV2/
 # CLAP — same shape as VST2 on macOS
@@ -77,6 +82,7 @@ cp -r DigiDrie-macos-aarch64/lib/clap/DigiDrie.clap   ~/Library/Audio/Plug-Ins/C
 # Strip Gatekeeper's quarantine attribute on the downloaded files,
 # otherwise hosts will silently refuse to load them.
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST/DigiDrie.vst
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/DigiDrie.vst3
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/LV2/DigiDrie.lv2
 xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/CLAP/DigiDrie.clap
 ```
@@ -90,6 +96,7 @@ VST2 plugin lookup paths vary by host — Reaper, Bitwig, Studio One, etc.
 all read different locations and most let you configure the scan path in settings.
 A common system-wide spot is `C:\Program Files\Common Files\VST2\`; per-user, hosts usually accept anywhere under your profile.
 Copy `DigiDrie-vst.dll` (and the `DigiDrie.lv2` directory, if your host supports LV2) into whichever folder your host scans.
+For VST3, copy the `DigiDrie.vst3` directory into `%COMMONPROGRAMFILES%\VST3\` (system-wide) or `%LOCALAPPDATA%\Programs\Common\VST3\` (per-user) — these are the standard Steinberg-defined locations and almost every host scans them automatically.
 For CLAP, the conventional location is `%COMMONPROGRAMFILES%\CLAP\` system-wide or `%LOCALAPPDATA%\Programs\Common\CLAP\` per-user; copy `DigiDrie.clap` there.
 
 ### themes (optional)

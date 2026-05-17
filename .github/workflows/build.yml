@@ -131,7 +131,7 @@ jobs:
           else
             JOBS=$(sysctl -n hw.ncpu)
           fi
-          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true CLAP=true
+          make -j"$JOBS" JACK=${{ matrix.jack }} LV2=true VST2=true VST3=true CLAP=true
 
       # --- Stage artifacts into a portable on-disk layout ---
 
@@ -151,13 +151,16 @@ jobs:
         # on both, copied recursively.
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
-          mkdir -p "$STAGE/bin" "$STAGE/lib/vst" "$STAGE/lib/lv2" \
-                   "$STAGE/lib/clap" "$STAGE/share/magnetophon"
+          mkdir -p "$STAGE/bin" "$STAGE/lib/vst" "$STAGE/lib/vst3" \
+                   "$STAGE/lib/lv2" "$STAGE/lib/clap" "$STAGE/share/magnetophon"
           if [ "${{ matrix.jack }}" = "true" ]; then
             cp "plugin/dpf/bin/DigiDrie${{ matrix.jack-ext }}" "$STAGE/bin/"
           fi
           # VST2 is a bundle dir on macOS, single .so on Linux. CLAP is the
-          # same shape: bundle dir on macOS, single .clap on Linux.
+          # same shape: bundle dir on macOS, single .clap on Linux. VST3 is
+          # always a bundle directory on every platform (the binary's parent
+          # path varies by OS — Contents/<arch>-linux/, Contents/MacOS/, etc.
+          # — but the .vst3 top-level is always a directory).
           if [ "$RUNNER_OS" = "macOS" ]; then
             cp -r plugin/dpf/bin/DigiDrie.vst                   "$STAGE/lib/vst/"
             cp -r plugin/dpf/bin/DigiDrie.clap                  "$STAGE/lib/clap/"
@@ -165,6 +168,7 @@ jobs:
             cp "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" "$STAGE/lib/vst/"
             cp plugin/dpf/bin/DigiDrie.clap                     "$STAGE/lib/clap/"
           fi
+          cp -r plugin/dpf/bin/DigiDrie.vst3                    "$STAGE/lib/vst3/"
           cp -r plugin/dpf/bin/DigiDrie.lv2                     "$STAGE/lib/lv2/"
           cp README.md LICENSE.txt                              "$STAGE/"
           cp -r plugin/dpf/style                                "$STAGE/share/magnetophon/"
@@ -178,11 +182,13 @@ jobs:
       # `xattr -dr com.apple.quarantine` after downloading because the
       # signature is ad-hoc (not Developer ID), but without any signature
       # the bundle would be rejected outright on recent macOS regardless.
-      - name: Codesign VST2 + CLAP bundles (macOS)
+      - name: Codesign VST2 + VST3 + CLAP bundles (macOS)
         if: runner.os == 'macOS'
         run: |
           STAGE="staging/DigiDrie-${{ matrix.name }}"
-          for bundle in "$STAGE/lib/vst/DigiDrie.vst" "$STAGE/lib/clap/DigiDrie.clap"; do
+          for bundle in "$STAGE/lib/vst/DigiDrie.vst" \
+                        "$STAGE/lib/vst3/DigiDrie.vst3" \
+                        "$STAGE/lib/clap/DigiDrie.clap"; do
             codesign --force --sign - "$bundle"
             test -f "$bundle/Contents/MacOS/DigiDrie"
             codesign --verify --strict --verbose=2 "$bundle"
@@ -198,6 +204,7 @@ jobs:
           mkdir -p "$STAGE"
           cp plugin/dpf/bin/DigiDrie-vst.dll     "$STAGE/"
           cp plugin/dpf/bin/DigiDrie.clap        "$STAGE/"
+          cp -r plugin/dpf/bin/DigiDrie.vst3     "$STAGE/"
           cp -r plugin/dpf/bin/DigiDrie.lv2      "$STAGE/"
           cp README.md LICENSE.txt               "$STAGE/"
           cp -r plugin/dpf/style                 "$STAGE/"

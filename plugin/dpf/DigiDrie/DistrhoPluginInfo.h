@@ -17,6 +17,12 @@ TODO:
 // .clap bundles, so hosts that key off either see consistent identity.
 #define DISTRHO_PLUGIN_CLAP_ID "com.magnetophon.DigiDrie"
 
+// VST3 subcategories filter what shows up in host browsers that group
+// plugins by type. DigiDrie is a stereo synthesizer; without this macro
+// DPF defaults to just "Instrument" (since IS_SYNTH=1), which is correct
+// but less specific.
+#define DISTRHO_PLUGIN_VST3_CATEGORIES "Instrument|Synth|Stereo"
+
 #define DISTRHO_PLUGIN_HAS_UI 1
 #define DISTRHO_PLUGIN_IS_RT_SAFE 1
 #define DISTRHO_PLUGIN_IS_SYNTH 1

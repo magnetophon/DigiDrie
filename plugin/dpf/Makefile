@@ -15,6 +15,7 @@ generate_ttl: build
 
 LV2 ?= true
 VST2 ?= true
+VST3 ?= true
 CLAP ?= true
 JACK ?= true
 
@@ -41,6 +42,9 @@ endif
 ifeq ($(VST2),true)
 INSTALL_TARGET += installVST2
 endif
+ifeq ($(VST3),true)
+INSTALL_TARGET += installVST3
+endif
 ifeq ($(CLAP),true)
 INSTALL_TARGET += installCLAP
 endif
@@ -52,6 +56,7 @@ pkgname ?= magnetophon
 PREFIX ?= /usr/local
 lv2dir ?= $(DESTDIR)$(PREFIX)/lib/lv2
 vst2dir ?= $(DESTDIR)$(PREFIX)/lib/lxvst
+vst3dir ?= $(DESTDIR)$(PREFIX)/lib/vst3
 clapdir ?= $(DESTDIR)$(PREFIX)/lib/clap
 bindir ?= $(DESTDIR)$(PREFIX)/bin
 sysconfdir ?= $(DESTDIR)$(PREFIX)/etc
@@ -69,7 +74,7 @@ common: dpf
 
 .PHONY: DigiDrie
 DigiDrie: common
-	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) CLAP=$(CLAP) JACK=$(JACK)
+	$(MAKE) -C DigiDrie HAVE_CAIRO=$(HAVE_CAIRO) LV2=$(LV2) VST2=$(VST2) VST3=$(VST3) CLAP=$(CLAP) JACK=$(JACK)
 
 .PHONY: install
 install: $(INSTALL_TARGET) installConfig installResource installDoc
@@ -100,6 +105,11 @@ installLV2:
 installVST2:
 	mkdir -p $(vst2dir)/$(pkgname)
 	cp -r bin/*-vst.so $(vst2dir)/$(pkgname)
+
+.PHONY: installVST3
+installVST3:
+	mkdir -p $(vst3dir)
+	cp -r bin/*.vst3 $(vst3dir)
 
 .PHONY: installCLAP
 installCLAP:
