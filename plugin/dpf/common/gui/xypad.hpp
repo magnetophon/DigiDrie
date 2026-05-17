@@ -28,7 +28,7 @@ private:
 
   std::vector<double> defaultValue;
 
-  Point<int> cursor{-1, -1};
+  Point<double> cursor{-1, -1};
   bool isMouseEntered = false;
   bool wasMouseEntered = false;
   bool isMouseLeftDown = false;
@@ -39,7 +39,7 @@ public:
   float borderWidth = 2.0f;
 
   explicit XYPad(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::vector<uint32_t> id,
     std::vector<double> value,
@@ -146,10 +146,10 @@ public:
   }
 
 private:
-  void updateValueFromPos(const Point<int> &pos)
+  void updateValueFromPos(const Point<double> &pos)
   {
-    value[0] = std::clamp<int>(pos.getX(), 0, getWidth()) / double(getWidth());
-    value[1] = std::clamp<int>(pos.getY(), 0, getHeight()) / double(getHeight());
+    value[0] = std::clamp<double>(pos.getX(), 0.0, double(getWidth())) / double(getWidth());
+    value[1] = std::clamp<double>(pos.getY(), 0.0, double(getHeight())) / double(getHeight());
     updateValue();
   }
 };

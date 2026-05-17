@@ -27,7 +27,7 @@
 template<Style style = Style::common> class StateButton : public StateWidget {
 public:
   explicit StateButton(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::string labelText,
     std::string key,
@@ -112,7 +112,7 @@ protected:
 template<Style style = Style::common> class ButtonBase : public ValueWidget {
 public:
   explicit ButtonBase(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::string labelText,
     FontId fontId,
@@ -191,7 +191,7 @@ public:
   using Btn = ButtonBase<style>;
 
   explicit KickButton(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::string labelText,
     NanoVG::FontId fontId,
@@ -221,7 +221,7 @@ public:
   using Btn = ButtonBase<style>;
 
   explicit ToggleButton(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::string labelText,
     NanoVG::FontId fontId,

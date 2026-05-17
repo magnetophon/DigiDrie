@@ -30,7 +30,7 @@ public:
   float textSize = 18.0f;
 
   explicit TextView(
-    NanoWidget *group, std::string content, FontId fontId, Palette &palette)
+    NanoTopLevelWidget *group, std::string content, FontId fontId, Palette &palette)
     : NanoWidget(group), fontId(fontId), pal(palette)
   {
     std::stringstream ss(content);
@@ -71,7 +71,7 @@ public:
   float textSize = 18.0f;
 
   explicit TextTableView(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     std::string content,
     float cellWidth,
     FontId fontId,

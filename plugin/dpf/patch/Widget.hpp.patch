@@ -1,11 +1,11 @@
---- DPF/dgl/Widget.hpp	2020-08-21 14:34:03.398864867 +0900
-+++ ../DigiDrie/plugin/dpf/lib/DPF/dgl/Widget.hpp	2020-08-21 12:35:46.406121168 +0900
-@@ -217,7 +217,7 @@
+--- DPF/dgl/Widget.hpp
++++ ../DigiDrie/plugin/dpf/lib/DPF/dgl/Widget.hpp
+@@ -282,7 +282,7 @@
     /**
-       Set widget visible (or not) according to @a yesNo.
+       Set widget visible (or not) according to @a visible.
      */
--    void setVisible(bool yesNo);
-+    virtual void setVisible(bool yesNo);
+-    void setVisible(bool visible);
++    virtual void setVisible(bool visible);
  
     /**
        Show widget.

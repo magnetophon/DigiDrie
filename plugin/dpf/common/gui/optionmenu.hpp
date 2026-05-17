@@ -25,7 +25,7 @@
 template<Style style = Style::common> class OptionMenu : public ValueWidget {
 public:
   explicit OptionMenu(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::vector<std::string> item,
     FontId fontId,
@@ -157,7 +157,7 @@ protected:
 
   const float sensitivity = 24.0f; // Pixels.
 
-  Point<int> anchorPoint{0, 0};
+  Point<double> anchorPoint{0, 0};
   float diff = 0;
   bool isMouseLeftDown = false;
   bool isMouseEntered = false;

@@ -26,7 +26,7 @@ public:
   bool drawBackground = false;
 
   explicit CheckBox(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     std::string labelText,
     FontId fontId,

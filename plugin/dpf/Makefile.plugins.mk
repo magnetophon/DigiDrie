@@ -28,19 +28,8 @@ BUILD_DIR = ../build/$(NAME)
 endif
 
 BUILD_C_FLAGS   += -I.
-BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl $(INCLUDE_LIB)
+BUILD_CXX_FLAGS += -I. -I$(DPF_PATH)/distrho -I$(DPF_PATH)/dgl -I$(DPF_PATH)/dgl/src/pugl-upstream/include $(INCLUDE_LIB)
 
-# DPF's Makefile.base.mk treats any TARGET_PROCESSOR matching `arm%`
-# as 32-bit ARM and unconditionally adds -mfpu=neon-vfpv4 -mfloat-abi=hard.
-# Apple Silicon's `uname -m` returns `arm64`, which matches that glob
-# but is a 64-bit target — Apple clang then errors out with
-#   clang++: error: unsupported option '-mfpu=' for target 'arm64-apple-darwin*'
-# Linux aarch64 isn't affected (its `uname -m` returns `aarch64`, which
-# doesn't match `arm%`). Strip the arm32-only flags whenever the target
-# is actually arm64.
-ifneq (,$(filter arm64%,$(TARGET_PROCESSOR)))
-BASE_OPTS := $(filter-out -mfpu=% -mfloat-abi=%,$(BASE_OPTS))
-endif
 # stdc++fs is a GCC-only artefact: GCC <= 8 needed it to use
 # <filesystem>, and GCC >= 9 keeps an empty stub for compatibility.
 # Apple clang's libc++ has <filesystem> in the standard library and
@@ -73,6 +62,13 @@ endif
 OBJS_DSP += $(FILES_DSP:%=$(BUILD_DIR)/%.o)
 OBJS_UI  += $(FILES_UI:%=$(BUILD_DIR)/%.o)
 
+# Current DPF moves the non-static `getDesktopScaleFactor` definition into a
+# separate Objective-C++ source file, so it must be compiled and linked
+# explicitly on macOS or the UI fails to link.
+ifeq ($(MACOS),true)
+OBJS_UI += $(BUILD_DIR)/DistrhoUI_macOS_$(NAME).mm.o
+endif
+
 # ---------------------------------------------------------------------------------------------------------------------
 # Set plugin binary file targets
 
@@ -83,7 +79,21 @@ dssi_ui    = $(TARGET_DIR)/$(NAME)-dssi/$(NAME)_ui$(APP_EXT)
 lv2        = $(TARGET_DIR)/$(NAME).lv2/$(NAME)$(LIB_EXT)
 lv2_dsp    = $(TARGET_DIR)/$(NAME).lv2/$(NAME)_dsp$(LIB_EXT)
 lv2_ui     = $(TARGET_DIR)/$(NAME).lv2/$(NAME)_ui$(LIB_EXT)
+# Current DPF emits VST2 as a proper .vst bundle on macOS (binary at
+# Contents/MacOS/<name>, plus Info.plist / PkgInfo / Resources/empty.lproj).
+# Most VST2 hosts on Mac (Ableton Live, Bitwig, Cubase, Studio One) refuse
+# to load anything that isn't a bundle. Backport the bundle layout here so
+# the build emits a host-loadable artifact directly, without a CI wrapping
+# step. On Linux and Windows the VST2 plugin is still a single .so/.dll.
+ifeq ($(MACOS),true)
+vst        = $(TARGET_DIR)/$(NAME).vst/Contents/MacOS/$(NAME)
+vstfiles   = $(TARGET_DIR)/$(NAME).vst/Contents/Info.plist \
+             $(TARGET_DIR)/$(NAME).vst/Contents/PkgInfo \
+             $(TARGET_DIR)/$(NAME).vst/Contents/Resources/empty.lproj
+else
 vst        = $(TARGET_DIR)/$(NAME)-vst$(LIB_EXT)
+vstfiles   =
+endif
 
 # ---------------------------------------------------------------------------------------------------------------------
 # Handle UI stuff, disable UI support automatically
@@ -98,7 +108,7 @@ endif
 
 ifeq ($(UI_TYPE),cairo)
 ifeq ($(HAVE_CAIRO),true)
-DGL_FLAGS += $(CAIRO_FLAGS) -DDGL_CAIRO
+DGL_FLAGS += $(CAIRO_FLAGS) -DDGL_CAIRO -DHAVE_DGL
 DGL_LIBS  += $(CAIRO_LIBS)
 DGL_LIB    = $(DPF_PATH)/build/libdgl-cairo.a
 HAVE_DGL   = true
@@ -109,7 +119,7 @@ endif
 
 ifeq ($(UI_TYPE),opengl)
 ifeq ($(HAVE_OPENGL),true)
-DGL_FLAGS += $(OPENGL_FLAGS) -DDGL_OPENGL
+DGL_FLAGS += $(OPENGL_FLAGS) -DDGL_OPENGL -DHAVE_DGL
 DGL_LIBS  += $(OPENGL_LIBS)
 DGL_LIB    = $(DPF_PATH)/build/libdgl-opengl.a
 HAVE_DGL   = true
@@ -168,6 +178,11 @@ $(BUILD_DIR)/DistrhoUIMain_%.cpp.o: $(DPF_PATH)/distrho/DistrhoUIMain.cpp
 	-@mkdir -p $(BUILD_DIR)
 	@echo "Compiling DistrhoUIMain.cpp ($*)"
 	@$(CXX) $< $(BUILD_CXX_FLAGS) -DDISTRHO_PLUGIN_TARGET_$* -c -o $@
+
+$(BUILD_DIR)/DistrhoUI_macOS_%.mm.o: $(DPF_PATH)/distrho/DistrhoUI_macOS.mm
+	-@mkdir -p $(BUILD_DIR)
+	@echo "Compiling DistrhoUI_macOS.mm ($*)"
+	@$(CXX) $< $(BUILD_CXX_FLAGS) -ObjC++ -c -o $@
 
 $(BUILD_DIR)/DistrhoPluginMain_JACK.cpp.o: $(DPF_PATH)/distrho/DistrhoPluginMain.cpp
 	-@mkdir -p $(BUILD_DIR)
@@ -245,16 +260,40 @@ $(lv2_ui): $(OBJS_UI) $(BUILD_DIR)/DistrhoUIMain_LV2.cpp.o $(DGL_LIB)
 # ---------------------------------------------------------------------------------------------------------------------
 # VST
 
-vst: $(vst)
+vst: $(vst) $(vstfiles)
 
 ifeq ($(HAVE_DGL),true)
-$(vst): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST.cpp.o $(DGL_LIB)
+$(vst): $(OBJS_DSP) $(OBJS_UI) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o $(BUILD_DIR)/DistrhoUIMain_VST2.cpp.o $(DGL_LIB)
 else
-$(vst): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST.cpp.o
+$(vst): $(OBJS_DSP) $(BUILD_DIR)/DistrhoPluginMain_VST2.cpp.o
 endif
 	-@mkdir -p $(shell dirname $@)
 	@echo "Creating VST plugin for $(NAME)"
 	@$(CXX) $^ $(BUILD_CXX_FLAGS) $(LINK_FLAGS) $(DGL_LIBS) $(SHARED) -o $@ $(USER_LIB_PATH)
+
+# ---------------------------------------------------------------------------------------------------------------------
+# macOS .vst bundle resources
+#
+# Pattern-match against $(TARGET_DIR)/<bundle-name>/Contents/... so the same
+# rules would also serve future .vst3 / .component bundles if we add AU/VST3
+# later. The Info.plist's @INFO_PLIST_PROJECT_NAME@ token gets substituted
+# with the project name; the bundle ID prefix is rewritten from upstream's
+# generic studio.kx.distrho.* to com.magnetophon.* so hosts that already
+# know v0.2.0's bundle ID don't see this as a separate plugin.
+ifeq ($(MACOS),true)
+$(TARGET_DIR)/%/Contents/Info.plist: $(DPF_PATH)/utils/plugin.bundle/Contents/Info.plist
+	-@mkdir -p $(shell dirname $@)
+	@sed -e 's/@INFO_PLIST_PROJECT_NAME@/$(NAME)/' \
+	     -e 's|studio\.kx\.distrho|com.magnetophon|' $< > $@
+
+$(TARGET_DIR)/%/Contents/PkgInfo: $(DPF_PATH)/utils/plugin.bundle/Contents/PkgInfo
+	-@mkdir -p $(shell dirname $@)
+	@cp $< $@
+
+$(TARGET_DIR)/%/Contents/Resources/empty.lproj: $(DPF_PATH)/utils/plugin.bundle/Contents/Resources/empty.lproj
+	-@mkdir -p $(shell dirname $@)
+	@cp $< $@
+endif
 
 # ---------------------------------------------------------------------------------------------------------------------
 

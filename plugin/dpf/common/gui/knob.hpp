@@ -30,7 +30,7 @@ public:
   float sensitivity = 0.004f; // MovedPixel * sensitivity = valueChanged.
   float lowSensitivity = sensitivity / 5.0f;
 
-  explicit KnobBase(NanoWidget *group, PluginUI *ui, Palette &palette)
+  explicit KnobBase(NanoTopLevelWidget *group, PluginUI *ui, Palette &palette)
     : ValueWidget(group, ui, 0.1f), pal(palette)
   {
   }
@@ -105,7 +105,7 @@ protected:
   const float arcNotchHalf = float(SomeDSP::pi) / 6.0f; // Radian.
   float defaultTickLength = 0.5f;
 
-  Point<int> anchorPoint{0, 0};
+  Point<double> anchorPoint{0, 0};
   bool isMouseLeftDown = false;
   bool isMouseEntered = false;
 
@@ -114,7 +114,7 @@ protected:
 
 template<Style style = Style::common> class Knob : public KnobBase {
 public:
-  explicit Knob(NanoWidget *group, PluginUI *ui, Palette &palette)
+  explicit Knob(NanoTopLevelWidget *group, PluginUI *ui, Palette &palette)
     : KnobBase(group, ui, palette)
   {
   }
@@ -176,7 +176,7 @@ public:
 
 template<Style style = Style::common> class SmallKnob : public KnobBase {
 public:
-  explicit SmallKnob(NanoWidget *group, PluginUI *ui, Palette &palette)
+  explicit SmallKnob(NanoTopLevelWidget *group, PluginUI *ui, Palette &palette)
     : KnobBase(group, ui, palette)
   {
   }
@@ -233,7 +233,7 @@ public:
   int32_t offset = 0;
 
   explicit TextKnob(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     FontId fontId,
     Palette &palette,
@@ -320,7 +320,7 @@ protected:
 template<typename Scale, Style style = Style::common> class NumberKnob : public KnobBase {
 public:
   explicit NumberKnob(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     PluginUI *ui,
     FontId fontId,
     Palette &palette,

@@ -5,32 +5,12 @@
 
 set -e
 
-patch --forward --reject-file=- \
-  ../lib/DPF/distrho/DistrhoPlugin.hpp \
-  DistrhoPlugin.hpp.patch \
-  || true
-
-patch --forward --reject-file=- \
-  ../lib/DPF/distrho/src/DistrhoPluginLV2.cpp \
-  DistrhoPluginLV2.cpp.patch\
-  || true
-
-patch --forward --reject-file=- \
-  ../lib/DPF/distrho/src/DistrhoPluginVST.cpp \
-  DistrhoPluginVST.cpp.patch\
-  || true
-
-patch --forward --reject-file=- \
-  ../lib/DPF/dgl/src/NanoVG.cpp \
-  NanoVG.cpp.patch\
-  || true
-
+# DigiDrie's tabview.hpp overrides Widget::setVisible with `virtual ... override`.
+# That requires the base declaration to be virtual, but upstream DPF still
+# declares `void setVisible(bool visible)` without the virtual keyword.
+# Until DPF accepts this upstream (or DigiDrie stops overriding), patch it on
+# every build.
 patch --forward --reject-file=- \
   ../lib/DPF/dgl/Widget.hpp \
   Widget.hpp.patch\
-  || true
-
-patch --forward --reject-file=- \
-  ../lib/DPF/Makefile.base.mk \
-  Makefile.base.mk.patch\
   || true

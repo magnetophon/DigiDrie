@@ -62,7 +62,7 @@ public:
   size_t activeTabIndex = 0;
 
   explicit TabView(
-    NanoWidget *group,
+    NanoTopLevelWidget *group,
     std::vector<std::string> tabNames,
     FontId fontId,
     Palette &palette,
@@ -218,7 +218,7 @@ public:
   void setTextSize(float size) { textSize = size < 0.0f ? 0.0f : size; }
 
 protected:
-  bool isInTabArea(const Point<int> &pos)
+  bool isInTabArea(const Point<double> &pos)
   {
     int width = getWidth();
     return 0 <= pos.getX() && pos.getX() <= width && 0 <= pos.getY()
