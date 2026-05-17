@@ -1,0 +1,103 @@
+name: build
+
+on:
+  push:
+    branches: [master, main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+# Cancel superseded PR builds. Keep branch builds queued so tagged releases
+# don't get killed by a follow-up commit.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build-linux:
+    name: linux-x86_64
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pkg-config \
+            libgl-dev \
+            libx11-dev \
+            libjack-jackd2-dev \
+            lilv-utils
+
+      - name: Set up ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: linux-x86_64-${{ github.ref }}
+          restore-keys: linux-x86_64-
+
+      - name: Patch bundled DPF
+        working-directory: plugin/dpf
+        run: make patch
+
+      - name: Build
+        working-directory: plugin/dpf
+        run: |
+          export PATH="/usr/lib/ccache:$PATH"
+          make -j$(nproc) JACK=true LV2=true VST2=true
+
+      - name: Stage artifacts
+        run: |
+          STAGE=staging/DigiDrie-linux-x86_64
+          install -Dm755 plugin/dpf/bin/DigiDrie         "$STAGE/bin/DigiDrie"
+          install -Dm755 plugin/dpf/bin/DigiDrie-vst.so  "$STAGE/lib/vst/DigiDrie-vst.so"
+          mkdir -p "$STAGE/lib/lv2"
+          cp -r           plugin/dpf/bin/DigiDrie.lv2    "$STAGE/lib/lv2/"
+          install -Dm644  README.md                      "$STAGE/README.md"
+          install -Dm644  LICENSE.txt                    "$STAGE/LICENSE.txt"
+          mkdir -p "$STAGE/share/UhhyouPlugins"
+          cp -r           plugin/dpf/style               "$STAGE/share/UhhyouPlugins/"
+
+      - name: Verify LV2 bundle is discoverable
+        run: |
+          STAGE="$PWD/staging/DigiDrie-linux-x86_64"
+          LV2_PATH="$STAGE/lib/lv2" lv2ls
+          LV2_PATH="$STAGE/lib/lv2" \
+            lv2info https://github.com/magnetophon/DigiDrie | head -20
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: DigiDrie-linux-x86_64
+          path: staging/
+          if-no-files-found: error
+
+  release:
+    name: release
+    needs: build-linux
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: DigiDrie-linux-x86_64
+          path: staging
+
+      - name: Package
+        run: |
+          cd staging
+          tar -czf ../DigiDrie-${GITHUB_REF_NAME}-linux-x86_64.tar.gz \
+              DigiDrie-linux-x86_64
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: DigiDrie-*-linux-x86_64.tar.gz
+          draft: false
+          generate_release_notes: true
