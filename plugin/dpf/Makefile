@@ -54,9 +54,10 @@ INSTALL_TARGET += installJACK
 endif
 
 pkgname ?= magnetophon
+projectname ?= digidrie
 PREFIX ?= /usr/local
 lv2dir ?= $(DESTDIR)$(PREFIX)/lib/lv2
-vst2dir ?= $(DESTDIR)$(PREFIX)/lib/lxvst
+vst2dir ?= $(DESTDIR)$(PREFIX)/lib/vst
 vst3dir ?= $(DESTDIR)$(PREFIX)/lib/vst3
 clapdir ?= $(DESTDIR)$(PREFIX)/lib/clap
 bindir ?= $(DESTDIR)$(PREFIX)/bin
@@ -83,19 +84,19 @@ install: $(INSTALL_TARGET) installConfig installResource installDoc
 .PHONY: installConfig
 installConfig:
 	mkdir -p $(sysconfdir)/$(pkgname)/style
-	cp -r style/style.json $(sysconfdir)/$(pkgname)/style
+	install -m644 style/style.json $(sysconfdir)/$(pkgname)/style/style.json
 
 .PHONY: installResource
 installResource:
 	mkdir -p $(datadir)/$(pkgname)/themes
-	cp -r style/themes $(datadir)/$(pkgname)
+	install -m644 style/themes/*.json $(datadir)/$(pkgname)/themes/
 
 .PHONY: installDoc
 installDoc:
-	mkdir -p $(docdir)/$(pkgname)
-	cp -r License $(docdir)/$(pkgname)
-	cp README.md $(docdir)/$(pkgname)
-	cp style/ColorConfig.md $(docdir)/$(pkgname)
+	mkdir -p $(docdir)/$(projectname)
+	install -m644 ../../README.md          $(docdir)/$(projectname)/README.md
+	install -m644 ../../LICENSE.txt        $(docdir)/$(projectname)/LICENSE.txt
+	install -m644 style/ColorConfig.md     $(docdir)/$(projectname)/ColorConfig.md
 
 .PHONY: installLV2
 installLV2:
@@ -104,8 +105,8 @@ installLV2:
 
 .PHONY: installVST2
 installVST2:
-	mkdir -p $(vst2dir)/$(pkgname)
-	cp -r bin/*-vst.so $(vst2dir)/$(pkgname)
+	mkdir -p $(vst2dir)
+	install -m755 bin/DigiDrie-vst.so $(vst2dir)/DigiDrie-vst.so
 
 .PHONY: installVST3
 installVST3:
@@ -120,7 +121,7 @@ installCLAP:
 .PHONY: installJACK
 installJACK:
 	mkdir -p $(bindir)
-	cp -r `find bin -maxdepth 1 -type f ! -name "*.*"` $(bindir)
+	install -m755 bin/DigiDrie $(bindir)/DigiDrie
 
 .PHONY: installHome
 installHome:
