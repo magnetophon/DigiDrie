@@ -45,6 +45,16 @@ inline fs::path getXdgConfigHome()
   return fs::path("");
 }
 
+// The local-prefix system config path is set at compile time so that
+// downstream packagers (Nix, distros installing to a non-/usr/local
+// PREFIX, etc.) can point this lookup at their actual install location
+// via -DMAGNETOPHON_SYSCONFDIR=...  The third lookup below (/etc) and
+// the first ($XDG_CONFIG_HOME) are intentionally hardcoded — those are
+// standard system / user paths that don't follow a build-time prefix.
+#ifndef MAGNETOPHON_SYSCONFDIR
+#  define MAGNETOPHON_SYSCONFDIR "/usr/local/etc/magnetophon"
+#endif
+
 inline void logNotExist(fs::path path)
 {
   std::cerr << path << " is not regular file or doesn't exist.\n";
@@ -56,7 +66,7 @@ inline fs::path getConfigPath()
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
   logNotExist(styleJsonPath);
 
-  styleJsonPath = fs::path("/usr/local/etc/magnetophon/style/style.json");
+  styleJsonPath = fs::path(MAGNETOPHON_SYSCONFDIR "/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
   logNotExist(styleJsonPath);
 

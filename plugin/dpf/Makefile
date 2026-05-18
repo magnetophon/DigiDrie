@@ -62,6 +62,11 @@ vst3dir ?= $(DESTDIR)$(PREFIX)/lib/vst3
 clapdir ?= $(DESTDIR)$(PREFIX)/lib/clap
 bindir ?= $(DESTDIR)$(PREFIX)/bin
 sysconfdir ?= $(DESTDIR)$(PREFIX)/etc
+# Where installed config files will be found at runtime, excluding any
+# DESTDIR staging prefix (which only affects where the install step
+# writes them, not where the running binary looks for them). Compile
+# time uses this; install time uses $(sysconfdir) above.
+runtime_sysconfdir ?= $(PREFIX)/etc
 datarootdir ?= $(DESTDIR)$(PREFIX)/share
 datadir ?= $(datarootdir)
 docdir ?= $(datarootdir)/doc
@@ -72,7 +77,7 @@ dpf: patch
 
 .PHONY: common
 common: dpf
-	$(MAKE) -C common
+	$(MAKE) -C common SYSCONFDIR=$(runtime_sysconfdir)/$(pkgname)
 
 .PHONY: DigiDrie
 DigiDrie: common

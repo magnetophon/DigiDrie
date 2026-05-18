@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Note that this script assumes patch will be applied correctly.
 #
