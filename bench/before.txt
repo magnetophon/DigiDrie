@@ -1,0 +1,37 @@
+# Faust DSP throughput benchmark
+# 2026-05-18T21:31:17+02:00
+# 5 runs of 30s audio each
+# faustdsp.hpp header (Faust version):
+#   /* ------------------------------------------------------------
+#   author: "Bart Brouns"
+#   license: "AGPLv3"
+#   name: "DigiFaustMidi"
+#   Code generated with Faust 2.28.0 (https://faust.grame.fr)
+# CPU:
+#    12th Gen Intel(R) Core(TM) i5-1240P
+
+--- run 1 ---
+samples:      1440000 @ 48000 Hz (30.0 s of audio)
+wall time:    4.253 s
+realtime:     7.05x
+per sample:   2953.31 ns
+--- run 2 ---
+samples:      1440000 @ 48000 Hz (30.0 s of audio)
+wall time:    4.258 s
+realtime:     7.05x
+per sample:   2957.15 ns
+--- run 3 ---
+samples:      1440000 @ 48000 Hz (30.0 s of audio)
+wall time:    4.398 s
+realtime:     6.82x
+per sample:   3054.07 ns
+--- run 4 ---
+samples:      1440000 @ 48000 Hz (30.0 s of audio)
+wall time:    4.540 s
+realtime:     6.61x
+per sample:   3152.87 ns
+--- run 5 ---
+samples:      1440000 @ 48000 Hz (30.0 s of audio)
+wall time:    4.683 s
+realtime:     6.41x
+per sample:   3252.32 ns
