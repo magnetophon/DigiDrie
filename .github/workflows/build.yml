@@ -178,6 +178,10 @@ jobs:
             cp -r plugin/dpf/bin/DigiDrie.vst                   "$STAGE/lib/vst/"
             cp -r plugin/dpf/bin/DigiDrie.clap                  "$STAGE/lib/clap/"
             cp -r plugin/dpf/bin/DigiDrie.component             "$STAGE/lib/au/"
+            # Ship the helper so users don't have to do the xattr dance
+            # by hand. upload-artifact strips file modes, so the release
+            # job re-applies +x where needed.
+            cp install-macos.sh                                 "$STAGE/install-macos.sh"
           else
             cp "plugin/dpf/bin/DigiDrie-vst${{ matrix.lib-ext }}" "$STAGE/lib/vst/"
             cp plugin/dpf/bin/DigiDrie.clap                     "$STAGE/lib/clap/"
@@ -293,15 +297,22 @@ jobs:
             out="DigiDrie-${GITHUB_REF_NAME}-${suffix}"
 
             # upload-artifact strips file modes; restore +x on any
-            # standalone binary in bin/. The .vst bundle binary on macOS
-            # (lib/vst/*.vst/Contents/MacOS/*) doesn't need +x — dyld
-            # loads it via dlopen — but chmod-ing it is harmless and
-            # arguably more correct, so do that too.
+            # standalone binary in bin/, on the helper install script,
+            # and on each bundle's MacOS executable for the four bundle
+            # formats. dyld doesn't actually require the bundle MacOS
+            # files to be executable (it dlopens them), but it's more
+            # correct so do it anyway.
             if [ -d "$dir/bin" ]; then
               find "$dir/bin" -type f -exec chmod +x {} +
             fi
-            find "$dir" -path '*.vst/Contents/MacOS/*' -type f \
-              -exec chmod +x {} + 2>/dev/null || true
+            if [ -f "$dir/install-macos.sh" ]; then
+              chmod +x "$dir/install-macos.sh"
+            fi
+            find "$dir" \( -path '*.vst/Contents/MacOS/*' \
+                         -o -path '*.vst3/Contents/MacOS/*' \
+                         -o -path '*.clap/Contents/MacOS/*' \
+                         -o -path '*.component/Contents/MacOS/*' \) \
+              -type f -exec chmod +x {} + 2>/dev/null || true
 
             case "$base" in
               *windows*)
