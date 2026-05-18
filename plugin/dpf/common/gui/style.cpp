@@ -55,24 +55,16 @@ inline fs::path getXdgConfigHome()
 #  define MAGNETOPHON_SYSCONFDIR "/usr/local/etc/magnetophon"
 #endif
 
-inline void logNotExist(fs::path path)
-{
-  std::cerr << path << " is not regular file or doesn't exist.\n";
-}
-
 inline fs::path getConfigPath()
 {
   auto styleJsonPath = getXdgConfigHome() / fs::path("magnetophon/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
-  logNotExist(styleJsonPath);
 
   styleJsonPath = fs::path(MAGNETOPHON_SYSCONFDIR "/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
-  logNotExist(styleJsonPath);
 
   styleJsonPath = fs::path("/etc/magnetophon/style/style.json");
   if (fs::is_regular_file(styleJsonPath)) return styleJsonPath;
-  logNotExist(styleJsonPath);
 
   return fs::path("magnetophon/style/style.json");
 }
