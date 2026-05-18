@@ -25,13 +25,13 @@
 #include <sstream>
 #include <string>
 
-class TextView : public NanoWidget {
+class TextView : public NanoSubWidget {
 public:
   float textSize = 18.0f;
 
   explicit TextView(
     NanoTopLevelWidget *group, std::string content, FontId fontId, Palette &palette)
-    : NanoWidget(group), fontId(fontId), pal(palette)
+    : NanoSubWidget(group), fontId(fontId), pal(palette)
   {
     std::stringstream ss(content);
     std::string line;
@@ -64,7 +64,7 @@ protected:
   int align = ALIGN_BASELINE | ALIGN_MIDDLE;
 };
 
-class TextTableView : public NanoWidget {
+class TextTableView : public NanoSubWidget {
 public:
   const char rowDelimiter = '\n';
   const char colDelimiter = '|';
@@ -76,7 +76,7 @@ public:
     float cellWidth,
     FontId fontId,
     Palette &palette)
-    : NanoWidget(group), cellWidth(cellWidth), fontId(fontId), pal(palette)
+    : NanoSubWidget(group), cellWidth(cellWidth), fontId(fontId), pal(palette)
   {
     std::stringstream ssContent(content);
     std::string line;

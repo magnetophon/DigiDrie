@@ -30,7 +30,7 @@
 
 #include <iostream>
 
-class TabView : public NanoWidget {
+class TabView : public NanoSubWidget {
 public:
   struct TabButton {
     std::string name;
@@ -71,7 +71,7 @@ public:
     float top,
     float width,
     float height)
-    : NanoWidget(group), tabHeight(tabHeight), fontId(fontId), pal(palette)
+    : NanoSubWidget(group), tabHeight(tabHeight), fontId(fontId), pal(palette)
   {
     setAbsolutePos(left, top);
     setSize(width, height);
@@ -121,7 +121,7 @@ public:
       }
     }
 
-    NanoWidget::setVisible(yesNo);
+    NanoSubWidget::setVisible(yesNo);
   }
 
   void onNanoDisplay() override

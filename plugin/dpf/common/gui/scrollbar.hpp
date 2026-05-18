@@ -25,11 +25,11 @@
 #include <cmath>
 #include <memory>
 
-template<typename Scrollable> class ScrollBar : public NanoWidget {
+template<typename Scrollable> class ScrollBar : public NanoSubWidget {
 public:
   explicit ScrollBar(
     NanoTopLevelWidget *group, std::shared_ptr<Scrollable> parent, Palette &palette)
-    : NanoWidget(group), parent(parent), pal(palette)
+    : NanoSubWidget(group), parent(parent), pal(palette)
   {
   }
 

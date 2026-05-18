@@ -24,11 +24,11 @@
 #include <sstream>
 #include <string>
 
-class CreditSplash : public NanoWidget {
+class CreditSplash : public NanoSubWidget {
 public:
   explicit CreditSplash(
     NanoTopLevelWidget *group, std::string name, FontId fontId, Palette &palette)
-    : NanoWidget(group), name(name), fontId(fontId), pal(palette)
+    : NanoSubWidget(group), name(name), fontId(fontId), pal(palette)
   {
     hide();
   }
@@ -89,11 +89,11 @@ protected:
   Palette &pal;
 };
 
-class SplashButton : public NanoWidget {
+class SplashButton : public NanoSubWidget {
 public:
   explicit SplashButton(
     NanoTopLevelWidget *group, std::string labelText, FontId fontId, Palette &palette)
-    : NanoWidget(group), labelText(labelText), fontId(fontId), pal(palette)
+    : NanoSubWidget(group), labelText(labelText), fontId(fontId), pal(palette)
   {
   }
 
