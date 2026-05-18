@@ -1,4 +1,4 @@
-all: patch build generate_ttl
+all: build generate_ttl
 
 build: common DigiDrie
 
@@ -67,7 +67,7 @@ datadir ?= $(datarootdir)
 docdir ?= $(datarootdir)/doc
 
 .PHONY: dpf
-dpf:
+dpf: patch
 	$(MAKE) -C lib/DPF HAVE_CAIRO=$(HAVE_CAIRO) USE_WEB_VIEW=false dgl utils/lv2_ttl_generator
 
 .PHONY: common
