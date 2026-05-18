@@ -1,7 +1,7 @@
 # DigiDrie
 
 A monster monophonic synth, written in faust.
-<img width="1440" height="740" alt="image" src="https://github.com/user-attachments/assets/5c3d0e13-c382-4e15-ada1-dbb9877b58ac" />
+<img width="1440" height="740" alt="image" src="https://github.com/user-attachments/assets/38fb1dd8-4d99-4b78-b57f-fc2058197eb6" />
 
 ## features
 
